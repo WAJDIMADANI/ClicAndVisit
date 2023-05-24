@@ -1,0 +1,258 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+    id 'androidx.navigation.safeargs'
+}
+
+ext {
+    // Application version
+    VERSION_CODE          = 1
+    VERSION_NAME          = '0.0.1'
+
+    MIN_SDK_VERSION = 21
+    TARGET_SDK_VERSION = 30
+    COMPILE_SDK_VERSION = 30
+    BUILD_TOOLS_VERSION ="30.0.3"
+
+    support_library_version = '1.1.0'
+    core_ktx = '1.5.0-beta02'
+    constraintlayout = '2.0.4'
+
+    material='1.3.0'
+    room_version = '2.3.0-beta03'
+    picasso_version = '2.71828'
+    retrofit_version = '2.9.0'
+    navigation = '2.3.4'
+    swiperefreshlayout = '1.1.0'
+    leakcanary_version = '1.6.2'
+    lifecycle_livedata_ktx = '2.3.0'
+    lifecycle_viewmodel_ktx = '2.3.0'
+    fragment_ktx = '1.3.1'
+    multi_dex = '1.0.3'
+    okhttp3_logging = '4.5.0'
+    paging_version = '2.1.2'
+    secure_preferences = '0.1.7'
+    retrofit_moshi='2.6.2'
+    kotlin_moshi='1.11.0'
+    coroutines='1.3.9'
+    transition="1.2.0"
+
+    //test
+    junit = '4.13.2'
+    test_core = '1.3.0'
+    mockoto_core = '2.25.0'
+    module_junit = '4:1.6.4'
+    api_mockito = '1.6.3'
+    robolectric = "4.3.1"
+    robolectric_multidex = "3.4.2"
+    test_runner = "1.1.2"
+    assertions_junit="1.1.2"
+    espresso="3.3.0"
+    mockito_android_test="2.23.4"
+
+}
+
+android {
+
+    buildFeatures {
+        dataBinding true
+    }
+
+    compileSdkVersion COMPILE_SDK_VERSION
+    buildToolsVersion BUILD_TOOLS_VERSION
+
+    defaultConfig {
+        applicationId "com.foodline"
+        minSdkVersion MIN_SDK_VERSION
+        targetSdkVersion TARGET_SDK_VERSION
+        versionCode VERSION_CODE
+        versionName VERSION_NAME
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    lintOptions {
+        // if true, stop the gradle build if errors are found
+        abortOnError true
+        // set to true to have all release builds run lint on issues with severity=fatal
+        // and abort the build (controlled by abortOnError above) if fatal issues are found
+        checkReleaseBuilds true
+        // Set the severity of the given issues to fatal (which means they will be
+        // checked during release builds (even if the lint target is not included)
+        fatal 'NewApi'
+        // if true, only report errors
+        ignoreWarnings true
+    }
+    buildTypes {
+        debug {
+            debuggable true
+            applicationIdSuffix '.debug'
+            versionNameSuffix '-DEBUG'
+            buildConfigField("String", "API_VARIANT", '"debugvariant"')
+
+        }
+        release {
+            buildConfigField("String", "API_VARIANT", '"releasevariant"')
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+    }
+
+    // Specifies one flavor dimension.
+    flavorDimensions "version"
+    productFlavors {
+        dev {
+            dimension "version"
+            buildConfigField("String", "BASE_URL", '"http://colisjet.com/"')
+        }
+        prod {
+            dimension "version"
+            buildConfigField("String", "BASE_URL", '"http://colisjet.com/"')
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    //viewpager2
+    implementation 'androidx.viewpager2:viewpager2:1.0.0'
+
+    //kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+    //multidex
+    implementation "com.android.support:multidex:$multi_dex"
+
+    // play-services-auth
+    implementation 'com.google.android.gms:play-services-auth:19.0.0'
+
+    // Facebook
+    implementation 'com.facebook.android:facebook-android-sdk:[4,5)'
+
+
+    //Android x
+    implementation "androidx.core:core-ktx:$core_ktx"
+    implementation "androidx.constraintlayout:constraintlayout:$constraintlayout"
+    implementation "androidx.appcompat:appcompat:$support_library_version"
+    implementation "com.google.android.material:material:$material"
+
+    //Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines"
+
+    //Paging
+    implementation "androidx.paging:paging-runtime:$paging_version"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    //alternatively - without Android dependencies for testing
+    testImplementation "androidx.paging:paging-common:$paging_version"
+
+    //room
+    implementation "androidx.room:room-runtime:$room_version"
+    implementation "androidx.room:room-ktx:$room_version"
+
+    //retrofit / picasso
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp3_logging"
+    implementation "com.squareup.picasso:picasso:$picasso_version"
+
+
+    implementation "com.squareup.retrofit2:converter-moshi:$retrofit_moshi"
+    implementation "com.squareup.moshi:moshi:$kotlin_moshi"
+    implementation "com.squareup.moshi:moshi-kotlin:$kotlin_moshi"
+
+    //leakcanary
+    debugImplementation "com.squareup.leakcanary:leakcanary-android:$leakcanary_version"
+    releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$leakcanary_version"
+
+    // ViewModel and LiveData
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_livedata_ktx"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_viewmodel_ktx"
+    implementation "androidx.fragment:fragment-ktx:$fragment_ktx"
+
+
+    //jetpack navigation / swiperefreshlayout
+    implementation "androidx.navigation:navigation-runtime-ktx:$navigation"
+    implementation "androidx.navigation:navigation-fragment-ktx:$navigation"
+    implementation "androidx.navigation:navigation-ui-ktx:$navigation"
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:$swiperefreshlayout"
+
+
+    //secure-preferences
+    implementation "com.scottyab:secure-preferences-lib:$secure_preferences"
+
+    //hilt
+    implementation "com.google.dagger:hilt-android:$hilt_version"
+
+
+    kapt "com.google.dagger:hilt-compiler:$hilt_version"
+    kapt "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_livedata_ktx"
+    kapt "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_viewmodel_ktx"
+    kapt "androidx.room:room-compiler:$room_version"
+    kapt "com.squareup.moshi:moshi-kotlin-codegen:$kotlin_moshi"
+
+
+    // Required -- JUnit 4 framework
+    testImplementation "junit:junit:$junit"
+    // Optional -- Robolectric environment
+    testImplementation "androidx.test:core:$test_core"
+    // Optional -- Mockito framework
+    testImplementation "org.mockito:mockito-core:$mockoto_core"
+    testImplementation "org.powermock:powermock-module-junit$module_junit"
+    testImplementation "org.powermock:powermock-api-mockito:$api_mockito"
+
+    // robolectric
+    testImplementation "org.robolectric:robolectric:$robolectric"
+    testImplementation "org.robolectric:multidex:$robolectric_multidex"
+
+    // AndroidJUnitRunner and JUnit Rules
+    androidTestImplementation "androidx.test:runner:$test_runner"
+    androidTestImplementation "androidx.test:rules:$test_runner"
+
+    // Assertions
+    androidTestImplementation "androidx.test.ext:junit:$assertions_junit"
+    androidTestImplementation "androidx.test.ext:truth:$assertions_junit"
+
+    // Espresso dependencies
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso"
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:$espresso"
+    androidTestImplementation "androidx.test.espresso:espresso-intents:$espresso"
+    androidTestImplementation "androidx.test.espresso:espresso-accessibility:$espresso"
+    androidTestImplementation "androidx.test.espresso:espresso-web:$espresso"
+
+    // The following Espresso dependency can be either "implementation"
+    // or "androidTestImplementation", depending on whether you want the
+    // dependency to appear on your APK's compile classpath or the test APK
+    // classpath.
+    androidTestImplementation "androidx.test.espresso:espresso-idling-resource:$espresso"
+    androidTestImplementation "org.mockito:mockito-android:$mockito_android_test"
+
+}
+
+
+
+configurations.all {
+    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+        def requested = details.requested
+
+        if (requested.group == 'androidx.transition') {
+            details.useVersion transition
+        }
+
+        if (requested.group == 'com.android.support') {
+            if (!requested.name.startsWith("multidex")) {
+                details.useVersion support_library_version
+            }
+        }
+
+    }
+}

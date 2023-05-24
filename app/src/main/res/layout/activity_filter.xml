@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layout">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.foodline.ui.menu.filter.FilterViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white_basic"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="112dp">
+
+            <ImageView
+                android:id="@+id/ivBack"
+                android:layout_width="@dimen/dimen_40dp"
+                android:layout_height="@dimen/dimen_40dp"
+                android:layout_marginStart="@dimen/margin_global_36dp"
+                android:layout_marginTop="@dimen/margin_global_36dp"
+                android:layout_marginEnd="@dimen/margin_global_10dp"
+                android:background="@drawable/ic_back"
+                app:onClickWithDebounce="@{() ->viewModel.onBackClick()}" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="@dimen/margin_global_42dp"
+                android:fontFamily="@font/poppins_semi_bold"
+                android:gravity="center"
+                android:text="@string/filter_title"
+                android:textColor="@color/color_primary"
+                android:textSize="@dimen/font_15sp" />
+
+        </RelativeLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:paddingStart="@dimen/padding_global_36dp"
+                    android:paddingEnd="@dimen/padding_global_36dp">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvcity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="@string/package_send_package_send_departure_date"
+                        android:textColor="@color/black_basic"
+                        android:textSize="@dimen/font_15sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/etCity"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dimen_50dp"
+                            android:layout_marginTop="@dimen/margin_global_12dp"
+                            android:background="@drawable/round_grey_background"
+                            android:focusable="false"
+                            android:fontFamily="@font/poppins_medium"
+                            android:gravity="start"
+                            android:hint="@string/package_send_package_send_date_edit"
+                            android:inputType="none"
+                            android:padding="@dimen/padding_global_13dp"
+                            android:text="@{viewModel.date}"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/font_13sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <com.foodline.ui.shared.view.CustomImageButton
+                            android:id="@+id/customImageButtonSignUpEmailInfo"
+                            android:layout_width="@dimen/dimen_50dp"
+                            android:layout_height="@dimen/dimen_50dp"
+                            android:adjustViewBounds="true"
+                            android:background="@drawable/ic_light_blue_border"
+                            android:contentDescription="@null"
+                            android:onClick="setSelectTime"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/ic_baseline_calendar"
+                            app:layout_constraintBottom_toBottomOf="@+id/etCity"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/etCity" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvIntroFrom"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_global_10dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="@string/package_details_from"
+                        android:textColor="@color/black_basic"
+                        android:textSize="@dimen/font_15sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <AutoCompleteTextView
+                        android:id="@+id/actvFrom"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dimen_48dp"
+                        android:background="@drawable/round_grey_background"
+                        android:fontFamily="@font/poppins_medium"
+                        android:hint="@string/package_details_airport"
+                        android:paddingStart="@dimen/padding_global_16dp"
+                        android:textCursorDrawable="@drawable/edit_cursor_color"
+                        android:textSize="@dimen/font_13sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvIntroTo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_global_10dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="@string/package_details_to"
+                        android:textColor="@color/black_basic"
+                        android:textSize="@dimen/font_15sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <AutoCompleteTextView
+                        android:id="@+id/actvTo"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dimen_48dp"
+                        android:background="@drawable/round_grey_background"
+                        android:fontFamily="@font/poppins_medium"
+                        android:hint="@string/package_details_airport"
+                        android:paddingStart="@dimen/padding_global_16dp"
+                        android:textCursorDrawable="@drawable/edit_cursor_color"
+                        android:textSize="@dimen/font_13sp" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_global_30dp">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvWeight"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="@string/package_details_weight"
+                            android:textColor="@color/black_basic"
+                            android:textSize="@dimen/font_15sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvWeightValue"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="@{viewModel.weightValue}"
+                            android:textColor="@color/color_primary"
+                            android:textSize="@dimen/font_16sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <com.google.android.material.slider.Slider
+                        android:id="@+id/sliderWValue"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:stepSize="1.0"
+                        android:valueFrom="0"
+                        android:valueTo="30"
+                        app:onValueChangeListener="@{(value)-> viewModel.onWValueChanged(value)}" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_global_30dp">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvPriceK"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="@string/package_details_price_k"
+                            android:textColor="@color/black_basic"
+                            android:textSize="@dimen/font_15sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvPriceKValue"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="@{viewModel.priceValue}"
+                            android:textColor="@color/color_primary"
+                            android:textSize="@dimen/font_16sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <com.google.android.material.slider.Slider
+                        android:id="@+id/sliderKValue"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:stepSize="1.0"
+                        android:valueFrom="0"
+                        android:valueTo="11"
+                        app:onValueChangeListener="@{(value)-> viewModel.onPriceValueChanged(value)}" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_global_30dp">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvResistance"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="@string/package_details_package_resistance"
+                            android:textColor="@color/black_basic"
+                            android:textSize="@dimen/font_15sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <GridLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:columnCount="2"
+                            android:orientation="horizontal"
+                            android:rowCount="2"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tvResistance">
+
+                            <com.google.android.material.chip.Chip
+                                android:layout_width="wrap_content"
+                                android:layout_height="@dimen/margin_global_48dp"
+                                android:layout_marginEnd="@dimen/margin_global_18dp"
+                                android:background="@drawable/ic_toggel_back_off"
+                                android:checkable="true"
+                                android:drawablePadding="@dimen/margin_global_13dp"
+                                android:paddingStart="@dimen/margin_global_17dp"
+                                android:paddingEnd="@dimen/margin_global_17dp"
+                                android:text="@string/package_details_resistance"
+                                android:textColor="@color/black_basic"
+                                app:checkedIcon="@drawable/ic_checkbox_on" />
+
+                            <com.google.android.material.chip.Chip
+                                android:layout_width="wrap_content"
+                                android:layout_height="@dimen/margin_global_48dp"
+                                android:background="@drawable/ic_toggel_back_off"
+                                android:checkable="true"
+                                android:drawablePadding="@dimen/margin_global_13dp"
+                                android:paddingStart="@dimen/margin_global_17dp"
+                                android:paddingEnd="@dimen/margin_global_17dp"
+                                android:text="@string/package_details_package_no_resistance"
+                                android:textColor="@color/black_basic"
+                                app:checkedIcon="@drawable/ic_checkbox_on" />
+
+                            <com.google.android.material.chip.Chip
+                                android:layout_width="wrap_content"
+                                android:layout_height="@dimen/margin_global_48dp"
+                                android:background="@drawable/ic_toggel_back_off"
+                                android:checkable="true"
+                                android:drawablePadding="@dimen/margin_global_13dp"
+                                android:paddingStart="@dimen/margin_global_17dp"
+                                android:paddingEnd="@dimen/margin_global_17dp"
+                                android:text="@string/package_details_package_brittle"
+                                android:textColor="@color/black_basic"
+                                app:checkedIcon="@drawable/ic_checkbox_on" />
+
+                            <com.google.android.material.chip.Chip
+                                android:layout_width="wrap_content"
+                                android:layout_height="@dimen/margin_global_48dp"
+                                android:background="@drawable/ic_toggel_back_off"
+                                android:checkable="true"
+                                android:drawablePadding="@dimen/margin_global_13dp"
+                                android:paddingStart="@dimen/margin_global_17dp"
+                                android:paddingEnd="@dimen/margin_global_17dp"
+                                android:text="@string/package_details_package_unbreakable"
+                                android:textColor="@color/black_basic"
+                                app:checkedIcon="@drawable/ic_checkbox_on" />
+
+                        </GridLayout>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    <com.foodline.ui.shared.view.CustomButton
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:layout_marginTop="@dimen/padding_global_26dp"
+                        android:layout_marginBottom="@dimen/padding_global_36dp"
+                        android:background="@drawable/ic_button_background"
+                        android:fontFamily="@font/poppins_semi_bold"
+                        android:text="@string/filter_apply"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white_basic"
+                        android:textSize="@dimen/font_18sp"
+                        app:onClickWithDebounce="@{() ->viewModel.onApplyClick()}" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+</layout>

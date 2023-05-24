@@ -1,0 +1,451 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout">
+
+    <data>
+
+        <import type="android.view.View" />
+
+
+        <variable
+            name="viewModel"
+            type="com.foodline.ui.menu.details.DetailsViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_primary">
+
+        <RelativeLayout
+            android:id="@+id/rlDetails"
+            android:layout_width="match_parent"
+            android:layout_height="112dp"
+            android:background="@color/color_primary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/ivBack"
+                android:layout_width="@dimen/dimen_40dp"
+                android:layout_height="@dimen/dimen_40dp"
+                android:layout_marginStart="@dimen/margin_global_36dp"
+                android:layout_marginTop="@dimen/margin_global_36dp"
+                android:layout_marginEnd="@dimen/margin_global_10dp"
+                android:background="@drawable/ic_back_white"
+                app:onClickWithDebounce="@{() ->viewModel.onBackClick()}" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="@dimen/margin_global_42dp"
+                android:fontFamily="@font/poppins_semi_bold"
+                android:gravity="center"
+                android:text="@string/offer_details"
+                android:textColor="@color/white_basic"
+                android:textSize="@dimen/font_15sp" />
+
+        </RelativeLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:scrollIndicators="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="@drawable/ic_item_border"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rlDetails">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_global_18dp">
+
+                    <com.foodline.ui.shared.view.CustomCircleImageView
+                        android:id="@+id/customCircleImageView2"
+                        android:layout_width="@dimen/dimen_45dp"
+                        android:layout_height="@dimen/dimen_45dp"
+                        android:background="@drawable/global_ic_profile"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvUserName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_global_12dp"
+                        android:fontFamily="@font/poppins_semi_bold"
+                        android:text="User name"
+                        android:textColor="@color/black_basic"
+                        android:textSize="@dimen/font_13sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/customCircleImageView2"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp"
+                    android:layout_marginStart="@dimen/margin_global_18dp"
+                    android:layout_marginEnd="@dimen/margin_global_18dp"
+                    android:layout_marginBottom="@dimen/margin_global_12dp"
+                    android:layerType="software"
+                    android:src="@drawable/dotted" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingStart="@dimen/padding_global_18dp">
+
+                    <com.foodline.ui.shared.view.CustomCircleView
+                        android:id="@+id/customCircleViewTop"
+                        android:layout_width="@dimen/dimen_11dp"
+                        android:layout_height="@dimen/dimen_11dp"
+                        android:layout_marginTop="@dimen/margin_global_5dp"
+                        app:bg_circle_color="#004368"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:layout_width="1dp"
+                        android:layout_height="95dp"
+                        android:layout_marginStart="@dimen/margin_global_4dp"
+                        android:layerType="software"
+                        android:src="@drawable/vdotted"
+                        app:layout_constraintBottom_toTopOf="@+id/customCircleViewBottom"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/customCircleViewTop" />
+
+                    <com.foodline.ui.shared.view.CustomCircleView
+                        android:id="@+id/customCircleViewBottom"
+                        android:layout_width="@dimen/dimen_11dp"
+                        android:layout_height="@dimen/dimen_11dp"
+                        android:layout_marginBottom="@dimen/margin_global_5dp"
+                        app:bg_circle_color="#00A1ED"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvFromAirportName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_global_12dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="Tunisie (Aéroport Tunis Carthage)"
+                        android:textColor="@color/black_basic"
+                        android:textSize="@dimen/font_12sp"
+                        app:layout_constraintStart_toEndOf="@+id/customCircleViewTop"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvFromDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_global_12dp"
+                        android:layout_marginTop="@dimen/margin_global_5dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="Novembre, 11, 08:00 pm"
+                        android:textColor="@color/item_date_text_color"
+                        android:textSize="@dimen/font_11sp"
+                        app:layout_constraintStart_toEndOf="@+id/customCircleViewTop"
+                        app:layout_constraintTop_toBottomOf="@+id/tvFromAirportName" />
+
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvToAirportName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_global_12dp"
+                        android:layout_marginTop="@dimen/margin_global_20dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="Tunisie (Aéroport Tunis Carthage)"
+                        android:textColor="@color/black_basic"
+                        android:textSize="@dimen/font_12sp"
+                        app:layout_constraintStart_toEndOf="@+id/customCircleViewTop"
+                        app:layout_constraintTop_toBottomOf="@+id/tvFromDate" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvToDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_global_12dp"
+                        android:layout_marginTop="@dimen/margin_global_5dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="Novembre, 11, 08:00 pm"
+                        android:textColor="@color/item_date_text_color"
+                        android:textSize="@dimen/font_11sp"
+                        app:layout_constraintStart_toEndOf="@+id/customCircleViewTop"
+                        app:layout_constraintTop_toBottomOf="@+id/tvToAirportName" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp"
+                    android:layout_marginStart="@dimen/margin_global_18dp"
+                    android:layout_marginTop="@dimen/margin_global_12dp"
+                    android:layout_marginEnd="@dimen/margin_global_18dp"
+                    android:layerType="software"
+                    android:src="@drawable/dotted" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_global_17dp"
+                    android:orientation="vertical"
+                    android:paddingStart="@dimen/padding_global_36dp"
+                    android:paddingEnd="@dimen/padding_global_36dp">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dimen_48dp"
+                        android:layout_marginBottom="@dimen/margin_global_17dp"
+                        android:background="@drawable/ic_details_carac_background"
+                        android:gravity="center_vertical"
+                        android:paddingStart="@dimen/dimen_18dp"
+                        android:paddingEnd="@dimen/dimen_18dp">
+
+                        <ImageView
+                            android:id="@+id/ivWeight"
+                            android:layout_width="@dimen/margin_global_14dp"
+                            android:layout_height="@dimen/margin_global_14dp"
+                            android:layout_marginEnd="@dimen/padding_global_10dp"
+                            android:layout_marginBottom="@dimen/margin_global_5dp"
+                            android:background="@drawable/ic_padlock_black"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/tvWeight"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvWeight"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/dimen_5dp"
+                            android:fontFamily="@font/poppins_semi_bold"
+                            android:text="Poids 5Kg"
+                            android:textColor="@color/black_basic"
+                            android:textSize="@dimen/font_12sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dimen_48dp"
+                        android:layout_marginBottom="@dimen/margin_global_17dp"
+                        android:background="@drawable/ic_details_carac_background"
+                        android:gravity="center_vertical"
+                        android:paddingStart="@dimen/dimen_18dp"
+                        android:paddingEnd="@dimen/dimen_18dp">
+
+                        <ImageView
+                            android:id="@+id/ivPrice"
+                            android:layout_width="@dimen/margin_global_14dp"
+                            android:layout_height="@dimen/margin_global_14dp"
+                            android:layout_marginEnd="@dimen/padding_global_10dp"
+                            android:layout_marginBottom="@dimen/margin_global_5dp"
+                            android:background="@drawable/ic_money_black"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/tvPrice"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvPrice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/dimen_5dp"
+                            android:fontFamily="@font/poppins_semi_bold"
+                            android:text="Prix 20€/Kg"
+                            android:textColor="@color/black_basic"
+                            android:textSize="@dimen/font_12sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dimen_48dp"
+                        android:layout_marginBottom="@dimen/margin_global_15dp"
+                        android:background="@drawable/ic_details_carac_background"
+                        android:gravity="center_vertical"
+                        android:paddingStart="@dimen/dimen_18dp"
+                        android:paddingEnd="@dimen/dimen_18dp">
+
+                        <ImageView
+                            android:id="@+id/ivResistance"
+                            android:layout_width="@dimen/margin_global_14dp"
+                            android:layout_height="@dimen/margin_global_14dp"
+                            android:layout_marginEnd="@dimen/padding_global_10dp"
+                            android:layout_marginBottom="@dimen/margin_global_5dp"
+                            android:background="@drawable/ic_brittle_black"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/tvResistance"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvResistance"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/dimen_5dp"
+                            android:fontFamily="@font/poppins_semi_bold"
+                            android:text="Fragile"
+                            android:textColor="@color/black_basic"
+                            android:textSize="@dimen/font_12sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="86dp"
+                        android:layout_marginTop="@dimen/margin_global_5dp"
+                        android:layout_marginBottom="@dimen/margin_global_15dp"
+                        android:background="@drawable/round_grey_background"
+                        android:gravity="center_vertical"
+                        android:paddingStart="@dimen/dimen_18dp"
+                        android:paddingEnd="@dimen/dimen_18dp"
+                        android:visibility="@{viewModel.isFromAds ? View.VISIBLE : View.GONE, default=gone}">
+
+                        <com.foodline.ui.shared.view.CustomCircleImageView
+                            android:id="@+id/ivTravelerImg"
+                            android:layout_width="@dimen/dimen_45dp"
+                            android:layout_height="@dimen/dimen_45dp"
+                            android:background="@drawable/global_ic_profile"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvTravelerName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/margin_global_12dp"
+                            android:layout_weight="2"
+                            android:fontFamily="@font/poppins_semi_bold"
+                            android:text="Voyageur"
+                            android:textColor="@color/black_basic"
+                            android:textSize="@dimen/font_13sp"
+                            app:layout_constraintBottom_toTopOf="@+id/tvDate"
+                            app:layout_constraintStart_toEndOf="@+id/customCircleImageView2"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:id="@+id/ivVisibility"
+                            android:layout_width="@dimen/dimen_50dp"
+                            android:layout_height="@dimen/dimen_50dp"
+                            android:layout_marginEnd="@dimen/margin_global_13dp"
+                            android:background="@drawable/ic_visibility"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:onClickWithDebounce="@{() ->viewModel.onChatClick()}" />
+
+                        <ImageView
+                            android:id="@+id/ivGoToChat"
+                            android:layout_width="@dimen/dimen_50dp"
+                            android:layout_height="@dimen/dimen_50dp"
+                            android:background="@drawable/ic_chat_blue"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:onClickWithDebounce="@{() ->viewModel.onChatClick()}" />
+
+                    </LinearLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/padding_global_36dp"
+                        android:visibility="@{viewModel.isFromPack ? View.VISIBLE : View.GONE, default=gone}">
+
+                        <com.foodline.ui.shared.view.CustomButton
+                            android:id="@+id/cbGenerateCode"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_gravity="center_vertical|end"
+                            android:background="@drawable/ic_button_background"
+                            android:fontFamily="@font/poppins_semi_bold"
+                            android:minWidth="140dp"
+                            android:paddingStart="@dimen/padding_global_22dp"
+                            android:paddingEnd="@dimen/padding_global_22dp"
+                            android:text="@string/offer_details_code_generation"
+                            android:textAllCaps="false"
+                            android:textColor="@color/white_basic"
+                            android:textSize="@dimen/font_15sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:id="@+id/ivChat"
+                            android:layout_width="@dimen/dimen_50dp"
+                            android:layout_height="@dimen/dimen_50dp"
+                            android:background="@drawable/ic_chat_blue"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:onClickWithDebounce="@{() ->viewModel.onChatClick()}" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/padding_global_16dp">
+
+                        <com.foodline.ui.shared.view.CustomButton
+                            android:id="@+id/cbEnterCode"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_gravity="center_vertical|end"
+                            android:background="@drawable/ic_button_background"
+                            android:fontFamily="@font/poppins_semi_bold"
+                            android:minWidth="140dp"
+                            android:paddingStart="@dimen/padding_global_22dp"
+                            android:paddingEnd="@dimen/padding_global_22dp"
+                            android:text="@string/ads_enter_code"
+                            android:textAllCaps="false"
+                            android:textColor="@color/white_basic"
+                            android:textSize="@dimen/font_18sp"
+                            android:visibility="@{viewModel.isFromAds ? View.VISIBLE : View.GONE, default=gone}"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

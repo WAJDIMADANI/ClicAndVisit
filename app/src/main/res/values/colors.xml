@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="color_primary">#00A1ED</color>
+    <color name="color_primary_dark">#00A1ED</color>
+    <color name="color_accent">#00A1ED</color>
+
+    <color name="white_basic">@android:color/white</color>
+    <color name="black_basic">@android:color/black</color>
+    <color name="transparent">@android:color/transparent</color>
+
+    <!-- toolbar colors -->
+    <color name="red_basic">#E40421</color>
+    <color name="blue_basic">#3B5998</color>
+    <color name="blue_light">#1E88E5</color>
+
+    <color name="green_basic">#62B700</color>
+
+    <color name="grey_basic">#c4c3c3</color>
+    <color name="grey_light">#EDEDED</color>
+    <color name="grey_light_sep">#E9E9E9</color>
+    <color name="gray_graphite">#6B6B6B</color>
+    <color name="gray_cloud">#D8D8D8</color>
+    <color name="gray_silver">#cad0d1</color>
+    <color name="gray_charcoal">#4A4A4A</color>
+
+    <color name="color_text_body">#89A0AB</color>
+    <color name="color_edit_background">#F2F2F2</color>
+    <color name="gray">#7F7F7F</color>
+
+
+    <color name="window_zircon">#e9efef</color>
+    <color name="black">#000000</color>
+
+    <color name="burnt_sienna">#f06d54</color>
+
+    <color name="dark_gray">#9B9B9B</color>
+
+    <color name="black_overlay">#66000000</color>
+    <color name="black_overlay50">#80000000</color>
+
+    <color name="pink_swan">#B2B2B2</color>
+
+    <color name="pine_green">#017570</color>
+    <color name="alizarin">#E21F39</color>
+    <color name="mango_tango">#E36C0A</color>
+    <color name="navy_blue">#0F70E7</color>
+    <color name="gery">#7F7F7F</color>
+    <color name="eclipse">#404040</color>
+    <color name="steel_gray">#44464c</color>
+    <color name="corduroy">#424c4a</color>
+    <color name="ebony">#2D2E32</color>
+
+    <color name="cerulean">#006596</color>
+    <color name="rio_grande">#afca15</color>
+    <color name="eastern_blue">#00999e</color>
+    <color name="fire_brick">#b61615</color>
+    <color name="lime_green">#32d74b</color>
+    <color name="dodger_blue">#007aff</color>
+    <color name="carrot_orange">#f39215</color>
+    <color name="cobalt">#02579a</color>
+    <color name="solitude">#f2f4f8</color>
+    <color name="gainsboro">#d8d8d8</color>
+    <color name="white_smoke">#f5f5f5</color>
+    <color name="light_grey">#d6d6d6</color>
+    <color name="very_light_grey">#B3000000</color>
+    <color name="hint_color">#C5C5C5</color>
+    <color name="congratulation_color">#0DC179</color>
+    <color name="conf_color">#E2E2E2</color>
+    <color name="item_price_color">#0C537A</color>
+    <color name="item_date_text_color">#77838F</color>
+
+
+    <color name="status_in_hold_text_color">#FFA200</color>
+
+</resources>

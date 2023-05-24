@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.signup.SignUpActivity">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.foodline.ui.signup.SignUpViewModel" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="picasso"
+            type="com.squareup.picasso.Picasso" />
+
+    </data>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white_basic"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:background="@drawable/ic_signin_header">
+
+            <ImageView
+                android:layout_width="@dimen/dimen_40dp"
+                android:layout_height="@dimen/dimen_40dp"
+                android:layout_marginStart="@dimen/margin_global_36dp"
+                android:layout_marginTop="@dimen/margin_global_36dp"
+                android:layout_marginEnd="@dimen/margin_global_10dp"
+                android:background="@drawable/ic_back_white"
+                app:onClickWithDebounce="@{() ->viewModel.onBackClick()}" />
+
+        </RelativeLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:overScrollMode="never">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_global_36dp"
+                android:layout_marginEnd="@dimen/margin_global_36dp"
+                android:background="@color/white_basic"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvIntroTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_global_20dp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="@string/sign_up_create_account"
+                    android:textColor="@color/black_basic"
+                    android:textSize="@dimen/font_25sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/appCompatImageView" />
+
+                <ImageView
+                    android:layout_width="@dimen/dimen_70dp"
+                    android:layout_height="@dimen/dimen_70dp"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/margin_global_16dp"
+                    android:layout_marginBottom="@dimen/margin_global_20dp"
+                    android:background="@drawable/ic_photo"
+                    app:imageUri="@{viewModel.photoUri}"
+                    app:onClickWithDebounce="@{() ->viewModel.onImageClick()}"
+                    app:picasso="@{picasso}" />
+
+                <com.foodline.ui.shared.view.CustomTextInputLayout
+                    android:id="@+id/customTextInputLayoutSignUpUser"
+                    style="@style/InputLayout.AppStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:errorBackground="@{viewModel.userFieldError}">
+
+                    <com.foodline.ui.shared.view.CustomTextInputEditText
+                        android:id="@+id/customTextInputEditTextSignUpUser"
+                        style="@style/InputEditText.AppStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_signin_user"
+                        android:hint="@string/sign_up_user_name"
+                        android:inputType="textPersonName"
+                        android:text="@={viewModel.userName}" />
+
+                </com.foodline.ui.shared.view.CustomTextInputLayout>
+
+
+                <com.foodline.ui.shared.view.CustomTextInputLayout
+                    android:id="@+id/customTextInputLayoutSignUpCin"
+                    style="@style/InputLayout.AppStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:errorBackground="@{viewModel.cinFieldError}">
+
+                    <com.foodline.ui.shared.view.CustomTextInputEditText
+                        android:id="@+id/customTextInputEditTextSignUpCin"
+                        style="@style/InputEditText.AppStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_cin_black"
+                        android:hint="@string/sign_up_cin"
+                        android:inputType="number"
+                        android:text="@={viewModel.cin}" />
+
+                </com.foodline.ui.shared.view.CustomTextInputLayout>
+
+                <com.foodline.ui.shared.view.CustomTextInputLayout
+                    android:id="@+id/customTextInputLayoutSignInEmail"
+                    style="@style/InputLayout.AppStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:errorBackground="@{viewModel.emailFieldError}">
+
+                    <com.foodline.ui.shared.view.CustomTextInputEditText
+                        android:id="@+id/customTextInputEditTextSignInEmail"
+                        style="@style/InputEditText.AppStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_email_black"
+                        android:hint="@string/signin_mail"
+                        android:inputType="textEmailAddress"
+                        android:text="@={viewModel.email}" />
+
+                </com.foodline.ui.shared.view.CustomTextInputLayout>
+
+                <com.foodline.ui.shared.view.CustomTextInputLayout
+                    android:id="@+id/customTextInputLayoutSignUpPhone"
+                    style="@style/InputLayout.AppStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:errorBackground="@{viewModel.phoneFieldError}">
+
+                    <com.foodline.ui.shared.view.CustomTextInputEditText
+                        android:id="@+id/customTextInputEditTextSignUpPhone"
+                        style="@style/InputEditText.AppStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_phone_black"
+                        android:hint="@string/sign_up_phone"
+                        android:inputType="phone"
+                        android:text="@={viewModel.phone}" />
+
+                </com.foodline.ui.shared.view.CustomTextInputLayout>
+
+                <com.foodline.ui.shared.view.CustomTextInputLayout
+                    android:id="@+id/customTextInputLayoutSignUpPassword"
+                    style="@style/InputLayout.AppStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:errorBackground="@{viewModel.passwordFieldError}">
+
+                    <com.foodline.ui.shared.view.CustomTextInputEditText
+                        android:id="@+id/customTextInputEditTextSignUpPassword"
+                        style="@style/InputEditText.AppStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_password"
+                        android:hint="@string/signup_password"
+                        android:inputType="textPassword"
+                        android:text="@={viewModel.password}" />
+
+                </com.foodline.ui.shared.view.CustomTextInputLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        android:id="@+id/radioButtonSignUpCGU"
+                        style="@style/RadioButton.Style"
+                        android:layout_width="@dimen/dimen_28dp"
+                        android:layout_height="@dimen/dimen_28dp"
+                        android:layout_marginStart="@dimen/margin_global_5dp"
+                        android:checked="@{viewModel.checkedCGU}"
+                        android:onClick="onCguClick" />
+
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_global_9dp"
+                        android:fontFamily="@font/poppins_semi_bold"
+                        android:text="@string/sign_up_cpc"
+                        android:textColor="@color/black_basic"
+                        android:textSize="@dimen/font_15sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/appCompatImageView" />
+
+                </LinearLayout>
+
+                <com.foodline.ui.shared.view.CustomButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_gravity="center_vertical|end"
+                    android:layout_marginTop="@dimen/margin_global_29dp"
+                    android:layout_marginBottom="@dimen/margin_global_36dp"
+                    android:layout_toEndOf="@+id/llStepContainer"
+                    android:background="@drawable/ic_button_background"
+                    android:fontFamily="@font/poppins_semi_bold"
+                    android:text="@string/sign_up_sign_up"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white_basic"
+                    android:textSize="@dimen/font_18sp"
+                    app:onClickWithDebounce="@{() ->viewModel.onSignUpClicked()}" />
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+</layout>

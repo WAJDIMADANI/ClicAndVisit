@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context=".ui.home.news.NewsActivity">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.foodline.global.helper.PaginationState" />
+
+        <variable
+                name="viewModel"
+                type="com.foodline.ui.home.news.NewsViewModel" />
+    </data>
+
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <com.foodline.ui.shared.view.CustomToolbar
+                android:id="@+id/toolbarNews"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:ch_status_color="@color/red_basic"
+                app:ct_has_title="false"
+                app:ct_start_action_text="@string/global_cancel"
+                app:ct_start_action_text_font="@font/poppins_bold"
+                app:onActionClicked="@{viewModel}" />
+
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/toolbarNews"
+                android:enabled="@{!(viewModel.isLoading() || viewModel.isError())}"
+                app:onRefreshListener="@{() -> viewModel.onRefresh()}"
+                app:refreshing="@{viewModel.isRefreshing()}">
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerNews"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:pagedListAdapterData="@{viewModel.newsList}"
+                    app:pagedListAdapterState="@{viewModel.getState()}"
+                    tools:listitem="@layout/item_news" />
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+        <com.foodline.ui.shared.view.CustomProgressBar
+                android:id="@+id/progressNewsContent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:visibility="@{(viewModel.isLoading()) ? View.VISIBLE : View.INVISIBLE, default=gone}" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textNewsEmpty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="@dimen/margin_global_30dp"
+                android:gravity="center"
+                android:text="@string/global_empty_list"
+                android:visibility="@{(viewModel.isEmpty()) ? View.VISIBLE : View.GONE, default=gone}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="@dimen/padding_global_50dp"
+                android:layout_marginEnd="@dimen/padding_global_50dp"
+                android:orientation="vertical"
+                android:visibility="@{safeUnbox(viewModel.error) ? View.VISIBLE : View.GONE, default=gone}">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/TextView.GlobalBlack"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="@{viewModel.errorMessage}"
+                    tools:text="error" />
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                    style="@style/Button.GlobalGreen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/padding_global_40dp"
+                    android:text="@string/global_error_retry_message"
+                    app:onClickWithDebounce="@{() ->viewModel.onRetry()}"
+                    tools:text="retry" />
+
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+
+</layout>

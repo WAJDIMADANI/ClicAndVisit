@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout"
+    tools:context=".ui.signup.otp.OtpActivity">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.foodline.ui.signup.otp.OtpViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white_basic"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:scrollIndicators="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:background="@drawable/ic_signin_header">
+
+                    <ImageView
+                        android:layout_width="@dimen/dimen_40dp"
+                        android:layout_height="@dimen/dimen_40dp"
+                        android:layout_marginStart="@dimen/margin_global_36dp"
+                        android:layout_marginTop="@dimen/margin_global_36dp"
+                        android:layout_marginEnd="@dimen/margin_global_10dp"
+                        android:background="@drawable/ic_back_white"
+                        app:onClickWithDebounce="@{() ->viewModel.onBackClick()}" />
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/margin_global_36dp"
+                    android:layout_marginEnd="@dimen/margin_global_36dp"
+                    android:background="@color/white_basic"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvIntroTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_global_30dp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:gravity="center"
+                        android:text="@string/otp_phone_verify"
+                        android:textColor="@color/black_basic"
+                        android:textSize="@dimen/font_25sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/appCompatImageView" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_global_12dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:text="@string/otp_code"
+                        android:textColor="@color/color_text_body"
+                        android:textSize="@dimen/font_15sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvIntroTitle" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <com.foodline.ui.shared.view.CustomTextInputLayout
+                            android:id="@+id/customTextInputLayoutOne"
+                            style="@style/InputLayout.AppStyle"
+                            android:layout_width="@dimen/dimen_60dp"
+                            android:layout_height="@dimen/dimen_60dp"
+                            app:errorBackground="@{viewModel.oneFieldError}"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/customTextInputLayoutTwo"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <com.foodline.ui.shared.view.CustomTextInputEditText
+                                android:id="@+id/customTextInputEditTextOne"
+                                style="@style/InputEditText.AppStyle"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppins_semi_bold"
+                                android:gravity="center"
+                                android:inputType="number"
+                                android:maxLength="1"
+                                android:paddingTop="1dp"
+                                android:singleLine="true"
+                                android:textSize="@dimen/dimen_25sp" />
+
+                        </com.foodline.ui.shared.view.CustomTextInputLayout>
+
+                        <com.foodline.ui.shared.view.CustomTextInputLayout
+                            android:id="@+id/customTextInputLayoutTwo"
+                            style="@style/InputLayout.AppStyle"
+                            android:layout_width="@dimen/dimen_60dp"
+                            android:layout_height="@dimen/dimen_60dp"
+                            app:errorBackground="@{viewModel.twoFieldError}"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/customTextInputLayoutThree"
+                            app:layout_constraintStart_toEndOf="@+id/customTextInputLayoutOne"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <com.foodline.ui.shared.view.CustomTextInputEditText
+                                android:id="@+id/customTextInputEditTextTwo"
+                                style="@style/InputEditText.AppStyle"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppins_semi_bold"
+                                android:gravity="center"
+                                android:inputType="number"
+                                android:maxLength="1"
+                                android:paddingTop="1dp"
+                                android:singleLine="true"
+                                android:textSize="@dimen/dimen_25sp" />
+
+                        </com.foodline.ui.shared.view.CustomTextInputLayout>
+
+                        <com.foodline.ui.shared.view.CustomTextInputLayout
+                            android:id="@+id/customTextInputLayoutThree"
+                            style="@style/InputLayout.AppStyle"
+                            android:layout_width="@dimen/dimen_60dp"
+                            android:layout_height="@dimen/dimen_60dp"
+                            app:errorBackground="@{viewModel.threeFieldError}"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/customTextInputLayoutFour"
+                            app:layout_constraintStart_toEndOf="@+id/customTextInputLayoutTwo"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <com.foodline.ui.shared.view.CustomTextInputEditText
+                                android:id="@+id/customTextInputEditTextThree"
+                                style="@style/InputEditText.AppStyle"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppins_semi_bold"
+                                android:gravity="center"
+                                android:inputType="number"
+                                android:maxLength="1"
+                                android:paddingTop="1dp"
+                                android:singleLine="true"
+                                android:textSize="@dimen/dimen_25sp" />
+
+                        </com.foodline.ui.shared.view.CustomTextInputLayout>
+
+
+                        <com.foodline.ui.shared.view.CustomTextInputLayout
+                            android:id="@+id/customTextInputLayoutFour"
+                            style="@style/InputLayout.AppStyle"
+                            android:layout_width="@dimen/dimen_60dp"
+                            android:layout_height="@dimen/dimen_60dp"
+                            app:errorBackground="@{viewModel.fourFieldError}"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/customTextInputLayoutThree"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <com.foodline.ui.shared.view.CustomTextInputEditText
+                                android:id="@+id/customTextInputEditTextFour"
+                                style="@style/InputEditText.AppStyle"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppins_semi_bold"
+                                android:gravity="center"
+                                android:inputType="number"
+                                android:maxLength="1"
+                                android:paddingTop="1dp"
+                                android:singleLine="true"
+                                android:textSize="@dimen/dimen_25sp" />
+
+                        </com.foodline.ui.shared.view.CustomTextInputLayout>
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_global_12dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:gravity="center"
+                        android:text="@string/otp_code_not_recived"
+                        android:textColor="@color/black_basic"
+                        android:textSize="@dimen/font_15sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvIntroTitle" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_global_8dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:text="@string/otp_click_hire"
+                        android:textColor="@color/color_primary"
+                        android:textSize="@dimen/font_15sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvIntroTitle" />
+
+                    <com.foodline.ui.shared.view.CustomButton
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:layout_marginTop="@dimen/margin_global_50dp"
+                        android:background="@drawable/ic_button_background"
+                        android:fontFamily="@font/poppins_semi_bold"
+                        android:text="@string/global_next"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white_basic"
+                        android:textSize="@dimen/font_18sp"
+                        app:onClickWithDebounce="@{() ->viewModel.onNextClick()}" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+</layout>

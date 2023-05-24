@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout"
+    tools:context=".ui.signin.SignInActivity">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.foodline.ui.signin.SignInViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white_basic"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:background="@drawable/ic_signin_header" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_global_36dp"
+                    android:layout_marginEnd="@dimen/margin_global_36dp"
+                    android:background="@color/white_basic"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvIntroTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_global_30dp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="@string/login_title"
+                        android:textColor="@color/black_basic"
+                        android:textSize="@dimen/font_25sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/appCompatImageView" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="@string/login_sub_title"
+                        android:textColor="@color/color_text_body"
+                        android:textSize="@dimen/font_13sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvIntroTitle" />
+
+                    <com.foodline.ui.shared.view.CustomTextInputLayout
+                        android:id="@+id/customTextInputLayoutSignInEmail"
+                        style="@style/InputLayout.AppStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:errorBackground="@{viewModel.emailFieldError}">
+
+                        <com.foodline.ui.shared.view.CustomTextInputEditText
+                            android:id="@+id/customTextInputEditTextSignInEmail"
+                            style="@style/InputEditText.AppStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableStart="@drawable/ic_email_black"
+                            android:drawablePadding="16dp"
+                            android:hint="@string/signin_mail"
+                            android:inputType="textEmailAddress"
+                            android:text="@={viewModel.email}" />
+
+                    </com.foodline.ui.shared.view.CustomTextInputLayout>
+
+                    <com.foodline.ui.shared.view.CustomTextInputLayout
+                        android:id="@+id/customTextInputLayoutSignInPassword"
+                        style="@style/InputLayout.AppStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:endIconMode="password_toggle"
+                        app:errorBackground="@{viewModel.passwordFieldError}">
+
+                        <com.foodline.ui.shared.view.CustomTextInputEditText
+                            android:id="@+id/customTextInputEditTextSignInPassword"
+                            style="@style/InputEditText.AppStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableStart="@drawable/ic_password"
+                            android:drawablePadding="16dp"
+                            android:fontFamily="@font/poppins_medium"
+                            android:hint="@string/signin_password"
+                            android:inputType="textPassword"
+                            android:text="@={viewModel.password}"
+                            android:textCursorDrawable="@drawable/edit_cursor_color"
+                            android:textSize="@dimen/dimen_15sp" />
+
+                    </com.foodline.ui.shared.view.CustomTextInputLayout>
+
+
+                    <com.foodline.ui.shared.view.CustomButton
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_gravity="center_vertical|end"
+                        android:layout_toEndOf="@+id/llStepContainer"
+                        android:background="@drawable/ic_button_background"
+                        android:fontFamily="@font/poppins_semi_bold"
+                        android:text="@string/login_signin"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white_basic"
+                        android:textSize="@dimen/font_18sp"
+                        app:onClickWithDebounce="@{() ->viewModel.onSignInClicked()}" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dimen_25dp"
+                        android:layout_marginTop="@dimen/margin_global_30dp">
+
+                        <View
+                            android:id="@+id/vSepOne"
+                            android:layout_width="@dimen/dimen_30dp"
+                            android:layout_height="@dimen/dimen_2dp"
+                            android:background="@color/grey_light_sep"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="@string/login_sub_sub_title"
+                            android:textColor="@color/black_basic"
+                            android:textSize="@dimen/font_13sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/vSepOne"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <View
+                            android:id="@+id/vSepTwo"
+                            android:layout_width="@dimen/dimen_30dp"
+                            android:layout_height="@dimen/dimen_2dp"
+                            android:background="@color/grey_light_sep"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_marginTop="@dimen/margin_global_30dp"
+                        android:background="@drawable/items_background"
+                        android:gravity="center"
+                        android:onClick="onGoogleSignInClicked"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="@dimen/dimen_24dp"
+                            android:layout_height="@dimen/dimen_24dp"
+                            android:layout_marginEnd="@dimen/margin_global_10dp"
+                            android:background="@drawable/ic_google" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="@string/login_google"
+                            android:textColor="@color/black_basic"
+                            android:textSize="@dimen/font_13sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/vSepOne"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_marginTop="@dimen/margin_global_18dp"
+                        android:background="@drawable/items_background"
+                        android:gravity="center"
+                        android:onClick="onFacebookSignInClicked"
+                        android:orientation="horizontal">
+
+                        <com.facebook.login.widget.LoginButton
+                            android:id="@+id/facebookLoginButton"
+                            android:visibility="gone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="30dp"
+                            android:layout_marginBottom="30dp" />
+
+                        <ImageView
+                            android:layout_width="@dimen/dimen_24dp"
+                            android:layout_height="@dimen/dimen_24dp"
+                            android:layout_marginEnd="@dimen/margin_global_10dp"
+                            android:background="@drawable/ic_facebook" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="@string/login_facebook"
+                            android:textColor="@color/black_basic"
+                            android:textSize="@dimen/font_13sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/vSepOne"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_global_36dp"
+                        android:orientation="horizontal">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="@string/login_no_account"
+                            android:textColor="@color/black_basic"
+                            android:textSize="@dimen/font_12sp" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvSignInSignUp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/margin_global_2dp"
+                            android:fontFamily="@font/poppins_semi_bold"
+                            android:text="@string/login_create_account"
+                            android:textColor="@color/color_primary"
+                            android:textSize="@dimen/font_12sp"
+                            app:onClickWithDebounce="@{() ->viewModel.onSignUpClicked()}" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+</layout>

@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout"
+    tools:context=".ui.home.transport.conf.ConfFragment">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.foodline.ui.home.transport.conf.ConfViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white_basic"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_global_36dp"
+                android:layout_marginTop="@dimen/margin_global_5dp"
+                android:layout_marginEnd="@dimen/margin_global_36dp"
+                android:background="@color/white_basic"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_item_border"
+                    android:orientation="vertical">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/padding_global_18dp">
+
+                        <com.foodline.ui.shared.view.CustomCircleImageView
+                            android:id="@+id/customCircleImageView2"
+                            android:layout_width="@dimen/dimen_45dp"
+                            android:layout_height="@dimen/dimen_45dp"
+                            android:background="@drawable/global_ic_profile"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/margin_global_12dp"
+                            android:fontFamily="@font/poppins_semi_bold"
+                            android:text="user name"
+                            android:textColor="@color/black_basic"
+                            android:textSize="@dimen/font_13sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/customCircleImageView2"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/appCompatTextView2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end|center_vertical"
+                            android:fontFamily="@font/poppins_semi_bold"
+                            android:text="20E/kg"
+                            android:textColor="@color/item_price_color"
+                            android:textSize="@dimen/font_25sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />=
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <com.foodline.ui.shared.view.CustomCircleView
+                            android:id="@+id/customCircleViewTop"
+                            android:layout_width="@dimen/dimen_11dp"
+                            android:layout_height="@dimen/dimen_11dp"
+                            android:layout_marginStart="@dimen/margin_global_18dp"
+                            android:layout_marginTop="@dimen/margin_global_5dp"
+                            app:bg_circle_color="#004368"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <com.foodline.ui.shared.view.CustomCircleView
+                            android:id="@+id/customCircleViewBottom"
+                            android:layout_width="@dimen/dimen_11dp"
+                            android:layout_height="@dimen/dimen_11dp"
+                            android:layout_marginStart="@dimen/margin_global_18dp"
+                            android:layout_marginBottom="@dimen/margin_global_5dp"
+                            app:bg_circle_color="#00A1ED"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvFromAirportName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/margin_global_12dp"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="Tunisie (Aéroport Tunis Carthage)"
+                            android:textColor="@color/black_basic"
+                            android:textSize="@dimen/font_12sp"
+                            app:layout_constraintStart_toEndOf="@+id/customCircleViewTop"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvFromDate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/margin_global_12dp"
+                            android:layout_marginTop="@dimen/margin_global_5dp"
+                            android:fontFamily="@font/poppins_regular"
+                            android:text="Novembre, 11, 08:00 pm"
+                            android:textColor="@color/item_date_text_color"
+                            android:textSize="@dimen/font_11sp"
+                            app:layout_constraintStart_toEndOf="@+id/customCircleViewTop"
+                            app:layout_constraintTop_toBottomOf="@+id/tvFromAirportName" />
+
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvToAirportName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/margin_global_12dp"
+                            android:layout_marginTop="@dimen/margin_global_20dp"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="Tunisie (Aéroport Tunis Carthage)"
+                            android:textColor="@color/black_basic"
+                            android:textSize="@dimen/font_12sp"
+                            app:layout_constraintStart_toEndOf="@+id/customCircleViewTop"
+                            app:layout_constraintTop_toBottomOf="@+id/tvFromDate" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvToDate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/margin_global_12dp"
+                            android:layout_marginTop="@dimen/margin_global_5dp"
+                            android:fontFamily="@font/poppins_regular"
+                            android:text="Novembre, 11, 08:00 pm"
+                            android:textColor="@color/item_date_text_color"
+                            android:textSize="@dimen/font_11sp"
+                            app:layout_constraintStart_toEndOf="@+id/customCircleViewTop"
+                            app:layout_constraintTop_toBottomOf="@+id/tvToAirportName" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="5dp"
+                        android:layout_margin="@dimen/margin_global_12dp"
+                        android:layerType="software"
+                        android:src="@drawable/dotted" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/dimen_30dp"
+                            android:layout_marginTop="@dimen/dimen_15dp"
+                            android:layout_marginStart="@dimen/margin_global_18dp"
+                            android:layout_marginBottom="@dimen/dimen_15dp"
+                            android:background="@drawable/ic_pack_carac_btn_back"
+                            android:gravity="center_vertical"
+                            android:paddingStart="@dimen/dimen_18dp"
+                            android:paddingEnd="@dimen/dimen_18dp">
+
+                            <ImageView
+                                android:id="@+id/imageView0"
+                                android:layout_width="@dimen/margin_global_14dp"
+                                android:layout_height="@dimen/margin_global_14dp"
+                                android:layout_marginBottom="@dimen/margin_global_5dp"
+                                android:background="@drawable/ic_padlock_blue"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/appCompatTextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/dimen_5dp"
+                                android:fontFamily="@font/poppins_semi_bold"
+                                android:text="@string/ads_brittle"
+                                android:textColor="@color/color_primary"
+                                android:textSize="@dimen/font_12sp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toEndOf="@+id/imageView0"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_global_22dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="@string/package_details_other_info"
+                        android:textColor="@color/black_basic"
+                        android:textSize="@dimen/font_15sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/customCircleImageView2"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/chatMessage"
+                        android:layout_width="match_parent"
+                        android:layout_height="145dp"
+                        android:layout_marginTop="@dimen/margin_global_12dp"
+                        android:background="@drawable/round_grey_background"
+                        android:fontFamily="@font/poppins_medium"
+                        android:gravity="start"
+                        android:hint="@string/package_details_other_info_edit"
+                        android:inputType="textMultiLine"
+                        android:padding="@dimen/padding_global_13dp"
+                        android:textColor="@color/black"
+                        android:textCursorDrawable="@drawable/edit_cursor_color"
+                        android:textSize="@dimen/font_15sp" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</layout>

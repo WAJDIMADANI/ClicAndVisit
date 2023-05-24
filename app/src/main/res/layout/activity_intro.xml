@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout"
+    tools:context=".ui.intro.IntroActivity">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.foodline.ui.intro.IntroViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white_basic">
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/vpIntro"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="90dp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="@dimen/margin_global_36dp"
+            android:layout_marginEnd="@dimen/margin_global_50dp"
+            android:layout_marginBottom="@dimen/margin_global_36dp"
+            android:orientation="horizontal">
+
+            <com.foodline.ui.shared.view.CustomButton
+                android:id="@+id/cbIntroFinish"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:visibility="gone"
+                android:layout_gravity="center_vertical|end"
+                android:layout_marginEnd="@dimen/margin_global_16dp"
+                android:background="@drawable/ic_button_background"
+                android:fontFamily="@font/poppins_semi_bold"
+                android:text="@string/global_end"
+                android:textAllCaps="false"
+                android:textColor="@color/white_basic"
+                android:textSize="@dimen/font_15sp" />
+
+            <LinearLayout
+                android:id="@+id/llStepContainer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/margin_global_36dp"
+                android:layout_marginBottom="@dimen/margin_global_36dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/ivStepOne"
+                    android:layout_width="@dimen/dimen_12dp"
+                    android:layout_height="@dimen/dimen_12dp"
+                    android:layout_marginEnd="@dimen/margin_global_10dp"
+                    android:src="@drawable/ic_round_alpha" />
+
+                <ImageView
+                    android:id="@+id/ivStepIndicator"
+                    android:layout_width="@dimen/dimen_36dp"
+                    android:layout_height="@dimen/dimen_12dp"
+                    android:layout_marginEnd="@dimen/margin_global_10dp"
+                    android:src="@drawable/ic_button_background" />
+
+                <ImageView
+                    android:id="@+id/ivStepTwo"
+                    android:layout_width="@dimen/dimen_12dp"
+                    android:layout_height="@dimen/dimen_12dp"
+                    android:layout_marginEnd="@dimen/margin_global_10dp"
+                    android:src="@drawable/ic_round_alpha" />
+
+                <ImageView
+                    android:layout_width="@dimen/dimen_12dp"
+                    android:layout_height="@dimen/dimen_12dp"
+                    android:src="@drawable/ic_round_alpha" />
+
+            </LinearLayout>
+
+            <com.foodline.ui.shared.view.CustomButton
+                android:id="@+id/cbIntroNext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_gravity="center_vertical|end"
+                android:layout_marginEnd="@dimen/margin_global_16dp"
+                android:layout_toEndOf="@+id/llStepContainer"
+                android:background="@drawable/ic_button_background"
+                android:fontFamily="@font/poppins_semi_bold"
+                android:minWidth="140dp"
+                android:text="@string/global_next"
+                android:textAllCaps="false"
+                android:textColor="@color/white_basic"
+                android:textSize="@dimen/font_15sp" />
+
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/mTabLayout"
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</layout>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/layout">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.foodline.global.helper.PaginationState" />
+
+        <variable
+                name="retryListener"
+                type="com.foodline.global.listener.RetryListener" />
+
+        <variable
+                name="isLoading"
+                type="Boolean" />
+
+
+        <variable
+                name="isError"
+                type="Boolean" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_footer_container"
+            android:orientation="vertical"
+            android:padding="@dimen/padding_global_20dp">
+
+        <com.foodline.ui.shared.view.CustomProgressBar
+                android:id="@+id/progressFooter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:visibility="@{ isLoading ? View.VISIBLE : View.INVISIBLE}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textItemListFooterError"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text="@string/global_error_retry_message"
+                android:visibility="@{isError ? View.VISIBLE : View.INVISIBLE}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:onClickWithDebounce="@{()->retryListener.onRetry()}" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

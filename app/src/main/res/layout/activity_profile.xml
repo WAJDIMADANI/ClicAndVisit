@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="picasso"
+            type="com.squareup.picasso.Picasso" />
+
+        <variable
+            name="viewModel"
+            type="com.foodline.ui.menu.profile.ProfileViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white_basic"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="112dp"
+                    android:background="@drawable/ic_home_header_background">
+
+                    <ImageView
+                        android:id="@+id/ivBack"
+                        android:layout_width="@dimen/dimen_40dp"
+                        android:layout_height="@dimen/dimen_40dp"
+                        android:layout_marginStart="@dimen/margin_global_36dp"
+                        android:layout_marginTop="@dimen/margin_global_36dp"
+                        android:layout_marginEnd="@dimen/margin_global_10dp"
+                        android:background="@drawable/ic_back_white"
+                        app:onClickWithDebounce="@{() ->viewModel.onBackClick()}" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginTop="@dimen/margin_global_42dp"
+                        android:fontFamily="@font/poppins_semi_bold"
+                        android:gravity="center"
+                        android:text="@string/menu_profile"
+                        android:textColor="@color/white_basic"
+                        android:textSize="@dimen/font_15sp" />
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/margin_global_36dp"
+                    android:layout_marginEnd="@dimen/margin_global_36dp"
+                    android:background="@color/white_basic"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="@dimen/dimen_70dp"
+                        android:layout_height="@dimen/dimen_70dp"
+                        android:layout_centerInParent="true"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/margin_global_16dp"
+                        android:layout_marginBottom="@dimen/margin_global_20dp"
+                        android:background="@drawable/global_ic_profile"
+                        app:imageUri="@{viewModel.photoUri}"
+                        app:onClickWithDebounce="@{() ->viewModel.onImageClick()}"
+                        app:picasso="@{picasso}" />
+
+                    <com.foodline.ui.shared.view.CustomTextInputLayout
+                        android:id="@+id/customTextInputLayoutSignUpUser"
+                        style="@style/InputLayout.AppStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColorHint="@color/color_primary"
+                        app:boxStrokeColor="@color/text_input_layout_stroke_color"
+                        app:errorBackground="@{viewModel.userFieldError}"
+                        app:hintTextColor="@color/color_primary">
+
+                        <com.foodline.ui.shared.view.CustomTextInputEditText
+                            android:id="@+id/customTextInputEditTextSignUpUser"
+                            style="@style/InputEditText.AppStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableStart="@drawable/ic_user"
+                            android:hint="@string/sign_up_user_name"
+                            android:inputType="textPersonName"
+                            android:text="@={viewModel.userName}" />
+
+                    </com.foodline.ui.shared.view.CustomTextInputLayout>
+
+
+                    <com.foodline.ui.shared.view.CustomTextInputLayout
+                        android:id="@+id/customTextInputLayoutSignUpCin"
+                        style="@style/InputLayout.AppStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColorHint="@color/color_primary"
+                        app:boxStrokeColor="@color/text_input_layout_stroke_color"
+                        app:errorBackground="@{viewModel.cinFieldError}"
+                        app:hintTextColor="@color/color_primary">
+
+                        <com.foodline.ui.shared.view.CustomTextInputEditText
+                            android:id="@+id/customTextInputEditTextSignUpCin"
+                            style="@style/InputEditText.AppStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableStart="@drawable/ic_cin"
+                            android:hint="@string/sign_up_cin"
+                            android:inputType="number"
+                            android:text="@={viewModel.cin}" />
+
+                    </com.foodline.ui.shared.view.CustomTextInputLayout>
+
+                    <com.foodline.ui.shared.view.CustomTextInputLayout
+                        android:id="@+id/customTextInputLayoutSignInEmail"
+                        style="@style/InputLayout.AppStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColorHint="@color/color_primary"
+                        app:boxStrokeColor="@color/text_input_layout_stroke_color"
+                        app:errorBackground="@{viewModel.emailFieldError}"
+                        app:hintTextColor="@color/color_primary">
+
+                        <com.foodline.ui.shared.view.CustomTextInputEditText
+                            android:id="@+id/customTextInputEditTextSignInEmail"
+                            style="@style/InputEditText.AppStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableStart="@drawable/ic_email"
+                            android:hint="@string/signin_mail"
+                            android:inputType="textEmailAddress"
+                            android:text="@={viewModel.email}" />
+
+                    </com.foodline.ui.shared.view.CustomTextInputLayout>
+
+                    <com.foodline.ui.shared.view.CustomTextInputLayout
+                        android:id="@+id/customTextInputLayoutSignUpPhone"
+                        style="@style/InputLayout.AppStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColorHint="@color/color_primary"
+                        app:boxStrokeColor="@color/text_input_layout_stroke_color"
+                        app:errorBackground="@{viewModel.phoneFieldError}"
+                        app:hintTextColor="@color/color_primary">
+
+                        <com.foodline.ui.shared.view.CustomTextInputEditText
+                            android:id="@+id/customTextInputEditTextSignUpPhone"
+                            style="@style/InputEditText.AppStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableStart="@drawable/ic_phone"
+                            android:hint="@string/sign_up_phone"
+                            android:inputType="phone"
+                            android:text="@={viewModel.phone}" />
+
+                    </com.foodline.ui.shared.view.CustomTextInputLayout>
+
+                    <com.foodline.ui.shared.view.CustomButton
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_global_29dp"
+                        android:layout_marginBottom="@dimen/margin_global_36dp"
+                        android:background="@drawable/ic_button_background"
+                        android:fontFamily="@font/poppins_semi_bold"
+                        android:text="@string/global_save"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white_basic"
+                        android:textSize="@dimen/font_18sp"
+                        app:onClickWithDebounce="@{() ->viewModel.onSaveClicked()}" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+</layout>

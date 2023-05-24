@@ -1,0 +1,272 @@
+<resources>
+    <string name="app_name">Food Line</string>
+
+    <!--global message-->
+    <string name="global_ok">Ok</string>
+    <string name="global_cancel">Annuler</string>
+    <string name="global_empty"></string>
+    <string name="global_save">Enregistrer</string>
+
+    <!--global error-->
+    <string name="global_error_server">Une erreur est survenue. Merci de réessayer plus tard.</string>
+    <string name="global_error_unavailable_network">Merci de vérifier votre connexion.</string>
+    <string name="global_error_invalid_email_format">Veuillez saisir une adresse e-mail valide.</string>
+    <string name="global_error_connection">Merci de vérifier votre connexion.</string>
+    <string name="global_error_legal_notice">Merci d\'accepter les règlements du jeu et les mentions légales pour vous inscrire.</string>
+    <string name="global_error_empty">Veuillez remplir tous les champs.</string>
+    <string name="global_error_password_length">Veuillez saisir un mot de passe qui contient au moins 6 caractères.</string>
+    <string name="global_error_first_length">Veuillez saisir un prénom qui contient au maximum 25 caractères.</string>
+    <string name="global_error_last_length">Veuillez saisir un nom qui contient au maximum 25 caractères.</string>
+    <string name="global_error_password_length_max">Veuillez saisir un mot de passe qui contient au maximum 25 caractères.</string>
+    <string name="global_error_mail_length_max">Veuillez saisir un e-mail qui contient au maximum 50 caractères.</string>
+    <string name="global_error_banned_user">Votre compte a été bloqué.</string>
+    <string name="global_error_retry_message">ERROR !! Tap to retry.</string>
+    <string name="global_empty_list">No data.</string>
+    <string name="global_error_refresh_fail">Refresh failed</string>
+
+
+    <!--splash screen-->
+    <string name="splash_hello">Hello</string>
+    <string name="splash_version">Version :</string>
+    <string name="splash_version_clicked">Clicked Thx !!</string>
+
+
+    <!-- SIGNIN -->
+    <string name="signin_are_u_sign_in">Vous n’êtes pas encore inscrit ?</string>
+    <string name="signin_alredy_signin">Déjà inscrit ?</string>
+    <string name="signin_mail">Email</string>
+    <string name="signin_password">Mot de passe</string>
+    <string name="signin_forgotten_pass">Mot de passe oublié</string>
+    <string name="signin_submit">Valider</string>
+    <string name="signin_display_mdp">Afficher le mot de passe.</string>
+    <string name="signin_description_title">Inscrivez-vous\net recevez 1 crédit par jour !</string>
+    <string name="signin_invalid_data">E-mail ou mot de passe incorrect</string>
+
+    <!-- signup -->
+    <string name="signup_not_sign_up">Pas encore de compte ?</string>
+    <string name="signup_already">Vous avez déjà un compte ?</string>
+    <string name="signup_legal_notice">Les données personnelles recueillies dans le cadre de ce jeu sont indispensables à
+        la prise en compte de votre participation (Nom, Prénom, adresse mail, Mobile advertising ID, adresse postale (en
+        cas de gain)). Ces données personnelles feront l’objet d’un traitement automatisé destinés à la société
+        DISTRIBUTION CASINO FRANCE, qui se réserve le droit de les faire traiter dans le cadre de la gestion du jeu par
+        un sous-traitant ou partenaire répondant aux exigences légales relatives à la protection des données
+        personnelles.
+        Les données personnelles sont conservées pendant une durée de 3 mois à compter de la publication de la liste des
+        gagnants. Ces données seront ensuite détruites.
+        Conformément à la loi Informatique et Libertés du 6 janvier 1978 modifiée et, depuis le 25 mai 2018, au
+        Règlement Général sur la Protection des Données Personnelles (RGPD) du 27 avril 2016, le participant dispose
+        d’un droit d’accès, de rectification, d’effacement, de limitation du traitement, de notification, d’opposition,
+        de portabilité des informations le concernant qu’il peut exercer sur simple demande, accompagner de la
+        photocopie d’une titre d’identité, à l’adresse suivante : contact@xxx.fr
+    </string>
+    <string name="signup_fb_signup">Inscription via Facebook</string>
+    <string name="signup_lastname">Nom</string>
+    <string name="signup_firstname">Prénom</string>
+    <string name="signup_password">Mot de passe</string>
+    <string name="signup_mail">E-mail*</string>
+    <string name="signup_error_unique_mail">Un compte existe déjà avec cette adresse e-mail.</string>
+    <string name="signup_error_not_found">Compte introuvable.</string>
+    <string name="signup_email_hint">Obligatoire pour recevoir vos cadeaux</string>
+    <string name="signup_offer_one">J’accepte de recevoir une offre ciblée, personnalisée et privilégiée de la part de la société organisatrice et de ses</string>
+    <string name="signup_offer_two">partenaires</string>
+
+    <string name="signup_game_rules_one">Je certifie être majeur et j\'accepte %1$s et %2$s.</string>
+    <string name="signup_game_rules_two">le règlement du jeu</string>
+    <string name="signup_game_rules_there">les mentions légales</string>
+
+
+    <!--home screen-->
+    <string name="home_hello">Hello</string>
+    <string name="home_click_me">Click me</string>
+    <string name="home_count_fail">Count Fail !!</string>
+    <string name="home_count_completed">Count completed repeat</string>
+
+
+    <!-- Application -->
+
+
+    <!-- app intro -->
+    <string name="global_next">Suivant</string>
+    <string name="global_end">Terminer</string>
+    <string name="app_intro_one_title">Facile</string>
+    <string name="app_intro_one_body">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.</string>
+    <string name="app_intro_two_title">Rapide</string>
+    <string name="app_intro_two_body">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.</string>
+    <string name="app_intro_three_title">Sécurisé</string>
+    <string name="app_intro_three_body">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.</string>
+
+    <!-- signin -->
+    <string name="login_title">Bonjour</string>
+    <string name="login_signin">Connexion</string>
+    <string name="login_sub_title">Connectez-vous à votre compte</string>
+    <string name="login_sub_sub_title">Ou bien connectez vous avec</string>
+    <string name="login_google">Connectez-vous avec google</string>
+    <string name="login_facebook">Connectez-vous avec Facebook</string>
+    <string name="login_no_account">Vous n’avez pas de compte?</string>
+    <string name="login_create_account"> Créer votre compte</string>
+
+    <!-- signup -->
+    <string name="sign_up_create_account">Créer un compte</string>
+    <string name="sign_up_user_name">Nom d’utilisateur</string>
+    <string name="sign_up_cin">CIN</string>
+    <string name="sign_up_phone">Numéro de téléphone</string>
+    <string name="sign_up_cpc">J’accepte les conditions de la politique de confidentialité</string>
+    <string name="sign_up_sign_up">Créer</string>
+
+    <!-- otp -->
+    <string name="otp_phone_verify">Vérifiez votre numéro \n de téléphone</string>
+    <string name="otp_code">Entrer votre code OTP ici</string>
+    <string name="otp_code_not_recived">Vous n’avez pas reçu de de code</string>
+    <string name="otp_click_hire">Cliquez ici</string>
+
+    <!-- filter -->
+    <string name="filter_title">Filtre par</string>
+    <string name="filter_status">Status de colis</string>
+    <string name="filter_state">choisir l\'etat de colis</string>
+    <string name="filter_apply">Appliquer</string>
+
+
+    <!-- home -->
+    <string name="home_welcome">Bienvenu </string>
+    <string name="home_sub_title">Que désirez-vous:</string>
+    <string name="home_send_package">Envoyez votre colis</string>
+    <string name="home_recive_package">Transporter un colis</string>
+
+
+    <!-- menu -->
+    <string name="menu_ads">Mes annonces</string>
+    <string name="menu_package">Mes colis</string>
+    <string name="menu_profile">Mon profil</string>
+    <string name="menu_alerts">Mes alertes</string>
+    <string name="menu_peyment_mode">Mode de paiement</string>
+    <string name="menu_chat">Mes conversations</string>
+    <string name="menu_help">Paramètres &amp; Aide</string>
+
+
+    <!-- ads -->
+    <string name="ads_search">Cherchez par ici</string>
+    <string name="ads_weight">Poids</string>
+    <string name="ads_price">Prix</string>
+
+    <string name="ads_publish">Publier</string>
+    <string name="ads_published">Publié</string>
+    <string name="ads_reserved">Réservé</string>
+    <string name="ads_on_hold">En attente</string>
+    <string name="ads_confermed">Confirmé</string>
+
+
+    <string name="ads_brittle">Fragile</string>
+    <string name="ads_enter_code">Saisi le code</string>
+    <string name="ads_offre_details">Detail de l\’offre</string>
+
+    <string name="control_list">Liste de contrôle</string>
+    <string name="control_list_control_list">Confirmer la conformité du colis</string>
+
+    <string name="control_list_decline">Décliner</string>
+    <string name="control_list_confirm">Confirmer</string>
+
+
+    <string name="offer_details">Detail de l’offre</string>
+    <string name="offer_details_code_generation">Génération du code</string>
+    <string name="offer_details_code">Code</string>
+
+    <string name="offer_details_congratulation">Félicitations,</string>
+    <string name="offer_details_congratulation_details">Vous venez de recevoir votre paiement, consultez votre compte.</string>
+    <string name="offer_details_back_to_home">Retour vers l\'accueil</string>
+
+    <string name="package_details_content_title">Veuillez saisir le contenu du colis</string>
+    <string name="package_details_body">Ces informations seront communiquées au transporteur</string>
+    <string name="package_details_photo">Ajoutez une photo de votre colis</string>
+    <string name="package_details_object">Objet</string>
+    <string name="package_details_object_name">Nom de l\’objet</string>
+    <string name="package_details_add_object">Ajouter un autre objet</string>
+    <string name="package_details_price">Le prix d’envoi</string>
+    <string name="package_details_kilo">Chaque kilo entamé est dû</string>
+    <string name="package_details_edit_price">Montant à payer</string>
+
+    <string name="package_details_send_code">Code à transmettre au destinataire du colis</string>
+
+
+    <string name="package_details_info">Information</string>
+    <string name="package_details_package">Colis</string>
+    <string name="package_details_validation">Validation</string>
+    <string name="package_details_city">Ville</string>
+    <string name="package_details_your_city">Votre ville</string>
+    <string name="package_details_from">De</string>
+    <string name="package_details_airport">Saisie le nom de l\'aéroport</string>
+    <string name="package_details_to">A</string>
+
+    <string name="package_details_weight">Poids disponible</string>
+    <string name="package_details_weight_value">kg</string>
+    <string name="package_details_euro">€</string>
+    <string name="package_details_price_k">Prix au kilo</string>
+    <string name="package_details_package_resistance">Résistance du colis</string>
+
+    <string name="package_details_resistance">Résistante</string>
+    <string name="package_details_package_no_resistance">Non résistante</string>
+    <string name="package_details_package_brittle">Fragile</string>
+    <string name="package_details_package_unbreakable">Non cassable</string>
+
+
+    <string name="package_details_other_info">Autres informations</string>
+    <string name="package_details_other_info_edit">saisie d\'autres informations</string>
+
+    <string name="package_details_succes">votre offre a été enregistrée avec succès.</string>
+
+
+    <string name="package_send_package_title">Pouvez-vous choisir l\'aéroport de départ et de destination</string>
+    <string name="package_send_package_airport_from">Aéroport de départ</string>
+    <string name="package_send_package_airport_to">Aéroport d’arrivée</string>
+
+    <string name="package_send_package_send_date_title">Quand souhaitez-vous envoyer?</string>
+    <string name="package_send_package_send_date_edit">Choisir la date de départ</string>
+
+    <string name="package_send_package_send_departure_date">Date de départ</string>
+    <string name="package_send_package_airport">Choisir votre aéroport</string>
+
+    <string name="package_send_package_book">Réserver</string>
+
+    <string name="package_send_package_active_now">Actif maintenant</string>
+    <string name="package_send_package_msg">Tapez un message</string>
+
+    <string name="card_add_card">Ajouter une carte</string>
+    <string name="card_name">Nom sur la carte</string>
+    <string name="card_number">Numéro de la carte</string>
+    <string name="card_date">MM/YY</string>
+    <string name="card_cvv">CVV</string>
+    <string name="card_Add">Ajouter</string>
+
+    <string name="card_sms_empty">Vous n’avez aucune conversations</string>
+    <string name="card_alert_empty">Vous n’avez aucune alerte</string>
+
+    <string name="card_credit_card">Carte de crédit</string>
+    <string name="card_save_info">Sauvegarder les informations</string>
+    <string name="card_assurance">Assurance</string>
+
+    <string name="card_paiement">votre paiement a été effectué avec succès</string>
+
+
+    <string name="alerts_empty">Vous n’avez aucune alerte</string>
+    <string name="chat_empty">Vous n’avez aucune conversations</string>
+
+    <string name="global_pick_picture">Choisir une image</string>
+    <string name="global_take_picture">Prendre une image</string>
+
+    <string name="global_change_password">Changer mon mot de passe</string>
+    <string name="global_language">Choisir la langue</string>
+    <string name="global_cgu">Conditions Générale d\'Utilisation</string>
+    <string name="global_pc">Politique de Confidentialité</string>
+    <string name="global_how_it_works">Colis Jet comment ça marche?</string>
+    <string name="global_contact">Nous contacter</string>
+    <string name="global_sign_out">Déconnexion</string>
+
+
+    <string name="facebook_app_id">912431962997702</string>
+    <string name="fb_login_protocol_scheme">fb912431962997702</string>
+
+
+
+    <string name="filter_date_pattern">dd/MM/yyyy</string>
+
+
+</resources>
