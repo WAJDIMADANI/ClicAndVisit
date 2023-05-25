@@ -7,11 +7,11 @@
 
         <import type="android.view.View" />
 
-        <import type="com.foodline.global.helper.PaginationState" />
+        <import type="com.clickandvisit.global.helper.PaginationState" />
 
         <variable
                 name="retryListener"
-                type="com.foodline.global.listener.RetryListener" />
+                type="com.clickandvisit.global.listener.RetryListener" />
 
         <variable
                 name="isLoading"
@@ -30,7 +30,7 @@
             android:orientation="vertical"
             android:padding="@dimen/padding_global_20dp">
 
-        <com.foodline.ui.shared.view.CustomProgressBar
+        <com.clickandvisit.ui.shared.view.CustomProgressBar
                 android:id="@+id/progressFooter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

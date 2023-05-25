@@ -9,7 +9,7 @@
 
         <variable
             name="viewModel"
-            type="com.foodline.ui.menu.payment.PaymentViewModel" />
+            type="com.clickandvisit.ui.menu.payment.PaymentViewModel" />
     </data>
 
     <LinearLayout

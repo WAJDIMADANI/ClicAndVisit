@@ -11,7 +11,7 @@
 
         <variable
             name="viewModel"
-            type="com.foodline.ui.menu.details.DetailsViewModel" />
+            type="com.clickandvisit.ui.menu.details.DetailsViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -72,7 +72,7 @@
                     android:layout_height="wrap_content"
                     android:padding="@dimen/padding_global_18dp">
 
-                    <com.foodline.ui.shared.view.CustomCircleImageView
+                    <com.clickandvisit.ui.shared.view.CustomCircleImageView
                         android:id="@+id/customCircleImageView2"
                         android:layout_width="@dimen/dimen_45dp"
                         android:layout_height="@dimen/dimen_45dp"
@@ -111,7 +111,7 @@
                     android:orientation="vertical"
                     android:paddingStart="@dimen/padding_global_18dp">
 
-                    <com.foodline.ui.shared.view.CustomCircleView
+                    <com.clickandvisit.ui.shared.view.CustomCircleView
                         android:id="@+id/customCircleViewTop"
                         android:layout_width="@dimen/dimen_11dp"
                         android:layout_height="@dimen/dimen_11dp"
@@ -130,7 +130,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/customCircleViewTop" />
 
-                    <com.foodline.ui.shared.view.CustomCircleView
+                    <com.clickandvisit.ui.shared.view.CustomCircleView
                         android:id="@+id/customCircleViewBottom"
                         android:layout_width="@dimen/dimen_11dp"
                         android:layout_height="@dimen/dimen_11dp"
@@ -329,7 +329,7 @@
                         android:paddingEnd="@dimen/dimen_18dp"
                         android:visibility="@{viewModel.isFromAds ? View.VISIBLE : View.GONE, default=gone}">
 
-                        <com.foodline.ui.shared.view.CustomCircleImageView
+                        <com.clickandvisit.ui.shared.view.CustomCircleImageView
                             android:id="@+id/ivTravelerImg"
                             android:layout_width="@dimen/dimen_45dp"
                             android:layout_height="@dimen/dimen_45dp"
@@ -381,7 +381,7 @@
                         android:layout_marginTop="@dimen/padding_global_36dp"
                         android:visibility="@{viewModel.isFromPack ? View.VISIBLE : View.GONE, default=gone}">
 
-                        <com.foodline.ui.shared.view.CustomButton
+                        <com.clickandvisit.ui.shared.view.CustomButton
                             android:id="@+id/cbGenerateCode"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -417,7 +417,7 @@
                         android:layout_height="match_parent"
                         android:layout_marginTop="@dimen/padding_global_16dp">
 
-                        <com.foodline.ui.shared.view.CustomButton
+                        <com.clickandvisit.ui.shared.view.CustomButton
                             android:id="@+id/cbEnterCode"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"

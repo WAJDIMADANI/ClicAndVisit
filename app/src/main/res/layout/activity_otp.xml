@@ -11,7 +11,7 @@
 
         <variable
             name="viewModel"
-            type="com.foodline.ui.signup.otp.OtpViewModel" />
+            type="com.clickandvisit.ui.signup.otp.OtpViewModel" />
     </data>
 
     <LinearLayout
@@ -88,7 +88,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
-                        <com.foodline.ui.shared.view.CustomTextInputLayout
+                        <com.clickandvisit.ui.shared.view.CustomTextInputLayout
                             android:id="@+id/customTextInputLayoutOne"
                             style="@style/InputLayout.AppStyle"
                             android:layout_width="@dimen/dimen_60dp"
@@ -99,7 +99,7 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent">
 
-                            <com.foodline.ui.shared.view.CustomTextInputEditText
+                            <com.clickandvisit.ui.shared.view.CustomTextInputEditText
                                 android:id="@+id/customTextInputEditTextOne"
                                 style="@style/InputEditText.AppStyle"
                                 android:layout_width="match_parent"
@@ -112,9 +112,9 @@
                                 android:singleLine="true"
                                 android:textSize="@dimen/dimen_25sp" />
 
-                        </com.foodline.ui.shared.view.CustomTextInputLayout>
+                        </com.clickandvisit.ui.shared.view.CustomTextInputLayout>
 
-                        <com.foodline.ui.shared.view.CustomTextInputLayout
+                        <com.clickandvisit.ui.shared.view.CustomTextInputLayout
                             android:id="@+id/customTextInputLayoutTwo"
                             style="@style/InputLayout.AppStyle"
                             android:layout_width="@dimen/dimen_60dp"
@@ -125,7 +125,7 @@
                             app:layout_constraintStart_toEndOf="@+id/customTextInputLayoutOne"
                             app:layout_constraintTop_toTopOf="parent">
 
-                            <com.foodline.ui.shared.view.CustomTextInputEditText
+                            <com.clickandvisit.ui.shared.view.CustomTextInputEditText
                                 android:id="@+id/customTextInputEditTextTwo"
                                 style="@style/InputEditText.AppStyle"
                                 android:layout_width="match_parent"
@@ -138,9 +138,9 @@
                                 android:singleLine="true"
                                 android:textSize="@dimen/dimen_25sp" />
 
-                        </com.foodline.ui.shared.view.CustomTextInputLayout>
+                        </com.clickandvisit.ui.shared.view.CustomTextInputLayout>
 
-                        <com.foodline.ui.shared.view.CustomTextInputLayout
+                        <com.clickandvisit.ui.shared.view.CustomTextInputLayout
                             android:id="@+id/customTextInputLayoutThree"
                             style="@style/InputLayout.AppStyle"
                             android:layout_width="@dimen/dimen_60dp"
@@ -151,7 +151,7 @@
                             app:layout_constraintStart_toEndOf="@+id/customTextInputLayoutTwo"
                             app:layout_constraintTop_toTopOf="parent">
 
-                            <com.foodline.ui.shared.view.CustomTextInputEditText
+                            <com.clickandvisit.ui.shared.view.CustomTextInputEditText
                                 android:id="@+id/customTextInputEditTextThree"
                                 style="@style/InputEditText.AppStyle"
                                 android:layout_width="match_parent"
@@ -164,10 +164,10 @@
                                 android:singleLine="true"
                                 android:textSize="@dimen/dimen_25sp" />
 
-                        </com.foodline.ui.shared.view.CustomTextInputLayout>
+                        </com.clickandvisit.ui.shared.view.CustomTextInputLayout>
 
 
-                        <com.foodline.ui.shared.view.CustomTextInputLayout
+                        <com.clickandvisit.ui.shared.view.CustomTextInputLayout
                             android:id="@+id/customTextInputLayoutFour"
                             style="@style/InputLayout.AppStyle"
                             android:layout_width="@dimen/dimen_60dp"
@@ -178,7 +178,7 @@
                             app:layout_constraintStart_toEndOf="@+id/customTextInputLayoutThree"
                             app:layout_constraintTop_toTopOf="parent">
 
-                            <com.foodline.ui.shared.view.CustomTextInputEditText
+                            <com.clickandvisit.ui.shared.view.CustomTextInputEditText
                                 android:id="@+id/customTextInputEditTextFour"
                                 style="@style/InputEditText.AppStyle"
                                 android:layout_width="match_parent"
@@ -191,7 +191,7 @@
                                 android:singleLine="true"
                                 android:textSize="@dimen/dimen_25sp" />
 
-                        </com.foodline.ui.shared.view.CustomTextInputLayout>
+                        </com.clickandvisit.ui.shared.view.CustomTextInputLayout>
 
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -222,7 +222,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tvIntroTitle" />
 
-                    <com.foodline.ui.shared.view.CustomButton
+                    <com.clickandvisit.ui.shared.view.CustomButton
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom"

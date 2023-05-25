@@ -8,7 +8,7 @@
 
         <variable
             name="viewModel"
-            type="com.foodline.ui.signup.SignUpViewModel" />
+            type="com.clickandvisit.ui.signup.SignUpViewModel" />
 
         <import type="android.view.View" />
 
@@ -82,14 +82,14 @@
                     app:onClickWithDebounce="@{() ->viewModel.onImageClick()}"
                     app:picasso="@{picasso}" />
 
-                <com.foodline.ui.shared.view.CustomTextInputLayout
+                <com.clickandvisit.ui.shared.view.CustomTextInputLayout
                     android:id="@+id/customTextInputLayoutSignUpUser"
                     style="@style/InputLayout.AppStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:errorBackground="@{viewModel.userFieldError}">
 
-                    <com.foodline.ui.shared.view.CustomTextInputEditText
+                    <com.clickandvisit.ui.shared.view.CustomTextInputEditText
                         android:id="@+id/customTextInputEditTextSignUpUser"
                         style="@style/InputEditText.AppStyle"
                         android:layout_width="match_parent"
@@ -99,17 +99,17 @@
                         android:inputType="textPersonName"
                         android:text="@={viewModel.userName}" />
 
-                </com.foodline.ui.shared.view.CustomTextInputLayout>
+                </com.clickandvisit.ui.shared.view.CustomTextInputLayout>
 
 
-                <com.foodline.ui.shared.view.CustomTextInputLayout
+                <com.clickandvisit.ui.shared.view.CustomTextInputLayout
                     android:id="@+id/customTextInputLayoutSignUpCin"
                     style="@style/InputLayout.AppStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:errorBackground="@{viewModel.cinFieldError}">
 
-                    <com.foodline.ui.shared.view.CustomTextInputEditText
+                    <com.clickandvisit.ui.shared.view.CustomTextInputEditText
                         android:id="@+id/customTextInputEditTextSignUpCin"
                         style="@style/InputEditText.AppStyle"
                         android:layout_width="match_parent"
@@ -119,16 +119,16 @@
                         android:inputType="number"
                         android:text="@={viewModel.cin}" />
 
-                </com.foodline.ui.shared.view.CustomTextInputLayout>
+                </com.clickandvisit.ui.shared.view.CustomTextInputLayout>
 
-                <com.foodline.ui.shared.view.CustomTextInputLayout
+                <com.clickandvisit.ui.shared.view.CustomTextInputLayout
                     android:id="@+id/customTextInputLayoutSignInEmail"
                     style="@style/InputLayout.AppStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:errorBackground="@{viewModel.emailFieldError}">
 
-                    <com.foodline.ui.shared.view.CustomTextInputEditText
+                    <com.clickandvisit.ui.shared.view.CustomTextInputEditText
                         android:id="@+id/customTextInputEditTextSignInEmail"
                         style="@style/InputEditText.AppStyle"
                         android:layout_width="match_parent"
@@ -138,16 +138,16 @@
                         android:inputType="textEmailAddress"
                         android:text="@={viewModel.email}" />
 
-                </com.foodline.ui.shared.view.CustomTextInputLayout>
+                </com.clickandvisit.ui.shared.view.CustomTextInputLayout>
 
-                <com.foodline.ui.shared.view.CustomTextInputLayout
+                <com.clickandvisit.ui.shared.view.CustomTextInputLayout
                     android:id="@+id/customTextInputLayoutSignUpPhone"
                     style="@style/InputLayout.AppStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:errorBackground="@{viewModel.phoneFieldError}">
 
-                    <com.foodline.ui.shared.view.CustomTextInputEditText
+                    <com.clickandvisit.ui.shared.view.CustomTextInputEditText
                         android:id="@+id/customTextInputEditTextSignUpPhone"
                         style="@style/InputEditText.AppStyle"
                         android:layout_width="match_parent"
@@ -157,16 +157,16 @@
                         android:inputType="phone"
                         android:text="@={viewModel.phone}" />
 
-                </com.foodline.ui.shared.view.CustomTextInputLayout>
+                </com.clickandvisit.ui.shared.view.CustomTextInputLayout>
 
-                <com.foodline.ui.shared.view.CustomTextInputLayout
+                <com.clickandvisit.ui.shared.view.CustomTextInputLayout
                     android:id="@+id/customTextInputLayoutSignUpPassword"
                     style="@style/InputLayout.AppStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:errorBackground="@{viewModel.passwordFieldError}">
 
-                    <com.foodline.ui.shared.view.CustomTextInputEditText
+                    <com.clickandvisit.ui.shared.view.CustomTextInputEditText
                         android:id="@+id/customTextInputEditTextSignUpPassword"
                         style="@style/InputEditText.AppStyle"
                         android:layout_width="match_parent"
@@ -176,7 +176,7 @@
                         android:inputType="textPassword"
                         android:text="@={viewModel.password}" />
 
-                </com.foodline.ui.shared.view.CustomTextInputLayout>
+                </com.clickandvisit.ui.shared.view.CustomTextInputLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -207,7 +207,7 @@
 
                 </LinearLayout>
 
-                <com.foodline.ui.shared.view.CustomButton
+                <com.clickandvisit.ui.shared.view.CustomButton
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"

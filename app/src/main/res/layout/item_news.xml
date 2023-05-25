@@ -18,7 +18,7 @@
 
         <variable
                 name="onItemClickedListener"
-                type="com.foodline.global.listener.OnItemClickedListener" />
+                type="com.clickandvisit.global.listener.OnItemClickedListener" />
 
 
         <variable
@@ -47,7 +47,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:picasso="@{picasso}"
                 app:placeholder="@{placeHolder}"
-                tools:src="@mipmap/ic_launcher" />
+                tools:src="@mipmap/ic_launcher_foreground" />
 
         <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/textItemNewsTitle"

@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <com.foodline.ui.shared.view.CustomButton
+        <com.clickandvisit.ui.shared.view.CustomButton
             android:id="@+id/pick_picture"
             style="@style/TextView.ActionSheetTextView"
             android:layout_width="0dp"
@@ -18,7 +18,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.foodline.ui.shared.view.CustomButton
+        <com.clickandvisit.ui.shared.view.CustomButton
             android:id="@+id/take_picture"
             style="@style/TextView.ActionSheetTextView"
             android:layout_width="0dp"

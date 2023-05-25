@@ -14,7 +14,7 @@
 
         <variable
             name="viewModel"
-            type="com.foodline.ui.menu.profile.ProfileViewModel" />
+            type="com.clickandvisit.ui.menu.profile.ProfileViewModel" />
     </data>
 
     <LinearLayout
@@ -83,7 +83,7 @@
                         app:onClickWithDebounce="@{() ->viewModel.onImageClick()}"
                         app:picasso="@{picasso}" />
 
-                    <com.foodline.ui.shared.view.CustomTextInputLayout
+                    <com.clickandvisit.ui.shared.view.CustomTextInputLayout
                         android:id="@+id/customTextInputLayoutSignUpUser"
                         style="@style/InputLayout.AppStyle"
                         android:layout_width="match_parent"
@@ -93,7 +93,7 @@
                         app:errorBackground="@{viewModel.userFieldError}"
                         app:hintTextColor="@color/color_primary">
 
-                        <com.foodline.ui.shared.view.CustomTextInputEditText
+                        <com.clickandvisit.ui.shared.view.CustomTextInputEditText
                             android:id="@+id/customTextInputEditTextSignUpUser"
                             style="@style/InputEditText.AppStyle"
                             android:layout_width="match_parent"
@@ -103,10 +103,10 @@
                             android:inputType="textPersonName"
                             android:text="@={viewModel.userName}" />
 
-                    </com.foodline.ui.shared.view.CustomTextInputLayout>
+                    </com.clickandvisit.ui.shared.view.CustomTextInputLayout>
 
 
-                    <com.foodline.ui.shared.view.CustomTextInputLayout
+                    <com.clickandvisit.ui.shared.view.CustomTextInputLayout
                         android:id="@+id/customTextInputLayoutSignUpCin"
                         style="@style/InputLayout.AppStyle"
                         android:layout_width="match_parent"
@@ -116,7 +116,7 @@
                         app:errorBackground="@{viewModel.cinFieldError}"
                         app:hintTextColor="@color/color_primary">
 
-                        <com.foodline.ui.shared.view.CustomTextInputEditText
+                        <com.clickandvisit.ui.shared.view.CustomTextInputEditText
                             android:id="@+id/customTextInputEditTextSignUpCin"
                             style="@style/InputEditText.AppStyle"
                             android:layout_width="match_parent"
@@ -126,9 +126,9 @@
                             android:inputType="number"
                             android:text="@={viewModel.cin}" />
 
-                    </com.foodline.ui.shared.view.CustomTextInputLayout>
+                    </com.clickandvisit.ui.shared.view.CustomTextInputLayout>
 
-                    <com.foodline.ui.shared.view.CustomTextInputLayout
+                    <com.clickandvisit.ui.shared.view.CustomTextInputLayout
                         android:id="@+id/customTextInputLayoutSignInEmail"
                         style="@style/InputLayout.AppStyle"
                         android:layout_width="match_parent"
@@ -138,7 +138,7 @@
                         app:errorBackground="@{viewModel.emailFieldError}"
                         app:hintTextColor="@color/color_primary">
 
-                        <com.foodline.ui.shared.view.CustomTextInputEditText
+                        <com.clickandvisit.ui.shared.view.CustomTextInputEditText
                             android:id="@+id/customTextInputEditTextSignInEmail"
                             style="@style/InputEditText.AppStyle"
                             android:layout_width="match_parent"
@@ -148,9 +148,9 @@
                             android:inputType="textEmailAddress"
                             android:text="@={viewModel.email}" />
 
-                    </com.foodline.ui.shared.view.CustomTextInputLayout>
+                    </com.clickandvisit.ui.shared.view.CustomTextInputLayout>
 
-                    <com.foodline.ui.shared.view.CustomTextInputLayout
+                    <com.clickandvisit.ui.shared.view.CustomTextInputLayout
                         android:id="@+id/customTextInputLayoutSignUpPhone"
                         style="@style/InputLayout.AppStyle"
                         android:layout_width="match_parent"
@@ -160,7 +160,7 @@
                         app:errorBackground="@{viewModel.phoneFieldError}"
                         app:hintTextColor="@color/color_primary">
 
-                        <com.foodline.ui.shared.view.CustomTextInputEditText
+                        <com.clickandvisit.ui.shared.view.CustomTextInputEditText
                             android:id="@+id/customTextInputEditTextSignUpPhone"
                             style="@style/InputEditText.AppStyle"
                             android:layout_width="match_parent"
@@ -170,9 +170,9 @@
                             android:inputType="phone"
                             android:text="@={viewModel.phone}" />
 
-                    </com.foodline.ui.shared.view.CustomTextInputLayout>
+                    </com.clickandvisit.ui.shared.view.CustomTextInputLayout>
 
-                    <com.foodline.ui.shared.view.CustomButton
+                    <com.clickandvisit.ui.shared.view.CustomButton
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/margin_global_29dp"

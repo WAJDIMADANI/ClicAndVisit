@@ -9,7 +9,7 @@
         android:paddingEnd="@dimen/padding_global_10dp">
 
 
-        <com.foodline.ui.shared.view.CustomClickableLayout
+        <com.clickandvisit.ui.shared.view.CustomClickableLayout
             android:id="@+id/layoutToolBarStart"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -34,7 +34,7 @@
                 android:src="@drawable/ic_back" />
 
 
-        </com.foodline.ui.shared.view.CustomClickableLayout>
+        </com.clickandvisit.ui.shared.view.CustomClickableLayout>
 
         <RelativeLayout
             android:id="@+id/layoutToolBarCenter"
@@ -71,7 +71,7 @@
 
         </RelativeLayout>
 
-        <com.foodline.ui.shared.view.CustomClickableLayout
+        <com.clickandvisit.ui.shared.view.CustomClickableLayout
             android:id="@+id/layoutToolBarEnd"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -91,7 +91,7 @@
                 android:layout_centerInParent="true"
                 android:padding="@dimen/padding_global_5dp" />
 
-        </com.foodline.ui.shared.view.CustomClickableLayout>
+        </com.clickandvisit.ui.shared.view.CustomClickableLayout>
 
     </RelativeLayout>
 

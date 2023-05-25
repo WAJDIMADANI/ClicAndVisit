@@ -11,7 +11,7 @@
 
         <variable
             name="viewModel"
-            type="com.foodline.ui.home.transport.TransportViewModel" />
+            type="com.clickandvisit.ui.home.transport.TransportViewModel" />
     </data>
 
     <LinearLayout
@@ -185,7 +185,7 @@
                 android:layout_marginTop="@dimen/margin_global_30dp"
                 android:layout_marginBottom="70dp" />
 
-            <com.foodline.ui.shared.view.CustomButton
+            <com.clickandvisit.ui.shared.view.CustomButton
                 android:id="@+id/cbNext"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

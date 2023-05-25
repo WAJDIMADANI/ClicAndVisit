@@ -9,7 +9,7 @@
 
         <variable
             name="viewModel"
-            type="com.foodline.ui.menu.filter.FilterViewModel" />
+            type="com.clickandvisit.ui.menu.filter.FilterViewModel" />
     </data>
 
     <LinearLayout
@@ -99,7 +99,7 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
-                        <com.foodline.ui.shared.view.CustomImageButton
+                        <com.clickandvisit.ui.shared.view.CustomImageButton
                             android:id="@+id/customImageButtonSignUpEmailInfo"
                             android:layout_width="@dimen/dimen_50dp"
                             android:layout_height="@dimen/dimen_50dp"
@@ -322,7 +322,7 @@
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-                    <com.foodline.ui.shared.view.CustomButton
+                    <com.clickandvisit.ui.shared.view.CustomButton
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom"

@@ -8,7 +8,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.foodline.ui.splash.SplashViewModel" />
+            type="com.clickandvisit.ui.splash.SplashViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -9,7 +9,7 @@ tools:context=".ui.myads.MyAdsActivity">
 
     <variable
         name="viewModel"
-        type="com.foodline.ui.myads.MyAdsViewModel" />
+        type="com.clickandvisit.ui.myads.MyAdsViewModel" />
 </data>
 
 <androidx.constraintlayout.widget.ConstraintLayout
@@ -74,7 +74,7 @@ tools:context=".ui.myads.MyAdsActivity">
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/clHomeHeaderOne">
 
-            <com.foodline.ui.shared.view.CustomTextInputLayout
+            <com.clickandvisit.ui.shared.view.CustomTextInputLayout
                 android:id="@+id/customTextInputLayoutSearch"
                 style="@style/InputLayout.AppStyle"
                 android:layout_width="match_parent"
@@ -85,7 +85,7 @@ tools:context=".ui.myads.MyAdsActivity">
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <com.foodline.ui.shared.view.CustomTextInputEditText
+                <com.clickandvisit.ui.shared.view.CustomTextInputEditText
                     android:id="@+id/customTextInputEditTextSignUpCin"
                     style="@style/InputEditText.AppStyle"
                     android:layout_width="match_parent"
@@ -97,7 +97,7 @@ tools:context=".ui.myads.MyAdsActivity">
                     android:text="@={viewModel.search}"
                     android:textColorHint="@color/hint_color" />
 
-            </com.foodline.ui.shared.view.CustomTextInputLayout>
+            </com.clickandvisit.ui.shared.view.CustomTextInputLayout>
 
             <RelativeLayout
                 android:id="@+id/rlFilter"

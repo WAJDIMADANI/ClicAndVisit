@@ -8,11 +8,11 @@
 
         <import type="android.view.View" />
 
-        <import type="com.foodline.global.helper.PaginationState" />
+        <import type="com.clickandvisit.global.helper.PaginationState" />
 
         <variable
                 name="viewModel"
-                type="com.foodline.ui.home.news.NewsViewModel" />
+                type="com.clickandvisit.ui.home.news.NewsViewModel" />
     </data>
 
 
@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-        <com.foodline.ui.shared.view.CustomToolbar
+        <com.clickandvisit.ui.shared.view.CustomToolbar
                 android:id="@+id/toolbarNews"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -50,7 +50,7 @@
 
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-        <com.foodline.ui.shared.view.CustomProgressBar
+        <com.clickandvisit.ui.shared.view.CustomProgressBar
                 android:id="@+id/progressNewsContent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

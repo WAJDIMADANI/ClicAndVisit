@@ -11,7 +11,7 @@
 
         <variable
             name="viewModel"
-            type="com.foodline.ui.home.send.date.DateViewModel" />
+            type="com.clickandvisit.ui.home.send.date.DateViewModel" />
     </data>
 
     <LinearLayout
@@ -72,7 +72,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <com.foodline.ui.shared.view.CustomImageButton
+                    <com.clickandvisit.ui.shared.view.CustomImageButton
                         android:id="@+id/customImageButtonDate"
                         android:layout_width="@dimen/dimen_50dp"
                         android:layout_height="@dimen/dimen_50dp"

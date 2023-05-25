@@ -11,7 +11,7 @@
 
         <variable
             name="viewModel"
-            type="com.foodline.ui.menu.help.HelpViewModel" />
+            type="com.clickandvisit.ui.menu.help.HelpViewModel" />
     </data>
 
     <LinearLayout

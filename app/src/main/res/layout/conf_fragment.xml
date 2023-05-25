@@ -11,7 +11,7 @@
 
         <variable
             name="viewModel"
-            type="com.foodline.ui.home.transport.conf.ConfViewModel" />
+            type="com.clickandvisit.ui.home.transport.conf.ConfViewModel" />
     </data>
 
     <LinearLayout
@@ -47,7 +47,7 @@
                         android:layout_height="wrap_content"
                         android:padding="@dimen/padding_global_18dp">
 
-                        <com.foodline.ui.shared.view.CustomCircleImageView
+                        <com.clickandvisit.ui.shared.view.CustomCircleImageView
                             android:id="@+id/customCircleImageView2"
                             android:layout_width="@dimen/dimen_45dp"
                             android:layout_height="@dimen/dimen_45dp"
@@ -88,7 +88,7 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
 
-                        <com.foodline.ui.shared.view.CustomCircleView
+                        <com.clickandvisit.ui.shared.view.CustomCircleView
                             android:id="@+id/customCircleViewTop"
                             android:layout_width="@dimen/dimen_11dp"
                             android:layout_height="@dimen/dimen_11dp"
@@ -98,7 +98,7 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
-                        <com.foodline.ui.shared.view.CustomCircleView
+                        <com.clickandvisit.ui.shared.view.CustomCircleView
                             android:id="@+id/customCircleViewBottom"
                             android:layout_width="@dimen/dimen_11dp"
                             android:layout_height="@dimen/dimen_11dp"

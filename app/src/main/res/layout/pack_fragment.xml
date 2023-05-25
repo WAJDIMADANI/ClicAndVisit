@@ -11,7 +11,7 @@
 
         <variable
             name="viewModel"
-            type="com.foodline.ui.home.transport.pack.PackViewModel" />
+            type="com.clickandvisit.ui.home.transport.pack.PackViewModel" />
     </data>
 
     <LinearLayout

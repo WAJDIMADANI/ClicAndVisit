@@ -11,7 +11,7 @@
 
         <variable
             name="viewModel"
-            type="com.foodline.ui.signin.SignInViewModel" />
+            type="com.clickandvisit.ui.signin.SignInViewModel" />
     </data>
 
     <LinearLayout
@@ -69,14 +69,14 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tvIntroTitle" />
 
-                    <com.foodline.ui.shared.view.CustomTextInputLayout
+                    <com.clickandvisit.ui.shared.view.CustomTextInputLayout
                         android:id="@+id/customTextInputLayoutSignInEmail"
                         style="@style/InputLayout.AppStyle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:errorBackground="@{viewModel.emailFieldError}">
 
-                        <com.foodline.ui.shared.view.CustomTextInputEditText
+                        <com.clickandvisit.ui.shared.view.CustomTextInputEditText
                             android:id="@+id/customTextInputEditTextSignInEmail"
                             style="@style/InputEditText.AppStyle"
                             android:layout_width="match_parent"
@@ -87,9 +87,9 @@
                             android:inputType="textEmailAddress"
                             android:text="@={viewModel.email}" />
 
-                    </com.foodline.ui.shared.view.CustomTextInputLayout>
+                    </com.clickandvisit.ui.shared.view.CustomTextInputLayout>
 
-                    <com.foodline.ui.shared.view.CustomTextInputLayout
+                    <com.clickandvisit.ui.shared.view.CustomTextInputLayout
                         android:id="@+id/customTextInputLayoutSignInPassword"
                         style="@style/InputLayout.AppStyle"
                         android:layout_width="match_parent"
@@ -97,7 +97,7 @@
                         app:endIconMode="password_toggle"
                         app:errorBackground="@{viewModel.passwordFieldError}">
 
-                        <com.foodline.ui.shared.view.CustomTextInputEditText
+                        <com.clickandvisit.ui.shared.view.CustomTextInputEditText
                             android:id="@+id/customTextInputEditTextSignInPassword"
                             style="@style/InputEditText.AppStyle"
                             android:layout_width="match_parent"
@@ -111,10 +111,10 @@
                             android:textCursorDrawable="@drawable/edit_cursor_color"
                             android:textSize="@dimen/dimen_15sp" />
 
-                    </com.foodline.ui.shared.view.CustomTextInputLayout>
+                    </com.clickandvisit.ui.shared.view.CustomTextInputLayout>
 
 
-                    <com.foodline.ui.shared.view.CustomButton
+                    <com.clickandvisit.ui.shared.view.CustomButton
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"

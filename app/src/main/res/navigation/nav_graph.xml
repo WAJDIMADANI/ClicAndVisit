@@ -8,7 +8,7 @@
 
     <activity
         android:id="@+id/news"
-        android:name="com.foodline.ui.home.news.NewsActivity"
+        android:name="com.clickandvisit.ui.home.news.NewsActivity"
         tools:layout="@layout/activity_news">
 
         <argument
