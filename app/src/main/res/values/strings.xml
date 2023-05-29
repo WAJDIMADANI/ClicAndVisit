@@ -20,9 +20,186 @@
     <string name="global_error_password_length_max">Veuillez saisir un mot de passe qui contient au maximum 25 caractères.</string>
     <string name="global_error_mail_length_max">Veuillez saisir un e-mail qui contient au maximum 50 caractères.</string>
     <string name="global_error_banned_user">Votre compte a été bloqué.</string>
+
     <string name="global_error_retry_message">ERROR !! Tap to retry.</string>
     <string name="global_empty_list">No data.</string>
     <string name="global_error_refresh_fail">Refresh failed</string>
+
+
+    <!--signin-->
+    <string name="signin_signin">Se connecter</string>
+    <string name="signin_forget_password">Mot de passe ?</string>
+    <string name="signin_no_account">Vous n’avez pas de compte ? </string>
+    <string name="signin_create_account">Créer votre compte</string>
+    <string name="signin_continue">Continuer en tant que </string>
+    <string name="signin_visitor">Visiteur</string>
+
+    <!--otp-->
+    <string name="otp_email">Vérifiez votre adresse email</string>
+    <string name="otp_enter_code">Entrer votre code OTP ici</string>
+    <string name="otp_no_code">Vous n’avez pas reçu de code</string>
+    <string name="otp_click">Cliquez ici</string>
+    <string name="otp_next">Suivant</string>
+
+    <!--signup-->
+    <string name="signup_">Vous êtes :</string>
+    <string name="signup_user">Particulier</string>
+    <string name="signup_pro">Professionel</string>
+    <string name="signup_civility">Civilité</string>
+    <string name="signup_m">Monsieur</string>
+    <string name="signup_f">Madame</string>
+    <string name="signup_lastname">Nom</string>
+    <string name="signup_firstname">Prénom</string>
+    <string name="signup_mail">E-mail</string>
+    <string name="signup_phone">Téléphone</string>
+    <string name="signup_password">Mot de passe</string>
+    <string name="signup_signup">S’inscrire</string>
+
+    <string name="signup_pro_social">Raison sociale</string>
+    <string name="signup_pro_siret">Siret</string>
+    <string name="signup_pro_password_comfirm">Confirmation du mot de passe</string>
+
+    <!--home-->
+    <string name="home_list">Liste</string>
+    <string name="home_card">Carte</string>
+    <string name="home_visit">VISITEZ MAINTENANT</string>
+    <string name="home_meet">Prendre Rendez-vous</string>
+    <string name="home_details_pro">Pro</string>
+    <string name="home_details_m_square">M²</string>
+    <string name="home_details_euros">€</string>
+    <string name="home_details_conso">Consommations énergétiques</string>
+    <string name="home_details_ges">GES</string>
+
+    <!--menu-->
+    <string name="home_menu_1">CRITÈRES</string>
+    <string name="home_menu_2">DÉPOSER UNE ANNONCE</string>
+    <string name="home_menu_3">MES ANNONCES</string>
+    <string name="home_menu_4">MON COMPTE</string>
+    <string name="home_menu_5">MES RENDEZ-VOUS</string>
+    <string name="home_menu_6">MES FAVORIS</string>
+    <string name="home_menu_7">MES RECHERCHES</string>
+    <string name="home_menu_8">MES VISITES</string>
+    <string name="home_menu_9">Se déconnecter</string>
+
+    <!--popup-->
+    <string name="home_popup_title">Alerte suppression</string>
+    <string name="home_popup_body">Êtes-vous sûr de vouloir supprimer cette recherche ?</string>
+
+    <!--home search-->
+    <string name="home_search_see">VOIR LES BIENS</string>
+    <string name="home_search_between">ENTRE</string>
+    <string name="home_search_and">ET</string>
+
+
+    <!--ad ads-->
+    <string name="ad_ads_type">TYPE D’ANNONCE *</string>
+    <string name="ad_ads_sale">Vente</string>
+    <string name="ad_ads_location">Location</string>
+    <string name="ad_ads_type_b">TYPE DE BIEN *</string>
+    <string name="ad_ads_home">Maison</string>
+    <string name="ad_ads_desk">Bureau</string>
+    <string name="ad_ads_app">Appartement</string>
+    <string name="ad_ads_ground">Terrain</string>
+    <string name="ad_ads_garage">Garage</string>
+    <string name="ad_ads_comm">Commerce</string>
+    <string name="ad_ads_nbr">NOMBRE DE PIÈCE *</string>
+    <string name="ad_ads_vp">5 +</string>
+    <string name="ad_ads_na">NA</string>
+    <string name="ad_ads_surface">SURFACE *</string>
+    <string name="ad_ads_m2">Nombre de m2</string>
+    <string name="ad_ads_price">PRIX *</string>
+    <string name="ad_ads_price_hint">Prix</string>
+    <string name="ad_ads_rent_price">PRIX AVEC CHARGES COMPRIS*</string>
+    <string name="ad_ads_rent_price_hint">Loyer (charges comprises)</string>
+    <string name="ad_ads_stage">ÉTAGE</string>
+    <string name="ad_ads_on">Sur</string>
+
+    <string name="ad_ads_comso">CONSOMMATIONS ÉNERGÉTIQUES</string>
+    <string name="ad_ads_ges">GES</string>
+
+    <string name="ad_ads_comp_info">INFORMATIONS COMPLÉMENTAIRES</string>
+    <string name="ad_ads_comp_info_txt">300 caractères maximum pour préciser des informations importantes :</string>
+    <string name="ad_ads_comp_info_hint">Exemple: Proche de la gare</string>
+
+    <string name="ad_ads_1">CHAMBRE(S)</string>
+    <string name="ad_ads_2">SUITE(S) PARENTALE(S)</string>
+    <string name="ad_ads_3">SALLE(S) DE BAIN</string>
+    <string name="ad_ads_4">SALLE(S) D’EAU</string>
+    <string name="ad_ads_5">BUREAU(X)</string>
+    <string name="ad_ads_6">DRESSING</string>
+    <string name="ad_ads_7">GARAGE(S)</string>
+    <string name="ad_ads_8">CAVE(S)</string>
+    <string name="ad_ads_9">BALCON(M2)</string>
+    <string name="ad_ads_10">TERRASSE(M2)</string>
+    <string name="ad_ads_11">SURFACE TERRAIN(M2)</string>
+    <string name="ad_ads_12">ANNÉE</string>
+    <string name="ad_ads_13">PISCINE</string>
+    <string name="ad_ads_14">PISCINABLE </string>
+    <string name="ad_ads_15">POOL HOUSE</string>
+    <string name="ad_ads_16">SANS VIS-À-VIS</string>
+    <string name="ad_ads_17">ASCENSEUR</string>
+    <string name="ad_ads_18">DUPLEX</string>
+    <string name="ad_ads_19">TRIPLEX</string>
+    <string name="ad_ads_20">REZ-DE-JARDIN</string>
+
+    <string name="ad_ads_loc">LOCALISATION *</string>
+    <string name="ad_ads_city">Ville</string>
+    <string name="ad_ads_postal_code">Code Postal</string>
+    <string name="ad_ads_address">Rue, complément d’adresse</string>
+    <string name="ad_ads_info">Ces informations n’apparaîtront pas sur l’annonce mais seront envoyées au visiteur lorsque vous aurez confirmé le rendez-vous </string>
+    <string name="ad_ads_interphone_name">Nom interphone</string>
+    <string name="ad_ads_interphone_code">Code portail</string>
+    <string name="ad_ads_other_info">Autre(s) information(s)</string>
+
+
+
+    <string name="ad_ads_add_photo">AJOUTER UNE PHOTO PRINCIPALE</string>
+    <string name="ad_ads_add_main_photo">Photo principale</string>
+    <string name="ad_ads_add_other_photo">AJOUTER D’AUTRES PHOTOS</string>
+
+
+
+    <!--search-->
+    <string name="search_min">Pièces min</string>
+    <string name="search_max">Pièces max</string>
+    <string name="search_price">BUDGET</string>
+    <string name="search_price_min">Prix min</string>
+    <string name="search_price_max">Prix max</string>
+    <string name="search_surface">SURFACE ENTRE</string>
+    <string name="search_surface_min">Surface min</string>
+    <string name="search_surface_max">Surface max</string>
+    <string name="search_confirm">Confirmer</string>
+
+    <!--meet-->
+    <string name="meet_asked">DEMANDE DE RENDEZ-VOUS</string>
+    <string name="meet_with">Rendez-vous avec :</string>
+    <string name="meet_confirm">Confirmez \n le rendez-vous</string>
+    <string name="meet_not_dispo">JE NE SUIS PAS \n DISPONIBLE</string>
+    <string name="meet_hold">EN ATTENTE</string>
+
+    <!--chat-->
+    <string name="chat_title">ENVOYER UN MESSAGE</string>
+    <string name="chat_body">Votre message</string>
+    <string name="chat_send">ENVOYER</string>
+
+    <!--report-->
+    <string name="report_title">SIGNALER</string>
+    <string name="report_body">ex : Démarchage</string>
+
+    <string name="global_send">Envoyer</string>
+
+    <!--my ads-->
+    <string name="my_ads_current">Annonces en ligne</string>
+    <string name="my_ads_validation">Annonces en Validation</string>
+    <string name="my_ads_pro">PRO</string>
+    <string name="my_ads_indispo">Indisponible</string>
+
+    <!--profile-->
+    <string name="profile_civility">Civilité</string>
+    <string name="profile_m">Monsieur</string>
+    <string name="profile_f">Madame</string>
+    <string name="profile_change_password">Changer votre mot de passe ?</string>
+    <string name="profile_save">Enregistrer</string>
 
 
     <!--splash screen-->
@@ -60,10 +237,6 @@
         photocopie d’une titre d’identité, à l’adresse suivante : contact@xxx.fr
     </string>
     <string name="signup_fb_signup">Inscription via Facebook</string>
-    <string name="signup_lastname">Nom</string>
-    <string name="signup_firstname">Prénom</string>
-    <string name="signup_password">Mot de passe</string>
-    <string name="signup_mail">E-mail*</string>
     <string name="signup_error_unique_mail">Un compte existe déjà avec cette adresse e-mail.</string>
     <string name="signup_error_not_found">Compte introuvable.</string>
     <string name="signup_email_hint">Obligatoire pour recevoir vos cadeaux</string>
