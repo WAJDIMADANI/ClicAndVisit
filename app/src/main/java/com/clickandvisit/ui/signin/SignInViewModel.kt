@@ -48,6 +48,10 @@ class SignInViewModel
         navigate(Navigation.SignUpActivityNavigation)
     }
 
+    fun onVisitorClicked() {
+        navigate(Navigation.HomeActivityNavigation)
+    }
+
     override fun onStartClicked() {
         navigate(Navigation.Back)
     }

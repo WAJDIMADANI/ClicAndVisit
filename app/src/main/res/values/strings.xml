@@ -211,7 +211,7 @@
     <!-- SIGNIN -->
     <string name="signin_are_u_sign_in">Vous n’êtes pas encore inscrit ?</string>
     <string name="signin_alredy_signin">Déjà inscrit ?</string>
-    <string name="signin_mail">Email</string>
+    <string name="signin_mail">E-mail</string>
     <string name="signin_password">Mot de passe</string>
     <string name="signin_forgotten_pass">Mot de passe oublié</string>
     <string name="signin_submit">Valider</string>
