@@ -33,21 +33,40 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <RelativeLayout
+
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="120dp"
-                    android:background="@drawable/ic_signin_header">
+                    android:layout_height="wrap_content">
 
                     <ImageView
-                        android:layout_width="@dimen/dimen_40dp"
-                        android:layout_height="@dimen/dimen_40dp"
-                        android:layout_marginStart="@dimen/margin_global_36dp"
-                        android:layout_marginTop="@dimen/margin_global_36dp"
-                        android:layout_marginEnd="@dimen/margin_global_10dp"
-                        android:background="@drawable/ic_back_white"
+                        android:layout_width="0dp"
+                        android:layout_height="224dp"
+                        android:background="@color/black"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:layout_width="@dimen/dimen_30dp"
+                        android:layout_height="@dimen/dimen_30dp"
+                        android:background="@drawable/ic_back"
+                        android:layout_marginStart="@dimen/margin_global_30dp"
+                        android:layout_marginTop="@dimen/margin_global_30dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
                         app:onClickWithDebounce="@{() ->viewModel.onBackClick()}" />
 
-                </RelativeLayout>
+                    <ImageView
+                        android:layout_width="300dp"
+                        android:layout_height="53dp"
+                        android:layout_marginBottom="63dp"
+                        android:background="@drawable/ic_logo_header"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -64,7 +83,7 @@
                         android:layout_marginTop="@dimen/margin_global_30dp"
                         android:fontFamily="@font/poppins_bold"
                         android:gravity="center"
-                        android:text="@string/otp_phone_verify"
+                        android:text="@string/otp_email"
                         android:textColor="@color/black_basic"
                         android:textSize="@dimen/font_25sp"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -216,7 +235,7 @@
                         android:fontFamily="@font/poppins_regular"
                         android:gravity="center"
                         android:text="@string/otp_click_hire"
-                        android:textColor="@color/color_primary"
+                        android:textColor="@color/color_accent_color"
                         android:textSize="@dimen/font_15sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
