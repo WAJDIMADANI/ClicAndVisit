@@ -52,8 +52,12 @@ class SignUpActivity : BaseActivity() {
 
 
     /** Cgu RadioButton click **/
-    fun onCguClick(view: View) {
-        viewModel.onCguClick()
+    fun onProClick(view: View) {
+        viewModel.onProClick()
+    }
+    /** Cgu RadioButton click **/
+    fun onNoProClick(view: View) {
+        viewModel.onNoProClick()
     }
 
 

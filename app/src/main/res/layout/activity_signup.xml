@@ -83,7 +83,7 @@
                     android:fontFamily="@font/poppins_bold"
                     android:text="@string/signup_you"
                     android:textColor="@color/black_basic"
-                    android:textSize="@dimen/font_25sp"
+                    android:textSize="@dimen/font_16sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/appCompatImageView" />
@@ -99,24 +99,26 @@
                         android:layout_width="@dimen/dimen_145dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:checked="false"
                         android:fontFamily="@font/poppins_regular"
                         android:padding="4dp"
+                        android:checked="@{viewModel.checkedNoPro}"
+                        android:onClick="onNoProClick"
                         android:text="@string/signup_user"
                         android:textAlignment="center"
-                        android:textSize="20sp" />
+                        android:textSize="@dimen/font_16sp" />
 
                     <RadioButton
                         android:id="@+id/rbPro"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:checked="false"
+                        android:checked="@{viewModel.checkedPro}"
                         android:fontFamily="@font/poppins_regular"
+                        android:onClick="onProClick"
                         android:padding="4dp"
                         android:text="@string/signup_pro"
                         android:textAlignment="center"
-                        android:textSize="20sp" />
+                        android:textSize="@dimen/font_16sp" />
 
                 </RadioGroup>
 
@@ -128,7 +130,7 @@
                     android:fontFamily="@font/poppins_bold"
                     android:text="@string/signup_civility"
                     android:textColor="@color/black_basic"
-                    android:textSize="@dimen/font_25sp"
+                    android:textSize="@dimen/font_16sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/appCompatImageView" />
@@ -150,7 +152,7 @@
                         android:padding="4dp"
                         android:text="@string/signup_m"
                         android:textAlignment="center"
-                        android:textSize="20sp" />
+                        android:textSize="@dimen/font_16sp" />
 
                     <RadioButton
                         android:id="@+id/rbCivilityF"
@@ -162,7 +164,7 @@
                         android:padding="4dp"
                         android:text="@string/signup_f"
                         android:textAlignment="center"
-                        android:textSize="20sp" />
+                        android:textSize="@dimen/font_16sp" />
 
                 </RadioGroup>
 
@@ -171,6 +173,7 @@
                     style="@style/InputLayout.AppStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:visibility="@{viewModel.checkedPro ? View.GONE : View.VISIBLE}"
                     app:errorBackground="@{viewModel.userFieldError}">
 
                     <com.clickandvisit.ui.shared.view.CustomTextInputEditText
@@ -184,12 +187,12 @@
 
                 </com.clickandvisit.ui.shared.view.CustomTextInputLayout>
 
-
                 <com.clickandvisit.ui.shared.view.CustomTextInputLayout
                     android:id="@+id/customTextInputLayoutSignUpCin"
                     style="@style/InputLayout.AppStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:visibility="@{viewModel.checkedPro ? View.GONE : View.VISIBLE}"
                     app:errorBackground="@{viewModel.firstnameFieldError}">
 
                     <com.clickandvisit.ui.shared.view.CustomTextInputEditText
@@ -198,6 +201,43 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/signup_firstname"
+                        android:text="@={viewModel.firstname}" />
+
+                </com.clickandvisit.ui.shared.view.CustomTextInputLayout>
+
+                <com.clickandvisit.ui.shared.view.CustomTextInputLayout
+                    android:id="@+id/customTextInputLayoutSignUpSocial"
+                    style="@style/InputLayout.AppStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="@{viewModel.checkedPro ? View.VISIBLE : View.GONE, default=gone}"
+                    app:errorBackground="@{viewModel.userFieldError}">
+
+                    <com.clickandvisit.ui.shared.view.CustomTextInputEditText
+                        android:id="@+id/customTextInputEditTextSignUpSocial"
+                        style="@style/InputEditText.AppStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/signup_pro_social"
+                        android:inputType="textPersonName"
+                        android:text="@={viewModel.userName}" />
+
+                </com.clickandvisit.ui.shared.view.CustomTextInputLayout>
+
+                <com.clickandvisit.ui.shared.view.CustomTextInputLayout
+                    android:id="@+id/customTextInputLayoutSignUpSiret"
+                    style="@style/InputLayout.AppStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="@{viewModel.checkedPro ? View.VISIBLE : View.GONE, default=gone}"
+                    app:errorBackground="@{viewModel.firstnameFieldError}">
+
+                    <com.clickandvisit.ui.shared.view.CustomTextInputEditText
+                        android:id="@+id/customTextInputEditTextSignUpSiret"
+                        style="@style/InputEditText.AppStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/signup_pro_siret"
                         android:text="@={viewModel.firstname}" />
 
                 </com.clickandvisit.ui.shared.view.CustomTextInputLayout>
@@ -243,6 +283,7 @@
                     style="@style/InputLayout.AppStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    app:endIconMode="password_toggle"
                     app:errorBackground="@{viewModel.passwordFieldError}">
 
                     <com.clickandvisit.ui.shared.view.CustomTextInputEditText
@@ -253,6 +294,26 @@
                         android:hint="@string/signup_password"
                         android:inputType="textPassword"
                         android:text="@={viewModel.password}" />
+
+                </com.clickandvisit.ui.shared.view.CustomTextInputLayout>
+
+                <com.clickandvisit.ui.shared.view.CustomTextInputLayout
+                    android:id="@+id/customTextInputLayoutSignUpPasswordConfirm"
+                    style="@style/InputLayout.AppStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="@{viewModel.checkedPro ? View.VISIBLE : View.GONE, default=gone}"
+                    app:endIconMode="password_toggle"
+                    app:errorBackground="@{viewModel.passwordConfirmFieldError}">
+
+                    <com.clickandvisit.ui.shared.view.CustomTextInputEditText
+                        android:id="@+id/customTextInputEditTextSignUpPasswordConfirm"
+                        style="@style/InputEditText.AppStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/signup_pro_password_comfirm"
+                        android:inputType="textPassword"
+                        android:text="@={viewModel.passwordConfirm}" />
 
                 </com.clickandvisit.ui.shared.view.CustomTextInputLayout>
 

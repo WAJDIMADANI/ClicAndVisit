@@ -38,21 +38,25 @@ class SignUpViewModel
     val email: MutableLiveData<String> = MutableLiveData()
     val phone: MutableLiveData<String> = MutableLiveData()
     val password: MutableLiveData<String> = MutableLiveData()
+    val passwordConfirm: MutableLiveData<String> = MutableLiveData()
 
     val userFieldError: MutableLiveData<Boolean> = MutableLiveData(false)
     val firstnameFieldError: MutableLiveData<Boolean> = MutableLiveData(false)
     val emailFieldError: MutableLiveData<Boolean> = MutableLiveData(false)
     val phoneFieldError: MutableLiveData<Boolean> = MutableLiveData(false)
     val passwordFieldError: MutableLiveData<Boolean> = MutableLiveData(false)
+    val passwordConfirmFieldError: MutableLiveData<Boolean> = MutableLiveData(false)
 
     /** Radio buttons states  **/
-    val checkedCGU: MutableLiveData<Boolean> = MutableLiveData(false)
+    val checkedPro: MutableLiveData<Boolean> = MutableLiveData(false)
+    val checkedNoPro: MutableLiveData<Boolean> = MutableLiveData(true)
 
     val imagePickerDialog: MutableLiveData<ImgPickerDialog> = MutableLiveData()
 
     val photoUri = MutableLiveData(Uri.EMPTY)
 
     init {
+
     }
 
     fun onBackClick() {
@@ -124,8 +128,14 @@ class SignUpViewModel
 
     /** Radio Buttons  **/
 
-    fun onCguClick() {
-        checkedCGU.value = !checkedCGU.value!!
+    fun onProClick() {
+        checkedPro.value = true
+        checkedNoPro.value = false
+    }
+
+    fun onNoProClick() {
+        checkedPro.value = false
+        checkedNoPro.value = true
     }
 
 
