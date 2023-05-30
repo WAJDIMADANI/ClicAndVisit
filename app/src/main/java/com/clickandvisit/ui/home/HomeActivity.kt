@@ -47,6 +47,7 @@ class HomeActivity : BaseActivity() {
             is Navigation.MenuActivityNavigation -> navigateToActivity(MenuActivity::class)
             is Navigation.TransportActivityNavigation -> navigateToActivity(TransportActivity::class)
             is Navigation.SendActivityNavigation -> navigateToActivity(SendActivity::class)
+            else -> {}
         }
     }
 

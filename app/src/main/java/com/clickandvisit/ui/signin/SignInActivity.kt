@@ -14,6 +14,7 @@ import com.clickandvisit.global.utils.DebugLog
 import com.clickandvisit.global.utils.ExtraKeys
 import com.clickandvisit.global.utils.TAG
 import com.clickandvisit.ui.home.HomeActivity
+import com.clickandvisit.ui.home.HomeMainActivity
 import com.clickandvisit.ui.password.ResetPasswordActivity
 import com.clickandvisit.ui.signup.SignUpActivity
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -71,7 +72,7 @@ class SignInActivity : BaseActivity() {
     override fun navigate(navigationTo: Navigation) {
         when (navigationTo) {
             is Navigation.HomeActivityNavigation -> {
-                navigateToActivity(HomeActivity::class)
+                navigateToActivity(HomeMainActivity::class)
             }
             is Navigation.ResetPasswordActivityNavigation -> navigateToActivity(
                 ResetPasswordActivity::class
@@ -81,6 +82,7 @@ class SignInActivity : BaseActivity() {
                 true
             )
             is Navigation.Back -> finish()
+            else -> {}
         }
     }
 
