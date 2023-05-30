@@ -37,31 +37,61 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="112dp"
-                    android:background="@drawable/ic_home_header_background">
+                    android:layout_height="120dp"
+                    android:background="@color/black">
 
                     <ImageView
                         android:id="@+id/ivBack"
-                        android:layout_width="@dimen/dimen_40dp"
-                        android:layout_height="@dimen/dimen_40dp"
+                        android:layout_width="@dimen/dimen_30dp"
+                        android:layout_height="@dimen/dimen_30dp"
                         android:layout_marginStart="@dimen/margin_global_36dp"
-                        android:layout_marginTop="@dimen/margin_global_36dp"
+                        android:layout_marginTop="@dimen/margin_global_30dp"
                         android:layout_marginEnd="@dimen/margin_global_10dp"
-                        android:background="@drawable/ic_back_white"
+                        android:background="@drawable/ic_back"
                         app:onClickWithDebounce="@{() ->viewModel.onBackClick()}" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:layout_marginTop="@dimen/margin_global_42dp"
-                        android:fontFamily="@font/poppins_semi_bold"
-                        android:gravity="center"
-                        android:text="@string/menu_profile"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="@dimen/margin_global_36dp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="@string/profile_profile"
                         android:textColor="@color/white_basic"
-                        android:textSize="@dimen/font_15sp" />
+                        android:textSize="@dimen/font_16sp" />
+
+
+                    <ImageView
+                        android:id="@+id/ivEdit"
+                        android:layout_width="@dimen/dimen_30dp"
+                        android:layout_height="@dimen/dimen_30dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginStart="@dimen/margin_global_36dp"
+                        android:layout_marginTop="@dimen/margin_global_30dp"
+                        android:layout_marginEnd="@dimen/margin_global_36dp"
+                        android:background="@drawable/ic_edit_white"
+                        app:onClickWithDebounce="@{() ->viewModel.onBackClick()}" />
 
                 </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/ic_profile_header"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="@dimen/dimen_180dp"
+                        android:layout_height="@dimen/dimen_180dp"
+                        android:layout_centerInParent="true"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginBottom="@dimen/margin_global_20dp"
+                        android:background="@drawable/ic_profile_place_holder"
+                        app:imageUri="@{viewModel.photoUri}"
+                        app:onClickWithDebounce="@{() ->viewModel.onImageClick()}"
+                        app:picasso="@{picasso}" />
+
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -71,35 +101,70 @@
                     android:background="@color/white_basic"
                     android:orientation="vertical">
 
-                    <ImageView
-                        android:layout_width="@dimen/dimen_70dp"
-                        android:layout_height="@dimen/dimen_70dp"
-                        android:layout_centerInParent="true"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="@dimen/margin_global_16dp"
-                        android:layout_marginBottom="@dimen/margin_global_20dp"
-                        android:background="@drawable/global_ic_profile"
-                        app:imageUri="@{viewModel.photoUri}"
-                        app:onClickWithDebounce="@{() ->viewModel.onImageClick()}"
-                        app:picasso="@{picasso}" />
+
+
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvSignupCivility"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_global_10dp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="@string/signup_civility"
+                        android:textColor="@color/black_basic"
+                        android:textSize="@dimen/font_16sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/appCompatImageView" />
+
+                    <RadioGroup
+                        android:id="@+id/rgCivilityType"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/margin_global_15dp"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/rbCivilityM"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginEnd="@dimen/margin_global_30dp"
+                            android:checked="false"
+                            android:fontFamily="@font/poppins_regular"
+                            android:padding="4dp"
+                            android:text="@string/signup_m"
+                            android:textAlignment="center"
+                            android:textSize="@dimen/font_16sp" />
+
+                        <RadioButton
+                            android:id="@+id/rbCivilityF"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:checked="false"
+                            android:fontFamily="@font/poppins_regular"
+                            android:padding="4dp"
+                            android:text="@string/signup_f"
+                            android:textAlignment="center"
+                            android:textSize="@dimen/font_16sp" />
+
+                    </RadioGroup>
+
 
                     <com.clickandvisit.ui.shared.view.CustomTextInputLayout
                         android:id="@+id/customTextInputLayoutSignUpUser"
                         style="@style/InputLayout.AppStyle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColorHint="@color/color_primary"
-                        app:boxStrokeColor="@color/text_input_layout_stroke_color"
-                        app:errorBackground="@{viewModel.userFieldError}"
-                        app:hintTextColor="@color/color_primary">
+                        app:errorBackground="@{viewModel.userFieldError}">
 
                         <com.clickandvisit.ui.shared.view.CustomTextInputEditText
                             android:id="@+id/customTextInputEditTextSignUpUser"
                             style="@style/InputEditText.AppStyle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:drawableStart="@drawable/ic_user"
-                            android:hint="@string/sign_up_user_name"
+                            android:hint="@string/signup_lastname"
                             android:inputType="textPersonName"
                             android:text="@={viewModel.userName}" />
 
@@ -111,19 +176,14 @@
                         style="@style/InputLayout.AppStyle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColorHint="@color/color_primary"
-                        app:boxStrokeColor="@color/text_input_layout_stroke_color"
-                        app:errorBackground="@{viewModel.cinFieldError}"
-                        app:hintTextColor="@color/color_primary">
+                        app:errorBackground="@{viewModel.cinFieldError}">
 
                         <com.clickandvisit.ui.shared.view.CustomTextInputEditText
                             android:id="@+id/customTextInputEditTextSignUpCin"
                             style="@style/InputEditText.AppStyle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:drawableStart="@drawable/ic_cin"
-                            android:hint="@string/sign_up_cin"
-                            android:inputType="number"
+                            android:hint="@string/signup_firstname"
                             android:text="@={viewModel.cin}" />
 
                     </com.clickandvisit.ui.shared.view.CustomTextInputLayout>
@@ -133,17 +193,13 @@
                         style="@style/InputLayout.AppStyle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColorHint="@color/color_primary"
-                        app:boxStrokeColor="@color/text_input_layout_stroke_color"
-                        app:errorBackground="@{viewModel.emailFieldError}"
-                        app:hintTextColor="@color/color_primary">
+                        app:errorBackground="@{viewModel.emailFieldError}">
 
                         <com.clickandvisit.ui.shared.view.CustomTextInputEditText
                             android:id="@+id/customTextInputEditTextSignInEmail"
                             style="@style/InputEditText.AppStyle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:drawableStart="@drawable/ic_email"
                             android:hint="@string/signin_mail"
                             android:inputType="textEmailAddress"
                             android:text="@={viewModel.email}" />
@@ -155,22 +211,30 @@
                         style="@style/InputLayout.AppStyle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColorHint="@color/color_primary"
-                        app:boxStrokeColor="@color/text_input_layout_stroke_color"
-                        app:errorBackground="@{viewModel.phoneFieldError}"
-                        app:hintTextColor="@color/color_primary">
+                        app:errorBackground="@{viewModel.phoneFieldError}">
 
                         <com.clickandvisit.ui.shared.view.CustomTextInputEditText
                             android:id="@+id/customTextInputEditTextSignUpPhone"
                             style="@style/InputEditText.AppStyle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:drawableStart="@drawable/ic_phone"
-                            android:hint="@string/sign_up_phone"
+                            android:hint="@string/signup_phone"
                             android:inputType="phone"
                             android:text="@={viewModel.phone}" />
 
                     </com.clickandvisit.ui.shared.view.CustomTextInputLayout>
+
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvSignInVisitor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_global_2dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="@string/profile_change_password"
+                        android:textColor="@color/blue_light"
+                        android:textSize="@dimen/font_14sp"
+                        app:onClickWithDebounce="@{() ->viewModel.onChangePasswordClicked()}" />
 
                     <com.clickandvisit.ui.shared.view.CustomButton
                         android:layout_width="match_parent"

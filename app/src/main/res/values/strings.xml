@@ -195,6 +195,7 @@
     <string name="my_ads_indispo">Indisponible</string>
 
     <!--profile-->
+    <string name="profile_profile">Profil</string>
     <string name="profile_civility">Civilité</string>
     <string name="profile_m">Monsieur</string>
     <string name="profile_f">Madame</string>

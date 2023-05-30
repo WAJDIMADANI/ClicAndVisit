@@ -55,6 +55,10 @@ class ProfileViewModel
             )
     }
 
+    fun onChangePasswordClicked() {
+
+    }
+
 
     private fun onTakePictureClicked(): () -> Unit {
         return {
