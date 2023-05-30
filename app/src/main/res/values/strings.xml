@@ -42,7 +42,7 @@
     <string name="otp_next">Suivant</string>
 
     <!--signup-->
-    <string name="signup_">Vous êtes :</string>
+    <string name="signup_you">Vous êtes :</string>
     <string name="signup_user">Particulier</string>
     <string name="signup_pro">Professionel</string>
     <string name="signup_civility">Civilité</string>

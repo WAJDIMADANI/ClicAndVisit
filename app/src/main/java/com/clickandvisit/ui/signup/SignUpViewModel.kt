@@ -34,13 +34,13 @@ class SignUpViewModel
 ) : BaseAndroidViewModel(application, schedulerProvider), ToolBarListener {
 
     val userName: MutableLiveData<String> = MutableLiveData()
-    val cin: MutableLiveData<String> = MutableLiveData()
+    val firstname: MutableLiveData<String> = MutableLiveData()
     val email: MutableLiveData<String> = MutableLiveData()
     val phone: MutableLiveData<String> = MutableLiveData()
     val password: MutableLiveData<String> = MutableLiveData()
 
     val userFieldError: MutableLiveData<Boolean> = MutableLiveData(false)
-    val cinFieldError: MutableLiveData<Boolean> = MutableLiveData(false)
+    val firstnameFieldError: MutableLiveData<Boolean> = MutableLiveData(false)
     val emailFieldError: MutableLiveData<Boolean> = MutableLiveData(false)
     val phoneFieldError: MutableLiveData<Boolean> = MutableLiveData(false)
     val passwordFieldError: MutableLiveData<Boolean> = MutableLiveData(false)
@@ -183,8 +183,8 @@ class SignUpViewModel
         true
     }
 
-    private fun validCin() = if (cin.value.isWhiteSpaces()) {
-        cinFieldError.value = true
+    private fun validCin() = if (firstname.value.isWhiteSpaces()) {
+        firstnameFieldError.value = true
         false
     } else {
         true
