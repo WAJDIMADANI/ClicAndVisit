@@ -35,4 +35,22 @@
         android:label="@string/home_menu_5"
         tools:layout="@layout/fragment_meet" />
 
+    <fragment
+        android:id="@+id/nav_menu_6"
+        android:name="com.clickandvisit.ui.home.menu.favourites.FavouritesFragment"
+        android:label="@string/home_menu_6"
+        tools:layout="@layout/fragment_favourites" />
+
+    <fragment
+        android:id="@+id/nav_menu_7"
+        android:name="com.clickandvisit.ui.home.menu.search.SearchFragment"
+        android:label="@string/home_menu_7"
+        tools:layout="@layout/fragment_search" />
+
+    <fragment
+        android:id="@+id/nav_menu_8"
+        android:name="com.clickandvisit.ui.home.menu.visits.VisitsFragment"
+        android:label="@string/home_menu_8"
+        tools:layout="@layout/fragment_visits" />
+
 </navigation>
