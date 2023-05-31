@@ -29,6 +29,7 @@ class CustomToolbar : FrameLayout, View.OnClickListener {
     private var toolBarListener: ToolBarListener? = null
     private lateinit var binding: CustomToolbarBinding
 
+/*
     val endActionBtn: AppCompatTextView
         get() {
             return binding.textToolBarAction
@@ -38,6 +39,7 @@ class CustomToolbar : FrameLayout, View.OnClickListener {
         get() {
             return binding.textToolBarStartAction
         }
+*/
 
     constructor(context: Context) : super(context) {
         initialize(context, null)
@@ -59,8 +61,10 @@ class CustomToolbar : FrameLayout, View.OnClickListener {
     private fun initialize(context: Context, attrs: AttributeSet?) {
         LayoutInflater.from(getContext()).inflate(R.layout.custom_toolbar, this, true)
         binding = CustomToolbarBinding.inflate(LayoutInflater.from(getContext()), this, true)
+/*
         binding.layoutToolBarStart.setOnClickListener(this)
         binding.layoutToolBarEnd.setOnClickListener(this)
+*/
 
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.toolbar_style)
 
@@ -68,6 +72,7 @@ class CustomToolbar : FrameLayout, View.OnClickListener {
 
             initBackground(typedArray)
 
+/*
             val hasTitle = typedArray.getBoolean(R.styleable.toolbar_style_ct_has_title, false)
             if (hasTitle) {
                 binding.layoutToolBarCenter.visibility = View.VISIBLE
@@ -75,6 +80,7 @@ class CustomToolbar : FrameLayout, View.OnClickListener {
             } else {
                 binding.layoutToolBarCenter.visibility = View.GONE
             }
+*/
 
             initStartAction(typedArray)
             initEndAction(typedArray)
@@ -95,7 +101,7 @@ class CustomToolbar : FrameLayout, View.OnClickListener {
             typedArray.getDrawable(R.styleable.toolbar_style_ct_start_action_drawable)
 
 
-        if (TextUtils.isEmpty(actionString) && actionDrawable == null) {
+/*        if (TextUtils.isEmpty(actionString) && actionDrawable == null) {
             binding.layoutToolBarStart.visibility = View.GONE
         } else {
             binding.layoutToolBarStart.visibility = View.VISIBLE
@@ -112,9 +118,10 @@ class CustomToolbar : FrameLayout, View.OnClickListener {
                 binding.textToolBarStartAction.setTextColor(actionTextColor)
                 binding.textToolBarStartAction.typeface = Typeface.create(actionTextFont, Typeface.BOLD)
             }
-        }
+        }*/
     }
 
+/*
     fun showEndActionBtn() {
         binding.textToolBarAction.visibility = View.VISIBLE
         binding.imageToolBarAction.visibility = View.VISIBLE
@@ -134,6 +141,7 @@ class CustomToolbar : FrameLayout, View.OnClickListener {
         binding.textToolBarAction.visibility = View.GONE
         binding.imageToolBarAction.visibility = View.GONE
     }
+*/
 
 
     private fun initEndAction(typedArray: TypedArray) {
@@ -145,7 +153,7 @@ class CustomToolbar : FrameLayout, View.OnClickListener {
         val actionDrawable =
             typedArray.getDrawable(R.styleable.toolbar_style_ct_end_action_drawable)
 
-
+/*
         if (TextUtils.isEmpty(actionString) && actionDrawable == null) {
             binding.layoutToolBarEnd.visibility = View.GONE
         } else {
@@ -162,7 +170,7 @@ class CustomToolbar : FrameLayout, View.OnClickListener {
                 binding.textToolBarAction.setTextColor(actionTextColor)
                 binding.textToolBarAction.typeface = Typeface.create(actionTextFont, Typeface.BOLD)
             }
-        }
+        }*/
     }
 
     private fun initTitle(typedArray: TypedArray) {
@@ -172,7 +180,7 @@ class CustomToolbar : FrameLayout, View.OnClickListener {
 
         val icon = typedArray.getDrawable(R.styleable.toolbar_style_ct_title_drawable)
 
-        if (!TextUtils.isEmpty(title)) {
+/*        if (!TextUtils.isEmpty(title)) {
             binding.imageToolBarTitle.visibility = View.VISIBLE
             binding.imageToolBarTitle.visibility = View.GONE
             binding.textToolBarTitle.text = title
@@ -182,7 +190,7 @@ class CustomToolbar : FrameLayout, View.OnClickListener {
             binding.imageToolBarTitle.visibility = View.GONE
             binding.imageToolBarTitle.visibility = View.VISIBLE
             binding.imageToolBarTitle.setImageDrawable(icon)
-        }
+        }*/
     }
 
     private fun initBackground(typedArray: TypedArray) {
@@ -193,8 +201,10 @@ class CustomToolbar : FrameLayout, View.OnClickListener {
 
     override fun onClick(view: View) {
         when (view.id) {
+/*
             R.id.layoutToolBarStart -> toolBarListener!!.onStartClicked()
             R.id.layoutToolBarEnd -> toolBarListener!!.onEndClicked()
+*/
         }
     }
 

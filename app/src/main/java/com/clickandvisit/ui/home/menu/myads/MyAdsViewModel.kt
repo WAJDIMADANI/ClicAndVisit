@@ -1,10 +1,10 @@
-package com.clickandvisit.ui.home.ui.slideshow
+package com.clickandvisit.ui.home.menu.myads
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class SlideshowViewModel : ViewModel() {
+class MyAdsViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
         value = "This is slideshow Fragment"

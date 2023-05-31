@@ -3,23 +3,36 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@+id/nav_menu_1">
 
     <fragment
-        android:id="@+id/nav_home"
-        android:name="com.clickandvisit.ui.home.ui.home.HomeFragment"
-        android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/nav_menu_1"
+        android:name="com.clickandvisit.ui.home.menu.filter.FilterFragment"
+        android:label="@string/home_menu_1"
+        tools:layout="@layout/fragment_filter" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.clickandvisit.ui.home.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        android:id="@+id/nav_menu_2"
+        android:name="com.clickandvisit.ui.home.menu.addads.AddAdsFragment"
+        android:label="@string/home_menu_2"
+        tools:layout="@layout/fragment_add_ads" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.clickandvisit.ui.home.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_menu_3"
+        android:name="com.clickandvisit.ui.home.menu.myads.MyAdsFragment"
+        android:label="@string/home_menu_3"
+        tools:layout="@layout/fragment_myads" />
+
+    <fragment
+        android:id="@+id/nav_menu_4"
+        android:name="com.clickandvisit.ui.home.menu.profile.ProfileFragment"
+        android:label="@string/home_menu_4"
+        tools:layout="@layout/fragment_profile" />
+
+    <fragment
+        android:id="@+id/nav_menu_5"
+        android:name="com.clickandvisit.ui.home.menu.meet.MeetFragment"
+        android:label="@string/home_menu_5"
+        tools:layout="@layout/fragment_meet" />
+
 </navigation>
