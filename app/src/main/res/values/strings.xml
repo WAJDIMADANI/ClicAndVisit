@@ -211,6 +211,13 @@
     <string name="profile_save">Enregistrer</string>
 
 
+    <string name="filter_city_title">LOCALISATION</string>
+    <string name="filter_city">Ville</string>
+    <string name="filter_ads_type">TYPE D’ANNONCE</string>
+    <string name="filter_ads_type_b">TYPE DE BIEN</string>
+    <string name="filter_rooms">Pièces</string>
+
+
     <!--splash screen-->
     <string name="splash_hello">Hello</string>
     <string name="splash_version">Version :</string>
