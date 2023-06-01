@@ -86,7 +86,6 @@
         app:layout_constraintBottom_toTopOf="@+id/tvMeet"
         app:layout_constraintEnd_toEndOf="parent" />
 
-
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvAdsName"
         android:layout_width="wrap_content"
