@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout"
+    tools:context=".ui.home.menu.myads.adsdetails.AdsDetailsActivity">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.clickandvisit.ui.home.menu.myads.adsdetails.AdsDetailsViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="317dp"
+            android:background="@color/white_basic">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/appCompatImageView2"
+                android:layout_width="match_parent"
+                android:layout_height="187dp"
+                android:background="@drawable/ic_list_place_holder"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/ivBack"
+                android:layout_width="@dimen/dimen_30dp"
+                android:layout_height="@dimen/dimen_30dp"
+                android:layout_marginStart="@dimen/margin_global_20dp"
+                android:layout_marginTop="@dimen/margin_global_10dp"
+                android:background="@drawable/ic_back"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:onClickWithDebounce="@{() ->viewModel.onBackClick()}" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvPro"
+                android:layout_width="@dimen/dimen_45dp"
+                android:layout_height="@dimen/dimen_25dp"
+                android:layout_marginTop="@dimen/dimen_15dp"
+                android:background="@color/red_pro_status_details"
+                android:fontFamily="@font/poppins_bold"
+                android:gravity="center"
+                android:padding="@dimen/padding_global_5dp"
+                android:text="@string/home_details_pro"
+                android:textAllCaps="true"
+                android:textColor="@color/white_basic"
+                android:textSize="@dimen/dimen_12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/linearLayoutCompat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_global_10dp"
+                android:layout_marginBottom="@dimen/margin_global_10dp"
+                android:background="@drawable/ic_ads_transparent"
+                android:gravity="center"
+                app:layout_constraintBottom_toBottomOf="@+id/appCompatImageView2"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivGallery"
+                    android:layout_width="@dimen/dimen_12dp"
+                    android:layout_height="@dimen/dimen_12dp"
+                    android:layout_marginStart="@dimen/padding_global_4dp"
+                    android:layout_marginEnd="@dimen/padding_global_3dp"
+                    android:background="@drawable/ic_gallery"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvPhotoCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/padding_global_5dp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="5"
+                    android:textColor="@color/white_basic"
+                    android:textSize="@dimen/dimen_12sp" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvAdsName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_global_12dp"
+                android:layout_marginTop="@dimen/margin_global_15dp"
+                android:fontFamily="@font/poppins_bold"
+                android:text="CAP Lyon"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/appCompatImageView2" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvAdsPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_global_12dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Maison 200 000€"
+                android:textColor="@color/details_color"
+                android:textSize="@dimen/font_12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvAdsName" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvMeet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_global_30dp"
+                android:layout_marginEnd="@dimen/margin_global_30dp"
+                android:background="@color/red_pro_status"
+                android:fontFamily="@font/poppins_medium"
+                android:gravity="center"
+                android:padding="@dimen/padding_global_5dp"
+                android:text="@string/home_meet_details"
+                android:textAllCaps="true"
+                android:textColor="@color/white_basic"
+                android:textSize="@dimen/dimen_16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <GridLayout
+            android:id="@+id/glHomeType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_global_30dp"
+            android:layout_marginTop="@dimen/margin_global_20dp"
+            android:layout_marginEnd="@dimen/margin_global_30dp"
+            android:columnCount="3"
+            android:rowCount="2">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvHome1"
+                android:layout_width="115dp"
+                android:layout_height="@dimen/dimen_100dp"
+                android:layout_marginEnd="@dimen/margin_global_6dp"
+                android:layout_marginBottom="@dimen/margin_global_6dp"
+                android:background="@color/gray_home_type_background"
+                android:fontFamily="@font/poppins_regular"
+                android:gravity="center"
+                android:text="@string/ads_details_1"
+                android:textAllCaps="true"
+                android:textColor="@color/white_basic"
+                android:textSize="@dimen/dimen_14sp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvHome2"
+                android:layout_width="115dp"
+                android:layout_height="@dimen/dimen_100dp"
+                android:layout_marginEnd="@dimen/margin_global_6dp"
+                android:background="@color/gray_home_type_background"
+                android:fontFamily="@font/poppins_regular"
+                android:gravity="center"
+                android:text="@string/ads_details_2"
+                android:textAllCaps="true"
+                android:textColor="@color/white_basic"
+                android:textSize="@dimen/dimen_14sp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvHome3"
+                android:layout_width="115dp"
+                android:layout_height="@dimen/dimen_100dp"
+                android:background="@color/gray_home_type_background"
+                android:fontFamily="@font/poppins_regular"
+                android:gravity="center"
+                android:text="@string/ads_details_3"
+                android:textAllCaps="true"
+                android:textColor="@color/white_basic"
+                android:textSize="@dimen/dimen_14sp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvHome4"
+                android:layout_width="115dp"
+                android:layout_height="@dimen/dimen_100dp"
+                android:background="@color/gray_home_type_background"
+                android:fontFamily="@font/poppins_regular"
+                android:gravity="center"
+                android:text="@string/ads_details_4"
+                android:textAllCaps="true"
+                android:textColor="@color/white_basic"
+                android:textSize="@dimen/dimen_14sp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvHome5"
+                android:layout_width="115dp"
+                android:layout_height="@dimen/dimen_100dp"
+                android:background="@color/gray_home_type_background"
+                android:fontFamily="@font/poppins_regular"
+                android:gravity="center"
+                android:text="@string/ads_details_5"
+                android:textAllCaps="true"
+                android:textColor="@color/white_basic"
+                android:textSize="@dimen/dimen_14sp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvHome6"
+                android:layout_width="115dp"
+                android:layout_height="@dimen/dimen_100dp"
+                android:background="@color/gray_home_type_background"
+                android:fontFamily="@font/poppins_regular"
+                android:gravity="center"
+                android:text="@string/ads_details_6"
+                android:textAllCaps="true"
+                android:textColor="@color/white_basic"
+                android:textSize="@dimen/dimen_14sp" />
+
+        </GridLayout>
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_global_30dp"
+            android:layout_marginTop="@dimen/margin_global_30dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/home_details_conso"
+            android:textColor="@color/black"
+            android:textAllCaps="true"
+            android:textSize="@dimen/font_16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appCompatImageView2" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_global_30dp"
+            android:layout_marginTop="@dimen/margin_global_30dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/home_details_ges"
+            android:textColor="@color/black"
+            android:textAllCaps="true"
+            android:textSize="@dimen/font_16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appCompatImageView2" />
+
+    </LinearLayout>
+
+</layout>

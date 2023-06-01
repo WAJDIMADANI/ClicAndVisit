@@ -74,5 +74,9 @@
 
 
     <color name="status_in_hold_text_color">#FFA200</color>
+    <color name="red_pro_status">#EF4339</color>
+    <color name="red_pro_status_details">#4EB161</color>
+    <color name="details_color">#707070</color>
+    <color name="gray_home_type_background">#616161</color>
 
 </resources>

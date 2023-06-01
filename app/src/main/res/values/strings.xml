@@ -63,7 +63,8 @@
     <string name="home_list">Liste</string>
     <string name="home_card">Carte</string>
     <string name="home_visit">VISITEZ MAINTENANT</string>
-    <string name="home_meet">Prendre Rendez-vous</string>
+    <string name="home_meet">P r e n d r e \n Rendez-vous</string>
+    <string name="home_meet_details">Prendre Rendez-vous</string>
     <string name="home_details_pro">Pro</string>
     <string name="home_details_m_square">M²</string>
     <string name="home_details_euros">€</string>
@@ -141,6 +142,15 @@
     <string name="ad_ads_18">DUPLEX</string>
     <string name="ad_ads_19">TRIPLEX</string>
     <string name="ad_ads_20">REZ-DE-JARDIN</string>
+
+
+    <string name="ads_details_1">CHAMBRE</string>
+    <string name="ads_details_2">CH.PARENTALE</string>
+    <string name="ads_details_3">SALLE DE BAIN</string>
+    <string name="ads_details_4">SALLE D’EAU</string>
+    <string name="ads_details_5">DRESSING</string>
+    <string name="ads_details_6">GARAGE</string>
+
 
     <string name="ad_ads_loc">LOCALISATION *</string>
     <string name="ad_ads_city">Ville</string>
