@@ -93,6 +93,7 @@
 
 
     <!--ad ads-->
+    <string name="ad_ads_confirm">Confirmer</string>
     <string name="ad_ads_type">TYPE D’ANNONCE *</string>
     <string name="ad_ads_sale">Vente</string>
     <string name="ad_ads_location">Location</string>
@@ -201,6 +202,7 @@
     <string name="my_ads_validation">Annonces en Validation</string>
     <string name="my_ads_pro">PRO</string>
     <string name="my_ads_indispo">Indisponible</string>
+    <string name="my_ads_back">Retour</string>
 
     <!--profile-->
     <string name="profile_profile">Profil</string>

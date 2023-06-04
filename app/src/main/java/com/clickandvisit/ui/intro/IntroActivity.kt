@@ -47,6 +47,9 @@ class IntroActivity : BaseActivity() {
                     2 -> {
                         stepThree()
                     }
+                    3 -> {
+                        stepFour()
+                    }
                 }
             }
 
@@ -68,6 +71,9 @@ class IntroActivity : BaseActivity() {
                 }
                 1 -> {
                     binding.vpIntro.currentItem = 2
+                }
+                2 -> {
+                    binding.vpIntro.currentItem = 3
                 }
             }
         }
@@ -93,26 +99,22 @@ class IntroActivity : BaseActivity() {
 
     fun stepOne() {
         stepNumber = 0
-        binding.llStepContainer.visibility = View.VISIBLE
-        binding.ivStepOne.visibility = View.GONE
-        binding.ivStepTwo.visibility = View.VISIBLE
+        binding.ivStep.background = getDrawable(R.drawable.ic_add_step_1)
     }
 
     fun stepTwo() {
         stepNumber = 1
-        binding.cbIntroNext.text = getString(R.string.global_next)
-        binding.cbIntroNext.visibility = View.VISIBLE
-        binding.llStepContainer.visibility = View.VISIBLE
-        binding.ivStepOne.visibility = View.VISIBLE
-        binding.ivStepTwo.visibility = View.GONE
-        binding.cbIntroFinish.visibility = View.GONE
+        binding.ivStep.background = getDrawable(R.drawable.ic_add_step_2)
     }
 
     fun stepThree() {
         stepNumber = 2
-        binding.llStepContainer.visibility = View.GONE
-        binding.cbIntroFinish.visibility = View.VISIBLE
-        binding.cbIntroNext.visibility = View.GONE
+        binding.ivStep.background = getDrawable(R.drawable.ic_add_step_3)
+    }
+
+    fun stepFour() {
+        stepNumber = 3
+        binding.ivStep.background = getDrawable(R.drawable.ic_add_step_4)
     }
 
 }
