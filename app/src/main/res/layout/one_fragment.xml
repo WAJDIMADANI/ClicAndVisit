@@ -1,59 +1,453 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.intro.stepone.OneFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:scrollIndicators="none">
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/appCompatImageView"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="400dp"
-            android:background="@drawable/ic_intro_bg"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_height="match_parent"
+            android:padding="@dimen/margin_global_30dp">
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="115dp"
-            android:layout_height="180dp"
-            android:background="@drawable/ic_step_one"
-            app:layout_constraintBottom_toBottomOf="@+id/appCompatImageView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvAdsType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_bold"
+                android:text="@string/ad_ads_type_o"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvIntroTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_global_30dp"
-            android:fontFamily="@font/poppins_bold"
-            android:text="@string/app_intro_one_title"
-            android:textColor="@color/black_basic"
-            android:textSize="@dimen/font_20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/appCompatImageView" />
+            <RadioGroup
+                android:id="@+id/rgAdsType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvAdsType">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_global_15dp"
-            android:fontFamily="@font/poppins_regular"
-            android:gravity="center"
-            android:paddingStart="@dimen/margin_global_36dp"
-            android:paddingEnd="@dimen/margin_global_36dp"
-            android:text="@string/app_intro_one_body"
-            android:textColor="@color/color_text_body"
-            android:textSize="@dimen/font_13sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvIntroTitle" />
+                <RadioButton
+                    android:id="@+id/rbTypeSale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="@dimen/margin_global_30dp"
+                    android:checked="false"
+                    android:fontFamily="@font/poppins_regular"
+                    android:padding="4dp"
+                    android:text="@string/ad_ads_sale"
+                    android:textAlignment="center"
+                    android:textSize="@dimen/font_16sp" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                <RadioButton
+                    android:id="@+id/rbTypeLoc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:checked="false"
+                    android:fontFamily="@font/poppins_regular"
+                    android:padding="4dp"
+                    android:text="@string/ad_ads_location"
+                    android:textAlignment="center"
+                    android:textSize="@dimen/font_16sp" />
+
+            </RadioGroup>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvAdsTypeB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_global_5dp"
+                android:fontFamily="@font/poppins_bold"
+                android:text="@string/ad_ads_type_b"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rgAdsType" />
+
+            <com.clickandvisit.ui.shared.view.RadioGridGroup
+                android:id="@+id/rgAdsTypeB"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:columnCount="2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvAdsTypeB">
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/rbAdsTypeHome"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginEnd="@dimen/margin_global_30dp"
+                    android:checked="false"
+                    android:fontFamily="@font/poppins_regular"
+                    android:padding="4dp"
+                    android:text="@string/ad_ads_home"
+                    android:textSize="@dimen/font_16sp"
+                    app:layout_columnWeight="1" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/rbAdsTypeDesk"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:checked="false"
+                    android:fontFamily="@font/poppins_regular"
+                    android:padding="4dp"
+                    android:text="@string/ad_ads_desk"
+                    android:textSize="@dimen/font_16sp"
+                    app:layout_columnWeight="1" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/rbAdsTypeApp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginEnd="@dimen/margin_global_30dp"
+                    android:checked="false"
+                    android:fontFamily="@font/poppins_regular"
+                    android:padding="4dp"
+                    android:text="@string/ad_ads_app"
+                    android:textSize="@dimen/font_16sp"
+                    app:layout_columnWeight="1" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/rbAdsTypeGround"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:checked="false"
+                    android:fontFamily="@font/poppins_regular"
+                    android:padding="4dp"
+                    android:text="@string/ad_ads_ground"
+                    android:textSize="@dimen/font_16sp"
+                    app:layout_columnWeight="1" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/rbAdsTypeGarage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginEnd="@dimen/margin_global_30dp"
+                    android:checked="false"
+                    android:fontFamily="@font/poppins_regular"
+                    android:padding="4dp"
+                    android:text="@string/ad_ads_garage"
+                    android:textSize="@dimen/font_16sp"
+                    app:layout_columnWeight="1" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/rbAdsTypeComm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:checked="false"
+                    android:fontFamily="@font/poppins_regular"
+                    android:padding="4dp"
+                    android:text="@string/ad_ads_comm"
+                    android:textSize="@dimen/font_16sp"
+                    app:layout_columnWeight="1" />
+
+            </com.clickandvisit.ui.shared.view.RadioGridGroup>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvAdsRoomNbr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_global_5dp"
+                android:fontFamily="@font/poppins_bold"
+                android:text="@string/ad_ads_type_b"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rgAdsTypeB" />
+
+            <com.clickandvisit.ui.shared.view.RadioGridGroup
+                android:id="@+id/rgAdsRoomNbr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:columnCount="3"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvAdsRoomNbr">
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/rgAdsRoomNbr1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginEnd="@dimen/margin_global_30dp"
+                    android:checked="false"
+                    android:fontFamily="@font/poppins_regular"
+                    android:padding="4dp"
+                    android:text="1"
+                    android:textSize="@dimen/font_16sp"
+                    app:layout_columnWeight="1" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/rgAdsRoomNbr2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:checked="false"
+                    android:fontFamily="@font/poppins_regular"
+                    android:padding="4dp"
+                    android:text="2"
+                    android:textSize="@dimen/font_16sp"
+                    app:layout_columnWeight="1" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/rgAdsRoomNbr3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginEnd="@dimen/margin_global_30dp"
+                    android:checked="false"
+                    android:fontFamily="@font/poppins_regular"
+                    android:padding="4dp"
+                    android:text="3"
+                    android:textSize="@dimen/font_16sp"
+                    app:layout_columnWeight="1" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/rgAdsRoomNbr4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:checked="false"
+                    android:fontFamily="@font/poppins_regular"
+                    android:padding="4dp"
+                    android:text="4"
+                    android:textSize="@dimen/font_16sp"
+                    app:layout_columnWeight="1" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/rgAdsRoomNbr5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginEnd="@dimen/margin_global_30dp"
+                    android:checked="false"
+                    android:fontFamily="@font/poppins_regular"
+                    android:padding="4dp"
+                    android:text="5 et +"
+                    android:textSize="@dimen/font_16sp"
+                    app:layout_columnWeight="1" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/rgAdsRoomNbrNA"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:checked="false"
+                    android:fontFamily="@font/poppins_regular"
+                    android:padding="4dp"
+                    android:text="NA"
+                    android:textSize="@dimen/font_16sp"
+                    app:layout_columnWeight="1" />
+
+            </com.clickandvisit.ui.shared.view.RadioGridGroup>
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvAdsSpace"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_bold"
+                android:text="@string/ad_ads_surface"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rgAdsRoomNbr" />
+
+            <com.clickandvisit.ui.shared.view.CustomTextInputLayout
+                android:id="@+id/customTextInputLayoutSpace"
+                style="@style/InputLayout.AppStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/tvAdsSpace"
+                tools:layout_editor_absoluteX="30dp">
+
+                <com.clickandvisit.ui.shared.view.CustomTextInputEditText
+                    android:id="@+id/customTextInputEditTextSpace"
+                    style="@style/InputEditText.AppStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/ad_ads_m2"
+                    android:textSize="@dimen/font_13sp" />
+
+            </com.clickandvisit.ui.shared.view.CustomTextInputLayout>
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvAdsPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_bold"
+                android:text="@string/ad_ads_price"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/customTextInputLayoutSpace" />
+
+            <com.clickandvisit.ui.shared.view.CustomTextInputLayout
+                android:id="@+id/customTextInputLayoutPrice"
+                style="@style/InputLayout.AppStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/tvAdsPrice"
+                tools:layout_editor_absoluteX="30dp">
+
+                <com.clickandvisit.ui.shared.view.CustomTextInputEditText
+                    android:id="@+id/customTextInputEditTextCity"
+                    style="@style/InputEditText.AppStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/ad_ads_m2"
+                    android:textSize="@dimen/font_13sp" />
+
+            </com.clickandvisit.ui.shared.view.CustomTextInputLayout>
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvStage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_global_5dp"
+                android:fontFamily="@font/poppins_bold"
+                android:text="@string/ad_ads_stage"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/customTextInputLayoutPrice" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/llStage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_global_5dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvStage">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/etPriceMin"
+                    android:layout_width="0dp"
+                    android:layout_height="46dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/ic_edit_background"
+                    android:drawablePadding="@dimen/padding_global_10dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:inputType="number"
+                    android:paddingStart="@dimen/padding_global_10dp"
+                    android:textColor="@color/black"
+                    android:textCursorDrawable="@drawable/edit_cursor_color"
+                    android:textSize="@dimen/font_13sp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.3"
+                    android:fontFamily="@font/poppins_regular"
+                    android:gravity="center"
+                    android:text="@string/ad_ads_on"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/font_16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/customTextInputLayoutPrice" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/etPriceMax"
+                    android:layout_width="0dp"
+                    android:layout_height="46dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/ic_edit_background"
+                    android:drawablePadding="@dimen/padding_global_10dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:inputType="number"
+                    android:paddingStart="@dimen/padding_global_10dp"
+                    android:textColor="@color/black"
+                    android:textCursorDrawable="@drawable/edit_cursor_color"
+                    android:textSize="@dimen/font_13sp" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvConso"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_global_5dp"
+                android:fontFamily="@font/poppins_semi_bold"
+                android:text="@string/ad_ads_conso"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_15sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/llStage" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvGES"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_global_5dp"
+                android:fontFamily="@font/poppins_semi_bold"
+                android:text="@string/ad_ads_ges"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_15sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvConso" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_global_5dp"
+                android:fontFamily="@font/poppins_semi_bold"
+                android:text="@string/ad_ads_comp_info"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_15sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvGES" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvIndication"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_global_15dp"
+                android:fontFamily="@font/poppins_regular"
+                android:text="@string/ad_ads_comp_info_txt"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_15sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvInfo" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/chatMessage"
+                android:layout_width="match_parent"
+                android:layout_height="145dp"
+                android:layout_marginTop="@dimen/margin_global_12dp"
+                android:background="@drawable/ic_edit_background"
+                android:fontFamily="@font/poppins_medium"
+                android:gravity="start"
+                android:hint="@string/ad_ads_comp_info_hint"
+                android:inputType="textMultiLine"
+                android:padding="@dimen/padding_global_13dp"
+                android:textColor="@color/black"
+                android:textCursorDrawable="@drawable/edit_cursor_color"
+                android:textSize="@dimen/font_15sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvIndication" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
 
 </layout>

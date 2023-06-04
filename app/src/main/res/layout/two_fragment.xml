@@ -1,59 +1,322 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.intro.steptwo.TwoFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:scrollIndicators="none">
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/appCompatImageView"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="400dp"
-            android:background="@drawable/ic_intro_bg"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_height="match_parent"
+            android:padding="@dimen/margin_global_20dp">
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="163dp"
-            android:layout_height="170dp"
-            android:background="@drawable/ic_step_two"
-            app:layout_constraintBottom_toBottomOf="@+id/appCompatImageView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <com.clickandvisit.ui.shared.view.RadioGridGroup
+                android:id="@+id/rgAdsRoomNbr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:columnCount="3"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvIntroTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_global_30dp"
-            android:fontFamily="@font/poppins_bold"
-            android:text="@string/app_intro_two_title"
-            android:textColor="@color/black_basic"
-            android:textSize="@dimen/font_20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/appCompatImageView" />
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/rgAdsRoomNbr1"
+                    android:layout_width="114dp"
+                    android:layout_height="100dp"
+                    android:layout_marginStart="@dimen/margin_global_3dp"
+                    android:layout_marginTop="@dimen/margin_global_13dp"
+                    android:layout_marginEnd="@dimen/margin_global_3dp"
+                    android:background="@color/gray_home_type_background"
+                    android:button="@null"
+                    android:fontFamily="@font/poppins_regular"
+                    android:gravity="center"
+                    android:text="@string/ad_ads_1"
+                    android:textColor="@color/white_basic"
+                    android:textSize="@dimen/font_14sp"
+                    app:layout_columnWeight="1" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_global_15dp"
-            android:fontFamily="@font/poppins_regular"
-            android:gravity="center"
-            android:paddingStart="@dimen/margin_global_36dp"
-            android:paddingEnd="@dimen/margin_global_36dp"
-            android:text="@string/app_intro_two_body"
-            android:textColor="@color/color_text_body"
-            android:textSize="@dimen/font_13sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvIntroTitle" />
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/rgAdsRoomNbr2"
+                    android:layout_width="114dp"
+                    android:layout_height="100dp"
+                    android:layout_margin="@dimen/margin_global_3dp"
+                    android:background="@color/gray_home_type_background"
+                    android:button="@null"
+                    android:fontFamily="@font/poppins_regular"
+                    android:gravity="center"
+                    android:text="@string/ad_ads_2"
+                    android:textColor="@color/white_basic"
+                    android:textSize="@dimen/font_14sp"
+                    app:layout_columnWeight="1" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/rgAdsRoomNbr3"
+                    android:layout_width="114dp"
+                    android:layout_height="100dp"
+                    android:layout_margin="@dimen/margin_global_3dp"
+                    android:background="@color/gray_home_type_background"
+                    android:button="@null"
+                    android:fontFamily="@font/poppins_regular"
+                    android:gravity="center"
+                    android:text="@string/ad_ads_3"
+                    android:textColor="@color/white_basic"
+                    android:textSize="@dimen/font_14sp"
+                    app:layout_columnWeight="1" />
+
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/rgAdsRoomNbr4"
+                    android:layout_width="114dp"
+                    android:layout_height="100dp"
+                    android:layout_margin="@dimen/margin_global_3dp"
+                    android:layout_marginTop="-8dp"
+                    android:background="@color/gray_home_type_background"
+                    android:button="@null"
+                    android:fontFamily="@font/poppins_regular"
+                    android:gravity="center"
+                    android:text="@string/ad_ads_4"
+                    android:textColor="@color/white_basic"
+                    android:textSize="@dimen/font_14sp"
+                    app:layout_columnWeight="1" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/rgAdsRoomNbr5"
+                    android:layout_width="114dp"
+                    android:layout_height="100dp"
+                    android:layout_margin="@dimen/margin_global_3dp"
+                    android:background="@color/gray_home_type_background"
+                    android:button="@null"
+                    android:fontFamily="@font/poppins_regular"
+                    android:gravity="center"
+                    android:text="@string/ad_ads_5"
+                    android:textColor="@color/white_basic"
+                    android:textSize="@dimen/font_14sp"
+                    app:layout_columnWeight="1" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/rgAdsRoomNbr6"
+                    android:layout_width="114dp"
+                    android:layout_height="100dp"
+                    android:layout_margin="@dimen/margin_global_3dp"
+                    android:background="@color/gray_home_type_background"
+                    android:button="@null"
+                    android:fontFamily="@font/poppins_regular"
+                    android:gravity="center"
+                    android:text="@string/ad_ads_6"
+                    android:textColor="@color/white_basic"
+                    android:textSize="@dimen/font_14sp"
+                    app:layout_columnWeight="1" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/rgAdsRoomNbr7"
+                    android:layout_width="114dp"
+                    android:layout_height="100dp"
+                    android:layout_margin="@dimen/margin_global_3dp"
+                    android:background="@color/gray_home_type_background"
+                    android:button="@null"
+                    android:fontFamily="@font/poppins_regular"
+                    android:gravity="center"
+                    android:text="@string/ad_ads_7"
+                    android:textColor="@color/white_basic"
+                    android:textSize="@dimen/font_14sp"
+                    app:layout_columnWeight="1" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/rgAdsRoomNbr8"
+                    android:layout_width="114dp"
+                    android:layout_height="100dp"
+                    android:layout_margin="@dimen/margin_global_3dp"
+                    android:background="@color/gray_home_type_background"
+                    android:button="@null"
+                    android:fontFamily="@font/poppins_regular"
+                    android:gravity="center"
+                    android:text="@string/ad_ads_8"
+                    android:textColor="@color/white_basic"
+                    android:textSize="@dimen/font_14sp"
+                    app:layout_columnWeight="1" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/rgAdsRoomNbr9"
+                    android:layout_width="114dp"
+                    android:layout_height="100dp"
+                    android:layout_margin="@dimen/margin_global_3dp"
+                    android:background="@color/gray_home_type_background"
+                    android:button="@null"
+                    android:fontFamily="@font/poppins_regular"
+                    android:gravity="center"
+                    android:text="@string/ad_ads_9"
+                    android:textColor="@color/white_basic"
+                    android:textSize="@dimen/font_14sp"
+                    app:layout_columnWeight="1" />
+
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/rgAdsRoomNbr10"
+                    android:layout_width="114dp"
+                    android:layout_height="100dp"
+                    android:layout_margin="@dimen/margin_global_3dp"
+                    android:background="@color/gray_home_type_background"
+                    android:button="@null"
+                    android:fontFamily="@font/poppins_regular"
+                    android:gravity="center"
+                    android:text="@string/ad_ads_10"
+                    android:textColor="@color/white_basic"
+                    android:textSize="@dimen/font_14sp"
+                    app:layout_columnWeight="1" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/rgAdsRoomNbr11"
+                    android:layout_width="114dp"
+                    android:layout_height="100dp"
+                    android:layout_margin="@dimen/margin_global_3dp"
+                    android:layout_marginTop="-4dp"
+                    android:background="@color/gray_home_type_background"
+                    android:button="@null"
+                    android:fontFamily="@font/poppins_regular"
+                    android:gravity="center"
+                    android:text="@string/ad_ads_11"
+                    android:textColor="@color/white_basic"
+                    android:textSize="@dimen/font_14sp"
+                    app:layout_columnWeight="1" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/rgAdsRoomNbr12"
+                    android:layout_width="114dp"
+                    android:layout_height="100dp"
+                    android:layout_margin="@dimen/margin_global_3dp"
+                    android:background="@color/gray_home_type_background"
+                    android:button="@null"
+                    android:fontFamily="@font/poppins_regular"
+                    android:gravity="center"
+                    android:text="@string/ad_ads_12"
+                    android:textColor="@color/white_basic"
+                    android:textSize="@dimen/font_14sp"
+                    app:layout_columnWeight="1" />
+
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/rgAdsRoomNbr13"
+                    android:layout_width="114dp"
+                    android:layout_height="100dp"
+                    android:layout_margin="@dimen/margin_global_3dp"
+                    android:background="@color/gray_home_type_background"
+                    android:button="@null"
+                    android:fontFamily="@font/poppins_regular"
+                    android:gravity="center"
+                    android:text="@string/ad_ads_13"
+                    android:textColor="@color/white_basic"
+                    android:textSize="@dimen/font_14sp"
+                    app:layout_columnWeight="1" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/rgAdsRoomNbr14"
+                    android:layout_width="114dp"
+                    android:layout_height="100dp"
+                    android:layout_margin="@dimen/margin_global_3dp"
+                    android:background="@color/gray_home_type_background"
+                    android:button="@null"
+                    android:fontFamily="@font/poppins_regular"
+                    android:gravity="center"
+                    android:text="@string/ad_ads_14"
+                    android:textColor="@color/white_basic"
+                    android:textSize="@dimen/font_14sp"
+                    app:layout_columnWeight="1" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/rgAdsRoomNbr15"
+                    android:layout_width="114dp"
+                    android:layout_height="100dp"
+                    android:layout_margin="@dimen/margin_global_3dp"
+                    android:background="@color/gray_home_type_background"
+                    android:button="@null"
+                    android:fontFamily="@font/poppins_regular"
+                    android:gravity="center"
+                    android:text="@string/ad_ads_15"
+                    android:textColor="@color/white_basic"
+                    android:textSize="@dimen/font_14sp"
+                    app:layout_columnWeight="1" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/rgAdsRoomNbr16"
+                    android:layout_width="114dp"
+                    android:layout_height="100dp"
+                    android:layout_marginStart="@dimen/margin_global_3dp"
+                    android:layout_marginTop="-7dp"
+                    android:layout_marginEnd="@dimen/margin_global_3dp"
+                    android:layout_marginBottom="@dimen/margin_global_3dp"
+                    android:background="@color/gray_home_type_background"
+                    android:button="@null"
+                    android:fontFamily="@font/poppins_regular"
+                    android:gravity="center"
+                    android:text="@string/ad_ads_16"
+                    android:textColor="@color/white_basic"
+                    android:textSize="@dimen/font_14sp"
+                    app:layout_columnWeight="1" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/rgAdsRoomNbr17"
+                    android:layout_width="114dp"
+                    android:layout_height="100dp"
+                    android:layout_margin="@dimen/margin_global_3dp"
+                    android:background="@color/gray_home_type_background"
+                    android:button="@null"
+                    android:fontFamily="@font/poppins_regular"
+                    android:gravity="center"
+                    android:text="@string/ad_ads_17"
+                    android:textColor="@color/white_basic"
+                    android:textSize="@dimen/font_14sp"
+                    app:layout_columnWeight="1" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/rgAdsRoomNbr18"
+                    android:layout_width="114dp"
+                    android:layout_height="100dp"
+                    android:layout_margin="@dimen/margin_global_3dp"
+                    android:background="@color/gray_home_type_background"
+                    android:button="@null"
+                    android:fontFamily="@font/poppins_regular"
+                    android:gravity="center"
+                    android:text="@string/ad_ads_18"
+                    android:textColor="@color/white_basic"
+                    android:textSize="@dimen/font_14sp"
+                    app:layout_columnWeight="1" />
+
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/rgAdsRoomNbr19"
+                    android:layout_width="114dp"
+                    android:layout_height="100dp"
+                    android:layout_margin="@dimen/margin_global_3dp"
+                    android:background="@color/gray_home_type_background"
+                    android:button="@null"
+                    android:fontFamily="@font/poppins_regular"
+                    android:gravity="center"
+                    android:text="@string/ad_ads_19"
+                    android:textColor="@color/white_basic"
+                    android:textSize="@dimen/font_14sp"
+                    app:layout_columnWeight="1" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/rgAdsRoomNbr20"
+                    android:layout_width="114dp"
+                    android:layout_height="100dp"
+                    android:layout_margin="@dimen/margin_global_3dp"
+                    android:layout_marginTop="-6dp"
+                    android:background="@color/gray_home_type_background"
+                    android:button="@null"
+                    android:fontFamily="@font/poppins_regular"
+                    android:gravity="center"
+                    android:text="@string/ad_ads_20"
+                    android:textColor="@color/white_basic"
+                    android:textSize="@dimen/font_14sp"
+                    app:layout_columnWeight="1" />
+
+            </com.clickandvisit.ui.shared.view.RadioGridGroup>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
 
 </layout>

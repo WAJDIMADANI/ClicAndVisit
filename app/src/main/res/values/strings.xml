@@ -94,7 +94,7 @@
 
     <!--ad ads-->
     <string name="ad_ads_confirm">Confirmer</string>
-    <string name="ad_ads_type">TYPE D’ANNONCE *</string>
+    <string name="ad_ads_type_o">TYPE D’ANNONCE *</string>
     <string name="ad_ads_sale">Vente</string>
     <string name="ad_ads_location">Location</string>
     <string name="ad_ads_type_b">TYPE DE BIEN *</string>
@@ -114,9 +114,9 @@
     <string name="ad_ads_rent_price">PRIX AVEC CHARGES COMPRIS*</string>
     <string name="ad_ads_rent_price_hint">Loyer (charges comprises)</string>
     <string name="ad_ads_stage">ÉTAGE</string>
-    <string name="ad_ads_on">Sur</string>
+    <string name="ad_ads_on">sur</string>
 
-    <string name="ad_ads_comso">CONSOMMATIONS ÉNERGÉTIQUES</string>
+    <string name="ad_ads_conso">CONSOMMATIONS ÉNERGÉTIQUES</string>
     <string name="ad_ads_ges">GES</string>
 
     <string name="ad_ads_comp_info">INFORMATIONS COMPLÉMENTAIRES</string>
@@ -124,25 +124,25 @@
     <string name="ad_ads_comp_info_hint">Exemple: Proche de la gare</string>
 
     <string name="ad_ads_1">CHAMBRE(S)</string>
-    <string name="ad_ads_2">SUITE(S) PARENTALE(S)</string>
-    <string name="ad_ads_3">SALLE(S) DE BAIN</string>
-    <string name="ad_ads_4">SALLE(S) D’EAU</string>
+    <string name="ad_ads_2">SUITE(S) \nPARENTALE(S)</string>
+    <string name="ad_ads_3">SALLE(S) \nDE BAIN</string>
+    <string name="ad_ads_4">SALLE(S) \nD’EAU</string>
     <string name="ad_ads_5">BUREAU(X)</string>
     <string name="ad_ads_6">DRESSING</string>
     <string name="ad_ads_7">GARAGE(S)</string>
     <string name="ad_ads_8">CAVE(S)</string>
     <string name="ad_ads_9">BALCON(M2)</string>
     <string name="ad_ads_10">TERRASSE(M2)</string>
-    <string name="ad_ads_11">SURFACE TERRAIN(M2)</string>
+    <string name="ad_ads_11">SURFACE \nTERRAIN(M2)</string>
     <string name="ad_ads_12">ANNÉE</string>
     <string name="ad_ads_13">PISCINE</string>
-    <string name="ad_ads_14">PISCINABLE </string>
+    <string name="ad_ads_14">PISCINABLE</string>
     <string name="ad_ads_15">POOL HOUSE</string>
-    <string name="ad_ads_16">SANS VIS-À-VIS</string>
+    <string name="ad_ads_16">SANS \nVIS-À-VIS</string>
     <string name="ad_ads_17">ASCENSEUR</string>
     <string name="ad_ads_18">DUPLEX</string>
     <string name="ad_ads_19">TRIPLEX</string>
-    <string name="ad_ads_20">REZ-DE-JARDIN</string>
+    <string name="ad_ads_20">REZ-DE-\nJARDIN</string>
 
 
     <string name="ads_details_1">CHAMBRE</string>
