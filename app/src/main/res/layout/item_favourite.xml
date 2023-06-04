@@ -20,7 +20,7 @@
         android:layout_width="@dimen/dimen_45dp"
         android:layout_height="@dimen/dimen_25dp"
         android:layout_marginTop="@dimen/dimen_15dp"
-        android:background="@color/red_pro_status_details"
+        android:background="@color/red_pro_status"
         android:fontFamily="@font/poppins_bold"
         android:gravity="center"
         android:padding="@dimen/padding_global_5dp"
@@ -66,40 +66,25 @@
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <ImageView
+        android:id="@+id/ivLike"
+        android:layout_width="@dimen/dimen_45dp"
+        android:layout_height="@dimen/dimen_45dp"
+        android:src="@drawable/ic_like"
+        app:layout_constraintBottom_toBottomOf="@+id/ivShare"
+        app:layout_constraintEnd_toStartOf="@+id/ivShare"
+        app:layout_constraintTop_toTopOf="@+id/ivShare" />
+
+    <ImageView
+        android:id="@+id/ivShare"
+        android:layout_width="@dimen/dimen_45dp"
+        android:layout_height="@dimen/dimen_45dp"
         android:layout_marginTop="100dp"
         android:layout_marginEnd="@dimen/margin_global_5dp"
         android:layout_marginBottom="@dimen/margin_global_15dp"
+        android:src="@drawable/ic_share"
         app:layout_constraintBottom_toTopOf="@+id/tvMeet"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <ImageView
-            android:id="@+id/ivShare"
-            android:layout_width="@dimen/dimen_45dp"
-            android:layout_height="@dimen/dimen_45dp"
-            android:src="@drawable/ic_share" />
-
-        <ImageView
-            android:id="@+id/ivEdit"
-            android:layout_width="@dimen/dimen_45dp"
-            android:layout_height="@dimen/dimen_45dp"
-            android:src="@drawable/ic_edit_round" />
-
-        <ImageView
-            android:id="@+id/ivMeet"
-            android:layout_width="@dimen/dimen_45dp"
-            android:layout_height="@dimen/dimen_45dp"
-            android:src="@drawable/ic_meet_round" />
-
-        <ImageView
-            android:id="@+id/ivStar"
-            android:layout_width="@dimen/dimen_45dp"
-            android:layout_height="@dimen/dimen_45dp"
-            android:src="@drawable/ic_start" />
-
-    </androidx.appcompat.widget.LinearLayoutCompat>
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvAdsName"
@@ -127,9 +112,21 @@
         app:layout_constraintTop_toBottomOf="@+id/tvAdsName" />
 
     <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvAdsSpace"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_global_12dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="T2 - 35m2"
+        android:textColor="@color/details_color"
+        android:textSize="@dimen/font_12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvAdsPrice" />
+
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvMeet"
-        android:layout_width="127dp"
-        android:layout_height="51dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/margin_global_10dp"
         android:layout_marginBottom="@dimen/padding_global_10dp"
         android:background="@color/red_pro_status"
@@ -137,7 +134,7 @@
         android:gravity="center"
         android:paddingStart="@dimen/padding_global_5dp"
         android:paddingEnd="@dimen/padding_global_5dp"
-        android:text="@string/my_ads_indispo"
+        android:text="@string/home_meet"
         android:textAllCaps="true"
         android:textColor="@color/white_basic"
         android:textSize="@dimen/dimen_16sp"
