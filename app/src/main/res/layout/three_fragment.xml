@@ -1,59 +1,148 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.intro.stepthree.ThreeFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:scrollIndicators="none">
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/appCompatImageView"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="400dp"
-            android:background="@drawable/ic_intro_bg"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_height="match_parent"
+            android:padding="@dimen/margin_global_30dp">
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="163dp"
-            android:layout_height="170dp"
-            android:background="@drawable/ic_step_three"
-            app:layout_constraintBottom_toBottomOf="@+id/appCompatImageView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvAdsType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_bold"
+                android:text="@string/ad_ads_loc"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvIntroTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_global_30dp"
-            android:fontFamily="@font/poppins_bold"
-            android:text="@string/app_intro_three_title"
-            android:textColor="@color/black_basic"
-            android:textSize="@dimen/font_20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/appCompatImageView" />
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etCity"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:layout_marginTop="@dimen/margin_global_29dp"
+                android:background="@drawable/ic_edit_background"
+                android:drawablePadding="@dimen/padding_global_10dp"
+                android:fontFamily="@font/poppins_regular"
+                android:hint="@string/ad_ads_city"
+                android:paddingStart="@dimen/padding_global_10dp"
+                android:textColor="@color/black"
+                android:textCursorDrawable="@drawable/edit_cursor_color"
+                android:textSize="@dimen/font_13sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvAdsType" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_global_15dp"
-            android:fontFamily="@font/poppins_regular"
-            android:gravity="center"
-            android:paddingStart="@dimen/margin_global_36dp"
-            android:paddingEnd="@dimen/margin_global_36dp"
-            android:text="@string/app_intro_three_body"
-            android:textColor="@color/color_text_body"
-            android:textSize="@dimen/font_13sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvIntroTitle" />
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etPostalCode"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:layout_marginTop="@dimen/margin_global_29dp"
+                android:background="@drawable/ic_edit_background"
+                android:drawablePadding="@dimen/padding_global_10dp"
+                android:fontFamily="@font/poppins_regular"
+                android:hint="@string/ad_ads_postal_code"
+                android:paddingStart="@dimen/padding_global_10dp"
+                android:textColor="@color/black"
+                android:textCursorDrawable="@drawable/edit_cursor_color"
+                android:textSize="@dimen/font_13sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etCity" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etAddress"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:layout_marginTop="@dimen/margin_global_29dp"
+                android:background="@drawable/ic_edit_background"
+                android:drawablePadding="@dimen/padding_global_10dp"
+                android:fontFamily="@font/poppins_regular"
+                android:hint="@string/ad_ads_address"
+                android:paddingStart="@dimen/padding_global_10dp"
+                android:textColor="@color/black"
+                android:textCursorDrawable="@drawable/edit_cursor_color"
+                android:textSize="@dimen/font_13sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etPostalCode" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvIndication"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_global_29dp"
+                android:fontFamily="@font/poppins_regular"
+                android:text="@string/ad_ads_info"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etAddress" />
+
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etInter"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:layout_marginTop="@dimen/margin_global_29dp"
+                android:background="@drawable/ic_edit_background"
+                android:drawablePadding="@dimen/padding_global_10dp"
+                android:fontFamily="@font/poppins_regular"
+                android:hint="@string/ad_ads_interphone_name"
+                android:paddingStart="@dimen/padding_global_10dp"
+                android:textColor="@color/black"
+                android:textCursorDrawable="@drawable/edit_cursor_color"
+                android:textSize="@dimen/font_13sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvIndication" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etCode"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:layout_marginTop="@dimen/margin_global_29dp"
+                android:background="@drawable/ic_edit_background"
+                android:drawablePadding="@dimen/padding_global_10dp"
+                android:fontFamily="@font/poppins_regular"
+                android:hint="@string/ad_ads_interphone_code"
+                android:paddingStart="@dimen/padding_global_10dp"
+                android:textColor="@color/black"
+                android:textCursorDrawable="@drawable/edit_cursor_color"
+                android:textSize="@dimen/font_13sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etInter" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etinfo"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:layout_marginTop="@dimen/margin_global_29dp"
+                android:background="@drawable/ic_edit_background"
+                android:drawablePadding="@dimen/padding_global_10dp"
+                android:fontFamily="@font/poppins_regular"
+                android:hint="@string/ad_ads_other_info"
+                android:paddingStart="@dimen/padding_global_10dp"
+                android:textColor="@color/black"
+                android:textCursorDrawable="@drawable/edit_cursor_color"
+                android:textSize="@dimen/font_13sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etCode" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
 
 </layout>

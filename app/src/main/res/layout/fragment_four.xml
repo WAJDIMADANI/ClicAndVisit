@@ -1,6 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:scrollIndicators="none">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/margin_global_30dp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvAdsType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_bold"
+                android:text="@string/ad_ads_add_photo"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/llMainPhoto"
+                android:layout_width="350dp"
+                android:layout_height="165dp"
+                android:layout_marginTop="@dimen/margin_global_30dp"
+                android:background="@drawable/ic_photo_background"
+                android:gravity="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvAdsType">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="80dp"
+                    android:layout_height="@dimen/dimen_75dp"
+                    android:background="@drawable/ic_edit_background"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvAdsType">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvPhotoM"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/margin_global_15dp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="@string/ad_ads_add_main_photo"
+                        android:textColor="@color/black"
+                        android:textSize="7sp" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="27dp"
+                        android:layout_height="22dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/margin_global_10dp"
+                        android:background="@drawable/ic_main_photo" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvPhoto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_global_15dp"
+                android:layout_marginTop="@dimen/margin_global_50dp"
+                android:fontFamily="@font/poppins_bold"
+                android:text="@string/ad_ads_add_other_photo"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/llMainPhoto" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivPhoto"
+                android:layout_width="50dp"
+                android:layout_height="46dp"
+                android:layout_marginStart="@dimen/margin_global_30dp"
+                android:background="@drawable/ic_photo"
+                app:layout_constraintBottom_toBottomOf="@+id/tvPhoto"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tvPhoto"
+                app:layout_constraintTop_toTopOf="@+id/tvPhoto" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</layout>
