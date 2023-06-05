@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.clickandvisit.R
 import com.clickandvisit.base.BaseFragment
-import com.clickandvisit.databinding.OneFragmentBinding
+import com.clickandvisit.databinding.FragmentFourBinding
 import com.clickandvisit.global.helper.Navigation
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -19,7 +19,7 @@ class FourFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_four, container, false)
-        val bind = OneFragmentBinding.bind(view)
+        val bind = FragmentFourBinding.bind(view)
         bind.lifecycleOwner = viewLifecycleOwner
 
         //(requireActivity() as IntroActivity?)?.stepOne()
