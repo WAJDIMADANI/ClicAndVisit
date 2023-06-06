@@ -45,5 +45,6 @@ sealed class Navigation {
 
     data class CameraNavigation(val imageName: String) : Navigation()
 
+    object OpenDrawerNavigation : Navigation()
 
 }

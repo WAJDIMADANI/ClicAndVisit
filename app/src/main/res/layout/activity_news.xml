@@ -24,10 +24,6 @@
                 android:id="@+id/toolbarNews"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:ch_status_color="@color/red_basic"
-                app:ct_has_title="false"
-                app:ct_start_action_text="@string/global_cancel"
-                app:ct_start_action_text_font="@font/poppins_bold"
                 app:onActionClicked="@{viewModel}" />
 
 
