@@ -16,6 +16,7 @@ import com.clickandvisit.databinding.ActivityHomeBinding
 import com.clickandvisit.global.helper.Navigation
 import com.clickandvisit.global.utils.DebugLog
 import com.clickandvisit.global.utils.TAG
+import com.clickandvisit.ui.addads.AddAdsActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -73,54 +74,29 @@ class HomeActivity : BaseActivity(), DrawerLayout.DrawerListener{
             binding.drawerLayoutHome.closeDrawers()
             when (it.itemId) {
                 R.id.nav_menu_1 -> {
-                    if (!isItemChecked(0)) {
 
-                    }
                 }
-
                 R.id.nav_menu_2 -> {
-                    if (!isItemChecked(1)) {
-
-                    }
+                    navigateToActivity(AddAdsActivity::class)
                 }
-
                 R.id.nav_menu_3 -> {
-                    if (!isItemChecked(2)) {
 
-                    }
                 }
-
                 R.id.nav_menu_4 -> {
-                    if (!isItemChecked(3)) {
 
-                    }
                 }
-
                 R.id.nav_menu_5 -> {
-                    if (!isItemChecked(4)) {
-                        //navController.navigate(R.id.messageFragment)
 
-                    }
                 }
-
                 R.id.nav_menu_6 -> {
-                    if (!isItemChecked(5)) {
 
-                    }
                 }
-
                 R.id.nav_menu_7 -> {
-                    if (!isItemChecked(6)) {
 
-                    }
                 }
-
                 R.id.nav_menu_8 -> {
-                    if (!isItemChecked(7)) {
 
-                    }
                 }
-
                 R.id.nav_menu_9 -> {
                     viewModel.disconnect()
                     binding.navigationViewHome.menu.getItem(8).isChecked = false
@@ -174,7 +150,6 @@ class HomeActivity : BaseActivity(), DrawerLayout.DrawerListener{
     }
 
     override fun navigate(navigationTo: Navigation) {
-        super.navigate(navigationTo)
         when (navigationTo) {
             is Navigation.Back -> finish()
             is Navigation.OpenDrawerNavigation -> {

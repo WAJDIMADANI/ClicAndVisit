@@ -7,12 +7,10 @@ import com.clickandvisit.R
 import com.clickandvisit.base.BaseActivity
 import com.clickandvisit.databinding.ActivityAddAdsBinding
 import com.clickandvisit.global.helper.Navigation
-import com.clickandvisit.ui.shared.adapter.IntroViewPagerAdapter
-import com.clickandvisit.ui.signin.SignInActivity
-import dagger.hilt.android.AndroidEntryPoint
-
+import com.clickandvisit.ui.shared.adapter.AddAdsPagerAdapter
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
@@ -28,7 +26,7 @@ class AddAdsActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_add_ads)
         registerBindingAndBaseObservers(binding)
-        binding.vpIntro.adapter = IntroViewPagerAdapter(this, binding, applicationContext)
+        binding.vpIntro.adapter = AddAdsPagerAdapter(this, binding, applicationContext)
 
         TabLayoutMediator(binding.mTabLayout, binding.vpIntro) { tab, position ->
 
@@ -63,7 +61,7 @@ class AddAdsActivity : BaseActivity() {
     }
 
     private fun onButtonsClick() {
-        binding.cbIntroNext.setOnClickListener {
+        binding.cbNext.setOnClickListener {
             when (stepNumber) {
                 0 -> {
                     binding.vpIntro.currentItem = 1
@@ -74,11 +72,27 @@ class AddAdsActivity : BaseActivity() {
                 2 -> {
                     binding.vpIntro.currentItem = 3
                 }
+                /*3 -> {
+                    binding.vpIntro.currentItem = 4
+                }*/
             }
         }
 
-        binding.cbIntroFinish.setOnClickListener {
-            navigateToActivity(SignInActivity::class, true)
+        binding.cbBack.setOnClickListener {
+            when (stepNumber) {
+                0 -> {
+                    finish()
+                }
+                1 -> {
+                    binding.vpIntro.currentItem = 0
+                }
+                2 -> {
+                    binding.vpIntro.currentItem = 1
+                }
+                3 -> {
+                    binding.vpIntro.currentItem = 2
+                }
+            }
         }
     }
 

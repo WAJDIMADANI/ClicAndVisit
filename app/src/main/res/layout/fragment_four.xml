@@ -36,16 +36,16 @@
                 android:layout_width="350dp"
                 android:layout_height="165dp"
                 android:layout_marginTop="@dimen/margin_global_30dp"
-                android:background="@drawable/ic_photo_background"
+                android:background="@drawable/ic_dotted_border"
                 android:gravity="center"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvAdsType">
 
                 <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="80dp"
+                    android:layout_width="81dp"
                     android:layout_height="@dimen/dimen_75dp"
-                    android:background="@drawable/ic_edit_background"
+                    android:background="@drawable/ic_item_border"
                     android:orientation="vertical"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -56,18 +56,19 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="@dimen/margin_global_15dp"
+                        android:layout_marginTop="@dimen/margin_global_13dp"
                         android:fontFamily="@font/poppins_bold"
                         android:text="@string/ad_ads_add_main_photo"
                         android:textColor="@color/black"
                         android:textSize="7sp" />
 
                     <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="27dp"
-                        android:layout_height="22dp"
+                        android:layout_width="43dp"
+                        android:layout_height="35dp"
                         android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="@dimen/margin_global_10dp"
-                        android:background="@drawable/ic_main_photo" />
+                        android:layout_marginTop="@dimen/margin_global_5dp"
+                        android:scaleType="centerCrop"
+                        android:background="@drawable/ic_main_photo_test" />
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 

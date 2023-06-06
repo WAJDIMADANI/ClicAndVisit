@@ -93,6 +93,7 @@
 
 
     <!--ad ads-->
+    <string name="ad_ads_header">DÉPOSER UNE ANNONCE</string>
     <string name="ad_ads_confirm">Confirmer</string>
     <string name="ad_ads_type_o">TYPE D’ANNONCE *</string>
     <string name="ad_ads_sale">Vente</string>

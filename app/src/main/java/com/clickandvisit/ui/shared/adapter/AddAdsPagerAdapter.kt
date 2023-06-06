@@ -10,13 +10,13 @@ import com.clickandvisit.ui.addads.stepthree.ThreeFragment
 import com.clickandvisit.ui.addads.stepfour.FourFragment
 import com.clickandvisit.ui.addads.steptwo.TwoFragment
 
-class IntroViewPagerAdapter(
+class AddAdsPagerAdapter(
     fragment: FragmentActivity,
     val binding: ActivityAddAdsBinding,
     val context: Context
 ) : FragmentStateAdapter(fragment) {
 
-    override fun getItemCount(): Int = 3
+    override fun getItemCount(): Int = 4
 
     override fun createFragment(position: Int): Fragment {
         when (position) {

@@ -16,18 +16,42 @@
         android:layout_height="match_parent"
         android:background="@color/white_basic">
 
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/llHeader"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_60dp"
+            android:layout_marginBottom="@dimen/margin_global_26dp"
+            android:background="@color/black"
+            android:gravity="center">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvIntroTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_bold"
+                android:gravity="center"
+                android:text="@string/ad_ads_header"
+                android:textColor="@color/white_basic"
+                android:textSize="@dimen/font_16sp" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/ivStep"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dimen_30dp"
-            android:layout_margin="@dimen/margin_global_30dp"
+            android:layout_below="@+id/llHeader"
+            android:layout_marginStart="@dimen/margin_global_30dp"
+            android:layout_marginEnd="@dimen/margin_global_30dp"
+            android:layout_marginBottom="@dimen/margin_global_30dp"
             android:background="@drawable/ic_add_step_1" />
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/vpIntro"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="90dp" />
+            android:layout_below="@+id/ivStep"
+            android:layout_marginBottom="@dimen/dimen_100dp" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
@@ -50,7 +74,7 @@
                 android:textSize="@dimen/font_15sp" />
 
             <com.clickandvisit.ui.shared.view.CustomButton
-                android:id="@+id/cbIntroNext"
+                android:id="@+id/cbNext"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_toEndOf="@+id/llStepContainer"
