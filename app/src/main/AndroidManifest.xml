@@ -125,12 +125,6 @@
             android:windowSoftInputMode="adjustPan|stateHidden" />
 
         <activity
-            android:name=".ui.home.HomeMainActivity"
-            android:launchMode="singleTop"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="adjustPan|stateHidden" />
-
-        <activity
             android:name=".ui.home.menu.myads.adsdetails.AdsDetailsActivity"
             android:launchMode="singleTop"
             android:windowSoftInputMode="adjustPan|stateHidden" />

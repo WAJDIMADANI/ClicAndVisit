@@ -50,12 +50,10 @@ class CustomToolbar : FrameLayout, View.OnClickListener {
 
     override fun onClick(view: View) {
         when (view.id) {
-
             R.id.ivNav -> toolBarListener!!.onBMenuClicked()
             R.id.ivSearch -> toolBarListener!!.onSearchClicked()
             R.id.ivChat -> toolBarListener!!.onChatClicked()
             R.id.ivProfile -> toolBarListener!!.onProfileClicked()
-
         }
     }
 
