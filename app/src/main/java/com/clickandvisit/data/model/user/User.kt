@@ -2,13 +2,11 @@ package com.clickandvisit.data.model.user
 
 import android.os.Parcel
 import android.os.Parcelable
-import androidx.room.PrimaryKey
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 data class User(
-    @PrimaryKey
     @Json(name = "id")
     val id: String,
     @Json(name = "first_name")

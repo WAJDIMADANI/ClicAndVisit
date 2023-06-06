@@ -18,9 +18,7 @@ import androidx.paging.PagedList
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.clickandvisit.R
-import com.clickandvisit.global.helper.PaginationState
 import com.clickandvisit.global.listener.DataAdapterListener
-import com.clickandvisit.global.listener.PaginationStateListener
 import com.google.android.material.slider.Slider
 import com.squareup.picasso.MemoryPolicy
 import com.squareup.picasso.Picasso
@@ -150,16 +148,6 @@ fun <T> setRecyclerViewProperties(recyclerView: RecyclerView, data: PagedList<T>
     data?.let {
         if (recyclerView.adapter is PagedListAdapter<*, *>) {
             (recyclerView.adapter as PagedListAdapter<T, *>).submitList(it)
-        }
-    }
-}
-
-
-@BindingAdapter("pagedListAdapterState")
-fun setRecyclerViewProperties(recyclerView: RecyclerView, paginationState: PaginationState?) {
-    paginationState?.let {
-        if (recyclerView.adapter is PaginationStateListener) {
-            (recyclerView.adapter as PaginationStateListener).setState(paginationState)
         }
     }
 }

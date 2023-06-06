@@ -44,7 +44,6 @@ class CustomToolbar : FrameLayout, View.OnClickListener {
     private fun initialize(context: Context, attrs: AttributeSet?) {
         LayoutInflater.from(getContext()).inflate(R.layout.custom_toolbar, this, true)
         binding = CustomToolbarBinding.inflate(LayoutInflater.from(getContext()), this, true)
-
         binding.ivNav.setOnClickListener(this)
     }
 

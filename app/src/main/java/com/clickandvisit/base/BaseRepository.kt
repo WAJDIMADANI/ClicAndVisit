@@ -1,7 +1,6 @@
 package com.clickandvisit.base
 
 
-import com.clickandvisit.data.db.Database
 import com.clickandvisit.data.retrofit.APIClient
 import com.clickandvisit.global.helper.SharedPreferences
 
@@ -10,6 +9,5 @@ import com.clickandvisit.global.helper.SharedPreferences
  */
 abstract class BaseRepository(
     protected val apiClient: APIClient,
-    protected val sharedPreferences: SharedPreferences,
-    protected val database: Database
+    protected val sharedPreferences: SharedPreferences
 )

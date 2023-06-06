@@ -1,8 +1,6 @@
 package com.clickandvisit.di
 
-import com.clickandvisit.data.repository.abs.NewsRepository
 import com.clickandvisit.data.repository.abs.UserRepository
-import com.clickandvisit.data.repository.imp.NewsRepositoryImp
 import com.clickandvisit.data.repository.imp.UserRepositoryImp
 import dagger.Binds
 import dagger.Module
@@ -16,6 +14,4 @@ abstract class RepositoryModule {
     @Binds
     abstract fun provideProfileRepository(profileImp: UserRepositoryImp): UserRepository
 
-    @Binds
-    abstract fun provideNewsRepository(newsImp: NewsRepositoryImp): NewsRepository
 }

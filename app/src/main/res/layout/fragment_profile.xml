@@ -101,9 +101,6 @@
                     android:background="@color/white_basic"
                     android:orientation="vertical">
 
-
-
-
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tvSignupCivility"
                         android:layout_width="wrap_content"

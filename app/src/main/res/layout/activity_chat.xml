@@ -8,7 +8,7 @@
 
         <variable
             name="viewModel"
-            type="com.clickandvisit.ui.menu.chat.ChatViewModel" />
+            type="com.clickandvisit.ui.chat.ChatViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

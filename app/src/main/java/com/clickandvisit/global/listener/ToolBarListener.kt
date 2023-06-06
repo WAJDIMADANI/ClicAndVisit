@@ -3,9 +3,6 @@ package com.clickandvisit.global.listener
 import com.clickandvisit.global.utils.DebugLog
 import com.clickandvisit.global.utils.TAG
 
-/**
- * Created on 2/2/18.
- */
 
 interface ToolBarListener {
 

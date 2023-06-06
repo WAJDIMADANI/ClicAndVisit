@@ -2,7 +2,6 @@ package com.clickandvisit.data.repository.imp
 
 import androidx.annotation.WorkerThread
 import com.clickandvisit.base.BaseRepository
-import com.clickandvisit.data.db.Database
 import com.clickandvisit.data.model.user.User
 import com.clickandvisit.data.repository.abs.UserRepository
 import com.clickandvisit.data.retrofit.APIClient
@@ -14,10 +13,9 @@ import javax.inject.Inject
 
 class UserRepositoryImp @Inject constructor(
     apiClient: APIClient,
-    sharedPreferences: SharedPreferences,
-    database: Database
+    sharedPreferences: SharedPreferences
 ) :
-    BaseRepository(apiClient, sharedPreferences, database), UserRepository {
+    BaseRepository(apiClient, sharedPreferences), UserRepository {
 
     @WorkerThread
     override suspend fun signUp(

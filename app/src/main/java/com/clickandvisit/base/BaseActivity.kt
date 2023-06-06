@@ -17,8 +17,6 @@ import com.clickandvisit.global.helper.DetachableClickHelper
 import com.clickandvisit.global.helper.Navigation
 import com.clickandvisit.global.utils.DebugLog
 import com.clickandvisit.global.utils.observeOnlyNotNull
-import com.clickandvisit.ui.menu.details.DetailsActivity
-import com.clickandvisit.ui.menu.filter.FilterActivity
 import com.clickandvisit.ui.shared.bottomsheet.CustomSignUpBottomSheet
 import com.clickandvisit.ui.shared.dialog.CustomProgressDialog
 import com.clickandvisit.ui.shared.view.CustomSnackBar
@@ -42,11 +40,7 @@ abstract class BaseActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        if (this is FilterActivity || this is DetailsActivity) {
-            overridePendingTransition(R.anim.slide_in_top, R.anim.no)
-        } else {
-            overridePendingTransition(R.anim.slide_in_right, R.anim.non)
-        }
+        overridePendingTransition(R.anim.slide_in_right, R.anim.non)
     }
 
 
@@ -174,11 +168,7 @@ abstract class BaseActivity : AppCompatActivity() {
 
 
     private fun pendingTransition() {
-        if (this is FilterActivity || this is DetailsActivity) {
-            overridePendingTransition(R.anim.no, R.anim.slide_out_bottom)
-        } else {
-            overridePendingTransition(R.anim.non, R.anim.slide_out_right)
-        }
+        overridePendingTransition(R.anim.non, R.anim.slide_out_right)
     }
 
 
