@@ -136,9 +136,6 @@ class HomeActivity : BaseActivity(), DrawerLayout.DrawerListener{
     private fun registerHomeObservers() {
         binding.navigationViewHome.menu.getItem(0).isChecked = true
         binding.drawerLayoutHome.addDrawerListener(this)
-        /* binding.ivNav.setOnClickListener {
-             onMenuClicked()
-         }*/
         registerAutoNavigation()
 
     }

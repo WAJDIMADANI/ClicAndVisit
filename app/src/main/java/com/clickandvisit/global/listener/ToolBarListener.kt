@@ -18,19 +18,19 @@ interface ToolBarListener {
     }
 
     fun onBMenuClicked() {
-        DebugLog.d(TAG, "onStartClicked but not handled")
+        DebugLog.d(TAG, "onBMenuClicked but not handled")
     }
 
     fun onSearchClicked() {
-        DebugLog.d(TAG, "onStartClicked but not handled")
+        DebugLog.d(TAG, "onSearchClicked but not handled")
     }
 
     fun onChatClicked() {
-        DebugLog.d(TAG, "onStartClicked but not handled")
+        DebugLog.d(TAG, "onChatClicked but not handled")
     }
 
     fun onProfileClicked() {
-        DebugLog.d(TAG, "onStartClicked but not handled")
+        DebugLog.d(TAG, "onProfileClicked but not handled")
     }
 
 }
