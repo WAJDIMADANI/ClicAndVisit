@@ -1,4 +1,4 @@
-package com.clickandvisit.ui.intro.steptwo
+package com.clickandvisit.ui.addads.stepthree
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,19 +6,21 @@ import android.view.View
 import android.view.ViewGroup
 import com.clickandvisit.R
 import com.clickandvisit.base.BaseFragment
-import com.clickandvisit.databinding.TwoFragmentBinding
+import com.clickandvisit.databinding.ThreeFragmentBinding
 import com.clickandvisit.global.helper.Navigation
+import dagger.hilt.android.AndroidEntryPoint
 
-class TwoFragment : BaseFragment() {
+@AndroidEntryPoint
+class ThreeFragment : BaseFragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.two_fragment, container, false)
-        val bind = TwoFragmentBinding.bind(view)
+        val view = inflater.inflate(R.layout.three_fragment, container, false)
+        val bind = ThreeFragmentBinding.bind(view)
         bind.lifecycleOwner = viewLifecycleOwner
-        //(requireActivity() as IntroActivity?)?.stepTwo()
+        //(requireActivity() as IntroActivity?)?.stepThree()
         return view
     }
 
@@ -40,4 +42,5 @@ class TwoFragment : BaseFragment() {
     override fun navigate(navigationTo: Navigation) {
 
     }
+
 }

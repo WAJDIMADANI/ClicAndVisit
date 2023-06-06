@@ -1,12 +1,11 @@
-package com.clickandvisit.ui.intro
+package com.clickandvisit.ui.addads
 
 import android.os.Bundle
-import android.view.View
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import com.clickandvisit.R
 import com.clickandvisit.base.BaseActivity
-import com.clickandvisit.databinding.ActivityIntroBinding
+import com.clickandvisit.databinding.ActivityAddAdsBinding
 import com.clickandvisit.global.helper.Navigation
 import com.clickandvisit.ui.shared.adapter.IntroViewPagerAdapter
 import com.clickandvisit.ui.signin.SignInActivity
@@ -17,17 +16,17 @@ import com.google.android.material.tabs.TabLayoutMediator
 
 
 @AndroidEntryPoint
-class IntroActivity : BaseActivity() {
+class AddAdsActivity : BaseActivity() {
 
-    private val viewModel: IntroViewModel by viewModels()
+    private val viewModel: AddAdsViewModel by viewModels()
 
-    lateinit var binding: ActivityIntroBinding
+    lateinit var binding: ActivityAddAdsBinding
 
     var stepNumber = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_intro)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_add_ads)
         registerBindingAndBaseObservers(binding)
         binding.vpIntro.adapter = IntroViewPagerAdapter(this, binding, applicationContext)
 
@@ -91,7 +90,7 @@ class IntroActivity : BaseActivity() {
      * Register the UI for XMLBinding
      * Register the activity for base observer
      */
-    private fun registerBindingAndBaseObservers(binding: ActivityIntroBinding) {
+    private fun registerBindingAndBaseObservers(binding: ActivityAddAdsBinding) {
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
         registerBaseObservers(viewModel)

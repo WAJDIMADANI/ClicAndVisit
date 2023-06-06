@@ -1,4 +1,4 @@
-package com.clickandvisit.ui.intro.stepthree
+package com.clickandvisit.ui.addads.stepone
 
 import android.app.Application
 import androidx.lifecycle.SavedStateHandle
@@ -9,7 +9,7 @@ import javax.inject.Inject
 
 
 @HiltViewModel
-class ThreeViewModel
+class OneViewModel
 @Inject constructor(
     application: Application,
     schedulerProvider: SchedulerProvider,

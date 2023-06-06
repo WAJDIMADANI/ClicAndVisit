@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.clickandvisit.ui.intro.stepfour.FourViewModel" />
+            type="com.clickandvisit.ui.addads.stepfour.FourViewModel" />
     </data>
 
     <ScrollView

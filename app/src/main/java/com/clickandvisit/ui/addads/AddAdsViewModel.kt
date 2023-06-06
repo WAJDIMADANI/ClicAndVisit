@@ -1,25 +1,28 @@
-package com.clickandvisit.ui.intro.stepone
+package com.clickandvisit.ui.addads
 
 import android.app.Application
-import androidx.lifecycle.SavedStateHandle
 import com.clickandvisit.base.BaseAndroidViewModel
+import com.clickandvisit.data.repository.abs.UserRepository
 import com.clickandvisit.global.listener.SchedulerProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 
 @HiltViewModel
-class OneViewModel
+class AddAdsViewModel
 @Inject constructor(
     application: Application,
     schedulerProvider: SchedulerProvider,
-    savedStateHandle: SavedStateHandle
-
+    private val userRepository: UserRepository
 ) : BaseAndroidViewModel(application, schedulerProvider) {
 
-
     init {
-
+        viewModelScope.launch {
+            withContext(schedulerProvider.dispatchersIO()) {
+                userRepository.setIntro()
+            }
+        }
     }
-
 }

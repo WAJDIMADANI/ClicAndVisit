@@ -13,7 +13,7 @@ import com.clickandvisit.global.utils.DebugLog
 import com.clickandvisit.global.utils.ExtraKeys
 import com.clickandvisit.global.utils.TAG
 import com.clickandvisit.ui.home.HomeActivity
-import com.clickandvisit.ui.intro.IntroActivity
+import com.clickandvisit.ui.addads.AddAdsActivity
 import com.clickandvisit.ui.signin.SignInActivity
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -45,7 +45,7 @@ class SplashActivity : BaseActivity() {
                 navigateToActivity(SignInActivity::class, true)
             }
             is Navigation.IntroActivityNavigation -> {
-                navigateToActivity(IntroActivity::class, true)
+                navigateToActivity(AddAdsActivity::class, true)
             }
         }
     }

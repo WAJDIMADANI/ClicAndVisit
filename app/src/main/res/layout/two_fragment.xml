@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.clickandvisit.ui.intro.steptwo.TwoViewModel" />
+            type="com.clickandvisit.ui.addads.steptwo.TwoViewModel" />
     </data>
 
     <ScrollView

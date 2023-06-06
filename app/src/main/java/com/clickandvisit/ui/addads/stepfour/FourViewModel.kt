@@ -1,4 +1,4 @@
-package com.clickandvisit.ui.intro.stepfour
+package com.clickandvisit.ui.addads.stepfour
 
 import android.app.Application
 import androidx.lifecycle.SavedStateHandle
