@@ -16,7 +16,7 @@ import com.clickandvisit.databinding.ActivityHomeBinding
 import com.clickandvisit.global.helper.Navigation
 import com.clickandvisit.global.utils.DebugLog
 import com.clickandvisit.global.utils.TAG
-import com.clickandvisit.ui.addads.AddAdsActivity
+import com.clickandvisit.ui.ads.addads.AddAdsActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 

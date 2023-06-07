@@ -63,12 +63,12 @@ class ProfileViewModel
 
     private fun onTakePictureClicked(): () -> Unit {
         return {
-            navigate(Navigation.CameraNavigation(com.clickandvisit.ui.signup.PROFILE_PIC_NAME))
+            navigate(Navigation.CameraNavigation(com.clickandvisit.ui.user.signup.PROFILE_PIC_NAME))
         }
     }
 
     fun cameraPermissionGranted() {
-        navigate(Navigation.CameraNavigation(com.clickandvisit.ui.signup.PROFILE_PIC_NAME))
+        navigate(Navigation.CameraNavigation(com.clickandvisit.ui.user.signup.PROFILE_PIC_NAME))
     }
 
     private fun onPickPictureClicked(): () -> Unit {
@@ -92,14 +92,14 @@ class ProfileViewModel
                         resultCode,
                         data,
                         true,
-                        com.clickandvisit.ui.signup.PROFILE_PIC_NAME
+                        com.clickandvisit.ui.user.signup.PROFILE_PIC_NAME
                     )
                     ImagePicker.PICK_IMAGE_GALLERY_ID -> ImagePicker.getUriFromResult(
                         applicationContext,
                         resultCode,
                         data,
                         false,
-                        com.clickandvisit.ui.signup.PROFILE_PIC_NAME
+                        com.clickandvisit.ui.user.signup.PROFILE_PIC_NAME
                     )
                     else -> Uri.EMPTY
                 }

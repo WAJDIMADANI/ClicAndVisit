@@ -2,13 +2,13 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layout"
-    tools:context=".ui.addads.AddAdsActivity">
+    tools:context=".ui.ads.addads.AddAdsActivity">
 
     <data>
 
         <variable
             name="viewModel"
-            type="com.clickandvisit.ui.addads.AddAdsViewModel" />
+            type="com.clickandvisit.ui.ads.addads.AddAdsViewModel" />
     </data>
 
     <RelativeLayout

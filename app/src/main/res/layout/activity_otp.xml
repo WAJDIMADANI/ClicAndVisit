@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layout"
-    tools:context=".ui.signup.otp.OtpActivity">
+    tools:context=".ui.user.signup.otp.OtpActivity">
 
     <data>
 
@@ -11,7 +11,7 @@
 
         <variable
             name="viewModel"
-            type="com.clickandvisit.ui.signup.otp.OtpViewModel" />
+            type="com.clickandvisit.ui.user.signup.otp.OtpViewModel" />
     </data>
 
     <LinearLayout

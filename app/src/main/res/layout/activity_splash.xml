@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layout"
-    tools:context=".ui.splash.SplashActivity">
+    tools:context=".ui.user.splash.SplashActivity">
 
     <data>
         <variable
             name="viewModel"
-            type="com.clickandvisit.ui.splash.SplashViewModel" />
+            type="com.clickandvisit.ui.user.splash.SplashViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

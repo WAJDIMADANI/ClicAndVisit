@@ -5,10 +5,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.clickandvisit.databinding.ActivityAddAdsBinding
-import com.clickandvisit.ui.addads.stepone.OneFragment
-import com.clickandvisit.ui.addads.stepthree.ThreeFragment
-import com.clickandvisit.ui.addads.stepfour.FourFragment
-import com.clickandvisit.ui.addads.steptwo.TwoFragment
+import com.clickandvisit.ui.ads.addads.stepone.OneFragment
+import com.clickandvisit.ui.ads.addads.stepthree.ThreeFragment
+import com.clickandvisit.ui.ads.addads.stepfour.FourFragment
+import com.clickandvisit.ui.ads.addads.steptwo.TwoFragment
 
 class AddAdsPagerAdapter(
     fragment: FragmentActivity,
