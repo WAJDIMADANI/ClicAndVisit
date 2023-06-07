@@ -39,6 +39,7 @@ class ProfileActivity : BaseActivity() {
      */
     private fun registerBindingAndBaseObservers(binding: ActivityProfileBinding) {
         binding.viewModel = viewModel
+        binding.picasso = getPicasso()
         binding.lifecycleOwner = this
         registerBaseObservers(viewModel)
     }

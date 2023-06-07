@@ -17,11 +17,17 @@ import com.clickandvisit.global.helper.Navigation
 import com.clickandvisit.global.utils.DebugLog
 import com.clickandvisit.global.utils.TAG
 import com.clickandvisit.ui.ads.addads.AddAdsActivity
+import com.clickandvisit.ui.ads.adslist.AdsListActivity
+import com.clickandvisit.ui.ads.favourites.FavouritesActivity
+import com.clickandvisit.ui.ads.filter.FilterActivity
+import com.clickandvisit.ui.ads.search.SearchActivity
+import com.clickandvisit.ui.user.meet.MeetActivity
+import com.clickandvisit.ui.user.profile.ProfileActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
-class HomeActivity : BaseActivity(), DrawerLayout.DrawerListener{
+class HomeActivity : BaseActivity(), DrawerLayout.DrawerListener {
 
     private val viewModel: HomeViewModel by viewModels()
 
@@ -36,7 +42,8 @@ class HomeActivity : BaseActivity(), DrawerLayout.DrawerListener{
         binding =
             DataBindingUtil.setContentView(this, R.layout.activity_home)
 
-        navController = androidx.navigation.Navigation.findNavController(this, R.id.fragmentHomeNavHost)
+        navController =
+            androidx.navigation.Navigation.findNavController(this, R.id.fragmentHomeNavHost)
         navController.setGraph(R.navigation.mobile_navigation, intent.extras)
         registerBindingAndBaseObservers(binding)
         registerHomeObservers()
@@ -74,32 +81,32 @@ class HomeActivity : BaseActivity(), DrawerLayout.DrawerListener{
             binding.drawerLayoutHome.closeDrawers()
             when (it.itemId) {
                 R.id.nav_menu_1 -> {
-
+                    navigateToActivity(FilterActivity::class)
                 }
                 R.id.nav_menu_2 -> {
                     navigateToActivity(AddAdsActivity::class)
                 }
                 R.id.nav_menu_3 -> {
-
+                    navigateToActivity(AdsListActivity::class)
                 }
                 R.id.nav_menu_4 -> {
-
+                    navigateToActivity(ProfileActivity::class)
                 }
                 R.id.nav_menu_5 -> {
-
+                    navigateToActivity(MeetActivity::class)
                 }
                 R.id.nav_menu_6 -> {
-
+                    navigateToActivity(FavouritesActivity::class)
                 }
                 R.id.nav_menu_7 -> {
-
+                    navigateToActivity(SearchActivity::class)
                 }
                 R.id.nav_menu_8 -> {
-
+                    navigateToActivity(MeetActivity::class)
                 }
                 R.id.nav_menu_9 -> {
                     viewModel.disconnect()
-                    binding.navigationViewHome.menu.getItem(8).isChecked = false
+                    //binding.navigationViewHome.menu.getItem(8).isChecked = false
                 }
             }
             return@setNavigationItemSelectedListener true
