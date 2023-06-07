@@ -106,11 +106,11 @@ android {
     productFlavors {
         dev {
             dimension "version"
-            buildConfigField("String", "BASE_URL", '"http://colisjet.com/"')
+            buildConfigField("String", "BASE_URL", '"https://clickandvisit.mad-impact.com/wp-json/click_api/v1/"')
         }
         prod {
             dimension "version"
-            buildConfigField("String", "BASE_URL", '"http://colisjet.com/"')
+            buildConfigField("String", "BASE_URL", '"https://clickandvisit.mad-impact.com/wp-json/click_api/v1/"')
         }
     }
     compileOptions {
