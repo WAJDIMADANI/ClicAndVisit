@@ -76,7 +76,7 @@
                             android:id="@+id/customTextInputEditTextSignInEmail"
                             style="@style/InputEditText.AppStyle"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="@dimen/dimen_edit_text"
                             android:drawablePadding="16dp"
                             android:hint="@string/signin_mail"
                             android:inputType="textEmailAddress"
@@ -96,7 +96,7 @@
                             android:id="@+id/customTextInputEditTextSignInPassword"
                             style="@style/InputEditText.AppStyle"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="@dimen/dimen_edit_text"
                             android:drawablePadding="16dp"
                             android:fontFamily="@font/poppins_medium"
                             android:hint="@string/signin_password"
@@ -110,7 +110,7 @@
 
                     <com.clickandvisit.ui.shared.view.CustomButton
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="@dimen/dimen_edit_text"
                         android:layout_alignParentEnd="true"
                         android:layout_gravity="center_vertical|end"
                         android:layout_marginTop="@dimen/margin_global_5dp"

@@ -33,7 +33,7 @@
 
             <ImageView
                 android:layout_width="0dp"
-                android:layout_height="224dp"
+                android:layout_height="190dp"
                 android:background="@color/black"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -41,9 +41,9 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:layout_width="@dimen/dimen_30dp"
-                android:layout_height="@dimen/dimen_30dp"
-                android:layout_marginStart="@dimen/margin_global_30dp"
+                android:layout_width="@dimen/dimen_25dp"
+                android:layout_height="@dimen/dimen_25dp"
+                android:layout_marginStart="@dimen/margin_global_25dp"
                 android:layout_marginTop="@dimen/margin_global_30dp"
                 android:background="@drawable/ic_back"
                 app:layout_constraintStart_toStartOf="parent"
@@ -98,26 +98,24 @@
                         android:id="@+id/rbUser"
                         android:layout_width="@dimen/dimen_145dp"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:fontFamily="@font/poppins_regular"
-                        android:padding="4dp"
                         android:checked="@{viewModel.checkedNoPro}"
+                        android:fontFamily="@font/poppins_regular"
                         android:onClick="onNoProClick"
+                        android:padding="4dp"
                         android:text="@string/signup_user"
-                        android:textAlignment="center"
+                        android:textAlignment="textStart"
                         android:textSize="@dimen/font_16sp" />
 
                     <RadioButton
                         android:id="@+id/rbPro"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
                         android:checked="@{viewModel.checkedPro}"
                         android:fontFamily="@font/poppins_regular"
                         android:onClick="onProClick"
                         android:padding="4dp"
                         android:text="@string/signup_pro"
-                        android:textAlignment="center"
+                        android:textAlignment="textStart"
                         android:textSize="@dimen/font_16sp" />
 
                 </RadioGroup>
@@ -131,6 +129,7 @@
                     android:text="@string/signup_civility"
                     android:textColor="@color/black_basic"
                     android:textSize="@dimen/font_16sp"
+                    android:visibility="@{viewModel.checkedPro ? View.GONE : View.VISIBLE}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/appCompatImageView" />
@@ -140,30 +139,31 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/margin_global_15dp"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:visibility="@{viewModel.checkedPro ? View.GONE : View.VISIBLE}">
 
                     <RadioButton
                         android:id="@+id/rbCivilityM"
                         android:layout_width="@dimen/dimen_145dp"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:checked="false"
+                        android:checked="@{viewModel.checkedM}"
                         android:fontFamily="@font/poppins_regular"
+                        android:onClick="onMClick"
                         android:padding="4dp"
                         android:text="@string/signup_m"
-                        android:textAlignment="center"
+                        android:textAlignment="textStart"
                         android:textSize="@dimen/font_16sp" />
 
                     <RadioButton
                         android:id="@+id/rbCivilityF"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:checked="false"
+                        android:checked="@{viewModel.checkedF}"
                         android:fontFamily="@font/poppins_regular"
                         android:padding="4dp"
+                        android:onClick="onFClick"
                         android:text="@string/signup_f"
-                        android:textAlignment="center"
+                        android:textAlignment="textStart"
                         android:textSize="@dimen/font_16sp" />
 
                 </RadioGroup>
@@ -180,7 +180,7 @@
                         android:id="@+id/customTextInputEditTextSignUpUser"
                         style="@style/InputEditText.AppStyle"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="@dimen/dimen_edit_text"
                         android:hint="@string/signup_lastname"
                         android:inputType="textPersonName"
                         android:text="@={viewModel.userName}" />
@@ -199,7 +199,7 @@
                         android:id="@+id/customTextInputEditTextSignUpCin"
                         style="@style/InputEditText.AppStyle"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="@dimen/dimen_edit_text"
                         android:hint="@string/signup_firstname"
                         android:text="@={viewModel.firstname}" />
 
@@ -211,7 +211,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:visibility="@{viewModel.checkedPro ? View.VISIBLE : View.GONE, default=gone}"
-                    app:errorBackground="@{viewModel.userFieldError}">
+                    app:errorBackground="@{viewModel.socialFieldError}">
 
                     <com.clickandvisit.ui.shared.view.CustomTextInputEditText
                         android:id="@+id/customTextInputEditTextSignUpSocial"
@@ -220,7 +220,7 @@
                         android:layout_height="wrap_content"
                         android:hint="@string/signup_pro_social"
                         android:inputType="textPersonName"
-                        android:text="@={viewModel.userName}" />
+                        android:text="@={viewModel.social}" />
 
                 </com.clickandvisit.ui.shared.view.CustomTextInputLayout>
 
@@ -230,7 +230,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:visibility="@{viewModel.checkedPro ? View.VISIBLE : View.GONE, default=gone}"
-                    app:errorBackground="@{viewModel.firstnameFieldError}">
+                    app:errorBackground="@{viewModel.siretFieldError}">
 
                     <com.clickandvisit.ui.shared.view.CustomTextInputEditText
                         android:id="@+id/customTextInputEditTextSignUpSiret"
@@ -238,7 +238,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/signup_pro_siret"
-                        android:text="@={viewModel.firstname}" />
+                        android:text="@={viewModel.siret}" />
 
                 </com.clickandvisit.ui.shared.view.CustomTextInputLayout>
 
@@ -253,7 +253,7 @@
                         android:id="@+id/customTextInputEditTextSignInEmail"
                         style="@style/InputEditText.AppStyle"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="@dimen/dimen_edit_text"
                         android:hint="@string/signin_mail"
                         android:inputType="textEmailAddress"
                         android:text="@={viewModel.email}" />
@@ -271,7 +271,7 @@
                         android:id="@+id/customTextInputEditTextSignUpPhone"
                         style="@style/InputEditText.AppStyle"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="@dimen/dimen_edit_text"
                         android:hint="@string/signup_phone"
                         android:inputType="phone"
                         android:text="@={viewModel.phone}" />
@@ -290,36 +290,16 @@
                         android:id="@+id/customTextInputEditTextSignUpPassword"
                         style="@style/InputEditText.AppStyle"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="@dimen/dimen_edit_text"
                         android:hint="@string/signup_password"
                         android:inputType="textPassword"
                         android:text="@={viewModel.password}" />
 
                 </com.clickandvisit.ui.shared.view.CustomTextInputLayout>
 
-                <com.clickandvisit.ui.shared.view.CustomTextInputLayout
-                    android:id="@+id/customTextInputLayoutSignUpPasswordConfirm"
-                    style="@style/InputLayout.AppStyle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:visibility="@{viewModel.checkedPro ? View.VISIBLE : View.GONE, default=gone}"
-                    app:endIconMode="password_toggle"
-                    app:errorBackground="@{viewModel.passwordConfirmFieldError}">
-
-                    <com.clickandvisit.ui.shared.view.CustomTextInputEditText
-                        android:id="@+id/customTextInputEditTextSignUpPasswordConfirm"
-                        style="@style/InputEditText.AppStyle"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="@string/signup_pro_password_comfirm"
-                        android:inputType="textPassword"
-                        android:text="@={viewModel.passwordConfirm}" />
-
-                </com.clickandvisit.ui.shared.view.CustomTextInputLayout>
-
                 <com.clickandvisit.ui.shared.view.CustomButton
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/dimen_edit_text"
                     android:layout_alignParentEnd="true"
                     android:layout_gravity="center_vertical|end"
                     android:layout_marginTop="@dimen/margin_global_20dp"

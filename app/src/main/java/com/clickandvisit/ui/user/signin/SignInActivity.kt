@@ -72,8 +72,7 @@ class SignInActivity : BaseActivity() {
                 ResetPasswordActivity::class
             )
             is Navigation.SignUpActivityNavigation -> navigateToActivity(
-                SignUpActivity::class,
-                true
+                SignUpActivity::class
             )
             is Navigation.Back -> finish()
             else -> {}
