@@ -12,8 +12,8 @@ import com.clickandvisit.global.listener.SchedulerProvider
 import com.clickandvisit.global.listener.ToolBarListener
 import com.clickandvisit.global.utils.DebugLog
 import com.clickandvisit.global.utils.TAG
+import com.clickandvisit.ui.home.menu.profile.PROFILE_PIC_NAME
 import com.clickandvisit.ui.shared.dialog.ImgPickerDialog
-import com.clickandvisit.ui.user.signup.PROFILE_PIC_NAME
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -64,12 +64,12 @@ class ProfileViewModel
 
     private fun onTakePictureClicked(): () -> Unit {
         return {
-            navigate(Navigation.CameraNavigation(com.clickandvisit.ui.user.signup.PROFILE_PIC_NAME))
+            navigate(Navigation.CameraNavigation(PROFILE_PIC_NAME))
         }
     }
 
     fun cameraPermissionGranted() {
-        navigate(Navigation.CameraNavigation(com.clickandvisit.ui.user.signup.PROFILE_PIC_NAME))
+        navigate(Navigation.CameraNavigation(PROFILE_PIC_NAME))
     }
 
     private fun onPickPictureClicked(): () -> Unit {
