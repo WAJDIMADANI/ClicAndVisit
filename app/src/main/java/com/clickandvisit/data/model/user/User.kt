@@ -9,39 +9,73 @@ import com.squareup.moshi.JsonClass
 data class User(
     @Json(name = "id")
     val id: String,
-    @Json(name = "first_name")
-    val firstName: String = "",
-    @Json(name = "last_name")
-    val lastName: String = "",
+
     @Json(name = "email")
     val email: String,
-    @Json(name = "token")
-    val token: String
+
+    @Json(name = "first_name")
+    val firstName: String = "",
+
+    @Json(name = "last_name")
+    val lastName: String = "",
+
+    @Json(name = "professionel_particulier")
+    val proPar: String = "",
+
+    @Json(name = "civilite")
+    val civility: String,
+
+    @Json(name = "phone_number")
+    val phoneNumber: String,
+
+    @Json(name = "siret")
+    val siret: String,
+
+    @Json(name = "raison_social")
+    val rSocial: String,
+
+    @Json(name = "profile_photo")
+    val photo: String
 
 ) : Parcelable {
-    constructor(source: Parcel) : this(
-        source.readString()!!,
-        source.readString()!!,
-        source.readString()!!,
-        source.readString()!!,
-        source.readString()!!
-    )
-
-    override fun describeContents() = 0
-
-    override fun writeToParcel(dest: Parcel, flags: Int) = with(dest) {
-        writeString(id)
-        writeString(firstName)
-        writeString(lastName)
-        writeString(email)
-        writeString(token)
+    constructor(parcel: Parcel) : this(
+        parcel.readString()!!,
+        parcel.readString()!!,
+        parcel.readString()!!,
+        parcel.readString()!!,
+        parcel.readString()!!,
+        parcel.readString()!!,
+        parcel.readString()!!,
+        parcel.readString()!!,
+        parcel.readString()!!,
+        parcel.readString()!!
+    ) {
     }
 
-    companion object {
-        @JvmField
-        val CREATOR: Parcelable.Creator<User> = object : Parcelable.Creator<User> {
-            override fun createFromParcel(source: Parcel): User = User(source)
-            override fun newArray(size: Int): Array<User?> = arrayOfNulls(size)
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeString(id)
+        parcel.writeString(email)
+        parcel.writeString(firstName)
+        parcel.writeString(lastName)
+        parcel.writeString(proPar)
+        parcel.writeString(civility)
+        parcel.writeString(phoneNumber)
+        parcel.writeString(siret)
+        parcel.writeString(rSocial)
+        parcel.writeString(photo)
+    }
+
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    companion object CREATOR : Parcelable.Creator<User> {
+        override fun createFromParcel(parcel: Parcel): User {
+            return User(parcel)
+        }
+
+        override fun newArray(size: Int): Array<User?> {
+            return arrayOfNulls(size)
         }
     }
 }

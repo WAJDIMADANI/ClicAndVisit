@@ -19,10 +19,6 @@ class AddAdsViewModel
 ) : BaseAndroidViewModel(application, schedulerProvider) {
 
     init {
-        viewModelScope.launch {
-            withContext(schedulerProvider.dispatchersIO()) {
-                userRepository.setIntro()
-            }
-        }
+
     }
 }

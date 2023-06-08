@@ -34,6 +34,9 @@
     <string name="signin_continue">Continuer en tant que </string>
     <string name="signin_visitor">Visiteur</string>
 
+    <string name="signin_inactivated_account">Compte non activé, vérifiez votre boite mail.</string>
+
+
     <!--otp-->
     <string name="otp_email">Vérifiez votre adresse email</string>
     <string name="otp_enter_code">Entrer votre code OTP ici</string>

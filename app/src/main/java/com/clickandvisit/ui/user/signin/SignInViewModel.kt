@@ -5,13 +5,16 @@ import androidx.annotation.UiThread
 import androidx.lifecycle.MutableLiveData
 import com.clickandvisit.R
 import com.clickandvisit.base.BaseAndroidViewModel
-import com.clickandvisit.data.model.user.User
+import com.clickandvisit.data.model.user.signup.SignupResponse
 import com.clickandvisit.data.repository.abs.UserRepository
 import com.clickandvisit.global.helper.Navigation
 import com.clickandvisit.global.helper.NonNullLiveData
 import com.clickandvisit.global.listener.SchedulerProvider
 import com.clickandvisit.global.listener.ToolBarListener
-import com.clickandvisit.global.utils.*
+import com.clickandvisit.global.utils.HttpResponseCode
+import com.clickandvisit.global.utils.isValidEmail
+import com.clickandvisit.global.utils.isWhiteSpaces
+import com.clickandvisit.global.utils.tryCatch
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -62,7 +65,6 @@ class SignInViewModel
 
     @UiThread
     fun onSignInClicked() {
-        navigate(Navigation.HomeActivityNavigation)
         if (validateFields()) {
             viewModelScope.launch {
                 signingIn.value = true
@@ -78,10 +80,13 @@ class SignInViewModel
         }
     }
 
-
-    private fun onSignInSuccess(userResponse: User) {
+    private fun onSignInSuccess(signupResponse: SignupResponse) {
         signingIn.value = false
-        navigate(Navigation.HomeActivityNavigation)
+        if (signupResponse.result) {
+            navigate(Navigation.HomeActivityNavigation)
+        } else if (signupResponse.resultCode == 4) {//FIXME: resultCode valeurs possible?
+            shownSimpleDialog(messageId = R.string.signin_inactivated_account)
+        }
     }
 
     private fun onSignInError(throwable: Throwable) {

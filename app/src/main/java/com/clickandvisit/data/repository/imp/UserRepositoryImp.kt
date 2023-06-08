@@ -2,7 +2,9 @@ package com.clickandvisit.data.repository.imp
 
 import androidx.annotation.WorkerThread
 import com.clickandvisit.base.BaseRepository
+import com.clickandvisit.data.model.user.Login
 import com.clickandvisit.data.model.user.User
+import com.clickandvisit.data.model.user.signup.SignupResponse
 import com.clickandvisit.data.repository.abs.UserRepository
 import com.clickandvisit.data.retrofit.APIClient
 import com.clickandvisit.global.enumeration.Optional
@@ -17,6 +19,7 @@ class UserRepositoryImp @Inject constructor(
 ) :
     BaseRepository(apiClient, sharedPreferences), UserRepository {
 
+/*
     @WorkerThread
     override suspend fun signUp(
         firstName: String,
@@ -25,15 +28,16 @@ class UserRepositoryImp @Inject constructor(
         password: String
     ): User {
         val response = apiClient.signUpAndCache(email, password, firstName, lastName)
-        sharedPreferences.saveUser(response.data)
-        return response.data
+        //sharedPreferences.saveUser(response.data)
+        return response
     }
+*/
 
     @WorkerThread
-    override suspend fun signInAndCache(email: String, password: String): User {
-        val response = apiClient.signIn(email, password)
-        sharedPreferences.saveUser(response.data)
-        return response.data
+    override suspend fun signInAndCache(email: String, password: String): SignupResponse {
+        val response = apiClient.signIn(Login(email, password))
+        //sharedPreferences.saveUser(response)
+        return response
     }
 
     @WorkerThread
@@ -44,14 +48,6 @@ class UserRepositoryImp @Inject constructor(
         } else {
             Optional.None
         }
-    }
-
-    override suspend fun setIntro() {
-        sharedPreferences.setIntro(true)
-    }
-
-    override suspend fun isIntro(): Boolean {
-        return sharedPreferences.isIntro()
     }
 
 }
