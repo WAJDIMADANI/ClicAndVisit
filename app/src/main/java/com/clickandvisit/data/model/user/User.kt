@@ -69,6 +69,10 @@ data class User(
         return 0
     }
 
+    override fun toString(): String {
+        return "User(id='$id', email='$email', firstName='$firstName', lastName='$lastName', proPar='$proPar', civility='$civility', phoneNumber='$phoneNumber', siret='$siret', rSocial='$rSocial', photo='$photo')"
+    }
+
     companion object CREATOR : Parcelable.Creator<User> {
         override fun createFromParcel(parcel: Parcel): User {
             return User(parcel)

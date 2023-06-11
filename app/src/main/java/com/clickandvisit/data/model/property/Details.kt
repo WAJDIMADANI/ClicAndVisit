@@ -1,5 +1,7 @@
 package com.clickandvisit.data.model.property
 
+import android.os.Parcel
+import android.os.Parcelable
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
@@ -48,6 +50,70 @@ data class Details(
     val triplex: String,
     @Json(name = "rez_de_jardin")
     val rezDeJardin: String,
+) : Parcelable {
+    constructor(parcel: Parcel) : this(
+        parcel.readString()!!,
+        parcel.readString()!!,
+        parcel.readString()!!,
+        parcel.readString()!!,
+        parcel.readString()!!,
+        parcel.readString()!!,
+        parcel.readString()!!,
+        parcel.readString()!!,
+        parcel.readString()!!,
+        parcel.readString()!!,
+        parcel.readString()!!,
+        parcel.readString()!!,
+        parcel.readString()!!,
+        parcel.readString()!!,
+        parcel.readString()!!,
+        parcel.readString()!!,
+        parcel.readString()!!,
+        parcel.readString()!!,
+        parcel.readString()!!,
+        parcel.readString()!!
+    ) {
+    }
 
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeString(chambres)
+        parcel.writeString(suites)
+        parcel.writeString(sallesDeBain)
+        parcel.writeString(sallesDeau)
+        parcel.writeString(bureaux)
+        parcel.writeString(dressing)
+        parcel.writeString(garages)
+        parcel.writeString(caves)
+        parcel.writeString(balcons)
+        parcel.writeString(terrasse)
+        parcel.writeString(surfaceTerrain)
+        parcel.writeString(annee)
+        parcel.writeString(piscine)
+        parcel.writeString(piscinable)
+        parcel.writeString(poolHouse)
+        parcel.writeString(sansVisAVis)
+        parcel.writeString(ascenseur)
+        parcel.writeString(duplex)
+        parcel.writeString(triplex)
+        parcel.writeString(rezDeJardin)
+    }
 
-)
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    companion object CREATOR : Parcelable.Creator<Details> {
+        override fun createFromParcel(parcel: Parcel): Details {
+            return Details(parcel)
+        }
+
+        override fun newArray(size: Int): Array<Details?> {
+            return arrayOfNulls(size)
+        }
+    }
+
+    override fun toString(): String {
+        return "Details(chambres='$chambres', suites='$suites', sallesDeBain='$sallesDeBain', sallesDeau='$sallesDeau', bureaux='$bureaux', dressing='$dressing', garages='$garages', caves='$caves', balcons='$balcons', terrasse='$terrasse', surfaceTerrain='$surfaceTerrain', annee='$annee', piscine='$piscine', piscinable='$piscinable', poolHouse='$poolHouse', sansVisAVis='$sansVisAVis', ascenseur='$ascenseur', duplex='$duplex', triplex='$triplex', rezDeJardin='$rezDeJardin')"
+    }
+
+}

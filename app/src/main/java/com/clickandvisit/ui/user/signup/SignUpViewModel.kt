@@ -6,14 +6,16 @@ import androidx.lifecycle.MutableLiveData
 import com.clickandvisit.R
 import com.clickandvisit.base.BaseAndroidViewModel
 import com.clickandvisit.data.model.user.User
+import com.clickandvisit.data.model.user.signup.SignupRequest
+import com.clickandvisit.data.model.user.signup.SignupResponse
 import com.clickandvisit.data.repository.abs.UserRepository
 import com.clickandvisit.global.helper.Navigation
 import com.clickandvisit.global.listener.SchedulerProvider
 import com.clickandvisit.global.listener.ToolBarListener
-import com.clickandvisit.global.utils.HttpResponseCode
-import com.clickandvisit.global.utils.isValidEmail
-import com.clickandvisit.global.utils.isWhiteSpaces
+import com.clickandvisit.global.utils.*
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import retrofit2.HttpException
 import javax.inject.Inject
 
@@ -90,26 +92,58 @@ class SignUpViewModel
         checkedF.value = true
     }
 
+    private fun isPro(): Int {
+        return if (checkedPro.value == true) {
+            1
+        } else {
+            2
+        }
+    }
+
+    private fun isMF(): Int {
+        return if (checkedM.value == true) {
+            0
+        } else {
+            1
+        }
+    }
 
     @UiThread
     fun onSignUpClicked() {
-        navigate(Navigation.OtpActivityNavigation)
         if (validateFields()) {
-
-/*            viewModelScope.launch {
+            viewModelScope.launch {
                 showBlockProgressBar()
                 tryCatch({
-
+                    val signupResponse = withContext(schedulerProvider.dispatchersIO()) {
+                        userRepository.signUp(
+                            SignupRequest(
+                                proPar = isPro(),
+                                siret = siret.value ?: "",
+                                rSocial = social.value ?: "",
+                                civility = isMF(),
+                                firstName = firstname.value ?: "",
+                                lastName = userName.value ?: "",
+                                email = email.value!!,
+                                password = password.value!!,
+                                phoneNumber = phone.value!!
+                            )
+                        )
+                    }
+                    onSignUpSuccess(signupResponse)
                 }, { error ->
                     onSignInError(error)
                 })
-            }*/
+            }
         }
     }
 
 
-    private fun onSignUpSuccess(userResponse: User) {
+    private fun onSignUpSuccess(signupResponse: SignupResponse) {
         hideBlockProgressBar()
+        DebugLog.i(TAG, signupResponse.result.toString())
+        DebugLog.i(TAG, signupResponse.resultCode.toString())
+        DebugLog.i(TAG, signupResponse.resultMsg)
+        DebugLog.i(TAG, signupResponse.user.toString())
         navigate(Navigation.HomeActivityNavigation)
     }
 
@@ -130,7 +164,7 @@ class SignUpViewModel
 
     private fun validateFields(): Boolean {
         return if (checkedPro.value == true) {
-            validUserName() and validFirstName() and validEmail() and validPhone() and validPassword()
+            validSocial() and validSiret() and validEmail() and validPhone() and validPassword()
         } else {
             validUserName() and validFirstName() and validEmail() and validPhone() and validPassword()
         }
@@ -146,6 +180,20 @@ class SignUpViewModel
 
     private fun validFirstName() = if (firstname.value.isWhiteSpaces()) {
         firstnameFieldError.value = true
+        false
+    } else {
+        true
+    }
+
+    private fun validSocial() = if (social.value.isWhiteSpaces()) {
+        socialFieldError.value = true
+        false
+    } else {
+        true
+    }
+
+    private fun validSiret() = if (siret.value.isWhiteSpaces()) {
+        siretFieldError.value = true
         false
     } else {
         true

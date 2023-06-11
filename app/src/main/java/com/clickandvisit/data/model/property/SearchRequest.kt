@@ -1,5 +1,7 @@
 package com.clickandvisit.data.model.property
 
+import android.os.Parcel
+import android.os.Parcelable
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
@@ -34,4 +36,52 @@ data class SearchRequest(
     @Json(name = "user_id")
     val userId: Int
 
-)
+) : Parcelable {
+    constructor(parcel: Parcel) : this(
+        parcel.readInt(),
+        parcel.readInt(),
+        parcel.readInt(),
+        parcel.readInt(),
+        parcel.readInt(),
+        parcel.readInt(),
+        parcel.readInt(),
+        parcel.readInt(),
+        parcel.readInt(),
+        parcel.readInt(),
+        parcel.readInt()
+    ) {
+    }
+
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeInt(adsType)
+        parcel.writeInt(category)
+        parcel.writeInt(minRooms)
+        parcel.writeInt(maxRooms)
+        parcel.writeInt(minArea)
+        parcel.writeInt(maxArea)
+        parcel.writeInt(minPrice)
+        parcel.writeInt(maxPrice)
+        parcel.writeInt(favoriteUserId)
+        parcel.writeInt(saveSearch)
+        parcel.writeInt(userId)
+    }
+
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    override fun toString(): String {
+        return "SearchRequest(adsType=$adsType, category=$category, minRooms=$minRooms, maxRooms=$maxRooms, minArea=$minArea, maxArea=$maxArea, minPrice=$minPrice, maxPrice=$maxPrice, favoriteUserId=$favoriteUserId, saveSearch=$saveSearch, userId=$userId)"
+    }
+
+    companion object CREATOR : Parcelable.Creator<SearchRequest> {
+        override fun createFromParcel(parcel: Parcel): SearchRequest {
+            return SearchRequest(parcel)
+        }
+
+        override fun newArray(size: Int): Array<SearchRequest?> {
+            return arrayOfNulls(size)
+        }
+    }
+
+}

@@ -4,6 +4,7 @@ import androidx.annotation.WorkerThread
 import com.clickandvisit.base.BaseRepository
 import com.clickandvisit.data.model.user.Login
 import com.clickandvisit.data.model.user.User
+import com.clickandvisit.data.model.user.signup.SignupRequest
 import com.clickandvisit.data.model.user.signup.SignupResponse
 import com.clickandvisit.data.repository.abs.UserRepository
 import com.clickandvisit.data.retrofit.APIClient
@@ -38,6 +39,10 @@ class UserRepositoryImp @Inject constructor(
         val response = apiClient.signIn(Login(email, password))
         //sharedPreferences.saveUser(response)
         return response
+    }
+
+    override suspend fun signUp(signupRequest: SignupRequest): SignupResponse {
+        return apiClient.signUp(signupRequest)
     }
 
     @WorkerThread
