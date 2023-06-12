@@ -39,9 +39,18 @@ interface APIClient {
 */
 
     // user
+    @FormUrlEncoded
     @POST("user_register")
     suspend fun signUp(
-        @Body signupRequest: SignupRequest
+        @Field ("professionel_particulier") proPar: Int,
+        @Field("siret") siret: String,
+        @Field("raison_social") rSocial: String,
+        @Field("civilite") civility: Int,
+        @Field("first_name") firstName: String,
+        @Field("last_name") lastName: String,
+        @Field("email") email: String,
+        @Field("password") password: String,
+        @Field("phone_number") phoneNumber: String
     ): SignupResponse
 
     @POST("user_login")
@@ -62,12 +71,12 @@ interface APIClient {
     @POST("send_activation_code")
     suspend fun sendActivationCode(
         @Body userId: Int
-    ): Void //TODO:
+    ): SignupResponse
 
     @POST("activate_account")
     suspend fun activateAccount(
         @Body req: ActivateAccountRequest
-    ): Void //TODO:
+    ): SignupResponse
 
     @POST("remove_account")
     suspend fun removeAccount(

@@ -18,7 +18,7 @@ class EndpointInterceptor(private val preferences: SharedPreferences,private val
             if (preferences.isConnected()) {
                 request = request.newBuilder()
                     .method(request.method, request.body)
-                    .addHeader("Authorization", "Bearer " + preferences.getToken())
+                   // .addHeader("Authorization", "Bearer " + preferences.getToken())
                     .build()
             }
         } else {

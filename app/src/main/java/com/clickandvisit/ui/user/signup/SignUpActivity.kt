@@ -8,7 +8,6 @@ import com.clickandvisit.R
 import com.clickandvisit.base.BaseActivity
 import com.clickandvisit.databinding.ActivitySignupBinding
 import com.clickandvisit.global.helper.Navigation
-import com.clickandvisit.ui.home.HomeActivity
 import com.clickandvisit.ui.user.signin.SignInActivity
 import com.clickandvisit.ui.user.signup.otp.OtpActivity
 import dagger.hilt.android.AndroidEntryPoint
@@ -58,9 +57,6 @@ class SignUpActivity : BaseActivity() {
      */
     override fun navigate(navigationTo: Navigation) {
         when (navigationTo) {
-            is Navigation.HomeActivityNavigation -> {
-                navigateToActivity(HomeActivity::class)
-            }
             is Navigation.Back -> finish()
 
             is Navigation.SignInActivityNavigation -> navigateToActivity(

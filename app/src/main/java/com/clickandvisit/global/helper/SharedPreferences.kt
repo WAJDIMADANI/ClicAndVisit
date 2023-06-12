@@ -43,7 +43,7 @@ class SharedPreferences(context: Context, val moshi: Moshi) {
 
 
     fun saveUser(user: User) {
-        //setToken(user.token)
+        setToken(user.id)
         val jsonAdapter = moshi.adapter(User::class.java)
         val editor = sharedPreferences.edit()
         editor.putString(USER_FLAG, jsonAdapter.toJson(user))
@@ -54,17 +54,6 @@ class SharedPreferences(context: Context, val moshi: Moshi) {
         val json = sharedPreferences.getString(USER_FLAG, null)
         val adapter = moshi.adapter(User::class.java)
         return adapter.fromJson(json) as User
-    }
-
-
-    fun setIntro(isShowed: Boolean) {
-        val editor = sharedPreferences.edit()
-        editor.putBoolean(INTRO_FLAG, isShowed)
-        editor.apply()
-    }
-
-    fun isIntro(): Boolean {
-        return sharedPreferences.getBoolean(INTRO_FLAG, false)
     }
 
 

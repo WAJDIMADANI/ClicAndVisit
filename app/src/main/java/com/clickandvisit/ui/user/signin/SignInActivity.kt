@@ -14,6 +14,7 @@ import com.clickandvisit.global.utils.ExtraKeys
 import com.clickandvisit.ui.home.HomeActivity
 import com.clickandvisit.ui.user.password.ResetPasswordActivity
 import com.clickandvisit.ui.user.signup.SignUpActivity
+import com.clickandvisit.ui.user.signup.otp.OtpActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -67,6 +68,9 @@ class SignInActivity : BaseActivity() {
         when (navigationTo) {
             is Navigation.HomeActivityNavigation -> {
                 navigateToActivity(HomeActivity::class)
+            }
+            is Navigation.OtpActivityNavigation -> {
+                navigateToActivity(OtpActivity::class)
             }
             is Navigation.ResetPasswordActivityNavigation -> navigateToActivity(
                 ResetPasswordActivity::class

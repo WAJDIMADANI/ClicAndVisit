@@ -107,113 +107,85 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
-                        <com.clickandvisit.ui.shared.view.CustomTextInputLayout
-                            android:id="@+id/customTextInputLayoutOne"
-                            style="@style/InputLayout.AppStyle"
+                        <EditText
+                            android:id="@+id/otpEditTextOne"
                             android:layout_width="@dimen/dimen_60dp"
                             android:layout_height="@dimen/dimen_60dp"
-                            app:errorBackground="@{viewModel.oneFieldError}"
+                            android:background="@drawable/ic_edit_border"
+                            android:cursorVisible="false"
+                            android:digits="1234567890"
+                            android:fontFamily="@font/poppins_semi_bold"
+                            android:gravity="center"
+                            android:inputType="numberDecimal"
+                            android:maxLength="1"
+                            android:text="@={viewModel.one}"
+                            android:textIsSelectable="false"
+                            android:textSize="@dimen/dimen_25sp"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toStartOf="@+id/customTextInputLayoutTwo"
+                            app:layout_constraintEnd_toStartOf="@+id/otpEditTextTwo"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent">
+                            app:layout_constraintTop_toTopOf="parent" />
 
-                            <com.clickandvisit.ui.shared.view.CustomTextInputEditText
-                                android:id="@+id/customTextInputEditTextOne"
-                                style="@style/InputEditText.AppStyle"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/poppins_semi_bold"
-                                android:gravity="center"
-                                android:inputType="number"
-                                android:maxLength="1"
-                                android:paddingTop="1dp"
-                                android:singleLine="true"
-                                android:textSize="@dimen/dimen_25sp" />
-
-                        </com.clickandvisit.ui.shared.view.CustomTextInputLayout>
-
-                        <com.clickandvisit.ui.shared.view.CustomTextInputLayout
-                            android:id="@+id/customTextInputLayoutTwo"
-                            style="@style/InputLayout.AppStyle"
+                        <EditText
+                            android:id="@+id/otpEditTextTwo"
                             android:layout_width="@dimen/dimen_60dp"
                             android:layout_height="@dimen/dimen_60dp"
-                            app:errorBackground="@{viewModel.twoFieldError}"
+                            android:background="@drawable/ic_edit_border"
+                            android:cursorVisible="false"
+                            android:digits="1234567890"
+                            android:fontFamily="@font/poppins_semi_bold"
+                            android:gravity="center"
+                            android:inputType="numberDecimal"
+                            android:maxLength="1"
+                            android:text="@={viewModel.two}"
+                            android:textIsSelectable="false"
+                            android:textSize="@dimen/dimen_25sp"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toStartOf="@+id/customTextInputLayoutThree"
-                            app:layout_constraintStart_toEndOf="@+id/customTextInputLayoutOne"
-                            app:layout_constraintTop_toTopOf="parent">
+                            app:layout_constraintEnd_toStartOf="@+id/otpEditTextThree"
+                            app:layout_constraintStart_toEndOf="@+id/otpEditTextOne"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-                            <com.clickandvisit.ui.shared.view.CustomTextInputEditText
-                                android:id="@+id/customTextInputEditTextTwo"
-                                style="@style/InputEditText.AppStyle"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/poppins_semi_bold"
-                                android:gravity="center"
-                                android:inputType="number"
-                                android:maxLength="1"
-                                android:paddingTop="1dp"
-                                android:singleLine="true"
-                                android:textSize="@dimen/dimen_25sp" />
-
-                        </com.clickandvisit.ui.shared.view.CustomTextInputLayout>
-
-                        <com.clickandvisit.ui.shared.view.CustomTextInputLayout
-                            android:id="@+id/customTextInputLayoutThree"
-                            style="@style/InputLayout.AppStyle"
+                        <EditText
+                            android:id="@+id/otpEditTextThree"
                             android:layout_width="@dimen/dimen_60dp"
                             android:layout_height="@dimen/dimen_60dp"
-                            app:errorBackground="@{viewModel.threeFieldError}"
+                            android:background="@drawable/ic_edit_border"
+                            android:cursorVisible="false"
+                            android:digits="1234567890"
+                            android:fontFamily="@font/poppins_semi_bold"
+                            android:gravity="center"
+                            android:inputType="numberDecimal"
+                            android:maxLength="1"
+                            android:text="@={viewModel.three}"
+                            android:textIsSelectable="false"
+                            android:textSize="@dimen/dimen_25sp"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toStartOf="@+id/customTextInputLayoutFour"
-                            app:layout_constraintStart_toEndOf="@+id/customTextInputLayoutTwo"
-                            app:layout_constraintTop_toTopOf="parent">
+                            app:layout_constraintEnd_toStartOf="@+id/otpEditTextFour"
+                            app:layout_constraintStart_toEndOf="@+id/otpEditTextTwo"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-                            <com.clickandvisit.ui.shared.view.CustomTextInputEditText
-                                android:id="@+id/customTextInputEditTextThree"
-                                style="@style/InputEditText.AppStyle"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/poppins_semi_bold"
-                                android:gravity="center"
-                                android:inputType="number"
-                                android:maxLength="1"
-                                android:paddingTop="1dp"
-                                android:singleLine="true"
-                                android:textSize="@dimen/dimen_25sp" />
-
-                        </com.clickandvisit.ui.shared.view.CustomTextInputLayout>
-
-
-                        <com.clickandvisit.ui.shared.view.CustomTextInputLayout
-                            android:id="@+id/customTextInputLayoutFour"
-                            style="@style/InputLayout.AppStyle"
+                        <EditText
+                            android:id="@+id/otpEditTextFour"
                             android:layout_width="@dimen/dimen_60dp"
                             android:layout_height="@dimen/dimen_60dp"
-                            app:errorBackground="@{viewModel.fourFieldError}"
+                            android:background="@drawable/ic_edit_border"
+                            android:cursorVisible="false"
+                            android:digits="1234567890"
+                            android:fontFamily="@font/poppins_semi_bold"
+                            android:gravity="center"
+                            android:inputType="numberDecimal"
+                            android:maxLength="1"
+                            android:text="@={viewModel.four}"
+                            android:textIsSelectable="false"
+                            android:textSize="@dimen/dimen_25sp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/customTextInputLayoutThree"
-                            app:layout_constraintTop_toTopOf="parent">
-
-                            <com.clickandvisit.ui.shared.view.CustomTextInputEditText
-                                android:id="@+id/customTextInputEditTextFour"
-                                style="@style/InputEditText.AppStyle"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/poppins_semi_bold"
-                                android:gravity="center"
-                                android:inputType="number"
-                                android:maxLength="1"
-                                android:paddingTop="1dp"
-                                android:singleLine="true"
-                                android:textSize="@dimen/dimen_25sp" />
-
-                        </com.clickandvisit.ui.shared.view.CustomTextInputLayout>
+                            app:layout_constraintStart_toEndOf="@+id/otpEditTextThree"
+                            app:layout_constraintTop_toTopOf="parent" />
 
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="match_parent"

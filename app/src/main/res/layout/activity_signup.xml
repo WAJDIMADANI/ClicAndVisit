@@ -292,6 +292,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/dimen_edit_text"
                         android:hint="@string/signup_password"
+                        android:textColor="@color/black"
                         android:inputType="textPassword"
                         android:text="@={viewModel.password}" />
 

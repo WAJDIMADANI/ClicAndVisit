@@ -116,7 +116,6 @@ class SignUpViewModel
                 tryCatch({
                     val signupResponse = withContext(schedulerProvider.dispatchersIO()) {
                         userRepository.signUp(
-                            SignupRequest(
                                 proPar = isPro(),
                                 siret = siret.value ?: "",
                                 rSocial = social.value ?: "",
@@ -126,7 +125,6 @@ class SignUpViewModel
                                 email = email.value!!,
                                 password = password.value!!,
                                 phoneNumber = phone.value!!
-                            )
                         )
                     }
                     onSignUpSuccess(signupResponse)
@@ -144,7 +142,7 @@ class SignUpViewModel
         DebugLog.i(TAG, signupResponse.resultCode.toString())
         DebugLog.i(TAG, signupResponse.resultMsg)
         DebugLog.i(TAG, signupResponse.user.toString())
-        navigate(Navigation.HomeActivityNavigation)
+        navigate(Navigation.OtpActivityNavigation)
     }
 
 
