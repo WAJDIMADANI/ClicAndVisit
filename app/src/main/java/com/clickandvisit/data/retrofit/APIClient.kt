@@ -47,13 +47,22 @@ interface APIClient {
     @GET("get_user?user_id={id}")
     suspend fun getUser(
         @Path("id") id: Int
-    ): User
+    ): UserResponse
 
     @FormUrlEncoded
     @POST("user_update")
     suspend fun userUpdate(
-        @Body user: User
-    ): Void //TODO:
+        @Field("id") id: String,
+        @Field("email") email: String,
+        @Field("first_name") firstName: String,
+        @Field("last_name") lastName: String,
+        @Field("professionel_particulier") proPar: String,
+        @Field("civilite") civility: String,
+        @Field("phone_number") phoneNumber: String,
+        @Field("siret") siret: String,
+        @Field("raison_social") rSocial: String,
+        @Field("profile_photo") photo: String
+    ): UserResponse
 
     @FormUrlEncoded
     @POST("send_activation_code")
@@ -76,14 +85,18 @@ interface APIClient {
     @FormUrlEncoded
     @POST("report_user")
     suspend fun reportUser(
-        @Body userId: ReportUserRequest
-    ): Void //TODO:
+        @Field("user_id") userId: Int,
+        @Field("user_to_report") userRId: Int,
+        @Field("message") message: String
+    ): ReportUserResponse
 
     @FormUrlEncoded
     @POST("set_push_token")
     suspend fun setPushToken(
-        @Body userId: PushTokenRequest
-    ): Void //TODO:
+        @Field("user_id") userId: Int,
+        @Field("token") token: Int,
+        @Field("device") device: String,
+    ): TokenResponse
 
 
     /** property **/
@@ -219,4 +232,3 @@ interface APIClient {
     ): MessagesResponse
 
 }
-
