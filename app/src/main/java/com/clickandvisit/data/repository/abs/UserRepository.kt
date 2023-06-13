@@ -32,9 +32,4 @@ interface UserRepository {
         phoneNumber: String
     ): SignupResponse
 
-/*
-    @WorkerThread
-    suspend fun signUp(firstName: String, lastName: String, email: String, password: String): User
-*/
-
 }

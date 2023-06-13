@@ -21,19 +21,6 @@ class UserRepositoryImp @Inject constructor(
 ) :
     BaseRepository(apiClient, sharedPreferences), UserRepository {
 
-/*
-    @WorkerThread
-    override suspend fun signUp(
-        firstName: String,
-        lastName: String,
-        email: String,
-        password: String
-    ): User {
-        val response = apiClient.signUpAndCache(email, password, firstName, lastName)
-        //sharedPreferences.saveUser(response.data)
-        return response
-    }
-*/
 
     @WorkerThread
     override suspend fun signInAndCache(email: String, password: String): SignupResponse {
