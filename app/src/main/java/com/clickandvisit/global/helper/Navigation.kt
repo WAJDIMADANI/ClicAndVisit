@@ -16,31 +16,6 @@ sealed class Navigation {
 
     object HomeActivityNavigation : Navigation()
 
-    object MenuActivityNavigation : Navigation()
-
-    object HelpActivityNavigation : Navigation()
-
-    object TransportActivityNavigation : Navigation()
-
-    object SendActivityNavigation : Navigation()
-
-    object ProfileActivityNavigation : Navigation()
-
-    object PaymentActivityNavigation : Navigation()
-
-    object AlertsActivityNavigation : Navigation()
-
-    object ChatActivityNavigation : Navigation()
-
-    object AdsActivityNavigation : Navigation()
-
-    object PackageActivityNavigation : Navigation()
-
-    object FilterActivityNavigation : Navigation()
-
-    object DetailsActivityNavigation : Navigation()
-
-
     object GalleryNavigation : Navigation()
 
     data class CameraNavigation(val imageName: String) : Navigation()
