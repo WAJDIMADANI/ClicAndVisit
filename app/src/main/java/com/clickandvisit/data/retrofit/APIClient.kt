@@ -1,14 +1,13 @@
 package com.clickandvisit.data.retrofit
 
 import com.clickandvisit.data.model.GlobalResponse
-import com.clickandvisit.data.model.chat.DiscussionsResponse
 import com.clickandvisit.data.model.chat.ContactOwnerResponse
+import com.clickandvisit.data.model.chat.DiscussionsResponse
 import com.clickandvisit.data.model.chat.MessagesResponse
-import com.clickandvisit.data.model.property.FavoriteRequest
+import com.clickandvisit.data.model.property.FavoritesResponse
 import com.clickandvisit.data.model.property.PropertyDetailsResponse
-import com.clickandvisit.data.model.property.SearchRequest
+import com.clickandvisit.data.model.property.SavedSearchResponse
 import com.clickandvisit.data.model.property.SearchResponse
-import com.clickandvisit.data.model.property.add.PropertyAdd
 import com.clickandvisit.data.model.property.add.PropertyAddResponse
 import com.clickandvisit.data.model.reservation.AvailabilityResponse
 import com.clickandvisit.data.model.reservation.ReservationResponse
@@ -99,12 +98,25 @@ interface APIClient {
     ): TokenResponse
 
 
-    /** property **/
+    /** Property **/
 
     @FormUrlEncoded
     @POST("search")
     suspend fun search(
-        @Body userId: SearchRequest
+        @Field("type_annonce") adsType: Int,
+        @Field("categorie") category: Int,
+        @Field("min_rooms") minRooms: Int,
+        @Field("max_rooms") maxRooms: Int,
+        @Field("min-area") minArea: Int,
+        @Field("max-area") maxArea: Int,
+        @Field("min-price") minPrice: Int,
+        @Field("max-price") maxPrice: Int,
+        @Field("favorite_user_id") favoriteUserId: Int,
+        @Field("save_search") saveSearch: Int, //0 : No / 1 : Yes
+        @Field("user_id") userId: Int,
+        @Field("adresse") address: Int,
+        @Field("sortby") sortBy: Int,  // date/price/surface
+        @Field("sorthow") sortHow: Int // asc/desc
     ): SearchResponse
 
     @FormUrlEncoded
@@ -117,19 +129,61 @@ interface APIClient {
     @FormUrlEncoded
     @POST("add_favorite")
     suspend fun addRemoveFavorite(
-        @Body favoriteRequest: FavoriteRequest
-    ): Void //TODO: FavoriteResponse
+        @Path("propertyId") propertyId: Int,
+        @Path("userId") userId: Int,
+        @Path("action") action: String
+    ): GlobalResponse
 
     @FormUrlEncoded
     @GET("list_favorites?user_id={userId}")
     suspend fun favoriteList(
         @Path("userId") userId: Int
-    ): Void //TODO: favoriteList
+    ): FavoritesResponse
 
     @FormUrlEncoded
     @POST("create_update_property")
     suspend fun createUpdateProperty(
-        @Body propertyAdd: PropertyAdd
+        @Field("user_id") userId: Int,
+        @Field("_logement_id") propId: Int?, // only for edit
+        @Field("prop_type") propType: Int,
+        @Field("prop_category") propCategory: Int,
+        @Field("prop_surface") propSurface: Int,
+        @Field("prop_prix") propPrix: Int,
+        @Field("prop_etage") propEtage: Int,
+        @Field("prop_etage_sur") propEtageSur: Int,
+        @Field("prop_enery") propEnergy: Int,
+        @Field("prop_ges") propGes: Int,
+        @Field("prop_infos_complementaires") infoComp: String,
+        @Field("prop_meta_chambres") prop_meta_chambres: String,
+        @Field("prop_meta_suites") prop_meta_suites: String,
+        @Field("prop_meta_salles_de_bains") prop_meta_salles_de_bains: String,
+        @Field("prop_meta_salles_d_eau") prop_meta_salles_d_eau: String,
+        @Field("prop_meta_bureaux") prop_meta_bureaux: String,
+        @Field("prop_meta_dressing") prop_meta_dressing: String,
+        @Field("prop_meta_garages") prop_meta_garages: String,
+        @Field("prop_meta_caves") prop_meta_caves: String,
+        @Field("prop_meta_balcons") prop_meta_balcons: String,
+        @Field("prop_meta_terrasse") prop_meta_terrasse: String,
+        @Field("prop_meta_surface_terrain") prop_meta_surface_terrain: String,
+        @Field("prop_meta_annee") prop_meta_annee: String,
+        @Field("prop_meta_piscine") prop_meta_piscine: String,
+        @Field("prop_meta_piscinable") prop_meta_piscinable: String,
+        @Field("prop_meta_pool_house") prop_meta_pool_house: String,
+        @Field("prop_meta_sans_vis_a_vis") prop_meta_sans_vis_a_vis: String,
+        @Field("prop_meta_ascenseur") prop_meta_ascenseur: String,
+        @Field("prop_meta_duplex") prop_meta_duplex: String,
+        @Field("prop_meta_triplex") prop_meta_triplex: String,
+        @Field("prop_meta_rez_de_jardin") prop_meta_rez_de_jardin: String,
+        @Field("prop_localisation_ville") prop_localisation_ville: String,
+        @Field("prop_localisation_codepostal") prop_localisation_codepostal: Int,
+        @Field("prop_localisation_complement_adresse") prop_localisation_complement_adresse: String,
+        @Field("prop_nom_interphone") proInterphoneName: String,
+        @Field("prop_codeportail") propCodeportail: String,
+        @Field("prop_autres_informations") propInfos: String,
+        @Field("prop_main_photo") propMainPhoto: String,
+        @Field("prop_album_photo[]") propAlbumPhoto1: String,
+        @Field("prop_album_photo[]") propAlbumPhoto2: String,
+        @Field("prop_album_photo[]") propAlbumPhoto3: String
     ): PropertyAddResponse
 
     @FormUrlEncoded
@@ -149,7 +203,7 @@ interface APIClient {
     @GET("get_saved_search?user_id={userId}")
     suspend fun getSavedSearch(
         @Path("userId") userId: Int
-    ): GlobalResponse
+    ): SavedSearchResponse
 
 
     /** Reservation **/

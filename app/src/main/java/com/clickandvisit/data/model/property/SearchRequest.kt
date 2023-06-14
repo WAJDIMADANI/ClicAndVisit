@@ -7,6 +7,7 @@ import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 data class SearchRequest(
+
     @Json(name = "type_annonce")
     val adsType: Int,
     @Json(name = "categorie")
@@ -34,10 +35,22 @@ data class SearchRequest(
     val saveSearch: Int, //0 : No / 1 : Yes
 
     @Json(name = "user_id")
-    val userId: Int
+    val userId: Int,
+
+    @Json(name = "adresse")
+    val address: Int,
+
+    @Json(name = "sortby") // date/price/surface
+    val sortBy: Int,
+
+    @Json(name = "sorthow") // asc/desc
+    val sortHow: Int
 
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
+        parcel.readInt(),
+        parcel.readInt(),
+        parcel.readInt(),
         parcel.readInt(),
         parcel.readInt(),
         parcel.readInt(),
@@ -64,6 +77,9 @@ data class SearchRequest(
         parcel.writeInt(favoriteUserId)
         parcel.writeInt(saveSearch)
         parcel.writeInt(userId)
+        parcel.writeInt(address)
+        parcel.writeInt(sortBy)
+        parcel.writeInt(sortHow)
     }
 
     override fun describeContents(): Int {
@@ -71,7 +87,7 @@ data class SearchRequest(
     }
 
     override fun toString(): String {
-        return "SearchRequest(adsType=$adsType, category=$category, minRooms=$minRooms, maxRooms=$maxRooms, minArea=$minArea, maxArea=$maxArea, minPrice=$minPrice, maxPrice=$maxPrice, favoriteUserId=$favoriteUserId, saveSearch=$saveSearch, userId=$userId)"
+        return "SearchRequest(adsType=$adsType, category=$category, minRooms=$minRooms, maxRooms=$maxRooms, minArea=$minArea, maxArea=$maxArea, minPrice=$minPrice, maxPrice=$maxPrice, favoriteUserId=$favoriteUserId, saveSearch=$saveSearch, userId=$userId, address=$address, sortBy=$sortBy, sortHow=$sortHow)"
     }
 
     companion object CREATOR : Parcelable.Creator<SearchRequest> {
@@ -83,5 +99,4 @@ data class SearchRequest(
             return arrayOfNulls(size)
         }
     }
-
 }

@@ -1,6 +1,8 @@
 package com.clickandvisit.di
 
+import com.clickandvisit.data.repository.abs.PropertyRepository
 import com.clickandvisit.data.repository.abs.UserRepository
+import com.clickandvisit.data.repository.imp.PropertyRepositoryImp
 import com.clickandvisit.data.repository.imp.UserRepositoryImp
 import dagger.Binds
 import dagger.Module
@@ -13,5 +15,8 @@ abstract class RepositoryModule {
 
     @Binds
     abstract fun provideProfileRepository(profileImp: UserRepositoryImp): UserRepository
+
+    @Binds
+    abstract fun providePropertyRepository(profileImp: PropertyRepositoryImp): PropertyRepository
 
 }
