@@ -39,8 +39,9 @@
                     android:layout_height="wrap_content">
 
                     <ImageView
+                        android:id="@+id/imageView5"
                         android:layout_width="0dp"
-                        android:layout_height="224dp"
+                        android:layout_height="200dp"
                         android:background="@color/black"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -51,7 +52,7 @@
                         android:layout_width="@dimen/dimen_30dp"
                         android:layout_height="@dimen/dimen_30dp"
                         android:background="@drawable/ic_back"
-                        android:layout_marginStart="@dimen/margin_global_30dp"
+                        android:layout_marginStart="@dimen/margin_global_25dp"
                         android:layout_marginTop="@dimen/margin_global_30dp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -60,11 +61,11 @@
                     <ImageView
                         android:layout_width="300dp"
                         android:layout_height="53dp"
-                        android:layout_marginBottom="63dp"
                         android:background="@drawable/ic_logo_header"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent" />
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/imageView5" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -109,8 +110,8 @@
 
                         <EditText
                             android:id="@+id/otpEditTextOne"
-                            android:layout_width="@dimen/dimen_60dp"
-                            android:layout_height="@dimen/dimen_60dp"
+                            android:layout_width="@dimen/dimen_58dp"
+                            android:layout_height="@dimen/dimen_58dp"
                             android:background="@drawable/ic_edit_border"
                             android:cursorVisible="false"
                             android:digits="1234567890"
@@ -128,8 +129,8 @@
 
                         <EditText
                             android:id="@+id/otpEditTextTwo"
-                            android:layout_width="@dimen/dimen_60dp"
-                            android:layout_height="@dimen/dimen_60dp"
+                            android:layout_width="@dimen/dimen_58dp"
+                            android:layout_height="@dimen/dimen_58dp"
                             android:background="@drawable/ic_edit_border"
                             android:cursorVisible="false"
                             android:digits="1234567890"
@@ -147,8 +148,8 @@
 
                         <EditText
                             android:id="@+id/otpEditTextThree"
-                            android:layout_width="@dimen/dimen_60dp"
-                            android:layout_height="@dimen/dimen_60dp"
+                            android:layout_width="@dimen/dimen_58dp"
+                            android:layout_height="@dimen/dimen_58dp"
                             android:background="@drawable/ic_edit_border"
                             android:cursorVisible="false"
                             android:digits="1234567890"
@@ -166,8 +167,8 @@
 
                         <EditText
                             android:id="@+id/otpEditTextFour"
-                            android:layout_width="@dimen/dimen_60dp"
-                            android:layout_height="@dimen/dimen_60dp"
+                            android:layout_width="@dimen/dimen_58dp"
+                            android:layout_height="@dimen/dimen_58dp"
                             android:background="@drawable/ic_edit_border"
                             android:cursorVisible="false"
                             android:digits="1234567890"

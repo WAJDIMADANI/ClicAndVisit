@@ -37,8 +37,9 @@
                     android:layout_height="wrap_content">
 
                     <ImageView
+                        android:id="@+id/imageView3"
                         android:layout_width="0dp"
-                        android:layout_height="224dp"
+                        android:layout_height="200dp"
                         android:background="@color/black"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -48,11 +49,11 @@
                     <ImageView
                         android:layout_width="300dp"
                         android:layout_height="53dp"
-                        android:layout_marginBottom="63dp"
                         android:background="@drawable/ic_logo_header"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent" />
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -76,7 +77,7 @@
                             android:id="@+id/customTextInputEditTextSignInEmail"
                             style="@style/InputEditText.AppStyle"
                             android:layout_width="match_parent"
-                            android:layout_height="@dimen/dimen_edit_text"
+                            android:layout_height="wrap_content"
                             android:hint="@string/signin_mail"
                             android:gravity="center_vertical"
                             android:inputType="textEmailAddress"
@@ -96,7 +97,7 @@
                             android:id="@+id/customTextInputEditTextSignInPassword"
                             style="@style/InputEditText.AppStyle"
                             android:layout_width="match_parent"
-                            android:layout_height="@dimen/dimen_edit_text"
+                            android:layout_height="wrap_content"
                             android:drawablePadding="16dp"
                             android:fontFamily="@font/poppins_medium"
                             android:hint="@string/signin_password"
@@ -112,7 +113,7 @@
 
                     <com.clickandvisit.ui.shared.view.CustomButton
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/dimen_edit_text"
+                        android:layout_height="46dp"
                         android:layout_alignParentEnd="true"
                         android:layout_gravity="center_vertical|end"
                         android:layout_marginTop="@dimen/margin_global_5dp"
@@ -120,7 +121,7 @@
                         android:background="@drawable/ic_button_background"
                         android:fontFamily="@font/poppins_bold"
                         android:text="@string/signin_signin"
-                        android:textAllCaps="false"
+                        android:textAllCaps="true"
                         android:textColor="@color/white_basic"
                         android:textSize="@dimen/font_13sp"
                         app:onClickWithDebounce="@{() ->viewModel.onSignInClicked()}" />
@@ -133,8 +134,9 @@
                         android:gravity="end"
                         android:text="@string/signin_forget_password"
                         android:textColor="@color/black_basic"
-                        android:textSize="@dimen/font_16sp"
-                        app:onClickWithDebounce="@{() ->viewModel.onForgetPasswordClicked()}" />
+                        android:textSize="@dimen/font_15sp" />
+
+<!--                    app:onClickWithDebounce="@{() ->viewModel.onForgetPasswordClicked()}"-->
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -155,7 +157,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/margin_global_2dp"
-                            android:fontFamily="@font/poppins_bold"
+                            android:fontFamily="@font/poppins_semi_bold"
                             android:text="@string/login_create_account"
                             android:textColor="@color/color_primary"
                             android:textSize="@dimen/font_13sp"
