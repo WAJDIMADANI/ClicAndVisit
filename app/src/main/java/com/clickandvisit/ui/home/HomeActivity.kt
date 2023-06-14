@@ -21,6 +21,7 @@ import com.clickandvisit.ui.ads.adslist.AdsListActivity
 import com.clickandvisit.ui.ads.favourites.FavouritesActivity
 import com.clickandvisit.ui.ads.filter.FilterActivity
 import com.clickandvisit.ui.ads.search.SearchActivity
+import com.clickandvisit.ui.user.chat.ChatActivity
 import com.clickandvisit.ui.user.meet.MeetActivity
 import com.clickandvisit.ui.user.profile.ProfileActivity
 import dagger.hilt.android.AndroidEntryPoint
@@ -158,9 +159,23 @@ class HomeActivity : BaseActivity(), DrawerLayout.DrawerListener {
 
     override fun navigate(navigationTo: Navigation) {
         when (navigationTo) {
+
             is Navigation.Back -> finish()
+
             is Navigation.OpenDrawerNavigation -> {
                 binding.drawerLayoutHome.openDrawer(binding.navigationViewHome)
+            }
+
+            is Navigation.ProfileActivityNavigation -> {
+                navigateToActivity(ProfileActivity::class)
+            }
+
+            is Navigation.SearchActivityNavigation -> {
+                navigateToActivity(SearchActivity::class)
+            }
+
+            is Navigation.ChatActivityNavigation -> {
+                navigateToActivity(ChatActivity::class)
             }
         }
     }

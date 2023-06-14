@@ -44,12 +44,15 @@ class CustomToolbar : FrameLayout, View.OnClickListener {
     private fun initialize(context: Context, attrs: AttributeSet?) {
         LayoutInflater.from(getContext()).inflate(R.layout.custom_toolbar, this, true)
         binding = CustomToolbarBinding.inflate(LayoutInflater.from(getContext()), this, true)
-        binding.ivNav.setOnClickListener(this)
+        binding.ivNavBM.setOnClickListener(this)
+        binding.ivSearch.setOnClickListener(this)
+        binding.ivChat.setOnClickListener(this)
+        binding.ivProfile.setOnClickListener(this)
     }
 
     override fun onClick(view: View) {
         when (view.id) {
-            R.id.ivNav -> toolBarListener!!.onBMenuClicked()
+            R.id.ivNavBM -> toolBarListener!!.onBMenuClicked()
             R.id.ivSearch -> toolBarListener!!.onSearchClicked()
             R.id.ivChat -> toolBarListener!!.onChatClicked()
             R.id.ivProfile -> toolBarListener!!.onProfileClicked()

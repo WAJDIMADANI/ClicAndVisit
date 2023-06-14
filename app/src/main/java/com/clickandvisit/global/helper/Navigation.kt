@@ -12,6 +12,12 @@ sealed class Navigation {
 
     object OtpActivityNavigation : Navigation()
 
+    object ProfileActivityNavigation : Navigation()
+
+    object SearchActivityNavigation : Navigation()
+
+    object ChatActivityNavigation : Navigation()
+
     object IntroActivityNavigation : Navigation()
 
     object HomeActivityNavigation : Navigation()

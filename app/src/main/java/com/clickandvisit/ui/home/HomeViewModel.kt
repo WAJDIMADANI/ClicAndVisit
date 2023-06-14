@@ -29,20 +29,19 @@ class HomeViewModel
     }
 
     override fun onBMenuClicked() {
-        DebugLog.d(TAG, "onBMenuClicked")
         navigate(Navigation.OpenDrawerNavigation)
     }
 
     override fun onSearchClicked() {
-        DebugLog.d(TAG, "onSearchClicked")
+        navigate(Navigation.SearchActivityNavigation)
     }
 
     override fun onChatClicked() {
-        DebugLog.d(TAG, "onChatClicked")
+        navigate(Navigation.ChatActivityNavigation)
     }
 
     override fun onProfileClicked() {
-        DebugLog.d(TAG, "onProfileClicked")
+        navigate(Navigation.ProfileActivityNavigation)
     }
 
     fun disconnect() {

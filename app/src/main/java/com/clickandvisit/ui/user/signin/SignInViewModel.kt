@@ -85,11 +85,12 @@ class SignInViewModel
         if (signupResponse.result) {
             navigate(Navigation.HomeActivityNavigation)
         } else if (signupResponse.resultCode == 4) {//FIXME: resultCode valeurs possible?
-            shownSimpleDialog(
+            navigate(Navigation.OtpActivityNavigation)
+/*            shownSimpleDialog(
                 messageId = R.string.signin_inactivated_account,
                 dismissActionBlock = {
                     navigate(Navigation.OtpActivityNavigation)
-                })
+                })*/
         }
     }
 
