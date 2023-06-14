@@ -20,6 +20,7 @@ import com.clickandvisit.data.retrofit.APIClient
 import com.clickandvisit.global.enumeration.Optional
 import com.clickandvisit.global.helper.SharedPreferences
 import kotlinx.coroutines.delay
+import okhttp3.MultipartBody
 import javax.inject.Inject
 
 
@@ -49,7 +50,8 @@ class UserRepositoryImp @Inject constructor(
         lastName: String,
         email: String,
         password: String,
-        phoneNumber: String
+        phoneNumber: String,
+        file: MultipartBody.Part
     ): SignupResponse {
         return apiClient.signUp(
             proPar,
@@ -61,6 +63,7 @@ class UserRepositoryImp @Inject constructor(
             email,
             password,
             phoneNumber
+            // ,file
         )
     }
 

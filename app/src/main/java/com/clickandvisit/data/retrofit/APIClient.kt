@@ -15,6 +15,7 @@ import com.clickandvisit.data.model.reservation.ReservedPropertyResponse
 import com.clickandvisit.data.model.reservation.ResultModel
 import com.clickandvisit.data.model.user.*
 import com.clickandvisit.data.model.user.signup.SignupResponse
+import okhttp3.MultipartBody
 import retrofit2.http.*
 
 
@@ -22,7 +23,7 @@ interface APIClient {
 
     /** user **/
 
-    @FormUrlEncoded
+    @Multipart
     @POST("user_register")
     suspend fun signUp(
         @Field("professionel_particulier") proPar: Int,
@@ -33,7 +34,8 @@ interface APIClient {
         @Field("last_name") lastName: String,
         @Field("email") email: String,
         @Field("password") password: String,
-        @Field("phone_number") phoneNumber: String
+        @Field("phone_number") phoneNumber: String,
+        //@Part photo: MultipartBody.Part
     ): SignupResponse
 
     @FormUrlEncoded

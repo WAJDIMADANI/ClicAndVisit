@@ -15,6 +15,7 @@ import com.clickandvisit.data.model.reservation.ResultModel
 import com.clickandvisit.data.model.user.*
 import com.clickandvisit.data.model.user.signup.SignupResponse
 import com.clickandvisit.global.enumeration.Optional
+import okhttp3.MultipartBody
 
 
 interface UserRepository {
@@ -35,7 +36,8 @@ interface UserRepository {
         lastName: String,
         email: String,
         password: String,
-        phoneNumber: String
+        phoneNumber: String,
+        file: MultipartBody.Part
     ): SignupResponse
 
     @WorkerThread

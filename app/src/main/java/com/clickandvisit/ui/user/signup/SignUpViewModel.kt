@@ -18,7 +18,11 @@ import com.clickandvisit.ui.shared.dialog.ImgPickerDialog
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody.Companion.asRequestBody
 import retrofit2.HttpException
+import java.io.File
 import javax.inject.Inject
 
 const val PROFILE_PIC_NAME = "profilePic.jpeg"
@@ -178,18 +182,26 @@ class SignUpViewModel
         if (validateFields()) {
             viewModelScope.launch {
                 showBlockProgressBar()
+
+                val photoFile = File(photoUri.value?.path ?: "")
+                val requestBody = photoFile.asRequestBody(photoFile.extension.toMediaTypeOrNull())
+
+                val requestImage =
+                    MultipartBody.Part.createFormData(DEFAULT_PHOTO, photoFile.name, requestBody)
+
                 tryCatch({
                     val signupResponse = withContext(schedulerProvider.dispatchersIO()) {
                         userRepository.signUp(
-                                proPar = isPro(),
-                                siret = siret.value ?: "",
-                                rSocial = social.value ?: "",
-                                civility = isMF(),
-                                firstName = firstname.value ?: "",
-                                lastName = userName.value ?: "",
-                                email = email.value!!,
-                                password = password.value!!,
-                                phoneNumber = phone.value!!
+                            proPar = isPro(),
+                            siret = siret.value ?: "",
+                            rSocial = social.value ?: "",
+                            civility = isMF(),
+                            firstName = firstname.value ?: "",
+                            lastName = userName.value ?: "",
+                            email = email.value!!,
+                            password = password.value!!,
+                            phoneNumber = phone.value!!,
+                            requestImage
                         )
                     }
                     onSignUpSuccess(signupResponse)

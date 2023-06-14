@@ -84,16 +84,13 @@ class SignUpActivity : BaseActivity() {
 
             is Navigation.GalleryNavigation -> showGallery()
 
-
         }
     }
-
 
     private fun showGallery() {
         val chooseImageIntent: Intent = ImagePicker.getGalleryIntent()
         startActivityForResult(chooseImageIntent, ImagePicker.PICK_IMAGE_GALLERY_ID)
     }
-
 
     private fun showCamera(imageName: String) {
         if (ContextCompat.checkSelfPermission(
@@ -124,7 +121,6 @@ class SignUpActivity : BaseActivity() {
             viewModel.cameraPermissionGranted()
         }
     }
-
 
     override fun onActivityResult(
         requestCode: Int,
@@ -161,7 +157,6 @@ class SignUpActivity : BaseActivity() {
             )
         }
     }
-
 
     /**
      * Register the UI for XMLBinding
