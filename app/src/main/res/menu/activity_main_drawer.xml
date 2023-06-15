@@ -3,7 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single">
+    <group
+        android:id="@+id/main_drawer_menu1"
+        android:checkableBehavior="single">
+
         <item
             android:id="@+id/nav_menu_1"
             android:icon="@drawable/ic_edit"
@@ -36,9 +39,28 @@
             android:id="@+id/nav_menu_8"
             android:icon="@drawable/ic_visit"
             android:title="@string/home_menu_8" />
+
+    </group>
+
+    <group
+        android:id="@+id/main_drawer_menu3"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_menu_11"
+            android:checkable="false"
+            android:checked="false"
+            android:enabled="false"
+            android:icon="@null"
+            android:title="" />
+    </group>
+
+    <group
+        android:id="@+id/main_drawer_menu2"
+        android:checkableBehavior="single">
         <item
             android:id="@+id/nav_menu_9"
             android:icon="@drawable/ic_disconnect"
             android:title="@string/home_menu_9" />
     </group>
+
 </menu>

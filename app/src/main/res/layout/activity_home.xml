@@ -53,10 +53,11 @@
             app:headerLayout="@layout/nav_header_home"
             app:itemBackground="@drawable/menu_background_color"
             app:itemIconTint="@drawable/menu_text_color"
-            app:itemMaxLines="2"
+            app:itemMaxLines="1"
             app:itemTextAppearance="@style/NavigationViewStyle"
             app:itemTextColor="@drawable/menu_text_color"
-            app:menu="@menu/activity_main_drawer">
+            app:menu="@menu/activity_main_drawer"
+            app:theme="@style/NavigationViewStyle">
 
             <include
                 layout="@layout/nav_header_home"

@@ -5,22 +5,11 @@
     android:layout_height="wrap_content"
     android:background="@color/black"
     android:orientation="vertical"
+    android:layout_marginBottom="@dimen/margin_global_30dp"
     android:paddingLeft="@dimen/padding_global_16dp"
     android:paddingRight="@dimen/padding_global_16dp"
     android:paddingBottom="@dimen/padding_global_16dp"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
-
-<!--    <androidx.appcompat.widget.AppCompatImageView-->
-<!--        android:id="@+id/imageMenuHomeClose"-->
-<!--        android:layout_width="@dimen/dimen_40dp"-->
-<!--        android:layout_height="@dimen/dimen_40dp"-->
-<!--        android:layout_marginTop="@dimen/margin_global_40dp"-->
-<!--        android:layout_marginEnd="@dimen/margin_global_11dp"-->
-<!--        android:src="@drawable/ic_menu_close"-->
-<!--        android:padding="@dimen/padding_global_10dp"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
 
     <ImageView
         android:id="@+id/ivNav"
