@@ -67,10 +67,14 @@ class SignInActivity : BaseActivity() {
     override fun navigate(navigationTo: Navigation) {
         when (navigationTo) {
             is Navigation.HomeActivityNavigation -> {
-                navigateToActivity(HomeActivity::class)
+                navigateToActivity(HomeActivity::class, true)
             }
             is Navigation.OtpActivityNavigation -> {
-                navigateToActivity(OtpActivity::class)
+                Intent(this, OtpActivity::class.java).let {
+                    it.putExtra(ExtraKeys.OtpActivity.USER_ID_EXTRA_KEY, navigationTo.userId)
+                    startActivity(it)
+                }
+                finish()
             }
             is Navigation.ResetPasswordActivityNavigation -> navigateToActivity(
                 ResetPasswordActivity::class

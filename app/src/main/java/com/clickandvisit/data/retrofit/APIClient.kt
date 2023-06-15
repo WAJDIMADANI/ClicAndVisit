@@ -15,7 +15,6 @@ import com.clickandvisit.data.model.reservation.ReservedPropertyResponse
 import com.clickandvisit.data.model.reservation.ResultModel
 import com.clickandvisit.data.model.user.*
 import com.clickandvisit.data.model.user.signup.SignupResponse
-import okhttp3.MultipartBody
 import retrofit2.http.*
 
 
@@ -41,7 +40,8 @@ interface APIClient {
     @FormUrlEncoded
     @POST("user_login")
     suspend fun signIn(
-        @Body login: Login
+        @Field("email") email: String,
+        @Field("password") password: String
     ): SignupResponse
 
     @FormUrlEncoded
@@ -68,20 +68,21 @@ interface APIClient {
     @FormUrlEncoded
     @POST("send_activation_code")
     suspend fun sendActivationCode(
-        @Body userId: Int
+        @Field("user_id") userId: Int,
     ): SignupResponse
 
     @FormUrlEncoded
     @POST("activate_account")
     suspend fun activateAccount(
-        @Body req: ActivateAccountRequest
+        @Field("user_id") userId: Int,
+        @Field("code_activation") activationCode: String
     ): SignupResponse
 
     @FormUrlEncoded
     @POST("remove_account")
     suspend fun removeAccount(
-        @Body userId: Int
-    ): Void //TODO:
+        @Field("user_id") userId: Int,
+    ): GlobalResponse
 
     @FormUrlEncoded
     @POST("report_user")

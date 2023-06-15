@@ -15,6 +15,7 @@ import com.clickandvisit.base.BaseActivity
 import com.clickandvisit.databinding.ActivitySignupBinding
 import com.clickandvisit.global.helper.ImagePicker
 import com.clickandvisit.global.helper.Navigation
+import com.clickandvisit.global.utils.ExtraKeys
 import com.clickandvisit.global.utils.observeOnlyNotNull
 import com.clickandvisit.ui.shared.dialog.SimpleImgPickerDialog
 import com.clickandvisit.ui.user.signin.SignInActivity
@@ -50,6 +51,7 @@ class SignUpActivity : BaseActivity() {
     fun onProClick(view: View) {
         viewModel.onProClick()
     }
+
     /** No pro RadioButton click **/
     fun onNoProClick(view: View) {
         viewModel.onNoProClick()
@@ -59,6 +61,7 @@ class SignUpActivity : BaseActivity() {
     fun onMClick(view: View) {
         viewModel.onMClick()
     }
+
     /** No pro RadioButton click **/
     fun onFClick(view: View) {
         viewModel.onFClick()
@@ -77,7 +80,11 @@ class SignUpActivity : BaseActivity() {
             )
 
             is Navigation.OtpActivityNavigation -> {
-                navigateToActivity(OtpActivity::class, true)
+                Intent(this, OtpActivity::class.java).let {
+                    it.putExtra(ExtraKeys.OtpActivity.USER_ID_EXTRA_KEY, navigationTo.userId)
+                    startActivity(it)
+                }
+                finish()
             }
 
             is Navigation.CameraNavigation -> showCamera(navigationTo.imageName)

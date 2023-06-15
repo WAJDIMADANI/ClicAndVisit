@@ -10,6 +10,7 @@ import com.clickandvisit.R
 import com.clickandvisit.base.BaseActivity
 import com.clickandvisit.databinding.ActivityOtpBinding
 import com.clickandvisit.global.helper.Navigation
+import com.clickandvisit.ui.home.HomeActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -53,6 +54,10 @@ class OtpActivity : BaseActivity() {
     override fun navigate(navigationTo: Navigation) {
         when (navigationTo) {
             is Navigation.Back -> finish()
+
+            is Navigation.HomeActivityNavigation -> {
+                navigateToActivity(HomeActivity::class, true)
+            }
 
         }
     }

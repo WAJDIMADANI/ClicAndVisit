@@ -51,9 +51,9 @@
                     <ImageView
                         android:layout_width="@dimen/dimen_30dp"
                         android:layout_height="@dimen/dimen_30dp"
-                        android:background="@drawable/ic_back"
                         android:layout_marginStart="@dimen/margin_global_25dp"
                         android:layout_marginTop="@dimen/margin_global_30dp"
+                        android:background="@drawable/ic_back"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:onClickWithDebounce="@{() ->viewModel.onBackClick()}" />
@@ -69,7 +69,7 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <LinearLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/margin_global_36dp"
@@ -81,20 +81,23 @@
                         android:id="@+id/tvIntroTitle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/margin_global_30dp"
                         android:fontFamily="@font/poppins_bold"
                         android:gravity="center"
+                        android:layout_marginTop="@dimen/dimen_100dp"
                         android:text="@string/otp_email"
                         android:textColor="@color/black_basic"
                         android:textSize="@dimen/font_25sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/appCompatImageView" />
+                        app:layout_constraintBottom_toTopOf="@+id/tvCodeTitle"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvCodeTitle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/margin_global_12dp"
+                        android:layout_marginBottom="@dimen/margin_global_30dp"
                         android:fontFamily="@font/poppins_regular"
                         android:gravity="center"
                         android:text="@string/otp_code"
@@ -102,11 +105,17 @@
                         android:textSize="@dimen/font_15sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintBottom_toTopOf="@+id/clInput"
                         app:layout_constraintTop_toBottomOf="@+id/tvIntroTitle" />
 
                     <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/clInput"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintBottom_toTopOf="@+id/tvNoCode"
+                        app:layout_constraintTop_toBottomOf="@+id/tvCodeTitle" >
 
                         <EditText
                             android:id="@+id/otpEditTextOne"
@@ -114,10 +123,8 @@
                             android:layout_height="@dimen/dimen_58dp"
                             android:background="@drawable/ic_edit_border"
                             android:cursorVisible="false"
-                            android:digits="1234567890"
                             android:fontFamily="@font/poppins_semi_bold"
                             android:gravity="center"
-                            android:inputType="numberDecimal"
                             android:maxLength="1"
                             android:text="@={viewModel.one}"
                             android:textIsSelectable="false"
@@ -133,10 +140,8 @@
                             android:layout_height="@dimen/dimen_58dp"
                             android:background="@drawable/ic_edit_border"
                             android:cursorVisible="false"
-                            android:digits="1234567890"
                             android:fontFamily="@font/poppins_semi_bold"
                             android:gravity="center"
-                            android:inputType="numberDecimal"
                             android:maxLength="1"
                             android:text="@={viewModel.two}"
                             android:textIsSelectable="false"
@@ -152,10 +157,8 @@
                             android:layout_height="@dimen/dimen_58dp"
                             android:background="@drawable/ic_edit_border"
                             android:cursorVisible="false"
-                            android:digits="1234567890"
                             android:fontFamily="@font/poppins_semi_bold"
                             android:gravity="center"
-                            android:inputType="numberDecimal"
                             android:maxLength="1"
                             android:text="@={viewModel.three}"
                             android:textIsSelectable="false"
@@ -171,10 +174,8 @@
                             android:layout_height="@dimen/dimen_58dp"
                             android:background="@drawable/ic_edit_border"
                             android:cursorVisible="false"
-                            android:digits="1234567890"
                             android:fontFamily="@font/poppins_semi_bold"
                             android:gravity="center"
-                            android:inputType="numberDecimal"
                             android:maxLength="1"
                             android:text="@={viewModel.four}"
                             android:textIsSelectable="false"
@@ -189,9 +190,10 @@
 
 
                     <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvNoCode"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/margin_global_12dp"
+                        android:layout_marginTop="@dimen/margin_global_20dp"
                         android:fontFamily="@font/poppins_medium"
                         android:gravity="center"
                         android:text="@string/otp_code_not_recived"
@@ -199,10 +201,12 @@
                         android:textSize="@dimen/font_15sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tvIntroTitle" />
+                        app:layout_constraintBottom_toTopOf="@+id/tvResend"
+                        app:layout_constraintTop_toBottomOf="@+id/clInput" />
 
                     <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="match_parent"
+                        android:id="@+id/tvResend"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/margin_global_8dp"
                         android:fontFamily="@font/poppins_regular"
@@ -212,22 +216,25 @@
                         android:textSize="@dimen/font_15sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tvIntroTitle" />
+                        app:layout_constraintTop_toBottomOf="@+id/tvNoCode"
+                        app:onClickWithDebounce="@{() ->viewModel.onSendActivationCodeClick()}"/>
 
                     <com.clickandvisit.ui.shared.view.CustomButton
+                        android:id="@+id/customButton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom"
-                        android:layout_marginTop="@dimen/margin_global_50dp"
+                        android:layout_marginBottom="@dimen/margin_global_30dp"
                         android:background="@drawable/ic_button_background"
                         android:fontFamily="@font/poppins_semi_bold"
                         android:text="@string/global_next"
                         android:textAllCaps="false"
                         android:textColor="@color/white_basic"
                         android:textSize="@dimen/font_18sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:onClickWithDebounce="@{() ->viewModel.onNextClick()}" />
 
-                </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
             </LinearLayout>
 

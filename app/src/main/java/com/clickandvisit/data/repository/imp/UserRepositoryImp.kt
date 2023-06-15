@@ -69,21 +69,26 @@ class UserRepositoryImp @Inject constructor(
 
     @WorkerThread
     override suspend fun signInAndCache(email: String, password: String): SignupResponse {
-        val response = apiClient.signIn(Login(email, password))
+        val response = apiClient.signIn(email, password)
+        if (response.result) {
+            sharedPreferences.saveUser(response.user)
+        }
+        return response
+    }
+
+    override suspend fun activateAccount(code: String, userId: Int): SignupResponse {
+        val response = apiClient.activateAccount(
+            userId,
+            code
+        )
         sharedPreferences.saveUser(response.user)
         return response
     }
 
-    override suspend fun activateAccount(code: String): SignupResponse {
-        val response = apiClient.activateAccount(
-            ActivateAccountRequest(
-                sharedPreferences.getUser().id.toInt(),
-                code
-            )
-        )
-        //FIXME:sharedPreferences.saveUser(response.user)
-        return response
+    override suspend fun sendActivationCode(userId: Int): SignupResponse {
+        return apiClient.sendActivationCode(userId)
     }
+
 
     override suspend fun getUser(id: Int): UserResponse {
         return apiClient.getUser(id)
@@ -104,13 +109,6 @@ class UserRepositoryImp @Inject constructor(
         )
     }
 
-    override suspend fun sendActivationCode(userId: Int): SignupResponse {
-        return apiClient.sendActivationCode(userId)
-    }
-
-    override suspend fun activateAccount(req: ActivateAccountRequest): SignupResponse {
-        return apiClient.activateAccount(req)
-    }
 
     override suspend fun reportUser(reportUserRequest: ReportUserRequest): ReportUserResponse {
         return apiClient.reportUser(

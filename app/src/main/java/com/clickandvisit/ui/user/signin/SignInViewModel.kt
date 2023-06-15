@@ -33,19 +33,11 @@ class SignInViewModel
 
 
     val email: MutableLiveData<String> = MutableLiveData()
-    val password: MutableLiveData<String> = MutableLiveData()
+    val password: MutableLiveData<String> = MutableLiveData("qwerty00")
 
     val emailFieldError: MutableLiveData<Boolean> = MutableLiveData(false)
     val passwordFieldError: MutableLiveData<Boolean> = MutableLiveData(false)
 
-
-    val showPassword: NonNullLiveData<Boolean> = NonNullLiveData(false)
-    val signingIn: NonNullLiveData<Boolean> = NonNullLiveData(false)
-
-
-    fun onForgetPasswordClicked() {
-        navigate(Navigation.ResetPasswordActivityNavigation)
-    }
 
     fun onSignUpClicked() {
         navigate(Navigation.SignUpActivityNavigation)
@@ -56,18 +48,14 @@ class SignInViewModel
     }
 
     override fun onStartClicked() {
-        navigate(Navigation.Back)
+
     }
 
-    fun onShowPasswordClicked(show: Boolean) {
-        showPassword.value = show
-    }
 
     @UiThread
     fun onSignInClicked() {
         if (validateFields()) {
             viewModelScope.launch {
-                signingIn.value = true
                 tryCatch({
                     val responseUser = withContext(schedulerProvider.dispatchersIO()) {
                         userRepository.signInAndCache(email.value!!, password.value!!)
@@ -81,11 +69,10 @@ class SignInViewModel
     }
 
     private fun onSignInSuccess(signupResponse: SignupResponse) {
-        signingIn.value = false
         if (signupResponse.result) {
             navigate(Navigation.HomeActivityNavigation)
         } else if (signupResponse.resultCode == 4) {//FIXME: resultCode valeurs possible?
-            navigate(Navigation.OtpActivityNavigation)
+            navigate(Navigation.OtpActivityNavigation(signupResponse.user.id.toInt()))
 /*            shownSimpleDialog(
                 messageId = R.string.signin_inactivated_account,
                 dismissActionBlock = {
@@ -95,7 +82,6 @@ class SignInViewModel
     }
 
     private fun onSignInError(throwable: Throwable) {
-        signingIn.value = false
         if (throwable is HttpException) {
             when (throwable.code()) {
                 HttpResponseCode.HTTP_UNAUTHORIZED -> shownSimpleDialog(messageId = R.string.signin_invalid_data)

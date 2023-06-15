@@ -215,11 +215,7 @@ class SignUpViewModel
 
     private fun onSignUpSuccess(signupResponse: SignupResponse) {
         hideBlockProgressBar()
-        DebugLog.i(TAG, signupResponse.result.toString())
-        DebugLog.i(TAG, signupResponse.resultCode.toString())
-        DebugLog.i(TAG, signupResponse.resultMsg)
-        DebugLog.i(TAG, signupResponse.user.toString())
-        navigate(Navigation.OtpActivityNavigation)
+        navigate(Navigation.OtpActivityNavigation(signupResponse.user.id.toInt()))
     }
 
 

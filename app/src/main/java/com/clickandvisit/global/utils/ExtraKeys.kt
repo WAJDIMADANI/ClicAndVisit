@@ -8,30 +8,9 @@ object ExtraKeys {
         }
     }
 
-    class ThreeFragment {
+    class OtpActivity{
         companion object {
-            const val THREE_EXTRA_ARG_KEY: String = "three_fragment_extra_arg"
-        }
-    }
-
-    class FourFragment {
-        companion object {
-            const val FOUR_EXTRA_FIRST_ARG_KEY: String = "var1"
-            const val FOUR_EXTRA_SECOND_ARG_KEY: String = "var2"
-        }
-    }
-
-    class NewsActivity {
-        companion object {
-            const val NEWS_EXTRA_VAR_KEY: String = "var1"
-        }
-    }
-
-
-    class DetailsActivity {
-        companion object {
-            const val DETAILS_EXTRA_KEY_FROM_PACK: String = "details_extra_pack"
-            const val DETAILS_EXTRA_KEY_FROM_ADS: String = "details_extra_ads"
+            const val USER_ID_EXTRA_KEY: String = "user_id_extra_key"
         }
     }
 

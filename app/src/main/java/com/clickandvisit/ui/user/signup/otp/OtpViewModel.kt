@@ -3,12 +3,14 @@ package com.clickandvisit.ui.user.signup.otp
 import android.app.Application
 import androidx.annotation.UiThread
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.SavedStateHandle
 import com.clickandvisit.base.BaseAndroidViewModel
 import com.clickandvisit.data.model.user.signup.SignupResponse
 import com.clickandvisit.data.repository.abs.UserRepository
 import com.clickandvisit.global.helper.Navigation
 import com.clickandvisit.global.listener.SchedulerProvider
 import com.clickandvisit.global.listener.ToolBarListener
+import com.clickandvisit.global.utils.ExtraKeys
 import com.clickandvisit.global.utils.tryCatch
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -20,7 +22,8 @@ class OtpViewModel
 @Inject constructor(
     application: Application,
     schedulerProvider: SchedulerProvider,
-    private val userRepository: UserRepository
+    private val userRepository: UserRepository,
+    savedStateHandle: SavedStateHandle
 ) :
     BaseAndroidViewModel(application, schedulerProvider), ToolBarListener {
 
@@ -30,14 +33,12 @@ class OtpViewModel
     val three = MutableLiveData("")
     val four = MutableLiveData("")
 
-    val oneFieldError = MutableLiveData(false)
-    val twoFieldError = MutableLiveData(false)
-    val threeFieldError = MutableLiveData(false)
-    val fourFieldError = MutableLiveData(false)
-
     val code = MutableLiveData("")
+    val userId = MutableLiveData(0)
 
     init {
+        userId.value =
+            savedStateHandle.getLiveData<Int>(ExtraKeys.OtpActivity.USER_ID_EXTRA_KEY).value
 
     }
 
@@ -52,10 +53,10 @@ class OtpViewModel
             showBlockProgressBar()
             viewModelScope.launch {
                 tryCatch({
-                    val loginResponse = withContext(schedulerProvider.dispatchersIO()) {
-                        userRepository.activateAccount(code.value!!)
+                    val otpResponse = withContext(schedulerProvider.dispatchersIO()) {
+                        userRepository.activateAccount(code.value!!, userId.value!!)
                     }
-                    onOtpValidateSuccess(loginResponse)
+                    onOtpValidateSuccess(otpResponse)
                 }, { error ->
                     onOtpValidateError(error)
                 })
@@ -63,7 +64,22 @@ class OtpViewModel
         }
     }
 
-    private fun onOtpValidateSuccess(signupResponse: SignupResponse) {
+    @UiThread
+    fun onSendActivationCodeClick() {
+        showBlockProgressBar()
+        viewModelScope.launch {
+            tryCatch({
+                withContext(schedulerProvider.dispatchersIO()) {
+                    userRepository.sendActivationCode(userId.value!!)
+                }
+                hideBlockProgressBar()
+            }, { error ->
+                hideBlockProgressBar()
+            })
+        }
+    }
+
+    private fun onOtpValidateSuccess(otpResponse: SignupResponse) {
         hideBlockProgressBar()
         navigate(Navigation.HomeActivityNavigation)
     }

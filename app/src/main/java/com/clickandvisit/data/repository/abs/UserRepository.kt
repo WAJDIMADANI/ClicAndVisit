@@ -44,7 +44,10 @@ interface UserRepository {
     suspend fun signInAndCache(email: String, password: String): SignupResponse
 
     @WorkerThread
-    suspend fun activateAccount(code: String): SignupResponse
+    suspend fun activateAccount(code: String, userId: Int): SignupResponse
+
+    @WorkerThread
+    suspend fun sendActivationCode(userId: Int): SignupResponse
 
     @WorkerThread
     suspend fun getUser(id: Int): UserResponse
@@ -52,11 +55,6 @@ interface UserRepository {
     @WorkerThread
     suspend fun userUpdate(user: User): UserResponse
 
-    @WorkerThread
-    suspend fun sendActivationCode(userId: Int): SignupResponse
-
-    @WorkerThread
-    suspend fun activateAccount(req: ActivateAccountRequest): SignupResponse
 
     suspend fun reportUser(reportUserRequest: ReportUserRequest): ReportUserResponse
 

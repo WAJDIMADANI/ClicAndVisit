@@ -10,7 +10,7 @@ sealed class Navigation {
 
     object ResetPasswordActivityNavigation : Navigation()
 
-    object OtpActivityNavigation : Navigation()
+    data class OtpActivityNavigation(val userId: Int) : Navigation()
 
     object ProfileActivityNavigation : Navigation()
 
