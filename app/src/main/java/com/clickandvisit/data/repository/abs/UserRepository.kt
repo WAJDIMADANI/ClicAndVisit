@@ -50,7 +50,7 @@ interface UserRepository {
     suspend fun sendActivationCode(userId: Int): SignupResponse
 
     @WorkerThread
-    suspend fun getUser(id: Int): UserResponse
+    suspend fun getUser(): User
 
     @WorkerThread
     suspend fun userUpdate(user: User): UserResponse

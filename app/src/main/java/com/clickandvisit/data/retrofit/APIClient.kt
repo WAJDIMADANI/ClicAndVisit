@@ -44,10 +44,10 @@ interface APIClient {
         @Field("password") password: String
     ): SignupResponse
 
-    @FormUrlEncoded
-    @GET("get_user?user_id={id}")
+
+    @GET("get_user")
     suspend fun getUser(
-        @Path("id") id: Int
+        @Query("user_id") id: Int
     ): UserResponse
 
     @FormUrlEncoded
@@ -122,7 +122,7 @@ interface APIClient {
         @Field("sorthow") sortHow: Int // asc/desc
     ): SearchResponse
 
-    @FormUrlEncoded
+
     @GET("property_details?id={propertyId}&user_id={userId}")
     suspend fun propertyDetails(
         @Path("propertyId") propertyId: Int,
@@ -137,7 +137,7 @@ interface APIClient {
         @Path("action") action: String
     ): GlobalResponse
 
-    @FormUrlEncoded
+
     @GET("list_favorites?user_id={userId}")
     suspend fun favoriteList(
         @Path("userId") userId: Int
@@ -202,7 +202,7 @@ interface APIClient {
         @Field("search_id") searchId: Int
     ): GlobalResponse
 
-    @FormUrlEncoded
+
     @GET("get_saved_search?user_id={userId}")
     suspend fun getSavedSearch(
         @Path("userId") userId: Int
@@ -211,14 +211,14 @@ interface APIClient {
 
     /** Reservation **/
 
-    @FormUrlEncoded
+
     @GET("get_avaibility?date={date}&property_id={propId}")
     suspend fun getAvailability(
         @Path("date") date: String,
         @Path("propId") propId: Int
     ): AvailabilityResponse
 
-    @FormUrlEncoded
+
     @GET("get_all_reserved?property_id={propId}")
     suspend fun getAllReserved(
         @Path("propId") propId: Int
@@ -249,7 +249,7 @@ interface APIClient {
         @Field("accept") accept: Boolean
     ): ReservationResponse
 
-    @FormUrlEncoded
+
     @GET("get_reservations?user_id={user_id}&sent={sent}")
     suspend fun getReservations(
         @Path("user_id") userId: Int,
@@ -275,13 +275,13 @@ interface APIClient {
         @Path("message") message: String
     ): GlobalResponse
 
-    @FormUrlEncoded
+
     @GET("get_discutions?user_id={user_id}")
     suspend fun getDiscussions(
         @Path("user_id") userId: Int
     ): DiscussionsResponse
 
-    @FormUrlEncoded
+
     @GET("get_discutions_messages?user_id={user_id}&discution_id={discution_id}")
     suspend fun getMessages(
         @Path("user_id") userId: Int,

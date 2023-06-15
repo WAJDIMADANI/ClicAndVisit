@@ -101,6 +101,7 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="dimen_edit_text">50dp</dimen>
     <dimen name="dimen_58dp">58dp</dimen>
+    <dimen name="dimen_150dp">150dp</dimen>
 
 
 </resources>

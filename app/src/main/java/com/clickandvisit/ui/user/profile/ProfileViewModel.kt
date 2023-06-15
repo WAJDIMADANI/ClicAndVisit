@@ -5,6 +5,7 @@ import android.content.Intent
 import android.net.Uri
 import androidx.lifecycle.MutableLiveData
 import com.clickandvisit.base.BaseAndroidViewModel
+import com.clickandvisit.data.model.user.User
 import com.clickandvisit.data.repository.abs.UserRepository
 import com.clickandvisit.global.helper.ImagePicker
 import com.clickandvisit.global.helper.Navigation
@@ -12,12 +13,15 @@ import com.clickandvisit.global.listener.SchedulerProvider
 import com.clickandvisit.global.listener.ToolBarListener
 import com.clickandvisit.global.utils.DebugLog
 import com.clickandvisit.global.utils.TAG
+import com.clickandvisit.global.utils.toMediaUrl
+import com.clickandvisit.global.utils.tryCatch
 import com.clickandvisit.ui.home.menu.profile.PROFILE_PIC_NAME
 import com.clickandvisit.ui.shared.dialog.ImgPickerDialog
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
+
 
 @HiltViewModel
 class ProfileViewModel
@@ -28,13 +32,18 @@ class ProfileViewModel
 ) : BaseAndroidViewModel(application, schedulerProvider), ToolBarListener {
 
 
-    val userName: MutableLiveData<String> = MutableLiveData()
-    val cin: MutableLiveData<String> = MutableLiveData()
+    val firstName: MutableLiveData<String> = MutableLiveData()
+    val lastName: MutableLiveData<String> = MutableLiveData()
     val email: MutableLiveData<String> = MutableLiveData()
     val phone: MutableLiveData<String> = MutableLiveData()
 
-    val userFieldError: MutableLiveData<Boolean> = MutableLiveData(false)
-    val cinFieldError: MutableLiveData<Boolean> = MutableLiveData(false)
+    /** no pro **/
+    val checkedM: MutableLiveData<Boolean> = MutableLiveData(false)
+    val checkedF: MutableLiveData<Boolean> = MutableLiveData(false)
+
+
+    val firstNameFieldError: MutableLiveData<Boolean> = MutableLiveData(false)
+    val lastNameFieldError: MutableLiveData<Boolean> = MutableLiveData(false)
     val emailFieldError: MutableLiveData<Boolean> = MutableLiveData(false)
     val phoneFieldError: MutableLiveData<Boolean> = MutableLiveData(false)
 
@@ -42,9 +51,44 @@ class ProfileViewModel
 
     val photoUri = MutableLiveData(Uri.EMPTY)
 
+    lateinit var user: User
 
     init {
+        showBlockProgressBar()
+        viewModelScope.launch {
+            tryCatch({
+                user = withContext(schedulerProvider.dispatchersIO()) {
+                    userRepository.getUser()
+                }
+                onGetProfileSuccess(user)
+            }, { error ->
+                onGetProfileError(error)
+            })
+        }
 
+    }
+
+    private fun onGetProfileSuccess(user: User) {
+        hideBlockProgressBar()
+        firstName.value = user.firstName
+        lastName.value = user.lastName
+        email.value = user.email
+        phone.value = user.phoneNumber
+
+        if (user.civility.toInt() == 0){
+            checkedM.value = true
+        }else{
+            checkedF.value = true
+        }
+
+        if (user.photo.toMediaUrl() != "https://")
+            photoUri.value = Uri.parse(user.photo)
+
+    }
+
+    private fun onGetProfileError(throwable: Throwable) {
+        hideBlockProgressBar()
+        handleThrowable(throwable)
     }
 
 
@@ -56,11 +100,6 @@ class ProfileViewModel
                 onDismissBottomSheet()
             )
     }
-
-    fun onChangePasswordClicked() {
-
-    }
-
 
     private fun onTakePictureClicked(): () -> Unit {
         return {
@@ -115,6 +154,13 @@ class ProfileViewModel
         navigate(Navigation.Back)
     }
 
+    fun onChangePasswordClicked() {
+
+    }
+
+    fun onDeleteClick() {
+
+    }
 
     fun onSaveClicked() {
 

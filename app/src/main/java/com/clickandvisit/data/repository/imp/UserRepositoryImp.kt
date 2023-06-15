@@ -90,8 +90,10 @@ class UserRepositoryImp @Inject constructor(
     }
 
 
-    override suspend fun getUser(id: Int): UserResponse {
-        return apiClient.getUser(id)
+    override suspend fun getUser(): User {
+        val updatedUser =  apiClient.getUser(sharedPreferences.getUser().id.toInt())
+        sharedPreferences.saveUser(updatedUser.user)
+        return updatedUser.user
     }
 
     override suspend fun userUpdate(user: User): UserResponse {

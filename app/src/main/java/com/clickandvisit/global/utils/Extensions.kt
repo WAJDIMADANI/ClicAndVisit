@@ -331,3 +331,10 @@ fun File.deleteDirectory(): Boolean {
         delete()
     } else false
 }
+fun String?.toMediaUrl(): String {
+    return if (this.isNullOrEmpty()) {
+        "https://"
+    } else {
+        this
+    }
+}
