@@ -68,7 +68,7 @@ class ProfileViewModel
 
     }
 
-    private fun onGetProfileSuccess(user: User) {
+    private fun onGetProfileSuccess(user: User) { //TODO: if pro
         hideBlockProgressBar()
         firstName.value = user.firstName
         lastName.value = user.lastName
