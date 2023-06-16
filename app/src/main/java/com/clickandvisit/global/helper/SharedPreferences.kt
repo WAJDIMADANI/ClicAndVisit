@@ -8,13 +8,11 @@ import com.clickandvisit.global.utils.*
 import com.securepreferences.SecurePreferences
 import com.squareup.moshi.Moshi
 
-private const val FILE_NAME_FLAG = "bingo_file_flag"
+private const val FILE_NAME_FLAG = "clickandvisit_file_flag"
 
 
 private const val TOKEN_FLAG = "1"
 private const val USER_FLAG = "2"
-private const val INTRO_FLAG = "3"
-private const val AIRPORT_FLAG = "airport_flag"
 
 
 class SharedPreferences(context: Context, val moshi: Moshi) {
@@ -56,6 +54,21 @@ class SharedPreferences(context: Context, val moshi: Moshi) {
         return adapter.fromJson(json) as User
     }
 
+    private fun deleteUser() {
+        val editor = sharedPreferences.edit()
+        editor.remove(USER_FLAG)
+        editor.apply()
+    }
+
+    private fun deleteToken() {
+        val editor = sharedPreferences.edit()
+        editor.remove(TOKEN_FLAG)
+        editor.apply()
+    }
+    fun clearCache() {
+        deleteToken()
+        deleteUser()
+    }
 
     private fun getPassKeyStore(context: Context): String {
         val alias = context.applicationContext.packageName

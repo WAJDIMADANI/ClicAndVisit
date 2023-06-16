@@ -73,7 +73,7 @@ class ProfileViewModel
 
     }
 
-    private fun onGetProfileSuccess(user: User) { //TODO: if pro + edit
+    private fun onGetProfileSuccess(user: User) {
         hideBlockProgressBar()
         checkedPro.value = user.isPro()
         checkProPar(user)

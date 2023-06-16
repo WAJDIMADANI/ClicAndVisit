@@ -130,6 +130,10 @@ class UserRepositoryImp @Inject constructor(
         )
     }
 
+    override suspend fun logout() {
+        sharedPreferences.clearCache()
+    }
+
     /** Property **/
 
     override suspend fun search(searchRequest: SearchRequest): SearchResponse {

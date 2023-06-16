@@ -24,6 +24,7 @@ import com.clickandvisit.ui.ads.search.SearchActivity
 import com.clickandvisit.ui.user.chat.ChatActivity
 import com.clickandvisit.ui.user.meet.MeetActivity
 import com.clickandvisit.ui.user.profile.ProfileActivity
+import com.clickandvisit.ui.user.signin.SignInActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -177,6 +178,11 @@ class HomeActivity : BaseActivity(), DrawerLayout.DrawerListener {
             is Navigation.ChatActivityNavigation -> {
                 navigateToActivity(ChatActivity::class)
             }
+
+            is Navigation.SignInActivityNavigation -> navigateToActivity(
+                SignInActivity::class,
+                true
+            )
         }
     }
 

@@ -55,10 +55,14 @@ interface UserRepository {
     @WorkerThread
     suspend fun userUpdate(user: User): User
 
-
+    @WorkerThread
     suspend fun reportUser(reportUserRequest: ReportUserRequest): ReportUserResponse
 
+    @WorkerThread
     suspend fun setPushToken(pushTokenRequest: PushTokenRequest): TokenResponse
+
+    @WorkerThread
+    suspend fun logout()
 
 
     /** Property **/

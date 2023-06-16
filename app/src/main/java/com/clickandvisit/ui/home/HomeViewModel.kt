@@ -2,13 +2,18 @@ package com.clickandvisit.ui.home
 
 import android.app.Application
 import androidx.lifecycle.SavedStateHandle
+import com.clickandvisit.R
 import com.clickandvisit.base.BaseAndroidViewModel
+import com.clickandvisit.data.repository.abs.UserRepository
 import com.clickandvisit.global.helper.Navigation
 import com.clickandvisit.global.listener.SchedulerProvider
 import com.clickandvisit.global.listener.ToolBarListener
 import com.clickandvisit.global.utils.DebugLog
 import com.clickandvisit.global.utils.TAG
+import com.clickandvisit.global.utils.tryCatch
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 /**
@@ -20,7 +25,8 @@ class HomeViewModel
 @Inject constructor(
     application: Application,
     schedulerProvider: SchedulerProvider,
-    savedStateHandle: SavedStateHandle
+    savedStateHandle: SavedStateHandle,
+    private val userRepository: UserRepository
 ) :
     BaseAndroidViewModel(application, schedulerProvider), ToolBarListener {
 
@@ -45,16 +51,24 @@ class HomeViewModel
     }
 
     fun disconnect() {
- /*       showChoseDialog(
-            messageId = R.string.global_home_logout_txt,
-            okId = R.string.global_yes,
-            cancelId = R.string.global_no,
+        shownChoseDialog(
+            null,
+            R.string.profile_sign_out_msg,
+            R.string.global_yes,
+            R.string.global_no,
             okActionBlock = {
-                userRepository.disconnect()
-                navigate(Navigation.FirstScreenActivityNavigation)
-            },
-            dismissActionBlock = null
-        )*/
+                viewModelScope.launch {
+                    tryCatch({
+                        withContext(schedulerProvider.dispatchersIO()) {
+                            userRepository.logout()
+                        }
+                        navigate(Navigation.SignInActivityNavigation)
+                    }, { error ->
+                        navigate(Navigation.SignInActivityNavigation)
+                    })
+                }
+            }, dismissActionBlock = null
+        )
     }
 
 

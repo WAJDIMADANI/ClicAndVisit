@@ -104,8 +104,6 @@
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
-                    <!--//TODO: if pro-->
-
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"

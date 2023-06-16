@@ -4,6 +4,8 @@
     <!--global message-->
     <string name="global_ok">Ok</string>
     <string name="global_cancel">Annuler</string>
+    <string name="global_yes">Oui</string>
+    <string name="global_no">Non</string>
     <string name="global_empty"></string>
     <string name="global_save">Enregistrer</string>
 
@@ -84,6 +86,10 @@
     <string name="home_menu_7">MES RECHERCHES</string>
     <string name="home_menu_8">MES VISITES</string>
     <string name="home_menu_9">Se déconnecter</string>
+
+    <string name="profile_sign_out_msg">Voulez-vous vraiment se déconnecter de votre compte?</string>
+    <string name="profile_sign_out">Déconnexion</string>
+
 
     <!--popup-->
     <string name="home_popup_title">Alerte suppression</string>

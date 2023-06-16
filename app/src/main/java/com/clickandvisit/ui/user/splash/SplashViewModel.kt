@@ -18,8 +18,7 @@ class SplashViewModel
 @Inject constructor(
     application: Application,
     schedulerProvider: SchedulerProvider,
-    private val userRepository: UserRepository,
-    versionValue: String
+    private val userRepository: UserRepository
 ) : BaseAndroidViewModel(application, schedulerProvider) {
 
     init {
