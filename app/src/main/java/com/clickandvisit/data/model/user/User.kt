@@ -52,6 +52,10 @@ data class User(
     ) {
     }
 
+    fun isPro(): Boolean {
+        return proPar.toInt() == 1
+    }
+
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(id)
         parcel.writeString(email)

@@ -53,6 +53,9 @@ class ProfileViewModel
 
     lateinit var user: User
 
+    val checkedPro: MutableLiveData<Boolean> = MutableLiveData(false)
+
+
     init {
         showBlockProgressBar()
         viewModelScope.launch {
@@ -68,16 +71,25 @@ class ProfileViewModel
 
     }
 
-    private fun onGetProfileSuccess(user: User) { //TODO: if pro
+    private fun onGetProfileSuccess(user: User) { //TODO: if pro + edit
         hideBlockProgressBar()
-        firstName.value = user.firstName
-        lastName.value = user.lastName
+
+        checkedPro.value = user.isPro()
+
+        if (user.isPro()) {
+            firstName.value = user.rSocial
+            lastName.value = user.siret
+        } else {
+            firstName.value = user.firstName
+            lastName.value = user.lastName
+        }
+
         email.value = user.email
         phone.value = user.phoneNumber
 
-        if (user.civility.toInt() == 0){
+        if (user.civility.toInt() == 0) {
             checkedM.value = true
-        }else{
+        } else {
             checkedF.value = true
         }
 

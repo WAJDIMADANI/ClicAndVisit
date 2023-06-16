@@ -75,40 +75,34 @@
 
                     </RelativeLayout>
 
-                    <LinearLayout
+                    <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/ic_profile_header"
-                        android:orientation="vertical">
+                        android:layout_marginBottom="@dimen/margin_global_10dp"
+                        android:background="@drawable/ic_profile_header">
 
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                        <com.clickandvisit.ui.shared.view.CustomCircleImageView
+                            android:id="@+id/customCircleImageView"
+                            android:layout_width="@dimen/dimen_150dp"
+                            android:layout_height="@dimen/dimen_150dp"
+                            android:layout_centerInParent="true"
+                            android:layout_gravity="center_horizontal"
+                            app:imageUri="@{viewModel.photoUri}"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:onClickWithDebounce="@{() ->viewModel.onImageClick()}"
+                            app:picasso="@{picasso}" />
 
-                            <com.clickandvisit.ui.shared.view.CustomCircleImageView
-                                android:id="@+id/customCircleImageView"
-                                android:layout_width="@dimen/dimen_150dp"
-                                android:layout_height="@dimen/dimen_150dp"
-                                android:layout_centerInParent="true"
-                                android:layout_gravity="center_horizontal"
-                                app:imageUri="@{viewModel.photoUri}"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"
-                                app:onClickWithDebounce="@{() ->viewModel.onImageClick()}"
-                                app:picasso="@{picasso}" />
+                        <com.clickandvisit.ui.shared.view.CustomCircleImageView
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:background="@drawable/ic_circle_back_gray"
+                            app:layout_constraintBottom_toBottomOf="@+id/customCircleImageView"
+                            app:layout_constraintEnd_toEndOf="@+id/customCircleImageView" />
 
-                            <com.clickandvisit.ui.shared.view.CustomCircleImageView
-                                android:layout_width="36dp"
-                                android:layout_height="36dp"
-                                android:background="@drawable/ic_circle_back_gray"
-                                app:layout_constraintBottom_toBottomOf="@+id/customCircleImageView"
-                                app:layout_constraintEnd_toEndOf="@+id/customCircleImageView" />
-
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-
-                    </LinearLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <!--//TODO: if pro-->
 
@@ -129,6 +123,7 @@
                             android:text="@string/signup_civility"
                             android:textColor="@color/black_basic"
                             android:textSize="@dimen/font_16sp"
+                            android:visibility="@{viewModel.checkedPro ? View.GONE : View.VISIBLE}"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/appCompatImageView" />
@@ -138,7 +133,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="@dimen/margin_global_15dp"
-                            android:orientation="horizontal">
+                            android:orientation="horizontal"
+                            android:visibility="@{viewModel.checkedPro ? View.GONE : View.VISIBLE}">
 
                             <RadioButton
                                 android:id="@+id/rbCivilityM"
@@ -173,14 +169,14 @@
                             style="@style/InputLayout.AppStyle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            app:errorBackground="@{viewModel.firstNameFieldError}">
+                            app:errorBackground="@{viewModel.lastNameFieldError}">
 
                             <com.clickandvisit.ui.shared.view.CustomTextInputEditText
                                 android:id="@+id/customTextInputEditTextSignUpUser"
                                 style="@style/InputEditText.AppStyle"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:hint="@string/signup_lastname"
+                                android:hint="@{viewModel.checkedPro ? @string/signup_pro_siret : @string/signup_lastname}"
                                 android:inputType="textPersonName"
                                 android:text="@={viewModel.lastName}" />
 
@@ -192,14 +188,14 @@
                             style="@style/InputLayout.AppStyle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            app:errorBackground="@{viewModel.lastNameFieldError}">
+                            app:errorBackground="@{viewModel.firstNameFieldError}">
 
                             <com.clickandvisit.ui.shared.view.CustomTextInputEditText
                                 android:id="@+id/customTextInputEditTextSignUpCin"
                                 style="@style/InputEditText.AppStyle"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:hint="@string/signup_firstname"
+                                android:hint="@{viewModel.checkedPro ? @string/signup_pro_social : @string/signup_firstname}"
                                 android:text="@={viewModel.firstName}" />
 
                         </com.clickandvisit.ui.shared.view.CustomTextInputLayout>
