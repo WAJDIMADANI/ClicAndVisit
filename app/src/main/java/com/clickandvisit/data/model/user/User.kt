@@ -11,31 +11,31 @@ data class User(
     val id: String,
 
     @Json(name = "email")
-    val email: String,
+    var email: String,
 
     @Json(name = "first_name")
-    val firstName: String = "",
+    var firstName: String = "",
 
     @Json(name = "last_name")
-    val lastName: String = "",
+    var lastName: String = "",
 
     @Json(name = "professionel_particulier")
     val proPar: String = "",
 
     @Json(name = "civilite")
-    val civility: String,
+    var civility: String,
 
     @Json(name = "phone_number")
-    val phoneNumber: String,
+    var phoneNumber: String,
 
     @Json(name = "siret")
-    val siret: String,
+    var siret: String,
 
     @Json(name = "raison_social")
-    val rSocial: String,
+    var rSocial: String,
 
     @Json(name = "profile_photo")
-    val photo: String
+    var photo: String
 
 ) : Parcelable {
     constructor(parcel: Parcel) : this(

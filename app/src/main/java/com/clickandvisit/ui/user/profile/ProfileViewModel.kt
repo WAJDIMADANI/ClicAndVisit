@@ -2,7 +2,10 @@ package com.clickandvisit.ui.user.profile
 
 import android.app.Application
 import android.content.Intent
+import android.graphics.Bitmap
 import android.net.Uri
+import android.provider.MediaStore
+import android.util.Base64
 import androidx.lifecycle.MutableLiveData
 import com.clickandvisit.base.BaseAndroidViewModel
 import com.clickandvisit.data.model.user.User
@@ -11,15 +14,14 @@ import com.clickandvisit.global.helper.ImagePicker
 import com.clickandvisit.global.helper.Navigation
 import com.clickandvisit.global.listener.SchedulerProvider
 import com.clickandvisit.global.listener.ToolBarListener
-import com.clickandvisit.global.utils.DebugLog
-import com.clickandvisit.global.utils.TAG
-import com.clickandvisit.global.utils.toMediaUrl
-import com.clickandvisit.global.utils.tryCatch
+import com.clickandvisit.global.utils.*
 import com.clickandvisit.ui.home.menu.profile.PROFILE_PIC_NAME
 import com.clickandvisit.ui.shared.dialog.ImgPickerDialog
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.io.ByteArrayOutputStream
+import java.io.FileNotFoundException
 import javax.inject.Inject
 
 
@@ -73,29 +75,33 @@ class ProfileViewModel
 
     private fun onGetProfileSuccess(user: User) { //TODO: if pro + edit
         hideBlockProgressBar()
-
         checkedPro.value = user.isPro()
+        checkProPar(user)
+        email.value = user.email
+        phone.value = user.phoneNumber
 
+        if (user.photo.toMediaUrl() != "https://")
+            photoUri.value = Uri.parse(user.photo)
+
+    }
+
+    private fun checkProPar(user: User) {
         if (user.isPro()) {
             firstName.value = user.rSocial
             lastName.value = user.siret
         } else {
             firstName.value = user.firstName
             lastName.value = user.lastName
+            checkCivility(user)
         }
+    }
 
-        email.value = user.email
-        phone.value = user.phoneNumber
-
+    private fun checkCivility(user: User) {
         if (user.civility.toInt() == 0) {
             checkedM.value = true
         } else {
             checkedF.value = true
         }
-
-        if (user.photo.toMediaUrl() != "https://")
-            photoUri.value = Uri.parse(user.photo)
-
     }
 
     private fun onGetProfileError(throwable: Throwable) {
@@ -158,7 +164,6 @@ class ProfileViewModel
                 picture
             }
             photoUri.value = picture
-            DebugLog.i(TAG, picture.toString())
         }
     }
 
@@ -167,15 +172,104 @@ class ProfileViewModel
     }
 
     fun onChangePasswordClicked() {
-
+        // TODO: Query
     }
 
     fun onDeleteClick() {
-
+        // TODO: Query
     }
 
     fun onSaveClicked() {
+        if (validateFields()) {
+            showBlockProgressBar()
+            if (user.isPro()){
+                user.rSocial = firstName.value!!
+                user.siret = lastName.value!!
+            }else{
+                user.firstName = firstName.value!!
+                user.lastName = lastName.value!!
+                user.civility = getGenderMFId().toString()
+            }
 
+            user.email = email.value!!
+            user.phoneNumber = phone.value!!
+
+            viewModelScope.launch {
+
+                tryCatch({
+                    val user = withContext(schedulerProvider.dispatchersIO()) {
+                        userRepository.userUpdate(user)
+                    }
+                    onSetProfileSuccess(user)
+                }, { error ->
+                    onSetProfileError(error)
+                })
+            }
+        }
     }
+
+    private fun onSetProfileSuccess(user: User) {
+        hideBlockProgressBar()
+        navigate(Navigation.Back)
+    }
+
+    private fun onSetProfileError(throwable: Throwable) {
+        hideBlockProgressBar()
+        handleThrowable(throwable)
+    }
+
+    private fun getGenderMFId(): Int {
+        return if (checkedM.value == true) {
+            0
+        } else {
+            1
+        }
+    }
+
+    fun onMClick() {
+        checkedM.value = true
+        checkedF.value = false
+    }
+
+    fun onFClick() {
+        checkedM.value = false
+        checkedF.value = true
+    }
+
+
+    /** Fields validation  **/
+
+    private fun validateFields(): Boolean {
+        return validFirstName() and validLastName() and validEmail() and validPhone()
+    }
+
+    private fun validFirstName() = if (firstName.value.isWhiteSpaces()) {
+        firstNameFieldError.value = true
+        false
+    } else {
+        true
+    }
+
+    private fun validLastName() = if (lastName.value.isWhiteSpaces()) {
+        lastNameFieldError.value = true
+        false
+    } else {
+        true
+    }
+
+    private fun validEmail() = if (email.value.isWhiteSpaces() || !email.value.isValidEmail()) {
+        emailFieldError.value = true
+        false
+    } else {
+        true
+    }
+
+    private fun validPhone() = if (phone.value.isWhiteSpaces()) {
+        phoneFieldError.value = true
+        false
+    } else {
+        true
+    }
+
 
 }

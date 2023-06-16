@@ -53,7 +53,7 @@ interface APIClient {
     @FormUrlEncoded
     @POST("user_update")
     suspend fun userUpdate(
-        @Field("id") id: String,
+        @Field("user_id") id: String,
         @Field("email") email: String,
         @Field("first_name") firstName: String,
         @Field("last_name") lastName: String,

@@ -5,6 +5,7 @@ import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.view.View
 import androidx.activity.viewModels
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -35,6 +36,16 @@ class ProfileActivity : BaseActivity() {
         registerSinUpObservers()
     }
 
+
+    /** Pro RadioButton click **/
+    fun onMClick(view: View) {
+        viewModel.onMClick()
+    }
+
+    /** No pro RadioButton click **/
+    fun onFClick(view: View) {
+        viewModel.onFClick()
+    }
 
     private fun showGallery() {
         val chooseImageIntent: Intent = ImagePicker.getGalleryIntent()

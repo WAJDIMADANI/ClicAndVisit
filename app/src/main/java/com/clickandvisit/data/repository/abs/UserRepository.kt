@@ -53,7 +53,7 @@ interface UserRepository {
     suspend fun getUser(): User
 
     @WorkerThread
-    suspend fun userUpdate(user: User): UserResponse
+    suspend fun userUpdate(user: User): User
 
 
     suspend fun reportUser(reportUserRequest: ReportUserRequest): ReportUserResponse
