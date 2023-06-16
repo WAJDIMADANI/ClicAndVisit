@@ -12,20 +12,20 @@ data class TokenResponse(
     @Json(name = "result")
     val result: Boolean,
     @Json(name = "token")
-    val token: Int,
+    val token: String,
     @Json(name = "device")
     val device: String
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readByte() != 0.toByte(),
-        parcel.readInt(),
+        parcel.readString()!!,
         parcel.readString()!!
     ) {
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeByte(if (result) 1 else 0)
-        parcel.writeInt(token)
+        parcel.writeString(token)
         parcel.writeString(device)
     }
 

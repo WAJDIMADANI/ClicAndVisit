@@ -5,16 +5,14 @@ import androidx.annotation.UiThread
 import androidx.lifecycle.MutableLiveData
 import com.clickandvisit.R
 import com.clickandvisit.base.BaseAndroidViewModel
+import com.clickandvisit.data.model.user.TokenResponse
 import com.clickandvisit.data.model.user.signup.SignupResponse
 import com.clickandvisit.data.repository.abs.UserRepository
 import com.clickandvisit.global.helper.Navigation
-import com.clickandvisit.global.helper.NonNullLiveData
 import com.clickandvisit.global.listener.SchedulerProvider
-import com.clickandvisit.global.listener.ToolBarListener
-import com.clickandvisit.global.utils.HttpResponseCode
-import com.clickandvisit.global.utils.isValidEmail
-import com.clickandvisit.global.utils.isWhiteSpaces
-import com.clickandvisit.global.utils.tryCatch
+import com.clickandvisit.global.utils.*
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.iid.FirebaseInstanceId
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -29,7 +27,7 @@ class SignInViewModel
     schedulerProvider: SchedulerProvider,
     private val userRepository: UserRepository
 ) :
-    BaseAndroidViewModel(application, schedulerProvider), ToolBarListener {
+    BaseAndroidViewModel(application, schedulerProvider) {
 
 
     val email: MutableLiveData<String> = MutableLiveData()
@@ -38,6 +36,9 @@ class SignInViewModel
     val emailFieldError: MutableLiveData<Boolean> = MutableLiveData(false)
     val passwordFieldError: MutableLiveData<Boolean> = MutableLiveData(false)
 
+    init {
+
+    }
 
     fun onSignUpClicked() {
         navigate(Navigation.SignUpActivityNavigation)
@@ -45,10 +46,6 @@ class SignInViewModel
 
     fun onVisitorClicked() {
         navigate(Navigation.HomeActivityNavigation)
-    }
-
-    override fun onStartClicked() {
-
     }
 
 

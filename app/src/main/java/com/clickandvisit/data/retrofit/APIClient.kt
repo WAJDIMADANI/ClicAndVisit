@@ -96,7 +96,7 @@ interface APIClient {
     @POST("set_push_token")
     suspend fun setPushToken(
         @Field("user_id") userId: Int,
-        @Field("token") token: Int,
+        @Field("token") token: String,
         @Field("device") device: String,
     ): TokenResponse
 

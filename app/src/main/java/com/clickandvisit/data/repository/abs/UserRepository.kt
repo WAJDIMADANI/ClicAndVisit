@@ -59,7 +59,7 @@ interface UserRepository {
     suspend fun reportUser(reportUserRequest: ReportUserRequest): ReportUserResponse
 
     @WorkerThread
-    suspend fun setPushToken(pushTokenRequest: PushTokenRequest): TokenResponse
+    suspend fun setPushToken(token: String): TokenResponse
 
     @WorkerThread
     suspend fun logout()

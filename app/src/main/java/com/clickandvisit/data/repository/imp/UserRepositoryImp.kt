@@ -122,11 +122,11 @@ class UserRepositoryImp @Inject constructor(
         )
     }
 
-    override suspend fun setPushToken(pushTokenRequest: PushTokenRequest): TokenResponse {
+    override suspend fun setPushToken(token: String): TokenResponse {
         return apiClient.setPushToken(
-            pushTokenRequest.userId,
-            pushTokenRequest.token,
-            pushTokenRequest.device
+            sharedPreferences.getUser().id.toInt(),
+            token,
+            "android"
         )
     }
 
