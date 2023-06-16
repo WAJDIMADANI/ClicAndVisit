@@ -41,7 +41,7 @@ class SharedPreferences(context: Context, val moshi: Moshi) {
 
 
     fun saveUser(user: User) {
-        setToken(user.id)
+        setToken(user.id)// FIXME replace by token
         val jsonAdapter = moshi.adapter(User::class.java)
         val editor = sharedPreferences.edit()
         editor.putString(USER_FLAG, jsonAdapter.toJson(user))

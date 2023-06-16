@@ -81,35 +81,39 @@ class HomeActivity : BaseActivity(), DrawerLayout.DrawerListener {
     private fun bindListeners() {
         binding.navigationViewHome.setNavigationItemSelectedListener {
             binding.drawerLayoutHome.closeDrawers()
-            when (it.itemId) {
-                R.id.nav_menu_1 -> {
-                    navigateToActivity(FilterActivity::class)
+            if (viewModel.isConnected()) {
+                when (it.itemId) {
+                    R.id.nav_menu_1 -> {
+                        navigateToActivity(FilterActivity::class)
+                    }
+                    R.id.nav_menu_2 -> {
+                        navigateToActivity(AddAdsActivity::class)
+                    }
+                    R.id.nav_menu_3 -> {
+                        navigateToActivity(AdsListActivity::class)
+                    }
+                    R.id.nav_menu_4 -> {
+                        navigateToActivity(ProfileActivity::class)
+                    }
+                    R.id.nav_menu_5 -> {
+                        navigateToActivity(MeetActivity::class)
+                    }
+                    R.id.nav_menu_6 -> {
+                        navigateToActivity(FavouritesActivity::class)
+                    }
+                    R.id.nav_menu_7 -> {
+                        navigateToActivity(SearchActivity::class)
+                    }
+                    R.id.nav_menu_8 -> {
+                        navigateToActivity(MeetActivity::class)
+                    }
+                    R.id.nav_menu_9 -> {
+                        viewModel.disconnect()
+                        //binding.navigationViewHome.menu.getItem(8).isChecked = false
+                    }
                 }
-                R.id.nav_menu_2 -> {
-                    navigateToActivity(AddAdsActivity::class)
-                }
-                R.id.nav_menu_3 -> {
-                    navigateToActivity(AdsListActivity::class)
-                }
-                R.id.nav_menu_4 -> {
-                    navigateToActivity(ProfileActivity::class)
-                }
-                R.id.nav_menu_5 -> {
-                    navigateToActivity(MeetActivity::class)
-                }
-                R.id.nav_menu_6 -> {
-                    navigateToActivity(FavouritesActivity::class)
-                }
-                R.id.nav_menu_7 -> {
-                    navigateToActivity(SearchActivity::class)
-                }
-                R.id.nav_menu_8 -> {
-                    navigateToActivity(MeetActivity::class)
-                }
-                R.id.nav_menu_9 -> {
-                    viewModel.disconnect()
-                    //binding.navigationViewHome.menu.getItem(8).isChecked = false
-                }
+            } else {
+                navigateToActivity(SignInActivity::class)
             }
             return@setNavigationItemSelectedListener true
         }

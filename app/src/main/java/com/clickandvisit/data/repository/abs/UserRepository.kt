@@ -64,6 +64,8 @@ interface UserRepository {
     @WorkerThread
     suspend fun logout()
 
+    fun isConnected(): Boolean
+
 
     /** Property **/
 

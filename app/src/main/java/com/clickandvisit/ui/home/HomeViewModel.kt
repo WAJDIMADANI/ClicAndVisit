@@ -8,8 +8,6 @@ import com.clickandvisit.data.repository.abs.UserRepository
 import com.clickandvisit.global.helper.Navigation
 import com.clickandvisit.global.listener.SchedulerProvider
 import com.clickandvisit.global.listener.ToolBarListener
-import com.clickandvisit.global.utils.DebugLog
-import com.clickandvisit.global.utils.TAG
 import com.clickandvisit.global.utils.tryCatch
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -38,19 +36,36 @@ class HomeViewModel
         navigate(Navigation.OpenDrawerNavigation)
     }
 
+    fun isConnected(): Boolean {
+        return userRepository.isConnected()
+    }
+
     override fun onSearchClicked() {
-        navigate(Navigation.SearchActivityNavigation)
+        if (userRepository.isConnected()) {
+            navigate(Navigation.SearchActivityNavigation)
+        } else {
+            navigate(Navigation.SignInActivityNavigation)
+        }
     }
 
     override fun onChatClicked() {
-        navigate(Navigation.ChatActivityNavigation)
+        if (userRepository.isConnected()) {
+            navigate(Navigation.ChatActivityNavigation)
+        } else {
+            navigate(Navigation.SignInActivityNavigation)
+        }
     }
 
     override fun onProfileClicked() {
-        navigate(Navigation.ProfileActivityNavigation)
+        if (userRepository.isConnected()) {
+            navigate(Navigation.ProfileActivityNavigation)
+        } else {
+            navigate(Navigation.SignInActivityNavigation)
+        }
     }
 
     fun disconnect() {
+        //TODO is user not connected -> invisible
         shownChoseDialog(
             null,
             R.string.profile_sign_out_msg,

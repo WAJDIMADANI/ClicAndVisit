@@ -134,6 +134,10 @@ class UserRepositoryImp @Inject constructor(
         sharedPreferences.clearCache()
     }
 
+    override fun isConnected(): Boolean {
+        return sharedPreferences.isConnected()
+    }
+
     /** Property **/
 
     override suspend fun search(searchRequest: SearchRequest): SearchResponse {
