@@ -286,8 +286,8 @@ class UserRepositoryImp @Inject constructor(
         return apiClient.sendMessage(userId, discussionId, message)
     }
 
-    override suspend fun getDiscussions(userId: Int): DiscussionsResponse {
-        return apiClient.getDiscussions(userId)
+    override suspend fun getDiscussions(): DiscussionsResponse {
+        return apiClient.getDiscussions(sharedPreferences.getUser().id.toInt())
     }
 
     override suspend fun getMessages(userId: Int, discussionId: Int): MessagesResponse {

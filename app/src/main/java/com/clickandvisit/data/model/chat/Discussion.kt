@@ -9,19 +9,19 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class Discussion(
     @Json(name = "discution_id")
-    val discution_id: String,
+    val discId: String,
     @Json(name = "from")
     val from: String,
     @Json(name = "from_name")
-    val from_name: String,
+    val fromName: String,
     @Json(name = "from_picture")
-    val from_picture: String,
+    val fromPicture: String,
     @Json(name = "property_id")
-    val property_id: String,
+    val propertyId: String,
     @Json(name = "property")
     val property: String,
     @Json(name = "last_message")
-    val last_message: String,
+    val lastMessage: String,
     @Json(name = "date")
     val date: String
 ) : Parcelable {
@@ -38,13 +38,13 @@ data class Discussion(
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeString(discution_id)
+        parcel.writeString(discId)
         parcel.writeString(from)
-        parcel.writeString(from_name)
-        parcel.writeString(from_picture)
-        parcel.writeString(property_id)
+        parcel.writeString(fromName)
+        parcel.writeString(fromPicture)
+        parcel.writeString(propertyId)
         parcel.writeString(property)
-        parcel.writeString(last_message)
+        parcel.writeString(lastMessage)
         parcel.writeString(date)
     }
 
@@ -53,7 +53,7 @@ data class Discussion(
     }
 
     override fun toString(): String {
-        return "Discussion(discution_id='$discution_id', from='$from', from_name='$from_name', from_picture='$from_picture', property_id='$property_id', property='$property', last_message='$last_message', date='$date')"
+        return "Discussion(discId='$discId', from='$from', fromName='$fromName', fromPicture='$fromPicture', propertyId='$propertyId', property='$property', lastMessage='$lastMessage', date='$date')"
     }
 
     companion object CREATOR : Parcelable.Creator<Discussion> {

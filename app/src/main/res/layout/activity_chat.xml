@@ -28,7 +28,7 @@
                 android:id="@+id/ivBack"
                 android:layout_width="@dimen/dimen_25dp"
                 android:layout_height="@dimen/dimen_25dp"
-                android:layout_marginStart="@dimen/margin_global_36dp"
+                android:layout_marginStart="@dimen/margin_global_30dp"
                 android:layout_marginTop="@dimen/margin_global_36dp"
                 android:background="@drawable/ic_back"
                 app:onClickWithDebounce="@{() ->viewModel.onBackClick()}" />
@@ -48,10 +48,12 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvUsers"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="@dimen/dimen_0dp"
+            app:recyclerViewData="@{viewModel.list}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/rlHeader"
             tools:listitem="@layout/item_chat" />
-        <!--app:data="@{viewModel.deliveriesList}"-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

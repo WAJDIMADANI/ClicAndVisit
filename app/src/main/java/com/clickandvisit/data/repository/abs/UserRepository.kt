@@ -118,7 +118,7 @@ interface UserRepository {
 
     suspend fun sendMessage(userId: Int, discussionId: Int, message: String): GlobalResponse
 
-    suspend fun getDiscussions(userId: Int): DiscussionsResponse
+    suspend fun getDiscussions(): DiscussionsResponse
 
     suspend fun getMessages(userId: Int, discussionId: Int): MessagesResponse
 

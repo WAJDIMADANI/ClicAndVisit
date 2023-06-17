@@ -133,9 +133,9 @@ fun setImageUri(imageView: ImageView, imageUri: Uri?, picasso: Picasso) {
 }
 
 
-@BindingAdapter("data")
-fun <T> setRecyclerViewProperties(recyclerView: RecyclerView, data: T?) {
-    data?.let {
+@BindingAdapter("recyclerViewData")
+fun <T> setRecyclerViewProperties(recyclerView: RecyclerView, recyclerViewData: T?) {
+    recyclerViewData?.let {
         if (recyclerView.adapter is DataAdapterListener<*>) {
             (recyclerView.adapter as DataAdapterListener<T>).setData(it)
         }

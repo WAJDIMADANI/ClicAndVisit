@@ -4,26 +4,27 @@
 
     <data>
 
-        <!--
-                <variable
-                    name="listener"
-                    type="com.colisjet.global.listener.OnDeliveryRequestClickedListener" />
+
+        <variable
+            name="listener"
+            type="com.clickandvisit.global.listener.OnChatItemClickedListener" />
 
 
-                <variable
-                    name="delivery"
-                    type="com.colisjet.data.model.deliveries.request.DeliveryRequestResponse" />
-        -->
+        <variable
+            name="discussion"
+            type="com.clickandvisit.data.model.chat.Discussion" />
+
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/padding_global_30dp"
+        android:background="@color/white_basic"
         android:paddingStart="@dimen/padding_global_36dp"
-        android:paddingEnd="@dimen/padding_global_36dp">
-        <!--app:onClickWithDebounce="@{()->listener.onItemClicked(delivery)}"-->
+        android:paddingTop="@dimen/padding_global_30dp"
+        android:paddingEnd="@dimen/padding_global_36dp"
+        app:onClickWithDebounce="@{()->listener.onItemClicked(discussion)}">
 
         <com.clickandvisit.ui.shared.view.CustomCircleImageView
             android:id="@+id/ivChatUserPhoto"
@@ -62,6 +63,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_global_20dp"
+            android:gravity="start"
             android:fontFamily="@font/poppins_regular"
             android:text="Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression."
             android:textColor="@color/black_basic"
@@ -69,6 +71,15 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ivChatUserPhoto" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_1dp"
+            android:background="@color/light_grey"
+            android:layout_marginTop="@dimen/margin_global_10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvChatLastMsg"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

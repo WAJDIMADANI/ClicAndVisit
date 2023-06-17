@@ -276,16 +276,16 @@ interface APIClient {
     ): GlobalResponse
 
 
-    @GET("get_discutions?user_id={user_id}")
+    @GET("get_discutions")
     suspend fun getDiscussions(
-        @Path("user_id") userId: Int
+        @Query("user_id") id: Int
     ): DiscussionsResponse
 
 
-    @GET("get_discutions_messages?user_id={user_id}&discution_id={discution_id}")
+    @GET("get_discutions_messages")
     suspend fun getMessages(
-        @Path("user_id") userId: Int,
-        @Field("discution_id") discussionId: Int
+        @Query("user_id") id: Int,
+        @Query("discution_id") discussionId: Int
     ): MessagesResponse
 
 }
