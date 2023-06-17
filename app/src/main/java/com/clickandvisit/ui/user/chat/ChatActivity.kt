@@ -34,6 +34,11 @@ class ChatActivity : BaseActivity() {
         registerRecycler(binding)
     }
 
+    override fun onRestart() {
+        super.onRestart()
+        viewModel.onRestart()
+    }
+
 
     private fun registerRecycler(binding: ActivityChatBinding) {
         adapter.viewModel = viewModel

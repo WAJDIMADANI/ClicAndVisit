@@ -116,7 +116,7 @@ interface UserRepository {
 
     suspend fun contactOwner(userId: Int, propertyId: Int, message: String): ContactOwnerResponse
 
-    suspend fun sendMessage(userId: Int, discussionId: Int, message: String): GlobalResponse
+    suspend fun sendMessage(discussionId: Int, message: String): GlobalResponse
 
     suspend fun getDiscussions(): DiscussionsResponse
 

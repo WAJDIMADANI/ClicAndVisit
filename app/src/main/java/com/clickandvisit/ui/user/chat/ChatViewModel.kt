@@ -32,6 +32,11 @@ class ChatViewModel
     val list: MutableLiveData<List<Discussion>> = MutableLiveData(arrayListOf())
 
     init {
+        getDiscussions()
+    }
+
+    private fun getDiscussions() {
+        showBlockProgressBar()
         viewModelScope.launch {
             tryCatch({
                 val response = withContext(schedulerProvider.dispatchersIO()) {
@@ -44,13 +49,15 @@ class ChatViewModel
         }
     }
 
-    private fun onGetDiscussionError(throwable: Throwable) {
-        handleThrowable(throwable)
-    }
-
     private fun onGetDiscussionSuccess(response: DiscussionsResponse) {
+        hideBlockProgressBar()
         val res = response.discussions.reversed()
         list.value = res
+    }
+
+    private fun onGetDiscussionError(throwable: Throwable) {
+        hideBlockProgressBar()
+        handleThrowable(throwable)
     }
 
     fun onBackClick() {
@@ -59,6 +66,10 @@ class ChatViewModel
 
     override fun onItemClicked(response: Discussion) {
         navigate(Navigation.ConvActivityNavigation(response.discId.toInt()))
+    }
+
+    fun onRestart() {
+        getDiscussions()
     }
 
 }
