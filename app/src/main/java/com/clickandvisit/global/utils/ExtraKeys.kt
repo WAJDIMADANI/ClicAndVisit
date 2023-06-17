@@ -14,4 +14,10 @@ object ExtraKeys {
         }
     }
 
+    class ConvActivity{
+        companion object {
+            const val DISC_ID_EXTRA_KEY: String = "disc_id_extra_key"
+        }
+    }
+
 }

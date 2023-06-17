@@ -82,7 +82,6 @@
             android:name="com.clickandvisit.ui.ads.filter.FilterActivity"
             android:launchMode="singleTop"
             android:windowSoftInputMode="adjustPan|stateHidden" />
-
         <activity
             android:name="com.clickandvisit.ui.ads.search.SearchActivity"
             android:launchMode="singleTop"
@@ -107,11 +106,14 @@
             android:name="com.clickandvisit.ui.home.map.MapsActivity"
             android:launchMode="singleTop"
             android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity
+            android:name=".ui.user.chat.conv.ConvActivity"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/GOOGLE_MAPS_KEY" />
-
     </application>
 
 </manifest>

@@ -1,6 +1,7 @@
 package com.clickandvisit.di
 
 import com.clickandvisit.ui.user.chat.ChatAdapter
+import com.clickandvisit.ui.user.chat.conv.ConvAdapter
 import com.squareup.picasso.Picasso
 import dagger.Module
 import dagger.Provides
@@ -16,6 +17,11 @@ class ActivityAdapterModule {
     @Provides
     fun provideChatAdapterAdapter(picasso: Picasso): ChatAdapter {
         return ChatAdapter(picasso)
+    }
+
+    @Provides
+    fun provideConvAdapterAdapter(picasso: Picasso): ConvAdapter {
+        return ConvAdapter(picasso)
     }
 
 }

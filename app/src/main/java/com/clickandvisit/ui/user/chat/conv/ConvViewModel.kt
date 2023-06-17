@@ -1,17 +1,18 @@
-package com.clickandvisit.ui.user.chat
+package com.clickandvisit.ui.user.chat.conv
 
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.SavedStateHandle
 import com.clickandvisit.base.BaseAndroidViewModel
 import com.clickandvisit.data.model.chat.Discussion
 import com.clickandvisit.data.model.chat.DiscussionsResponse
+import com.clickandvisit.data.model.chat.Message
+import com.clickandvisit.data.model.chat.MessagesResponse
 import com.clickandvisit.data.repository.abs.UserRepository
 import com.clickandvisit.global.helper.Navigation
-import com.clickandvisit.global.listener.OnChatItemClickedListener
 import com.clickandvisit.global.listener.SchedulerProvider
 import com.clickandvisit.global.listener.ToolBarListener
-import com.clickandvisit.global.utils.DebugLog
-import com.clickandvisit.global.utils.TAG
+import com.clickandvisit.global.utils.ExtraKeys
 import com.clickandvisit.global.utils.tryCatch
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -20,22 +21,25 @@ import javax.inject.Inject
 
 
 @HiltViewModel
-class ChatViewModel
+class ConvViewModel
 @Inject constructor(
     application: Application,
     schedulerProvider: SchedulerProvider,
-    private val userRepository: UserRepository
-) : BaseAndroidViewModel(application, schedulerProvider), ToolBarListener,
-    OnChatItemClickedListener {
+    private val userRepository: UserRepository,
+    savedStateHandle: SavedStateHandle
+) : BaseAndroidViewModel(application, schedulerProvider) {
 
 
-    val list: MutableLiveData<List<Discussion>> = MutableLiveData(arrayListOf())
+    val list: MutableLiveData<List<Message>> = MutableLiveData(arrayListOf())
 
     init {
+        val discId =
+            savedStateHandle.getLiveData<Int>(ExtraKeys.ConvActivity.DISC_ID_EXTRA_KEY).value
+
         viewModelScope.launch {
             tryCatch({
                 val response = withContext(schedulerProvider.dispatchersIO()) {
-                    userRepository.getDiscussions()
+                    userRepository.getMessages(discId!!)
                 }
                 onGetDiscussionSuccess(response)
             }, { error ->
@@ -44,20 +48,21 @@ class ChatViewModel
         }
     }
 
-    private fun onGetDiscussionError(throwable: Throwable) {
-        handleThrowable(throwable)
+    private fun onGetDiscussionSuccess(response: MessagesResponse) {
+        val res = response.discussions.reversed()
+        list.value = res
     }
 
-    private fun onGetDiscussionSuccess(response: DiscussionsResponse) {
-        list.value = response.discussions
+    private fun onGetDiscussionError(throwable: Throwable) {
+        handleThrowable(throwable)
     }
 
     fun onBackClick() {
         navigate(Navigation.Back)
     }
 
-    override fun onItemClicked(response: Discussion) {
-        navigate(Navigation.ConvActivityNavigation(response.discId.toInt()))
+    fun getCurrentUserId(): Int {
+        return userRepository.getCurrentUserId()
     }
 
 }

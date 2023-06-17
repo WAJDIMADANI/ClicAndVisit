@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white_basic">
+
+        <com.clickandvisit.ui.shared.view.CustomCircleImageView
+            android:id="@+id/ivChatUserPhoto"
+            android:layout_width="@dimen/dimen_40dp"
+            android:layout_height="@dimen/dimen_40dp"
+            android:layout_marginStart="@dimen/padding_global_20dp"
+            android:layout_marginTop="@dimen/padding_global_20dp"
+            android:background="@drawable/ic_chat_profile"
+            app:layout_constraintEnd_toStartOf="@+id/tvChatMsgOther"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvChatMsgOther"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_global_10dp"
+            android:layout_marginTop="@dimen/padding_global_20dp"
+            android:layout_marginEnd="@dimen/padding_global_68dp"
+            android:background="@drawable/ic_chat_b_gray"
+            android:fontFamily="@font/poppins_regular"
+            android:gravity="start"
+            android:padding="@dimen/padding_global_10dp"
+            android:text="Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise ..."
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_13sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ivChatUserPhoto"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvChatMsgMe"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="@dimen/padding_global_20dp"
+            android:layout_marginEnd="@dimen/margin_global_36dp"
+            android:background="@drawable/ic_chat_from_b"
+            android:fontFamily="@font/poppins_regular"
+            android:gravity="start"
+            android:padding="@dimen/padding_global_10dp"
+            android:text="Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression."
+            android:textColor="@color/white_basic"
+            android:textSize="@dimen/font_13sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvChatMsgOther" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

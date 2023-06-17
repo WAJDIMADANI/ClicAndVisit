@@ -120,6 +120,8 @@ interface UserRepository {
 
     suspend fun getDiscussions(): DiscussionsResponse
 
-    suspend fun getMessages(userId: Int, discussionId: Int): MessagesResponse
+    suspend fun getMessages(discussionId: Int): MessagesResponse
+
+    fun getCurrentUserId(): Int
 
 }

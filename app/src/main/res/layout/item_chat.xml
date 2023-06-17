@@ -65,10 +65,10 @@
             android:layout_marginTop="@dimen/margin_global_20dp"
             android:gravity="start"
             android:fontFamily="@font/poppins_regular"
-            android:text="Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression."
+            android:text="test"
             android:textColor="@color/black_basic"
+            android:layout_marginStart="@dimen/margin_global_50dp"
             android:textSize="@dimen/font_12sp"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ivChatUserPhoto" />
 

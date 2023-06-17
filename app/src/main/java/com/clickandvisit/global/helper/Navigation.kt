@@ -20,6 +20,8 @@ sealed class Navigation {
 
     object ChatActivityNavigation : Navigation()
 
+    data class ConvActivityNavigation(val discId: Int) : Navigation()
+
     object IntroActivityNavigation : Navigation()
 
     object HomeActivityNavigation : Navigation()

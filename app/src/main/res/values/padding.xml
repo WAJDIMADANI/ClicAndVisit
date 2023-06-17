@@ -51,5 +51,6 @@
     <dimen name="padding_global_48dp">48dp</dimen>
     <dimen name="padding_global_49dp">49dp</dimen>
     <dimen name="padding_global_50dp">50dp</dimen>
+    <dimen name="padding_global_68dp">68dp</dimen>
 
 </resources>

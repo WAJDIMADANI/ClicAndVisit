@@ -1,6 +1,5 @@
-package com.clickandvisit.ui.user.chat
+package com.clickandvisit.ui.user.chat.conv
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
@@ -8,34 +7,32 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.clickandvisit.R
 import com.clickandvisit.base.BaseActivity
-import com.clickandvisit.databinding.ActivityChatBinding
+import com.clickandvisit.databinding.ActivityConvBinding
 import com.clickandvisit.global.helper.Navigation
-import com.clickandvisit.global.utils.ExtraKeys
-import com.clickandvisit.ui.user.chat.conv.ConvActivity
-import com.clickandvisit.ui.user.signup.otp.OtpActivity
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
-
 @AndroidEntryPoint
-class ChatActivity : BaseActivity() {
+class ConvActivity : BaseActivity() {
 
-    private val viewModel: ChatViewModel by viewModels()
 
-    private lateinit var binding: ActivityChatBinding
+    private val viewModel: ConvViewModel by viewModels()
+
+    private lateinit var binding: ActivityConvBinding
 
     @Inject
-    lateinit var adapter: ChatAdapter
+    lateinit var adapter: ConvAdapter
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_chat)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_conv)
         registerBindingAndBaseObservers(binding)
         registerRecycler(binding)
     }
 
 
-    private fun registerRecycler(binding: ActivityChatBinding) {
+    private fun registerRecycler(binding: ActivityConvBinding) {
         adapter.viewModel = viewModel
         binding.rvUsers.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         binding.rvUsers.adapter = adapter
@@ -47,12 +44,6 @@ class ChatActivity : BaseActivity() {
     override fun navigate(navigationTo: Navigation) {
         when (navigationTo) {
             is Navigation.Back -> finish()
-            is Navigation.ConvActivityNavigation -> {
-                Intent(this, ConvActivity::class.java).let {
-                    it.putExtra(ExtraKeys.ConvActivity.DISC_ID_EXTRA_KEY, navigationTo.discId)
-                    startActivity(it)
-                }
-            }
 
         }
     }
@@ -61,7 +52,7 @@ class ChatActivity : BaseActivity() {
      * Register the UI for XMLBinding
      * Register the activity for base observers
      */
-    private fun registerBindingAndBaseObservers(binding: ActivityChatBinding) {
+    private fun registerBindingAndBaseObservers(binding: ActivityConvBinding) {
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
         registerBaseObservers(viewModel)

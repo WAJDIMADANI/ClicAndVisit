@@ -198,6 +198,7 @@
 
     <!--chat-->
     <string name="chat_header">MESSAGES</string>
+    <string name="conv_header">CONVERSATION</string>
     <string name="chat_title">ENVOYER UN MESSAGE</string>
     <string name="chat_body">Votre message</string>
     <string name="chat_send">ENVOYER</string>
