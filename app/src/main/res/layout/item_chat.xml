@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <!--
+                <variable
+                    name="listener"
+                    type="com.colisjet.global.listener.OnDeliveryRequestClickedListener" />
+
+
+                <variable
+                    name="delivery"
+                    type="com.colisjet.data.model.deliveries.request.DeliveryRequestResponse" />
+        -->
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/padding_global_30dp"
+        android:paddingStart="@dimen/padding_global_36dp"
+        android:paddingEnd="@dimen/padding_global_36dp">
+        <!--app:onClickWithDebounce="@{()->listener.onItemClicked(delivery)}"-->
+
+        <com.clickandvisit.ui.shared.view.CustomCircleImageView
+            android:id="@+id/ivChatUserPhoto"
+            android:layout_width="@dimen/dimen_40dp"
+            android:layout_height="@dimen/dimen_40dp"
+            android:background="@drawable/ic_chat_profile"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvChatUserName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_global_12dp"
+            android:fontFamily="@font/poppins_bold"
+            android:text="Cyril XX"
+            android:textColor="@color/black_basic"
+            android:textSize="@dimen/font_16sp"
+            app:layout_constraintStart_toEndOf="@+id/ivChatUserPhoto"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvCityDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_global_12dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Lyon - Juin 2022"
+            android:textColor="@color/chat_subtitle_color"
+            android:textSize="@dimen/font_12sp"
+            app:layout_constraintStart_toEndOf="@+id/ivChatUserPhoto"
+            app:layout_constraintTop_toBottomOf="@+id/tvChatUserName" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvChatLastMsg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_global_20dp"
+            android:fontFamily="@font/poppins_regular"
+            android:text="Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression."
+            android:textColor="@color/black_basic"
+            android:textSize="@dimen/font_12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivChatUserPhoto" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
