@@ -21,6 +21,7 @@ import com.clickandvisit.ui.ads.adslist.AdsListActivity
 import com.clickandvisit.ui.ads.favourites.FavouritesActivity
 import com.clickandvisit.ui.ads.filter.FilterActivity
 import com.clickandvisit.ui.ads.search.SearchActivity
+import com.clickandvisit.ui.home.map.MapsActivity
 import com.clickandvisit.ui.user.chat.ChatActivity
 import com.clickandvisit.ui.user.meet.MeetActivity
 import com.clickandvisit.ui.user.profile.ProfileActivity
@@ -173,6 +174,10 @@ class HomeActivity : BaseActivity(), DrawerLayout.DrawerListener {
 
             is Navigation.ProfileActivityNavigation -> {
                 navigateToActivity(ProfileActivity::class)
+            }
+
+            is Navigation.MapsActivityNavigation -> {
+                navigateToActivity(MapsActivity::class)
             }
 
             is Navigation.SearchActivityNavigation -> {

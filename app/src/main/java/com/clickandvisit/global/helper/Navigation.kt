@@ -6,6 +6,8 @@ sealed class Navigation {
 
     object SignInActivityNavigation : Navigation()
 
+    object MapsActivityNavigation : Navigation()
+
     object SignUpActivityNavigation : Navigation()
 
     object ResetPasswordActivityNavigation : Navigation()

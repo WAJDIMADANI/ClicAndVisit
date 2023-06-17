@@ -71,6 +71,10 @@ class HomeViewModel
         navigate(Navigation.OpenDrawerNavigation)
     }
 
+    fun onMapsClicked() {
+        navigate(Navigation.MapsActivityNavigation)
+    }
+
     fun isConnected(): Boolean {
         return userRepository.isConnected()
     }
