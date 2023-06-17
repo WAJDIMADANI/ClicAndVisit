@@ -49,7 +49,8 @@ class ChatViewModel
     }
 
     private fun onGetDiscussionSuccess(response: DiscussionsResponse) {
-        list.value = response.discussions
+        val res = response.discussions.reversed()
+        list.value = res
     }
 
     fun onBackClick() {

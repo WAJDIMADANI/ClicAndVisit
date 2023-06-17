@@ -123,10 +123,10 @@ interface APIClient {
     ): SearchResponse
 
 
-    @GET("property_details?id={propertyId}&user_id={userId}")
+    @GET("property_details")
     suspend fun propertyDetails(
-        @Path("propertyId") propertyId: Int,
-        @Path("userId") userId: Int
+        @Query("user_id") userId: Int,
+        @Query("id") propertyId: Int
     ): PropertyDetailsResponse
 
     @FormUrlEncoded
@@ -138,9 +138,9 @@ interface APIClient {
     ): GlobalResponse
 
 
-    @GET("list_favorites?user_id={userId}")
+    @GET("list_favorites")
     suspend fun favoriteList(
-        @Path("userId") userId: Int
+        @Query("user_id") userId: Int
     ): FavoritesResponse
 
     @FormUrlEncoded
@@ -203,25 +203,25 @@ interface APIClient {
     ): GlobalResponse
 
 
-    @GET("get_saved_search?user_id={userId}")
+    @GET("get_saved_search")
     suspend fun getSavedSearch(
-        @Path("userId") userId: Int
+        @Query("user_id") userId: Int
     ): SavedSearchResponse
 
 
     /** Reservation **/
 
 
-    @GET("get_avaibility?date={date}&property_id={propId}")
+    @GET("get_avaibility")
     suspend fun getAvailability(
-        @Path("date") date: String,
-        @Path("propId") propId: Int
+        @Query("date") date: String,
+        @Query("property_id") propId: Int
     ): AvailabilityResponse
 
 
-    @GET("get_all_reserved?property_id={propId}")
+    @GET("get_all_reserved")
     suspend fun getAllReserved(
-        @Path("propId") propId: Int
+        @Query("property_id") propId: Int
     ): ReservedPropertyResponse
 
     @FormUrlEncoded
@@ -250,10 +250,10 @@ interface APIClient {
     ): ReservationResponse
 
 
-    @GET("get_reservations?user_id={user_id}&sent={sent}")
+    @GET("get_reservations")
     suspend fun getReservations(
-        @Path("user_id") userId: Int,
-        @Path("sent") accept: Boolean
+        @Query("user_id") id: Int,
+        @Query("sent") accept: Boolean
     ): ReservationResponse
 
 
@@ -262,17 +262,17 @@ interface APIClient {
     @FormUrlEncoded
     @POST("contact_owner")
     suspend fun contactOwner(
-        @Path("user_id") userId: Int,
+        @Field("user_id") userId: Int,
         @Field("property_id") propertyId: Int,
-        @Path("message") message: String
+        @Field("message") message: String
     ): ContactOwnerResponse
 
     @FormUrlEncoded
     @POST("send_message")
     suspend fun sendMessage(
-        @Path("user_id") userId: Int,
+        @Field("user_id") userId: Int,
         @Field("discution_id") discussionId: Int,
-        @Path("message") message: String
+        @Field("message") message: String
     ): GlobalResponse
 
 
