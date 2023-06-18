@@ -4,6 +4,7 @@ import android.os.Parcel
 import android.os.Parcelable
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
+import java.lang.NumberFormatException
 
 
 @JsonClass(generateAdapter = true)
@@ -95,6 +96,22 @@ data class Property(
     ) {
     }
 
+
+    fun getPriceNBR(): String{
+        return try {
+            "$price "
+        }catch (e : NumberFormatException){
+            "0 "
+        }
+    }
+    fun getCategories(): String{
+        return try {
+            "$category - "
+        }catch (e : NumberFormatException){
+            " "
+        }
+    }
+
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeInt(id)
         parcel.writeString(title)
@@ -124,6 +141,7 @@ data class Property(
         parcel.writeString(otherInfo)
         parcel.writeParcelable(details, flags)
     }
+
 
     override fun describeContents(): Int {
         return 0

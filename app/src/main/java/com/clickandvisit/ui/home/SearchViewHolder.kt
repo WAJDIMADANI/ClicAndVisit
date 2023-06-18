@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.clickandvisit.R
 import com.clickandvisit.data.model.property.Property
 import com.clickandvisit.databinding.ItemFavouriteBinding
 import com.clickandvisit.global.listener.OnPropertyClickedListener
@@ -20,19 +21,26 @@ class SearchViewHolder(
 
     fun bind(value: Property, position: Int) {
 
+        if (value.visitNow) {
+            binding.tvMeet.setBackgroundColor(context.getColor(R.color.green_pro_status_details))
+            binding.tvMeet.text = context.getString(R.string.home_visit)
+        } else {
+            binding.tvMeet.setBackgroundColor(context.getColor(R.color.red_pro_status))
+            binding.tvMeet.text = context.getString(R.string.home_meet)
+        }
         binding.tvAdsName.text = value.title
         binding.tvPhotoCount.text = value.album.size.toString()
-        binding.tvAdsPrice.text = value.category + " - " + value.price
-        binding.tvAdsSpace.text = "    - " + value.surface
+        binding.tvAdsPrice.text =
+            value.getCategories() + value.getPriceNBR() + context.getString(R.string.home_details_euros)
+        binding.tvAdsSpace.text =
+            value.details.getRoomsNBR() + value.surface + context.getString(R.string.home_details_m_square)
         binding.tvPro.visibility = if (value.owner.isPro()) {
             View.VISIBLE
         } else {
             View.GONE
         }
 
-/*        binding.tvChatUserName.text = value.fromName
-        binding.tvChatLastMsg.text = value.lastMessage
-        binding.tvCityDate.text = value.property + " - " + value.date
+/*       
 
         picasso.load(value.fromPicture.toMediaUrl())
             .memoryPolicy(

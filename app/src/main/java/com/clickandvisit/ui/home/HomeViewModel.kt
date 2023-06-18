@@ -41,6 +41,8 @@ class HomeViewModel
 
     val list: MutableLiveData<List<Property>> = MutableLiveData(arrayListOf())
 
+    val listCount: MutableLiveData<String> = MutableLiveData()
+
 
     init {
         getSearch()
@@ -65,6 +67,7 @@ class HomeViewModel
     private fun onGetDiscussionSuccess(response: SearchResponse) {
         hideBlockProgressBar()
         list.value = response.properties
+        listCount.value = "Liste(" + response.properties.count() + ")"
     }
 
     private fun onGetDiscussionError(throwable: Throwable) {

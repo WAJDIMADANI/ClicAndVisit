@@ -122,7 +122,7 @@
         android:layout_height="51dp"
         android:layout_marginTop="@dimen/margin_global_10dp"
         android:layout_marginBottom="@dimen/padding_global_10dp"
-        android:background="@color/red_pro_status_details"
+        android:background="@color/green_pro_status_details"
         android:fontFamily="@font/poppins_medium"
         android:gravity="center"
         android:padding="@dimen/margin_global_5dp"

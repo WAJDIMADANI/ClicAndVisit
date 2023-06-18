@@ -20,7 +20,7 @@
         android:layout_width="@dimen/dimen_45dp"
         android:layout_height="@dimen/dimen_25dp"
         android:layout_marginTop="@dimen/dimen_15dp"
-        android:background="@color/red_pro_status_details"
+        android:background="@color/green_pro_status_details"
         android:fontFamily="@font/poppins_bold"
         android:gravity="center"
         android:padding="@dimen/padding_global_5dp"

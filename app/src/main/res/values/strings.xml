@@ -67,11 +67,11 @@
     <!--home-->
     <string name="home_list">Liste</string>
     <string name="home_card">Carte</string>
-    <string name="home_visit">VISITEZ MAINTENANT</string>
+    <string name="home_visit">VISITEZ \nMAINTENANT</string>
     <string name="home_meet">P r e n d r e \n Rendez-vous</string>
     <string name="home_meet_details">Prendre Rendez-vous</string>
     <string name="home_details_pro">Pro</string>
-    <string name="home_details_m_square">M²</string>
+    <string name="home_details_m_square">m²</string>
     <string name="home_details_euros">€</string>
     <string name="home_details_conso">Consommations énergétiques</string>
     <string name="home_details_ges">GES</string>

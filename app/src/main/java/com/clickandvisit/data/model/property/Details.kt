@@ -75,6 +75,14 @@ data class Details(
     ) {
     }
 
+    fun getRoomsNBR(): String {
+        return try {
+            "T" + (chambres.toInt() + 1).toString() + " - "
+        } catch (e: NumberFormatException) {
+            "T1 - "
+        }
+    }
+
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(chambres)
         parcel.writeString(suites)

@@ -123,7 +123,7 @@
             android:id="@+id/tvStatus2"
             android:layout_width="@dimen/dimen_140dp"
             android:layout_height="@dimen/dimen_50dp"
-            android:background="@color/red_pro_status_details"
+            android:background="@color/green_pro_status_details"
             android:fontFamily="@font/poppins_bold"
             android:gravity="center"
             android:paddingStart="@dimen/padding_global_8dp"

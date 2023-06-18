@@ -70,7 +70,7 @@
                 android:fontFamily="@font/poppins_semi_bold"
                 android:text="@string/my_ads_back"
                 android:textAllCaps="false"
-                android:textColor="@color/red_pro_status_details"
+                android:textColor="@color/green_pro_status_details"
                 android:textSize="@dimen/font_15sp" />
 
             <com.clickandvisit.ui.shared.view.CustomButton
