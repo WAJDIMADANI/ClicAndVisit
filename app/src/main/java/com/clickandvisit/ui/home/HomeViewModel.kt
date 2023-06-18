@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import com.clickandvisit.R
 import com.clickandvisit.base.BaseAndroidViewModel
-import com.clickandvisit.data.model.chat.Discussion
 import com.clickandvisit.data.model.property.Property
 import com.clickandvisit.data.model.property.SearchResponse
 import com.clickandvisit.data.model.user.TokenResponse
@@ -43,7 +42,6 @@ class HomeViewModel
 
     val listCount: MutableLiveData<String> = MutableLiveData()
 
-
     init {
         getSearch()
         setPushToken()
@@ -67,7 +65,8 @@ class HomeViewModel
     private fun onGetDiscussionSuccess(response: SearchResponse) {
         hideBlockProgressBar()
         list.value = response.properties
-        listCount.value = "Liste(" + response.properties.count() + ")"
+        listCount.value =
+            "${applicationContext.getString(R.string.home_list)}(${response.properties.count()})"
     }
 
     private fun onGetDiscussionError(throwable: Throwable) {
@@ -125,6 +124,10 @@ class HomeViewModel
         } else {
             navigate(Navigation.SignInActivityNavigation)
         }
+    }
+
+    fun onFilterClicked(){
+        //TODO: 
     }
 
     override fun onChatClicked() {

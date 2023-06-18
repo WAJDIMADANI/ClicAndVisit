@@ -40,7 +40,7 @@ class SearchViewHolder(
             View.GONE
         }
 
-/*       
+/*
 
         picasso.load(value.fromPicture.toMediaUrl())
             .memoryPolicy(
