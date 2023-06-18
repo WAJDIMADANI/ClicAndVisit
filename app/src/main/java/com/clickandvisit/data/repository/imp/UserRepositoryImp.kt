@@ -140,6 +140,10 @@ class UserRepositoryImp @Inject constructor(
 
     /** Property **/
 
+    override suspend fun search(): SearchResponse {
+        return apiClient.search()
+    }
+
     override suspend fun search(searchRequest: SearchRequest): SearchResponse {
         return apiClient.search(
             searchRequest.adsType,
@@ -151,7 +155,7 @@ class UserRepositoryImp @Inject constructor(
             searchRequest.minPrice,
             searchRequest.maxPrice,
             searchRequest.favoriteUserId,
-            searchRequest.userId,
+            sharedPreferences.getUser().id.toInt(),
             searchRequest.saveSearch,
             searchRequest.address,
             searchRequest.sortBy,
@@ -159,20 +163,20 @@ class UserRepositoryImp @Inject constructor(
         )
     }
 
-    override suspend fun propertyDetails(propertyId: Int, userId: Int): PropertyDetailsResponse {
-        return apiClient.propertyDetails(propertyId, userId)
+    override suspend fun propertyDetails(propertyId: Int): PropertyDetailsResponse {
+        return apiClient.propertyDetails(propertyId, sharedPreferences.getUser().id.toInt())
     }
 
     override suspend fun addRemoveFavorite(favoriteRequest: FavoriteRequest): GlobalResponse {
         return apiClient.addRemoveFavorite(
             favoriteRequest.propertyId,
-            favoriteRequest.userId,
+            sharedPreferences.getUser().id.toInt(),
             favoriteRequest.action
         )
     }
 
-    override suspend fun favoriteList(userId: Int): FavoritesResponse {
-        return apiClient.favoriteList(userId)
+    override suspend fun favoriteList(): FavoritesResponse {
+        return apiClient.favoriteList(sharedPreferences.getUser().id.toInt())
     }
 
     override suspend fun createUpdateProperty(property: PropertyAdd): PropertyAddResponse {
@@ -229,8 +233,8 @@ class UserRepositoryImp @Inject constructor(
         return apiClient.deleteSearch(searchId)
     }
 
-    override suspend fun getSavedSearch(userId: Int): SavedSearchResponse {
-        return apiClient.getSavedSearch(userId)
+    override suspend fun getSavedSearch(): SavedSearchResponse {
+        return apiClient.getSavedSearch(sharedPreferences.getUser().id.toInt())
     }
 
     override suspend fun getAvailability(date: String, propId: Int): AvailabilityResponse {
@@ -242,20 +246,23 @@ class UserRepositoryImp @Inject constructor(
     }
 
     override suspend fun reserve(
-        userId: Int,
         propertyId: Int,
         dateTime: String
     ): ReservationResponse {
-        return apiClient.reserve(userId, propertyId, dateTime)
+        return apiClient.reserve(sharedPreferences.getUser().id.toInt(), propertyId, dateTime)
     }
 
     override suspend fun setAvailability(
-        userId: Int,
         propertyId: Int,
         dateTime: String,
         removeAdd: String
     ): ResultModel {
-        return apiClient.setAvailability(userId, propertyId, dateTime, removeAdd)
+        return apiClient.setAvailability(
+            sharedPreferences.getUser().id.toInt(),
+            propertyId,
+            dateTime,
+            removeAdd
+        )
     }
 
     override suspend fun acceptRefuseReservation(
@@ -266,16 +273,15 @@ class UserRepositoryImp @Inject constructor(
         return apiClient.acceptRefuseReservation(propertyId, reservationId, accept)
     }
 
-    override suspend fun getReservations(userId: Int, accept: Boolean): ReservationResponse {
-        return apiClient.getReservations(userId, accept)
+    override suspend fun getReservations(accept: Boolean): ReservationResponse {
+        return apiClient.getReservations(sharedPreferences.getUser().id.toInt(), accept)
     }
 
     override suspend fun contactOwner(
-        userId: Int,
         propertyId: Int,
         message: String
     ): ContactOwnerResponse {
-        return apiClient.contactOwner(userId, propertyId, message)
+        return apiClient.contactOwner(sharedPreferences.getUser().id.toInt(), propertyId, message)
     }
 
     override suspend fun sendMessage(

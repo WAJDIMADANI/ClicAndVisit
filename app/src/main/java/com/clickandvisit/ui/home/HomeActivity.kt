@@ -10,6 +10,8 @@ import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.clickandvisit.R
 import com.clickandvisit.base.BaseActivity
 import com.clickandvisit.databinding.ActivityHomeBinding
@@ -27,6 +29,7 @@ import com.clickandvisit.ui.user.meet.MeetActivity
 import com.clickandvisit.ui.user.profile.ProfileActivity
 import com.clickandvisit.ui.user.signin.SignInActivity
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 
 @AndroidEntryPoint
@@ -40,6 +43,10 @@ class HomeActivity : BaseActivity(), DrawerLayout.DrawerListener {
 
     private lateinit var binding: ActivityHomeBinding
 
+    @Inject
+    lateinit var adapter: SearchAdapter
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding =
@@ -51,6 +58,13 @@ class HomeActivity : BaseActivity(), DrawerLayout.DrawerListener {
         registerBindingAndBaseObservers(binding)
         registerHomeObservers()
         bindListeners()
+        registerRecycler(binding)
+    }
+
+    private fun registerRecycler(binding: ActivityHomeBinding) {
+        adapter.viewModel = viewModel
+        binding.rvSearch.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
+        binding.rvSearch.adapter = adapter
     }
 
 

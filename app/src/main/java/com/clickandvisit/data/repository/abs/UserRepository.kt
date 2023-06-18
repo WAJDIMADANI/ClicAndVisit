@@ -69,13 +69,15 @@ interface UserRepository {
 
     /** Property **/
 
+    suspend fun search(): SearchResponse
+
     suspend fun search(searchRequest: SearchRequest): SearchResponse
 
-    suspend fun propertyDetails(propertyId: Int, userId: Int): PropertyDetailsResponse
+    suspend fun propertyDetails(propertyId: Int): PropertyDetailsResponse
 
     suspend fun addRemoveFavorite(favoriteRequest: FavoriteRequest): GlobalResponse
 
-    suspend fun favoriteList(userId: Int): FavoritesResponse
+    suspend fun favoriteList(): FavoritesResponse
 
     suspend fun createUpdateProperty(property: PropertyAdd): PropertyAddResponse
 
@@ -83,7 +85,7 @@ interface UserRepository {
 
     suspend fun deleteSearch(searchId: Int): GlobalResponse
 
-    suspend fun getSavedSearch(userId: Int): SavedSearchResponse
+    suspend fun getSavedSearch(): SavedSearchResponse
 
 
     /** Reservation **/
@@ -92,10 +94,9 @@ interface UserRepository {
 
     suspend fun getAllReserved(propId: Int): ReservedPropertyResponse
 
-    suspend fun reserve(userId: Int, propertyId: Int, dateTime: String): ReservationResponse
+    suspend fun reserve(propertyId: Int, dateTime: String): ReservationResponse
 
     suspend fun setAvailability(
-        userId: Int,
         propertyId: Int,
         dateTime: String,
         removeAdd: String
@@ -109,12 +110,12 @@ interface UserRepository {
     ): ReservationResponse
 
 
-    suspend fun getReservations(userId: Int, accept: Boolean): ReservationResponse
+    suspend fun getReservations(accept: Boolean): ReservationResponse
 
 
     /** Chat **/
 
-    suspend fun contactOwner(userId: Int, propertyId: Int, message: String): ContactOwnerResponse
+    suspend fun contactOwner(propertyId: Int, message: String): ContactOwnerResponse
 
     suspend fun sendMessage(discussionId: Int, message: String): GlobalResponse
 

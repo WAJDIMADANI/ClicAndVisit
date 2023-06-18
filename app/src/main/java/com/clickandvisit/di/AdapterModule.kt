@@ -1,5 +1,6 @@
 package com.clickandvisit.di
 
+import com.clickandvisit.ui.home.SearchAdapter
 import com.clickandvisit.ui.user.chat.ChatAdapter
 import com.clickandvisit.ui.user.chat.conv.ConvAdapter
 import com.squareup.picasso.Picasso
@@ -15,13 +16,18 @@ import dagger.hilt.android.components.FragmentComponent
 class ActivityAdapterModule {
 
     @Provides
-    fun provideChatAdapterAdapter(picasso: Picasso): ChatAdapter {
+    fun provideChatAdapter(picasso: Picasso): ChatAdapter {
         return ChatAdapter(picasso)
     }
 
     @Provides
-    fun provideConvAdapterAdapter(picasso: Picasso): ConvAdapter {
+    fun provideConvAdapter(picasso: Picasso): ConvAdapter {
         return ConvAdapter(picasso)
+    }
+
+    @Provides
+    fun provideSearchAdapter(picasso: Picasso): SearchAdapter {
+        return SearchAdapter(picasso)
     }
 
 }

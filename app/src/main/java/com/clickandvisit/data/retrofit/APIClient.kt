@@ -106,20 +106,28 @@ interface APIClient {
     @FormUrlEncoded
     @POST("search")
     suspend fun search(
-        @Field("type_annonce") adsType: Int,
-        @Field("categorie") category: Int,
-        @Field("min_rooms") minRooms: Int,
-        @Field("max_rooms") maxRooms: Int,
-        @Field("min-area") minArea: Int,
-        @Field("max-area") maxArea: Int,
-        @Field("min-price") minPrice: Int,
-        @Field("max-price") maxPrice: Int,
-        @Field("favorite_user_id") favoriteUserId: Int,
-        @Field("save_search") saveSearch: Int, //0 : No / 1 : Yes
-        @Field("user_id") userId: Int,
-        @Field("adresse") address: Int,
-        @Field("sortby") sortBy: Int,  // date/price/surface
-        @Field("sorthow") sortHow: Int // asc/desc
+        @Field("sortby") sortBy: String? = "date",  // date/price/surface
+        @Field("sorthow") sortHow: String? = "desc" // asc/desc
+    ): SearchResponse
+
+
+    @FormUrlEncoded
+    @POST("search")
+    suspend fun search(
+        @Field("type_annonce") adsType: Int?,
+        @Field("categorie") category: Int?,
+        @Field("min_rooms") minRooms: Int?,
+        @Field("max_rooms") maxRooms: Int?,
+        @Field("min-area") minArea: Int?,
+        @Field("max-area") maxArea: Int?,
+        @Field("min-price") minPrice: Int?,
+        @Field("max-price") maxPrice: Int?,
+        @Field("favorite_user_id") favoriteUserId: Int?,
+        @Field("save_search") saveSearch: Int = 0, //0 : No / 1 : Yes
+        @Field("user_id") userId: Int?,
+        @Field("adresse") address: String?,
+        @Field("sortby") sortBy: String? = "date",  // date/price/surface
+        @Field("sorthow") sortHow: String? = "desc" // asc/desc
     ): SearchResponse
 
 

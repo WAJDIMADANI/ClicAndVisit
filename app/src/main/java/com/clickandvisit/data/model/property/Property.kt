@@ -19,7 +19,7 @@ data class Property(
     @Json(name = "album")
     val album: List<String>,
     @Json(name = "photo_principale")
-    val mainPhoto: String,
+    val mainPhoto: String?,
     @Json(name = "status")
     val status: String,
     @Json(name = "status_code")
@@ -70,11 +70,11 @@ data class Property(
         parcel.readString()!!,
         parcel.readString()!!,
         parcel.createStringArrayList()!!,
-        parcel.readString()!!,
+        parcel.readString(),
         parcel.readString()!!,
         parcel.readInt(),
         parcel.readByte() != 0.toByte(),
-        TODO("owner"),
+        parcel.readParcelable(PropertyOwner::class.java.classLoader)!!,
         parcel.readByte() != 0.toByte(),
         parcel.readString()!!,
         parcel.readString()!!,
@@ -105,6 +105,7 @@ data class Property(
         parcel.writeString(status)
         parcel.writeInt(statusCode)
         parcel.writeByte(if (visitNow) 1 else 0)
+        parcel.writeParcelable(owner, flags)
         parcel.writeByte(if (isFavorite) 1 else 0)
         parcel.writeString(surface)
         parcel.writeString(price)
@@ -129,7 +130,7 @@ data class Property(
     }
 
     override fun toString(): String {
-        return "Property(id=$id, title='$title', type='$type', category='$category', album=$album, mainPhoto='$mainPhoto', status='$status', statusCode=$statusCode, visitNow=$visitNow, owner=$owner, isFavorite=$isFavorite, surface='$surface', price='$price', stage='$stage', stageS='$stageS', energy='$energy', ges='$ges', otherDetails='$otherDetails', city='$city', postalCode='$postalCode', road='$road', lat='$lat', long='$long', interphone='$interphone', portail='$portail', otherInfo='$otherInfo', details=$details)"
+        return "Property(id=$id, title='$title', type='$type', category='$category', album=$album, mainPhoto=$mainPhoto, status='$status', statusCode=$statusCode, visitNow=$visitNow, owner=$owner, isFavorite=$isFavorite, surface='$surface', price='$price', stage='$stage', stageS='$stageS', energy='$energy', ges='$ges', otherDetails='$otherDetails', city='$city', postalCode='$postalCode', road='$road', lat='$lat', long='$long', interphone='$interphone', portail='$portail', otherInfo='$otherInfo', details=$details)"
     }
 
     companion object CREATOR : Parcelable.Creator<Property> {

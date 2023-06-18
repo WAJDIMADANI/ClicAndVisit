@@ -18,6 +18,9 @@ data class PropertyOwner(
     @Json(name = "professionel_particulier")
     val proPar: String
 ) : Parcelable {
+
+    fun isPro() = proPar.toInt() == 1
+
     constructor(parcel: Parcel) : this(
         parcel.readString()!!,
         parcel.readString()!!,
