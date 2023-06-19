@@ -1,6 +1,7 @@
 package com.clickandvisit.ui.ads.addads
 
 import android.os.Bundle
+import android.view.View
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import com.clickandvisit.R
@@ -112,22 +113,34 @@ class AddAdsActivity : BaseActivity() {
 
     fun stepOne() {
         stepNumber = 0
-        binding.ivStep.background = getDrawable(R.drawable.ic_add_step_1)
+        //binding.tvStep1.visibility = View.VISIBLE
+        binding.tvStep2.visibility = View.INVISIBLE
+        //binding.tvStep3.visibility = View.INVISIBLE
+        //binding.tvStep4.visibility = View.INVISIBLE
     }
 
     fun stepTwo() {
         stepNumber = 1
-        binding.ivStep.background = getDrawable(R.drawable.ic_add_step_2)
+        //binding.tvStep1.visibility = View.VISIBLE
+        binding.tvStep2.visibility = View.VISIBLE
+        binding.tvStep3.visibility = View.INVISIBLE
+        //binding.tvStep4.visibility = View.INVISIBLE
     }
 
     fun stepThree() {
         stepNumber = 2
-        binding.ivStep.background = getDrawable(R.drawable.ic_add_step_3)
+        //binding.tvStep1.visibility = View.VISIBLE
+        //binding.tvStep2.visibility = View.VISIBLE
+        binding.tvStep3.visibility = View.VISIBLE
+        binding.tvStep4.visibility = View.INVISIBLE
     }
 
     fun stepFour() {
         stepNumber = 3
-        binding.ivStep.background = getDrawable(R.drawable.ic_add_step_4)
+        //binding.tvStep1.visibility = View.VISIBLE
+        //binding.tvStep2.visibility = View.VISIBLE
+        //binding.tvStep3.visibility = View.VISIBLE
+        binding.tvStep4.visibility = View.VISIBLE
     }
 
 }

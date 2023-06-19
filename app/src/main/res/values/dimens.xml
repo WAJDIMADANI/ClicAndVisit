@@ -102,6 +102,8 @@
     <dimen name="dimen_edit_text">50dp</dimen>
     <dimen name="dimen_58dp">58dp</dimen>
     <dimen name="dimen_150dp">150dp</dimen>
+    <dimen name="dimen_80dp">80dp</dimen>
+    <dimen name="dimen_step_line">77dp</dimen>
 
 
 </resources>
