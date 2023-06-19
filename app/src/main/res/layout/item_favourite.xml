@@ -25,11 +25,13 @@
         android:padding="@dimen/margin_global_10dp"
         app:onClickWithDebounce="@{()->listener.onItemClicked(property)}">
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/appCompatImageView2"
+        <com.denzcoskun.imageslider.ImageSlider
+            android:id="@+id/imageSlider"
             android:layout_width="match_parent"
             android:layout_height="187dp"
-            android:background="@drawable/ic_list_place_holder"
+            app:iss_auto_cycle="true"
+            app:iss_placeholder="@drawable/ic_list_place_holder"
+            app:iss_text_align="CENTER"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -59,7 +61,7 @@
             android:layout_marginBottom="@dimen/margin_global_10dp"
             android:background="@drawable/ic_ads_transparent"
             android:gravity="center"
-            app:layout_constraintBottom_toBottomOf="@+id/appCompatImageView2"
+            app:layout_constraintBottom_toBottomOf="@+id/imageSlider"
             app:layout_constraintStart_toStartOf="parent">
 
             <androidx.appcompat.widget.AppCompatImageView
@@ -92,7 +94,8 @@
             android:background="@drawable/ic_like"
             app:layout_constraintBottom_toBottomOf="@+id/ivShare"
             app:layout_constraintEnd_toStartOf="@+id/ivShare"
-            app:layout_constraintTop_toTopOf="@+id/ivShare" />
+            app:layout_constraintTop_toTopOf="@+id/ivShare"
+            app:onClickWithDebounce="@{()->listener.onLikeClicked(property)}" />
 
         <ImageView
             android:id="@+id/ivShare"
@@ -103,7 +106,8 @@
             android:layout_marginBottom="@dimen/margin_global_7dp"
             android:background="@drawable/ic_share"
             app:layout_constraintBottom_toTopOf="@+id/tvMeet"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:onClickWithDebounce="@{()->listener.onShareClicked(property)}" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvAdsName"
@@ -116,7 +120,7 @@
             android:textColor="@color/black"
             android:textSize="@dimen/font_16sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/appCompatImageView2" />
+            app:layout_constraintTop_toBottomOf="@+id/imageSlider" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvAdsPrice"

@@ -204,6 +204,20 @@ class HomeActivity : BaseActivity(), DrawerLayout.DrawerListener {
                 }
             }
 
+            is Navigation.ShareNavigation -> {
+                Intent().let {
+                    it.action = Intent.ACTION_SEND
+                    it.type = "text/plain"
+                    it.putExtra(Intent.EXTRA_TEXT, navigationTo.property.toString())
+                    startActivity(
+                        Intent.createChooser(
+                            it,
+                            getString(R.string.global_recommend_app)
+                        )
+                    )
+                }
+            }
+
             is Navigation.SearchActivityNavigation -> {
                 navigateToActivity(SearchActivity::class)
             }

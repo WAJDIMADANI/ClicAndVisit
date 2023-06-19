@@ -9,6 +9,7 @@ import com.clickandvisit.R
 import com.clickandvisit.data.model.property.Property
 import com.clickandvisit.databinding.ItemFavouriteBinding
 import com.clickandvisit.global.listener.OnPropertyClickedListener
+import com.denzcoskun.imageslider.models.SlideModel
 import com.squareup.picasso.Picasso
 
 
@@ -34,27 +35,30 @@ class SearchViewHolder(
             value.getCategories() + value.getPriceNBR() + context.getString(R.string.home_details_euros)
         binding.tvAdsSpace.text =
             value.details.getRoomsNBR() + value.surface + context.getString(R.string.home_details_m_square)
-        binding.tvPro.visibility = if (value.owner.isPro()) {
-            View.VISIBLE
-        } else {
-            View.GONE
-        }
 
-/*
-
-        picasso.load(value.fromPicture.toMediaUrl())
-            .memoryPolicy(
-                MemoryPolicy.NO_CACHE,
-                MemoryPolicy.NO_STORE
-            )
-            .fit()
-            .centerInside()
-            .into(binding.ivChatUserPhoto)*/
+        proVisibility(value)
+        loadImages(value)
 
         binding.property = value
         binding.listener = onPropertyClickedListener
 
         binding.executePendingBindings()
+    }
+
+    private fun proVisibility(value: Property) {
+        binding.tvPro.visibility = if (value.owner.isPro()) {
+            View.VISIBLE
+        } else {
+            View.GONE
+        }
+    }
+
+    private fun loadImages(value: Property) {
+        val imageList = ArrayList<SlideModel>()
+        value.album.forEach {
+            imageList.add(SlideModel(imageUrl = it))
+        }
+        binding.imageSlider.setImageList(imageList)
     }
 
     companion object {

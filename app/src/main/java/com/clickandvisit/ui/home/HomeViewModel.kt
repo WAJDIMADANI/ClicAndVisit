@@ -1,6 +1,7 @@
 package com.clickandvisit.ui.home
 
 import android.app.Application
+import android.content.Intent
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import com.clickandvisit.R
@@ -173,6 +174,14 @@ class HomeViewModel
 
     override fun onItemClicked(value: Property) {
         DebugLog.i(TAG, value.toString())
+    }
+
+    override fun onLikeClicked(value: Property) {
+        //TODO ws call
+    }
+
+    override fun onShareClicked(value: Property) {
+        navigate(Navigation.ShareNavigation(value))
     }
 
 

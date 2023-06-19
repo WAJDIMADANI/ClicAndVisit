@@ -206,6 +206,8 @@ dependencies {
     kapt "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_viewmodel_ktx"
     kapt "com.squareup.moshi:moshi-kotlin-codegen:$kotlin_moshi"
 
+    //ImageSlideshow
+    implementation 'com.github.denzcoskun:ImageSlideshow:0.1.2'
 
     // Required -- JUnit 4 framework
     testImplementation "junit:junit:$junit"

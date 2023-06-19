@@ -1,5 +1,6 @@
 package com.clickandvisit.global.helper
 
+import com.clickandvisit.data.model.property.Property
 import com.clickandvisit.data.model.property.SearchResponse
 
 sealed class Navigation {
@@ -9,6 +10,8 @@ sealed class Navigation {
     object SignInActivityNavigation : Navigation()
 
     data class MapsActivityNavigation(val searchResponse: SearchResponse) : Navigation()
+
+    data class ShareNavigation(val property: Property) : Navigation()
 
     object SignUpActivityNavigation : Navigation()
 
