@@ -248,18 +248,20 @@
 
                     <androidx.appcompat.widget.AppCompatSpinner
                         android:id="@+id/sMin"
+                        selectedValue="@={viewModel.minSelectedItem}"
+                        spinnerEntries="@{viewModel.piecesList}"
                         android:layout_width="0dp"
                         android:layout_height="46dp"
                         android:layout_marginEnd="@dimen/margin_global_10dp"
-                        android:layout_weight="1"
-                        android:entries="@array/pieces" />
+                        android:layout_weight="1" />
 
                     <androidx.appcompat.widget.AppCompatSpinner
                         android:id="@+id/sMax"
+                        selectedValue="@={viewModel.maxSelectedItem}"
+                        spinnerEntries="@{viewModel.piecesList}"
                         android:layout_width="0dp"
                         android:layout_height="46dp"
-                        android:layout_weight="1"
-                        android:entries="@array/pieces" />
+                        android:layout_weight="1"/>
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -297,6 +299,7 @@
                         android:hint="@string/search_price_min"
                         android:inputType="number"
                         android:paddingStart="@dimen/padding_global_10dp"
+                        android:text="@={viewModel.priceMin}"
                         android:textColor="@color/black"
                         android:textCursorDrawable="@drawable/edit_cursor_color"
                         android:textSize="@dimen/font_13sp" />
@@ -312,6 +315,7 @@
                         android:hint="@string/search_price_max"
                         android:inputType="number"
                         android:paddingStart="@dimen/padding_global_10dp"
+                        android:text="@={viewModel.priceMax}"
                         android:textColor="@color/black"
                         android:textCursorDrawable="@drawable/edit_cursor_color"
                         android:textSize="@dimen/font_13sp" />
@@ -352,6 +356,7 @@
                         android:hint="@string/search_surface_min"
                         android:inputType="number"
                         android:paddingStart="@dimen/padding_global_10dp"
+                        android:text="@={viewModel.surfaceMin}"
                         android:textColor="@color/black"
                         android:textCursorDrawable="@drawable/edit_cursor_color"
                         android:textSize="@dimen/font_13sp" />
@@ -367,6 +372,7 @@
                         android:hint="@string/search_surface_max"
                         android:inputType="number"
                         android:paddingStart="@dimen/padding_global_10dp"
+                        android:text="@={viewModel.surfaceMax}"
                         android:textColor="@color/black"
                         android:textCursorDrawable="@drawable/edit_cursor_color"
                         android:textSize="@dimen/font_13sp" />

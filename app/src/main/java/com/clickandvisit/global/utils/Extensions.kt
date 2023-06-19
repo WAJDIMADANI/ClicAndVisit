@@ -8,8 +8,12 @@ import android.os.SystemClock
 import android.provider.Settings
 import android.text.TextUtils
 import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.ImageView
+import android.widget.Spinner
 import androidx.databinding.BindingAdapter
+import androidx.databinding.InverseBindingListener
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -107,19 +111,76 @@ val Any.TAG: String
     }
 
 
+/**
+ * set spinner entries
+ */
+fun Spinner.setSpinnerEntries(entries: List<String>?) {
+    if (entries != null) {
+        val arrayAdapter = ArrayAdapter(context, android.R.layout.simple_spinner_item, entries)
+        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        adapter = arrayAdapter
+    }
+}
+
+/**
+ * set spinner value
+ */
+fun Spinner.setSpinnerValue(value: String?) {
+    if (adapter != null && ((adapter is ArrayAdapter<*>))) {
+        val position = (adapter as ArrayAdapter<String>).getPosition(value)
+        setSelection(position, false)
+        tag = position
+    }
+}
+
+/**
+ * set spinner onItemSelectedListener listener
+ */
+fun Spinner.setSpinnerInverseBindingListener(listener: InverseBindingListener?) {
+    onItemSelectedListener = if (listener == null) {
+        null
+    } else {
+        object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>,
+                view: View,
+                position: Int,
+                id: Long
+            ) {
+                if (tag != position) {
+                    listener.onChange()
+                }
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {}
+        }
+    }
+}
+
+/**
+ * get spinner value
+ */
+fun Spinner.getSpinnerValue(): Any? {
+    return selectedItem
+}
+
+
 @BindingAdapter(value = ["imageUrl", "placeholder", "picasso"], requireAll = true)
 fun setImageUrl(imageView: ImageView, imageUrl: String, placeHolder: Drawable, picasso: Picasso) {
     if (TextUtils.isEmpty(imageUrl)) {
         imageView.setImageDrawable(placeHolder)
     } else {
         when (imageView.scaleType) {
-            ImageView.ScaleType.CENTER_CROP -> picasso.load(imageUrl).fit().centerCrop().placeholder(
-                placeHolder
-            ).into(imageView)
-            ImageView.ScaleType.CENTER_INSIDE -> picasso.load(imageUrl).fit().centerInside().placeholder(
-                placeHolder
-            ).into(imageView)
-            else -> picasso.load(imageUrl).placeholder(R.mipmap.ic_launcher_foreground).into(imageView)
+            ImageView.ScaleType.CENTER_CROP -> picasso.load(imageUrl).fit().centerCrop()
+                .placeholder(
+                    placeHolder
+                ).into(imageView)
+            ImageView.ScaleType.CENTER_INSIDE -> picasso.load(imageUrl).fit().centerInside()
+                .placeholder(
+                    placeHolder
+                ).into(imageView)
+            else -> picasso.load(imageUrl).placeholder(R.mipmap.ic_launcher_foreground)
+                .into(imageView)
         }
     }
 }
@@ -138,16 +199,6 @@ fun <T> setRecyclerViewProperties(recyclerView: RecyclerView, recyclerViewData: 
     recyclerViewData?.let {
         if (recyclerView.adapter is DataAdapterListener<*>) {
             (recyclerView.adapter as DataAdapterListener<T>).setData(it)
-        }
-    }
-}
-
-
-@BindingAdapter("pagedListAdapterData")
-fun <T> setRecyclerViewProperties(recyclerView: RecyclerView, data: PagedList<T>?) {
-    data?.let {
-        if (recyclerView.adapter is PagedListAdapter<*, *>) {
-            (recyclerView.adapter as PagedListAdapter<T, *>).submitList(it)
         }
     }
 }
@@ -331,6 +382,7 @@ fun File.deleteDirectory(): Boolean {
         delete()
     } else false
 }
+
 fun String?.toMediaUrl(): String {
     return if (this.isNullOrEmpty()) {
         "https://"

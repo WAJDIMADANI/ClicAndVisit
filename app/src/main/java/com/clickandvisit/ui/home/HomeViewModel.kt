@@ -196,7 +196,7 @@ class HomeViewModel
                 searchRequest =
                     data.getParcelableExtra(ExtraKeys.FilterActivity.SEARCH_REQ_EXTRA_KEY)!!
 
-                searchRequest.address?.let { DebugLog.i(TAG, it) }
+                searchRequest.let { DebugLog.i(TAG, it.toString()) }
             }
         }
     }
