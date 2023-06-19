@@ -1,5 +1,6 @@
 package com.clickandvisit.ui.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
@@ -17,6 +18,7 @@ import com.clickandvisit.base.BaseActivity
 import com.clickandvisit.databinding.ActivityHomeBinding
 import com.clickandvisit.global.helper.Navigation
 import com.clickandvisit.global.utils.DebugLog
+import com.clickandvisit.global.utils.ExtraKeys
 import com.clickandvisit.global.utils.TAG
 import com.clickandvisit.ui.ads.addads.AddAdsActivity
 import com.clickandvisit.ui.ads.adslist.AdsListActivity
@@ -28,6 +30,7 @@ import com.clickandvisit.ui.user.chat.ChatActivity
 import com.clickandvisit.ui.user.meet.MeetActivity
 import com.clickandvisit.ui.user.profile.ProfileActivity
 import com.clickandvisit.ui.user.signin.SignInActivity
+import com.clickandvisit.ui.user.signup.otp.OtpActivity
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -192,6 +195,13 @@ class HomeActivity : BaseActivity(), DrawerLayout.DrawerListener {
 
             is Navigation.MapsActivityNavigation -> {
                 navigateToActivity(MapsActivity::class)
+                Intent(this, MapsActivity::class.java).let {
+                    it.putExtra(
+                        ExtraKeys.MapsActivity.SEARCH_EXTRA_KEY,
+                        navigationTo.searchResponse
+                    )
+                    startActivity(it)
+                }
             }
 
             is Navigation.SearchActivityNavigation -> {

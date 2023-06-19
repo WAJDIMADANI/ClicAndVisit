@@ -5,15 +5,13 @@ import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.os.Bundle
 import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import com.clickandvisit.R
 import com.clickandvisit.base.BaseActivity
 import com.clickandvisit.databinding.ActivityMapsBinding
-import com.clickandvisit.databinding.FragmentFilterBinding
 import com.clickandvisit.global.helper.Navigation
+import com.clickandvisit.global.utils.observeOnlyNotNull
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -22,50 +20,50 @@ import com.google.android.gms.maps.model.BitmapDescriptor
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import dagger.hilt.android.AndroidEntryPoint
 
 
-class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
+@AndroidEntryPoint
+class MapsActivity : BaseActivity(), OnMapReadyCallback {
 
-    ///private val viewModel: MapsViewModel by viewModels()
+    private val viewModel: MapsViewModel by viewModels()
 
-    private lateinit var mMap: GoogleMap
+    private lateinit var map: GoogleMap
+
     private lateinit var binding: ActivityMapsBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // binding = DataBindingUtil.setContentView(this, R.layout.activity_maps)
-
-        binding = ActivityMapsBinding.inflate(layoutInflater)
-
-        // registerBindingAndBaseObservers(binding)
-
-        setContentView(binding.root)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_maps)
 
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
 
+        registerBindingAndBaseObservers(binding)
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
-        mMap = googleMap
-        val sydney = LatLng(48.85, 2.26)
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 14F))
+        map = googleMap
+        map.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(47.370208, 3.419315), 7F))
 
-        mMap.addMarker(
-            MarkerOptions()
-                .flat(true)
-                .icon(
-                    bitmapDescriptorFromVector(
-                        this,
-                        R.drawable.ic_marker
-                    )
+        viewModel.searchResponse.observeOnlyNotNull(this) { it ->
+            it.properties.forEach {
+                map.addMarker(
+                    MarkerOptions()
+                        .flat(true)
+                        .icon(
+                            bitmapDescriptorFromVector(
+                                this,
+                                R.drawable.ic_marker
+                            )
+                        )
+                        .position(LatLng(it.lat.toDouble(), it.long.toDouble()))
                 )
-                .position(sydney)
-        )
+            }
+        }
     }
-
 
     /** get BitmapDescriptor marker icon from vector res id **/
     private fun bitmapDescriptorFromVector(
@@ -95,7 +93,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
      * Register the UI for XMLBinding
      * Register the activity for base observers
      */
-/*
     private fun registerBindingAndBaseObservers(binding: ActivityMapsBinding) {
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
@@ -109,6 +106,5 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         }
     }
-*/
 
 }

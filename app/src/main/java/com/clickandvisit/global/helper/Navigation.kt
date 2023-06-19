@@ -1,12 +1,14 @@
 package com.clickandvisit.global.helper
 
+import com.clickandvisit.data.model.property.SearchResponse
+
 sealed class Navigation {
 
     object Back : Navigation()
 
     object SignInActivityNavigation : Navigation()
 
-    object MapsActivityNavigation : Navigation()
+    data class MapsActivityNavigation(val searchResponse: SearchResponse) : Navigation()
 
     object SignUpActivityNavigation : Navigation()
 

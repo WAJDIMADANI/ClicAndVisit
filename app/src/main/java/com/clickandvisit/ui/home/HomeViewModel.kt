@@ -42,6 +42,8 @@ class HomeViewModel
 
     val listCount: MutableLiveData<String> = MutableLiveData()
 
+    lateinit var searchResponse: SearchResponse
+
     init {
         getSearch()
         setPushToken()
@@ -64,6 +66,7 @@ class HomeViewModel
 
     private fun onGetDiscussionSuccess(response: SearchResponse) {
         hideBlockProgressBar()
+        searchResponse = response
         list.value = response.properties
         listCount.value =
             "${applicationContext.getString(R.string.home_list)}(${response.properties.count()})"
@@ -111,7 +114,7 @@ class HomeViewModel
     }
 
     fun onMapsClicked() {
-        navigate(Navigation.MapsActivityNavigation)
+        navigate(Navigation.MapsActivityNavigation(searchResponse))
     }
 
     fun isConnected(): Boolean {
@@ -126,8 +129,8 @@ class HomeViewModel
         }
     }
 
-    fun onFilterClicked(){
-        //TODO: 
+    fun onFilterClicked() {
+        //TODO:
     }
 
     override fun onChatClicked() {

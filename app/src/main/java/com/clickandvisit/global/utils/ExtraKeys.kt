@@ -20,4 +20,10 @@ object ExtraKeys {
         }
     }
 
+    class MapsActivity{
+        companion object {
+            const val SEARCH_EXTRA_KEY: String = "search_extra_key"
+        }
+    }
+
 }
