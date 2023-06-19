@@ -9,42 +9,43 @@ import com.squareup.moshi.JsonClass
 data class SearchRequest(
 
     @Json(name = "type_annonce")
-    val adsType: Int?,
+    var adsType: Int? = -1,
+
     @Json(name = "categorie")
-    val category: Int?,
+    var category: Int?= -1,
 
     @Json(name = "min_rooms")
-    val minRooms: Int?,
+    var minRooms: Int?= -1,
     @Json(name = "max_rooms")
-    val maxRooms: Int?,
+    var maxRooms: Int?= -1,
 
     @Json(name = "min-area")
-    val minArea: Int?,
+    var minArea: Int?= -1,
     @Json(name = "max-area")
-    val maxArea: Int?,
+    var maxArea: Int?= -1,
 
     @Json(name = "min-price")
-    val minPrice: Int?,
+    var minPrice: Int?= -1,
     @Json(name = "max-price")
-    val maxPrice: Int?,
+    var maxPrice: Int?= -1,
 
     @Json(name = "favorite_user_id")
-    val favoriteUserId: Int?,
+    var favoriteUserId: Int?= -1,
 
     @Json(name = "save_search")
-    val saveSearch: Int = 0, //0 : No / 1 : Yes
+    var saveSearch: Int = 0, //0 : No / 1 : Yes
 
     @Json(name = "user_id")
-    val userId: Int?,
+    var userId: Int?= -1,
 
     @Json(name = "adresse")
-    val address: String?,
+    var address: String? = "",
 
     @Json(name = "sortby") // date/price/surface
-    val sortBy: String = "date",
+    var sortBy: String= "date",
 
     @Json(name = "sorthow") // asc/desc
-    val sortHow: String = "desc"
+    var sortHow: String= "desc"
 
 ) : Parcelable {
     constructor(parcel: Parcel) : this(

@@ -1,5 +1,6 @@
 package com.clickandvisit.ui.home
 
+import android.app.Activity
 import android.app.Application
 import android.content.Intent
 import androidx.lifecycle.MutableLiveData
@@ -7,6 +8,7 @@ import androidx.lifecycle.SavedStateHandle
 import com.clickandvisit.R
 import com.clickandvisit.base.BaseAndroidViewModel
 import com.clickandvisit.data.model.property.Property
+import com.clickandvisit.data.model.property.SearchRequest
 import com.clickandvisit.data.model.property.SearchResponse
 import com.clickandvisit.data.model.user.TokenResponse
 import com.clickandvisit.data.repository.abs.UserRepository
@@ -15,6 +17,7 @@ import com.clickandvisit.global.listener.OnPropertyClickedListener
 import com.clickandvisit.global.listener.SchedulerProvider
 import com.clickandvisit.global.listener.ToolBarListener
 import com.clickandvisit.global.utils.DebugLog
+import com.clickandvisit.global.utils.ExtraKeys
 import com.clickandvisit.global.utils.TAG
 import com.clickandvisit.global.utils.tryCatch
 import com.google.android.gms.tasks.OnCompleteListener
@@ -42,6 +45,8 @@ class HomeViewModel
     val list: MutableLiveData<List<Property>> = MutableLiveData(arrayListOf())
 
     val listCount: MutableLiveData<String> = MutableLiveData()
+
+    var searchRequest = SearchRequest(sortBy = "date", sortHow = "desc")
 
     lateinit var searchResponse: SearchResponse
 
@@ -124,7 +129,7 @@ class HomeViewModel
 
     override fun onSearchClicked() {
         if (userRepository.isConnected()) {
-            navigate(Navigation.SearchActivityNavigation)
+            navigate(Navigation.FilterActivityNavigation(searchRequest))
         } else {
             navigate(Navigation.SignInActivityNavigation)
         }
@@ -184,5 +189,16 @@ class HomeViewModel
         navigate(Navigation.ShareNavigation(value))
     }
 
+
+    fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (requestCode == ExtraKeys.FilterActivity.SEARCH_REQ_CODE && resultCode == Activity.RESULT_OK) {
+            if (data?.hasExtra(ExtraKeys.FilterActivity.SEARCH_REQ_EXTRA_KEY) == true) {
+                searchRequest =
+                    data.getParcelableExtra(ExtraKeys.FilterActivity.SEARCH_REQ_EXTRA_KEY)!!
+
+                searchRequest.address?.let { DebugLog.i(TAG, it) }
+            }
+        }
+    }
 
 }

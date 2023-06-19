@@ -26,4 +26,11 @@ object ExtraKeys {
         }
     }
 
+    class FilterActivity{
+        companion object {
+            const val SEARCH_REQ_EXTRA_KEY: String = "search_req_extra_key"
+            const val SEARCH_REQ_CODE: Int = 111
+        }
+    }
+
 }

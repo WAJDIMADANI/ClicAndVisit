@@ -1,5 +1,7 @@
 package com.clickandvisit.ui.ads.filter
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
@@ -7,6 +9,7 @@ import com.clickandvisit.R
 import com.clickandvisit.base.BaseActivity
 import com.clickandvisit.databinding.ActivityFilterBinding
 import com.clickandvisit.global.helper.Navigation
+import com.clickandvisit.global.utils.ExtraKeys
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -29,8 +32,16 @@ class FilterActivity : BaseActivity() {
     override fun navigate(navigationTo: Navigation) {
         when (navigationTo) {
             is Navigation.Back -> finish()
+            is Navigation.HomeActivityNavigation -> onBackNavigation()
 
         }
+    }
+
+    private fun onBackNavigation() {
+        val intent = Intent()
+        intent.putExtra(ExtraKeys.FilterActivity.SEARCH_REQ_EXTRA_KEY, viewModel.searchRequest.value)
+        setResult(Activity.RESULT_OK, intent)
+        finish()
     }
 
     /**

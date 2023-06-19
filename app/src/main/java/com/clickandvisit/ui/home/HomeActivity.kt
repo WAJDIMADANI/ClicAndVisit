@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.clickandvisit.R
 import com.clickandvisit.base.BaseActivity
+import com.clickandvisit.data.model.property.SearchRequest
 import com.clickandvisit.databinding.ActivityHomeBinding
 import com.clickandvisit.global.helper.Navigation
 import com.clickandvisit.global.utils.DebugLog
@@ -30,7 +31,6 @@ import com.clickandvisit.ui.user.chat.ChatActivity
 import com.clickandvisit.ui.user.meet.MeetActivity
 import com.clickandvisit.ui.user.profile.ProfileActivity
 import com.clickandvisit.ui.user.signin.SignInActivity
-import com.clickandvisit.ui.user.signup.otp.OtpActivity
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -102,7 +102,7 @@ class HomeActivity : BaseActivity(), DrawerLayout.DrawerListener {
             if (viewModel.isConnected()) {
                 when (it.itemId) {
                     R.id.nav_menu_1 -> {
-                        navigateToActivity(FilterActivity::class)
+                        startFilterForResult(viewModel.searchRequest)
                     }
                     R.id.nav_menu_2 -> {
                         navigateToActivity(AddAdsActivity::class)
@@ -134,6 +134,16 @@ class HomeActivity : BaseActivity(), DrawerLayout.DrawerListener {
                 navigateToActivity(SignInActivity::class)
             }
             return@setNavigationItemSelectedListener true
+        }
+    }
+
+    fun startFilterForResult(searchRequest: SearchRequest?) {
+        Intent(this, FilterActivity::class.java).let { intent ->
+            intent.putExtra(
+                ExtraKeys.FilterActivity.SEARCH_REQ_EXTRA_KEY,
+                searchRequest
+            )
+            startActivityForResult(intent, ExtraKeys.FilterActivity.SEARCH_REQ_CODE)
         }
     }
 
@@ -194,7 +204,6 @@ class HomeActivity : BaseActivity(), DrawerLayout.DrawerListener {
             }
 
             is Navigation.MapsActivityNavigation -> {
-                navigateToActivity(MapsActivity::class)
                 Intent(this, MapsActivity::class.java).let {
                     it.putExtra(
                         ExtraKeys.MapsActivity.SEARCH_EXTRA_KEY,
@@ -218,8 +227,8 @@ class HomeActivity : BaseActivity(), DrawerLayout.DrawerListener {
                 }
             }
 
-            is Navigation.SearchActivityNavigation -> {
-                navigateToActivity(SearchActivity::class)
+            is Navigation.FilterActivityNavigation -> {
+                startFilterForResult(navigationTo.searchRequest)
             }
 
             is Navigation.ChatActivityNavigation -> {
@@ -231,6 +240,11 @@ class HomeActivity : BaseActivity(), DrawerLayout.DrawerListener {
                 true
             )
         }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        viewModel.onActivityResult(requestCode, resultCode, data)
     }
 
     override fun onBackPressed() {

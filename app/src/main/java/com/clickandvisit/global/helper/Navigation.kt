@@ -1,6 +1,7 @@
 package com.clickandvisit.global.helper
 
 import com.clickandvisit.data.model.property.Property
+import com.clickandvisit.data.model.property.SearchRequest
 import com.clickandvisit.data.model.property.SearchResponse
 
 sealed class Navigation {
@@ -12,6 +13,8 @@ sealed class Navigation {
     data class MapsActivityNavigation(val searchResponse: SearchResponse) : Navigation()
 
     data class ShareNavigation(val property: Property) : Navigation()
+
+    data class FilterActivityNavigation(val searchRequest: SearchRequest?) : Navigation()
 
     object SignUpActivityNavigation : Navigation()
 

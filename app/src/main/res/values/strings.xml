@@ -476,4 +476,14 @@
     <string name="GOOGLE_MAPS_KEY">AIzaSyDAF1ftTXOAMiu3dIpQ1Qm-IQKV25AaldI</string>
     <string name="global_recommend_app">Veuillez trouver cette annonce sur l\'application Click&amp;Visit...</string>
 
+
+    <string-array name="pieces">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5 et +</item>
+        <item>NA</item>
+    </string-array>
+
 </resources>
