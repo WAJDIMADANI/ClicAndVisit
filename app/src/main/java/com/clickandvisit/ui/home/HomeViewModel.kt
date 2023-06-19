@@ -196,6 +196,18 @@ class HomeViewModel
                 searchRequest =
                     data.getParcelableExtra(ExtraKeys.FilterActivity.SEARCH_REQ_EXTRA_KEY)!!
 
+                showBlockProgressBar()
+                viewModelScope.launch {
+                    tryCatch({
+                        val response = withContext(schedulerProvider.dispatchersIO()) {
+                            userRepository.search(searchRequest)
+                        }
+                        onGetDiscussionSuccess(response)
+                    }, { error ->
+                        onGetDiscussionError(error)
+                    })
+                }
+
                 searchRequest.let { DebugLog.i(TAG, it.toString()) }
             }
         }

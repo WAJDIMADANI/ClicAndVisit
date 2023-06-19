@@ -155,7 +155,7 @@ class UserRepositoryImp @Inject constructor(
             searchRequest.minPrice,
             searchRequest.maxPrice,
             searchRequest.favoriteUserId,
-            sharedPreferences.getUser().id.toInt(),
+            //sharedPreferences.getUser().id.toInt(),
             searchRequest.saveSearch,
             searchRequest.address,
             searchRequest.sortBy,

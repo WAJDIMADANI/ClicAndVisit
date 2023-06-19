@@ -37,6 +37,17 @@ class FilterViewModel
     val minSelectedItem = MutableLiveData<String>()
     val maxSelectedItem = MutableLiveData<String>()
 
+    /** Radio buttons states**/
+    val checkedSale: MutableLiveData<Boolean> = MutableLiveData(false)
+    val checkedRent: MutableLiveData<Boolean> = MutableLiveData(false)
+
+    val checkedHome: MutableLiveData<Boolean> = MutableLiveData(false)
+    val checkedB: MutableLiveData<Boolean> = MutableLiveData(false)
+    val checkedApp: MutableLiveData<Boolean> = MutableLiveData(false)
+    val checkedTer: MutableLiveData<Boolean> = MutableLiveData(false)
+    val checkedGarage: MutableLiveData<Boolean> = MutableLiveData(false)
+    val checkedComm: MutableLiveData<Boolean> = MutableLiveData(false)
+
 
     init {
         searchRequest.value =
@@ -60,8 +71,66 @@ class FilterViewModel
         searchRequest.value?.maxPrice = priceMax.value?.toInt()
         searchRequest.value?.minArea = surfaceMin.value?.toInt()
         searchRequest.value?.maxArea = surfaceMax.value?.toInt()
-        searchRequest.value?.minRooms = minSelectedItem.value?.toInt()
-        searchRequest.value?.maxRooms = maxSelectedItem.value?.toInt()
+
+        when (minSelectedItem.value) {
+            "NA" -> {
+                searchRequest.value?.minRooms = 0
+            }
+            "5 et +" -> {
+                searchRequest.value?.minRooms = 5
+            }
+            "" -> {
+                searchRequest.value?.minRooms = null
+            }
+            else -> {
+                searchRequest.value?.minRooms = minSelectedItem.value?.toInt()
+            }
+        }
+
+        when (maxSelectedItem.value) {
+            "NA" -> {
+                searchRequest.value?.maxRooms = 0
+            }
+            "5 et +" -> {
+                searchRequest.value?.maxRooms = 5
+            }
+            "" -> {
+                searchRequest.value?.maxRooms = null
+            }
+            else -> {
+                searchRequest.value?.maxRooms = maxSelectedItem.value?.toInt()
+            }
+        }
+
+        searchRequest.value?.adsType = if (checkedSale.value == true) {
+            30
+        } else if (checkedRent.value == true) {
+            29
+        } else {
+            null
+        }
+
+        val categoryList = ArrayList<Int>()
+        if (checkedHome.value == true) {
+            categoryList.add(96)
+        }
+        if (checkedB.value == true) {
+            categoryList.add(99)
+        }
+        if (checkedApp.value == true) {
+            categoryList.add(97)
+        }
+        if (checkedTer.value == true) {
+            categoryList.add(100)
+        }
+        if (checkedGarage.value == true) {
+            categoryList.add(98)
+        }
+        if (checkedComm.value == true) {
+            categoryList.add(101)
+        }
+
+        searchRequest.value?.category = categoryList
 
         navigate(Navigation.HomeActivityNavigation)
     }
