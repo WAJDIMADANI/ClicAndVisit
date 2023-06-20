@@ -1,5 +1,6 @@
 package com.clickandvisit.ui.ads.addads
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
@@ -95,6 +96,10 @@ class AddAdsActivity : BaseActivity() {
                 }
             }
         }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
     }
 
     override fun navigate(navigationTo: Navigation) {

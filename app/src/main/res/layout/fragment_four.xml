@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="picasso"
+            type="com.squareup.picasso.Picasso" />
 
         <variable
             name="viewModel"
@@ -31,7 +38,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.appcompat.widget.LinearLayoutCompat
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/llMainPhoto"
                 android:layout_width="350dp"
                 android:layout_height="165dp"
@@ -42,14 +49,45 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvAdsType">
 
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/appCompatImageView3"
+                    android:layout_width="@dimen/dimen_75dp"
+                    android:layout_height="@dimen/dimen_75dp"
+                    android:background="@drawable/ic_placeholder"
+                    android:scaleType="centerCrop"
+                    android:visibility="@{viewModel.isEmptyUri ? View.GONE : View.VISIBLE, default=gone}"
+                    app:imageUri="@{viewModel.mainPhotoUri}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:picasso="@{picasso}" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:padding="@dimen/padding_global_10dp"
+                    android:background="@drawable/ic_cancel"
+                    android:foregroundGravity="bottom"
+                    android:scaleType="centerCrop"
+                    android:visibility="@{viewModel.isEmptyUri ? View.GONE : View.VISIBLE, default=gone}"
+                    app:layout_constraintBottom_toTopOf="@+id/appCompatImageView3"
+                    app:layout_constraintStart_toEndOf="@+id/appCompatImageView3"
+                    app:onClickWithDebounce="@{() ->viewModel.onCancelImageMainClick()}" />
+
                 <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/llPlaceHolder"
                     android:layout_width="81dp"
                     android:layout_height="@dimen/dimen_75dp"
                     android:background="@drawable/ic_item_border"
                     android:orientation="vertical"
+                    android:visibility="@{viewModel.isEmptyUri ? View.VISIBLE : View.GONE, default=visible}"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tvAdsType">
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:onClickWithDebounce="@{() ->viewModel.onImageMainClick()}">
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tvPhotoM"
@@ -67,12 +105,13 @@
                         android:layout_height="35dp"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="@dimen/margin_global_5dp"
-                        android:scaleType="centerCrop"
-                        android:background="@drawable/ic_main_photo_test" />
+                        android:background="@drawable/ic_main_photo_test"
+                        android:scaleType="centerCrop" />
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
-            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvPhoto"
@@ -89,14 +128,59 @@
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/ivPhoto"
-                android:layout_width="50dp"
-                android:layout_height="46dp"
+                android:layout_width="40dp"
+                android:layout_height="36dp"
                 android:layout_marginStart="@dimen/margin_global_30dp"
                 android:background="@drawable/ic_photo"
                 app:layout_constraintBottom_toBottomOf="@+id/tvPhoto"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/tvPhoto"
                 app:layout_constraintTop_toTopOf="@+id/tvPhoto" />
+
+            <androidx.gridlayout.widget.GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_25dp"
+                android:layout_marginTop="@dimen/dimen_20dp"
+                app:columnCount="3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ivPhoto">
+
+                <ImageView
+                    android:layout_width="@dimen/dimen_70dp"
+                    android:layout_height="@dimen/dimen_70dp"
+                    android:layout_marginEnd="@dimen/margin_global_36dp" />
+
+                <ImageView
+                    android:layout_width="@dimen/dimen_70dp"
+                    android:layout_height="@dimen/dimen_70dp"
+                    android:layout_marginEnd="@dimen/margin_global_36dp" />
+
+
+                <ImageView
+                    android:layout_width="@dimen/dimen_70dp"
+                    android:layout_height="@dimen/dimen_70dp" />
+
+                <ImageView
+                    android:layout_width="@dimen/dimen_70dp"
+                    android:layout_height="@dimen/dimen_70dp"
+                    android:layout_marginTop="@dimen/dimen_20dp"
+                    android:layout_marginEnd="@dimen/margin_global_36dp" />
+
+                <ImageView
+                    android:layout_width="@dimen/dimen_70dp"
+                    android:layout_height="@dimen/dimen_70dp"
+                    android:layout_marginTop="@dimen/dimen_20dp"
+                    android:layout_marginEnd="@dimen/margin_global_36dp" />
+
+
+                <ImageView
+                    android:layout_width="@dimen/dimen_70dp"
+                    android:layout_height="@dimen/dimen_70dp"
+                    android:layout_marginTop="@dimen/dimen_20dp" />
+
+            </androidx.gridlayout.widget.GridLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
