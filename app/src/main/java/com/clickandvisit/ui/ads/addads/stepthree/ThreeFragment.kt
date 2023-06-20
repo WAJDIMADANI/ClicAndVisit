@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import com.clickandvisit.R
 import com.clickandvisit.base.BaseFragment
 import com.clickandvisit.databinding.ThreeFragmentBinding
@@ -13,20 +14,25 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class ThreeFragment : BaseFragment() {
 
+    val viewModel: ThreeViewModel by viewModels()
+
+    private lateinit var binding: ThreeFragmentBinding
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.three_fragment, container, false)
-        val bind = ThreeFragmentBinding.bind(view)
-        bind.lifecycleOwner = viewLifecycleOwner
-        //(requireActivity() as IntroActivity?)?.stepThree()
+        binding = ThreeFragmentBinding.bind(view)
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
         return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        registerOneObservers()
+        registerBaseObserver(viewModel)
     }
 
     /**

@@ -32,15 +32,16 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/etCity"
+                android:id="@+id/etAddress"
                 android:layout_width="match_parent"
                 android:layout_height="46dp"
                 android:layout_marginTop="@dimen/margin_global_29dp"
                 android:background="@drawable/ic_edit_background"
                 android:drawablePadding="@dimen/padding_global_10dp"
                 android:fontFamily="@font/poppins_regular"
-                android:hint="@string/ad_ads_city"
+                android:hint="@string/ad_ads_address"
                 android:paddingStart="@dimen/padding_global_10dp"
+                android:text="@={viewModel.address}"
                 android:textColor="@color/black"
                 android:textCursorDrawable="@drawable/edit_cursor_color"
                 android:textSize="@dimen/font_13sp"
@@ -58,23 +59,25 @@
                 android:fontFamily="@font/poppins_regular"
                 android:hint="@string/ad_ads_postal_code"
                 android:paddingStart="@dimen/padding_global_10dp"
+                android:text="@={viewModel.postalCode}"
                 android:textColor="@color/black"
                 android:textCursorDrawable="@drawable/edit_cursor_color"
                 android:textSize="@dimen/font_13sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/etCity" />
+                app:layout_constraintTop_toBottomOf="@+id/etAddress" />
 
             <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/etAddress"
+                android:id="@+id/etCity"
                 android:layout_width="match_parent"
                 android:layout_height="46dp"
                 android:layout_marginTop="@dimen/margin_global_29dp"
                 android:background="@drawable/ic_edit_background"
                 android:drawablePadding="@dimen/padding_global_10dp"
                 android:fontFamily="@font/poppins_regular"
-                android:hint="@string/ad_ads_address"
+                android:hint="@string/ad_ads_city"
                 android:paddingStart="@dimen/padding_global_10dp"
+                android:text="@={viewModel.city}"
                 android:textColor="@color/black"
                 android:textCursorDrawable="@drawable/edit_cursor_color"
                 android:textSize="@dimen/font_13sp"
@@ -93,7 +96,7 @@
                 android:textSize="@dimen/font_16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/etAddress" />
+                app:layout_constraintTop_toBottomOf="@+id/etCity" />
 
 
             <androidx.appcompat.widget.AppCompatEditText
@@ -106,6 +109,7 @@
                 android:fontFamily="@font/poppins_regular"
                 android:hint="@string/ad_ads_interphone_name"
                 android:paddingStart="@dimen/padding_global_10dp"
+                android:text="@={viewModel.inter}"
                 android:textColor="@color/black"
                 android:textCursorDrawable="@drawable/edit_cursor_color"
                 android:textSize="@dimen/font_13sp"
@@ -123,6 +127,7 @@
                 android:fontFamily="@font/poppins_regular"
                 android:hint="@string/ad_ads_interphone_code"
                 android:paddingStart="@dimen/padding_global_10dp"
+                android:text="@={viewModel.interCode}"
                 android:textColor="@color/black"
                 android:textCursorDrawable="@drawable/edit_cursor_color"
                 android:textSize="@dimen/font_13sp"
@@ -140,6 +145,7 @@
                 android:fontFamily="@font/poppins_regular"
                 android:hint="@string/ad_ads_other_info"
                 android:paddingStart="@dimen/padding_global_10dp"
+                android:text="@={viewModel.info}"
                 android:textColor="@color/black"
                 android:textCursorDrawable="@drawable/edit_cursor_color"
                 android:textSize="@dimen/font_13sp"

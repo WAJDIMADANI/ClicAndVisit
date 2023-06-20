@@ -174,10 +174,10 @@
     <string name="ads_details_6">GARAGE</string>
 
 
-    <string name="ad_ads_loc">LOCALISATION *</string>
+    <string name="ad_ads_loc">LOCALISATION <font color='#EF4339'>*</font></string>
     <string name="ad_ads_city">Ville</string>
     <string name="ad_ads_postal_code">Code Postal</string>
-    <string name="ad_ads_address">Rue, complément d’adresse</string>
+    <string name="ad_ads_address">Rue</string>
     <string name="ad_ads_info">Ces informations n’apparaîtront pas sur \nl’annonce mais seront envoyées au visiteur \nlorsque vous aurez confirmé le rendez-vous</string>
     <string name="ad_ads_interphone_name">Nom interphone</string>
     <string name="ad_ads_interphone_code">Code portail</string>
