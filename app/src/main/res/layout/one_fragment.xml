@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.ads.addads.stepone.OneFragment">
 
     <data>
 
@@ -45,8 +46,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginEnd="@dimen/margin_global_30dp"
-                    android:checked="false"
+                    android:layout_marginEnd="@dimen/margin_global_50dp"
+                    android:checked="@{viewModel.checkedSale}"
                     android:fontFamily="@font/poppins_regular"
                     android:padding="4dp"
                     android:text="@string/ad_ads_sale"
@@ -58,7 +59,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:checked="false"
+                    android:checked="@{viewModel.checkedRent}"
                     android:fontFamily="@font/poppins_regular"
                     android:padding="4dp"
                     android:text="@string/ad_ads_location"
@@ -87,75 +88,75 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvAdsTypeB">
 
-                <androidx.appcompat.widget.AppCompatRadioButton
+                <RadioButton
                     android:id="@+id/rbAdsTypeHome"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
                     android:layout_marginEnd="@dimen/margin_global_30dp"
-                    android:checked="false"
+                    android:checked="@={viewModel.checkedHome}"
                     android:fontFamily="@font/poppins_regular"
                     android:padding="4dp"
                     android:text="@string/ad_ads_home"
                     android:textSize="@dimen/font_16sp"
                     app:layout_columnWeight="1" />
 
-                <androidx.appcompat.widget.AppCompatRadioButton
+                <RadioButton
                     android:id="@+id/rbAdsTypeDesk"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
-                    android:checked="false"
+                    android:checked="@={viewModel.checkedB}"
                     android:fontFamily="@font/poppins_regular"
                     android:padding="4dp"
                     android:text="@string/ad_ads_desk"
                     android:textSize="@dimen/font_16sp"
                     app:layout_columnWeight="1" />
 
-                <androidx.appcompat.widget.AppCompatRadioButton
+                <RadioButton
                     android:id="@+id/rbAdsTypeApp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
                     android:layout_marginEnd="@dimen/margin_global_30dp"
-                    android:checked="false"
+                    android:checked="@={viewModel.checkedApp}"
                     android:fontFamily="@font/poppins_regular"
                     android:padding="4dp"
                     android:text="@string/ad_ads_app"
                     android:textSize="@dimen/font_16sp"
                     app:layout_columnWeight="1" />
 
-                <androidx.appcompat.widget.AppCompatRadioButton
+                <RadioButton
                     android:id="@+id/rbAdsTypeGround"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
-                    android:checked="false"
+                    android:checked="@={viewModel.checkedTer}"
                     android:fontFamily="@font/poppins_regular"
                     android:padding="4dp"
                     android:text="@string/ad_ads_ground"
                     android:textSize="@dimen/font_16sp"
                     app:layout_columnWeight="1" />
 
-                <androidx.appcompat.widget.AppCompatRadioButton
+                <RadioButton
                     android:id="@+id/rbAdsTypeGarage"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
                     android:layout_marginEnd="@dimen/margin_global_30dp"
-                    android:checked="false"
+                    android:checked="@={viewModel.checkedGarage}"
                     android:fontFamily="@font/poppins_regular"
                     android:padding="4dp"
                     android:text="@string/ad_ads_garage"
                     android:textSize="@dimen/font_16sp"
                     app:layout_columnWeight="1" />
 
-                <androidx.appcompat.widget.AppCompatRadioButton
+                <RadioButton
                     android:id="@+id/rbAdsTypeComm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
-                    android:checked="false"
+                    android:checked="@={viewModel.checkedComm}"
                     android:fontFamily="@font/poppins_regular"
                     android:padding="4dp"
                     android:text="@string/ad_ads_comm"
@@ -190,7 +191,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
                     android:layout_marginEnd="@dimen/margin_global_30dp"
-                    android:checked="false"
+                    android:checked="@={viewModel.checked1}"
                     android:fontFamily="@font/poppins_regular"
                     android:padding="4dp"
                     android:text="1"
@@ -202,7 +203,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
-                    android:checked="false"
+                    android:checked="@={viewModel.checked2}"
                     android:fontFamily="@font/poppins_regular"
                     android:padding="4dp"
                     android:text="2"
@@ -215,7 +216,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
                     android:layout_marginEnd="@dimen/margin_global_30dp"
-                    android:checked="false"
+                    android:checked="@={viewModel.checked3}"
                     android:fontFamily="@font/poppins_regular"
                     android:padding="4dp"
                     android:text="3"
@@ -227,7 +228,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
-                    android:checked="false"
+                    android:checked="@={viewModel.checked4}"
                     android:fontFamily="@font/poppins_regular"
                     android:padding="4dp"
                     android:text="4"
@@ -240,7 +241,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
                     android:layout_marginEnd="@dimen/margin_global_30dp"
-                    android:checked="false"
+                    android:checked="@={viewModel.checked5}"
                     android:fontFamily="@font/poppins_regular"
                     android:padding="4dp"
                     android:text="5 et +"
@@ -252,7 +253,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
-                    android:checked="false"
+                    android:checked="@={viewModel.checkedNA}"
                     android:fontFamily="@font/poppins_regular"
                     android:padding="4dp"
                     android:text="NA"
@@ -286,6 +287,7 @@
                     style="@style/InputEditText.AppStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:text="@{viewModel.surface}"
                     android:hint="@string/ad_ads_m2"
                     android:textSize="@dimen/font_13sp" />
 
@@ -297,7 +299,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_bold"
-                android:text="@string/ad_ads_price"
+                android:text="@string/ad_ads_rent_price"
                 android:textColor="@color/black"
                 android:textSize="@dimen/font_16sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -316,7 +318,8 @@
                     style="@style/InputEditText.AppStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/ad_ads_m2"
+                    android:text="@{viewModel.price}"
+                    android:hint="@string/ad_ads_price_hint"
                     android:textSize="@dimen/font_13sp" />
 
             </com.clickandvisit.ui.shared.view.CustomTextInputLayout>
@@ -351,6 +354,8 @@
                     android:background="@drawable/ic_edit_background"
                     android:drawablePadding="@dimen/padding_global_10dp"
                     android:fontFamily="@font/poppins_regular"
+                    android:hint="1"
+                    android:text="@{viewModel.stage}"
                     android:inputType="number"
                     android:paddingStart="@dimen/padding_global_10dp"
                     android:textColor="@color/black"
@@ -374,9 +379,11 @@
                     android:layout_width="0dp"
                     android:layout_height="46dp"
                     android:layout_weight="1"
+                    android:text="@{viewModel.on}"
                     android:background="@drawable/ic_edit_background"
                     android:drawablePadding="@dimen/padding_global_10dp"
                     android:fontFamily="@font/poppins_regular"
+                    android:hint="1"
                     android:inputType="number"
                     android:paddingStart="@dimen/padding_global_10dp"
                     android:textColor="@color/black"
@@ -389,40 +396,263 @@
                 android:id="@+id/tvConso"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_global_5dp"
-                android:fontFamily="@font/poppins_semi_bold"
+                android:layout_marginTop="@dimen/margin_global_10dp"
+                android:fontFamily="@font/poppins_bold"
                 android:text="@string/ad_ads_conso"
                 android:textAllCaps="true"
                 android:textColor="@color/black"
-                android:textSize="@dimen/font_15sp"
+                android:textSize="@dimen/font_16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/llStage" />
+
+            <!--
+                        <com.github.mikephil.charting.charts.LineChart
+                            android:id="@+id/dpeChart"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tvConso" />
+            -->
+
+            <LinearLayout
+                android:id="@+id/llDPE"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_25dp"
+                android:layout_marginTop="@dimen/margin_global_10dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvConso">
+
+                <TextView
+                    android:id="@+id/tvA"
+                    android:layout_width="@dimen/dimen_45dp"
+                    android:layout_height="@dimen/dimen_20dp"
+                    android:background="#0B883A"
+                    android:fontFamily="@font/poppins_medium"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/dimen_16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvB"
+                    android:layout_width="@dimen/dimen_45dp"
+                    android:layout_height="@dimen/dimen_20dp"
+                    android:background="#398F3A"
+                    android:fontFamily="@font/poppins_medium"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/dimen_16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvC"
+                    android:layout_width="@dimen/dimen_45dp"
+                    android:layout_height="@dimen/dimen_20dp"
+                    android:background="#F1EC51"
+                    android:fontFamily="@font/poppins_medium"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/dimen_16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvD"
+                    android:layout_width="@dimen/dimen_50dp"
+                    android:layout_height="@dimen/dimen_25dp"
+                    android:background="#FEC726"
+                    android:fontFamily="@font/poppins_medium"
+                    android:gravity="center"
+                    android:text="D"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/dimen_16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvE"
+                    android:layout_width="@dimen/dimen_45dp"
+                    android:layout_height="@dimen/dimen_20dp"
+                    android:background="#F89C05"
+                    android:fontFamily="@font/poppins_medium"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/dimen_16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvF"
+                    android:layout_width="@dimen/dimen_45dp"
+                    android:layout_height="@dimen/dimen_20dp"
+                    android:background="#F87A00"
+                    android:fontFamily="@font/poppins_medium"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/dimen_16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvG"
+                    android:layout_width="@dimen/dimen_45dp"
+                    android:layout_height="@dimen/dimen_20dp"
+                    android:background="#F94034"
+                    android:fontFamily="@font/poppins_medium"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/dimen_16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </LinearLayout>
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvGES"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_global_5dp"
-                android:fontFamily="@font/poppins_semi_bold"
+                android:layout_marginTop="@dimen/margin_global_10dp"
+                android:fontFamily="@font/poppins_bold"
                 android:text="@string/ad_ads_ges"
                 android:textAllCaps="true"
                 android:textColor="@color/black"
-                android:textSize="@dimen/font_15sp"
+                android:textSize="@dimen/font_16sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvConso" />
+                app:layout_constraintTop_toBottomOf="@+id/llDPE" />
+
+            <LinearLayout
+                android:id="@+id/dllGES"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_30dp"
+                android:layout_marginTop="@dimen/margin_global_10dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvGES">
+
+                <TextView
+                    android:id="@+id/tvGESA"
+                    android:layout_width="@dimen/dimen_45dp"
+                    android:layout_height="@dimen/dimen_20dp"
+                    android:background="#dbdfe8"
+                    android:fontFamily="@font/poppins_medium"
+                    android:gravity="center"
+                    android:text="A"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/dimen_16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvGESB"
+                    android:layout_width="@dimen/dimen_45dp"
+                    android:layout_height="@dimen/dimen_20dp"
+                    android:background="#b3b6bd"
+                    android:fontFamily="@font/poppins_medium"
+                    android:gravity="center"
+                    android:text="B"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/dimen_16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvGESC"
+                    android:layout_width="@dimen/dimen_45dp"
+                    android:layout_height="@dimen/dimen_20dp"
+                    android:background="#8c8f94"
+                    android:fontFamily="@font/poppins_medium"
+                    android:gravity="center"
+                    android:text="C"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/dimen_16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvGESD"
+                    android:layout_width="@dimen/dimen_45dp"
+                    android:layout_height="@dimen/dimen_20dp"
+                    android:background="#67696d"
+                    android:fontFamily="@font/poppins_medium"
+                    android:gravity="center"
+                    android:text="D"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/dimen_16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvGESE"
+                    android:layout_width="@dimen/dimen_45dp"
+                    android:layout_height="@dimen/dimen_20dp"
+                    android:background="#495979"
+                    android:fontFamily="@font/poppins_medium"
+                    android:gravity="center"
+                    android:text="E"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/dimen_16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvGESF"
+                    android:layout_width="@dimen/dimen_45dp"
+                    android:layout_height="@dimen/dimen_20dp"
+                    android:background="#2e3d5c"
+                    android:fontFamily="@font/poppins_medium"
+                    android:gravity="center"
+                    android:text="F"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/dimen_16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvGESG"
+                    android:layout_width="@dimen/dimen_45dp"
+                    android:layout_height="@dimen/dimen_20dp"
+                    android:background="#131e34"
+                    android:fontFamily="@font/poppins_medium"
+                    android:gravity="center"
+                    android:text="G"
+                    android:textColor="@color/white_basic"
+                    android:textSize="@dimen/dimen_16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </LinearLayout>
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvInfo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_global_5dp"
-                android:fontFamily="@font/poppins_semi_bold"
+                android:layout_marginTop="@dimen/margin_global_15dp"
+                android:fontFamily="@font/poppins_bold"
                 android:text="@string/ad_ads_comp_info"
                 android:textAllCaps="true"
                 android:textColor="@color/black"
-                android:textSize="@dimen/font_15sp"
+                android:textSize="@dimen/font_16sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvGES" />
+                app:layout_constraintTop_toBottomOf="@+id/dllGES" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvIndication"
@@ -446,6 +676,7 @@
                 android:gravity="start"
                 android:hint="@string/ad_ads_comp_info_hint"
                 android:inputType="textMultiLine"
+                android:text="@{viewModel.info}"
                 android:padding="@dimen/padding_global_13dp"
                 android:textColor="@color/black"
                 android:textCursorDrawable="@drawable/edit_cursor_color"

@@ -20,7 +20,7 @@
             android:layout_height="match_parent"
             android:padding="@dimen/margin_global_20dp">
 
-            <com.clickandvisit.ui.shared.view.RadioGridGroup
+            <androidx.gridlayout.widget.GridLayout
                 android:id="@+id/rgAdsRoomNbr"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -28,299 +28,254 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <androidx.appcompat.widget.AppCompatRadioButton
+                <TextView
                     android:id="@+id/rgAdsRoomNbr1"
-                    android:layout_width="114dp"
+                    android:layout_width="110dp"
                     android:layout_height="100dp"
-                    android:layout_marginStart="@dimen/margin_global_3dp"
-                    android:layout_marginTop="@dimen/margin_global_13dp"
-                    android:layout_marginEnd="@dimen/margin_global_3dp"
+                    android:layout_margin="@dimen/margin_global_3dp"
                     android:background="@color/gray_home_type_background"
-                    android:button="@null"
                     android:fontFamily="@font/poppins_regular"
                     android:gravity="center"
-                    android:text="@string/ad_ads_1"
+                    android:text="@={viewModel.roomNbr1}"
                     android:textColor="@color/white_basic"
-                    android:textSize="@dimen/font_14sp"
-                    app:layout_columnWeight="1" />
+                    android:textSize="@dimen/font_14sp" />
 
-                <androidx.appcompat.widget.AppCompatRadioButton
+                <TextView
                     android:id="@+id/rgAdsRoomNbr2"
-                    android:layout_width="114dp"
+                    android:layout_width="110dp"
                     android:layout_height="100dp"
                     android:layout_margin="@dimen/margin_global_3dp"
                     android:background="@color/gray_home_type_background"
-                    android:button="@null"
                     android:fontFamily="@font/poppins_regular"
                     android:gravity="center"
-                    android:text="@string/ad_ads_2"
+                    android:text="@={viewModel.roomNbr2}"
                     android:textColor="@color/white_basic"
-                    android:textSize="@dimen/font_14sp"
-                    app:layout_columnWeight="1" />
+                    android:textSize="@dimen/font_14sp" />
 
-                <androidx.appcompat.widget.AppCompatRadioButton
+                <TextView
                     android:id="@+id/rgAdsRoomNbr3"
-                    android:layout_width="114dp"
+                    android:layout_width="110dp"
                     android:layout_height="100dp"
                     android:layout_margin="@dimen/margin_global_3dp"
                     android:background="@color/gray_home_type_background"
-                    android:button="@null"
                     android:fontFamily="@font/poppins_regular"
                     android:gravity="center"
-                    android:text="@string/ad_ads_3"
+                    android:text="@={viewModel.roomNbr3}"
                     android:textColor="@color/white_basic"
-                    android:textSize="@dimen/font_14sp"
-                    app:layout_columnWeight="1" />
+                    android:textSize="@dimen/font_14sp" />
 
 
-                <androidx.appcompat.widget.AppCompatRadioButton
+                <TextView
                     android:id="@+id/rgAdsRoomNbr4"
-                    android:layout_width="114dp"
+                    android:layout_width="110dp"
                     android:layout_height="100dp"
                     android:layout_margin="@dimen/margin_global_3dp"
-                    android:layout_marginTop="-8dp"
                     android:background="@color/gray_home_type_background"
-                    android:button="@null"
                     android:fontFamily="@font/poppins_regular"
                     android:gravity="center"
-                    android:text="@string/ad_ads_4"
+                    android:text="@={viewModel.roomNbr4}"
                     android:textColor="@color/white_basic"
-                    android:textSize="@dimen/font_14sp"
-                    app:layout_columnWeight="1" />
+                    android:textSize="@dimen/font_14sp" />
 
-                <androidx.appcompat.widget.AppCompatRadioButton
+                <TextView
                     android:id="@+id/rgAdsRoomNbr5"
-                    android:layout_width="114dp"
+                    android:layout_width="110dp"
                     android:layout_height="100dp"
                     android:layout_margin="@dimen/margin_global_3dp"
                     android:background="@color/gray_home_type_background"
-                    android:button="@null"
                     android:fontFamily="@font/poppins_regular"
                     android:gravity="center"
-                    android:text="@string/ad_ads_5"
+                    android:text="@={viewModel.roomNbr5}"
                     android:textColor="@color/white_basic"
-                    android:textSize="@dimen/font_14sp"
-                    app:layout_columnWeight="1" />
+                    android:textSize="@dimen/font_14sp" />
 
-                <androidx.appcompat.widget.AppCompatRadioButton
+                <TextView
                     android:id="@+id/rgAdsRoomNbr6"
-                    android:layout_width="114dp"
+                    android:layout_width="110dp"
                     android:layout_height="100dp"
                     android:layout_margin="@dimen/margin_global_3dp"
                     android:background="@color/gray_home_type_background"
-                    android:button="@null"
                     android:fontFamily="@font/poppins_regular"
                     android:gravity="center"
-                    android:text="@string/ad_ads_6"
+                    android:text="@={viewModel.roomNbr6}"
                     android:textColor="@color/white_basic"
-                    android:textSize="@dimen/font_14sp"
-                    app:layout_columnWeight="1" />
+                    android:textSize="@dimen/font_14sp" />
 
-                <androidx.appcompat.widget.AppCompatRadioButton
+                <TextView
                     android:id="@+id/rgAdsRoomNbr7"
-                    android:layout_width="114dp"
+                    android:layout_width="110dp"
                     android:layout_height="100dp"
                     android:layout_margin="@dimen/margin_global_3dp"
                     android:background="@color/gray_home_type_background"
-                    android:button="@null"
                     android:fontFamily="@font/poppins_regular"
                     android:gravity="center"
-                    android:text="@string/ad_ads_7"
+                    android:text="@={viewModel.roomNbr7}"
                     android:textColor="@color/white_basic"
-                    android:textSize="@dimen/font_14sp"
-                    app:layout_columnWeight="1" />
+                    android:textSize="@dimen/font_14sp" />
 
-                <androidx.appcompat.widget.AppCompatRadioButton
+                <TextView
                     android:id="@+id/rgAdsRoomNbr8"
-                    android:layout_width="114dp"
+                    android:layout_width="110dp"
                     android:layout_height="100dp"
                     android:layout_margin="@dimen/margin_global_3dp"
                     android:background="@color/gray_home_type_background"
-                    android:button="@null"
                     android:fontFamily="@font/poppins_regular"
                     android:gravity="center"
-                    android:text="@string/ad_ads_8"
+                    android:text="@={viewModel.roomNbr8}"
                     android:textColor="@color/white_basic"
-                    android:textSize="@dimen/font_14sp"
-                    app:layout_columnWeight="1" />
+                    android:textSize="@dimen/font_14sp" />
 
-                <androidx.appcompat.widget.AppCompatRadioButton
+                <TextView
                     android:id="@+id/rgAdsRoomNbr9"
-                    android:layout_width="114dp"
+                    android:layout_width="110dp"
                     android:layout_height="100dp"
                     android:layout_margin="@dimen/margin_global_3dp"
                     android:background="@color/gray_home_type_background"
-                    android:button="@null"
                     android:fontFamily="@font/poppins_regular"
                     android:gravity="center"
-                    android:text="@string/ad_ads_9"
+                    android:text="@={viewModel.roomNbr9}"
                     android:textColor="@color/white_basic"
-                    android:textSize="@dimen/font_14sp"
-                    app:layout_columnWeight="1" />
+                    android:textSize="@dimen/font_14sp" />
 
 
-                <androidx.appcompat.widget.AppCompatRadioButton
+                <TextView
                     android:id="@+id/rgAdsRoomNbr10"
-                    android:layout_width="114dp"
+                    android:layout_width="110dp"
                     android:layout_height="100dp"
                     android:layout_margin="@dimen/margin_global_3dp"
                     android:background="@color/gray_home_type_background"
-                    android:button="@null"
                     android:fontFamily="@font/poppins_regular"
                     android:gravity="center"
-                    android:text="@string/ad_ads_10"
+                    android:text="@={viewModel.roomNbr10}"
                     android:textColor="@color/white_basic"
-                    android:textSize="@dimen/font_14sp"
-                    app:layout_columnWeight="1" />
+                    android:textSize="@dimen/font_14sp" />
 
-                <androidx.appcompat.widget.AppCompatRadioButton
-                    android:id="@+id/rgAdsRoomNbr11"
-                    android:layout_width="114dp"
-                    android:layout_height="100dp"
-                    android:layout_margin="@dimen/margin_global_3dp"
-                    android:layout_marginTop="-4dp"
-                    android:background="@color/gray_home_type_background"
-                    android:button="@null"
-                    android:fontFamily="@font/poppins_regular"
-                    android:gravity="center"
-                    android:text="@string/ad_ads_11"
-                    android:textColor="@color/white_basic"
-                    android:textSize="@dimen/font_14sp"
-                    app:layout_columnWeight="1" />
+                <!--                <TextView
+                                    android:id="@+id/rgAdsRoomNbr11"
+                                    android:layout_width="110dp"
+                                    android:layout_height="100dp"
+                                    android:layout_margin="@dimen/margin_global_3dp"
+                                    android:layout_marginTop="-4dp"
+                                    android:visibility="gone"
+                                    android:background="@color/gray_home_type_background"
 
-                <androidx.appcompat.widget.AppCompatRadioButton
+                                    android:fontFamily="@font/poppins_regular"
+                                    android:gravity="center"
+                                    android:text="@={viewModel.roomNbr11}"
+                                    android:textColor="@color/white_basic"
+                                    android:textSize="@dimen/font_14sp"
+                                     />-->
+
+                <TextView
                     android:id="@+id/rgAdsRoomNbr12"
-                    android:layout_width="114dp"
+                    android:layout_width="110dp"
                     android:layout_height="100dp"
                     android:layout_margin="@dimen/margin_global_3dp"
                     android:background="@color/gray_home_type_background"
-                    android:button="@null"
                     android:fontFamily="@font/poppins_regular"
                     android:gravity="center"
-                    android:text="@string/ad_ads_12"
+                    android:text="@={viewModel.roomNbr12}"
                     android:textColor="@color/white_basic"
-                    android:textSize="@dimen/font_14sp"
-                    app:layout_columnWeight="1" />
+                    android:textSize="@dimen/font_14sp" />
 
-
-                <androidx.appcompat.widget.AppCompatRadioButton
+                <TextView
                     android:id="@+id/rgAdsRoomNbr13"
-                    android:layout_width="114dp"
+                    android:layout_width="110dp"
                     android:layout_height="100dp"
                     android:layout_margin="@dimen/margin_global_3dp"
                     android:background="@color/gray_home_type_background"
-                    android:button="@null"
                     android:fontFamily="@font/poppins_regular"
                     android:gravity="center"
-                    android:text="@string/ad_ads_13"
+                    android:text="@={viewModel.roomNbr13}"
                     android:textColor="@color/white_basic"
-                    android:textSize="@dimen/font_14sp"
-                    app:layout_columnWeight="1" />
+                    android:textSize="@dimen/font_14sp" />
 
-                <androidx.appcompat.widget.AppCompatRadioButton
+                <TextView
                     android:id="@+id/rgAdsRoomNbr14"
-                    android:layout_width="114dp"
+                    android:layout_width="110dp"
                     android:layout_height="100dp"
                     android:layout_margin="@dimen/margin_global_3dp"
                     android:background="@color/gray_home_type_background"
-                    android:button="@null"
                     android:fontFamily="@font/poppins_regular"
                     android:gravity="center"
-                    android:text="@string/ad_ads_14"
+                    android:text="@={viewModel.roomNbr14}"
                     android:textColor="@color/white_basic"
-                    android:textSize="@dimen/font_14sp"
-                    app:layout_columnWeight="1" />
+                    android:textSize="@dimen/font_14sp" />
 
-                <androidx.appcompat.widget.AppCompatRadioButton
+                <TextView
                     android:id="@+id/rgAdsRoomNbr15"
-                    android:layout_width="114dp"
+                    android:layout_width="110dp"
                     android:layout_height="100dp"
                     android:layout_margin="@dimen/margin_global_3dp"
                     android:background="@color/gray_home_type_background"
-                    android:button="@null"
                     android:fontFamily="@font/poppins_regular"
                     android:gravity="center"
-                    android:text="@string/ad_ads_15"
+                    android:text="@={viewModel.roomNbr15}"
                     android:textColor="@color/white_basic"
-                    android:textSize="@dimen/font_14sp"
-                    app:layout_columnWeight="1" />
+                    android:textSize="@dimen/font_14sp" />
 
-                <androidx.appcompat.widget.AppCompatRadioButton
+                <TextView
                     android:id="@+id/rgAdsRoomNbr16"
-                    android:layout_width="114dp"
+                    android:layout_width="110dp"
                     android:layout_height="100dp"
-                    android:layout_marginStart="@dimen/margin_global_3dp"
-                    android:layout_marginTop="-7dp"
-                    android:layout_marginEnd="@dimen/margin_global_3dp"
-                    android:layout_marginBottom="@dimen/margin_global_3dp"
+                    android:layout_margin="@dimen/margin_global_3dp"
                     android:background="@color/gray_home_type_background"
-                    android:button="@null"
                     android:fontFamily="@font/poppins_regular"
                     android:gravity="center"
-                    android:text="@string/ad_ads_16"
+                    android:text="@={viewModel.roomNbr16}"
                     android:textColor="@color/white_basic"
-                    android:textSize="@dimen/font_14sp"
-                    app:layout_columnWeight="1" />
+                    android:textSize="@dimen/font_14sp" />
 
-                <androidx.appcompat.widget.AppCompatRadioButton
+                <TextView
                     android:id="@+id/rgAdsRoomNbr17"
-                    android:layout_width="114dp"
+                    android:layout_width="110dp"
                     android:layout_height="100dp"
                     android:layout_margin="@dimen/margin_global_3dp"
                     android:background="@color/gray_home_type_background"
-                    android:button="@null"
                     android:fontFamily="@font/poppins_regular"
                     android:gravity="center"
-                    android:text="@string/ad_ads_17"
+                    android:text="@={viewModel.roomNbr17}"
                     android:textColor="@color/white_basic"
-                    android:textSize="@dimen/font_14sp"
-                    app:layout_columnWeight="1" />
+                    android:textSize="@dimen/font_14sp" />
 
-                <androidx.appcompat.widget.AppCompatRadioButton
+                <TextView
                     android:id="@+id/rgAdsRoomNbr18"
-                    android:layout_width="114dp"
+                    android:layout_width="110dp"
                     android:layout_height="100dp"
                     android:layout_margin="@dimen/margin_global_3dp"
                     android:background="@color/gray_home_type_background"
-                    android:button="@null"
                     android:fontFamily="@font/poppins_regular"
                     android:gravity="center"
-                    android:text="@string/ad_ads_18"
+                    android:text="@={viewModel.roomNbr18}"
                     android:textColor="@color/white_basic"
-                    android:textSize="@dimen/font_14sp"
-                    app:layout_columnWeight="1" />
+                    android:textSize="@dimen/font_14sp" />
 
 
-                <androidx.appcompat.widget.AppCompatRadioButton
+                <TextView
                     android:id="@+id/rgAdsRoomNbr19"
-                    android:layout_width="114dp"
+                    android:layout_width="110dp"
                     android:layout_height="100dp"
                     android:layout_margin="@dimen/margin_global_3dp"
                     android:background="@color/gray_home_type_background"
-                    android:button="@null"
                     android:fontFamily="@font/poppins_regular"
                     android:gravity="center"
-                    android:text="@string/ad_ads_19"
+                    android:text="@={viewModel.roomNbr19}"
                     android:textColor="@color/white_basic"
-                    android:textSize="@dimen/font_14sp"
-                    app:layout_columnWeight="1" />
+                    android:textSize="@dimen/font_14sp" />
 
-                <androidx.appcompat.widget.AppCompatRadioButton
+                <TextView
                     android:id="@+id/rgAdsRoomNbr20"
-                    android:layout_width="114dp"
+                    android:layout_width="110dp"
                     android:layout_height="100dp"
                     android:layout_margin="@dimen/margin_global_3dp"
-                    android:layout_marginTop="-6dp"
                     android:background="@color/gray_home_type_background"
-                    android:button="@null"
                     android:fontFamily="@font/poppins_regular"
                     android:gravity="center"
-                    android:text="@string/ad_ads_20"
+                    android:text="@={viewModel.roomNbr20}"
                     android:textColor="@color/white_basic"
-                    android:textSize="@dimen/font_14sp"
-                    app:layout_columnWeight="1" />
+                    android:textSize="@dimen/font_14sp" />
 
-            </com.clickandvisit.ui.shared.view.RadioGridGroup>
+            </androidx.gridlayout.widget.GridLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

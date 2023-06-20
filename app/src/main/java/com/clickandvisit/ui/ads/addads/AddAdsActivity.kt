@@ -113,33 +113,23 @@ class AddAdsActivity : BaseActivity() {
 
     fun stepOne() {
         stepNumber = 0
-        //binding.tvStep1.visibility = View.VISIBLE
         binding.tvStep2.visibility = View.INVISIBLE
-        //binding.tvStep3.visibility = View.INVISIBLE
-        //binding.tvStep4.visibility = View.INVISIBLE
     }
 
     fun stepTwo() {
         stepNumber = 1
-        //binding.tvStep1.visibility = View.VISIBLE
         binding.tvStep2.visibility = View.VISIBLE
         binding.tvStep3.visibility = View.INVISIBLE
-        //binding.tvStep4.visibility = View.INVISIBLE
     }
 
     fun stepThree() {
         stepNumber = 2
-        //binding.tvStep1.visibility = View.VISIBLE
-        //binding.tvStep2.visibility = View.VISIBLE
         binding.tvStep3.visibility = View.VISIBLE
         binding.tvStep4.visibility = View.INVISIBLE
     }
 
     fun stepFour() {
         stepNumber = 3
-        //binding.tvStep1.visibility = View.VISIBLE
-        //binding.tvStep2.visibility = View.VISIBLE
-        //binding.tvStep3.visibility = View.VISIBLE
         binding.tvStep4.visibility = View.VISIBLE
     }
 

@@ -104,24 +104,24 @@
     <!--ad ads-->
     <string name="ad_ads_header">DÉPOSER UNE ANNONCE</string>
     <string name="ad_ads_confirm">Confirmer</string>
-    <string name="ad_ads_type_o">TYPE D’ANNONCE *</string>
+    <string name="ad_ads_type_o">TYPE D’ANNONCE <font color='#EF4339'>*</font></string>
     <string name="ad_ads_sale">Vente</string>
     <string name="ad_ads_location">Location</string>
-    <string name="ad_ads_type_b">TYPE DE BIEN *</string>
+    <string name="ad_ads_type_b">TYPE DE BIEN <font color='#EF4339'>*</font></string>
     <string name="ad_ads_home">Maison</string>
     <string name="ad_ads_desk">Bureau</string>
     <string name="ad_ads_app">Appartement</string>
     <string name="ad_ads_ground">Terrain</string>
     <string name="ad_ads_garage">Garage</string>
     <string name="ad_ads_comm">Commerce</string>
-    <string name="ad_ads_nbr">NOMBRE DE PIÈCE *</string>
+    <string name="ad_ads_nbr">NOMBRE DE PIÈCE <font color='#EF4339'>*</font></string>
     <string name="ad_ads_vp">5 +</string>
     <string name="ad_ads_na">NA</string>
-    <string name="ad_ads_surface">SURFACE *</string>
+    <string name="ad_ads_surface">SURFACE <font color='#EF4339'>*</font></string>
     <string name="ad_ads_m2">Nombre de m2</string>
-    <string name="ad_ads_price">PRIX *</string>
-    <string name="ad_ads_price_hint">Prix</string>
-    <string name="ad_ads_rent_price">PRIX AVEC CHARGES COMPRIS*</string>
+    <string name="ad_ads_price_hint">Loyer (charges comprises)</string>
+    <string name="ad_ads_price">PRIX <font color='#EF4339'>*</font></string>
+    <string name="ad_ads_rent_price">PRIX AVEC CHARGES COMPRISES <font color='#EF4339'>*</font></string>
     <string name="ad_ads_rent_price_hint">Loyer (charges comprises)</string>
     <string name="ad_ads_stage">ÉTAGE</string>
     <string name="ad_ads_on">sur</string>
@@ -133,26 +133,26 @@
     <string name="ad_ads_comp_info_txt">300 caractères maximum pour préciser des informations importantes :</string>
     <string name="ad_ads_comp_info_hint">Exemple: Proche de la gare</string>
 
-    <string name="ad_ads_1">CHAMBRE(S)</string>
-    <string name="ad_ads_2">SUITE(S) \nPARENTALE(S)</string>
-    <string name="ad_ads_3">SALLE(S) \nDE BAIN</string>
-    <string name="ad_ads_4">SALLE(S) \nD’EAU</string>
-    <string name="ad_ads_5">BUREAU(X)</string>
-    <string name="ad_ads_6">DRESSING</string>
-    <string name="ad_ads_7">GARAGE(S)</string>
-    <string name="ad_ads_8">CAVE(S)</string>
-    <string name="ad_ads_9">BALCON(M2)</string>
-    <string name="ad_ads_10">TERRASSE(M2)</string>
-    <string name="ad_ads_11">SURFACE \nTERRAIN(M2)</string>
-    <string name="ad_ads_12">ANNÉE</string>
-    <string name="ad_ads_13">PISCINE</string>
-    <string name="ad_ads_14">PISCINABLE</string>
-    <string name="ad_ads_15">POOL HOUSE</string>
-    <string name="ad_ads_16">SANS \nVIS-À-VIS</string>
-    <string name="ad_ads_17">ASCENSEUR</string>
-    <string name="ad_ads_18">DUPLEX</string>
-    <string name="ad_ads_19">TRIPLEX</string>
-    <string name="ad_ads_20">REZ-DE-\nJARDIN</string>
+    <string name="ad_ads_1">CHAMBRE(S)\n</string>
+    <string name="ad_ads_2">SUITE(S) \nPARENTALE(S)\n</string>
+    <string name="ad_ads_3">SALLE(S) \nDE BAIN\n</string>
+    <string name="ad_ads_4">SALLE(S) \nD’EAU\n</string>
+    <string name="ad_ads_5">BUREAU(X)\n</string>
+    <string name="ad_ads_6">DRESSING\n</string>
+    <string name="ad_ads_7">GARAGE(S)\n</string>
+    <string name="ad_ads_8">CAVE(S)\n</string>
+    <string name="ad_ads_9">BALCON(M2)\n</string>
+    <string name="ad_ads_10">TERRASSE(M2)\n</string>
+    <string name="ad_ads_11">SURFACE \nTERRAIN(M2)\n</string>
+    <string name="ad_ads_12">ANNÉE\n</string>
+    <string name="ad_ads_13">PISCINE\n</string>
+    <string name="ad_ads_14">PISCINABLE\n</string>
+    <string name="ad_ads_15">POOL HOUSE\n</string>
+    <string name="ad_ads_16">SANS \nVIS-À-VIS\n</string>
+    <string name="ad_ads_17">ASCENSEUR\n</string>
+    <string name="ad_ads_18">DUPLEX\n</string>
+    <string name="ad_ads_19">TRIPLEX\n</string>
+    <string name="ad_ads_20">REZ-DE-\nJARDIN\n</string>
 
 
     <string name="ads_details_1">CHAMBRE</string>
