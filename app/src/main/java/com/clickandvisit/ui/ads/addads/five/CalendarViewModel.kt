@@ -1,19 +1,19 @@
-package com.clickandvisit.ui.ads.addads
+package com.clickandvisit.ui.ads.addads.five
 
 import android.app.Application
+import androidx.lifecycle.SavedStateHandle
 import com.clickandvisit.base.BaseAndroidViewModel
-import com.clickandvisit.data.repository.abs.UserRepository
 import com.clickandvisit.global.listener.SchedulerProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 
 @HiltViewModel
-class AddAdsViewModel
+class CalendarViewModel
 @Inject constructor(
     application: Application,
     schedulerProvider: SchedulerProvider,
-    private val userRepository: UserRepository
+    savedStateHandle: SavedStateHandle
 ) : BaseAndroidViewModel(application, schedulerProvider) {
 
     init {

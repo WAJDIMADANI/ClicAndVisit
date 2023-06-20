@@ -128,7 +128,8 @@
                 android:layout_marginEnd="@dimen/margin_global_5dp"
                 android:background="@drawable/ic_step_black"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tvStep5"
+                app:layout_constraintStart_toEndOf="@+id/tvStep3"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
@@ -139,6 +140,32 @@
                 android:fontFamily="@font/poppins_bold"
                 android:gravity="center"
                 android:text="4"
+                android:textColor="@color/white_basic"
+                android:textSize="@dimen/dimen_16sp"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tvStep5"
+                app:layout_constraintStart_toEndOf="@+id/tvStep3"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvPt5"
+                android:layout_width="8dp"
+                android:layout_height="8dp"
+                android:layout_marginEnd="@dimen/margin_global_5dp"
+                android:background="@drawable/ic_step_black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvStep5"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/ic_step"
+                android:fontFamily="@font/poppins_bold"
+                android:gravity="center"
+                android:text="5"
                 android:textColor="@color/white_basic"
                 android:textSize="@dimen/dimen_16sp"
                 android:visibility="invisible"

@@ -49,6 +49,9 @@ class AddAdsActivity : BaseActivity() {
                     3 -> {
                         stepFour()
                     }
+                    4 -> {
+                        stepFive()
+                    }
                 }
             }
 
@@ -74,9 +77,9 @@ class AddAdsActivity : BaseActivity() {
                 2 -> {
                     binding.vpIntro.currentItem = 3
                 }
-                /*3 -> {
+                3 -> {
                     binding.vpIntro.currentItem = 4
-                }*/
+                }
             }
         }
 
@@ -93,6 +96,9 @@ class AddAdsActivity : BaseActivity() {
                 }
                 3 -> {
                     binding.vpIntro.currentItem = 2
+                }
+                4 -> {
+                    binding.vpIntro.currentItem = 3
                 }
             }
         }
@@ -136,6 +142,12 @@ class AddAdsActivity : BaseActivity() {
     fun stepFour() {
         stepNumber = 3
         binding.tvStep4.visibility = View.VISIBLE
+        binding.tvStep5.visibility = View.INVISIBLE
+    }
+
+    fun stepFive() {
+        stepNumber = 4
+        binding.tvStep5.visibility = View.VISIBLE
     }
 
 }
