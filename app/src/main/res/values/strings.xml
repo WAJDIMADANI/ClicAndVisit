@@ -154,6 +154,17 @@
     <string name="ad_ads_19">TRIPLEX\n</string>
     <string name="ad_ads_20">REZ-DE-\nJARDIN\n</string>
 
+    <string name="ad_ads_popup_title_1">Veuillez saisir le nombre de</string>
+    <string name="ad_ads_popup_title_2">Veuillez saisir la surface de</string>
+    <string name="ad_ads_popup_title_3">Veuillez saisir l\'année</string>
+    <string name="ad_ads_popup_title_4">Est-ce que votre bien est</string>
+
+    <string name="ad_ads_popup_positive_button_text">Saisir</string>
+    <string name="ad_ads_popup_negative_button_text">Annuler</string>
+    <string name="ad_ads_popup_input_hint_1">Nombre de</string>
+    <string name="ad_ads_popup_input_hint_2">Surface de</string>
+    <string name="ad_ads_popup_input_hint_3">Oui</string>
+
 
     <string name="ads_details_1">CHAMBRE</string>
     <string name="ads_details_2">CH.PARENTALE</string>

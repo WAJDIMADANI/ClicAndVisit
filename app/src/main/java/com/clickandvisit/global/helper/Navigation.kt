@@ -38,6 +38,14 @@ sealed class Navigation {
 
     data class CameraNavigation(val imageName: String) : Navigation()
 
+    data class PopupNavigation(
+        val index: Int,
+        val title: String,
+        val hint: String,
+        val inputType: Int,
+        val oldValue: String?
+    ) : Navigation()
+
     object OpenDrawerNavigation : Navigation()
 
 }

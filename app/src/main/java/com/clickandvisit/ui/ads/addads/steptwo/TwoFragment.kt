@@ -2,6 +2,7 @@ package com.clickandvisit.ui.ads.addads.steptwo
 
 import android.app.AlertDialog
 import android.os.Bundle
+import android.text.InputType
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -40,19 +41,30 @@ class TwoFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         registerBaseObserver(viewModel)
-        showInputDialog()
     }
 
-    private fun showInputDialog() {
+    private fun showInputDialog(
+        index: Int,
+        title: String,
+        hint: String,
+        inputType: Int,
+        oldValue: String?
+    ){
+
         val alert: AlertDialog.Builder = AlertDialog.Builder(activity)
 
         val container = FrameLayout(requireActivity())
 
-        alert.setTitle("Veuillez saisir le nombre de ...")
+        alert.setTitle(title)
 
         val input = EditText(activity)
         input.background = requireActivity().getDrawable(R.drawable.ic_item_border)
-        input.hint = "Nombre de ..."
+        input.inputType = inputType
+        input.hint = hint
+        if (oldValue.isNullOrEmpty().not()) {
+            input.setText(oldValue!!)
+        }
+
         val params = FrameLayout.LayoutParams(
             ViewGroup.LayoutParams.MATCH_PARENT,
             ViewGroup.LayoutParams.WRAP_CONTENT
@@ -66,14 +78,14 @@ class TwoFragment : BaseFragment() {
 
         alert.setView(container)
 
-        alert.setPositiveButton("Saisir") { dialog, _ ->
+        alert.setPositiveButton(getString(R.string.ad_ads_popup_positive_button_text)) { dialog, _ ->
             DebugLog.i(TAG, input.text.toString())
+            viewModel.getNewValueByIndex(Pair(index, input.text.toString()))
             dialog.dismiss()
-            // Do something with value!
         }
 
         alert.setNegativeButton(
-            "Annuler"
+            getString(R.string.ad_ads_popup_negative_button_text)
         ) { dialog, _ ->
             dialog.dismiss()
         }
@@ -85,6 +97,16 @@ class TwoFragment : BaseFragment() {
      * handling navigation event
      */
     override fun navigate(navigationTo: Navigation) {
-
+        when (navigationTo) {
+            is Navigation.PopupNavigation -> {
+                showInputDialog(
+                    navigationTo.index,
+                    navigationTo.title,
+                    navigationTo.hint,
+                    navigationTo.inputType,
+                    navigationTo.oldValue
+                )
+            }
+        }
     }
 }

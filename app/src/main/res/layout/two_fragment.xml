@@ -38,7 +38,8 @@
                     android:gravity="center"
                     android:text="@={viewModel.roomNbr1}"
                     android:textColor="@color/white_basic"
-                    android:textSize="@dimen/font_14sp" />
+                    android:textSize="@dimen/font_14sp"
+                    app:onClickWithDebounce="@{() ->viewModel.onItemClick(1)}" />
 
                 <TextView
                     android:id="@+id/rgAdsRoomNbr2"
@@ -50,7 +51,8 @@
                     android:gravity="center"
                     android:text="@={viewModel.roomNbr2}"
                     android:textColor="@color/white_basic"
-                    android:textSize="@dimen/font_14sp" />
+                    android:textSize="@dimen/font_14sp"
+                    app:onClickWithDebounce="@{() ->viewModel.onItemClick(2)}" />
 
                 <TextView
                     android:id="@+id/rgAdsRoomNbr3"
@@ -62,7 +64,8 @@
                     android:gravity="center"
                     android:text="@={viewModel.roomNbr3}"
                     android:textColor="@color/white_basic"
-                    android:textSize="@dimen/font_14sp" />
+                    android:textSize="@dimen/font_14sp"
+                    app:onClickWithDebounce="@{() ->viewModel.onItemClick(3)}" />
 
 
                 <TextView
@@ -75,7 +78,8 @@
                     android:gravity="center"
                     android:text="@={viewModel.roomNbr4}"
                     android:textColor="@color/white_basic"
-                    android:textSize="@dimen/font_14sp" />
+                    android:textSize="@dimen/font_14sp"
+                    app:onClickWithDebounce="@{() ->viewModel.onItemClick(4)}" />
 
                 <TextView
                     android:id="@+id/rgAdsRoomNbr5"
@@ -87,7 +91,8 @@
                     android:gravity="center"
                     android:text="@={viewModel.roomNbr5}"
                     android:textColor="@color/white_basic"
-                    android:textSize="@dimen/font_14sp" />
+                    android:textSize="@dimen/font_14sp"
+                    app:onClickWithDebounce="@{() ->viewModel.onItemClick(5)}" />
 
                 <TextView
                     android:id="@+id/rgAdsRoomNbr6"
@@ -99,7 +104,8 @@
                     android:gravity="center"
                     android:text="@={viewModel.roomNbr6}"
                     android:textColor="@color/white_basic"
-                    android:textSize="@dimen/font_14sp" />
+                    android:textSize="@dimen/font_14sp"
+                    app:onClickWithDebounce="@{() ->viewModel.onItemClick(6)}" />
 
                 <TextView
                     android:id="@+id/rgAdsRoomNbr7"
@@ -111,7 +117,8 @@
                     android:gravity="center"
                     android:text="@={viewModel.roomNbr7}"
                     android:textColor="@color/white_basic"
-                    android:textSize="@dimen/font_14sp" />
+                    android:textSize="@dimen/font_14sp"
+                    app:onClickWithDebounce="@{() ->viewModel.onItemClick(7)}" />
 
                 <TextView
                     android:id="@+id/rgAdsRoomNbr8"
@@ -123,7 +130,8 @@
                     android:gravity="center"
                     android:text="@={viewModel.roomNbr8}"
                     android:textColor="@color/white_basic"
-                    android:textSize="@dimen/font_14sp" />
+                    android:textSize="@dimen/font_14sp"
+                    app:onClickWithDebounce="@{() ->viewModel.onItemClick(8)}" />
 
                 <TextView
                     android:id="@+id/rgAdsRoomNbr9"
@@ -135,7 +143,8 @@
                     android:gravity="center"
                     android:text="@={viewModel.roomNbr9}"
                     android:textColor="@color/white_basic"
-                    android:textSize="@dimen/font_14sp" />
+                    android:textSize="@dimen/font_14sp"
+                    app:onClickWithDebounce="@{() ->viewModel.onItemClick(9)}" />
 
 
                 <TextView
@@ -148,7 +157,8 @@
                     android:gravity="center"
                     android:text="@={viewModel.roomNbr10}"
                     android:textColor="@color/white_basic"
-                    android:textSize="@dimen/font_14sp" />
+                    android:textSize="@dimen/font_14sp"
+                    app:onClickWithDebounce="@{() ->viewModel.onItemClick(10)}" />
 
                 <!--                <TextView
                                     android:id="@+id/rgAdsRoomNbr11"
@@ -176,7 +186,8 @@
                     android:gravity="center"
                     android:text="@={viewModel.roomNbr12}"
                     android:textColor="@color/white_basic"
-                    android:textSize="@dimen/font_14sp" />
+                    android:textSize="@dimen/font_14sp"
+                    app:onClickWithDebounce="@{() ->viewModel.onItemClick(12)}" />
 
                 <TextView
                     android:id="@+id/rgAdsRoomNbr13"
@@ -188,7 +199,8 @@
                     android:gravity="center"
                     android:text="@={viewModel.roomNbr13}"
                     android:textColor="@color/white_basic"
-                    android:textSize="@dimen/font_14sp" />
+                    android:textSize="@dimen/font_14sp"
+                    app:onClickWithDebounce="@{() ->viewModel.onItemClick(13)}" />
 
                 <TextView
                     android:id="@+id/rgAdsRoomNbr14"
@@ -200,7 +212,8 @@
                     android:gravity="center"
                     android:text="@={viewModel.roomNbr14}"
                     android:textColor="@color/white_basic"
-                    android:textSize="@dimen/font_14sp" />
+                    android:textSize="@dimen/font_14sp"
+                    app:onClickWithDebounce="@{() ->viewModel.onItemClick(14)}" />
 
                 <TextView
                     android:id="@+id/rgAdsRoomNbr15"
@@ -212,7 +225,8 @@
                     android:gravity="center"
                     android:text="@={viewModel.roomNbr15}"
                     android:textColor="@color/white_basic"
-                    android:textSize="@dimen/font_14sp" />
+                    android:textSize="@dimen/font_14sp"
+                    app:onClickWithDebounce="@{() ->viewModel.onItemClick(15)}" />
 
                 <TextView
                     android:id="@+id/rgAdsRoomNbr16"
@@ -224,7 +238,8 @@
                     android:gravity="center"
                     android:text="@={viewModel.roomNbr16}"
                     android:textColor="@color/white_basic"
-                    android:textSize="@dimen/font_14sp" />
+                    android:textSize="@dimen/font_14sp"
+                    app:onClickWithDebounce="@{() ->viewModel.onItemClick(16)}" />
 
                 <TextView
                     android:id="@+id/rgAdsRoomNbr17"
@@ -236,7 +251,8 @@
                     android:gravity="center"
                     android:text="@={viewModel.roomNbr17}"
                     android:textColor="@color/white_basic"
-                    android:textSize="@dimen/font_14sp" />
+                    android:textSize="@dimen/font_14sp"
+                    app:onClickWithDebounce="@{() ->viewModel.onItemClick(17)}" />
 
                 <TextView
                     android:id="@+id/rgAdsRoomNbr18"
@@ -248,7 +264,8 @@
                     android:gravity="center"
                     android:text="@={viewModel.roomNbr18}"
                     android:textColor="@color/white_basic"
-                    android:textSize="@dimen/font_14sp" />
+                    android:textSize="@dimen/font_14sp"
+                    app:onClickWithDebounce="@{() ->viewModel.onItemClick(18)}" />
 
 
                 <TextView
@@ -261,7 +278,8 @@
                     android:gravity="center"
                     android:text="@={viewModel.roomNbr19}"
                     android:textColor="@color/white_basic"
-                    android:textSize="@dimen/font_14sp" />
+                    android:textSize="@dimen/font_14sp"
+                    app:onClickWithDebounce="@{() ->viewModel.onItemClick(19)}" />
 
                 <TextView
                     android:id="@+id/rgAdsRoomNbr20"
@@ -273,7 +291,8 @@
                     android:gravity="center"
                     android:text="@={viewModel.roomNbr20}"
                     android:textColor="@color/white_basic"
-                    android:textSize="@dimen/font_14sp" />
+                    android:textSize="@dimen/font_14sp"
+                    app:onClickWithDebounce="@{() ->viewModel.onItemClick(20)}" />
 
             </androidx.gridlayout.widget.GridLayout>
 
