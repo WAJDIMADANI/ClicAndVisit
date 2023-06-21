@@ -82,4 +82,8 @@
     <color name="gray_home_type_background">#616161</color>
     <color name="gray_home_background">#EBEBEB</color>
 
+    <color name="toolbar">#efefef</color>
+    <color name="toolbar_text">#8f000000</color>
+    <color name="accent">#2789e4</color>
+
 </resources>

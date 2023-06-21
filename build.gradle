@@ -5,6 +5,8 @@ buildscript {
         nav_version = '1.0.0-alpha09'
         gradle= '4.1.2'
         hilt_version = '2.33-beta'
+
+        supportLibraryVersion = '28.0.0'
     }
     repositories {
         google()

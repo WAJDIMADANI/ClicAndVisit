@@ -29,7 +29,7 @@ class AddAdsActivity : BaseActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_add_ads)
         registerBindingAndBaseObservers(binding)
         binding.vpIntro.adapter = AddAdsPagerAdapter(this, binding, applicationContext)
-
+        binding.vpIntro.isUserInputEnabled = false
         TabLayoutMediator(binding.mTabLayout, binding.vpIntro) { tab, position ->
 
         }.attach()

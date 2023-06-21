@@ -19,7 +19,49 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="@dimen/margin_global_30dp">
+            android:paddingTop="@dimen/margin_global_30dp"
+            android:paddingBottom="@dimen/margin_global_30dp">
+
+            <!--        <me.jlurena.revolvingweekview.WeekView
+                        android:id="@+id/weekview"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:eventTextColor="@android:color/white"
+                        app:hourHeight="60dp"
+                        app:headerColumnPadding="8dp"
+                        app:headerColumnTextColor="#8f000000"
+                        app:headerRowPadding="12dp"
+                        app:noOfVisibleDays="7"
+                        app:todayHeaderTextColor="@color/white_basic"
+                        app:minTime="7"
+                        app:maxTime="22"
+                        app:newEventColor="@color/congratulation_color"
+                        app:headerRowBackgroundColor="@color/item_price_color"
+                        app:dayBackgroundColor="#05000000"
+                        app:todayBackgroundColor="#1848adff"
+                        app:headerColumnBackground="#ffefefef" />-->
+
+            <me.jlurena.revolvingweekview.WeekView
+                android:id="@+id/weekview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:eventTextColor="#fff"
+                app:textSize="13sp"
+                app:hourHeight="50dp"
+                app:newEventColor="#4EB161"
+                app:headerColumnPadding="3dp"
+                app:headerColumnTextColor="#fff"
+                app:headerRowPadding="13dp"
+                app:columnGap="2dp"
+                app:noOfVisibleDays="7"
+                app:autoLimitTime="false"
+                app:headerRowBackgroundColor="#0C537A"
+                app:dayBackgroundColor="#05330000"
+                app:todayBackgroundColor="#1848adff"
+                app:headerColumnBackground="#0C537A"
+                app:todayHeaderTextColor="#fff"
+                app:timeColumnResolution="60"
+                app:dropListenerEnabled="true"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
