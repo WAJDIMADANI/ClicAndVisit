@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import com.clickandvisit.R
 import com.clickandvisit.base.BaseAndroidViewModel
+import com.clickandvisit.data.model.property.add.PropertyAdd
 import com.clickandvisit.global.helper.Navigation
 import com.clickandvisit.global.listener.SchedulerProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -427,6 +428,10 @@ class TwoViewModel
         }
     }
 
+
+    fun onEditProperty(property: PropertyAdd) {
+        // surface.value = property.propSurface ...
+    }
 
     // mrezga 950 8 ans  160 euros
     // yasmine hammamet s+2 climatisé sur mere (max 250/j) priode 15 jours

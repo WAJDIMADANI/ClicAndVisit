@@ -7,12 +7,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.clickandvisit.R
 import com.clickandvisit.base.BaseFragment
+import com.clickandvisit.data.model.property.add.PropertyAdd
 import com.clickandvisit.databinding.ThreeFragmentBinding
 import com.clickandvisit.global.helper.Navigation
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ThreeFragment : BaseFragment() {
+class ThreeFragment(val property: PropertyAdd?) : BaseFragment() {
 
     val viewModel: ThreeViewModel by viewModels()
 
@@ -26,6 +27,9 @@ class ThreeFragment : BaseFragment() {
         val view = inflater.inflate(R.layout.three_fragment, container, false)
         binding = ThreeFragmentBinding.bind(view)
         binding.viewModel = viewModel
+        if (property != null){
+            viewModel.onEditProperty(property)
+        }
         binding.lifecycleOwner = viewLifecycleOwner
         return view
     }

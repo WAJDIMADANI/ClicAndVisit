@@ -175,9 +175,8 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-        <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/vpIntro"
+        <FrameLayout
+            android:id="@+id/flTransport"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/clSteps"
@@ -230,12 +229,6 @@
                 android:textAllCaps="false"
                 android:textColor="@color/white_basic"
                 android:textSize="@dimen/font_15sp"
-                android:visibility="gone" />
-
-            <com.google.android.material.tabs.TabLayout
-                android:id="@+id/mTabLayout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:visibility="gone" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>

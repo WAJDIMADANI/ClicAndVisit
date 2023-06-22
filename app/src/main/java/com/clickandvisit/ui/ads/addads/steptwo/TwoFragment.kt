@@ -11,6 +11,7 @@ import android.widget.FrameLayout
 import androidx.fragment.app.viewModels
 import com.clickandvisit.R
 import com.clickandvisit.base.BaseFragment
+import com.clickandvisit.data.model.property.add.PropertyAdd
 import com.clickandvisit.databinding.TwoFragmentBinding
 import com.clickandvisit.global.helper.Navigation
 import com.clickandvisit.global.utils.DebugLog
@@ -19,7 +20,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
-class TwoFragment : BaseFragment() {
+class TwoFragment(val property: PropertyAdd?) : BaseFragment() {
 
     val viewModel: TwoViewModel by viewModels()
 
@@ -33,6 +34,10 @@ class TwoFragment : BaseFragment() {
         val view = inflater.inflate(R.layout.two_fragment, container, false)
         binding = TwoFragmentBinding.bind(view)
         binding.viewModel = viewModel
+        if (property != null){
+            viewModel.onEditProperty(property)
+        }
+
         binding.lifecycleOwner = viewLifecycleOwner
         //(requireActivity() as IntroActivity?)?.stepTwo()
         return view

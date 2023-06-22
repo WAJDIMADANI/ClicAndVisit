@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.map
 import com.clickandvisit.base.BaseAndroidViewModel
+import com.clickandvisit.data.model.property.add.PropertyAdd
 import com.clickandvisit.global.helper.ImagePicker
 import com.clickandvisit.global.helper.Navigation
 import com.clickandvisit.global.listener.SchedulerProvider
@@ -107,5 +108,11 @@ class FourViewModel
             //isEmptyUri.value = mainPhotoUri.value == null || mainPhotoUri.value == Uri.EMPTY
         }
     }
+
+
+    fun onEditProperty(property: PropertyAdd) {
+        // surface.value = property.propSurface ...
+    }
+
 
 }

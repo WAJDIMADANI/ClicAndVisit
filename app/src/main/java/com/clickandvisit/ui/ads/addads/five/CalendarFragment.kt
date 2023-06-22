@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.clickandvisit.R
 import com.clickandvisit.base.BaseFragment
+import com.clickandvisit.data.model.property.add.PropertyAdd
 import com.clickandvisit.databinding.FragmentCalendarBinding
 import com.clickandvisit.global.helper.Navigation
 import dagger.hilt.android.AndroidEntryPoint
@@ -23,7 +24,7 @@ import java.util.*
 
 
 @AndroidEntryPoint
-class CalendarFragment : BaseFragment(), WeekViewLoader {
+class CalendarFragment(val property: PropertyAdd?) : BaseFragment(), WeekViewLoader {
 
     val viewModel: CalendarViewModel by viewModels()
 
@@ -37,6 +38,10 @@ class CalendarFragment : BaseFragment(), WeekViewLoader {
         val view = inflater.inflate(R.layout.fragment_calendar, container, false)
         binding = FragmentCalendarBinding.bind(view)
         binding.viewModel = viewModel
+        if (property != null){
+            viewModel.onEditProperty(property)
+        }
+
         binding.lifecycleOwner = viewLifecycleOwner
 
         binding.weekview.weekViewLoader = this

@@ -13,6 +13,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import com.clickandvisit.R
 import com.clickandvisit.base.BaseFragment
+import com.clickandvisit.data.model.property.add.PropertyAdd
 import com.clickandvisit.databinding.FragmentFourBinding
 import com.clickandvisit.databinding.OneFragmentBinding
 import com.clickandvisit.global.helper.ImagePicker
@@ -25,7 +26,7 @@ import com.clickandvisit.ui.user.profile.REQUEST_CODE_PERMISSIONS
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class FourFragment : BaseFragment() {
+class FourFragment(val property: PropertyAdd?) : BaseFragment() {
 
 
     val viewModel: FourViewModel by viewModels()
@@ -40,6 +41,10 @@ class FourFragment : BaseFragment() {
         binding = FragmentFourBinding.bind(view)
         binding.picasso = getPicasso()
         binding.viewModel = viewModel
+        if (property != null){
+            viewModel.onEditProperty(property)
+        }
+
         binding.lifecycleOwner = viewLifecycleOwner
         return view
     }

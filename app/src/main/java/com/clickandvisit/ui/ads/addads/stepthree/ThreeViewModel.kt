@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import com.clickandvisit.base.BaseAndroidViewModel
+import com.clickandvisit.data.model.property.add.PropertyAdd
 import com.clickandvisit.global.listener.SchedulerProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -29,6 +30,10 @@ class ThreeViewModel
 
     init {
 
+    }
+
+    fun onEditProperty(property: PropertyAdd) {
+        // surface.value = property.propSurface ...
     }
 
 }

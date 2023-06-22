@@ -105,7 +105,13 @@ class HomeActivity : BaseActivity(), DrawerLayout.DrawerListener {
                         startFilterForResult(viewModel.searchRequest)
                     }
                     R.id.nav_menu_2 -> {
-                        navigateToActivity(AddAdsActivity::class)
+                        Intent(this, AddAdsActivity::class.java).let { intent ->
+                            intent.putExtra(
+                                ExtraKeys.AddAdsActivity.PROPERTY_EXTRA_KEY_EDIT,
+                                false
+                            )
+                            startActivity(intent)
+                        }
                     }
                     R.id.nav_menu_3 -> {
                         navigateToActivity(AdsListActivity::class)

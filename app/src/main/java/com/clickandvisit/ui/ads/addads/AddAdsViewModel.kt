@@ -2,15 +2,15 @@ package com.clickandvisit.ui.ads.addads
 
 import android.app.Application
 import android.net.Uri
-import android.os.Parcel
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.SavedStateHandle
 import com.clickandvisit.base.BaseAndroidViewModel
-import com.clickandvisit.data.model.property.SearchRequest
 import com.clickandvisit.data.model.property.add.PropertyAdd
 import com.clickandvisit.data.model.property.add.PropertyAddResponse
 import com.clickandvisit.data.repository.abs.UserRepository
 import com.clickandvisit.global.listener.SchedulerProvider
 import com.clickandvisit.global.utils.DebugLog
+import com.clickandvisit.global.utils.ExtraKeys
 import com.clickandvisit.global.utils.TAG
 import com.clickandvisit.global.utils.tryCatch
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -24,6 +24,7 @@ class AddAdsViewModel
 @Inject constructor(
     application: Application,
     schedulerProvider: SchedulerProvider,
+    savedStateHandle: SavedStateHandle,
     private val userRepository: UserRepository
 ) : BaseAndroidViewModel(application, schedulerProvider) {
 
@@ -84,73 +85,80 @@ class AddAdsViewModel
     val mainPhotoUri = MutableLiveData(Uri.EMPTY)
 
 
-    val propertyAdd: MutableLiveData<PropertyAdd> = MutableLiveData()
+    val propertyAdd: MutableLiveData<PropertyAdd> = MutableLiveData(PropertyAdd())
 
-    lateinit var property: PropertyAdd
+    val isEdit: MutableLiveData<Boolean> = MutableLiveData()
 
     init {
-        property=PropertyAdd(null,null)
+        isEdit.value =
+            savedStateHandle.getLiveData<Boolean>(ExtraKeys.AddAdsActivity.PROPERTY_EXTRA_KEY_EDIT).value
+
+        if (isEdit.value == true) {
+            propertyAdd.value =
+                savedStateHandle.getLiveData<PropertyAdd>(ExtraKeys.AddAdsActivity.PROPERTY_EXTRA_KEY_PROP).value
+        }
     }
+
 
     fun createOrUpdateProperty() {
 
-        property.propType = if (checkedSale.value == true) {
+        propertyAdd.value?.propType = if (checkedSale.value == true) {
             30
         } else {
             29
         }
 
         if (checkedHome.value == true) {
-            property.propCategory = 96
+            propertyAdd.value?.propCategory = 96
         } else if (checkedB.value == true) {
-            property.propCategory = 99
+            propertyAdd.value?.propCategory = 99
         } else if (checkedApp.value == true) {
-            property.propCategory = 97
+            propertyAdd.value?.propCategory = 97
         } else if (checkedTer.value == true) {
-            property.propCategory = 100
+            propertyAdd.value?.propCategory = 100
         } else if (checkedGarage.value == true) {
-            property.propCategory = 98
+            propertyAdd.value?.propCategory = 98
         } else if (checkedComm.value == true) {
-            property.propCategory = 101
+            propertyAdd.value?.propCategory = 101
         }
 
         //TODO: type de bien
-        property.propSurface = surface.value?.toInt()
-        property.propPrix = price.value?.toInt()
+        propertyAdd.value?.propSurface = surface.value?.toInt()
+        propertyAdd.value?.propPrix = price.value?.toInt()
         //TODO: DPE / GES
-        property.propEtage = stage.value?.toInt()
-        property.propEtageSur = on.value?.toInt()
-        property.propInfos = info.value
+        propertyAdd.value?.propEtage = stage.value?.toInt()
+        propertyAdd.value?.propEtageSur = on.value?.toInt()
+        propertyAdd.value?.propInfos = info.value
 
 
-        property.prop_meta_chambres = roomNbrApi1.value
-        property.prop_meta_suites = roomNbrApi2.value
-        property.prop_meta_salles_de_bains = roomNbrApi3.value
-        property.prop_meta_salles_d_eau = roomNbrApi4.value
-        property.prop_meta_bureaux = roomNbrApi5.value
-        property.prop_meta_dressing = roomNbrApi6.value
-        property.prop_meta_garages = roomNbrApi17.value
-        property.prop_meta_caves = roomNbrApi8.value
-        property.prop_meta_balcons = roomNbrApi9.value
-        property.prop_meta_terrasse = roomNbrApi10.value
+        propertyAdd.value?.prop_meta_chambres = roomNbrApi1.value
+        propertyAdd.value?.prop_meta_suites = roomNbrApi2.value
+        propertyAdd.value?.prop_meta_salles_de_bains = roomNbrApi3.value
+        propertyAdd.value?.prop_meta_salles_d_eau = roomNbrApi4.value
+        propertyAdd.value?.prop_meta_bureaux = roomNbrApi5.value
+        propertyAdd.value?.prop_meta_dressing = roomNbrApi6.value
+        propertyAdd.value?.prop_meta_garages = roomNbrApi17.value
+        propertyAdd.value?.prop_meta_caves = roomNbrApi8.value
+        propertyAdd.value?.prop_meta_balcons = roomNbrApi9.value
+        propertyAdd.value?.prop_meta_terrasse = roomNbrApi10.value
         //property?.prop_meta_surface_terrain = roomNbrApi1.value
-        property.prop_meta_annee = roomNbrApi12.value
-        property.prop_meta_piscine = roomNbrApi13.value
-        property.prop_meta_piscinable = roomNbrApi14.value
-        property.prop_meta_pool_house = roomNbrApi15.value
-        property.prop_meta_sans_vis_a_vis = roomNbrApi16.value
-        property.prop_meta_ascenseur = roomNbrApi17.value
-        property.prop_meta_duplex = roomNbrApi18.value
-        property.prop_meta_triplex = roomNbrApi19.value
-        property.prop_meta_rez_de_jardin = roomNbrApi20.value
+        propertyAdd.value?.prop_meta_annee = roomNbrApi12.value
+        propertyAdd.value?.prop_meta_piscine = roomNbrApi13.value
+        propertyAdd.value?.prop_meta_piscinable = roomNbrApi14.value
+        propertyAdd.value?.prop_meta_pool_house = roomNbrApi15.value
+        propertyAdd.value?.prop_meta_sans_vis_a_vis = roomNbrApi16.value
+        propertyAdd.value?.prop_meta_ascenseur = roomNbrApi17.value
+        propertyAdd.value?.prop_meta_duplex = roomNbrApi18.value
+        propertyAdd.value?.prop_meta_triplex = roomNbrApi19.value
+        propertyAdd.value?.prop_meta_rez_de_jardin = roomNbrApi20.value
 
 
-        property.prop_localisation_ville = city.value!!
-        property.prop_localisation_codepostal = postalCode.value!!
-        property.prop_localisation_complement_adresse = address.value!!
-        property.proInterphoneName = inter.value
-        property.propCodeportail = interCode.value
-        property.propInfos = otherInfo.value
+        propertyAdd.value?.prop_localisation_ville = city.value
+        propertyAdd.value?.prop_localisation_codepostal = postalCode.value
+        propertyAdd.value?.prop_localisation_complement_adresse = address.value
+        propertyAdd.value?.proInterphoneName = inter.value
+        propertyAdd.value?.propCodeportail = interCode.value
+        propertyAdd.value?.propInfos = otherInfo.value
 
 
         //FIXME: update photo ws call property?.propMainPhoto
@@ -160,7 +168,7 @@ class AddAdsViewModel
             tryCatch({
                 val propertyAddResponse = withContext(schedulerProvider.dispatchersIO()) {
                     userRepository.createUpdateProperty(
-                        property
+                        propertyAdd.value!!
                     )
                 }
                 onCreateOrUpdatePropertySuccess(propertyAddResponse)

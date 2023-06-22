@@ -8,11 +8,14 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.clickandvisit.R
 import com.clickandvisit.base.BaseActivity
+import com.clickandvisit.data.model.property.add.PropertyAdd
 import com.clickandvisit.databinding.ActivityAddAdsBinding
 import com.clickandvisit.global.helper.Navigation
-import com.clickandvisit.ui.shared.adapter.AddAdsPagerAdapter
-import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayoutMediator
+import com.clickandvisit.ui.ads.addads.five.CalendarFragment
+import com.clickandvisit.ui.ads.addads.stepfour.FourFragment
+import com.clickandvisit.ui.ads.addads.stepone.OneFragment
+import com.clickandvisit.ui.ads.addads.stepthree.ThreeFragment
+import com.clickandvisit.ui.ads.addads.steptwo.TwoFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -23,88 +26,144 @@ class AddAdsActivity : BaseActivity() {
 
     lateinit var binding: ActivityAddAdsBinding
 
-    var routineFragments: List<Fragment> = emptyList()
+    private var routineFragments: List<Fragment> = emptyList()
 
-
-    var currentIndex = 0
+    var currentIndex: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_add_ads)
         registerBindingAndBaseObservers(binding)
-        binding.vpIntro.adapter = AddAdsPagerAdapter(this, binding, applicationContext)
-        binding.vpIntro.isUserInputEnabled = false
-        TabLayoutMediator(binding.mTabLayout, binding.vpIntro) { tab, position ->
-
-        }.attach()
-
-        binding.mTabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
-            override fun onTabSelected(tab: TabLayout.Tab?) {
-                when (tab?.position) {
-                    0 -> {
-                        stepOne()
-                    }
-                    1 -> {
-                        stepTwo()
-                    }
-                    2 -> {
-                        stepThree()
-                    }
-                    3 -> {
-                        stepFour()
-                    }
-                    4 -> {
-                        stepFive()
-                    }
-                }
-            }
-
-            override fun onTabUnselected(tab: TabLayout.Tab?) {
-            }
-
-            override fun onTabReselected(tab: TabLayout.Tab?) {
-            }
-        })
-        stepOne()
-        onButtonsClick()
+        registerHomeObservers()
+        startFragment()
     }
 
-    private fun onButtonsClick() {
+
+    /**
+     * register UI Home activity Observers
+     */
+    private fun registerHomeObservers() {
+        initData(viewModel.propertyAdd.value)
+        initListener()
+    }
+
+    private fun initData(value: PropertyAdd?) {
+        routineFragments = listOf(
+            OneFragment(value),
+            TwoFragment(value),
+            ThreeFragment(value),
+            FourFragment(value),
+            CalendarFragment(value)
+        )
+    }
+
+    private fun initListener() {
+        //&& (routineFragments[0] as OneFragment).viewModel.validateFields()
         binding.cbNext.setOnClickListener {
-            when (currentIndex) {
-                0 -> {
-                    binding.vpIntro.currentItem = 1
-                }
-                1 -> {
-                    binding.vpIntro.currentItem = 2
-                }
-                2 -> {
-                    binding.vpIntro.currentItem = 3
-                }
-                3 -> {
-                    viewModel.createOrUpdateProperty()
-                    //binding.vpIntro.currentItem = 4
-                }
+            onNextAction()
+        }
+        binding.cbBack.setOnClickListener {
+            onPreviousAction()
+        }
+    }
+
+    private fun startFragment() {
+        supportFragmentManager.beginTransaction()
+            .apply {
+                replace(R.id.flTransport, routineFragments[currentIndex])
+            }
+            .also {
+                it.disallowAddToBackStack()
+            }
+            .run {
+                commit()
+            }
+    }
+
+    private fun onNextAction() {
+        when (currentIndex) {
+
+            4 -> {
+                // CalendarFragment interface
+                // add or edit reservation
+            }
+
+            3 -> {
+
+                viewModel.mainPhotoUri.value = (routineFragments[3] as FourFragment).viewModel.mainPhotoUri.value
+
+
+                currentIndex++
+                // FIXME: call after ws success -> navigateToFragment()
+                viewModel.createOrUpdateProperty()
+            }
+            2 -> {
+
+                viewModel.city.value = (routineFragments[2] as ThreeFragment).viewModel.city.value
+                viewModel.otherInfo.value = (routineFragments[2] as ThreeFragment).viewModel.otherInfo.value
+
+                currentIndex++
+                navigateToFragment()
+            }
+            1 -> {
+
+                viewModel.roomNbrApi1.value = (routineFragments[1] as TwoFragment).viewModel.roomNbrApi1.value
+
+
+                currentIndex++
+                navigateToFragment()
+            }
+            0 -> {
+                viewModel.checkedSale.value = (routineFragments[0] as OneFragment).viewModel.checkedSale.value
+
+                currentIndex++
+                navigateToFragment()
             }
         }
+    }
 
-        binding.cbBack.setOnClickListener {
+
+    private fun onPreviousAction() {
+        if (0 == currentIndex) {
+            finish()
+        } else {
+            currentIndex--
             when (currentIndex) {
                 0 -> {
-                    finish()
+                    stepOne()
                 }
                 1 -> {
-                    binding.vpIntro.currentItem = 0
+                    stepTwo()
                 }
                 2 -> {
-                    binding.vpIntro.currentItem = 1
+                    stepThree()
                 }
                 3 -> {
-                    binding.vpIntro.currentItem = 2
+                    stepFour()
                 }
-                4 -> {
-                    binding.vpIntro.currentItem = 3
-                }
+            }
+            startFragment()
+        }
+    }
+
+
+    private fun navigateToFragment() {
+        startFragment()
+        when (currentIndex) {
+            1 -> {
+                stepOne()
+            }
+            2 -> {
+                stepTwo()
+            }
+            3 -> {
+                stepThree()
+            }
+            4 -> {
+                stepFour()
+            }
+            5 -> {
+                stepFive()
             }
         }
     }
@@ -128,30 +187,25 @@ class AddAdsActivity : BaseActivity() {
     }
 
     fun stepOne() {
-        currentIndex = 0
         binding.tvStep2.visibility = View.INVISIBLE
     }
 
     fun stepTwo() {
-        currentIndex = 1
         binding.tvStep2.visibility = View.VISIBLE
         binding.tvStep3.visibility = View.INVISIBLE
     }
 
     fun stepThree() {
-        currentIndex = 2
         binding.tvStep3.visibility = View.VISIBLE
         binding.tvStep4.visibility = View.INVISIBLE
     }
 
     fun stepFour() {
-        currentIndex = 3
         binding.tvStep4.visibility = View.VISIBLE
         binding.tvStep5.visibility = View.INVISIBLE
     }
 
     fun stepFive() {
-        currentIndex = 4
         binding.tvStep5.visibility = View.VISIBLE
     }
 
