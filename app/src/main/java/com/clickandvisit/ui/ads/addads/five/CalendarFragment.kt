@@ -29,8 +29,6 @@ class CalendarFragment : BaseFragment(), WeekViewLoader {
 
     private lateinit var binding: FragmentCalendarBinding
 
-    private val random = Random()
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -95,7 +93,7 @@ class CalendarFragment : BaseFragment(), WeekViewLoader {
     override fun onWeekViewLoad(): MutableList<out WeekViewEvent> {
         // Populate the week view with some events.
         val events: MutableList<WeekViewEvent> = ArrayList()
-
+        val random = Random()
         val startTime = DayTime(
             LocalDateTime.now().with(LocalTime.of(7, 0)).plusDays(
                 random.nextInt(2).toLong()

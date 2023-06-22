@@ -171,7 +171,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_global_5dp"
                 android:fontFamily="@font/poppins_bold"
-                android:text="@string/ad_ads_type_b"
+                android:text="@string/ad_ads_nbr"
                 android:textColor="@color/black"
                 android:textSize="@dimen/font_16sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -287,8 +287,9 @@
                     style="@style/InputEditText.AppStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@{viewModel.surface}"
                     android:hint="@string/ad_ads_m2"
+                    android:inputType="number"
+                    android:text="@{viewModel.surface}"
                     android:textSize="@dimen/font_13sp" />
 
             </com.clickandvisit.ui.shared.view.CustomTextInputLayout>
@@ -318,8 +319,9 @@
                     style="@style/InputEditText.AppStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@{viewModel.price}"
                     android:hint="@string/ad_ads_price_hint"
+                    android:inputType="number"
+                    android:text="@{viewModel.price}"
                     android:textSize="@dimen/font_13sp" />
 
             </com.clickandvisit.ui.shared.view.CustomTextInputLayout>
@@ -355,9 +357,9 @@
                     android:drawablePadding="@dimen/padding_global_10dp"
                     android:fontFamily="@font/poppins_regular"
                     android:hint="1"
-                    android:text="@{viewModel.stage}"
                     android:inputType="number"
                     android:paddingStart="@dimen/padding_global_10dp"
+                    android:text="@{viewModel.stage}"
                     android:textColor="@color/black"
                     android:textCursorDrawable="@drawable/edit_cursor_color"
                     android:textSize="@dimen/font_13sp" />
@@ -379,13 +381,13 @@
                     android:layout_width="0dp"
                     android:layout_height="46dp"
                     android:layout_weight="1"
-                    android:text="@{viewModel.on}"
                     android:background="@drawable/ic_edit_background"
                     android:drawablePadding="@dimen/padding_global_10dp"
                     android:fontFamily="@font/poppins_regular"
                     android:hint="1"
                     android:inputType="number"
                     android:paddingStart="@dimen/padding_global_10dp"
+                    android:text="@{viewModel.on}"
                     android:textColor="@color/black"
                     android:textCursorDrawable="@drawable/edit_cursor_color"
                     android:textSize="@dimen/font_13sp" />
@@ -676,8 +678,8 @@
                 android:gravity="start"
                 android:hint="@string/ad_ads_comp_info_hint"
                 android:inputType="textMultiLine"
-                android:text="@{viewModel.info}"
                 android:padding="@dimen/padding_global_13dp"
+                android:text="@{viewModel.info}"
                 android:textColor="@color/black"
                 android:textCursorDrawable="@drawable/edit_cursor_color"
                 android:textSize="@dimen/font_15sp"

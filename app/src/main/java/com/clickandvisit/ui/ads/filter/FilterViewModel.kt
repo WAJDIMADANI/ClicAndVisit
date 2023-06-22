@@ -71,36 +71,9 @@ class FilterViewModel
         searchRequest.value?.maxPrice = priceMax.value?.toInt()
         searchRequest.value?.minArea = surfaceMin.value?.toInt()
         searchRequest.value?.maxArea = surfaceMax.value?.toInt()
+        searchRequest.value?.minRooms = minSelectedItem.value
+        searchRequest.value?.maxRooms = maxSelectedItem.value
 
-        when (minSelectedItem.value) {
-            "NA" -> {
-                searchRequest.value?.minRooms = 0
-            }
-            "5 et +" -> {
-                searchRequest.value?.minRooms = 5
-            }
-            "" -> {
-                searchRequest.value?.minRooms = null
-            }
-            else -> {
-                searchRequest.value?.minRooms = minSelectedItem.value?.toInt()
-            }
-        }
-
-        when (maxSelectedItem.value) {
-            "NA" -> {
-                searchRequest.value?.maxRooms = 0
-            }
-            "5 et +" -> {
-                searchRequest.value?.maxRooms = 5
-            }
-            "" -> {
-                searchRequest.value?.maxRooms = null
-            }
-            else -> {
-                searchRequest.value?.maxRooms = maxSelectedItem.value?.toInt()
-            }
-        }
 
         searchRequest.value?.adsType = if (checkedSale.value == true) {
             30

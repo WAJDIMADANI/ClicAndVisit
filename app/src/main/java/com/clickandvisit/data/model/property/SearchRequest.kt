@@ -17,9 +17,9 @@ data class SearchRequest(
     var category: List<Int>? = listOf(),// 96 -> 101
 
     @Json(name = "min_rooms")
-    var minRooms: Int? = null,
+    var minRooms: String? = null,
     @Json(name = "max_rooms")
-    var maxRooms: Int? = null,
+    var maxRooms: String? = null,
 
     @Json(name = "min-area")
     var minArea: Int? = null,

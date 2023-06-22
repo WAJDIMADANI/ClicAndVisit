@@ -181,7 +181,7 @@ class UserRepositoryImp @Inject constructor(
 
     override suspend fun createUpdateProperty(property: PropertyAdd): PropertyAddResponse {
         return apiClient.createUpdateProperty(
-            property.userId,
+            sharedPreferences.getUser().id.toInt(),
             property.propId,
             property.propType,
             property.propCategory,
@@ -202,7 +202,7 @@ class UserRepositoryImp @Inject constructor(
             property.prop_meta_caves,
             property.prop_meta_balcons,
             property.prop_meta_terrasse,
-            property.prop_meta_surface_terrain,
+           // property.prop_meta_surface_terrain,
             property.prop_meta_annee,
             property.prop_meta_piscine,
             property.prop_meta_piscinable,

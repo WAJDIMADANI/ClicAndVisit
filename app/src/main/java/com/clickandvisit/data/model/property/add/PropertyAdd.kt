@@ -9,149 +9,147 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class PropertyAdd(
 
-    @Json(name = "user_id")
-    val userId: Int,
     @Json(name = "_logement_id")
-    val propId: Int?, // only for edit
+    var propId: Int? = null, // only for edit
 
     @Json(name = "prop_type")
-    val propType: Int,
+    var propType: Int? = null,
     @Json(name = "prop_category")
-    val propCategory: Int,
+    var propCategory: Int? = null,
     @Json(name = "prop_surface")
-    val propSurface: Int,
+    var propSurface: Int? = null,
     @Json(name = "prop_prix")
-    val propPrix: Int,
+    var propPrix: Int? = null,
     @Json(name = "prop_etage")
-    val propEtage: Int,
+    var propEtage: Int? = null,
     @Json(name = "prop_etage_sur")
-    val propEtageSur: Int,
+    var propEtageSur: Int? = null,
     @Json(name = "prop_enery")
-    val propEnery: Int,
+    var propEnery: Int? = null,
     @Json(name = "prop_ges")
-    val propGes: Int,
+    var propGes: Int? = null,
     @Json(name = "prop_infos_complementaires")
-    val infoComp: String,
+    var infoComp: String? = null,
+
+
     @Json(name = "prop_meta_chambres")
-    val prop_meta_chambres: String,
+    var prop_meta_chambres: String? = null,
     @Json(name = "prop_meta_suites")
-    val prop_meta_suites: String,
+    var prop_meta_suites: String? = null,
     @Json(name = "prop_meta_salles_de_bains")
-    val prop_meta_salles_de_bains: String,
+    var prop_meta_salles_de_bains: String? = null,
     @Json(name = "prop_meta_salles_d_eau")
-    val prop_meta_salles_d_eau: String,
+    var prop_meta_salles_d_eau: String? = null,
     @Json(name = "prop_meta_bureaux")
-    val prop_meta_bureaux: String,
+    var prop_meta_bureaux: String? = null,
     @Json(name = "prop_meta_dressing")
-    val prop_meta_dressing: String,
+    var prop_meta_dressing: String? = null,
     @Json(name = "prop_meta_garages")
-    val prop_meta_garages: String,
+    var prop_meta_garages: String? = null,
     @Json(name = "prop_meta_caves")
-    val prop_meta_caves: String,
+    var prop_meta_caves: String? = null,
     @Json(name = "prop_meta_balcons")
-    val prop_meta_balcons: String,
+    var prop_meta_balcons: String? = null,
     @Json(name = "prop_meta_terrasse")
-    val prop_meta_terrasse: String,
-    @Json(name = "prop_meta_surface_terrain")
-    val prop_meta_surface_terrain: String,
+    var prop_meta_terrasse: String? = null,
+/*    @Json(name = "prop_meta_surface_terrain")
+    var prop_meta_surface_terrain: String? = null,*/
     @Json(name = "prop_meta_annee")
-    val prop_meta_annee: String,
+    var prop_meta_annee: String? = null,
     @Json(name = "prop_meta_piscine")
-    val prop_meta_piscine: String,
+    var prop_meta_piscine: String? = null,
     @Json(name = "prop_meta_piscinable")
-    val prop_meta_piscinable: String,
+    var prop_meta_piscinable: String? = null,
     @Json(name = "prop_meta_pool_house")
-    val prop_meta_pool_house: String,
+    var prop_meta_pool_house: String? = null,
     @Json(name = "prop_meta_sans_vis_a_vis")
-    val prop_meta_sans_vis_a_vis: String,
+    var prop_meta_sans_vis_a_vis: String? = null,
     @Json(name = "prop_meta_ascenseur")
-    val prop_meta_ascenseur: String,
+    var prop_meta_ascenseur: String? = null,
     @Json(name = "prop_meta_duplex")
-    val prop_meta_duplex: String,
+    var prop_meta_duplex: String? = null,
     @Json(name = "prop_meta_triplex")
-    val prop_meta_triplex: String,
+    var prop_meta_triplex: String? = null,
     @Json(name = "prop_meta_rez_de_jardin")
-    val prop_meta_rez_de_jardin: String,
+    var prop_meta_rez_de_jardin: String? = null,
+
     @Json(name = "prop_localisation_ville")
-    val prop_localisation_ville: String,
+    var prop_localisation_ville: String? = null,
     @Json(name = "prop_localisation_codepostal")
-    val prop_localisation_codepostal: Int,
+    var prop_localisation_codepostal: String? = null,
     @Json(name = "prop_localisation_complement_adresse")
-    val prop_localisation_complement_adresse: String,
+    var prop_localisation_complement_adresse: String? = null,
     @Json(name = "prop_nom_interphone")
-    val proInterphoneName: String,
+    var proInterphoneName: String? = null,
     @Json(name = "prop_codeportail")
-    val propCodeportail: String,
+    var propCodeportail: String? = null,
     @Json(name = "prop_autres_informations")
-    val propInfos: String,
+    var propInfos: String? = null,
 
     // photo
     @Json(name = "prop_main_photo")
-    val propMainPhoto: String,
+    var propMainPhoto: String? = null,
     @Json(name = "prop_album_photo[]")
-    val propAlbumPhoto1: String,
+    var propAlbumPhoto1: String? = null,
     @Json(name = "prop_album_photo[]")
-    val propAlbumPhoto2: String,
+    var propAlbumPhoto2: String? = null,
     @Json(name = "prop_album_photo[]")
-    val propAlbumPhoto3: String
+    var propAlbumPhoto3: String? = null
 
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
-        parcel.readInt(),
         parcel.readValue(Int::class.java.classLoader) as? Int,
-        parcel.readInt(),
-        parcel.readInt(),
-        parcel.readInt(),
-        parcel.readInt(),
-        parcel.readInt(),
-        parcel.readInt(),
-        parcel.readInt(),
-        parcel.readInt(),
-        parcel.readString()!!,
-        parcel.readString()!!,
-        parcel.readString()!!,
-        parcel.readString()!!,
-        parcel.readString()!!,
-        parcel.readString()!!,
-        parcel.readString()!!,
-        parcel.readString()!!,
-        parcel.readString()!!,
-        parcel.readString()!!,
-        parcel.readString()!!,
-        parcel.readString()!!,
-        parcel.readString()!!,
-        parcel.readString()!!,
-        parcel.readString()!!,
-        parcel.readString()!!,
-        parcel.readString()!!,
-        parcel.readString()!!,
-        parcel.readString()!!,
-        parcel.readString()!!,
-        parcel.readString()!!,
-        parcel.readString()!!,
-        parcel.readInt(),
-        parcel.readString()!!,
-        parcel.readString()!!,
-        parcel.readString()!!,
-        parcel.readString()!!,
-        parcel.readString()!!,
-        parcel.readString()!!,
-        parcel.readString()!!,
-        parcel.readString()!!
+        parcel.readValue(Int::class.java.classLoader) as? Int,
+        parcel.readValue(Int::class.java.classLoader) as? Int,
+        parcel.readValue(Int::class.java.classLoader) as? Int,
+        parcel.readValue(Int::class.java.classLoader) as? Int,
+        parcel.readValue(Int::class.java.classLoader) as? Int,
+        parcel.readValue(Int::class.java.classLoader) as? Int,
+        parcel.readValue(Int::class.java.classLoader) as? Int,
+        parcel.readValue(Int::class.java.classLoader) as? Int,
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString()
     ) {
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeInt(userId)
         parcel.writeValue(propId)
-        parcel.writeInt(propType)
-        parcel.writeInt(propCategory)
-        parcel.writeInt(propSurface)
-        parcel.writeInt(propPrix)
-        parcel.writeInt(propEtage)
-        parcel.writeInt(propEtageSur)
-        parcel.writeInt(propEnery)
-        parcel.writeInt(propGes)
+        parcel.writeValue(propType)
+        parcel.writeValue(propCategory)
+        parcel.writeValue(propSurface)
+        parcel.writeValue(propPrix)
+        parcel.writeValue(propEtage)
+        parcel.writeValue(propEtageSur)
+        parcel.writeValue(propEnery)
+        parcel.writeValue(propGes)
         parcel.writeString(infoComp)
         parcel.writeString(prop_meta_chambres)
         parcel.writeString(prop_meta_suites)
@@ -163,7 +161,6 @@ data class PropertyAdd(
         parcel.writeString(prop_meta_caves)
         parcel.writeString(prop_meta_balcons)
         parcel.writeString(prop_meta_terrasse)
-        parcel.writeString(prop_meta_surface_terrain)
         parcel.writeString(prop_meta_annee)
         parcel.writeString(prop_meta_piscine)
         parcel.writeString(prop_meta_piscinable)
@@ -174,7 +171,7 @@ data class PropertyAdd(
         parcel.writeString(prop_meta_triplex)
         parcel.writeString(prop_meta_rez_de_jardin)
         parcel.writeString(prop_localisation_ville)
-        parcel.writeInt(prop_localisation_codepostal)
+        parcel.writeString(prop_localisation_codepostal)
         parcel.writeString(prop_localisation_complement_adresse)
         parcel.writeString(proInterphoneName)
         parcel.writeString(propCodeportail)
@@ -190,7 +187,7 @@ data class PropertyAdd(
     }
 
     override fun toString(): String {
-        return "PropertyAdd(userId=$userId, propId=$propId, propType=$propType, propCategory=$propCategory, propSurface=$propSurface, propPrix=$propPrix, propEtage=$propEtage, propEtageSur=$propEtageSur, propEnery=$propEnery, propGes=$propGes, infoComp='$infoComp', prop_meta_chambres='$prop_meta_chambres', prop_meta_suites='$prop_meta_suites', prop_meta_salles_de_bains='$prop_meta_salles_de_bains', prop_meta_salles_d_eau='$prop_meta_salles_d_eau', prop_meta_bureaux='$prop_meta_bureaux', prop_meta_dressing='$prop_meta_dressing', prop_meta_garages='$prop_meta_garages', prop_meta_caves='$prop_meta_caves', prop_meta_balcons='$prop_meta_balcons', prop_meta_terrasse='$prop_meta_terrasse', prop_meta_surface_terrain='$prop_meta_surface_terrain', prop_meta_annee='$prop_meta_annee', prop_meta_piscine='$prop_meta_piscine', prop_meta_piscinable='$prop_meta_piscinable', prop_meta_pool_house='$prop_meta_pool_house', prop_meta_sans_vis_a_vis='$prop_meta_sans_vis_a_vis', prop_meta_ascenseur='$prop_meta_ascenseur', prop_meta_duplex='$prop_meta_duplex', prop_meta_triplex='$prop_meta_triplex', prop_meta_rez_de_jardin='$prop_meta_rez_de_jardin', prop_localisation_ville='$prop_localisation_ville', prop_localisation_codepostal=$prop_localisation_codepostal, prop_localisation_complement_adresse='$prop_localisation_complement_adresse', proInterphoneName='$proInterphoneName', propCodeportail='$propCodeportail', propInfos='$propInfos', propMainPhoto='$propMainPhoto', propAlbumPhoto1='$propAlbumPhoto1', propAlbumPhoto2='$propAlbumPhoto2', propAlbumPhoto3='$propAlbumPhoto3')"
+        return "PropertyAdd(propId=$propId, propType=$propType, propCategory=$propCategory, propSurface=$propSurface, propPrix=$propPrix, propEtage=$propEtage, propEtageSur=$propEtageSur, propEnery=$propEnery, propGes=$propGes, infoComp=$infoComp, prop_meta_chambres=$prop_meta_chambres, prop_meta_suites=$prop_meta_suites, prop_meta_salles_de_bains=$prop_meta_salles_de_bains, prop_meta_salles_d_eau=$prop_meta_salles_d_eau, prop_meta_bureaux=$prop_meta_bureaux, prop_meta_dressing=$prop_meta_dressing, prop_meta_garages=$prop_meta_garages, prop_meta_caves=$prop_meta_caves, prop_meta_balcons=$prop_meta_balcons, prop_meta_terrasse=$prop_meta_terrasse, prop_meta_annee=$prop_meta_annee, prop_meta_piscine=$prop_meta_piscine, prop_meta_piscinable=$prop_meta_piscinable, prop_meta_pool_house=$prop_meta_pool_house, prop_meta_sans_vis_a_vis=$prop_meta_sans_vis_a_vis, prop_meta_ascenseur=$prop_meta_ascenseur, prop_meta_duplex=$prop_meta_duplex, prop_meta_triplex=$prop_meta_triplex, prop_meta_rez_de_jardin=$prop_meta_rez_de_jardin, prop_localisation_ville=$prop_localisation_ville, prop_localisation_codepostal=$prop_localisation_codepostal, prop_localisation_complement_adresse=$prop_localisation_complement_adresse, proInterphoneName=$proInterphoneName, propCodeportail=$propCodeportail, propInfos=$propInfos, propMainPhoto=$propMainPhoto, propAlbumPhoto1=$propAlbumPhoto1, propAlbumPhoto2=$propAlbumPhoto2, propAlbumPhoto3=$propAlbumPhoto3)"
     }
 
     companion object CREATOR : Parcelable.Creator<PropertyAdd> {

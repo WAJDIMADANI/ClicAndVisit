@@ -24,7 +24,7 @@ class ThreeViewModel
 
     val inter = MutableLiveData<String>()
     val interCode = MutableLiveData<String>()
-    val info = MutableLiveData<String>()
+    val otherInfo = MutableLiveData<String>()
 
 
     init {

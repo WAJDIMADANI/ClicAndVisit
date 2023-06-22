@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import com.clickandvisit.R
 import com.clickandvisit.base.BaseActivity
 import com.clickandvisit.databinding.ActivityAddAdsBinding
@@ -22,7 +23,10 @@ class AddAdsActivity : BaseActivity() {
 
     lateinit var binding: ActivityAddAdsBinding
 
-    var stepNumber = 0
+    var routineFragments: List<Fragment> = emptyList()
+
+
+    var currentIndex = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,7 +71,7 @@ class AddAdsActivity : BaseActivity() {
 
     private fun onButtonsClick() {
         binding.cbNext.setOnClickListener {
-            when (stepNumber) {
+            when (currentIndex) {
                 0 -> {
                     binding.vpIntro.currentItem = 1
                 }
@@ -78,13 +82,14 @@ class AddAdsActivity : BaseActivity() {
                     binding.vpIntro.currentItem = 3
                 }
                 3 -> {
-                    binding.vpIntro.currentItem = 4
+                    viewModel.createOrUpdateProperty()
+                    //binding.vpIntro.currentItem = 4
                 }
             }
         }
 
         binding.cbBack.setOnClickListener {
-            when (stepNumber) {
+            when (currentIndex) {
                 0 -> {
                     finish()
                 }
@@ -123,30 +128,30 @@ class AddAdsActivity : BaseActivity() {
     }
 
     fun stepOne() {
-        stepNumber = 0
+        currentIndex = 0
         binding.tvStep2.visibility = View.INVISIBLE
     }
 
     fun stepTwo() {
-        stepNumber = 1
+        currentIndex = 1
         binding.tvStep2.visibility = View.VISIBLE
         binding.tvStep3.visibility = View.INVISIBLE
     }
 
     fun stepThree() {
-        stepNumber = 2
+        currentIndex = 2
         binding.tvStep3.visibility = View.VISIBLE
         binding.tvStep4.visibility = View.INVISIBLE
     }
 
     fun stepFour() {
-        stepNumber = 3
+        currentIndex = 3
         binding.tvStep4.visibility = View.VISIBLE
         binding.tvStep5.visibility = View.INVISIBLE
     }
 
     fun stepFive() {
-        stepNumber = 4
+        currentIndex = 4
         binding.tvStep5.visibility = View.VISIBLE
     }
 

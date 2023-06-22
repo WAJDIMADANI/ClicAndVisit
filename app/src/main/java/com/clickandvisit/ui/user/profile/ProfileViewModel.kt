@@ -51,7 +51,7 @@ class ProfileViewModel
 
     val imagePickerDialog: MutableLiveData<ImgPickerDialog> = MutableLiveData()
 
-    val photoUri = MutableLiveData(Uri.EMPTY)
+    val photoUri = MutableLiveData(Uri.EMPTY)//FIXME: update photo ws call
 
     lateinit var user: User
 
