@@ -1,13 +1,10 @@
 package com.clickandvisit.ui.ads.addads.stepone
 
 import android.app.Application
-import android.net.Uri
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
-import androidx.lifecycle.map
 import com.clickandvisit.base.BaseAndroidViewModel
 import com.clickandvisit.data.model.property.Property
-import com.clickandvisit.data.model.property.add.PropertyAdd
 import com.clickandvisit.data.repository.abs.UserRepository
 import com.clickandvisit.global.listener.SchedulerProvider
 import com.clickandvisit.global.utils.isWhiteSpaces
@@ -52,7 +49,6 @@ class OneViewModel
 
     init {
 
-
     }
 
     fun validateFields(): Boolean {
@@ -91,6 +87,59 @@ class OneViewModel
         stage.value = property.stage
         on.value = property.stageS
         info.value = property.otherInfo
+
+        if (property.type == "Vente") {
+            checkedSale.value = true
+        } else if (property.type == "Location") {
+            checkedRent.value = true
+        }
+
+
+        when (property.category) {
+            "Maison" -> {
+                checkedHome.value = true
+            }
+            "Bureau" -> {
+                checkedB.value = true
+            }
+            "Appartement" -> {
+                checkedApp.value = true
+            }
+            "Terrain" -> {
+                checkedTer.value = true
+            }
+            "Garage" -> {
+                checkedGarage.value = true
+            }
+            "Commerce" -> {
+                checkedComm.value = true
+            }
+        }
+
+        when (property.details.chambres) {
+            "1" -> {
+                checked1.value = true
+            }
+            "2" -> {
+                checked2.value = true
+            }
+            "3" -> {
+                checked3.value = true
+            }
+            "4" -> {
+                checked4.value = true
+            }
+            "5 et +" -> {
+                checked5.value = true
+            }
+            "NA" -> {
+                checkedNA.value = true
+            }
+            else ->{
+                checkedNA.value = true
+            }
+        }
+
     }
 
 }

@@ -112,6 +112,10 @@ class AddAdsViewModel
 
     fun createOrUpdateProperty() {
 
+        if (isEdit.value == true) {
+            propertyAdd.value!!.propId = propertyEdit.value!!.id
+        }
+
         propertyAdd.value?.propType = if (checkedSale.value == true) {
             30
         } else {
@@ -152,8 +156,18 @@ class AddAdsViewModel
         propertyAdd.value?.propSurface = surface.value?.toInt()
         propertyAdd.value?.propPrix = price.value?.toInt()
         //TODO: DPE / GES
-        propertyAdd.value?.propEtage = stage.value?.toInt()
-        propertyAdd.value?.propEtageSur = on.value?.toInt()
+        try {
+            propertyAdd.value?.propEtage = stage.value?.toInt()
+        }catch (e: NumberFormatException){
+            propertyAdd.value?.propEtage = null
+        }
+
+        try {
+            propertyAdd.value?.propEtageSur = on.value?.toInt()
+        }catch (e: NumberFormatException){
+            propertyAdd.value?.propEtageSur = null
+        }
+
         propertyAdd.value?.propInfos = info.value
 
 
@@ -189,7 +203,7 @@ class AddAdsViewModel
 
         //FIXME: update photo ws call property?.propMainPhoto
 
-/*        showBlockProgressBar()
+        showBlockProgressBar()
         viewModelScope.launch {
             tryCatch({
                 val propertyAddResponse = withContext(schedulerProvider.dispatchersIO()) {
@@ -201,7 +215,7 @@ class AddAdsViewModel
             }, { error ->
                 onCreateOrUpdatePropertyError(error)
             })
-        }*/
+        }
     }
 
 

@@ -430,7 +430,25 @@ class TwoViewModel
     }
 
     fun onEditProperty(property: Property) {
-        // surface.value = property.propSurface ...
+        roomNbrApi1.value = property.details.chambres
+        roomNbrApi2.value = property.details.suites
+        roomNbrApi3.value = property.details.sallesDeBain
+        roomNbrApi4.value = property.details.sallesDeau
+        roomNbrApi5.value = property.details.bureaux
+        roomNbrApi6.value = property.details.dressing
+        roomNbrApi7.value = property.details.garages
+        roomNbrApi8.value = property.details.caves
+        roomNbrApi9.value = property.details.balcons
+        roomNbrApi10.value = property.details.terrasse
+        roomNbrApi12.value = property.details.annee
+        roomNbrApi13.value = property.details.piscine
+        roomNbrApi14.value = property.details.piscinable
+        roomNbrApi15.value = property.details.poolHouse
+        roomNbrApi16.value = property.details.sansVisAVis
+        roomNbrApi17.value = property.details.ascenseur
+        roomNbrApi18.value = property.details.duplex
+        roomNbrApi19.value = property.details.triplex
+        roomNbrApi20.value = property.details.rezDeJardin
     }
 
 }

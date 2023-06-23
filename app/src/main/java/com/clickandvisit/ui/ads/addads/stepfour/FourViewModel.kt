@@ -14,6 +14,7 @@ import com.clickandvisit.global.helper.Navigation
 import com.clickandvisit.global.listener.SchedulerProvider
 import com.clickandvisit.global.utils.DebugLog
 import com.clickandvisit.global.utils.TAG
+import com.clickandvisit.global.utils.toMediaUrl
 import com.clickandvisit.ui.shared.dialog.ImgPickerDialog
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -112,7 +113,8 @@ class FourViewModel
 
 
     fun onEditProperty(property: Property) {
-        // surface.value = property.propSurface ...
+        if (property.mainPhoto.toMediaUrl() != "https://")
+            mainPhotoUri.value = Uri.parse(property.mainPhoto)
     }
 
 

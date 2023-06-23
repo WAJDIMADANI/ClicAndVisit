@@ -52,7 +52,12 @@ class ThreeViewModel
 
 
     fun onEditProperty(property: Property) {
-        // surface.value = property.propSurface ...
+        city.value = property.city
+        postalCode.value = property.postalCode
+        address.value = property.road
+        inter.value = property.interphone
+        interCode.value = property.portail
+        otherInfo.value = property.otherInfo
     }
 
 }

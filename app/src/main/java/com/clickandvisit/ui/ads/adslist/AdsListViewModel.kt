@@ -2,7 +2,6 @@ package com.clickandvisit.ui.ads.adslist
 
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.map
 import com.clickandvisit.R
 import com.clickandvisit.base.BaseAndroidViewModel
 import com.clickandvisit.data.model.property.Property
@@ -88,7 +87,6 @@ class AdsListViewModel
     }
 
     override fun onEditClicked(value: Property) {
-        DebugLog.i(TAG, "onEditClicked")
         navigate(Navigation.AddAdsActivity(value))
     }
 
