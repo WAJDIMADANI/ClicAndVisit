@@ -130,7 +130,7 @@ class AddAdsViewModel
 
         // S+...
         propertyAdd.value?.prop_meta_chambres = if (checked1.value == true) {
-             "1"
+            "1"
         } else if (checked2.value == true) {
             "2"
         } else if (checked3.value == true) {
@@ -139,8 +139,9 @@ class AddAdsViewModel
             "4"
         } else if (checked5.value == true) {
             "5 et +"
-        } else
+        } else if (checkedNA.value == true) {
             "NA"
+        } else null
 
 
         //TODO: type de bien
