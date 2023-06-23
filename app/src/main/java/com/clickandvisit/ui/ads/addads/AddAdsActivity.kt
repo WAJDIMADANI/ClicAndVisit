@@ -97,20 +97,22 @@ class AddAdsActivity : BaseActivity() {
                 viewModel.createOrUpdateProperty()
             }
             2 -> {
+                if ((routineFragments[2] as ThreeFragment).viewModel.validateFields()) {
+                    viewModel.city.value = (routineFragments[2] as ThreeFragment).viewModel.city.value
+                    viewModel.postalCode.value =
+                        (routineFragments[2] as ThreeFragment).viewModel.postalCode.value
+                    viewModel.address.value =
+                        (routineFragments[2] as ThreeFragment).viewModel.address.value
+                    viewModel.inter.value = (routineFragments[2] as ThreeFragment).viewModel.inter.value
+                    viewModel.interCode.value =
+                        (routineFragments[2] as ThreeFragment).viewModel.interCode.value
+                    viewModel.otherInfo.value =
+                        (routineFragments[2] as ThreeFragment).viewModel.otherInfo.value
 
-                viewModel.city.value = (routineFragments[2] as ThreeFragment).viewModel.city.value
-                viewModel.postalCode.value =
-                    (routineFragments[2] as ThreeFragment).viewModel.postalCode.value
-                viewModel.address.value =
-                    (routineFragments[2] as ThreeFragment).viewModel.address.value
-                viewModel.inter.value = (routineFragments[2] as ThreeFragment).viewModel.inter.value
-                viewModel.interCode.value =
-                    (routineFragments[2] as ThreeFragment).viewModel.interCode.value
-                viewModel.otherInfo.value =
-                    (routineFragments[2] as ThreeFragment).viewModel.otherInfo.value
+                    currentIndex++
+                    navigateToFragment()
+                }
 
-                currentIndex++
-                navigateToFragment()
             }
             1 -> {
 
