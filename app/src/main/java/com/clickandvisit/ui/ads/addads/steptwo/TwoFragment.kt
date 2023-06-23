@@ -11,6 +11,7 @@ import android.widget.FrameLayout
 import androidx.fragment.app.viewModels
 import com.clickandvisit.R
 import com.clickandvisit.base.BaseFragment
+import com.clickandvisit.data.model.property.Property
 import com.clickandvisit.data.model.property.add.PropertyAdd
 import com.clickandvisit.databinding.TwoFragmentBinding
 import com.clickandvisit.global.helper.Navigation
@@ -20,7 +21,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
-class TwoFragment(val property: PropertyAdd?) : BaseFragment() {
+class TwoFragment(val property: Property?) : BaseFragment() {
 
     val viewModel: TwoViewModel by viewModels()
 

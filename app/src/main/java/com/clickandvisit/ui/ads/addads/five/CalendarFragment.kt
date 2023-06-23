@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.clickandvisit.R
 import com.clickandvisit.base.BaseFragment
+import com.clickandvisit.data.model.property.Property
 import com.clickandvisit.data.model.property.add.PropertyAdd
 import com.clickandvisit.databinding.FragmentCalendarBinding
 import com.clickandvisit.global.helper.Navigation
@@ -24,7 +25,7 @@ import java.util.*
 
 
 @AndroidEntryPoint
-class CalendarFragment(val property: PropertyAdd?) : BaseFragment(), WeekViewLoader {
+class CalendarFragment(val property: Property?) : BaseFragment(), WeekViewLoader {
 
     val viewModel: CalendarViewModel by viewModels()
 

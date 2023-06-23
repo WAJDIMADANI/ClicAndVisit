@@ -73,8 +73,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="100dp"
+            android:gravity="center_vertical"
             android:layout_marginEnd="@dimen/margin_global_5dp"
-            android:layout_marginBottom="@dimen/margin_global_17dp"
+            android:layout_marginBottom="@dimen/margin_global_15dp"
             app:layout_constraintBottom_toTopOf="@+id/tvAdsPrice"
             app:layout_constraintEnd_toEndOf="parent">
 

@@ -5,6 +5,7 @@ import android.net.Uri
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import com.clickandvisit.base.BaseAndroidViewModel
+import com.clickandvisit.data.model.property.Property
 import com.clickandvisit.data.model.property.add.PropertyAdd
 import com.clickandvisit.data.model.property.add.PropertyAddResponse
 import com.clickandvisit.data.repository.abs.UserRepository
@@ -53,7 +54,7 @@ class AddAdsViewModel
     val stage: MutableLiveData<String> = MutableLiveData()
     val on: MutableLiveData<String> = MutableLiveData()
 
-    val info: MutableLiveData<String> = MutableLiveData()
+    val info: MutableLiveData<String?> = MutableLiveData()
 
 
     /** room details **/
@@ -80,7 +81,7 @@ class AddAdsViewModel
 
     /** localisation **/
     val city = MutableLiveData<String>()
-    val postalCode = MutableLiveData<String>()
+    val postalCode = MutableLiveData<String?>()
     val address = MutableLiveData<String>()
 
     val inter = MutableLiveData<String>()
@@ -93,6 +94,8 @@ class AddAdsViewModel
 
     val propertyAdd: MutableLiveData<PropertyAdd> = MutableLiveData(PropertyAdd())
 
+    val propertyEdit = MutableLiveData<Property>()
+
     val isEdit: MutableLiveData<Boolean> = MutableLiveData()
 
     init {
@@ -100,8 +103,9 @@ class AddAdsViewModel
             savedStateHandle.getLiveData<Boolean>(ExtraKeys.AddAdsActivity.PROPERTY_EXTRA_KEY_EDIT).value
 
         if (isEdit.value == true) {
-            propertyAdd.value =
-                savedStateHandle.getLiveData<PropertyAdd>(ExtraKeys.AddAdsActivity.PROPERTY_EXTRA_KEY_PROP).value
+            propertyEdit.value =
+                savedStateHandle.getLiveData<Property>(ExtraKeys.AddAdsActivity.PROPERTY_EXTRA_KEY_PROP).value
+
         }
     }
 

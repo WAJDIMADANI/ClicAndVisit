@@ -34,6 +34,8 @@ sealed class Navigation {
 
     object HomeActivityNavigation : Navigation()
 
+    data class AddAdsActivity(val value: Property) : Navigation()
+
     object GalleryNavigation : Navigation()
 
     data class CameraNavigation(val imageName: String) : Navigation()

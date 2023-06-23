@@ -7,13 +7,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.clickandvisit.R
 import com.clickandvisit.base.BaseFragment
+import com.clickandvisit.data.model.property.Property
 import com.clickandvisit.data.model.property.add.PropertyAdd
 import com.clickandvisit.databinding.ThreeFragmentBinding
 import com.clickandvisit.global.helper.Navigation
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ThreeFragment(val property: PropertyAdd?) : BaseFragment() {
+class ThreeFragment(val property: Property?) : BaseFragment() {
 
     val viewModel: ThreeViewModel by viewModels()
 

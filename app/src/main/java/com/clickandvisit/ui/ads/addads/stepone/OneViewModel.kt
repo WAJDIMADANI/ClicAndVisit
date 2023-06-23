@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.map
 import com.clickandvisit.base.BaseAndroidViewModel
+import com.clickandvisit.data.model.property.Property
 import com.clickandvisit.data.model.property.add.PropertyAdd
 import com.clickandvisit.data.repository.abs.UserRepository
 import com.clickandvisit.global.listener.SchedulerProvider
@@ -84,8 +85,12 @@ class OneViewModel
 
     }
 
-    fun onEditProperty(property: PropertyAdd) {
-        // surface.value = property.propSurface ...
+    fun onEditProperty(property: Property) {
+        surface.value = property.surface
+        price.value = property.price
+        stage.value = property.stage
+        on.value = property.stageS
+        info.value = property.otherInfo
     }
 
 }

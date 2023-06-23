@@ -13,6 +13,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import com.clickandvisit.R
 import com.clickandvisit.base.BaseFragment
+import com.clickandvisit.data.model.property.Property
 import com.clickandvisit.data.model.property.add.PropertyAdd
 import com.clickandvisit.databinding.FragmentFourBinding
 import com.clickandvisit.databinding.OneFragmentBinding
@@ -26,7 +27,7 @@ import com.clickandvisit.ui.user.profile.REQUEST_CODE_PERMISSIONS
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class FourFragment(val property: PropertyAdd?) : BaseFragment() {
+class FourFragment(val property: Property?) : BaseFragment() {
 
 
     val viewModel: FourViewModel by viewModels()

@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import com.clickandvisit.base.BaseAndroidViewModel
+import com.clickandvisit.data.model.property.Property
 import com.clickandvisit.data.model.property.add.PropertyAdd
 import com.clickandvisit.global.listener.SchedulerProvider
 import com.clickandvisit.global.utils.isWhiteSpaces
@@ -50,7 +51,7 @@ class ThreeViewModel
         !address.value.isWhiteSpaces()
 
 
-    fun onEditProperty(property: PropertyAdd) {
+    fun onEditProperty(property: Property) {
         // surface.value = property.propSurface ...
     }
 

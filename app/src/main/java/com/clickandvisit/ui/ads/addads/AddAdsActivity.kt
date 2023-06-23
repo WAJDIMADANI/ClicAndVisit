@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.clickandvisit.R
 import com.clickandvisit.base.BaseActivity
+import com.clickandvisit.data.model.property.Property
 import com.clickandvisit.data.model.property.add.PropertyAdd
 import com.clickandvisit.databinding.ActivityAddAdsBinding
 import com.clickandvisit.global.helper.Navigation
@@ -43,11 +44,11 @@ class AddAdsActivity : BaseActivity() {
      * register UI Home activity Observers
      */
     private fun registerHomeObservers() {
-        initData(viewModel.propertyAdd.value)
+        initData(viewModel.propertyEdit.value)
         initListener()
     }
 
-    private fun initData(value: PropertyAdd?) {
+    private fun initData(value: Property?) {
         routineFragments = listOf(
             OneFragment(value),
             TwoFragment(value),

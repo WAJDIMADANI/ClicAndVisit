@@ -31,7 +31,10 @@ class AdsListViewModel
     OnMyPropertyClickedListener {
 
     val list: MutableLiveData<List<Property>> = MutableLiveData(arrayListOf())
+    val name1: MutableLiveData<String> = MutableLiveData(application.getString(R.string.my_ads_current))
+    val name0: MutableLiveData<String> = MutableLiveData(application.getString(R.string.my_ads_validation))
 
+    lateinit var searchResponse: SearchResponse
     init {
         getMyProperty(1)
     }
@@ -52,6 +55,7 @@ class AdsListViewModel
 
     private fun onGetDiscussionSuccess(response: SearchResponse, statusCode: Int) {
         hideBlockProgressBar()
+        searchResponse = response
         list.value = response.properties.filter {
             it.statusCode == statusCode
         }
@@ -85,6 +89,7 @@ class AdsListViewModel
 
     override fun onEditClicked(value: Property) {
         DebugLog.i(TAG, "onEditClicked")
+        navigate(Navigation.AddAdsActivity(value))
     }
 
     override fun onRateClicked(value: Property) {

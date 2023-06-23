@@ -8,13 +8,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.clickandvisit.R
 import com.clickandvisit.base.BaseFragment
+import com.clickandvisit.data.model.property.Property
 import com.clickandvisit.data.model.property.add.PropertyAdd
 import com.clickandvisit.databinding.OneFragmentBinding
 import com.clickandvisit.global.helper.Navigation
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class OneFragment(val property: PropertyAdd?) : BaseFragment() {
+class OneFragment(val property: Property?) : BaseFragment() {
 
     val viewModel: OneViewModel by viewModels()
 

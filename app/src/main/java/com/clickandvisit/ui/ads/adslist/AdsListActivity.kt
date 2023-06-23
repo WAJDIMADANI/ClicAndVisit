@@ -1,5 +1,6 @@
 package com.clickandvisit.ui.ads.adslist
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
@@ -8,8 +9,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.clickandvisit.R
 import com.clickandvisit.base.BaseActivity
 import com.clickandvisit.databinding.ActivityAdsListBinding
-import com.clickandvisit.databinding.ActivityHomeBinding
 import com.clickandvisit.global.helper.Navigation
+import com.clickandvisit.global.utils.ExtraKeys
+import com.clickandvisit.ui.ads.addads.AddAdsActivity
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -44,7 +46,19 @@ class AdsListActivity : BaseActivity() {
     override fun navigate(navigationTo: Navigation) {
         when (navigationTo) {
             is Navigation.Back -> finish()
-
+            is Navigation.AddAdsActivity -> {
+                Intent(this, AddAdsActivity::class.java).let { intent ->
+                    intent.putExtra(
+                        ExtraKeys.AddAdsActivity.PROPERTY_EXTRA_KEY_EDIT,
+                        true
+                    )
+                    intent.putExtra(
+                        ExtraKeys.AddAdsActivity.PROPERTY_EXTRA_KEY_PROP,
+                        navigationTo.value
+                    )
+                    startActivity(intent)
+                }
+            }
         }
     }
 

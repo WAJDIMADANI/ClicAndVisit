@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.map
 import com.clickandvisit.base.BaseAndroidViewModel
+import com.clickandvisit.data.model.property.Property
 import com.clickandvisit.data.model.property.add.PropertyAdd
 import com.clickandvisit.global.helper.ImagePicker
 import com.clickandvisit.global.helper.Navigation
@@ -110,7 +111,7 @@ class FourViewModel
     }
 
 
-    fun onEditProperty(property: PropertyAdd) {
+    fun onEditProperty(property: Property) {
         // surface.value = property.propSurface ...
     }
 
