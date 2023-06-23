@@ -114,6 +114,12 @@ interface APIClient {
     @FormUrlEncoded
     @POST("search")
     suspend fun search(
+        @Field("user_id") userId: Int
+    ): SearchResponse
+
+    @FormUrlEncoded
+    @POST("search")
+    suspend fun search(
         @Field("type_annonce") adsType: Int?,
         @Field("categorie") category: List<Int>?,
         @Field("min_rooms") minRooms: String?,
@@ -124,7 +130,6 @@ interface APIClient {
         @Field("max-price") maxPrice: Int?,
         @Field("favorite_user_id") favoriteUserId: Int?,
         @Field("save_search") saveSearch: Int?, //0 : No / 1 : Yes
-        //@Field("user_id") userId: Int?,
         @Field("adresse") address: String?,
         @Field("sortby") sortBy: String?,  // date/price/surface
         @Field("sorthow") sortHow: String? // asc/desc

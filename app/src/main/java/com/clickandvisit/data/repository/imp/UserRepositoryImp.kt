@@ -144,6 +144,10 @@ class UserRepositoryImp @Inject constructor(
         return apiClient.search()
     }
 
+    override suspend fun getMyProperty(): SearchResponse {
+        return apiClient.search(sharedPreferences.getUser().id.toInt())
+    }
+
     override suspend fun search(searchRequest: SearchRequest): SearchResponse {
         return apiClient.search(
             searchRequest.adsType,
@@ -155,7 +159,6 @@ class UserRepositoryImp @Inject constructor(
             searchRequest.minPrice,
             searchRequest.maxPrice,
             searchRequest.favoriteUserId,
-            //sharedPreferences.getUser().id.toInt(),
             searchRequest.saveSearch,
             searchRequest.address,
             searchRequest.sortBy,
@@ -202,7 +205,7 @@ class UserRepositoryImp @Inject constructor(
             property.prop_meta_caves,
             property.prop_meta_balcons,
             property.prop_meta_terrasse,
-           // property.prop_meta_surface_terrain,
+            // property.prop_meta_surface_terrain,
             property.prop_meta_annee,
             property.prop_meta_piscine,
             property.prop_meta_piscinable,

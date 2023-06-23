@@ -13,11 +13,12 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/gray_home_background">
 
 
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/llHeader"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clHeader"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dimen_60dp"
             android:background="@color/black"
@@ -25,6 +26,17 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/ivBack"
+                android:layout_width="@dimen/dimen_25dp"
+                android:layout_height="@dimen/dimen_25dp"
+                android:layout_marginStart="@dimen/margin_global_15dp"
+                android:background="@drawable/ic_back"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:onClickWithDebounce="@{() ->viewModel.onBackClick()}" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvIntroTitle"
@@ -34,9 +46,53 @@
                 android:gravity="center"
                 android:text="@string/home_menu_3"
                 android:textColor="@color/white_basic"
-                android:textSize="@dimen/font_16sp" />
+                android:textSize="@dimen/font_16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayoutPropType"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            android:padding="@dimen/padding_global_10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/clHeader">
+
+            <com.clickandvisit.ui.shared.view.CustomButton
+                android:layout_width="@dimen/dimen_0dp"
+                android:layout_height="@dimen/dimen_40dp"
+                android:layout_gravity="bottom"
+                android:layout_marginEnd="@dimen/padding_global_10dp"
+                android:layout_weight="1"
+                android:background="@color/black"
+                android:fontFamily="@font/poppins_regular"
+                android:text="@string/my_ads_current"
+                android:textAllCaps="false"
+                android:textColor="@color/white_basic"
+                android:textSize="@dimen/font_12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:onClickWithDebounce="@{() ->viewModel.onInlineClick()}" />
+
+            <com.clickandvisit.ui.shared.view.CustomButton
+                android:layout_width="@dimen/dimen_0dp"
+                android:layout_height="@dimen/dimen_40dp"
+                android:layout_gravity="bottom"
+                android:layout_weight="1"
+                android:background="@color/white_basic"
+                android:fontFamily="@font/poppins_regular"
+                android:text="@string/my_ads_validation"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:onClickWithDebounce="@{() ->viewModel.onInholdClick()}" />
+
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/linearLayout"
@@ -45,7 +101,7 @@
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/llHeader">
+            app:layout_constraintTop_toBottomOf="@+id/linearLayoutPropType">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvAds"
@@ -55,9 +111,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ivFilter"
+                app:recyclerViewData="@{viewModel.list}"
                 tools:listitem="@layout/item_ads" />
-
-            <!--app:data="@{viewModel.deliveriesList}"-->
 
         </LinearLayout>
 

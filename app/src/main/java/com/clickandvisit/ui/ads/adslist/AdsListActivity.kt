@@ -3,11 +3,15 @@ package com.clickandvisit.ui.ads.adslist
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.clickandvisit.R
 import com.clickandvisit.base.BaseActivity
 import com.clickandvisit.databinding.ActivityAdsListBinding
+import com.clickandvisit.databinding.ActivityHomeBinding
 import com.clickandvisit.global.helper.Navigation
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 
 @AndroidEntryPoint
@@ -17,10 +21,21 @@ class AdsListActivity : BaseActivity() {
 
     private lateinit var binding: ActivityAdsListBinding
 
+    @Inject
+    lateinit var adapter: PropertyAdapter
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_ads_list)
         registerBindingAndBaseObservers(binding)
+        registerRecycler(binding)
+    }
+
+    private fun registerRecycler(binding: ActivityAdsListBinding) {
+        adapter.viewModel = viewModel
+        binding.rvAds.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
+        binding.rvAds.adapter = adapter
     }
 
     /**

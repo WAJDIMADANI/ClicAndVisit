@@ -57,7 +57,6 @@ class HomeActivity : BaseActivity(), DrawerLayout.DrawerListener {
 
         navController =
             androidx.navigation.Navigation.findNavController(this, R.id.fragmentHomeNavHost)
-        //navController.setGraph(R.navigation.mobile_navigation, intent.extras)
         registerBindingAndBaseObservers(binding)
         registerHomeObservers()
         bindListeners()
@@ -133,7 +132,6 @@ class HomeActivity : BaseActivity(), DrawerLayout.DrawerListener {
                     }
                     R.id.nav_menu_9 -> {
                         viewModel.disconnect()
-                        //binding.navigationViewHome.menu.getItem(8).isChecked = false
                     }
                 }
             } else {

@@ -71,6 +71,8 @@ interface UserRepository {
 
     suspend fun search(): SearchResponse
 
+    suspend fun getMyProperty(): SearchResponse
+
     suspend fun search(searchRequest: SearchRequest): SearchResponse
 
     suspend fun propertyDetails(propertyId: Int): PropertyDetailsResponse

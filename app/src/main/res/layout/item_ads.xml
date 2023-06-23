@@ -4,30 +4,36 @@
 
     <data>
 
+        <variable
+            name="property"
+            type="com.clickandvisit.data.model.property.Property" />
 
         <variable
             name="listener"
             type="com.clickandvisit.global.listener.OnMyPropertyClickedListener" />
 
-
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="wrap_content"
         android:background="@color/white_basic"
-        app:onClickWithDebounce="@{()->listener.onItemClicked()}"
-        android:padding="@dimen/margin_global_15dp">
+        android:layout_marginTop="@dimen/margin_global_15dp"
+        android:layout_marginStart="@dimen/margin_global_15dp"
+        android:layout_marginEnd="@dimen/margin_global_15dp"
+        android:paddingBottom="@dimen/padding_global_5dp"
+        app:onClickWithDebounce="@{()->listener.onItemClicked(property)}">
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/appCompatImageView2"
+        <com.denzcoskun.imageslider.ImageSlider
+            android:id="@+id/imageSlider"
             android:layout_width="match_parent"
             android:layout_height="187dp"
-            android:background="@drawable/ic_list_place_holder"
+            app:iss_auto_cycle="true"
+            app:iss_placeholder="@drawable/ic_list_place_holder"
+            app:iss_text_align="CENTER"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/linearLayoutCompat"
@@ -37,7 +43,7 @@
             android:layout_marginBottom="@dimen/margin_global_10dp"
             android:background="@drawable/ic_ads_transparent"
             android:gravity="center"
-            app:layout_constraintBottom_toBottomOf="@+id/appCompatImageView2"
+            app:layout_constraintBottom_toBottomOf="@+id/imageSlider"
             app:layout_constraintStart_toStartOf="parent">
 
             <androidx.appcompat.widget.AppCompatImageView
@@ -68,37 +74,37 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="100dp"
             android:layout_marginEnd="@dimen/margin_global_5dp"
-            android:layout_marginBottom="@dimen/margin_global_15dp"
-            app:layout_constraintBottom_toTopOf="@+id/tvMeet"
+            android:layout_marginBottom="@dimen/margin_global_17dp"
+            app:layout_constraintBottom_toTopOf="@+id/tvAdsPrice"
             app:layout_constraintEnd_toEndOf="parent">
 
             <ImageView
                 android:id="@+id/ivShare"
                 android:layout_width="@dimen/dimen_45dp"
                 android:layout_height="@dimen/dimen_45dp"
-                app:onClickWithDebounce="@{()->listener.onShareClicked()}"
-                android:src="@drawable/ic_share" />
+                android:src="@drawable/ic_share"
+                app:onClickWithDebounce="@{()->listener.onShareClicked(property)}" />
 
             <ImageView
                 android:id="@+id/ivEdit"
                 android:layout_width="@dimen/dimen_45dp"
                 android:layout_height="@dimen/dimen_45dp"
-                app:onClickWithDebounce="@{()->listener.onEditClicked()}"
-                android:src="@drawable/ic_edit_round" />
+                android:src="@drawable/ic_edit_round"
+                app:onClickWithDebounce="@{()->listener.onEditClicked(property)}" />
 
             <ImageView
                 android:id="@+id/ivStar"
                 android:layout_width="@dimen/dimen_45dp"
                 android:layout_height="@dimen/dimen_45dp"
-                app:onClickWithDebounce="@{()->listener.onRateClicked()}"
-                android:src="@drawable/ic_start" />
+                android:src="@drawable/ic_start"
+                app:onClickWithDebounce="@{()->listener.onRateClicked(property)}" />
 
             <ImageView
                 android:id="@+id/ivMeet"
                 android:layout_width="@dimen/dimen_45dp"
                 android:layout_height="@dimen/dimen_45dp"
-                app:onClickWithDebounce="@{()->listener.onMeetClicked()}"
-                android:src="@drawable/ic_meet_round" />
+                android:src="@drawable/ic_meet_round"
+                app:onClickWithDebounce="@{()->listener.onMeetClicked(property)}" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -113,7 +119,7 @@
             android:textColor="@color/black"
             android:textSize="@dimen/font_16sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/appCompatImageView2" />
+            app:layout_constraintTop_toBottomOf="@+id/imageSlider" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvAdsPrice"
@@ -126,24 +132,6 @@
             android:textSize="@dimen/font_12sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvAdsName" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvMeet"
-            android:layout_width="127dp"
-            android:layout_height="51dp"
-            android:layout_marginEnd="@dimen/margin_global_10dp"
-            android:background="@color/red_pro_status"
-            android:fontFamily="@font/poppins_medium"
-            android:gravity="center"
-            android:paddingStart="@dimen/padding_global_5dp"
-            android:paddingEnd="@dimen/padding_global_5dp"
-            android:text="@string/my_ads_indispo"
-            android:textAllCaps="true"
-            android:textColor="@color/white_basic"
-            android:textSize="@dimen/dimen_16sp"
-            android:visibility="invisible"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
