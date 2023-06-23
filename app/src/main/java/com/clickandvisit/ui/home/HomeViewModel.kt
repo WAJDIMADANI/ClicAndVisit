@@ -3,6 +3,11 @@ package com.clickandvisit.ui.home
 import android.app.Activity
 import android.app.Application
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.Drawable
+import androidx.appcompat.content.res.AppCompatResources
+import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.DrawableCompat
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import com.clickandvisit.R
@@ -26,6 +31,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
+
 
 /**
  * Created by SAzouzi on 06/02/2020
@@ -183,6 +189,11 @@ class HomeViewModel
 
     override fun onLikeClicked(value: Property) {
         //TODO ws call
+
+        val unwrappedDrawable: Drawable? =
+            AppCompatResources.getDrawable(applicationContext, R.drawable.ic_like)
+        val wrappedDrawable: Drawable = DrawableCompat.wrap(unwrappedDrawable!!)
+        DrawableCompat.setTint(wrappedDrawable, Color.RED)
     }
 
     override fun onShareClicked(value: Property) {

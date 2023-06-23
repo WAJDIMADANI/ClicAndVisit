@@ -1,147 +1,150 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="317dp"
-    android:background="@color/white_basic"
-    android:padding="@dimen/margin_global_15dp">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/appCompatImageView2"
+    <data>
+
+
+        <variable
+            name="listener"
+            type="com.clickandvisit.global.listener.OnMyPropertyClickedListener" />
+
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="187dp"
-        android:background="@drawable/ic_list_place_holder"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvPro"
-        android:layout_width="@dimen/dimen_45dp"
-        android:layout_height="@dimen/dimen_25dp"
-        android:layout_marginTop="@dimen/dimen_15dp"
-        android:background="@color/green_pro_status_details"
-        android:fontFamily="@font/poppins_bold"
-        android:gravity="center"
-        android:padding="@dimen/padding_global_5dp"
-        android:text="@string/home_details_pro"
-        android:textAllCaps="true"
-        android:textColor="@color/white_basic"
-        android:textSize="@dimen/dimen_12sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/linearLayoutCompat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_global_10dp"
-        android:layout_marginBottom="@dimen/margin_global_10dp"
-        android:background="@drawable/ic_ads_transparent"
-        android:gravity="center"
-        app:layout_constraintBottom_toBottomOf="@+id/appCompatImageView2"
-        app:layout_constraintStart_toStartOf="parent">
+        android:layout_height="300dp"
+        android:background="@color/white_basic"
+        app:onClickWithDebounce="@{()->listener.onItemClicked()}"
+        android:padding="@dimen/margin_global_15dp">
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/ivGallery"
-            android:layout_width="@dimen/dimen_12dp"
-            android:layout_height="@dimen/dimen_12dp"
-            android:layout_marginStart="@dimen/padding_global_4dp"
-            android:layout_marginEnd="@dimen/padding_global_3dp"
-            android:background="@drawable/ic_gallery"
+            android:id="@+id/appCompatImageView2"
+            android:layout_width="match_parent"
+            android:layout_height="187dp"
+            android:background="@drawable/ic_list_place_holder"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvPhotoCount"
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/linearLayoutCompat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/padding_global_5dp"
+            android:layout_marginStart="@dimen/margin_global_10dp"
+            android:layout_marginBottom="@dimen/margin_global_10dp"
+            android:background="@drawable/ic_ads_transparent"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="@+id/appCompatImageView2"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivGallery"
+                android:layout_width="@dimen/dimen_12dp"
+                android:layout_height="@dimen/dimen_12dp"
+                android:layout_marginStart="@dimen/padding_global_4dp"
+                android:layout_marginEnd="@dimen/padding_global_3dp"
+                android:background="@drawable/ic_gallery"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvPhotoCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/padding_global_5dp"
+                android:fontFamily="@font/poppins_bold"
+                android:text="5"
+                android:textColor="@color/white_basic"
+                android:textSize="@dimen/dimen_12sp" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
+            android:layout_marginEnd="@dimen/margin_global_5dp"
+            android:layout_marginBottom="@dimen/margin_global_15dp"
+            app:layout_constraintBottom_toTopOf="@+id/tvMeet"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <ImageView
+                android:id="@+id/ivShare"
+                android:layout_width="@dimen/dimen_45dp"
+                android:layout_height="@dimen/dimen_45dp"
+                app:onClickWithDebounce="@{()->listener.onShareClicked()}"
+                android:src="@drawable/ic_share" />
+
+            <ImageView
+                android:id="@+id/ivEdit"
+                android:layout_width="@dimen/dimen_45dp"
+                android:layout_height="@dimen/dimen_45dp"
+                app:onClickWithDebounce="@{()->listener.onEditClicked()}"
+                android:src="@drawable/ic_edit_round" />
+
+            <ImageView
+                android:id="@+id/ivStar"
+                android:layout_width="@dimen/dimen_45dp"
+                android:layout_height="@dimen/dimen_45dp"
+                app:onClickWithDebounce="@{()->listener.onRateClicked()}"
+                android:src="@drawable/ic_start" />
+
+            <ImageView
+                android:id="@+id/ivMeet"
+                android:layout_width="@dimen/dimen_45dp"
+                android:layout_height="@dimen/dimen_45dp"
+                app:onClickWithDebounce="@{()->listener.onMeetClicked()}"
+                android:src="@drawable/ic_meet_round" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvAdsName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_global_12dp"
+            android:layout_marginTop="@dimen/margin_global_15dp"
             android:fontFamily="@font/poppins_bold"
-            android:text="5"
+            android:text="CAP Lyon"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appCompatImageView2" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvAdsPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_global_12dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Maison 200 000€"
+            android:textColor="@color/details_color"
+            android:textSize="@dimen/font_12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvAdsName" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvMeet"
+            android:layout_width="127dp"
+            android:layout_height="51dp"
+            android:layout_marginEnd="@dimen/margin_global_10dp"
+            android:background="@color/red_pro_status"
+            android:fontFamily="@font/poppins_medium"
+            android:gravity="center"
+            android:paddingStart="@dimen/padding_global_5dp"
+            android:paddingEnd="@dimen/padding_global_5dp"
+            android:text="@string/my_ads_indispo"
+            android:textAllCaps="true"
             android:textColor="@color/white_basic"
-            android:textSize="@dimen/dimen_12sp" />
+            android:textSize="@dimen/dimen_16sp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
-    </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="@dimen/margin_global_5dp"
-        android:layout_marginBottom="@dimen/margin_global_15dp"
-        app:layout_constraintBottom_toTopOf="@+id/tvMeet"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <ImageView
-            android:id="@+id/ivShare"
-            android:layout_width="@dimen/dimen_45dp"
-            android:layout_height="@dimen/dimen_45dp"
-            android:src="@drawable/ic_share" />
-
-        <ImageView
-            android:id="@+id/ivEdit"
-            android:layout_width="@dimen/dimen_45dp"
-            android:layout_height="@dimen/dimen_45dp"
-            android:src="@drawable/ic_edit_round" />
-
-        <ImageView
-            android:id="@+id/ivMeet"
-            android:layout_width="@dimen/dimen_45dp"
-            android:layout_height="@dimen/dimen_45dp"
-            android:src="@drawable/ic_meet_round" />
-
-        <ImageView
-            android:id="@+id/ivStar"
-            android:layout_width="@dimen/dimen_45dp"
-            android:layout_height="@dimen/dimen_45dp"
-            android:src="@drawable/ic_start" />
-
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvAdsName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_global_12dp"
-        android:layout_marginTop="@dimen/margin_global_15dp"
-        android:fontFamily="@font/poppins_bold"
-        android:text="CAP Lyon"
-        android:textColor="@color/black"
-        android:textSize="@dimen/font_16sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appCompatImageView2" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvAdsPrice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_global_12dp"
-        android:fontFamily="@font/poppins_medium"
-        android:text="Maison 200 000€"
-        android:textColor="@color/details_color"
-        android:textSize="@dimen/font_12sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvAdsName" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvMeet"
-        android:layout_width="127dp"
-        android:layout_height="51dp"
-        android:layout_marginEnd="@dimen/margin_global_10dp"
-        android:layout_marginBottom="@dimen/padding_global_10dp"
-        android:background="@color/red_pro_status"
-        android:fontFamily="@font/poppins_medium"
-        android:gravity="center"
-        android:paddingStart="@dimen/padding_global_5dp"
-        android:paddingEnd="@dimen/padding_global_5dp"
-        android:text="@string/my_ads_indispo"
-        android:textAllCaps="true"
-        android:textColor="@color/white_basic"
-        android:textSize="@dimen/dimen_16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

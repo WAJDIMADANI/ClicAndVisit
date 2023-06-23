@@ -4,6 +4,8 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.DrawableCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.clickandvisit.R
 import com.clickandvisit.data.model.property.Property
@@ -35,6 +37,12 @@ class SearchViewHolder(
             value.getCategories() + value.getPriceNBR() + context.getString(R.string.home_details_euros)
         binding.tvAdsSpace.text =
             value.details.getRoomsNBR() + value.surface + context.getString(R.string.home_details_m_square)
+
+/*
+        DrawableCompat.setTint(
+            DrawableCompat.wrap(binding.ivLike.drawable),
+            ContextCompat.getColor(context, R.color.red_pro_status)
+        )*/
 
         proVisibility(value)
         loadImages(value)

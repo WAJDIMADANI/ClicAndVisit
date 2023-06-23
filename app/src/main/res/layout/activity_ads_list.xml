@@ -15,57 +15,50 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/llHeader"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_60dp"
+            android:background="@color/black"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvIntroTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/margin_global_10dp">
+                android:fontFamily="@font/poppins_bold"
+                android:gravity="center"
+                android:text="@string/home_menu_3"
+                android:textColor="@color/white_basic"
+                android:textSize="@dimen/font_16sp" />
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tvListCount"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_regular"
-                    android:text="List (17)"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/font_18sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/ivFilter"
-                    android:layout_width="@dimen/dimen_30dp"
-                    android:layout_height="@dimen/dimen_30dp"
-                    android:layout_marginStart="@dimen/padding_global_4dp"
-                    android:layout_marginEnd="@dimen/padding_global_3dp"
-                    android:background="@drawable/ic_home_filter"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/llHeader">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvAds"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ivFilter"
-                tools:listitem="@layout/item_favourite" />
+                tools:listitem="@layout/item_ads" />
 
             <!--app:data="@{viewModel.deliveriesList}"-->
 
-            <include layout="@layout/item_favourite" />
-
-            <include layout="@layout/item_favourite" />
-
-            <include layout="@layout/item_favourite" />
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

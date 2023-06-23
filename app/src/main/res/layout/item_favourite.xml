@@ -91,7 +91,7 @@
             android:id="@+id/ivLike"
             android:layout_width="@dimen/dimen_50dp"
             android:layout_height="@dimen/dimen_50dp"
-            android:background="@drawable/ic_like"
+            android:src="@drawable/ic_like"
             app:layout_constraintBottom_toBottomOf="@+id/ivShare"
             app:layout_constraintEnd_toStartOf="@+id/ivShare"
             app:layout_constraintTop_toTopOf="@+id/ivShare"
