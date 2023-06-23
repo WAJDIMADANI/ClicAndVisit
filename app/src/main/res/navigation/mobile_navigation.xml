@@ -5,60 +5,9 @@
     android:id="@+id/mobile_navigation"
     app:startDestination="@+id/nav_menu_6">
 
-    <fragment
-        android:id="@+id/nav_menu_1"
-        android:name="com.clickandvisit.ui.home.menu.filter.FilterFragment"
-        android:label="@string/home_menu_1"
-        tools:layout="@layout/fragment_filter" />
-
-    <fragment
-        android:id="@+id/nav_menu_2"
-        android:name="com.clickandvisit.ui.home.menu.addads.AddAdsFragment"
-        android:label="@string/home_menu_2"
-        tools:layout="@layout/fragment_add_ads" />
-
-    <fragment
-        android:id="@+id/nav_menu_3"
-        android:name="com.clickandvisit.ui.home.menu.myads.MyAdsFragment"
-        android:label="@string/home_menu_3"
-        tools:layout="@layout/fragment_myads" />
-
-    <fragment
-        android:id="@+id/nav_menu_4"
-        android:name="com.clickandvisit.ui.home.menu.profile.ProfileFragment"
-        android:label="@string/home_menu_4"
-        tools:layout="@layout/fragment_profile" />
-
-    <fragment
-        android:id="@+id/nav_menu_5"
-        android:name="com.clickandvisit.ui.home.menu.meet.MeetFragment"
-        android:label="@string/home_menu_5"
-        tools:layout="@layout/fragment_meet" />
-
-    <fragment
-        android:id="@+id/nav_menu_6"
-        android:name="com.clickandvisit.ui.home.menu.favourites.FavouritesFragment"
-        android:label="@string/home_menu_6"
-        tools:layout="@layout/fragment_favourites" />
-
-    <fragment
-        android:id="@+id/nav_menu_7"
-        android:name="com.clickandvisit.ui.home.menu.search.SearchFragment"
-        android:label="@string/home_menu_7"
-        tools:layout="@layout/fragment_search" />
-
-    <fragment
-        android:id="@+id/nav_menu_8"
-        android:name="com.clickandvisit.ui.home.menu.visits.VisitsFragment"
-        android:label="@string/home_menu_8"
-        tools:layout="@layout/fragment_visits" />
     <navigation android:id="@+id/navigation"
         app:startDestination="@id/nav_menu_1">
-        <fragment
-            android:id="@+id/nav_menu_1"
-            android:name="com.clickandvisit.ui.home.menu.filter.FilterFragment"
-            android:label="@string/home_menu_1"
-            tools:layout="@layout/fragment_filter" />
+
     </navigation>
 
 </navigation>

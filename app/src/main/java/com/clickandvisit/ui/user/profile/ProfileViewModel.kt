@@ -2,10 +2,7 @@ package com.clickandvisit.ui.user.profile
 
 import android.app.Application
 import android.content.Intent
-import android.graphics.Bitmap
 import android.net.Uri
-import android.provider.MediaStore
-import android.util.Base64
 import androidx.lifecycle.MutableLiveData
 import com.clickandvisit.base.BaseAndroidViewModel
 import com.clickandvisit.data.model.user.User
@@ -14,16 +11,18 @@ import com.clickandvisit.global.helper.ImagePicker
 import com.clickandvisit.global.helper.Navigation
 import com.clickandvisit.global.listener.SchedulerProvider
 import com.clickandvisit.global.listener.ToolBarListener
-import com.clickandvisit.global.utils.*
-import com.clickandvisit.ui.home.menu.profile.PROFILE_PIC_NAME
+import com.clickandvisit.global.utils.isValidEmail
+import com.clickandvisit.global.utils.isWhiteSpaces
+import com.clickandvisit.global.utils.toMediaUrl
+import com.clickandvisit.global.utils.tryCatch
 import com.clickandvisit.ui.shared.dialog.ImgPickerDialog
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import java.io.ByteArrayOutputStream
-import java.io.FileNotFoundException
 import javax.inject.Inject
 
+
+const val PROFILE_PIC_NAME = "profile_pic_name.jpeg"
 
 @HiltViewModel
 class ProfileViewModel
