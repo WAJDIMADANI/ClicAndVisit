@@ -47,7 +47,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginEnd="@dimen/margin_global_50dp"
-                    android:checked="@{viewModel.checkedSale}"
+                    android:checked="@={viewModel.checkedSale}"
                     android:fontFamily="@font/poppins_regular"
                     android:padding="4dp"
                     android:text="@string/ad_ads_sale"
@@ -59,7 +59,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:checked="@{viewModel.checkedRent}"
+                    android:checked="@={viewModel.checkedRent}"
                     android:fontFamily="@font/poppins_regular"
                     android:padding="4dp"
                     android:text="@string/ad_ads_location"
@@ -88,7 +88,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvAdsTypeB">
 
-                <RadioButton
+                <androidx.appcompat.widget.AppCompatRadioButton
                     android:id="@+id/rbAdsTypeHome"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -101,7 +101,7 @@
                     android:textSize="@dimen/font_16sp"
                     app:layout_columnWeight="1" />
 
-                <RadioButton
+                <androidx.appcompat.widget.AppCompatRadioButton
                     android:id="@+id/rbAdsTypeDesk"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -113,7 +113,7 @@
                     android:textSize="@dimen/font_16sp"
                     app:layout_columnWeight="1" />
 
-                <RadioButton
+                <androidx.appcompat.widget.AppCompatRadioButton
                     android:id="@+id/rbAdsTypeApp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -126,7 +126,7 @@
                     android:textSize="@dimen/font_16sp"
                     app:layout_columnWeight="1" />
 
-                <RadioButton
+                <androidx.appcompat.widget.AppCompatRadioButton
                     android:id="@+id/rbAdsTypeGround"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -138,7 +138,7 @@
                     android:textSize="@dimen/font_16sp"
                     app:layout_columnWeight="1" />
 
-                <RadioButton
+                <androidx.appcompat.widget.AppCompatRadioButton
                     android:id="@+id/rbAdsTypeGarage"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -151,7 +151,7 @@
                     android:textSize="@dimen/font_16sp"
                     app:layout_columnWeight="1" />
 
-                <RadioButton
+                <androidx.appcompat.widget.AppCompatRadioButton
                     android:id="@+id/rbAdsTypeComm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -289,7 +289,7 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/ad_ads_m2"
                     android:inputType="number"
-                    android:text="@{viewModel.surface}"
+                    android:text="@={viewModel.surface}"
                     android:textSize="@dimen/font_13sp" />
 
             </com.clickandvisit.ui.shared.view.CustomTextInputLayout>
@@ -321,7 +321,7 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/ad_ads_price_hint"
                     android:inputType="number"
-                    android:text="@{viewModel.price}"
+                    android:text="@={viewModel.price}"
                     android:textSize="@dimen/font_13sp" />
 
             </com.clickandvisit.ui.shared.view.CustomTextInputLayout>
@@ -359,7 +359,7 @@
                     android:hint="1"
                     android:inputType="number"
                     android:paddingStart="@dimen/padding_global_10dp"
-                    android:text="@{viewModel.stage}"
+                    android:text="@={viewModel.stage}"
                     android:textColor="@color/black"
                     android:textCursorDrawable="@drawable/edit_cursor_color"
                     android:textSize="@dimen/font_13sp" />
@@ -387,7 +387,7 @@
                     android:hint="1"
                     android:inputType="number"
                     android:paddingStart="@dimen/padding_global_10dp"
-                    android:text="@{viewModel.on}"
+                    android:text="@={viewModel.on}"
                     android:textColor="@color/black"
                     android:textCursorDrawable="@drawable/edit_cursor_color"
                     android:textSize="@dimen/font_13sp" />
@@ -679,7 +679,7 @@
                 android:hint="@string/ad_ads_comp_info_hint"
                 android:inputType="textMultiLine"
                 android:padding="@dimen/padding_global_13dp"
-                android:text="@{viewModel.info}"
+                android:text="@={viewModel.info}"
                 android:textColor="@color/black"
                 android:textCursorDrawable="@drawable/edit_cursor_color"
                 android:textSize="@dimen/font_15sp"

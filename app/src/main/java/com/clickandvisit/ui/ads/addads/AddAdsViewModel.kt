@@ -8,6 +8,7 @@ import com.clickandvisit.base.BaseAndroidViewModel
 import com.clickandvisit.data.model.property.add.PropertyAdd
 import com.clickandvisit.data.model.property.add.PropertyAddResponse
 import com.clickandvisit.data.repository.abs.UserRepository
+import com.clickandvisit.global.helper.Navigation
 import com.clickandvisit.global.listener.SchedulerProvider
 import com.clickandvisit.global.utils.DebugLog
 import com.clickandvisit.global.utils.ExtraKeys
@@ -31,22 +32,27 @@ class AddAdsViewModel
     /** step one **/
     val checkedSale: MutableLiveData<Boolean> = MutableLiveData(false)
     val checkedRent: MutableLiveData<Boolean> = MutableLiveData(false)
+
     val checkedHome: MutableLiveData<Boolean> = MutableLiveData(false)
     val checkedB: MutableLiveData<Boolean> = MutableLiveData(false)
     val checkedApp: MutableLiveData<Boolean> = MutableLiveData(false)
     val checkedTer: MutableLiveData<Boolean> = MutableLiveData(false)
     val checkedGarage: MutableLiveData<Boolean> = MutableLiveData(false)
     val checkedComm: MutableLiveData<Boolean> = MutableLiveData(false)
+
     val checked1: MutableLiveData<Boolean> = MutableLiveData(false)
     val checked2: MutableLiveData<Boolean> = MutableLiveData(false)
     val checked3: MutableLiveData<Boolean> = MutableLiveData(false)
     val checked4: MutableLiveData<Boolean> = MutableLiveData(false)
     val checked5: MutableLiveData<Boolean> = MutableLiveData(false)
     val checkedNA: MutableLiveData<Boolean> = MutableLiveData(false)
+
     val surface: MutableLiveData<String> = MutableLiveData()
     val price: MutableLiveData<String> = MutableLiveData()
+
     val stage: MutableLiveData<String> = MutableLiveData()
     val on: MutableLiveData<String> = MutableLiveData()
+
     val info: MutableLiveData<String> = MutableLiveData()
 
 
@@ -122,6 +128,21 @@ class AddAdsViewModel
             propertyAdd.value?.propCategory = 101
         }
 
+        // S+...
+        propertyAdd.value?.prop_meta_chambres = if (checked1.value == true) {
+             "1"
+        } else if (checked2.value == true) {
+            "2"
+        } else if (checked3.value == true) {
+            "3"
+        } else if (checked4.value == true) {
+            "4"
+        } else if (checked5.value == true) {
+            "5 et +"
+        } else
+            "NA"
+
+
         //TODO: type de bien
         propertyAdd.value?.propSurface = surface.value?.toInt()
         propertyAdd.value?.propPrix = price.value?.toInt()
@@ -131,7 +152,7 @@ class AddAdsViewModel
         propertyAdd.value?.propInfos = info.value
 
 
-        propertyAdd.value?.prop_meta_chambres = roomNbrApi1.value
+        //FIXME: query Saif; propertyAdd.value?.prop_meta_chambres = roomNbrApi1.value
         propertyAdd.value?.prop_meta_suites = roomNbrApi2.value
         propertyAdd.value?.prop_meta_salles_de_bains = roomNbrApi3.value
         propertyAdd.value?.prop_meta_salles_d_eau = roomNbrApi4.value
@@ -163,7 +184,7 @@ class AddAdsViewModel
 
         //FIXME: update photo ws call property?.propMainPhoto
 
-        showBlockProgressBar()
+/*        showBlockProgressBar()
         viewModelScope.launch {
             tryCatch({
                 val propertyAddResponse = withContext(schedulerProvider.dispatchersIO()) {
@@ -175,13 +196,14 @@ class AddAdsViewModel
             }, { error ->
                 onCreateOrUpdatePropertyError(error)
             })
-        }
+        }*/
     }
 
 
     private fun onCreateOrUpdatePropertySuccess(propertyAddResponse: PropertyAddResponse) {
         hideBlockProgressBar()
         DebugLog.i(TAG, propertyAddResponse.toString())
+        navigate(Navigation.CalendarFragmentNavigation)
     }
 
     private fun onCreateOrUpdatePropertyError(throwable: Throwable) {

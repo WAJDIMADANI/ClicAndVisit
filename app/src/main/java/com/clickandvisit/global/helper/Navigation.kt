@@ -48,4 +48,6 @@ sealed class Navigation {
 
     object OpenDrawerNavigation : Navigation()
 
+    object CalendarFragmentNavigation : Navigation()
+
 }

@@ -31,9 +31,10 @@ data class PropertyAdd(
     @Json(name = "prop_infos_complementaires")
     var infoComp: String? = null,
 
-
     @Json(name = "prop_meta_chambres")
     var prop_meta_chambres: String? = null,
+
+
     @Json(name = "prop_meta_suites")
     var prop_meta_suites: String? = null,
     @Json(name = "prop_meta_salles_de_bains")

@@ -1,12 +1,15 @@
 package com.clickandvisit.ui.ads.addads.stepone
 
 import android.app.Application
+import android.net.Uri
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
+import androidx.lifecycle.map
 import com.clickandvisit.base.BaseAndroidViewModel
 import com.clickandvisit.data.model.property.add.PropertyAdd
 import com.clickandvisit.data.repository.abs.UserRepository
 import com.clickandvisit.global.listener.SchedulerProvider
+import com.clickandvisit.global.utils.isWhiteSpaces
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -48,6 +51,33 @@ class OneViewModel
 
     init {
 
+
+    }
+
+    fun validateFields(): Boolean {
+        return validSurface() and
+                validPriceTo() and
+                isChecked1() and
+                isChecked2() and
+                isChecked3()
+    }
+
+    private fun validSurface() =
+        !surface.value.isWhiteSpaces()
+
+    private fun validPriceTo() =
+        !price.value.isWhiteSpaces()
+
+    private fun isChecked1(): Boolean {
+        return checkedSale.value!! || checkedRent.value!!
+    }
+
+    private fun isChecked2(): Boolean {
+        return checkedHome.value!! || checkedB.value!! || checkedApp.value!! || checkedTer.value!! || checkedGarage.value!! || checkedComm.value!!
+    }
+
+    private fun isChecked3(): Boolean {
+        return checked1.value!! || checked2.value!! || checked3.value!! || checked4.value!! || checked5.value!! || checkedNA.value!!
     }
 
     fun onDPEAClicked() {

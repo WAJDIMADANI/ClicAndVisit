@@ -164,15 +164,6 @@ class HomeActivity : BaseActivity(), DrawerLayout.DrawerListener {
     }
 
 
-    private fun onMenuClicked() {
-        if (binding.drawerLayoutHome.isDrawerOpen(GravityCompat.START)) {
-            binding.drawerLayoutHome.closeDrawers()
-        } else {
-            binding.drawerLayoutHome.openDrawer(GravityCompat.START)
-        }
-    }
-
-
     override fun onDrawerStateChanged(newState: Int) {
         DebugLog.i(TAG, "onDrawerStateChanged")
     }
@@ -191,10 +182,6 @@ class HomeActivity : BaseActivity(), DrawerLayout.DrawerListener {
         //viewModel.getProfile()
     }
 
-
-    fun onStarted() {
-        DebugLog.d(TAG, "onStarted")
-    }
 
     override fun navigate(navigationTo: Navigation) {
         when (navigationTo) {
