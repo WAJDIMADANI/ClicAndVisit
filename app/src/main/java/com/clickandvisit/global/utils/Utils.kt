@@ -6,6 +6,7 @@ import android.content.Intent
 import android.net.Uri
 import com.clickandvisit.ClickVisitApplication
 import com.clickandvisit.R
+import java.lang.Exception
 import java.sql.Timestamp
 import java.text.SimpleDateFormat
 import java.util.*
@@ -33,4 +34,33 @@ fun getDateWithPattern(date: Long): String? = run {
         ClickVisitApplication.getInstance().resources.getString(R.string.filter_date_pattern),
         Locale.getDefault()
     ).format(timestampCreateIntervention)
+}
+
+/**
+ * from ws format to mobile format
+ */
+fun getWsDate(date: String?): String? {
+    val inputDateFormat =
+        SimpleDateFormat(ClickVisitApplication.getInstance().resources.getString(R.string.date_input_format))
+    val outputDateFormat =
+        SimpleDateFormat(ClickVisitApplication.getInstance().resources.getString(R.string.date_output_format))
+    return try {
+        outputDateFormat.format(inputDateFormat.parse(date))
+    } catch (e: Exception) {
+        e.printStackTrace()
+        date
+    }
+}
+
+fun getWsTime(date: String?): String? {
+    val inputDateFormat =
+        SimpleDateFormat(ClickVisitApplication.getInstance().resources.getString(R.string.date_input_format))
+    val outputDateFormat =
+        SimpleDateFormat(ClickVisitApplication.getInstance().resources.getString(R.string.time_output_format))
+    return try {
+        outputDateFormat.format(inputDateFormat.parse(date))
+    } catch (e: Exception) {
+        e.printStackTrace()
+        date
+    }
 }

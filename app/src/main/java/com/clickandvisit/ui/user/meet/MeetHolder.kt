@@ -8,7 +8,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.clickandvisit.data.model.reservation.Reservation
 import com.clickandvisit.databinding.ItemMeetBinding
 import com.clickandvisit.global.listener.OnMeetClickedListener
+import com.clickandvisit.global.utils.getWsDate
+import com.clickandvisit.global.utils.getWsTime
 import com.clickandvisit.global.utils.toMediaUrl
+import com.squareup.moshi.internal.Util
 import com.squareup.picasso.Picasso
 
 
@@ -21,11 +24,14 @@ class MeetHolder(
 
 
     fun bind(value: Reservation, position: Int) {
+
         binding.tvAdsName.text = "${value.category} - ${value.city}"
         binding.tvAdsAddress.text = "${value.road},\n ${value.postalCode} ${value.city}"
-        binding.tvAdsPrice.text = "${value.price}"
-        binding.tvAdsDate.text = "${value.reservationDetails.dateTime}"
+        binding.tvAdsPrice.text = "${value.price} €"
         binding.tvAdsMeetUserName.text = "${value.reservationUser.userName}"
+
+        binding.tvAdsDate.text = getWsDate(value.reservationDetails.dateTime)
+        binding.tvAdsHour.text = "à " + getWsTime(value.reservationDetails.dateTime)
 
         if (value.mainPhoto.toMediaUrl() != "https://")
             picasso.load(value.mainPhoto.toMediaUrl()).into(binding.appCompatImageView2)
