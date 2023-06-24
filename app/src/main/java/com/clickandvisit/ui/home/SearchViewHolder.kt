@@ -42,7 +42,7 @@ class SearchViewHolder(
         }
 
         binding.tvAdsSpace.text =
-            "T${value.details.chambres + 1} - " + value.details.getRoomsNBR() + value.surface + context.getString(
+            value.details.getRoomsNBR() + value.surface + context.getString(
                 R.string.home_details_m_square
             )
 

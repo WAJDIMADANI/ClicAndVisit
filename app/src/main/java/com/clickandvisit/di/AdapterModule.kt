@@ -4,6 +4,7 @@ import com.clickandvisit.ui.ads.adslist.PropertyAdapter
 import com.clickandvisit.ui.home.SearchAdapter
 import com.clickandvisit.ui.user.chat.ChatAdapter
 import com.clickandvisit.ui.user.chat.conv.ConvAdapter
+import com.clickandvisit.ui.user.meet.MeetAdapter
 import com.squareup.picasso.Picasso
 import dagger.Module
 import dagger.Provides
@@ -34,6 +35,11 @@ class ActivityAdapterModule {
     @Provides
     fun providePropertyAdapter(picasso: Picasso): PropertyAdapter {
         return PropertyAdapter(picasso)
+    }
+
+    @Provides
+    fun provideMeetAdapter(picasso: Picasso): MeetAdapter {
+        return MeetAdapter(picasso)
     }
 
 }

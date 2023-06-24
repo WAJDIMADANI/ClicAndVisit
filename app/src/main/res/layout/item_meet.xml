@@ -1,181 +1,202 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="@dimen/margin_global_25dp"
-    android:layout_marginTop="@dimen/margin_global_10dp"
-    android:layout_marginEnd="@dimen/margin_global_25dp"
-    android:paddingBottom="@dimen/margin_global_10dp">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/llAdsRoomNbr"
+    <data>
+
+        <variable
+            name="reservation"
+            type="com.clickandvisit.data.model.reservation.Reservation" />
+
+        <variable
+            name="listener"
+            type="com.clickandvisit.global.listener.OnMeetClickedListener" />
+
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="53dp"
-        android:background="@color/black"
-        android:gravity="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_global_25dp"
+        android:layout_marginTop="@dimen/margin_global_10dp"
+        android:layout_marginEnd="@dimen/margin_global_25dp"
+        android:paddingBottom="@dimen/margin_global_10dp">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/llAdsRoomNbr"
+            android:layout_width="match_parent"
+            android:layout_height="53dp"
+            android:background="@color/black"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvAdsName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_bold"
+                android:text="Maison - LYON"
+                android:textColor="@color/white_basic"
+                android:textSize="@dimen/font_14sp" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvAdsName"
+            android:id="@+id/tvAdsAddress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_global_15dp"
+            android:layout_marginTop="@dimen/margin_global_15dp"
+            android:fontFamily="@font/poppins_regular"
+            android:text="3 rue du paradis \n69160 TASSIN LA DEMI-LUNE"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/llAdsRoomNbr" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvAdsPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_global_15dp"
+            android:layout_marginTop="@dimen/margin_global_10dp"
+            android:fontFamily="@font/poppins_regular"
+            android:text="2000€"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvAdsAddress" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvAdsDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_global_15dp"
+            android:layout_marginTop="@dimen/margin_global_10dp"
+            android:fontFamily="@font/poppins_regular"
+            android:text="Dimanche 27/11/2022"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvAdsPrice" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvAdsHour"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_global_15dp"
+            android:fontFamily="@font/poppins_regular"
+            android:text="à 14h00"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvAdsDate" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvAdsMeetTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_global_15dp"
+            android:layout_marginTop="@dimen/margin_global_10dp"
             android:fontFamily="@font/poppins_bold"
-            android:text="Maison - LYON"
+            android:text="Rendez-vous avec :"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvAdsHour" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvAdsMeetUserName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_global_15dp"
+            android:fontFamily="@font/poppins_regular"
+            android:text="DURAND Nicolas"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvAdsMeetTitle" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/appCompatImageView2"
+            android:layout_width="150dp"
+            android:layout_height="130dp"
+            android:layout_marginTop="@dimen/margin_global_10dp"
+            android:layout_marginEnd="@dimen/margin_global_15dp"
+            android:background="@drawable/ic_meet_place_holder"
+            app:layout_constraintBottom_toBottomOf="@+id/tvAdsHour"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/llAdsRoomNbr" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvConfirmMeet"
+            android:layout_width="127dp"
+            android:layout_height="51dp"
+            android:layout_marginTop="@dimen/margin_global_10dp"
+            app:onClickWithDebounce="@{()->listener.onConfirmClicked(reservation)}"
+            android:layout_marginBottom="@dimen/padding_global_10dp"
+            android:background="@color/green_pro_status_details"
+            android:fontFamily="@font/poppins_medium"
+            android:gravity="center"
+            android:padding="@dimen/margin_global_5dp"
+            android:paddingStart="@dimen/padding_global_5dp"
+            android:paddingEnd="@dimen/padding_global_5dp"
+            android:text="@string/meet_confirm"
+            android:textAllCaps="true"
             android:textColor="@color/white_basic"
-            android:textSize="@dimen/font_14sp" />
+            android:textSize="@dimen/dimen_12sp"
+            app:layout_constraintEnd_toEndOf="@+id/appCompatImageView2"
+            app:layout_constraintTop_toBottomOf="@+id/appCompatImageView2" />
 
-    </androidx.appcompat.widget.LinearLayoutCompat>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvStatus2"
+            android:layout_width="127dp"
+            android:layout_height="51dp"
+            android:layout_marginTop="@dimen/margin_global_10dp"
+            android:background="@color/red_pro_status"
+            android:fontFamily="@font/poppins_medium"
+            android:gravity="center"
+            app:onClickWithDebounce="@{()->listener.onCancelClicked(reservation)}"
+            android:paddingStart="@dimen/padding_global_5dp"
+            android:paddingEnd="@dimen/padding_global_5dp"
+            android:text="@string/meet_not_dispo"
+            android:textAllCaps="true"
+            android:textColor="@color/white_basic"
+            android:textSize="@dimen/dimen_12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/tvConfirmMeet"
+            app:layout_constraintStart_toStartOf="@+id/tvConfirmMeet"
+            app:layout_constraintTop_toBottomOf="@+id/tvConfirmMeet" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvAdsAddress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_global_15dp"
-        android:layout_marginTop="@dimen/margin_global_15dp"
-        android:fontFamily="@font/poppins_regular"
-        android:text="3 rue du paradis \n69160 TASSIN LA DEMI-LUNE"
-        android:textColor="@color/black"
-        android:textSize="@dimen/font_12sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/llAdsRoomNbr" />
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivChat"
+            android:layout_width="@dimen/dimen_55dp"
+            android:layout_height="@dimen/dimen_55dp"
+            android:layout_marginStart="@dimen/margin_global_15dp"
+            android:background="@drawable/ic_meet_tag_background"
+            android:padding="@dimen/margin_global_15dp"
+            android:src="@drawable/ic_chat_green"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tvStatus2"
+            app:onClickWithDebounce="@{()->listener.onChatClicked(reservation)}"/>
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvAdsPrice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_global_15dp"
-        android:layout_marginTop="@dimen/margin_global_10dp"
-        android:fontFamily="@font/poppins_regular"
-        android:text="2000€"
-        android:textColor="@color/black"
-        android:textSize="@dimen/font_12sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvAdsAddress" />
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivAttach"
+            android:layout_width="@dimen/dimen_55dp"
+            android:layout_height="@dimen/dimen_55dp"
+            android:layout_marginStart="@dimen/margin_global_15dp"
+            android:background="@drawable/ic_meet_tag_background"
+            android:padding="@dimen/margin_global_15dp"
+            app:onClickWithDebounce="@{()->listener.onSignalClicked(reservation)}"
+            android:src="@drawable/ic_attach_green"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ivChat"
+            app:layout_constraintTop_toTopOf="@+id/tvStatus2" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvAdsDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_global_15dp"
-        android:layout_marginTop="@dimen/margin_global_10dp"
-        android:fontFamily="@font/poppins_regular"
-        android:text="Dimanche 27/11/2022"
-        android:textColor="@color/black"
-        android:textSize="@dimen/font_12sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvAdsPrice" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvAdsHour"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_global_15dp"
-        android:fontFamily="@font/poppins_regular"
-        android:text="à 14h00"
-        android:textColor="@color/black"
-        android:textSize="@dimen/font_12sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvAdsDate" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvAdsMeetTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_global_15dp"
-        android:layout_marginTop="@dimen/margin_global_10dp"
-        android:fontFamily="@font/poppins_bold"
-        android:text="Rendez-vous avec :"
-        android:textColor="@color/black"
-        android:textSize="@dimen/font_12sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvAdsHour" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvAdsMeetUserName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_global_15dp"
-        android:fontFamily="@font/poppins_regular"
-        android:text="DURAND Nicolas"
-        android:textColor="@color/black"
-        android:textSize="@dimen/font_12sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvAdsMeetTitle" />
-
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/appCompatImageView2"
-        android:layout_width="150dp"
-        android:layout_height="130dp"
-        android:layout_marginTop="@dimen/margin_global_10dp"
-        android:layout_marginEnd="@dimen/margin_global_15dp"
-        android:background="@drawable/ic_meet_place_holder"
-        app:layout_constraintBottom_toBottomOf="@+id/tvAdsHour"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/llAdsRoomNbr" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvConfirmMeet"
-        android:layout_width="127dp"
-        android:layout_height="51dp"
-        android:layout_marginTop="@dimen/margin_global_10dp"
-        android:layout_marginBottom="@dimen/padding_global_10dp"
-        android:background="@color/green_pro_status_details"
-        android:fontFamily="@font/poppins_medium"
-        android:gravity="center"
-        android:padding="@dimen/margin_global_5dp"
-        android:paddingStart="@dimen/padding_global_5dp"
-        android:paddingEnd="@dimen/padding_global_5dp"
-        android:text="@string/meet_confirm"
-        android:textAllCaps="true"
-        android:textColor="@color/white_basic"
-        android:textSize="@dimen/dimen_12sp"
-        app:layout_constraintEnd_toEndOf="@+id/appCompatImageView2"
-        app:layout_constraintTop_toBottomOf="@+id/appCompatImageView2" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvStatus2"
-        android:layout_width="127dp"
-        android:layout_height="51dp"
-        android:layout_marginTop="@dimen/margin_global_10dp"
-        android:background="@color/red_pro_status"
-        android:fontFamily="@font/poppins_medium"
-        android:gravity="center"
-        android:paddingStart="@dimen/padding_global_5dp"
-        android:paddingEnd="@dimen/padding_global_5dp"
-        android:text="@string/meet_not_dispo"
-        android:textAllCaps="true"
-        android:textColor="@color/white_basic"
-        android:textSize="@dimen/dimen_12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/tvConfirmMeet"
-        app:layout_constraintStart_toStartOf="@+id/tvConfirmMeet"
-        app:layout_constraintTop_toBottomOf="@+id/tvConfirmMeet" />
-
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/ivChat"
-        android:layout_width="@dimen/dimen_55dp"
-        android:layout_height="@dimen/dimen_55dp"
-        android:layout_marginStart="@dimen/margin_global_15dp"
-        android:background="@drawable/ic_meet_tag_background"
-        android:padding="@dimen/margin_global_15dp"
-        android:src="@drawable/ic_chat_green"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tvStatus2" />
-
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/ivAttach"
-        android:layout_width="@dimen/dimen_55dp"
-        android:layout_height="@dimen/dimen_55dp"
-        android:layout_marginStart="@dimen/margin_global_15dp"
-        android:background="@drawable/ic_meet_tag_background"
-        android:padding="@dimen/margin_global_15dp"
-        android:src="@drawable/ic_attach_green"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/ivChat"
-        app:layout_constraintTop_toTopOf="@+id/tvStatus2" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
