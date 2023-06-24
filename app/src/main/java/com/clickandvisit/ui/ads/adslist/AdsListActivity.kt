@@ -4,9 +4,7 @@ package com.clickandvisit.ui.ads.adslist
 import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,6 +15,7 @@ import com.clickandvisit.databinding.ActivityAdsListBinding
 import com.clickandvisit.global.helper.Navigation
 import com.clickandvisit.global.utils.ExtraKeys
 import com.clickandvisit.ui.ads.addads.AddAdsActivity
+import com.clickandvisit.ui.shared.view.CustomButton
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -83,14 +82,13 @@ class AdsListActivity : BaseActivity() {
 
             is Navigation.RateNav -> {
                 val dialog = Dialog(this)
-                dialog.setContentView(R.layout.dialog_layout)
+                dialog.setContentView(R.layout.dialog_rate_layout)
                 dialog.window!!.setLayout(
                     ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT
                 )
                 dialog.setCancelable(false)
-                val customButton = dialog.findViewById<com.clickandvisit.ui.shared.view.CustomButton>(R.id.customButton)
-                customButton.setOnClickListener {
+                dialog.findViewById<CustomButton>(R.id.customButton).setOnClickListener {
                     dialog.dismiss()
                 }
                 dialog.show()

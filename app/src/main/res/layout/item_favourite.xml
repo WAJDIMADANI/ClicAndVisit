@@ -22,6 +22,7 @@
         android:layout_marginEnd="@dimen/margin_global_10dp"
         android:layout_marginBottom="@dimen/margin_global_10dp"
         android:background="@color/white_basic"
+        android:clipToPadding="false"
         android:padding="@dimen/margin_global_10dp"
         app:onClickWithDebounce="@{()->listener.onItemClicked(property)}">
 
@@ -91,9 +92,10 @@
             android:id="@+id/llLike"
             android:layout_width="35dp"
             android:layout_height="35dp"
+            android:background="@drawable/ic_white_round"
+            android:elevation="@dimen/dimen_8dp"
             android:gravity="center"
             android:paddingStart="5dp"
-            android:background="@drawable/ic_white_round"
             app:layout_constraintBottom_toBottomOf="@+id/ivShare"
             app:layout_constraintEnd_toStartOf="@+id/ivShare"
             app:layout_constraintTop_toTopOf="@+id/ivShare">
@@ -101,9 +103,9 @@
             <androidx.appcompat.widget.AppCompatRadioButton
                 android:id="@+id/ivLike"
                 style="@style/RadioButton.Style"
-                android:shadowColor="@null"
                 android:layout_width="@dimen/dimen_30dp"
                 android:layout_height="@dimen/dimen_30dp"
+                android:shadowColor="@null"
                 app:onClickWithDebounce="@{()->listener.onLikeClicked(property)}" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>

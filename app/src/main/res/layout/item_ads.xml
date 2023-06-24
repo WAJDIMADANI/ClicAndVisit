@@ -28,7 +28,6 @@
             android:id="@+id/imageSlider"
             android:layout_width="match_parent"
             android:layout_height="187dp"
-            app:iss_placeholder="@drawable/ic_list_place_holder"
             app:iss_text_align="CENTER"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -62,7 +61,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/padding_global_5dp"
                 android:fontFamily="@font/poppins_bold"
-                android:text="5"
+                android:text="0"
                 android:textColor="@color/white_basic"
                 android:textSize="@dimen/dimen_12sp" />
 
@@ -72,9 +71,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="100dp"
-            android:gravity="center_vertical"
+            android:clipToPadding="false"
             android:layout_marginEnd="@dimen/margin_global_5dp"
             android:layout_marginBottom="@dimen/margin_global_15dp"
+            android:gravity="center_vertical"
             app:layout_constraintBottom_toTopOf="@+id/tvAdsPrice"
             app:layout_constraintEnd_toEndOf="parent">
 
