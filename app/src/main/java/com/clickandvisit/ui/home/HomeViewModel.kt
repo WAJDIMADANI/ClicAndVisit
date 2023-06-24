@@ -12,9 +12,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import com.clickandvisit.R
 import com.clickandvisit.base.BaseAndroidViewModel
-import com.clickandvisit.data.model.property.Property
-import com.clickandvisit.data.model.property.SearchRequest
-import com.clickandvisit.data.model.property.SearchResponse
+import com.clickandvisit.data.model.GlobalResponse
+import com.clickandvisit.data.model.property.*
 import com.clickandvisit.data.model.user.TokenResponse
 import com.clickandvisit.data.repository.abs.UserRepository
 import com.clickandvisit.global.helper.Navigation
@@ -188,12 +187,31 @@ class HomeViewModel
     }
 
     override fun onLikeClicked(value: Property) {
-        //TODO ws call
+        showBlockProgressBar()
+        val action = if (value.isFavorite) {
+            REMOVE
+        } else {
+            ADD
+        }
+        viewModelScope.launch {
+            tryCatch({
+                val response = withContext(schedulerProvider.dispatchersIO()) {
+                    userRepository.addRemoveFavorite(FavoriteRequest(value.id, action))
+                }
+                onLikeClickedSuccess(response)
+            }, { error ->
+                onLikeClickedError(error)
+            })
+        }
+    }
 
-        val unwrappedDrawable: Drawable? =
-            AppCompatResources.getDrawable(applicationContext, R.drawable.ic_like)
-        val wrappedDrawable: Drawable = DrawableCompat.wrap(unwrappedDrawable!!)
-        DrawableCompat.setTint(wrappedDrawable, Color.RED)
+    private fun onLikeClickedSuccess(response: GlobalResponse) {
+        hideBlockProgressBar()
+    }
+
+    private fun onLikeClickedError(throwable: Throwable) {
+        hideBlockProgressBar()
+        handleThrowable(throwable)
     }
 
     override fun onShareClicked(value: Property) {

@@ -83,7 +83,7 @@ class AdsListViewModel
     }
 
     override fun onShareClicked(value: Property) {
-        DebugLog.i(TAG, "onShareClicked")
+        navigate(Navigation.ShareNavigation(value))
     }
 
     override fun onEditClicked(value: Property) {
@@ -91,7 +91,7 @@ class AdsListViewModel
     }
 
     override fun onRateClicked(value: Property) {
-        DebugLog.i(TAG, "onRateClicked")
+        navigate(Navigation.RateNav)
     }
 
     override fun onMeetClicked(value: Property) {

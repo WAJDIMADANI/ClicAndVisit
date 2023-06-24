@@ -28,7 +28,6 @@
             android:id="@+id/imageSlider"
             android:layout_width="match_parent"
             android:layout_height="187dp"
-            app:iss_auto_cycle="true"
             app:iss_placeholder="@drawable/ic_list_place_holder"
             app:iss_text_align="CENTER"
             app:layout_constraintEnd_toEndOf="parent"
@@ -133,6 +132,18 @@
             android:textSize="@dimen/font_12sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvAdsName" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvAdsSpace"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_global_12dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="T2 - 35m2"
+            android:textColor="@color/details_color"
+            android:textSize="@dimen/font_12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvAdsPrice" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

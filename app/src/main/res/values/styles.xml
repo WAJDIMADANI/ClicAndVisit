@@ -16,7 +16,7 @@
 
     <!-- RadioButton  style-->
     <style name="RadioButton.Style" parent="@android:style/Widget.CompoundButton.RadioButton">
-        <item name="android:button">@drawable/sign_up_radiobutton_background</item>
+        <item name="android:button">@drawable/like_radiobutton_background</item>
     </style>
 
 

@@ -29,7 +29,6 @@
             android:id="@+id/imageSlider"
             android:layout_width="match_parent"
             android:layout_height="187dp"
-            app:iss_auto_cycle="true"
             app:iss_placeholder="@drawable/ic_list_place_holder"
             app:iss_text_align="CENTER"
             app:layout_constraintEnd_toEndOf="parent"
@@ -87,15 +86,27 @@
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
-        <ImageView
-            android:id="@+id/ivLike"
-            android:layout_width="@dimen/dimen_50dp"
-            android:layout_height="@dimen/dimen_50dp"
-            android:src="@drawable/ic_like"
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/llLike"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:gravity="center"
+            android:paddingStart="5dp"
+            android:background="@drawable/ic_white_round"
             app:layout_constraintBottom_toBottomOf="@+id/ivShare"
             app:layout_constraintEnd_toStartOf="@+id/ivShare"
-            app:layout_constraintTop_toTopOf="@+id/ivShare"
-            app:onClickWithDebounce="@{()->listener.onLikeClicked(property)}" />
+            app:layout_constraintTop_toTopOf="@+id/ivShare">
+
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/ivLike"
+                style="@style/RadioButton.Style"
+                android:shadowColor="@null"
+                android:layout_width="@dimen/dimen_30dp"
+                android:layout_height="@dimen/dimen_30dp"
+                app:onClickWithDebounce="@{()->listener.onLikeClicked(property)}" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
         <ImageView
             android:id="@+id/ivShare"

@@ -30,7 +30,7 @@ data class Property(
     @Json(name = "owner")
     val owner: PropertyOwner,
     @Json(name = "is_favorite")
-    val isFavorite: Boolean,
+    var isFavorite: Boolean,
     @Json(name = "surface")
     val surface: String,
     @Json(name = "price")

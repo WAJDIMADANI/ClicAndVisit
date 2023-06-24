@@ -33,16 +33,27 @@ class SearchViewHolder(
         }
         binding.tvAdsName.text = value.title
         binding.tvPhotoCount.text = value.album.size.toString()
-        binding.tvAdsPrice.text =
-            value.getCategories() + value.getPriceNBR() + context.getString(R.string.home_details_euros)
-        binding.tvAdsSpace.text =
-            value.details.getRoomsNBR() + value.surface + context.getString(R.string.home_details_m_square)
 
-/*
-        DrawableCompat.setTint(
-            DrawableCompat.wrap(binding.ivLike.drawable),
-            ContextCompat.getColor(context, R.color.red_pro_status)
-        )*/
+        if (value.getCategories().isNullOrEmpty() && value.getPriceNBR().isNullOrEmpty()) {
+            binding.tvAdsPrice.visibility = View.GONE
+        } else {
+            binding.tvAdsPrice.text =
+                value.getCategories() + " - " + value.getPriceNBR() + context.getString(R.string.home_details_euros)
+        }
+
+        binding.tvAdsSpace.text =
+            "T${value.details.chambres + 1} - " + value.details.getRoomsNBR() + value.surface + context.getString(
+                R.string.home_details_m_square
+            )
+
+
+        binding.ivLike.isChecked = value.isFavorite
+
+        binding.ivLike.setOnClickListener {
+            //binding.ivLike.isChecked = !binding.ivLike.isChecked
+            value.isFavorite = value.isFavorite.not()
+            binding.ivLike.isChecked = value.isFavorite
+        }
 
         proVisibility(value)
         loadImages(value)

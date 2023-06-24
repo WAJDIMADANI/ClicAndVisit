@@ -145,9 +145,9 @@ interface APIClient {
     @FormUrlEncoded
     @POST("add_favorite")
     suspend fun addRemoveFavorite(
-        @Path("propertyId") propertyId: Int,
-        @Path("userId") userId: Int,
-        @Path("action") action: String
+        @Field("property_id") propertyId: Int,
+        @Field("user_id") userId: Int,
+        @Field("action") action: String
     ): GlobalResponse
 
 

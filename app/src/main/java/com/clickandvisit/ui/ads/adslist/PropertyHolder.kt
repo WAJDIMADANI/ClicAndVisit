@@ -2,6 +2,7 @@ package com.clickandvisit.ui.ads.adslist
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.clickandvisit.R
@@ -27,8 +28,19 @@ class PropertyHolder(
         } else {
             value.album.size.toString()
         }
-        binding.tvAdsPrice.text =
-            value.getCategories() + value.getPriceNBR() + context.getString(R.string.home_details_euros)
+
+        if (value.getCategories().isNullOrEmpty() && value.getPriceNBR().isNullOrEmpty()) {
+            binding.tvAdsPrice.visibility = View.GONE
+        } else {
+            binding.tvAdsPrice.text =
+                value.getCategories() + " - " + value.getPriceNBR() + context.getString(R.string.home_details_euros)
+        }
+
+        binding.tvAdsSpace.text =
+            "T${value.details.chambres + 1} - " + value.details.getRoomsNBR() + value.surface + context.getString(
+                R.string.home_details_m_square
+            )
+
 
         loadImages(value)
 

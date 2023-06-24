@@ -52,4 +52,6 @@ sealed class Navigation {
 
     object CalendarFragmentNavigation : Navigation()
 
+    object RateNav : Navigation()
+
 }

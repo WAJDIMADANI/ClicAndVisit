@@ -1,7 +1,12 @@
 package com.clickandvisit.ui.ads.adslist
 
+
+import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import android.view.ViewGroup
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -45,7 +50,9 @@ class AdsListActivity : BaseActivity() {
      */
     override fun navigate(navigationTo: Navigation) {
         when (navigationTo) {
+
             is Navigation.Back -> finish()
+
             is Navigation.AddAdsActivity -> {
                 Intent(this, AddAdsActivity::class.java).let { intent ->
                     intent.putExtra(
@@ -58,6 +65,35 @@ class AdsListActivity : BaseActivity() {
                     )
                     startActivity(intent)
                 }
+            }
+
+            is Navigation.ShareNavigation -> {
+                Intent().let {
+                    it.action = Intent.ACTION_SEND
+                    it.type = "text/plain"
+                    it.putExtra(Intent.EXTRA_TEXT, navigationTo.property.toString())
+                    startActivity(
+                        Intent.createChooser(
+                            it,
+                            getString(R.string.global_recommend_app)
+                        )
+                    )
+                }
+            }
+
+            is Navigation.RateNav -> {
+                val dialog = Dialog(this)
+                dialog.setContentView(R.layout.dialog_layout)
+                dialog.window!!.setLayout(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT
+                )
+                dialog.setCancelable(false)
+                val customButton = dialog.findViewById<com.clickandvisit.ui.shared.view.CustomButton>(R.id.customButton)
+                customButton.setOnClickListener {
+                    dialog.dismiss()
+                }
+                dialog.show()
             }
         }
     }
