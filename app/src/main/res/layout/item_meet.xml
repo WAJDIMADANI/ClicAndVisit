@@ -22,6 +22,7 @@
         android:background="@color/white_basic"
         android:layout_marginTop="@dimen/margin_global_10dp"
         android:layout_marginEnd="@dimen/margin_global_25dp"
+        android:layout_marginBottom="@dimen/padding_global_10dp"
         android:paddingBottom="@dimen/margin_global_10dp">
 
         <androidx.appcompat.widget.LinearLayoutCompat

@@ -29,6 +29,10 @@ class MeetViewModel
     val list: MutableLiveData<List<Reservation>> = MutableLiveData(arrayListOf())
 
     init {
+        getReservations()
+    }
+
+    private fun getReservations() {
         showBlockProgressBar()
         viewModelScope.launch {
             tryCatch({
@@ -58,23 +62,46 @@ class MeetViewModel
     }
 
     override fun onConfirmClicked(value: Reservation) {
-        DebugLog.i(TAG, "onConfirmClicked")
+        acceptRefuseReservation(value, true)
     }
 
     override fun onRejectClicked(value: Reservation) {
-        DebugLog.i(TAG, "onRejectClicked")
+        acceptRefuseReservation(value, false)
     }
 
     override fun onCancelClicked(value: Reservation) {
-        DebugLog.i(TAG, "onCancelClicked")
+        acceptRefuseReservation(value, false)
     }
 
-    override fun onChatClicked(value: Reservation) {
+    override fun onChatClicked(value: Reservation) {//TODO
         DebugLog.i(TAG, "onChatClicked")
     }
 
-    override fun onSignalClicked(value: Reservation) {
+    override fun onSignalClicked(value: Reservation) {//TODO
         DebugLog.i(TAG, "onSignalClicked")
+    }
+
+    private fun acceptRefuseReservation(value: Reservation, accept: Boolean) {
+        showBlockProgressBar()
+        viewModelScope.launch {
+            tryCatch({
+                val response = withContext(schedulerProvider.dispatchersIO()) {
+                    userRepository.acceptRefuseReservation(
+                        value.reservationDetails!!.propertyId.toInt(),
+                        value.id,
+                        accept
+                    )
+                }
+                onAcceptRefuseReservationSuccess(response)
+            }, { error ->
+                onGetReservationsError(error)
+            })
+        }
+    }
+
+    private fun onAcceptRefuseReservationSuccess(response: ReservationResponse) {
+        hideBlockProgressBar()
+        getReservations()
     }
 
 }
