@@ -18,7 +18,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_global_25dp"
+        android:layout_marginStart="@dimen/margin_global_15dp"
+        android:background="@color/white_basic"
         android:layout_marginTop="@dimen/margin_global_10dp"
         android:layout_marginEnd="@dimen/margin_global_25dp"
         android:paddingBottom="@dimen/margin_global_10dp">
@@ -50,6 +51,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_global_15dp"
             android:layout_marginTop="@dimen/margin_global_15dp"
+            android:ellipsize="end"
             android:fontFamily="@font/poppins_regular"
             android:text="3 rue du paradis \n69160 TASSIN LA DEMI-LUNE"
             android:textColor="@color/black"
@@ -95,14 +97,25 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvAdsDate" />
 
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/appCompatImageView2"
+            android:layout_width="150dp"
+            android:layout_height="130dp"
+            android:layout_marginTop="@dimen/margin_global_10dp"
+            android:layout_marginEnd="@dimen/margin_global_15dp"
+            android:background="@drawable/ic_meet_place_holder"
+            app:layout_constraintBottom_toBottomOf="@+id/tvAdsHour"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/llAdsRoomNbr" />
+
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvAdsMeetTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_global_15dp"
             android:layout_marginTop="@dimen/margin_global_10dp"
-            android:fontFamily="@font/poppins_bold"
-            android:text="Rendez-vous avec :"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/meet_with"
             android:textColor="@color/black"
             android:textSize="@dimen/font_12sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -120,23 +133,35 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvAdsMeetTitle" />
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/appCompatImageView2"
-            android:layout_width="150dp"
-            android:layout_height="130dp"
-            android:layout_marginTop="@dimen/margin_global_10dp"
-            android:layout_marginEnd="@dimen/margin_global_15dp"
-            android:background="@drawable/ic_meet_place_holder"
-            app:layout_constraintBottom_toBottomOf="@+id/tvAdsHour"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/llAdsRoomNbr" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvAdsMeetUserPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_global_15dp"
+            android:fontFamily="@font/poppins_regular"
+            android:textColor="@color/navy_blue"
+            android:textSize="@dimen/font_12sp"
+            android:visibility="invisible"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvAdsMeetUserName" />
+
+        <com.clickandvisit.ui.shared.view.CustomCircleImageView
+            android:id="@+id/customCircleUserPhoto"
+            android:layout_width="@dimen/dimen_40dp"
+            android:layout_height="@dimen/dimen_40dp"
+            android:layout_gravity="center_horizontal"
+            android:textSize="@dimen/dimen_12sp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@+id/ivAttach"
+            app:layout_constraintEnd_toEndOf="@+id/appCompatImageView2"
+            app:layout_constraintStart_toEndOf="@+id/tvAdsMeetUserName"
+            app:layout_constraintTop_toBottomOf="@+id/appCompatImageView2" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvConfirmMeet"
             android:layout_width="127dp"
             android:layout_height="51dp"
             android:layout_marginTop="@dimen/margin_global_10dp"
-            app:onClickWithDebounce="@{()->listener.onConfirmClicked(reservation)}"
             android:layout_marginBottom="@dimen/padding_global_10dp"
             android:background="@color/green_pro_status_details"
             android:fontFamily="@font/poppins_medium"
@@ -149,17 +174,17 @@
             android:textColor="@color/white_basic"
             android:textSize="@dimen/dimen_12sp"
             app:layout_constraintEnd_toEndOf="@+id/appCompatImageView2"
-            app:layout_constraintTop_toBottomOf="@+id/appCompatImageView2" />
+            app:layout_constraintTop_toBottomOf="@+id/appCompatImageView2"
+            app:onClickWithDebounce="@{()->listener.onConfirmClicked(reservation)}" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvStatus2"
+            android:id="@+id/tvRejectMeet"
             android:layout_width="127dp"
             android:layout_height="51dp"
             android:layout_marginTop="@dimen/margin_global_10dp"
             android:background="@color/red_pro_status"
             android:fontFamily="@font/poppins_medium"
             android:gravity="center"
-            app:onClickWithDebounce="@{()->listener.onCancelClicked(reservation)}"
             android:paddingStart="@dimen/padding_global_5dp"
             android:paddingEnd="@dimen/padding_global_5dp"
             android:text="@string/meet_not_dispo"
@@ -169,20 +194,42 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/tvConfirmMeet"
             app:layout_constraintStart_toStartOf="@+id/tvConfirmMeet"
-            app:layout_constraintTop_toBottomOf="@+id/tvConfirmMeet" />
+            app:layout_constraintTop_toBottomOf="@+id/tvConfirmMeet"
+            app:onClickWithDebounce="@{()->listener.onRejectClicked(reservation)}" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvCancelMeet"
+            android:layout_width="127dp"
+            android:layout_height="51dp"
+            android:layout_marginTop="@dimen/margin_global_10dp"
+            android:background="@drawable/ic_red_border"
+            android:fontFamily="@font/poppins_medium"
+            android:gravity="center"
+            android:paddingStart="@dimen/padding_global_5dp"
+            android:paddingEnd="@dimen/padding_global_5dp"
+            android:text="@string/meet_not_dispo"
+            android:textAllCaps="true"
+            android:textColor="@color/red_pro_status"
+            android:textSize="@dimen/dimen_12sp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/tvConfirmMeet"
+            app:layout_constraintTop_toBottomOf="@+id/tvConfirmMeet"
+            app:onClickWithDebounce="@{()->listener.onCancelClicked(reservation)}" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/ivChat"
             android:layout_width="@dimen/dimen_55dp"
             android:layout_height="@dimen/dimen_55dp"
             android:layout_marginStart="@dimen/margin_global_15dp"
+            android:layout_marginTop="@dimen/padding_global_5dp"
             android:background="@drawable/ic_meet_tag_background"
             android:padding="@dimen/margin_global_15dp"
             android:src="@drawable/ic_chat_green"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tvStatus2"
-            app:onClickWithDebounce="@{()->listener.onChatClicked(reservation)}"/>
+            app:layout_constraintTop_toBottomOf="@+id/tvAdsMeetUserPhone"
+            app:onClickWithDebounce="@{()->listener.onChatClicked(reservation)}" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/ivAttach"
@@ -191,11 +238,11 @@
             android:layout_marginStart="@dimen/margin_global_15dp"
             android:background="@drawable/ic_meet_tag_background"
             android:padding="@dimen/margin_global_15dp"
-            app:onClickWithDebounce="@{()->listener.onSignalClicked(reservation)}"
             android:src="@drawable/ic_attach_green"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/ivChat"
-            app:layout_constraintTop_toTopOf="@+id/tvStatus2" />
+            app:layout_constraintTop_toTopOf="@+id/ivChat"
+            app:onClickWithDebounce="@{()->listener.onSignalClicked(reservation)}" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
