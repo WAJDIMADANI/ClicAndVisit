@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
@@ -11,9 +12,12 @@ import com.clickandvisit.R
 import com.clickandvisit.base.BaseActivity
 import com.clickandvisit.databinding.ActivityMapsBinding
 import com.clickandvisit.global.helper.Navigation
+import com.clickandvisit.global.utils.DebugLog
+import com.clickandvisit.global.utils.TAG
 import com.clickandvisit.global.utils.observeOnlyNotNull
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.BitmapDescriptor
@@ -48,19 +52,31 @@ class MapsActivity : BaseActivity(), OnMapReadyCallback {
         map = googleMap
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(47.370208, 3.419315), 7F))
 
-        viewModel.searchResponse.observeOnlyNotNull(this) { it ->
-            it.properties.forEach {
+        viewModel.searchResponse.observeOnlyNotNull(this) { its ->
+            its.properties.forEach {prop ->
+
+                val vectorResId = if (prop.visitNow) {
+                    R.drawable.ic_baseline_location_green
+                } else {
+                    R.drawable.ic_baseline_location_on
+                }
                 map.addMarker(
                     MarkerOptions()
                         .flat(true)
                         .icon(
                             bitmapDescriptorFromVector(
                                 this,
-                                R.drawable.ic_marker
+                                vectorResId
                             )
                         )
-                        .position(LatLng(it.lat.toDouble(), it.long.toDouble()))
+                        .position(LatLng(prop.lat.toDouble(), prop.long.toDouble()))
                 )
+
+                map.setOnMarkerClickListener { _ ->
+                    DebugLog.i(TAG, prop.id.toString())
+                    true
+                }
+
             }
         }
     }

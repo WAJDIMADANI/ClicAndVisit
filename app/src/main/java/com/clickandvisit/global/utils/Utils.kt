@@ -6,9 +6,6 @@ import android.content.Intent
 import android.net.Uri
 import com.clickandvisit.ClickVisitApplication
 import com.clickandvisit.R
-import com.clickandvisit.data.model.property.SearchDataModel
-import com.denzcoskun.imageslider.models.SlideModel
-import java.lang.Exception
 import java.sql.Timestamp
 import java.text.SimpleDateFormat
 import java.util.*
