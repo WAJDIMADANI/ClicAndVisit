@@ -19,7 +19,11 @@ data class PropertyOwner(
     val proPar: String
 ) : Parcelable {
 
-    fun isPro() = proPar.toInt() == 1
+    fun isPro() = try {
+        proPar.toInt() == 1
+    } catch (e: NumberFormatException) {
+        false
+    }
 
     constructor(parcel: Parcel) : this(
         parcel.readString()!!,

@@ -11,6 +11,7 @@ import com.clickandvisit.R
 import com.clickandvisit.data.model.property.Property
 import com.clickandvisit.databinding.ItemFavouriteBinding
 import com.clickandvisit.global.listener.OnPropertyClickedListener
+import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
 import com.squareup.picasso.Picasso
 
@@ -32,28 +33,35 @@ class SearchViewHolder(
             binding.tvMeet.text = context.getString(R.string.home_meet)
         }
         binding.tvAdsName.text = value.title
-        binding.tvPhotoCount.text = value.album.size.toString()
-
-        if (value.getCategories().isNullOrEmpty() && value.getPriceNBR().isNullOrEmpty()) {
-            binding.tvAdsPrice.visibility = View.GONE
+        if (value.mainPhoto.isNullOrEmpty().not()) {
+            binding.tvPhotoCount.text = value.album.size.plus(1).toString()
         } else {
-            binding.tvAdsPrice.text =
-                value.getCategories() + " - " + value.getPriceNBR() + context.getString(R.string.home_details_euros)
+            binding.tvPhotoCount.text = value.album.size.toString()
+        }
+
+        if (value.category.isNullOrEmpty() && value.price.isNullOrEmpty()) {
+            binding.tvAdsPrice.visibility = View.GONE
+        } else if (value.category.isNullOrEmpty().not() && value.price.isNullOrEmpty()) {
+            binding.tvAdsPrice.text = value.category
+        } else if (value.category.isNullOrEmpty() && value.price.isNullOrEmpty().not()) {
+            binding.tvAdsPrice.text = value.getPriceNBR()
+        } else {
+            binding.tvAdsPrice.text = value.getCategories() + value.getPriceNBR()
         }
 
         binding.tvAdsSpace.text =
-            value.details.getRoomsNBR() + value.surface + context.getString(
+            value.details.getRoomsNBR() + value.surface + " " + context.getString(
                 R.string.home_details_m_square
             )
 
 
         binding.ivLike.isChecked = value.isFavorite
 
-        binding.ivLike.setOnClickListener {
+/*        binding.ivLike.setOnClickListener {
             //binding.ivLike.isChecked = !binding.ivLike.isChecked
             value.isFavorite = value.isFavorite.not()
             binding.ivLike.isChecked = value.isFavorite
-        }
+        }*/
 
         proVisibility(value)
         loadImages(value)
@@ -74,9 +82,13 @@ class SearchViewHolder(
 
     private fun loadImages(value: Property) {
         val imageList = ArrayList<SlideModel>()
+        if (value.mainPhoto.isNullOrEmpty().not()) {
+            imageList.add(SlideModel(imageUrl = value.mainPhoto))
+        }
         value.album.forEach {
             imageList.add(SlideModel(imageUrl = it))
         }
+        binding.imageSlider.setImageList(imageList, ScaleTypes.FIT)
         binding.imageSlider.setImageList(imageList)
     }
 

@@ -99,9 +99,9 @@ data class Property(
 
     fun getPriceNBR(): String{
         return try {
-            "$price "
+            "$price €"
         }catch (e : NumberFormatException){
-            "0 "
+            ""
         }
     }
     fun getCategories(): String{

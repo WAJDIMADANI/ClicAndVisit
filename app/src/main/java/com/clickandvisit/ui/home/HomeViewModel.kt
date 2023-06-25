@@ -206,6 +206,7 @@ class HomeViewModel
 
     private fun onLikeClickedSuccess(response: GlobalResponse) {
         hideBlockProgressBar()
+        getSearch()
     }
 
     private fun onLikeClickedError(throwable: Throwable) {

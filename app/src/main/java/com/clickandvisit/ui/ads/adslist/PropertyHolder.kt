@@ -9,6 +9,7 @@ import com.clickandvisit.R
 import com.clickandvisit.data.model.property.Property
 import com.clickandvisit.databinding.ItemAdsBinding
 import com.clickandvisit.global.listener.OnMyPropertyClickedListener
+import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
 import com.squareup.picasso.Picasso
 
@@ -29,15 +30,18 @@ class PropertyHolder(
             value.album.size.toString()
         }
 
-        if (value.getCategories().isNullOrEmpty() && value.getPriceNBR().isNullOrEmpty()) {
+        if (value.category.isNullOrEmpty() && value.price.isNullOrEmpty()) {
             binding.tvAdsPrice.visibility = View.GONE
+        } else if (value.category.isNullOrEmpty().not() && value.price.isNullOrEmpty()) {
+            binding.tvAdsPrice.text = value.category
+        } else if (value.category.isNullOrEmpty() && value.price.isNullOrEmpty().not()) {
+            binding.tvAdsPrice.text = value.getPriceNBR()
         } else {
-            binding.tvAdsPrice.text =
-                value.getCategories() + " - " + value.getPriceNBR() + context.getString(R.string.home_details_euros)
+            binding.tvAdsPrice.text = value.getCategories() + value.getPriceNBR()
         }
 
         binding.tvAdsSpace.text =
-            value.details.getRoomsNBR() + value.surface + context.getString(
+            value.details.getRoomsNBR() + value.surface  + " " + context.getString(
                 R.string.home_details_m_square
             )
 
@@ -59,6 +63,7 @@ class PropertyHolder(
         value.album.forEach {
             imageList.add(SlideModel(imageUrl = it))
         }
+        binding.imageSlider.setImageList(imageList, ScaleTypes.FIT)
         binding.imageSlider.setImageList(imageList)
     }
 

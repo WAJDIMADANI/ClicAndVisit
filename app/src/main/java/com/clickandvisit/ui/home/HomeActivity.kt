@@ -126,7 +126,6 @@ class HomeActivity : BaseActivity(), DrawerLayout.DrawerListener {
                         navigateToActivity(FavouritesActivity::class)
                     }
                     R.id.nav_menu_7 -> {
-                        //navigateToActivity(SearchActivity::class)
                         Intent(this, SearchActivity::class.java).let { intent ->
                             intent.putExtra(
                                 ExtraKeys.FilterActivity.SEARCH_REQ_EXTRA_KEY,
