@@ -1,6 +1,7 @@
 package com.clickandvisit.di
 
 import com.clickandvisit.ui.ads.adslist.PropertyAdapter
+import com.clickandvisit.ui.ads.search.MySearchAdapter
 import com.clickandvisit.ui.home.SearchAdapter
 import com.clickandvisit.ui.user.chat.ChatAdapter
 import com.clickandvisit.ui.user.chat.conv.ConvAdapter
@@ -28,8 +29,8 @@ class ActivityAdapterModule {
     }
 
     @Provides
-    fun provideSearchAdapter(picasso: Picasso): SearchAdapter {
-        return SearchAdapter(picasso)
+    fun provideSearchAdapter(picasso: Picasso): MySearchAdapter {
+        return MySearchAdapter(picasso)
     }
 
     @Provides
@@ -40,6 +41,11 @@ class ActivityAdapterModule {
     @Provides
     fun provideMeetAdapter(picasso: Picasso): MeetAdapter {
         return MeetAdapter(picasso)
+    }
+
+    @Provides
+    fun provideMySearchAdapter(picasso: Picasso): SearchAdapter {
+        return SearchAdapter(picasso)
     }
 
 }

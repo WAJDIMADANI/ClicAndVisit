@@ -43,8 +43,7 @@ class HomeViewModel
     schedulerProvider: SchedulerProvider,
     savedStateHandle: SavedStateHandle,
     private val userRepository: UserRepository
-) :
-    BaseAndroidViewModel(application, schedulerProvider), ToolBarListener,
+) : BaseAndroidViewModel(application, schedulerProvider), ToolBarListener,
     OnPropertyClickedListener {
 
     val list: MutableLiveData<List<Property>> = MutableLiveData(arrayListOf())

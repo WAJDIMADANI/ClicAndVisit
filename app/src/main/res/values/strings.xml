@@ -491,6 +491,7 @@
     <string name="global_recommend_app">Veuillez trouver cette annonce sur l\'application Click&amp;Visit...</string>
 
     <string name="date_input_format">yyyy-MM-dd HH:mm</string>
+    <string name="date_output_normal_format">dd/MM/yyyy</string>
     <string name="date_output_format">EEEE dd/MM/yyyy</string>
     <string name="time_output_format">HH:mm</string>
 

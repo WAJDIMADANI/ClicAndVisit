@@ -126,7 +126,15 @@ class HomeActivity : BaseActivity(), DrawerLayout.DrawerListener {
                         navigateToActivity(FavouritesActivity::class)
                     }
                     R.id.nav_menu_7 -> {
-                        navigateToActivity(SearchActivity::class)
+                        //navigateToActivity(SearchActivity::class)
+                        Intent(this, SearchActivity::class.java).let { intent ->
+                            intent.putExtra(
+                                ExtraKeys.FilterActivity.SEARCH_REQ_EXTRA_KEY,
+                                viewModel.searchRequest
+                            )
+                            startActivityForResult(intent, ExtraKeys.FilterActivity.SEARCH_REQ_CODE)
+                        }
+
                     }
                     R.id.nav_menu_8 -> {
                         navigateToActivity(VisitsActivity::class)
@@ -142,7 +150,7 @@ class HomeActivity : BaseActivity(), DrawerLayout.DrawerListener {
         }
     }
 
-    fun startFilterForResult(searchRequest: SearchRequest?) {
+    private fun startFilterForResult(searchRequest: SearchRequest?) {
         Intent(this, FilterActivity::class.java).let { intent ->
             intent.putExtra(
                 ExtraKeys.FilterActivity.SEARCH_REQ_EXTRA_KEY,

@@ -6,6 +6,8 @@ import android.content.Intent
 import android.net.Uri
 import com.clickandvisit.ClickVisitApplication
 import com.clickandvisit.R
+import com.clickandvisit.data.model.property.SearchDataModel
+import com.denzcoskun.imageslider.models.SlideModel
 import java.lang.Exception
 import java.sql.Timestamp
 import java.text.SimpleDateFormat
@@ -57,6 +59,19 @@ fun getWsTime(date: String?): String? {
         SimpleDateFormat(ClickVisitApplication.getInstance().resources.getString(R.string.date_input_format))
     val outputDateFormat =
         SimpleDateFormat(ClickVisitApplication.getInstance().resources.getString(R.string.time_output_format))
+    return try {
+        outputDateFormat.format(inputDateFormat.parse(date))
+    } catch (e: Exception) {
+        e.printStackTrace()
+        date
+    }
+}
+
+fun getWsNormalDateFormat(date: String?): String? {
+    val inputDateFormat =
+        SimpleDateFormat(ClickVisitApplication.getInstance().resources.getString(R.string.date_input_format))
+    val outputDateFormat =
+        SimpleDateFormat(ClickVisitApplication.getInstance().resources.getString(R.string.date_output_normal_format))
     return try {
         outputDateFormat.format(inputDateFormat.parse(date))
     } catch (e: Exception) {

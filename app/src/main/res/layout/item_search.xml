@@ -1,138 +1,175 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="@dimen/margin_global_25dp"
-    android:layout_marginTop="@dimen/margin_global_10dp"
-    android:layout_marginEnd="@dimen/margin_global_25dp"
-    android:paddingBottom="@dimen/margin_global_10dp">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.clickandvisit.data.model.property.SearchData" />
+
+        <variable
+            name="listener"
+            type="com.clickandvisit.global.listener.OnSearchClickedListener" />
+
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/llAdsRoomNbr"
         android:layout_width="match_parent"
-        android:layout_height="53dp"
-        android:background="@color/black"
-        android:paddingStart="@dimen/margin_global_25dp"
-        android:paddingEnd="@dimen/margin_global_25dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_global_25dp"
+        android:layout_marginTop="@dimen/margin_global_10dp"
+        android:layout_marginEnd="@dimen/margin_global_25dp"
+        android:background="@color/white_basic"
+        android:paddingBottom="@dimen/margin_global_10dp">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvSearchCity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start|center_vertical"
-            android:fontFamily="@font/poppins_bold"
-            android:text="VILLEURBANNE - LYON"
-            android:textColor="@color/white_basic"
-            android:textSize="@dimen/font_14sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvSearchDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end|center_vertical"
-            android:fontFamily="@font/poppins_bold"
-            android:text="10/08/2023"
-            android:textColor="@color/white_basic"
-            android:textSize="@dimen/font_14sp"
-            app:layout_constraintBottom_toBottomOf="parent"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/llAdsRoomNbr"
+            android:layout_width="match_parent"
+            android:layout_height="53dp"
+            android:background="@color/black"
+            android:paddingStart="@dimen/margin_global_15dp"
+            android:paddingEnd="@dimen/margin_global_15dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvSearchCity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start|center_vertical"
+                android:fontFamily="@font/poppins_bold"
+                android:text="VILLEURBANNE - LYON"
+                android:textColor="@color/white_basic"
+                android:textSize="@dimen/font_14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvSearchDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|center_vertical"
+                android:fontFamily="@font/poppins_bold"
+                android:text="10/08/2023"
+                android:textColor="@color/white_basic"
+                android:textSize="@dimen/font_14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvSearchTypes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_global_15dp"
+            android:layout_marginTop="@dimen/margin_global_15dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Tout"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/llAdsRoomNbr" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/llBetween"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_global_10dp"
+            android:gravity="center"
+            app:layout_constraintTop_toBottomOf="@+id/tvSearchTypes">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvAdsPrice"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_marginEnd="@dimen/margin_global_10dp"
+                android:background="@color/details_color"
+                android:fontFamily="@font/poppins_regular"
+                android:gravity="center"
+                android:text="ENTRE \n200 000 €\n et \n 300 000 €"
+                android:textColor="@color/white_basic"
+                android:textSize="@dimen/font_10sp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvAdsRoomsNbr"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_marginEnd="@dimen/margin_global_10dp"
+                android:background="@color/details_color"
+                android:fontFamily="@font/poppins_regular"
+                android:gravity="center"
+                android:text="ENTRE \nT1 et T4"
+                android:textColor="@color/white_basic"
+                android:textSize="@dimen/font_10sp"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvAdsSpace"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:background="@color/details_color"
+                android:fontFamily="@font/poppins_regular"
+                android:gravity="center"
+                android:text="60m2"
+                android:textColor="@color/white_basic"
+                android:textSize="@dimen/font_10sp"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_global_10dp"
+            android:gravity="end|center_vertical"
+            app:layout_constraintTop_toBottomOf="@+id/llBetween">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivNotify"
+                android:layout_width="@dimen/dimen_50dp"
+                android:layout_height="@dimen/dimen_50dp"
+                android:layout_marginStart="@dimen/margin_global_10dp"
+                android:background="@color/light_grey"
+                android:src="@drawable/ic_baseline_notifications_off"
+
+                android:padding="@dimen/margin_global_7dp" />
+
+            <!--app:onClickWithDebounce="@{()->listener.onNotifyClick(data)}"-->
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivDelete"
+                android:layout_width="@dimen/dimen_50dp"
+                android:layout_height="@dimen/dimen_50dp"
+                android:layout_marginStart="@dimen/margin_global_15dp"
+                android:layout_marginEnd="@dimen/margin_global_10dp"
+                android:background="@color/red_delete"
+                app:onClickWithDebounce="@{()->listener.onDeleteClick(data)}"
+                android:padding="@dimen/margin_global_5dp"
+                android:src="@drawable/ic_baseline_delete_24" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvSee"
+                android:layout_width="@dimen/dimen_130dp"
+                android:layout_height="@dimen/dimen_45dp"
+                android:background="@color/green_pro_status_details"
+                android:layout_marginEnd="@dimen/padding_global_10dp"
+                android:fontFamily="@font/poppins_bold"
+                android:gravity="center"
+                app:onClickWithDebounce="@{()->listener.onSeeClick(data)}"
+                android:paddingStart="@dimen/padding_global_8dp"
+                android:paddingEnd="@dimen/padding_global_8dp"
+                android:text="@string/home_search_see"
+                android:textAllCaps="true"
+                android:textColor="@color/white_basic"
+                android:textSize="@dimen/dimen_13sp" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvAdsAddress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_global_15dp"
-        android:layout_marginTop="@dimen/margin_global_15dp"
-        android:fontFamily="@font/poppins_medium"
-        android:text="Maison"
-        android:textColor="@color/black"
-        android:textSize="@dimen/font_12sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/llAdsRoomNbr" />
-
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/llBetween"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_global_10dp"
-        android:gravity="center"
-        app:layout_constraintTop_toBottomOf="@+id/tvAdsAddress">
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvAdsPrice"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_marginEnd="@dimen/margin_global_10dp"
-            android:background="@color/details_color"
-            android:fontFamily="@font/poppins_regular"
-            android:gravity="center"
-            android:text="ENTRE \n200 000 €\n et \n 300 000 €"
-            android:textColor="@color/white_basic"
-            android:textSize="@dimen/font_10sp" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvAdsSpace"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:background="@color/details_color"
-            android:fontFamily="@font/poppins_regular"
-            android:gravity="center"
-            android:text="ENTRE \nT1 et T4"
-            android:textColor="@color/white_basic"
-            android:textSize="@dimen/font_10sp"
-            app:layout_constraintEnd_toEndOf="parent" />
-
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_global_10dp"
-        android:gravity="end|center_vertical"
-        app:layout_constraintTop_toBottomOf="@+id/llBetween">
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/ivChat"
-            android:layout_width="@dimen/dimen_50dp"
-            android:layout_height="@dimen/dimen_50dp"
-            android:layout_marginStart="@dimen/margin_global_15dp"
-            android:background="@drawable/ic_notif_off"
-            android:padding="@dimen/margin_global_15dp" />
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/ivAttach"
-            android:layout_width="@dimen/dimen_50dp"
-            android:layout_height="@dimen/dimen_50dp"
-            android:layout_marginStart="@dimen/margin_global_15dp"
-            android:layout_marginEnd="@dimen/margin_global_10dp"
-            android:background="@color/red_delete"
-            android:padding="@dimen/margin_global_15dp"
-            android:src="@drawable/ic_delete_ic" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvStatus2"
-            android:layout_width="@dimen/dimen_140dp"
-            android:layout_height="@dimen/dimen_50dp"
-            android:background="@color/green_pro_status_details"
-            android:fontFamily="@font/poppins_bold"
-            android:gravity="center"
-            android:paddingStart="@dimen/padding_global_8dp"
-            android:paddingEnd="@dimen/padding_global_8dp"
-            android:text="@string/home_search_see"
-            android:textAllCaps="true"
-            android:textColor="@color/white_basic"
-            android:textSize="@dimen/dimen_13sp" />
-
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

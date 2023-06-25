@@ -30,8 +30,6 @@ sealed class Navigation {
 
     data class ConvActivityNavigation(val discId: Int) : Navigation()
 
-    object IntroActivityNavigation : Navigation()
-
     object HomeActivityNavigation : Navigation()
 
     data class AddAdsActivity(val value: Property) : Navigation()
@@ -55,5 +53,6 @@ sealed class Navigation {
     object RateNav : Navigation()
 
     data class Phone(val phoneNumber: String) : Navigation()
+
 
 }

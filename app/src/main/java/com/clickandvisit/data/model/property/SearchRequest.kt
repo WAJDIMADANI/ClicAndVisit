@@ -11,7 +11,7 @@ import kotlinx.android.parcel.Parcelize
 data class SearchRequest(
 
     @Json(name = "type_annonce")
-    var adsType: Int? = 0,// 30 ou 29
+    var adsType: Int? = null,// 30 ou 29
 
     @Json(name = "categorie")
     var category: List<Int>? = listOf(),// 96 -> 101
