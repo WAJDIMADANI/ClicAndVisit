@@ -29,15 +29,14 @@ class MeetViewModel
     val list: MutableLiveData<List<Reservation>> = MutableLiveData(arrayListOf())
 
     init {
-        getReservations()
     }
 
-    private fun getReservations() {
+    fun getReservations(accept: Boolean) {
         showBlockProgressBar()
         viewModelScope.launch {
             tryCatch({
                 val response = withContext(schedulerProvider.dispatchersIO()) {
-                    userRepository.getReservations(false)
+                    userRepository.getReservations(accept)
                 }
                 onGetReservationsSuccess(response)
             }, { error ->
@@ -81,6 +80,10 @@ class MeetViewModel
         DebugLog.i(TAG, "onSignalClicked")
     }
 
+    override fun onPhoneClick(value: Reservation) {
+        navigate(Navigation.Phone(value.owner.phone))
+    }
+
     private fun acceptRefuseReservation(value: Reservation, accept: Boolean) {
         showBlockProgressBar()
         viewModelScope.launch {
@@ -101,7 +104,6 @@ class MeetViewModel
 
     private fun onAcceptRefuseReservationSuccess(response: ReservationResponse) {
         hideBlockProgressBar()
-        getReservations()
     }
 
 }

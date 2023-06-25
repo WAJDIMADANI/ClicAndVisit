@@ -1,5 +1,7 @@
 package com.clickandvisit.ui.user.meet
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
@@ -35,6 +37,7 @@ class MeetActivity : BaseActivity() {
         adapter.viewModel = viewModel
         binding.rvMeet.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         binding.rvMeet.adapter = adapter
+        viewModel.getReservations(false)
     }
 
     /**
@@ -43,6 +46,13 @@ class MeetActivity : BaseActivity() {
     override fun navigate(navigationTo: Navigation) {
         when (navigationTo) {
             is Navigation.Back -> finish()
+
+            is Navigation.Phone -> {
+                val uri = "tel:" + navigationTo.phoneNumber.trim()
+                val intent = Intent(Intent.ACTION_DIAL)
+                intent.data = Uri.parse(uri)
+                startActivity(intent)
+            }
 
         }
     }

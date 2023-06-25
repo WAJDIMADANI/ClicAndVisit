@@ -206,6 +206,7 @@
     <string name="meet_with">Rendez-vous avec :</string>
     <string name="confirmed_meet_with">Rendez-vous confirmé avec:</string>
     <string name="meet_confirm">C o n f i r m e z \n le rendez-vous</string>
+    <string name="meet_cancel">A N N U L E R \n le rendez-vous</string>
     <string name="meet_not_dispo">JE NE SUIS PAS \n D I S P O N I B L E</string>
     <string name="meet_hold">EN ATTENTE</string>
 

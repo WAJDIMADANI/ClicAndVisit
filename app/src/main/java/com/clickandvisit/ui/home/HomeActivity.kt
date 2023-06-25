@@ -31,6 +31,7 @@ import com.clickandvisit.ui.user.chat.ChatActivity
 import com.clickandvisit.ui.user.meet.MeetActivity
 import com.clickandvisit.ui.user.profile.ProfileActivity
 import com.clickandvisit.ui.user.signin.SignInActivity
+import com.clickandvisit.ui.user.visits.VisitsActivity
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -128,7 +129,7 @@ class HomeActivity : BaseActivity(), DrawerLayout.DrawerListener {
                         navigateToActivity(SearchActivity::class)
                     }
                     R.id.nav_menu_8 -> {
-                        navigateToActivity(MeetActivity::class)
+                        navigateToActivity(VisitsActivity::class)
                     }
                     R.id.nav_menu_9 -> {
                         viewModel.disconnect()

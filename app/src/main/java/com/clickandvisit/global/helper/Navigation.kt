@@ -54,4 +54,6 @@ sealed class Navigation {
 
     object RateNav : Navigation()
 
+    data class Phone(val phoneNumber: String) : Navigation()
+
 }

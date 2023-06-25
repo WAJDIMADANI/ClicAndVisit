@@ -10,4 +10,5 @@ interface OnMeetClickedListener {
 
     fun onChatClicked(value: Reservation)
     fun onSignalClicked(value: Reservation)
+    fun onPhoneClick(value: Reservation)
 }
