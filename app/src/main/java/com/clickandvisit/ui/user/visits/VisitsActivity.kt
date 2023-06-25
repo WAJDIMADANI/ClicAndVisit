@@ -37,6 +37,7 @@ class VisitsActivity : BaseActivity() {
 
     private fun registerRecycler(binding: ActivityVisitsBinding) {
         adapter.viewModel = viewModel
+        adapter.isFromMeet = false
         binding.rvMeet.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         binding.rvMeet.adapter = adapter
         viewModel.getReservations(true)

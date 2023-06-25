@@ -15,8 +15,10 @@ class MeetAdapter(private val picasso: Picasso) :
 
     lateinit var viewModel: MeetViewModel
 
+    var isFromMeet: Boolean = false
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MeetHolder {
-        return MeetHolder.create(parent, parent.context, picasso, viewModel)
+        return MeetHolder.create(parent, parent.context, picasso, viewModel, isFromMeet)
     }
 
     override fun onBindViewHolder(holder: MeetHolder, position: Int) {

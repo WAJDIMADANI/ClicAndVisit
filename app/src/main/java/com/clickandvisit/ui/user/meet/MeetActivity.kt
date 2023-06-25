@@ -35,6 +35,7 @@ class MeetActivity : BaseActivity() {
 
     private fun registerRecycler(binding: ActivityMeetBinding) {
         adapter.viewModel = viewModel
+        adapter.isFromMeet = true
         binding.rvMeet.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         binding.rvMeet.adapter = adapter
         viewModel.getReservations(false)
