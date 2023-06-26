@@ -230,6 +230,9 @@
     <string name="my_ads_indispo">Indisponible</string>
     <string name="my_ads_back">Retour</string>
 
+    <!--prop details-->
+    <string name="prop_details_title">DÉTAIL ANNONCE</string>
+
     <!--profile-->
     <string name="profile_profile">Profil</string>
     <string name="profile_civility">Civilité</string>

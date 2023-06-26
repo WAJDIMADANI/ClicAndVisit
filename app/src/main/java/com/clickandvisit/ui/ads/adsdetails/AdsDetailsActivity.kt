@@ -5,8 +5,12 @@ import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import com.clickandvisit.R
 import com.clickandvisit.base.BaseActivity
+import com.clickandvisit.data.model.property.Property
 import com.clickandvisit.databinding.ActivityAdsDetailsBinding
 import com.clickandvisit.global.helper.Navigation
+import com.clickandvisit.global.utils.observeOnlyNotNull
+import com.denzcoskun.imageslider.constants.ScaleTypes
+import com.denzcoskun.imageslider.models.SlideModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -14,15 +18,33 @@ class AdsDetailsActivity : BaseActivity() {
 
     private val viewModel: AdsDetailsViewModel by viewModels()
 
+    private lateinit var binding: ActivityAdsDetailsBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding =
-            DataBindingUtil.setContentView<ActivityAdsDetailsBinding>(
+        binding =
+            DataBindingUtil.setContentView(
                 this,
                 R.layout.activity_ads_details
             )
         registerBindingAndBaseObservers(binding)
+
+
+        viewModel.property.observeOnlyNotNull(this) {
+            loadImages(it)
+        }
+    }
+
+    private fun loadImages(value: Property) {
+        val imageList = ArrayList<SlideModel>()
+        if (value.mainPhoto.isNullOrEmpty().not()) {
+            imageList.add(SlideModel(imageUrl = value.mainPhoto))
+        }
+
+        value.album.forEach {
+            imageList.add(SlideModel(imageUrl = it))
+        }
+        binding.imageSlider.setImageList(imageList, ScaleTypes.CENTER_CROP)
     }
 
     /**

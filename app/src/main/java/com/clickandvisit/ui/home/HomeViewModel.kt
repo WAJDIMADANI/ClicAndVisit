@@ -182,7 +182,7 @@ class HomeViewModel
     }
 
     override fun onItemClicked(value: Property) {
-        DebugLog.i(TAG, value.toString())
+        navigate(Navigation.AdsDetailsActivityNavigation(value))
     }
 
     override fun onLikeClicked(value: Property) {

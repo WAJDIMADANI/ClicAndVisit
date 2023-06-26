@@ -89,7 +89,9 @@ class SearchViewHolder(
             imageList.add(SlideModel(imageUrl = it))
         }
         binding.imageSlider.setImageList(imageList, ScaleTypes.FIT)
-        binding.imageSlider.setImageList(imageList)
+        binding.imageSlider.setOnClickListener {
+            binding.clContainer.performClick()
+        }
     }
 
     companion object {

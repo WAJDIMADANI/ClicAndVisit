@@ -22,6 +22,7 @@ import com.clickandvisit.global.utils.DebugLog
 import com.clickandvisit.global.utils.ExtraKeys
 import com.clickandvisit.global.utils.TAG
 import com.clickandvisit.ui.ads.addads.AddAdsActivity
+import com.clickandvisit.ui.ads.adsdetails.AdsDetailsActivity
 import com.clickandvisit.ui.ads.adslist.AdsListActivity
 import com.clickandvisit.ui.ads.favourites.FavouritesActivity
 import com.clickandvisit.ui.ads.filter.FilterActivity
@@ -193,6 +194,18 @@ class HomeActivity : BaseActivity(), DrawerLayout.DrawerListener {
         when (navigationTo) {
 
             is Navigation.Back -> finish()
+
+
+            is Navigation.AdsDetailsActivityNavigation -> {
+                Intent(this, AdsDetailsActivity::class.java).let { intent ->
+                    intent.putExtra(
+                        ExtraKeys.AddAdsActivity.PROPERTY_EXTRA_KEY_PROP,
+                        navigationTo.value
+                    )
+                    startActivity(intent)
+                }
+            }
+
 
             is Navigation.OpenDrawerNavigation -> {
                 binding.drawerLayoutHome.openDrawer(binding.navigationViewHome)
