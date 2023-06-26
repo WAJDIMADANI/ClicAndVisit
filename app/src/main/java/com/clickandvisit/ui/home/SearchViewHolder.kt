@@ -4,14 +4,13 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
-import androidx.core.graphics.drawable.DrawableCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.clickandvisit.R
 import com.clickandvisit.data.model.property.Property
 import com.clickandvisit.databinding.ItemFavouriteBinding
 import com.clickandvisit.global.listener.OnPropertyClickedListener
 import com.denzcoskun.imageslider.constants.ScaleTypes
+import com.denzcoskun.imageslider.interfaces.ItemClickListener
 import com.denzcoskun.imageslider.models.SlideModel
 import com.squareup.picasso.Picasso
 
@@ -89,9 +88,16 @@ class SearchViewHolder(
             imageList.add(SlideModel(imageUrl = it))
         }
         binding.imageSlider.setImageList(imageList, ScaleTypes.FIT)
-        binding.imageSlider.setOnClickListener {
-            binding.clContainer.performClick()
-        }
+
+        binding.imageSlider.setItemClickListener(object : ItemClickListener {
+            override fun doubleClick(position: Int) {
+                binding.clContainer.performClick()
+            }
+
+            override fun onItemSelected(position: Int) {
+                binding.clContainer.performClick()
+            }
+        })
     }
 
     companion object {

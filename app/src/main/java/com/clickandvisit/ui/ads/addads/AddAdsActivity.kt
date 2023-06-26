@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import com.clickandvisit.R
 import com.clickandvisit.base.BaseActivity
 import com.clickandvisit.data.model.property.Property
-import com.clickandvisit.data.model.property.add.PropertyAdd
 import com.clickandvisit.databinding.ActivityAddAdsBinding
 import com.clickandvisit.global.helper.Navigation
 import com.clickandvisit.ui.ads.addads.five.CalendarFragment
@@ -145,7 +144,7 @@ class AddAdsActivity : BaseActivity() {
                 viewModel.roomNbrApi14.value =
                     (routineFragments[1] as TwoFragment).viewModel.roomNbrApi14.value
                 viewModel.roomNbrApi15.value =
-                    (routineFragments[1] as TwoFragment).viewModel.roomNbrApi5.value
+                    (routineFragments[1] as TwoFragment).viewModel.roomNbrApi15.value
                 viewModel.roomNbrApi16.value =
                     (routineFragments[1] as TwoFragment).viewModel.roomNbrApi16.value
                 viewModel.roomNbrApi17.value =
