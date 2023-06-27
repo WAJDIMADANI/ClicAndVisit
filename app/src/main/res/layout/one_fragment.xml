@@ -407,15 +407,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/llStage" />
 
-            <!--
-                        <com.github.mikephil.charting.charts.LineChart
-                            android:id="@+id/dpeChart"
-                            android:layout_width="match_parent"
-                            android:layout_height="30dp"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/tvConso" />
-            -->
-
             <LinearLayout
                 android:id="@+id/llDPE"
                 android:layout_width="match_parent"
@@ -467,12 +458,11 @@
 
                 <TextView
                     android:id="@+id/tvD"
-                    android:layout_width="@dimen/dimen_50dp"
-                    android:layout_height="@dimen/dimen_25dp"
+                    android:layout_width="@dimen/dimen_45dp"
+                    android:layout_height="@dimen/dimen_20dp"
                     android:background="#FEC726"
                     android:fontFamily="@font/poppins_medium"
                     android:gravity="center"
-                    android:text="D"
                     android:textColor="@color/black"
                     android:textSize="@dimen/dimen_16sp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -550,7 +540,6 @@
                     android:background="#dbdfe8"
                     android:fontFamily="@font/poppins_medium"
                     android:gravity="center"
-                    android:text="A"
                     android:textColor="@color/black"
                     android:textSize="@dimen/dimen_16sp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -564,7 +553,6 @@
                     android:background="#b3b6bd"
                     android:fontFamily="@font/poppins_medium"
                     android:gravity="center"
-                    android:text="B"
                     android:textColor="@color/black"
                     android:textSize="@dimen/dimen_16sp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -578,7 +566,6 @@
                     android:background="#8c8f94"
                     android:fontFamily="@font/poppins_medium"
                     android:gravity="center"
-                    android:text="C"
                     android:textColor="@color/black"
                     android:textSize="@dimen/dimen_16sp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -592,7 +579,6 @@
                     android:background="#67696d"
                     android:fontFamily="@font/poppins_medium"
                     android:gravity="center"
-                    android:text="D"
                     android:textColor="@color/black"
                     android:textSize="@dimen/dimen_16sp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -606,7 +592,6 @@
                     android:background="#495979"
                     android:fontFamily="@font/poppins_medium"
                     android:gravity="center"
-                    android:text="E"
                     android:textColor="@color/black"
                     android:textSize="@dimen/dimen_16sp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -620,7 +605,6 @@
                     android:background="#2e3d5c"
                     android:fontFamily="@font/poppins_medium"
                     android:gravity="center"
-                    android:text="F"
                     android:textColor="@color/black"
                     android:textSize="@dimen/dimen_16sp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -634,7 +618,6 @@
                     android:background="#131e34"
                     android:fontFamily="@font/poppins_medium"
                     android:gravity="center"
-                    android:text="G"
                     android:textColor="@color/white_basic"
                     android:textSize="@dimen/dimen_16sp"
                     app:layout_constraintBottom_toBottomOf="parent"

@@ -77,7 +77,7 @@ class OneViewModel
         return checked1.value!! || checked2.value!! || checked3.value!! || checked4.value!! || checked5.value!! || checkedNA.value!!
     }
 
-    fun onDPEAClicked() {
+    fun onDPEAClicked(value: Int) {
 
     }
 
