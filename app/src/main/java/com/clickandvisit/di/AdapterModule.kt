@@ -1,6 +1,7 @@
 package com.clickandvisit.di
 
 import com.clickandvisit.ui.ads.adslist.PropertyAdapter
+import com.clickandvisit.ui.ads.favourites.FavouritesAdapter
 import com.clickandvisit.ui.ads.search.MySearchAdapter
 import com.clickandvisit.ui.home.SearchAdapter
 import com.clickandvisit.ui.user.chat.ChatAdapter
@@ -46,6 +47,11 @@ class ActivityAdapterModule {
     @Provides
     fun provideMySearchAdapter(picasso: Picasso): SearchAdapter {
         return SearchAdapter(picasso)
+    }
+
+    @Provides
+    fun provideFavouritesAdapter(picasso: Picasso): FavouritesAdapter {
+        return FavouritesAdapter(picasso)
     }
 
 }

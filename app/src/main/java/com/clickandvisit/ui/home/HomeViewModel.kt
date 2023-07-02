@@ -3,11 +3,6 @@ package com.clickandvisit.ui.home
 import android.app.Activity
 import android.app.Application
 import android.content.Intent
-import android.graphics.Color
-import android.graphics.drawable.Drawable
-import androidx.appcompat.content.res.AppCompatResources
-import androidx.core.content.ContextCompat
-import androidx.core.graphics.drawable.DrawableCompat
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import com.clickandvisit.R
@@ -66,15 +61,15 @@ class HomeViewModel
                 val response = withContext(schedulerProvider.dispatchersIO()) {
                     userRepository.search()
                 }
-                onGetDiscussionSuccess(response)
+                onGetSearchSuccess(response)
             }, { error ->
-                onGetDiscussionError(error)
+                onGetSearchError(error)
             })
         }
     }
 
 
-    private fun onGetDiscussionSuccess(response: SearchResponse) {
+    private fun onGetSearchSuccess(response: SearchResponse) {
         hideBlockProgressBar()
         searchResponse = response
         list.value = response.properties
@@ -82,7 +77,7 @@ class HomeViewModel
             "${applicationContext.getString(R.string.home_list)}(${response.properties.count()})"
     }
 
-    private fun onGetDiscussionError(throwable: Throwable) {
+    private fun onGetSearchError(throwable: Throwable) {
         hideBlockProgressBar()
         handleThrowable(throwable)
     }
@@ -231,9 +226,9 @@ class HomeViewModel
                         val response = withContext(schedulerProvider.dispatchersIO()) {
                             userRepository.search(searchRequest)
                         }
-                        onGetDiscussionSuccess(response)
+                        onGetSearchSuccess(response)
                     }, { error ->
-                        onGetDiscussionError(error)
+                        onGetSearchError(error)
                     })
                 }
 

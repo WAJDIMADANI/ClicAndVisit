@@ -73,7 +73,7 @@
             android:layout_marginTop="100dp"
             android:clipToPadding="false"
             android:layout_marginEnd="@dimen/margin_global_5dp"
-            android:layout_marginBottom="@dimen/margin_global_15dp"
+            android:layout_marginBottom="@dimen/margin_global_20dp"
             android:gravity="center_vertical"
             app:layout_constraintBottom_toTopOf="@+id/tvAdsPrice"
             app:layout_constraintEnd_toEndOf="parent">
@@ -82,28 +82,28 @@
                 android:id="@+id/ivShare"
                 android:layout_width="@dimen/dimen_45dp"
                 android:layout_height="@dimen/dimen_45dp"
-                android:src="@drawable/ic_share"
+                android:background="@drawable/ic_share"
                 app:onClickWithDebounce="@{()->listener.onShareClicked(property)}" />
 
             <ImageView
                 android:id="@+id/ivEdit"
                 android:layout_width="@dimen/dimen_45dp"
                 android:layout_height="@dimen/dimen_45dp"
-                android:src="@drawable/ic_edit_round"
+                android:background="@drawable/ic_edit_round"
                 app:onClickWithDebounce="@{()->listener.onEditClicked(property)}" />
 
             <ImageView
                 android:id="@+id/ivStar"
                 android:layout_width="@dimen/dimen_45dp"
                 android:layout_height="@dimen/dimen_45dp"
-                android:src="@drawable/ic_start"
+                android:background="@drawable/ic_start"
                 app:onClickWithDebounce="@{()->listener.onRateClicked(property)}" />
 
             <ImageView
                 android:id="@+id/ivMeet"
                 android:layout_width="@dimen/dimen_45dp"
                 android:layout_height="@dimen/dimen_45dp"
-                android:src="@drawable/ic_meet_round"
+                android:background="@drawable/ic_meet_round"
                 app:onClickWithDebounce="@{()->listener.onMeetClicked(property)}" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>

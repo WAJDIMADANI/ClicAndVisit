@@ -20,8 +20,8 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayoutHomeContent"
             android:layout_width="match_parent"
-            android:background="@color/gray_home_background"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@color/gray_home_background">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayoutHomeHeader"
@@ -42,19 +42,19 @@
                     android:text="@{viewModel.listCount}"
                     android:textColor="@color/black"
                     android:textSize="@dimen/font_18sp"
-                    app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
                     android:id="@+id/ivFilter"
                     android:layout_width="@dimen/dimen_30dp"
                     android:layout_height="@dimen/dimen_30dp"
                     android:src="@drawable/ic_home_filter"
-                    app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:onClickWithDebounce="@{() ->viewModel.onFilterClicked()}"/>
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:onClickWithDebounce="@{() ->viewModel.onFilterClicked()}" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -62,9 +62,9 @@
                 android:id="@+id/rvSearch"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dimen_0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/constraintLayoutHomeHeader"
                 app:recyclerViewData="@{viewModel.list}"
                 tools:listitem="@layout/item_favourite" />

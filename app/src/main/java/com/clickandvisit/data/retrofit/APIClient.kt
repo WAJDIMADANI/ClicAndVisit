@@ -152,7 +152,7 @@ interface APIClient {
 
 
     @GET("list_favorites")
-    suspend fun favoriteList(
+    suspend fun     favoriteList(
         @Query("user_id") userId: Int
     ): FavoritesResponse
 
