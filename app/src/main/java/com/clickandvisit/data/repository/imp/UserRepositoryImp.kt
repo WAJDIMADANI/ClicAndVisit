@@ -149,9 +149,23 @@ class UserRepositoryImp @Inject constructor(
     }
 
     override suspend fun search(searchRequest: SearchRequest): SearchResponse {
+        var category = ""
+
+        if (searchRequest.category.isNullOrEmpty()) {
+            category = ""
+        } else if (searchRequest.category?.size == 1) {
+            category = searchRequest.category?.get(0).toString()
+        } else {
+            searchRequest.category?.forEach {
+                category = category.plus(it.toString())
+                category = category.plus(",")
+            }
+            category = category.substring(0, category.length - 1)
+        }
+
         return apiClient.search(
             searchRequest.adsType,
-            searchRequest.category,
+            category,
             searchRequest.minRooms,
             searchRequest.maxRooms,
             searchRequest.minArea,
@@ -167,7 +181,7 @@ class UserRepositoryImp @Inject constructor(
     }
 
     override suspend fun propertyDetails(propertyId: Int): PropertyDetailsResponse {
-        return apiClient.propertyDetails(sharedPreferences.getUser().id.toInt(),propertyId)
+        return apiClient.propertyDetails(sharedPreferences.getUser().id.toInt(), propertyId)
     }
 
     override suspend fun addRemoveFavorite(favoriteRequest: FavoriteRequest): GlobalResponse {

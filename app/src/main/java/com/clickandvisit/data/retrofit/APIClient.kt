@@ -121,7 +121,7 @@ interface APIClient {
     @POST("search")
     suspend fun search(
         @Field("type_annonce") adsType: Int?,
-        @Field("categorie") category: List<Int>?,
+        @Field("categorie") category: String?,
         @Field("min_rooms") minRooms: String?,
         @Field("max_rooms") maxRooms: String?,
         @Field("min-area") minArea: Int?,
