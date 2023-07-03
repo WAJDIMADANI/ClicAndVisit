@@ -87,7 +87,7 @@ class SearchViewHolder(
         value.album.forEach {
             imageList.add(SlideModel(imageUrl = it))
         }
-        binding.imageSlider.setImageList(imageList, ScaleTypes.FIT)
+        binding.imageSlider.setImageList(imageList, ScaleTypes.CENTER_CROP)
 
         binding.imageSlider.setItemClickListener(object : ItemClickListener {
             override fun doubleClick(position: Int) {
