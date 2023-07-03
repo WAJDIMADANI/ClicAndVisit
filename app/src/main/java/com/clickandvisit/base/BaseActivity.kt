@@ -12,12 +12,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.observe
 import com.clickandvisit.R
-import com.clickandvisit.data.model.Card
+import com.clickandvisit.data.model.property.Property
 import com.clickandvisit.global.helper.DetachableClickHelper
 import com.clickandvisit.global.helper.Navigation
 import com.clickandvisit.global.utils.DebugLog
 import com.clickandvisit.global.utils.observeOnlyNotNull
-import com.clickandvisit.ui.shared.bottomsheet.CustomSignUpBottomSheet
+import com.clickandvisit.ui.shared.bottomsheet.CustomMapsBottomSheet
 import com.clickandvisit.ui.shared.dialog.CustomProgressDialog
 import com.clickandvisit.ui.shared.view.CustomSnackBar
 import com.squareup.picasso.Picasso
@@ -44,12 +44,12 @@ abstract class BaseActivity : AppCompatActivity() {
     }
 
 
-    private fun registerSignUpBottomSheetDialog(viewModel: BaseAndroidViewModel) {
-        viewModel.signUpBottomSheet.observeOnlyNotNull(
+    private fun registerMapsBottomSheetDialog(viewModel: BaseAndroidViewModel) {
+        viewModel.mapsBottomSheet.observeOnlyNotNull(
             this
         ) { signUpBottomSheet ->
             showSignUpBottomSheetDialog(
-                signUpBottomSheet.card,
+                signUpBottomSheet.property,
                 signUpBottomSheet.okActionBlock,
                 signUpBottomSheet.dismissActionBlock
             )
@@ -64,14 +64,14 @@ abstract class BaseActivity : AppCompatActivity() {
      * @param dismissActionBlock action to do on dismiss optional
      */
     fun showSignUpBottomSheetDialog(
-        card: Card?,
+        property: Property,
         okActionBlock: (() -> Unit)? = null,
         dismissActionBlock: (() -> Unit)? = null
     ) {
         if (!isFinishing) {
-            CustomSignUpBottomSheet(
+            CustomMapsBottomSheet(
                 this,
-                card,
+                property,
                 okActionBlock,
                 dismissActionBlock
             ).show()
@@ -89,7 +89,7 @@ abstract class BaseActivity : AppCompatActivity() {
     protected fun registerBaseObservers(viewModel: ViewModel) {
         if (viewModel is BaseAndroidViewModel) {
             registerSnackBar(viewModel)
-            registerSignUpBottomSheetDialog(viewModel)
+            registerMapsBottomSheetDialog(viewModel)
             registerSimpleDialog(viewModel)
             registerChoseDialog(viewModel)
             registerProgressBar(viewModel)

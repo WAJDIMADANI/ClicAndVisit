@@ -3,7 +3,9 @@ package com.clickandvisit.ui.home.map
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
+import com.clickandvisit.R
 import com.clickandvisit.base.BaseAndroidViewModel
+import com.clickandvisit.data.model.property.Property
 import com.clickandvisit.data.model.property.SearchResponse
 import com.clickandvisit.data.repository.abs.UserRepository
 import com.clickandvisit.global.helper.Navigation
@@ -32,5 +34,9 @@ class MapsViewModel
 
     fun onMapsClicked() {
         navigate(Navigation.Back)
+    }
+
+    fun onMarkerClick(property: Property) {
+        showMapsBottomSheet(property)
     }
 }

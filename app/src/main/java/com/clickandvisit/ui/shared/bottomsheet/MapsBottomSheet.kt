@@ -1,14 +1,14 @@
 package com.clickandvisit.ui.shared.bottomsheet
 
 import android.content.Context
-import com.clickandvisit.data.model.Card
+import com.clickandvisit.data.model.property.Property
 
 /**
  * Created by sazouzi on 08/07/2020
  */
 
-class SignUpBottomSheet private constructor(
-    val card: Card?,
+class MapsBottomSheet private constructor(
+    val property: Property,
     val okActionBlock: (() -> Unit)? = null,
     val dismissActionBlock: (() -> Unit)? = null
 ) {
@@ -16,12 +16,12 @@ class SignUpBottomSheet private constructor(
     companion object {
 
         fun build(
-            card: Card?,
+            property: Property,
             actionBlock: (() -> Unit)? = null,
             dismissActionBlock: (() -> Unit)? = null
-        ): SignUpBottomSheet {
-            return SignUpBottomSheet(
-                card,
+        ): MapsBottomSheet {
+            return MapsBottomSheet(
+                property,
                 actionBlock,
                 dismissActionBlock
             )
@@ -29,12 +29,12 @@ class SignUpBottomSheet private constructor(
 
         fun build(
             context: Context,
-            card: Card?,
+            property: Property,
             okActionBlock: (() -> Unit)? = null,
             dismissActionBlock: (() -> Unit)? = null
-        ): SignUpBottomSheet {
-            return SignUpBottomSheet(
-                card,
+        ): MapsBottomSheet {
+            return MapsBottomSheet(
+                property,
                 okActionBlock,
                 dismissActionBlock
             )

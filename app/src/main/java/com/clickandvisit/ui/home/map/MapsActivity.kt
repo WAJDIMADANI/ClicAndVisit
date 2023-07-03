@@ -10,6 +10,7 @@ import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import com.clickandvisit.R
 import com.clickandvisit.base.BaseActivity
+import com.clickandvisit.data.model.property.Property
 import com.clickandvisit.databinding.ActivityMapsBinding
 import com.clickandvisit.global.helper.Navigation
 import com.clickandvisit.global.utils.DebugLog
@@ -53,14 +54,14 @@ class MapsActivity : BaseActivity(), OnMapReadyCallback {
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(47.370208, 3.419315), 7F))
 
         viewModel.searchResponse.observeOnlyNotNull(this) { its ->
-            its.properties.forEach {prop ->
+            its.properties.forEach { prop ->
 
                 val vectorResId = if (prop.visitNow) {
                     R.drawable.ic_baseline_location_green
                 } else {
                     R.drawable.ic_baseline_location_on
                 }
-                map.addMarker(
+                var marker = map.addMarker(
                     MarkerOptions()
                         .flat(true)
                         .icon(
@@ -71,9 +72,11 @@ class MapsActivity : BaseActivity(), OnMapReadyCallback {
                         )
                         .position(LatLng(prop.lat.toDouble(), prop.long.toDouble()))
                 )
+                marker.tag = prop
 
-                map.setOnMarkerClickListener { _ ->
-                    DebugLog.i(TAG, prop.id.toString())
+                map.setOnMarkerClickListener { m ->
+                    //DebugLog.i(TAG, prop.id.toString())
+                    viewModel.onMarkerClick(m.tag as Property)
                     true
                 }
 

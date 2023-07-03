@@ -6,14 +6,14 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.clickandvisit.R
-import com.clickandvisit.data.model.Card
+import com.clickandvisit.data.model.property.Property
 import com.clickandvisit.data.retrofit.EndpointInterceptor
 import com.clickandvisit.global.helper.Navigation
 import com.clickandvisit.global.helper.SingleLiveEvent
 import com.clickandvisit.global.helper.dialog.ChoseDialog
 import com.clickandvisit.global.helper.dialog.SimpleDialog
 import com.clickandvisit.global.listener.SchedulerProvider
-import com.clickandvisit.ui.shared.bottomsheet.SignUpBottomSheet
+import com.clickandvisit.ui.shared.bottomsheet.MapsBottomSheet
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
 import retrofit2.HttpException
@@ -59,8 +59,8 @@ abstract class BaseAndroidViewModel(
         get() = _navigation
 
 
-    //for displaying signUp BottomSheet dialog
-    var signUpBottomSheet: MutableLiveData<SignUpBottomSheet> = MutableLiveData()
+    //for displaying BottomSheet dialog
+    var mapsBottomSheet: MutableLiveData<MapsBottomSheet> = MutableLiveData()
 
     /**
      * show chose dialog
@@ -71,24 +71,24 @@ abstract class BaseAndroidViewModel(
      * @param dismissActionBlock action to do on dismiss optional
      *
      */
-    fun showAddCardBottomSheet(
-        card: Card?,
+    fun showMapsBottomSheet(
+        property: Property,
         okActionBlock: (() -> Unit)? = null,
         dismissActionBlock: (() -> Unit)? = null
     ) {
-        signUpBottomSheet.value =
-            SignUpBottomSheet.build(
+        mapsBottomSheet.value =
+            MapsBottomSheet.build(
                 context = applicationContext,
-                card = card,
+                property = property,
                 okActionBlock = okActionBlock,
-                dismissActionBlock = dismissSignUpBottomSheet(dismissActionBlock)
+                dismissActionBlock = dismissMapsBottomSheet(dismissActionBlock)
             )
     }
 
-    private fun dismissSignUpBottomSheet(dismissActionBlock: (() -> Unit)? = null): () -> Unit {
+    private fun dismissMapsBottomSheet(dismissActionBlock: (() -> Unit)? = null): () -> Unit {
         return {
             dismissActionBlock?.invoke()
-            signUpBottomSheet.value = null
+            mapsBottomSheet.value = null
         }
     }
 

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="bottomsheet"
+            type="com.clickandvisit.ui.shared.bottomsheet.CustomMapsBottomSheet" />
+
+
+        <variable
+            name="name"
+            type="String" />
+
+        <variable
+            name="number"
+            type="String" />
+
+        <variable
+            name="expDate"
+            type="String" />
+
+        <variable
+            name="cvv"
+            type="String" />
+
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white_basic"
+        android:clipToPadding="false"
+        android:padding="@dimen/margin_global_10dp">
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivHide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_global_5dp"
+            android:src="@drawable/ic_hide"
+            android:layout_marginStart="@dimen/margin_global_10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageSlider"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:layout_marginStart="@dimen/margin_global_10dp"
+            android:layout_marginEnd="@dimen/margin_global_10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivHide" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/linearLayoutCompat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_global_20dp"
+            android:layout_marginBottom="@dimen/margin_global_10dp"
+            android:background="@drawable/ic_ads_transparent"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="@+id/imageSlider"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivGallery"
+                android:layout_width="@dimen/dimen_12dp"
+                android:layout_height="@dimen/dimen_12dp"
+                android:layout_marginStart="@dimen/padding_global_4dp"
+                android:layout_marginEnd="@dimen/padding_global_3dp"
+                android:background="@drawable/ic_gallery"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvPhotoCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/padding_global_5dp"
+                android:fontFamily="@font/poppins_bold"
+                android:text="0"
+                android:textColor="@color/white_basic"
+                android:textSize="@dimen/dimen_12sp" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvAdsName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_global_12dp"
+            android:layout_marginTop="@dimen/margin_global_15dp"
+            android:fontFamily="@font/poppins_bold"
+            android:text="CAP Lyon"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageSlider" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvAdsPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_global_12dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Maison 200 000€"
+            android:textColor="@color/details_color"
+            android:textSize="@dimen/font_12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvAdsName" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvAdsSpace"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_global_12dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="T2 - 35m2"
+            android:textColor="@color/details_color"
+            android:textSize="@dimen/font_12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvAdsPrice" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvMeet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_global_10dp"
+            android:background="@color/red_pro_status"
+            android:fontFamily="@font/poppins_medium"
+            android:gravity="center"
+            android:paddingStart="@dimen/padding_global_5dp"
+            android:paddingEnd="@dimen/padding_global_5dp"
+            android:text="@string/home_meet"
+            android:textAllCaps="true"
+            android:textColor="@color/white_basic"
+            android:textSize="@dimen/dimen_16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageSlider" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>
