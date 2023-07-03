@@ -23,7 +23,8 @@
         android:layout_marginEnd="@dimen/margin_global_25dp"
         android:layout_marginBottom="@dimen/padding_global_10dp"
         android:background="@color/white_basic"
-        android:paddingBottom="@dimen/margin_global_10dp">
+        android:paddingBottom="@dimen/margin_global_10dp"
+        app:onClickWithDebounce="@{()->listener.onItemClicked(reservation)}">
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/llAdsRoomNbr"

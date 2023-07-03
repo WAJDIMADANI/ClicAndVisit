@@ -3,6 +3,8 @@ package com.clickandvisit.ui.user.meet
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import com.clickandvisit.base.BaseAndroidViewModel
+import com.clickandvisit.data.model.property.PropertyDetailsResponse
+import com.clickandvisit.data.model.property.SearchResponse
 import com.clickandvisit.data.model.reservation.Reservation
 import com.clickandvisit.data.model.reservation.ReservationResponse
 import com.clickandvisit.data.repository.abs.UserRepository
@@ -60,6 +62,10 @@ class MeetViewModel
         navigate(Navigation.Back)
     }
 
+    override fun onItemClicked(value: Reservation) {
+        navigate(Navigation.VisitsNavigation(value.reservationDetails!!.propertyId))
+    }
+
     override fun onConfirmClicked(value: Reservation) {
         acceptRefuseReservation(value, true)
     }
@@ -105,5 +111,31 @@ class MeetViewModel
     private fun onAcceptRefuseReservationSuccess(response: ReservationResponse) {
         hideBlockProgressBar()
     }
+
+
+    fun getPropertyDetails(propertyId: Int) {
+        showBlockProgressBar()
+        viewModelScope.launch {
+            tryCatch({
+                val response = withContext(schedulerProvider.dispatchersIO()) {
+                    userRepository.propertyDetails(propertyId)
+                }
+                onGetPropertySuccess(response)
+            }, { error ->
+                onGetPropertyError(error)
+            })
+        }
+    }
+
+    private fun onGetPropertySuccess(response: PropertyDetailsResponse) {
+        hideBlockProgressBar()
+        navigate(Navigation.AdsDetailsActivityNavigation(response.property))
+    }
+
+    private fun onGetPropertyError(throwable: Throwable) {
+        hideBlockProgressBar()
+        handleThrowable(throwable)
+    }
+
 
 }

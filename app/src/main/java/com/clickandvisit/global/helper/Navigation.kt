@@ -60,4 +60,6 @@ sealed class Navigation {
 
     data class GESNavigation(val ges: String) : Navigation()
 
+    data class VisitsNavigation(val propertyId: String) : Navigation()
+
 }

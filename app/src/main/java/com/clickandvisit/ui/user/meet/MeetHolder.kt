@@ -21,7 +21,7 @@ class MeetHolder(
     private val picasso: Picasso,
     private val onMeetClickedListener: OnMeetClickedListener,
     private val isFromMeet: Boolean
-) : RecyclerView.ViewHolder(binding.root) {//TODO: query: mes rendez-vous vs mes visites
+) : RecyclerView.ViewHolder(binding.root) {
 
 
     fun bind(value: Reservation, position: Int) {

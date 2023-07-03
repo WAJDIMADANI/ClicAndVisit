@@ -167,7 +167,7 @@ class UserRepositoryImp @Inject constructor(
     }
 
     override suspend fun propertyDetails(propertyId: Int): PropertyDetailsResponse {
-        return apiClient.propertyDetails(propertyId, sharedPreferences.getUser().id.toInt())
+        return apiClient.propertyDetails(sharedPreferences.getUser().id.toInt(),propertyId)
     }
 
     override suspend fun addRemoveFavorite(favoriteRequest: FavoriteRequest): GlobalResponse {

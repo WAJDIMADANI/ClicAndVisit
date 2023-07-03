@@ -21,11 +21,7 @@ class SplashActivity : BaseActivity() {
             DataBindingUtil.setContentView<ActivitySplashBinding>(this, R.layout.activity_splash)
 
         registerBindingAndBaseObservers(binding)
-        registerLoggedInObservers()
-    }
 
-    private fun registerLoggedInObservers() {
-        //TODO
     }
 
     override fun navigate(navigationTo: Navigation) {

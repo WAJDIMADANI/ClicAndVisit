@@ -36,7 +36,7 @@ class AdsDetailsViewModel
     val imgCount = MutableLiveData<String>()
 
     val adsName = MutableLiveData<String>()
-    val price = MutableLiveData<String>()
+    val propPrice = MutableLiveData<String>()
     val rooms = MutableLiveData<String>()
     val surface = MutableLiveData<String>()
     val info = MutableLiveData<String>()
@@ -179,13 +179,13 @@ class AdsDetailsViewModel
 
     private fun getPrice() {
         if (property.value!!.category.isEmpty() && property.value!!.price.isEmpty()) {
-            price.value = ""
+            propPrice.value = ""
         } else if (property.value!!.category.isEmpty().not() && property.value!!.price.isEmpty()) {
-            price.value = property.value!!.category
+            propPrice.value = property.value!!.category
         } else if (property.value!!.category.isEmpty() && property.value!!.price.isEmpty().not()) {
-            price.value = property.value!!.getPriceNBR()
+            propPrice.value = property.value!!.getPriceNBR()
         } else {
-            price.value = property.value!!.getCategories() + property.value!!.getPriceNBR()
+            propPrice.value = property.value!!.getCategories() + property.value!!.getPriceNBR()
         }
     }
 

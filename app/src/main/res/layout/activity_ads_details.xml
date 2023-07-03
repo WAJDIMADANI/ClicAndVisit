@@ -182,7 +182,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/margin_global_12dp"
                     android:fontFamily="@font/poppins_medium"
-                    android:text="@{viewModel.price}"
+                    android:text="@{viewModel.propPrice}"
                     android:textColor="@color/details_color"
                     android:textSize="@dimen/font_12sp"
                     app:layout_constraintStart_toStartOf="parent"

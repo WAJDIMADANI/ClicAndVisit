@@ -11,6 +11,8 @@ import com.clickandvisit.R
 import com.clickandvisit.base.BaseActivity
 import com.clickandvisit.databinding.ActivityVisitsBinding
 import com.clickandvisit.global.helper.Navigation
+import com.clickandvisit.global.utils.ExtraKeys
+import com.clickandvisit.ui.ads.adsdetails.AdsDetailsActivity
 import com.clickandvisit.ui.user.meet.MeetAdapter
 import com.clickandvisit.ui.user.meet.MeetViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -56,6 +58,20 @@ class VisitsActivity : BaseActivity() {
                 val intent = Intent(Intent.ACTION_DIAL)
                 intent.data = Uri.parse(uri)
                 startActivity(intent)
+            }
+
+            is Navigation.VisitsNavigation -> {
+                viewModel.getPropertyDetails(navigationTo.propertyId.toInt())
+            }
+
+            is Navigation.AdsDetailsActivityNavigation -> {
+                Intent(this, AdsDetailsActivity::class.java).let { intent ->
+                    intent.putExtra(
+                        ExtraKeys.AddAdsActivity.PROPERTY_EXTRA_KEY_PROP,
+                        navigationTo.value
+                    )
+                    startActivity(intent)
+                }
             }
 
         }
