@@ -5,8 +5,6 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.clickandvisit.R
 import com.clickandvisit.base.BaseActivity
 import com.clickandvisit.data.model.property.Property
