@@ -38,7 +38,7 @@
                     android:id="@+id/ivBack"
                     android:layout_width="@dimen/dimen_25dp"
                     android:layout_height="@dimen/dimen_25dp"
-                    android:layout_marginStart="@dimen/margin_global_36dp"
+                    android:layout_marginStart="@dimen/margin_global_20dp"
                     android:layout_marginTop="@dimen/margin_global_36dp"
                     android:background="@drawable/ic_back"
                     app:onClickWithDebounce="@{() ->viewModel.onBackClick()}" />
@@ -52,6 +52,43 @@
                     android:text="@string/prop_details_title"
                     android:textColor="@color/white_basic"
                     android:textSize="@dimen/font_16sp" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/llLike"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/margin_global_10dp"
+                    android:layout_toStartOf="@+id/ivShare"
+                    android:background="@drawable/ic_white_round"
+                    android:elevation="@dimen/dimen_8dp"
+                    android:gravity="center"
+                    android:paddingStart="5dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/ivShare"
+                    app:layout_constraintEnd_toStartOf="@+id/ivShare"
+                    app:layout_constraintTop_toTopOf="@+id/ivShare">
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        android:id="@+id/ivLike"
+                        style="@style/RadioButton.Style"
+                        android:layout_width="@dimen/dimen_30dp"
+                        android:layout_height="@dimen/dimen_30dp"
+                        android:checked="@={viewModel.isFavourite}"
+                        android:shadowColor="@null"
+                        app:onClickWithDebounce="@{()->viewModel.onLikeClicked()}" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <ImageView
+                    android:id="@+id/ivShare"
+                    android:layout_width="@dimen/dimen_45dp"
+                    android:layout_height="@dimen/dimen_45dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/margin_global_10dp"
+                    android:background="@drawable/ic_share"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:onClickWithDebounce="@{()->viewModel.onShareClicked()}" />
 
             </RelativeLayout>
 
@@ -194,105 +231,25 @@
                 android:gravity="center"
                 android:padding="@dimen/padding_global_5dp"
                 android:text="@string/home_meet_details"
-                app:onClickWithDebounce="@{() ->viewModel.onMeetClicked()}"
                 android:textAllCaps="true"
                 android:textColor="@color/white_basic"
                 android:textSize="@dimen/dimen_15sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/constraintLayoutImages" />
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayoutImages"
+                app:onClickWithDebounce="@{() ->viewModel.onMeetClicked()}" />
 
-            <GridLayout
-                android:id="@+id/glHomeType"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvSearch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_global_10dp"
                 android:layout_marginStart="@dimen/margin_global_30dp"
-                android:layout_marginTop="@dimen/margin_global_15dp"
                 android:layout_marginEnd="@dimen/margin_global_30dp"
-                android:columnCount="3"
-                android:foregroundGravity="center"
-                android:rowCount="2"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvMeet">
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tvHome1"
-                    android:layout_width="110dp"
-                    android:layout_height="@dimen/dimen_100dp"
-                    android:layout_marginEnd="@dimen/margin_global_6dp"
-                    android:layout_marginBottom="@dimen/margin_global_6dp"
-                    android:background="@color/gray_home_type_background"
-                    android:fontFamily="@font/poppins_regular"
-                    android:gravity="center"
-                    android:text="@string/ads_details_1"
-                    android:textAllCaps="true"
-                    android:textColor="@color/white_basic"
-                    android:textSize="@dimen/dimen_14sp" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tvHome2"
-                    android:layout_width="110dp"
-                    android:layout_height="@dimen/dimen_100dp"
-                    android:layout_marginEnd="@dimen/margin_global_6dp"
-                    android:background="@color/gray_home_type_background"
-                    android:fontFamily="@font/poppins_regular"
-                    android:gravity="center"
-                    android:text="@string/ads_details_2"
-                    android:textAllCaps="true"
-                    android:textColor="@color/white_basic"
-                    android:textSize="@dimen/dimen_14sp" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tvHome3"
-                    android:layout_width="110dp"
-                    android:layout_height="@dimen/dimen_100dp"
-                    android:background="@color/gray_home_type_background"
-                    android:fontFamily="@font/poppins_regular"
-                    android:gravity="center"
-                    android:text="@string/ads_details_3"
-                    android:textAllCaps="true"
-                    android:textColor="@color/white_basic"
-                    android:textSize="@dimen/dimen_14sp" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tvHome4"
-                    android:layout_width="110dp"
-                    android:layout_height="@dimen/dimen_100dp"
-                    android:background="@color/gray_home_type_background"
-                    android:fontFamily="@font/poppins_regular"
-                    android:gravity="center"
-                    android:text="@string/ads_details_4"
-                    android:textAllCaps="true"
-                    android:textColor="@color/white_basic"
-                    android:textSize="@dimen/dimen_14sp" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tvHome5"
-                    android:layout_width="110dp"
-                    android:layout_height="@dimen/dimen_100dp"
-                    android:background="@color/gray_home_type_background"
-                    android:fontFamily="@font/poppins_regular"
-                    android:gravity="center"
-                    android:text="@string/ads_details_5"
-                    android:textAllCaps="true"
-                    android:textColor="@color/white_basic"
-                    android:textSize="@dimen/dimen_14sp" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tvHome6"
-                    android:layout_width="110dp"
-                    android:layout_height="@dimen/dimen_100dp"
-                    android:background="@color/gray_home_type_background"
-                    android:fontFamily="@font/poppins_regular"
-                    android:gravity="center"
-                    android:text="@string/ads_details_6"
-                    android:textAllCaps="true"
-                    android:textColor="@color/white_basic"
-                    android:textSize="@dimen/dimen_14sp" />
-
-            </GridLayout>
-
+                app:layout_constraintTop_toBottomOf="@+id/tvMeet"
+                app:recyclerViewData="@{viewModel.list}" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvDPE"
@@ -306,7 +263,110 @@
                 android:textColor="@color/black"
                 android:textSize="@dimen/font_16sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/glHomeType" />
+                app:layout_constraintTop_toBottomOf="@+id/rvSearch" />
+
+            <LinearLayout
+                android:id="@+id/llDPE"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_25dp"
+                android:layout_marginTop="@dimen/margin_global_10dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvDPE">
+
+                <TextView
+                    android:id="@+id/tvA"
+                    android:layout_width="@dimen/dimen_45dp"
+                    android:layout_height="@dimen/dimen_20dp"
+                    android:background="#67AE5B"
+                    android:fontFamily="@font/poppins_medium"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/dimen_16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvB"
+                    android:layout_width="@dimen/dimen_45dp"
+                    android:layout_height="@dimen/dimen_20dp"
+                    android:background="#518C47"
+                    android:fontFamily="@font/poppins_medium"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/dimen_16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvC"
+                    android:layout_width="@dimen/dimen_45dp"
+                    android:layout_height="@dimen/dimen_20dp"
+                    android:background="#FCEC61"
+                    android:fontFamily="@font/poppins_medium"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/dimen_16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvD"
+                    android:layout_width="@dimen/dimen_45dp"
+                    android:layout_height="@dimen/dimen_20dp"
+                    android:background="#F1C250"
+                    android:fontFamily="@font/poppins_medium"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/dimen_16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvE"
+                    android:layout_width="@dimen/dimen_45dp"
+                    android:layout_height="@dimen/dimen_20dp"
+                    android:background="#EF9D38"
+                    android:fontFamily="@font/poppins_medium"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/dimen_16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvF"
+                    android:layout_width="@dimen/dimen_45dp"
+                    android:layout_height="@dimen/dimen_20dp"
+                    android:background="#E68331"
+                    android:fontFamily="@font/poppins_medium"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/dimen_16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvG"
+                    android:layout_width="@dimen/dimen_45dp"
+                    android:layout_height="@dimen/dimen_20dp"
+                    android:background="#E15141"
+                    android:fontFamily="@font/poppins_medium"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/dimen_16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </LinearLayout>
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvGES"
@@ -320,9 +380,113 @@
                 android:textColor="@color/black"
                 android:textSize="@dimen/font_16sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvDPE" />
+                app:layout_constraintTop_toBottomOf="@+id/llDPE" />
+
+            <LinearLayout
+                android:id="@+id/dllGES"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_30dp"
+                android:layout_marginTop="@dimen/margin_global_10dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvGES">
+
+                <TextView
+                    android:id="@+id/tvGESA"
+                    android:layout_width="@dimen/dimen_45dp"
+                    android:layout_height="@dimen/dimen_20dp"
+                    android:background="#E5E8EE"
+                    android:fontFamily="@font/poppins_medium"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/dimen_16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvGESB"
+                    android:layout_width="@dimen/dimen_45dp"
+                    android:layout_height="@dimen/dimen_20dp"
+                    android:background="#CDD3DF"
+                    android:fontFamily="@font/poppins_medium"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/dimen_16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvGESC"
+                    android:layout_width="@dimen/dimen_45dp"
+                    android:layout_height="@dimen/dimen_20dp"
+                    android:background="#B4BFCD"
+                    android:fontFamily="@font/poppins_medium"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/dimen_16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvGESD"
+                    android:layout_width="@dimen/dimen_45dp"
+                    android:layout_height="@dimen/dimen_20dp"
+                    android:background="#8393AC"
+                    android:fontFamily="@font/poppins_medium"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/dimen_16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvGESE"
+                    android:layout_width="@dimen/dimen_45dp"
+                    android:layout_height="@dimen/dimen_20dp"
+                    android:background="#54678C"
+                    android:fontFamily="@font/poppins_medium"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/dimen_16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvGESF"
+                    android:layout_width="@dimen/dimen_45dp"
+                    android:layout_height="@dimen/dimen_20dp"
+                    android:background="#3B547D"
+                    android:fontFamily="@font/poppins_medium"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/dimen_16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvGESG"
+                    android:layout_width="@dimen/dimen_45dp"
+                    android:layout_height="@dimen/dimen_20dp"
+                    android:background="#233D6E"
+                    android:fontFamily="@font/poppins_medium"
+                    android:gravity="center"
+                    android:textColor="@color/white_basic"
+                    android:textSize="@dimen/dimen_16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </LinearLayout>
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvInfo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_global_30dp"
@@ -333,7 +497,21 @@
                 android:textColor="@color/black"
                 android:textSize="@dimen/font_16sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvGES" />
+                app:layout_constraintTop_toBottomOf="@+id/dllGES" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_global_30dp"
+                android:layout_marginTop="@dimen/margin_global_10dp"
+                android:layout_marginBottom="@dimen/margin_global_15dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="@{viewModel.info}"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_13sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvInfo" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

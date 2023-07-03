@@ -56,4 +56,8 @@ sealed class Navigation {
 
     data class AdsDetailsActivityNavigation(val value: Property) : Navigation()
 
+    data class DPENavigation(val energy: String) : Navigation()
+
+    data class GESNavigation(val ges: String) : Navigation()
+
 }

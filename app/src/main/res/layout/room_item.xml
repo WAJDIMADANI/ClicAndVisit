@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_global_6dp">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvHome1"
+            android:layout_width="110dp"
+            android:layout_height="@dimen/dimen_100dp"
+            android:background="@color/gray_home_type_background"
+            android:fontFamily="@font/poppins_regular"
+            android:gravity="center"
+            android:text="@string/ads_details_1"
+            android:textAllCaps="true"
+            android:textColor="@color/white_basic"
+            android:textSize="@dimen/dimen_14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
