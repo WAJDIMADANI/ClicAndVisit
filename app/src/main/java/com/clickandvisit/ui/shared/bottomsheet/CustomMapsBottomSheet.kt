@@ -10,17 +10,16 @@ import androidx.databinding.DataBindingUtil
 import com.clickandvisit.R
 import com.clickandvisit.data.model.property.Property
 import com.clickandvisit.databinding.ButtomSheetMapsBinding
+import com.clickandvisit.global.listener.OnMapsClickedListener
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.squareup.picasso.Picasso
 
-/**
- * Created by sazouzi on 03/07/2020
- */
 
 class CustomMapsBottomSheet(
     private val myContext: Context,
     private val property: Property,
+    private val onMapsClickedListener: OnMapsClickedListener,
     private val actionBlock: (() -> Unit)? = null,
     private val dismissActionBlock: (() -> Unit)? = null
 ) : BottomSheetDialog(myContext) {
@@ -87,11 +86,11 @@ class CustomMapsBottomSheet(
         }
 
         binding.tvMeet.setOnClickListener {
-
+            onMapsClickedListener.onMeetClicked(property)
         }
 
         binding.clContainer.setOnClickListener {
-
+            onMapsClickedListener.onItemClicked(property)
         }
 
     }

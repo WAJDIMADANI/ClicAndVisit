@@ -15,6 +15,7 @@ import com.clickandvisit.R
 import com.clickandvisit.data.model.property.Property
 import com.clickandvisit.global.helper.DetachableClickHelper
 import com.clickandvisit.global.helper.Navigation
+import com.clickandvisit.global.listener.OnMapsClickedListener
 import com.clickandvisit.global.utils.DebugLog
 import com.clickandvisit.global.utils.observeOnlyNotNull
 import com.clickandvisit.ui.shared.bottomsheet.CustomMapsBottomSheet
@@ -47,11 +48,12 @@ abstract class BaseActivity : AppCompatActivity() {
     private fun registerMapsBottomSheetDialog(viewModel: BaseAndroidViewModel) {
         viewModel.mapsBottomSheet.observeOnlyNotNull(
             this
-        ) { signUpBottomSheet ->
-            showSignUpBottomSheetDialog(
-                signUpBottomSheet.property,
-                signUpBottomSheet.okActionBlock,
-                signUpBottomSheet.dismissActionBlock
+        ) { mapsBottomSheet ->
+            showMapsBottomSheetDialog(
+                mapsBottomSheet.property,
+                mapsBottomSheet.onMapsClickedListener,
+                mapsBottomSheet.okActionBlock,
+                mapsBottomSheet.dismissActionBlock
             )
         }
     }
@@ -63,8 +65,9 @@ abstract class BaseActivity : AppCompatActivity() {
      * @param okActionBlock action to do on click
      * @param dismissActionBlock action to do on dismiss optional
      */
-    fun showSignUpBottomSheetDialog(
+    fun showMapsBottomSheetDialog(
         property: Property,
+        onMapsClickedListener: OnMapsClickedListener,
         okActionBlock: (() -> Unit)? = null,
         dismissActionBlock: (() -> Unit)? = null
     ) {
@@ -72,6 +75,7 @@ abstract class BaseActivity : AppCompatActivity() {
             CustomMapsBottomSheet(
                 this,
                 property,
+                onMapsClickedListener,
                 okActionBlock,
                 dismissActionBlock
             ).show()

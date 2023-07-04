@@ -9,6 +9,7 @@ import com.clickandvisit.data.model.property.Property
 import com.clickandvisit.data.model.property.SearchResponse
 import com.clickandvisit.data.repository.abs.UserRepository
 import com.clickandvisit.global.helper.Navigation
+import com.clickandvisit.global.listener.OnMapsClickedListener
 import com.clickandvisit.global.listener.SchedulerProvider
 import com.clickandvisit.global.utils.ExtraKeys
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -22,7 +23,7 @@ class MapsViewModel
     schedulerProvider: SchedulerProvider,
     private val userRepository: UserRepository,
     savedStateHandle: SavedStateHandle
-) : BaseAndroidViewModel(application, schedulerProvider) {
+) : BaseAndroidViewModel(application, schedulerProvider), OnMapsClickedListener {
 
 
     val searchResponse = MutableLiveData<SearchResponse>()
@@ -37,6 +38,14 @@ class MapsViewModel
     }
 
     fun onMarkerClick(property: Property) {
-        showMapsBottomSheet(property)
+        showMapsBottomSheet(property,this)
+    }
+
+    override fun onItemClicked(property: Property) {
+        navigate(Navigation.AdsDetailsActivityNavigation(property))
+    }
+
+    override fun onMeetClicked(property: Property) {
+        navigate(Navigation.AdsDetailsActivityNavigation(property))
     }
 }

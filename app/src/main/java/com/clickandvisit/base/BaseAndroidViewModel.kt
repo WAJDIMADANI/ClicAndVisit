@@ -12,6 +12,7 @@ import com.clickandvisit.global.helper.Navigation
 import com.clickandvisit.global.helper.SingleLiveEvent
 import com.clickandvisit.global.helper.dialog.ChoseDialog
 import com.clickandvisit.global.helper.dialog.SimpleDialog
+import com.clickandvisit.global.listener.OnMapsClickedListener
 import com.clickandvisit.global.listener.SchedulerProvider
 import com.clickandvisit.ui.shared.bottomsheet.MapsBottomSheet
 import kotlinx.coroutines.CoroutineScope
@@ -73,6 +74,7 @@ abstract class BaseAndroidViewModel(
      */
     fun showMapsBottomSheet(
         property: Property,
+        onMapsClickedListener: OnMapsClickedListener,
         okActionBlock: (() -> Unit)? = null,
         dismissActionBlock: (() -> Unit)? = null
     ) {
@@ -80,6 +82,7 @@ abstract class BaseAndroidViewModel(
             MapsBottomSheet.build(
                 context = applicationContext,
                 property = property,
+                onMapsClickedListener = onMapsClickedListener,
                 okActionBlock = okActionBlock,
                 dismissActionBlock = dismissMapsBottomSheet(dismissActionBlock)
             )

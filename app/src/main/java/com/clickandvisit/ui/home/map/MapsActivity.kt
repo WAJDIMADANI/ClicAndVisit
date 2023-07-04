@@ -1,6 +1,7 @@
 package com.clickandvisit.ui.home.map
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.os.Bundle
@@ -14,8 +15,10 @@ import com.clickandvisit.data.model.property.Property
 import com.clickandvisit.databinding.ActivityMapsBinding
 import com.clickandvisit.global.helper.Navigation
 import com.clickandvisit.global.utils.DebugLog
+import com.clickandvisit.global.utils.ExtraKeys
 import com.clickandvisit.global.utils.TAG
 import com.clickandvisit.global.utils.observeOnlyNotNull
+import com.clickandvisit.ui.ads.adsdetails.AdsDetailsActivity
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener
@@ -122,6 +125,16 @@ class MapsActivity : BaseActivity(), OnMapReadyCallback {
         when (navigationTo) {
 
             is Navigation.Back -> finish()
+
+            is Navigation.AdsDetailsActivityNavigation -> {
+                Intent(this, AdsDetailsActivity::class.java).let { intent ->
+                    intent.putExtra(
+                        ExtraKeys.AddAdsActivity.PROPERTY_EXTRA_KEY_PROP,
+                        navigationTo.value
+                    )
+                    startActivity(intent)
+                }
+            }
 
         }
     }
