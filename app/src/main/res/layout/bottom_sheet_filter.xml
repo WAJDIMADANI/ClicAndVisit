@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -27,7 +26,7 @@
             android:layout_centerHorizontal="true"
             android:layout_gravity="center"
             android:layout_marginTop="@dimen/margin_global_10dp"
-            android:fontFamily="@font/poppins_semi_bold"
+            android:fontFamily="@font/poppins_medium"
             android:text="@string/filter_bottom_sheet_title"
             android:textColor="@color/details_color"
             android:textSize="@dimen/font_12sp" />
@@ -36,7 +35,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/dimen_1dp"
             android:layout_marginTop="@dimen/margin_global_5dp"
-            android:background="@color/light_grey" />
+            android:background="@color/gray_home_background" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvDate"
@@ -48,14 +47,14 @@
             android:fontFamily="@font/poppins_medium"
             android:gravity="center"
             android:text="@string/filter_bottom_sheet_date"
-            android:textColor="@color/color_accent_color"
-            android:textSize="@dimen/font_14sp" />
+            android:textColor="#2196F3"
+            android:textSize="@dimen/font_16sp" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/dimen_1dp"
             android:layout_marginTop="@dimen/margin_global_5dp"
-            android:background="@color/light_grey" />
+            android:background="@color/gray_home_background" />
 
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -68,14 +67,14 @@
             android:fontFamily="@font/poppins_medium"
             android:gravity="center"
             android:text="@string/filter_bottom_sheet_price_asc"
-            android:textColor="@color/color_accent_color"
-            android:textSize="@dimen/font_14sp" />
+            android:textColor="#2196F3"
+            android:textSize="@dimen/font_16sp" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/dimen_1dp"
             android:layout_marginTop="@dimen/margin_global_5dp"
-            android:background="@color/light_grey" />
+            android:background="@color/gray_home_background" />
 
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -88,14 +87,14 @@
             android:fontFamily="@font/poppins_medium"
             android:gravity="center"
             android:text="@string/filter_bottom_sheet_price_desc"
-            android:textColor="@color/color_accent_color"
-            android:textSize="@dimen/font_14sp" />
+            android:textColor="#2196F3"
+            android:textSize="@dimen/font_16sp" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/dimen_1dp"
             android:layout_marginTop="@dimen/margin_global_5dp"
-            android:background="@color/light_grey" />
+            android:background="@color/gray_home_background" />
 
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -108,14 +107,14 @@
             android:fontFamily="@font/poppins_medium"
             android:gravity="center"
             android:text="@string/filter_bottom_sheet_surface_asc"
-            android:textColor="@color/color_accent_color"
-            android:textSize="@dimen/font_14sp" />
+            android:textColor="#2196F3"
+            android:textSize="@dimen/font_16sp" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/dimen_1dp"
             android:layout_marginTop="@dimen/margin_global_5dp"
-            android:background="@color/light_grey" />
+            android:background="@color/gray_home_background" />
 
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -128,8 +127,8 @@
             android:fontFamily="@font/poppins_medium"
             android:gravity="center"
             android:text="@string/filter_bottom_sheet_surface_desc"
-            android:textColor="@color/color_accent_color"
-            android:textSize="@dimen/font_14sp" />
+            android:textColor="#2196F3"
+            android:textSize="@dimen/font_16sp" />
 
         <View
             android:layout_width="match_parent"
@@ -147,8 +146,8 @@
             android:fontFamily="@font/poppins_semi_bold"
             android:gravity="center"
             android:text="@string/global_cancel"
-            android:textColor="@color/color_accent_color"
-            android:textSize="@dimen/font_14sp" />
+            android:textColor="#2196F3"
+            android:textSize="@dimen/font_16sp" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
