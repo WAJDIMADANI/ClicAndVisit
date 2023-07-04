@@ -34,7 +34,7 @@ data class Property(
     @Json(name = "surface")
     val surface: String,
     @Json(name = "price")
-    val price: String,
+    var price: String,
     @Json(name = "etage")
     val stage: String,
     @Json(name = "etage_sur")
@@ -97,17 +97,23 @@ data class Property(
     }
 
 
-    fun getPriceNBR(): String{
+    fun getPriceNBR(): String {
+        price = price.replaceRange(
+            price.length - 3,
+            price.length,
+            " " + price.subSequence(price.length - 3, price.length)
+        )
         return try {
             "$price €"
-        }catch (e : NumberFormatException){
+        } catch (e: NumberFormatException) {
             ""
         }
     }
-    fun getCategories(): String{
+
+    fun getCategories(): String {
         return try {
             "$category - "
-        }catch (e : NumberFormatException){
+        } catch (e: NumberFormatException) {
             " "
         }
     }
