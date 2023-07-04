@@ -4,10 +4,12 @@ import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import com.clickandvisit.R
 import com.clickandvisit.base.BaseAndroidViewModel
+import com.clickandvisit.data.model.chat.ContactOwnerResponse
 import com.clickandvisit.data.model.property.PropertyDetailsResponse
 import com.clickandvisit.data.model.property.SearchResponse
 import com.clickandvisit.data.model.reservation.Reservation
 import com.clickandvisit.data.model.reservation.ReservationResponse
+import com.clickandvisit.data.model.user.ReportUserResponse
 import com.clickandvisit.data.repository.abs.UserRepository
 import com.clickandvisit.global.helper.Navigation
 import com.clickandvisit.global.listener.OnMeetClickedListener
@@ -81,18 +83,20 @@ class MeetViewModel
         acceptRefuseReservation(value, false)
     }
 
-    override fun onChatClicked(value: Reservation) {
+    override fun onChatClicked(reservation: Reservation) {
         showMeetBottomSheet(
             title = applicationContext.getString(R.string.chat_title),
             hint = applicationContext.getString(R.string.chat_body),
+            reservation = reservation,
             onSendClickedListener = this
         )
     }
 
-    override fun onSignalClicked(value: Reservation) {
+    override fun onSignalClicked(reservation: Reservation) {
         showMeetBottomSheet(
             title = applicationContext.getString(R.string.report_title),
             hint = applicationContext.getString(R.string.report_body),
+            reservation = reservation,
             onSendClickedListener = this
         )
     }
@@ -148,9 +152,53 @@ class MeetViewModel
         handleThrowable(throwable)
     }
 
-    override fun onSendClicked(msg: String) {
-        DebugLog.i(TAG, msg)
+    override fun onSendClicked(reservation: Reservation, tag: String, msg: String) {
+        if (tag == applicationContext.getString(R.string.chat_title)) {
+            showBlockProgressBar()
+            viewModelScope.launch {
+                tryCatch({
+                    val response = withContext(schedulerProvider.dispatchersIO()) {
+                        userRepository.contactOwner(reservation.owner.id.toInt(), msg)
+                    }
+                    onContactOwnerSuccess(response)
+                }, { error ->
+                    onContactOwnerError(error)
+                })
+            }
+        } else {
+            showBlockProgressBar()
+            viewModelScope.launch {
+                tryCatch({
+                    val response = withContext(schedulerProvider.dispatchersIO()) {
+                        userRepository.reportUser(reservation.owner.id.toInt(), msg)
+                    }
+                    onReportUserSuccess(response)
+                }, { error ->
+                    onReportUserError(error)
+                })
+            }
+        }
     }
 
+    private fun onContactOwnerSuccess(response: Void) {
+        hideBlockProgressBar()
+        shownSimpleDialog(messageId = R.string.chat_response)
+    }
+
+    private fun onContactOwnerError(throwable: Throwable) {
+        hideBlockProgressBar()
+        shownSimpleDialog(messageId = R.string.chat_response)
+    }
+
+
+    private fun onReportUserSuccess(response: Void) {
+        hideBlockProgressBar()
+        shownSimpleDialog(messageId = R.string.report_response)
+    }
+
+    private fun onReportUserError(throwable: Throwable) {
+        hideBlockProgressBar()
+        shownSimpleDialog(messageId = R.string.report_response)
+    }
 
 }

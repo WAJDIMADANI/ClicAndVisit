@@ -56,7 +56,7 @@ interface UserRepository {
     suspend fun userUpdate(user: User): User
 
     @WorkerThread
-    suspend fun reportUser(reportUserRequest: ReportUserRequest): ReportUserResponse
+    suspend fun reportUser(userTRId: Int, message: String): Void
 
     @WorkerThread
     suspend fun setPushToken(token: String): TokenResponse
@@ -117,7 +117,7 @@ interface UserRepository {
 
     /** Chat **/
 
-    suspend fun contactOwner(propertyId: Int, message: String): ContactOwnerResponse
+    suspend fun contactOwner(propertyId: Int, message: String): Void
 
     suspend fun sendMessage(discussionId: Int, message: String): GlobalResponse
 

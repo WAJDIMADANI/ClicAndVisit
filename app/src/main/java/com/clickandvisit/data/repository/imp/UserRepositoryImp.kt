@@ -114,11 +114,11 @@ class UserRepositoryImp @Inject constructor(
     }
 
 
-    override suspend fun reportUser(reportUserRequest: ReportUserRequest): ReportUserResponse {
+    override suspend fun reportUser(userTRId: Int, message: String): Void {
         return apiClient.reportUser(
-            reportUserRequest.userId,
-            reportUserRequest.userRId,
-            reportUserRequest.message
+            sharedPreferences.getUser().id.toInt(),
+            userTRId,
+            message
         )
     }
 
@@ -242,16 +242,16 @@ class UserRepositoryImp @Inject constructor(
         )
     }
 
-    override suspend fun enableDisableProperty(propId: Int, enableDisable: Int): GlobalResponse {
+    override suspend fun getSavedSearch(): SavedSearchResponse {
+        return apiClient.getSavedSearch(sharedPreferences.getUser().id.toInt())
+    }
+
+    override suspend fun enableDisableProperty(propId: Int, enableDisable: Int): GlobalResponse {//TODO
         return apiClient.enableDisableProperty(propId, enableDisable)
     }
 
-    override suspend fun deleteSearch(searchId: Int): GlobalResponse {
+    override suspend fun deleteSearch(searchId: Int): GlobalResponse {//TODO
         return apiClient.deleteSearch(searchId)
-    }
-
-    override suspend fun getSavedSearch(): SavedSearchResponse {
-        return apiClient.getSavedSearch(sharedPreferences.getUser().id.toInt())
     }
 
     override suspend fun getAvailability(date: String, propId: Int): AvailabilityResponse {
@@ -297,7 +297,7 @@ class UserRepositoryImp @Inject constructor(
     override suspend fun contactOwner(
         propertyId: Int,
         message: String
-    ): ContactOwnerResponse {
+    ): Void {
         return apiClient.contactOwner(sharedPreferences.getUser().id.toInt(), propertyId, message)
     }
 

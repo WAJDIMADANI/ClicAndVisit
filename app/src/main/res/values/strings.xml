@@ -216,10 +216,12 @@
     <string name="chat_title">ENVOYER UN MESSAGE</string>
     <string name="chat_body">Votre message</string>
     <string name="chat_send">ENVOYER</string>
+    <string name="chat_response">Votre message a été envoyé avec succès !</string>
 
     <!--report-->
     <string name="report_title">SIGNALER</string>
     <string name="report_body">ex : Démarchage</string>
+    <string name="report_response">Votre message a été envoyé avec succès à nos admins !</string>
 
     <string name="global_send">Envoyer</string>
 

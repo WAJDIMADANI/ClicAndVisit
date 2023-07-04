@@ -7,6 +7,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.clickandvisit.R
 import com.clickandvisit.data.model.property.Property
+import com.clickandvisit.data.model.reservation.Reservation
 import com.clickandvisit.data.retrofit.EndpointInterceptor
 import com.clickandvisit.global.helper.Navigation
 import com.clickandvisit.global.helper.SingleLiveEvent
@@ -137,6 +138,7 @@ abstract class BaseAndroidViewModel(
     fun showMeetBottomSheet(
         title: String,
         hint: String,
+        reservation: Reservation,
         onSendClickedListener: OnSendClickedListener,
         okActionBlock: (() -> Unit)? = null,
         dismissActionBlock: (() -> Unit)? = null
@@ -146,6 +148,7 @@ abstract class BaseAndroidViewModel(
                 context = applicationContext,
                 title = title,
                 hint = hint,
+                reservation = reservation,
                 onSendClickedListener = onSendClickedListener,
                 okActionBlock = okActionBlock,
                 dismissActionBlock = dismissMeetBottomSheet(dismissActionBlock)

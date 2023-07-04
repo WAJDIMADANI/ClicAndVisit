@@ -90,7 +90,7 @@ interface APIClient {
         @Field("user_id") userId: Int,
         @Field("user_to_report") userRId: Int,
         @Field("message") message: String
-    ): ReportUserResponse
+    ): Void
 
     @FormUrlEncoded
     @POST("set_push_token")
@@ -278,7 +278,7 @@ interface APIClient {
         @Field("user_id") userId: Int,
         @Field("property_id") propertyId: Int,
         @Field("message") message: String
-    ): ContactOwnerResponse
+    ): Void
 
     @FormUrlEncoded
     @POST("send_message")

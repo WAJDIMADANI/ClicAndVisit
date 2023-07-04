@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.clickandvisit.R
+import com.clickandvisit.data.model.reservation.Reservation
 import com.clickandvisit.databinding.BottomSheetMeetBinding
 import com.clickandvisit.global.listener.OnSendClickedListener
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -17,6 +18,7 @@ class CustomMeetBottomSheet(
     private val myContext: Context,
     private val title: String,
     private val hint: String,
+    private val reservation: Reservation,
     private val onSendClickedListener: OnSendClickedListener,
     private val actionBlock: (() -> Unit)? = null,
     private val dismissActionBlock: (() -> Unit)? = null
@@ -60,7 +62,12 @@ class CustomMeetBottomSheet(
         }
 
         binding.cbSend.setOnClickListener {
-            onSendClickedListener.onSendClicked(binding.chatMessage.text.toString())
+            onSendClickedListener.onSendClicked(
+                reservation,
+                title,
+                binding.chatMessage.text.toString()
+            )
+            dismiss()
         }
 
     }

@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.observe
 import com.clickandvisit.R
 import com.clickandvisit.data.model.property.Property
+import com.clickandvisit.data.model.reservation.Reservation
 import com.clickandvisit.global.helper.DetachableClickHelper
 import com.clickandvisit.global.helper.Navigation
 import com.clickandvisit.global.listener.OnFilterClickedListener
@@ -76,6 +77,7 @@ abstract class BaseActivity : AppCompatActivity() {
             showCustomMeetBottomSheet(
                 mapsBottomSheet.title,
                 mapsBottomSheet.hint,
+                mapsBottomSheet.reservation,
                 mapsBottomSheet.onSendClickedListener,
                 mapsBottomSheet.okActionBlock,
                 mapsBottomSheet.dismissActionBlock
@@ -113,6 +115,7 @@ abstract class BaseActivity : AppCompatActivity() {
     fun showCustomMeetBottomSheet(
         title: String,
         hint: String,
+        reservation: Reservation,
         onSendClickedListener: OnSendClickedListener,
         okActionBlock: (() -> Unit)? = null,
         dismissActionBlock: (() -> Unit)? = null
@@ -122,6 +125,7 @@ abstract class BaseActivity : AppCompatActivity() {
                 this,
                 title,
                 hint,
+                reservation,
                 onSendClickedListener,
                 okActionBlock,
                 dismissActionBlock
