@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="bottomsheet"
+            type="com.clickandvisit.ui.shared.bottomsheet.filter.CustomFilterBottomSheet" />
+
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/clContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white_basic"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/margin_global_10dp"
+            android:fontFamily="@font/poppins_semi_bold"
+            android:text="@string/filter_bottom_sheet_title"
+            android:textColor="@color/details_color"
+            android:textSize="@dimen/font_12sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_1dp"
+            android:layout_marginTop="@dimen/margin_global_5dp"
+            android:background="@color/light_grey" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvDate"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_40dp"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/margin_global_10dp"
+            android:fontFamily="@font/poppins_medium"
+            android:gravity="center"
+            android:text="@string/filter_bottom_sheet_date"
+            android:textColor="@color/color_accent_color"
+            android:textSize="@dimen/font_14sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_1dp"
+            android:layout_marginTop="@dimen/margin_global_5dp"
+            android:background="@color/light_grey" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvPriceAsc"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_40dp"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/margin_global_10dp"
+            android:fontFamily="@font/poppins_medium"
+            android:gravity="center"
+            android:text="@string/filter_bottom_sheet_price_asc"
+            android:textColor="@color/color_accent_color"
+            android:textSize="@dimen/font_14sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_1dp"
+            android:layout_marginTop="@dimen/margin_global_5dp"
+            android:background="@color/light_grey" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvPriceDesc"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_40dp"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/margin_global_10dp"
+            android:fontFamily="@font/poppins_medium"
+            android:gravity="center"
+            android:text="@string/filter_bottom_sheet_price_desc"
+            android:textColor="@color/color_accent_color"
+            android:textSize="@dimen/font_14sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_1dp"
+            android:layout_marginTop="@dimen/margin_global_5dp"
+            android:background="@color/light_grey" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvSurfaceAsc"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_40dp"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/margin_global_10dp"
+            android:fontFamily="@font/poppins_medium"
+            android:gravity="center"
+            android:text="@string/filter_bottom_sheet_surface_asc"
+            android:textColor="@color/color_accent_color"
+            android:textSize="@dimen/font_14sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_1dp"
+            android:layout_marginTop="@dimen/margin_global_5dp"
+            android:background="@color/light_grey" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvSurfaceDesc"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_40dp"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/margin_global_10dp"
+            android:fontFamily="@font/poppins_medium"
+            android:gravity="center"
+            android:text="@string/filter_bottom_sheet_surface_desc"
+            android:textColor="@color/color_accent_color"
+            android:textSize="@dimen/font_14sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_4dp"
+            android:layout_marginTop="@dimen/margin_global_5dp"
+            android:background="@color/gray_home_background" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvCancel"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_40dp"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/margin_global_10dp"
+            android:fontFamily="@font/poppins_semi_bold"
+            android:gravity="center"
+            android:text="@string/global_cancel"
+            android:textColor="@color/color_accent_color"
+            android:textSize="@dimen/font_14sp" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</layout>

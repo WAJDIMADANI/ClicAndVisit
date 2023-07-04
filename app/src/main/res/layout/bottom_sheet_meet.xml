@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="bottomsheet"
+            type="com.clickandvisit.ui.shared.bottomsheet.meet.CustomMeetBottomSheet" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white_basic"
+        android:clipToPadding="false"
+        android:padding="@dimen/margin_global_15dp">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivHide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_global_10dp"
+            android:padding="@dimen/padding_global_5dp"
+            android:src="@drawable/ic_hide"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/poppins_semi_bold"
+            android:text="@string/chat_title"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/ivHide"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/ivHide" />
+
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/chatMessage"
+            android:layout_width="match_parent"
+            android:layout_height="145dp"
+            android:layout_margin="@dimen/margin_global_10dp"
+            android:background="@drawable/ic_edit_back"
+            android:fontFamily="@font/poppins_medium"
+            android:gravity="start"
+            android:hint="@string/chat_body"
+            android:inputType="textMultiLine"
+            android:padding="@dimen/padding_global_13dp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_15sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivHide" />
+
+        <com.clickandvisit.ui.shared.view.CustomButton
+            android:id="@+id/cbSend"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_margin="@dimen/margin_global_10dp"
+            android:background="@drawable/ic_button_background"
+            android:fontFamily="@font/poppins_semi_bold"
+            android:text="@string/chat_send"
+            android:textColor="@color/white_basic"
+            android:textSize="@dimen/font_14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/chatMessage" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>

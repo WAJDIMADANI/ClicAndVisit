@@ -345,6 +345,13 @@
     <string name="filter_state">choisir l\'etat de colis</string>
     <string name="filter_apply">Appliquer</string>
 
+    <string name="filter_bottom_sheet_title">Trier</string>
+    <string name="filter_bottom_sheet_date">Les plus récents</string>
+    <string name="filter_bottom_sheet_price_asc">Prix croissant</string>
+    <string name="filter_bottom_sheet_price_desc">Prix décroissant</string>
+    <string name="filter_bottom_sheet_surface_asc">Surface croissante</string>
+    <string name="filter_bottom_sheet_surface_desc">Surface décroissante</string>
+
 
     <!-- home -->
     <string name="home_welcome">Bienvenu </string>

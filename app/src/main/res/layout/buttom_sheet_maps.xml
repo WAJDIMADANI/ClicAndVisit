@@ -9,7 +9,7 @@
 
         <variable
             name="bottomsheet"
-            type="com.clickandvisit.ui.shared.bottomsheet.CustomMapsBottomSheet" />
+            type="com.clickandvisit.ui.shared.bottomsheet.maps.CustomMapsBottomSheet" />
 
 
         <variable

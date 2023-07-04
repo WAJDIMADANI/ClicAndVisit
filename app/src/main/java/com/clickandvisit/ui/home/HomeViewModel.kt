@@ -12,6 +12,7 @@ import com.clickandvisit.data.model.property.*
 import com.clickandvisit.data.model.user.TokenResponse
 import com.clickandvisit.data.repository.abs.UserRepository
 import com.clickandvisit.global.helper.Navigation
+import com.clickandvisit.global.listener.OnFilterClickedListener
 import com.clickandvisit.global.listener.OnPropertyClickedListener
 import com.clickandvisit.global.listener.SchedulerProvider
 import com.clickandvisit.global.listener.ToolBarListener
@@ -39,7 +40,7 @@ class HomeViewModel
     savedStateHandle: SavedStateHandle,
     private val userRepository: UserRepository
 ) : BaseAndroidViewModel(application, schedulerProvider), ToolBarListener,
-    OnPropertyClickedListener {
+    OnPropertyClickedListener, OnFilterClickedListener {
 
     val list: MutableLiveData<List<Property>> = MutableLiveData(arrayListOf())
 
@@ -135,7 +136,7 @@ class HomeViewModel
     }
 
     fun onFilterClicked() {
-        //TODO:
+        showFilterBottomSheet(this)
     }
 
     override fun onChatClicked() {
@@ -235,6 +236,30 @@ class HomeViewModel
                 searchRequest.let { DebugLog.i(TAG, it.toString()) }
             }
         }
+    }
+
+    override fun onDateClicked() {
+        DebugLog.i(TAG, "onDateClicked")
+    }
+
+    override fun onPriceAscClicked() {
+        DebugLog.i(TAG, "onPriceAscClicked")
+    }
+
+    override fun onPriceDescClicked() {
+        DebugLog.i(TAG, "onPriceDescClicked")
+    }
+
+    override fun onSurfaceAscClicked() {
+        DebugLog.i(TAG, "onSurfaceAscClicked")
+    }
+
+    override fun onSurfaceDescClicked() {
+        DebugLog.i(TAG, "onSurfaceDescClicked")
+    }
+
+    override fun onCancelClicked() {
+        DebugLog.i(TAG, "onCancelClicked")
     }
 
 }

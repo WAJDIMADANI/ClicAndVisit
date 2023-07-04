@@ -1,6 +1,7 @@
 package com.clickandvisit.base
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.ViewGroup
@@ -15,10 +16,14 @@ import com.clickandvisit.R
 import com.clickandvisit.data.model.property.Property
 import com.clickandvisit.global.helper.DetachableClickHelper
 import com.clickandvisit.global.helper.Navigation
+import com.clickandvisit.global.listener.OnFilterClickedListener
 import com.clickandvisit.global.listener.OnMapsClickedListener
+import com.clickandvisit.global.listener.OnSendClickedListener
 import com.clickandvisit.global.utils.DebugLog
 import com.clickandvisit.global.utils.observeOnlyNotNull
-import com.clickandvisit.ui.shared.bottomsheet.CustomMapsBottomSheet
+import com.clickandvisit.ui.shared.bottomsheet.filter.CustomFilterBottomSheet
+import com.clickandvisit.ui.shared.bottomsheet.maps.CustomMapsBottomSheet
+import com.clickandvisit.ui.shared.bottomsheet.meet.CustomMeetBottomSheet
 import com.clickandvisit.ui.shared.dialog.CustomProgressDialog
 import com.clickandvisit.ui.shared.view.CustomSnackBar
 import com.squareup.picasso.Picasso
@@ -45,7 +50,7 @@ abstract class BaseActivity : AppCompatActivity() {
     }
 
 
-    private fun registerMapsBottomSheetDialog(viewModel: BaseAndroidViewModel) {
+    private fun registerBottomSheet(viewModel: BaseAndroidViewModel) {
         viewModel.mapsBottomSheet.observeOnlyNotNull(
             this
         ) { mapsBottomSheet ->
@@ -56,12 +61,30 @@ abstract class BaseActivity : AppCompatActivity() {
                 mapsBottomSheet.dismissActionBlock
             )
         }
+        viewModel.filterBottomSheet.observeOnlyNotNull(
+            this
+        ) { mapsBottomSheet ->
+            showCustomFilterBottomSheet(
+                mapsBottomSheet.onFilterClickedListener,
+                mapsBottomSheet.okActionBlock,
+                mapsBottomSheet.dismissActionBlock
+            )
+        }
+        viewModel.meetBottomSheet.observeOnlyNotNull(
+            this
+        ) { mapsBottomSheet ->
+            showCustomMeetBottomSheet(
+                mapsBottomSheet.title,
+                mapsBottomSheet.hint,
+                mapsBottomSheet.onSendClickedListener,
+                mapsBottomSheet.okActionBlock,
+                mapsBottomSheet.dismissActionBlock
+            )
+        }
     }
 
     /**
      * show signup bottom sheet dialog
-     * @param title  title string
-     * @param body  message string
      * @param okActionBlock action to do on click
      * @param dismissActionBlock action to do on dismiss optional
      */
@@ -82,6 +105,50 @@ abstract class BaseActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * show signup bottom sheet dialog
+     * @param okActionBlock action to do on click
+     * @param dismissActionBlock action to do on dismiss optional
+     */
+    fun showCustomMeetBottomSheet(
+        title: String,
+        hint: String,
+        onSendClickedListener: OnSendClickedListener,
+        okActionBlock: (() -> Unit)? = null,
+        dismissActionBlock: (() -> Unit)? = null
+    ) {
+        if (!isFinishing) {
+            CustomMeetBottomSheet(
+                this,
+                title,
+                hint,
+                onSendClickedListener,
+                okActionBlock,
+                dismissActionBlock
+            ).show()
+        }
+    }
+
+    /**
+     * show signup bottom sheet dialog
+     * @param okActionBlock action to do on click
+     * @param dismissActionBlock action to do on dismiss optional
+     */
+    fun showCustomFilterBottomSheet(
+        onFilterClickedListener: OnFilterClickedListener,
+        okActionBlock: (() -> Unit)? = null,
+        dismissActionBlock: (() -> Unit)? = null
+    ) {
+        if (!isFinishing) {
+            CustomFilterBottomSheet(
+                this,
+                onFilterClickedListener,
+                okActionBlock,
+                dismissActionBlock
+            ).show()
+        }
+    }
+
 
     /**
      * observe snackBarMessage and show snack bar
@@ -93,7 +160,7 @@ abstract class BaseActivity : AppCompatActivity() {
     protected fun registerBaseObservers(viewModel: ViewModel) {
         if (viewModel is BaseAndroidViewModel) {
             registerSnackBar(viewModel)
-            registerMapsBottomSheetDialog(viewModel)
+            registerBottomSheet(viewModel)
             registerSimpleDialog(viewModel)
             registerChoseDialog(viewModel)
             registerProgressBar(viewModel)

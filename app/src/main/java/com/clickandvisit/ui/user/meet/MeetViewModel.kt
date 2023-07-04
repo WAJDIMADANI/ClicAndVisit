@@ -2,6 +2,7 @@ package com.clickandvisit.ui.user.meet
 
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
+import com.clickandvisit.R
 import com.clickandvisit.base.BaseAndroidViewModel
 import com.clickandvisit.data.model.property.PropertyDetailsResponse
 import com.clickandvisit.data.model.property.SearchResponse
@@ -10,6 +11,7 @@ import com.clickandvisit.data.model.reservation.ReservationResponse
 import com.clickandvisit.data.repository.abs.UserRepository
 import com.clickandvisit.global.helper.Navigation
 import com.clickandvisit.global.listener.OnMeetClickedListener
+import com.clickandvisit.global.listener.OnSendClickedListener
 import com.clickandvisit.global.listener.SchedulerProvider
 import com.clickandvisit.global.listener.ToolBarListener
 import com.clickandvisit.global.utils.DebugLog
@@ -26,7 +28,8 @@ class MeetViewModel
     application: Application,
     schedulerProvider: SchedulerProvider,
     private val userRepository: UserRepository
-) : BaseAndroidViewModel(application, schedulerProvider), ToolBarListener, OnMeetClickedListener {
+) : BaseAndroidViewModel(application, schedulerProvider), ToolBarListener, OnMeetClickedListener,
+    OnSendClickedListener {
 
     val list: MutableLiveData<List<Reservation>> = MutableLiveData(arrayListOf())
 
@@ -78,12 +81,20 @@ class MeetViewModel
         acceptRefuseReservation(value, false)
     }
 
-    override fun onChatClicked(value: Reservation) {//TODO
-        DebugLog.i(TAG, "onChatClicked")
+    override fun onChatClicked(value: Reservation) {
+        showMeetBottomSheet(
+            title = applicationContext.getString(R.string.chat_title),
+            hint = applicationContext.getString(R.string.chat_body),
+            onSendClickedListener = this
+        )
     }
 
-    override fun onSignalClicked(value: Reservation) {//TODO
-        DebugLog.i(TAG, "onSignalClicked")
+    override fun onSignalClicked(value: Reservation) {
+        showMeetBottomSheet(
+            title = applicationContext.getString(R.string.report_title),
+            hint = applicationContext.getString(R.string.report_body),
+            onSendClickedListener = this
+        )
     }
 
     override fun onPhoneClick(value: Reservation) {
@@ -135,6 +146,10 @@ class MeetViewModel
     private fun onGetPropertyError(throwable: Throwable) {
         hideBlockProgressBar()
         handleThrowable(throwable)
+    }
+
+    override fun onSendClicked(msg: String) {
+        DebugLog.i(TAG, msg)
     }
 
 

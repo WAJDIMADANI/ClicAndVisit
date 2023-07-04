@@ -12,9 +12,13 @@ import com.clickandvisit.global.helper.Navigation
 import com.clickandvisit.global.helper.SingleLiveEvent
 import com.clickandvisit.global.helper.dialog.ChoseDialog
 import com.clickandvisit.global.helper.dialog.SimpleDialog
+import com.clickandvisit.global.listener.OnFilterClickedListener
 import com.clickandvisit.global.listener.OnMapsClickedListener
+import com.clickandvisit.global.listener.OnSendClickedListener
 import com.clickandvisit.global.listener.SchedulerProvider
-import com.clickandvisit.ui.shared.bottomsheet.MapsBottomSheet
+import com.clickandvisit.ui.shared.bottomsheet.filter.FilterBottomSheet
+import com.clickandvisit.ui.shared.bottomsheet.maps.MapsBottomSheet
+import com.clickandvisit.ui.shared.bottomsheet.meet.MeetBottomSheet
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
 import retrofit2.HttpException
@@ -60,14 +64,13 @@ abstract class BaseAndroidViewModel(
         get() = _navigation
 
 
-    //for displaying BottomSheet dialog
     var mapsBottomSheet: MutableLiveData<MapsBottomSheet> = MutableLiveData()
+    var filterBottomSheet: MutableLiveData<FilterBottomSheet> = MutableLiveData()
+    var meetBottomSheet: MutableLiveData<MeetBottomSheet> = MutableLiveData()
 
     /**
      * show chose dialog
      *
-     * @param titleId       title resources Id
-     * @param bodyId       body resources Id
      * @param okActionBlock    action to do on click ok
      * @param dismissActionBlock action to do on dismiss optional
      *
@@ -92,6 +95,67 @@ abstract class BaseAndroidViewModel(
         return {
             dismissActionBlock?.invoke()
             mapsBottomSheet.value = null
+        }
+    }
+
+
+    /**
+     * show chose dialog
+     *
+     * @param okActionBlock    action to do on click ok
+     * @param dismissActionBlock action to do on dismiss optional
+     *
+     */
+    fun showFilterBottomSheet(
+        onFilterClickedListener: OnFilterClickedListener,
+        okActionBlock: (() -> Unit)? = null,
+        dismissActionBlock: (() -> Unit)? = null
+    ) {
+        filterBottomSheet.value =
+            FilterBottomSheet.build(
+                context = applicationContext,
+                onFilterClickedListener = onFilterClickedListener,
+                okActionBlock = okActionBlock,
+                dismissActionBlock = dismissFilterBottomSheet(dismissActionBlock)
+            )
+    }
+
+    private fun dismissFilterBottomSheet(dismissActionBlock: (() -> Unit)? = null): () -> Unit {
+        return {
+            dismissActionBlock?.invoke()
+            filterBottomSheet.value = null
+        }
+    }
+
+    /**
+     * show chose dialog
+     *
+     * @param okActionBlock    action to do on click ok
+     * @param dismissActionBlock action to do on dismiss optional
+     *
+     */
+    fun showMeetBottomSheet(
+        title: String,
+        hint: String,
+        onSendClickedListener: OnSendClickedListener,
+        okActionBlock: (() -> Unit)? = null,
+        dismissActionBlock: (() -> Unit)? = null
+    ) {
+        meetBottomSheet.value =
+            MeetBottomSheet.build(
+                context = applicationContext,
+                title = title,
+                hint = hint,
+                onSendClickedListener = onSendClickedListener,
+                okActionBlock = okActionBlock,
+                dismissActionBlock = dismissMeetBottomSheet(dismissActionBlock)
+            )
+    }
+
+    private fun dismissMeetBottomSheet(dismissActionBlock: (() -> Unit)? = null): () -> Unit {
+        return {
+            dismissActionBlock?.invoke()
+            meetBottomSheet.value = null
         }
     }
 
@@ -136,7 +200,9 @@ abstract class BaseAndroidViewModel(
      *
      */
     fun shownSimpleDialog(
-        @StringRes titleId: Int? = null, @StringRes messageId: Int, okActionBlock: (() -> Unit)? = null,
+        @StringRes titleId: Int? = null,
+        @StringRes messageId: Int,
+        okActionBlock: (() -> Unit)? = null,
         dismissActionBlock: (() -> Unit)? = null
     ) {
         _simpleDialog.value =
@@ -164,7 +230,12 @@ abstract class BaseAndroidViewModel(
         okActionBlock: (() -> Unit)? = null,
         dismissActionBlock: (() -> Unit)? = null
     ) {
-        _simpleDialog.value = SimpleDialog.build(title, message, okActionBlock, dismissSimpleBuild(dismissActionBlock))
+        _simpleDialog.value = SimpleDialog.build(
+            title,
+            message,
+            okActionBlock,
+            dismissSimpleBuild(dismissActionBlock)
+        )
     }
 
 

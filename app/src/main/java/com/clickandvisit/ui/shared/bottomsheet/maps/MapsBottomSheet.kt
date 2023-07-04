@@ -1,9 +1,8 @@
-package com.clickandvisit.ui.shared.bottomsheet
+package com.clickandvisit.ui.shared.bottomsheet.maps
 
 import android.content.Context
 import com.clickandvisit.data.model.property.Property
 import com.clickandvisit.global.listener.OnMapsClickedListener
-
 
 
 class MapsBottomSheet private constructor(
