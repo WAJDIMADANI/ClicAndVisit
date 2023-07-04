@@ -106,8 +106,8 @@ interface APIClient {
     @FormUrlEncoded
     @POST("search")
     suspend fun search(
-        @Field("sortby") sortBy: String? = "date",  // date/price/surface
-        @Field("sorthow") sortHow: String? = "desc" // asc/desc
+        @Field("sortby") sortBy: String? ,  // date/price/surface
+        @Field("sorthow") sortHow: String? // asc/desc
     ): SearchResponse
 
 

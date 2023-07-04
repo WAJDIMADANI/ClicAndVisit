@@ -69,7 +69,7 @@ interface UserRepository {
 
     /** Property **/
 
-    suspend fun search(): SearchResponse
+    suspend fun search(sortBy: String?, sortHow: String?): SearchResponse
 
     suspend fun getMyProperty(): SearchResponse
 

@@ -51,16 +51,16 @@ class HomeViewModel
     lateinit var searchResponse: SearchResponse
 
     init {
-        getSearch()
+        getSearch(null,null)
         setPushToken()
     }
 
-    private fun getSearch() {
+    private fun getSearch(sortBy: String?, sortHow: String?) {
         showBlockProgressBar()
         viewModelScope.launch {
             tryCatch({
                 val response = withContext(schedulerProvider.dispatchersIO()) {
-                    userRepository.search()
+                    userRepository.search(sortBy,sortHow)
                 }
                 onGetSearchSuccess(response)
             }, { error ->
@@ -202,7 +202,7 @@ class HomeViewModel
 
     private fun onLikeClickedSuccess(response: GlobalResponse) {
         hideBlockProgressBar()
-        getSearch()
+        getSearch(null,null)
     }
 
     private fun onLikeClickedError(throwable: Throwable) {
@@ -232,30 +232,28 @@ class HomeViewModel
                         onGetSearchError(error)
                     })
                 }
-
-                searchRequest.let { DebugLog.i(TAG, it.toString()) }
             }
         }
     }
 
     override fun onDateClicked() {
-        DebugLog.i(TAG, "onDateClicked")
+        getSearch("date","desc")
     }
 
     override fun onPriceAscClicked() {
-        DebugLog.i(TAG, "onPriceAscClicked")
+        getSearch("price","asc")
     }
 
     override fun onPriceDescClicked() {
-        DebugLog.i(TAG, "onPriceDescClicked")
+        getSearch("price","desc")
     }
 
     override fun onSurfaceAscClicked() {
-        DebugLog.i(TAG, "onSurfaceAscClicked")
+        getSearch("surface","asc")
     }
 
     override fun onSurfaceDescClicked() {
-        DebugLog.i(TAG, "onSurfaceDescClicked")
+        getSearch("surface","desc")
     }
 
     override fun onCancelClicked() {

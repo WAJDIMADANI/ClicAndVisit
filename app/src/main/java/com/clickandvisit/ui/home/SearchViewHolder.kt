@@ -31,7 +31,7 @@ class SearchViewHolder(
             binding.tvMeet.setBackgroundColor(context.getColor(R.color.red_pro_status))
             binding.tvMeet.text = context.getString(R.string.home_meet)
         }
-        binding.tvAdsName.text = value.title
+        binding.tvAdsName.text = value.title.toUpperCase()
         if (value.mainPhoto.isNullOrEmpty().not()) {
             binding.tvPhotoCount.text = value.album.size.plus(1).toString()
         } else {

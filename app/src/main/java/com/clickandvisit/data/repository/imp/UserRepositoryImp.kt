@@ -140,8 +140,8 @@ class UserRepositoryImp @Inject constructor(
 
     /** Property **/
 
-    override suspend fun search(): SearchResponse {
-        return apiClient.search()
+    override suspend fun search(sortBy: String?, sortHow: String?): SearchResponse {
+        return apiClient.search(sortBy,sortHow)
     }
 
     override suspend fun getMyProperty(): SearchResponse {
@@ -246,7 +246,10 @@ class UserRepositoryImp @Inject constructor(
         return apiClient.getSavedSearch(sharedPreferences.getUser().id.toInt())
     }
 
-    override suspend fun enableDisableProperty(propId: Int, enableDisable: Int): GlobalResponse {//TODO
+    override suspend fun enableDisableProperty(
+        propId: Int,
+        enableDisable: Int
+    ): GlobalResponse {//TODO
         return apiClient.enableDisableProperty(propId, enableDisable)
     }
 
