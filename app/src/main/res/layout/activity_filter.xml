@@ -80,6 +80,7 @@
                         style="@style/InputEditText.AppStyle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:inputType="textCapCharacters"
                         android:hint="@string/filter_city"
                         android:text="@={viewModel.city}"
                         android:textSize="@dimen/font_13sp" />

@@ -16,6 +16,7 @@ import com.clickandvisit.data.model.user.*
 import com.clickandvisit.data.model.user.signup.SignupResponse
 import com.clickandvisit.global.enumeration.Optional
 import okhttp3.MultipartBody
+import okhttp3.RequestBody
 
 
 interface UserRepository {
@@ -54,6 +55,9 @@ interface UserRepository {
 
     @WorkerThread
     suspend fun userUpdate(user: User): User
+
+    @WorkerThread
+    suspend fun userUpdate(id: RequestBody, file: MultipartBody.Part): User
 
     @WorkerThread
     suspend fun reportUser(userTRId: Int, message: String): Void

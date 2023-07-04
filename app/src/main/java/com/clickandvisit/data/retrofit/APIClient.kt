@@ -15,6 +15,8 @@ import com.clickandvisit.data.model.reservation.ReservedPropertyResponse
 import com.clickandvisit.data.model.reservation.ResultModel
 import com.clickandvisit.data.model.user.*
 import com.clickandvisit.data.model.user.signup.SignupResponse
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.http.*
 
 
@@ -61,8 +63,14 @@ interface APIClient {
         @Field("civilite") civility: String,
         @Field("phone_number") phoneNumber: String,
         @Field("siret") siret: String,
-        @Field("raison_social") rSocial: String,
-        @Field("profile_photo") photo: String
+        @Field("raison_social") rSocial: String
+    ): UserResponse
+
+    @Multipart
+    @POST("user_update")
+    suspend fun userUpdate(
+        @Part("user_id") id: RequestBody,
+        @Part file: MultipartBody.Part
     ): UserResponse
 
     @FormUrlEncoded

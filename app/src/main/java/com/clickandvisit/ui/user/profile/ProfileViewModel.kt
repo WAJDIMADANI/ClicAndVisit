@@ -19,6 +19,12 @@ import com.clickandvisit.ui.shared.dialog.ImgPickerDialog
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import okhttp3.MediaType.Companion.parse
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import okhttp3.RequestBody.Companion.toRequestBody
+import java.io.File
 import javax.inject.Inject
 
 
@@ -53,6 +59,7 @@ class ProfileViewModel
     val photoUri = MutableLiveData(Uri.EMPTY)//FIXME: update photo ws call
 
     lateinit var user: User
+    var isChanged: Boolean = false
 
     val checkedPro: MutableLiveData<Boolean> = MutableLiveData(false)
 
@@ -163,6 +170,7 @@ class ProfileViewModel
                 picture
             }
             photoUri.value = picture
+            isChanged = true
         }
     }
 
@@ -181,10 +189,10 @@ class ProfileViewModel
     fun onSaveClicked() {
         if (validateFields()) {
             showBlockProgressBar()
-            if (user.isPro()){
+            if (user.isPro()) {
                 user.rSocial = firstName.value!!
                 user.siret = lastName.value!!
-            }else{
+            } else {
                 user.firstName = firstName.value!!
                 user.lastName = lastName.value!!
                 user.civility = getGenderMFId().toString()
@@ -193,17 +201,46 @@ class ProfileViewModel
             user.email = email.value!!
             user.phoneNumber = phone.value!!
 
-            viewModelScope.launch {
+            val photoFile = File(photoUri.value?.path ?: "")
 
-                tryCatch({
-                    val user = withContext(schedulerProvider.dispatchersIO()) {
-                        userRepository.userUpdate(user)
-                    }
-                    onSetProfileSuccess(user)
-                }, { error ->
-                    onSetProfileError(error)
-                })
+
+            if (isChanged) {
+                val requestFile: RequestBody =
+                    RequestBody.create("multipart/form-data".toMediaTypeOrNull(), photoFile)
+                val body: MultipartBody.Part =
+                    MultipartBody.Part.createFormData("profile_photo", photoFile.name, requestFile)
+
+                val requestUserId = user.id.toRequestBody("text/plain".toMediaTypeOrNull())
+
+
+                viewModelScope.launch {
+                    tryCatch({
+                        val user = withContext(schedulerProvider.dispatchersIO()) {
+                            userRepository.userUpdate(requestUserId, body)
+                        }
+                        userUpdate()
+                    }, { error ->
+                        onSetProfileError(error)
+                    })
+                }
+            } else {
+                userUpdate()
             }
+
+
+        }
+    }
+
+    private fun userUpdate() {
+        viewModelScope.launch {
+            tryCatch({
+                val user = withContext(schedulerProvider.dispatchersIO()) {
+                    userRepository.userUpdate(user)
+                }
+                onSetProfileSuccess(user)
+            }, { error ->
+                onSetProfileError(error)
+            })
         }
     }
 

@@ -21,6 +21,7 @@ import com.clickandvisit.global.enumeration.Optional
 import com.clickandvisit.global.helper.SharedPreferences
 import kotlinx.coroutines.delay
 import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import javax.inject.Inject
 
 
@@ -106,8 +107,16 @@ class UserRepositoryImp @Inject constructor(
             user.civility,
             user.phoneNumber,
             user.siret,
-            user.rSocial,
-            user.photo
+            user.rSocial
+        )
+        sharedPreferences.saveUser(userResponse.user)
+        return userResponse.user
+    }
+
+    override suspend fun userUpdate(id: RequestBody, file: MultipartBody.Part): User {
+        val userResponse = apiClient.userUpdate(
+            id,
+            file
         )
         sharedPreferences.saveUser(userResponse.user)
         return userResponse.user
