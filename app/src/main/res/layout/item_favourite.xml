@@ -87,28 +87,15 @@
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/llLike"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:background="@drawable/ic_white_round"
-            android:elevation="@dimen/dimen_8dp"
-            android:gravity="center"
-            android:paddingStart="5dp"
+        <ImageView
+            android:id="@+id/ivLike"
+            android:layout_width="@dimen/dimen_50dp"
+            android:layout_height="@dimen/dimen_50dp"
+            android:background="@drawable/ic_like"
             app:layout_constraintBottom_toBottomOf="@+id/ivShare"
             app:layout_constraintEnd_toStartOf="@+id/ivShare"
-            app:layout_constraintTop_toTopOf="@+id/ivShare">
-
-            <androidx.appcompat.widget.AppCompatRadioButton
-                android:id="@+id/ivLike"
-                style="@style/RadioButton.Style"
-                android:layout_width="@dimen/dimen_30dp"
-                android:layout_height="@dimen/dimen_30dp"
-                android:shadowColor="@null"
-                app:onClickWithDebounce="@{()->listener.onLikeClicked(property)}" />
-
-        </androidx.appcompat.widget.LinearLayoutCompat>
+            app:layout_constraintTop_toTopOf="@+id/ivShare"
+            app:onClickWithDebounce="@{()->listener.onLikeClicked(property)}" />
 
         <ImageView
             android:id="@+id/ivShare"

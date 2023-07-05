@@ -38,14 +38,23 @@ class MapsViewModel
     }
 
     fun onMarkerClick(property: Property) {
-        showMapsBottomSheet(property,this)
+        showMapsBottomSheet(property, this)
     }
 
     override fun onItemClicked(property: Property) {
-        navigate(Navigation.AdsDetailsActivityNavigation(property))
+        if (userRepository.isConnected()) {
+            navigate(Navigation.AdsDetailsActivityNavigation(property))
+        } else {
+            navigate(Navigation.SignInActivityNavigation)
+        }
     }
 
     override fun onMeetClicked(property: Property) {
-        navigate(Navigation.AdsDetailsActivityNavigation(property))
+        if (userRepository.isConnected()) {
+            navigate(Navigation.AdsDetailsActivityNavigation(property))
+        } else {
+            navigate(Navigation.SignInActivityNavigation)
+        }
     }
+
 }

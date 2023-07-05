@@ -126,6 +126,12 @@ class AdsDetailsActivity : BaseActivity() {
                         binding.tvG.text = "G"
                         binding.tvG.requestLayout()
                     }
+                    else -> {
+                        binding.tvG.layoutParams.width = 140
+                        binding.tvG.layoutParams.height = 120
+                        binding.tvG.text = "G"
+                        binding.tvG.requestLayout()
+                    }
                 }
             }
 
@@ -168,6 +174,12 @@ class AdsDetailsActivity : BaseActivity() {
                         binding.tvGESF.requestLayout()
                     }
                     "G" -> {
+                        binding.tvGESG.layoutParams.width = 140
+                        binding.tvGESG.layoutParams.height = 120
+                        binding.tvGESG.text = "G"
+                        binding.tvGESG.requestLayout()
+                    }
+                    else -> {
                         binding.tvGESG.layoutParams.width = 140
                         binding.tvGESG.layoutParams.height = 120
                         binding.tvGESG.text = "G"

@@ -54,31 +54,18 @@
                     android:textColor="@color/white_basic"
                     android:textSize="@dimen/font_16sp" />
 
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:id="@+id/llLike"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
+                <ImageView
+                    android:id="@+id/ivLike"
+                    android:layout_width="@dimen/dimen_50dp"
+                    android:layout_height="@dimen/dimen_50dp"
                     android:layout_centerVertical="true"
-                    android:layout_marginEnd="@dimen/margin_global_10dp"
                     android:layout_toStartOf="@+id/ivShare"
-                    android:background="@drawable/ic_white_round"
-                    android:elevation="@dimen/dimen_8dp"
+                    android:background="@{viewModel.like}"
                     android:gravity="center"
-                    android:paddingStart="5dp"
                     app:layout_constraintBottom_toBottomOf="@+id/ivShare"
                     app:layout_constraintEnd_toStartOf="@+id/ivShare"
-                    app:layout_constraintTop_toTopOf="@+id/ivShare">
-
-                    <androidx.appcompat.widget.AppCompatRadioButton
-                        android:id="@+id/ivLike"
-                        style="@style/RadioButton.Style"
-                        android:layout_width="@dimen/dimen_30dp"
-                        android:layout_height="@dimen/dimen_30dp"
-                        android:checked="@={viewModel.isFavourite}"
-                        android:shadowColor="@null"
-                        app:onClickWithDebounce="@{()->viewModel.onLikeClicked()}" />
-
-                </androidx.appcompat.widget.LinearLayoutCompat>
+                    app:layout_constraintTop_toTopOf="@+id/ivShare"
+                    app:onClickWithDebounce="@{()->viewModel.onLikeClicked()}" />
 
                 <ImageView
                     android:id="@+id/ivShare"
@@ -244,8 +231,8 @@
                 android:id="@+id/rvSearch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_global_10dp"
                 android:layout_marginStart="@dimen/margin_global_30dp"
+                android:layout_marginTop="@dimen/margin_global_10dp"
                 android:layout_marginEnd="@dimen/margin_global_30dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -510,8 +497,8 @@
                 android:text="@{viewModel.info}"
                 android:textColor="@color/black"
                 android:textSize="@dimen/font_13sp"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvInfo" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

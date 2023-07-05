@@ -1,7 +1,9 @@
 package com.clickandvisit.ui.ads.adsdetails;
 
 import android.app.Application
+import android.graphics.drawable.Drawable
 import android.os.Handler
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import com.clickandvisit.R
@@ -43,6 +45,7 @@ class AdsDetailsViewModel
 
     val isFavourite = MutableLiveData<Boolean>()
     val checkedPro: MutableLiveData<Boolean> = MutableLiveData(false)
+    val like: MutableLiveData<Drawable> = MutableLiveData()
 
 
     val list: MutableLiveData<List<String>> = MutableLiveData(arrayListOf())
@@ -68,6 +71,12 @@ class AdsDetailsViewModel
         )
         info.value = property.value!!.otherDetails
         isFavourite.value = property.value!!.isFavorite
+
+        if (isFavourite.value == true){
+            like.value = ContextCompat.getDrawable(applicationContext,R.drawable.ic_like_on)
+        }else{
+            like.value = ContextCompat.getDrawable(applicationContext,R.drawable.ic_like)
+        }
 
     }
 
@@ -213,6 +222,11 @@ class AdsDetailsViewModel
 
     private fun onLikeClickedSuccess(response: GlobalResponse) {
         isFavourite.value = isFavourite.value!!.not()
+        if (isFavourite.value == true){
+            like.value = ContextCompat.getDrawable(applicationContext,R.drawable.ic_like_on)
+        }else{
+            like.value = ContextCompat.getDrawable(applicationContext,R.drawable.ic_like)
+        }
         hideBlockProgressBar()
     }
 

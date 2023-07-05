@@ -51,8 +51,10 @@ class HomeViewModel
     lateinit var searchResponse: SearchResponse
 
     init {
-        getSearch(null,null)
-        setPushToken()
+        getSearch(null, null)
+        if (userRepository.isConnected()) {
+            setPushToken()
+        }
     }
 
     private fun getSearch(sortBy: String?, sortHow: String?) {
@@ -60,7 +62,11 @@ class HomeViewModel
         viewModelScope.launch {
             tryCatch({
                 val response = withContext(schedulerProvider.dispatchersIO()) {
-                    userRepository.search(sortBy,sortHow)
+                    if (userRepository.isConnected()) {
+                        userRepository.getMyProperty()
+                    } else {
+                        userRepository.search(sortBy, sortHow)
+                    }
                 }
                 onGetSearchSuccess(response)
             }, { error ->
@@ -178,31 +184,39 @@ class HomeViewModel
     }
 
     override fun onItemClicked(value: Property) {
-        navigate(Navigation.AdsDetailsActivityNavigation(value))
+        if (userRepository.isConnected()) {
+            navigate(Navigation.AdsDetailsActivityNavigation(value))
+        } else {
+            navigate(Navigation.SignInActivityNavigation)
+        }
     }
 
     override fun onLikeClicked(value: Property) {
-        showBlockProgressBar()
-        val action = if (value.isFavorite) {
-            REMOVE
+        if (userRepository.isConnected()) {
+            showBlockProgressBar()
+            val action = if (value.isFavorite) {
+                REMOVE
+            } else {
+                ADD
+            }
+            viewModelScope.launch {
+                tryCatch({
+                    val response = withContext(schedulerProvider.dispatchersIO()) {
+                        userRepository.addRemoveFavorite(FavoriteRequest(value.id, action))
+                    }
+                    onLikeClickedSuccess(response)
+                }, { error ->
+                    onLikeClickedError(error)
+                })
+            }
         } else {
-            ADD
-        }
-        viewModelScope.launch {
-            tryCatch({
-                val response = withContext(schedulerProvider.dispatchersIO()) {
-                    userRepository.addRemoveFavorite(FavoriteRequest(value.id, action))
-                }
-                onLikeClickedSuccess(response)
-            }, { error ->
-                onLikeClickedError(error)
-            })
+            navigate(Navigation.SignInActivityNavigation)
         }
     }
 
     private fun onLikeClickedSuccess(response: GlobalResponse) {
         hideBlockProgressBar()
-        getSearch(null,null)
+        getSearch(null, null)
     }
 
     private fun onLikeClickedError(throwable: Throwable) {
@@ -237,23 +251,23 @@ class HomeViewModel
     }
 
     override fun onDateClicked() {
-        getSearch("date","desc")
+        getSearch("date", "desc")
     }
 
     override fun onPriceAscClicked() {
-        getSearch("price","asc")
+        getSearch("price", "asc")
     }
 
     override fun onPriceDescClicked() {
-        getSearch("price","desc")
+        getSearch("price", "desc")
     }
 
     override fun onSurfaceAscClicked() {
-        getSearch("surface","asc")
+        getSearch("surface", "asc")
     }
 
     override fun onSurfaceDescClicked() {
-        getSearch("surface","desc")
+        getSearch("surface", "desc")
     }
 
     override fun onCancelClicked() {
