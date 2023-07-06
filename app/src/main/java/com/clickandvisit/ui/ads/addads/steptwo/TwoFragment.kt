@@ -2,7 +2,6 @@ package com.clickandvisit.ui.ads.addads.steptwo
 
 import android.app.AlertDialog
 import android.os.Bundle
-import android.text.InputType
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +11,6 @@ import androidx.fragment.app.viewModels
 import com.clickandvisit.R
 import com.clickandvisit.base.BaseFragment
 import com.clickandvisit.data.model.property.Property
-import com.clickandvisit.data.model.property.add.PropertyAdd
 import com.clickandvisit.databinding.TwoFragmentBinding
 import com.clickandvisit.global.helper.Navigation
 import com.clickandvisit.global.utils.DebugLog
@@ -40,7 +38,6 @@ class TwoFragment(val property: Property?) : BaseFragment() {
         }
 
         binding.lifecycleOwner = viewLifecycleOwner
-        //(requireActivity() as IntroActivity?)?.stepTwo()
         return view
     }
 

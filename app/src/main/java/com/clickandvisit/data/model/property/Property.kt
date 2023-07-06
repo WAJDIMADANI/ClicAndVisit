@@ -98,12 +98,15 @@ data class Property(
 
 
     fun getPriceNBR(): String {
-        price = price.replaceRange(
-            price.length - 3,
-            price.length,
-            " " + price.subSequence(price.length - 3, price.length)
-        )
+
         return try {
+            if (price.length >= 3) {
+                price = price.replaceRange(
+                    price.length - 3,
+                    price.length,
+                    " " + price.subSequence(price.length - 3, price.length)
+                )
+            }
             "$price €"
         } catch (e: NumberFormatException) {
             ""

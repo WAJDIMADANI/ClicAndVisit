@@ -114,7 +114,7 @@ interface APIClient {
     @FormUrlEncoded
     @POST("search")
     suspend fun search(
-        @Field("sortby") sortBy: String? ,  // date/price/surface
+        @Field("sortby") sortBy: String?,  // date/price/surface
         @Field("sorthow") sortHow: String? // asc/desc
     ): SearchResponse
 
@@ -160,7 +160,7 @@ interface APIClient {
 
 
     @GET("list_favorites")
-    suspend fun     favoriteList(
+    suspend fun favoriteList(
         @Query("user_id") userId: Int
     ): FavoritesResponse
 
@@ -188,7 +188,7 @@ interface APIClient {
         @Field("prop_meta_caves") prop_meta_caves: String?,
         @Field("prop_meta_balcons") prop_meta_balcons: String?,
         @Field("prop_meta_terrasse") prop_meta_terrasse: String?,
-       // @Field("prop_meta_surface_terrain") prop_meta_surface_terrain: String,
+        // @Field("prop_meta_surface_terrain") prop_meta_surface_terrain: String,
         @Field("prop_meta_annee") prop_meta_annee: String?,
         @Field("prop_meta_piscine") prop_meta_piscine: String?,
         @Field("prop_meta_piscinable") prop_meta_piscinable: String?,
@@ -211,13 +211,6 @@ interface APIClient {
     ): PropertyAddResponse
 
     @FormUrlEncoded
-    @POST("enable_disable_property")
-    suspend fun enableDisableProperty(
-        @Field("logement_id") propId: Int,
-        @Field("enable_disable") enableDisable: Int, // 0 : Disable / 1 : Enable
-    ): GlobalResponse
-
-    @FormUrlEncoded
     @POST("delete_search")
     suspend fun deleteSearch(
         @Field("search_id") searchId: Int
@@ -229,8 +222,29 @@ interface APIClient {
         @Query("user_id") userId: Int
     ): SavedSearchResponse
 
+    @FormUrlEncoded
+    @POST("enable_disable_property")
+    suspend fun enableDisableProperty(
+        @Field("logement_id") propId: Int,
+        @Field("enable_disable") enableDisable: Int, // 0 : Disable / 1 : Enable
+    ): GlobalResponse
 
     /** Reservation **/
+
+    @FormUrlEncoded
+    @POST("accept_refuse_reservation")
+    suspend fun acceptRefuseReservation(
+        @Field("property_id") propertyId: Int,
+        @Field("reservation_id") reservationId: Int,
+        @Field("accept") accept: Boolean
+    ): ReservationResponse
+
+
+    @GET("get_reservations")
+    suspend fun getReservations(
+        @Query("user_id") id: Int,
+        @Query("sent") accept: Boolean
+    ): ReservationResponse
 
 
     @GET("get_avaibility")
@@ -261,21 +275,6 @@ interface APIClient {
         @Field("date_time") dateTime: String, // 2023-03-23 07:00
         @Field("remove_add") removeAdd: String  // add/remove
     ): ResultModel
-
-    @FormUrlEncoded
-    @POST("accept_refuse_reservation")
-    suspend fun acceptRefuseReservation(
-        @Field("property_id") propertyId: Int,
-        @Field("reservation_id") reservationId: Int,
-        @Field("accept") accept: Boolean
-    ): ReservationResponse
-
-
-    @GET("get_reservations")
-    suspend fun getReservations(
-        @Query("user_id") id: Int,
-        @Query("sent") accept: Boolean
-    ): ReservationResponse
 
 
     /** Chat **/

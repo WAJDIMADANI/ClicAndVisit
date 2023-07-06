@@ -12,13 +12,12 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true"
         android:scrollIndicators="none">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="@dimen/margin_global_20dp">
+            android:padding="@dimen/margin_global_17dp">
 
             <androidx.gridlayout.widget.GridLayout
                 android:id="@+id/rgAdsRoomNbr"
@@ -33,6 +32,7 @@
                     android:layout_width="110dp"
                     android:layout_height="100dp"
                     android:layout_margin="@dimen/margin_global_3dp"
+                    android:layout_marginTop="@dimen/margin_global_12dp"
                     android:background="@color/gray_home_type_background"
                     android:fontFamily="@font/poppins_regular"
                     android:gravity="center"
@@ -73,6 +73,7 @@
                     android:layout_width="110dp"
                     android:layout_height="100dp"
                     android:layout_margin="@dimen/margin_global_3dp"
+                    android:layout_marginTop="-9dp"
                     android:background="@color/gray_home_type_background"
                     android:fontFamily="@font/poppins_regular"
                     android:gravity="center"
@@ -233,6 +234,7 @@
                     android:layout_width="110dp"
                     android:layout_height="100dp"
                     android:layout_margin="@dimen/margin_global_3dp"
+                    android:layout_marginTop="-9dp"
                     android:background="@color/gray_home_type_background"
                     android:fontFamily="@font/poppins_regular"
                     android:gravity="center"

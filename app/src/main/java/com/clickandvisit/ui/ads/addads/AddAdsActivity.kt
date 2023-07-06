@@ -11,6 +11,8 @@ import com.clickandvisit.base.BaseActivity
 import com.clickandvisit.data.model.property.Property
 import com.clickandvisit.databinding.ActivityAddAdsBinding
 import com.clickandvisit.global.helper.Navigation
+import com.clickandvisit.global.utils.DebugLog
+import com.clickandvisit.global.utils.TAG
 import com.clickandvisit.ui.ads.addads.five.CalendarFragment
 import com.clickandvisit.ui.ads.addads.stepfour.FourFragment
 import com.clickandvisit.ui.ads.addads.stepone.OneFragment
@@ -58,7 +60,6 @@ class AddAdsActivity : BaseActivity() {
     }
 
     private fun initListener() {
-        //&& (routineFragments[0] as OneFragment).viewModel.validateFields()
         binding.cbNext.setOnClickListener {
             onNextAction()
         }
@@ -89,123 +90,135 @@ class AddAdsActivity : BaseActivity() {
             }
 
             3 -> {
-
-                viewModel.mainPhotoUri.value =
-                    (routineFragments[3] as FourFragment).viewModel.mainPhotoUri.value
-
+                bindData3()
                 currentIndex++
                 viewModel.createOrUpdateProperty()
             }
+
             2 -> {
                 if ((routineFragments[2] as ThreeFragment).viewModel.validateFields()) {
-                    viewModel.city.value = (routineFragments[2] as ThreeFragment).viewModel.city.value
-                    viewModel.postalCode.value =
-                        (routineFragments[2] as ThreeFragment).viewModel.postalCode.value
-                    viewModel.address.value =
-                        (routineFragments[2] as ThreeFragment).viewModel.address.value
-                    viewModel.inter.value = (routineFragments[2] as ThreeFragment).viewModel.inter.value
-                    viewModel.interCode.value =
-                        (routineFragments[2] as ThreeFragment).viewModel.interCode.value
-                    viewModel.otherInfo.value =
-                        (routineFragments[2] as ThreeFragment).viewModel.otherInfo.value
-
+                    bindData2()
                     currentIndex++
                     navigateToFragment()
                 }
-
             }
+
             1 -> {
-
-                viewModel.roomNbrApi1.value =
-                    (routineFragments[1] as TwoFragment).viewModel.roomNbrApi1.value
-                viewModel.roomNbrApi2.value =
-                    (routineFragments[1] as TwoFragment).viewModel.roomNbrApi2.value
-                viewModel.roomNbrApi3.value =
-                    (routineFragments[1] as TwoFragment).viewModel.roomNbrApi3.value
-                viewModel.roomNbrApi4.value =
-                    (routineFragments[1] as TwoFragment).viewModel.roomNbrApi4.value
-                viewModel.roomNbrApi5.value =
-                    (routineFragments[1] as TwoFragment).viewModel.roomNbrApi5.value
-                viewModel.roomNbrApi6.value =
-                    (routineFragments[1] as TwoFragment).viewModel.roomNbrApi6.value
-                viewModel.roomNbrApi7.value =
-                    (routineFragments[1] as TwoFragment).viewModel.roomNbrApi7.value
-                viewModel.roomNbrApi8.value =
-                    (routineFragments[1] as TwoFragment).viewModel.roomNbrApi8.value
-                viewModel.roomNbrApi9.value =
-                    (routineFragments[1] as TwoFragment).viewModel.roomNbrApi9.value
-                viewModel.roomNbrApi10.value =
-                    (routineFragments[1] as TwoFragment).viewModel.roomNbrApi10.value
-
-                viewModel.roomNbrApi12.value =
-                    (routineFragments[1] as TwoFragment).viewModel.roomNbrApi12.value
-                viewModel.roomNbrApi13.value =
-                    (routineFragments[1] as TwoFragment).viewModel.roomNbrApi13.value
-                viewModel.roomNbrApi14.value =
-                    (routineFragments[1] as TwoFragment).viewModel.roomNbrApi14.value
-                viewModel.roomNbrApi15.value =
-                    (routineFragments[1] as TwoFragment).viewModel.roomNbrApi15.value
-                viewModel.roomNbrApi16.value =
-                    (routineFragments[1] as TwoFragment).viewModel.roomNbrApi16.value
-                viewModel.roomNbrApi17.value =
-                    (routineFragments[1] as TwoFragment).viewModel.roomNbrApi17.value
-                viewModel.roomNbrApi18.value =
-                    (routineFragments[1] as TwoFragment).viewModel.roomNbrApi18.value
-                viewModel.roomNbrApi19.value =
-                    (routineFragments[1] as TwoFragment).viewModel.roomNbrApi19.value
-                viewModel.roomNbrApi20.value =
-                    (routineFragments[1] as TwoFragment).viewModel.roomNbrApi20.value
-
-
+                bindData1()
                 currentIndex++
                 navigateToFragment()
             }
+
             0 -> {
                 if ((routineFragments[0] as OneFragment).viewModel.validateFields()) {
-                    viewModel.checkedSale.value =
-                        (routineFragments[0] as OneFragment).viewModel.checkedSale.value
-                    viewModel.checkedRent.value =
-                        (routineFragments[0] as OneFragment).viewModel.checkedRent.value
-                    viewModel.checkedHome.value =
-                        (routineFragments[0] as OneFragment).viewModel.checkedHome.value
-                    viewModel.checkedB.value =
-                        (routineFragments[0] as OneFragment).viewModel.checkedB.value
-                    viewModel.checkedApp.value =
-                        (routineFragments[0] as OneFragment).viewModel.checkedApp.value
-                    viewModel.checkedTer.value =
-                        (routineFragments[0] as OneFragment).viewModel.checkedTer.value
-                    viewModel.checkedGarage.value =
-                        (routineFragments[0] as OneFragment).viewModel.checkedGarage.value
-                    viewModel.checkedComm.value =
-                        (routineFragments[0] as OneFragment).viewModel.checkedComm.value
-
-                    viewModel.checked1.value =
-                        (routineFragments[0] as OneFragment).viewModel.checked1.value
-                    viewModel.checked2.value =
-                        (routineFragments[0] as OneFragment).viewModel.checked2.value
-                    viewModel.checked3.value =
-                        (routineFragments[0] as OneFragment).viewModel.checked3.value
-                    viewModel.checked4.value =
-                        (routineFragments[0] as OneFragment).viewModel.checked4.value
-                    viewModel.checked5.value =
-                        (routineFragments[0] as OneFragment).viewModel.checked5.value
-                    viewModel.checkedNA.value =
-                        (routineFragments[0] as OneFragment).viewModel.checkedNA.value
-
-                    viewModel.surface.value =
-                        (routineFragments[0] as OneFragment).viewModel.surface.value
-                    viewModel.price.value =
-                        (routineFragments[0] as OneFragment).viewModel.price.value
-                    viewModel.stage.value =
-                        (routineFragments[0] as OneFragment).viewModel.stage.value
-                    viewModel.on.value = (routineFragments[0] as OneFragment).viewModel.on.value
-                    viewModel.info.value = (routineFragments[0] as OneFragment).viewModel.info.value
-
+                    bindData0()
                     currentIndex++
                     navigateToFragment()
                 }
             }
+
         }
+    }
+
+    private fun bindData0() {
+        viewModel.checkedSale.value =
+            (routineFragments[0] as OneFragment).viewModel.checkedSale.value
+        viewModel.checkedRent.value =
+            (routineFragments[0] as OneFragment).viewModel.checkedRent.value
+        viewModel.checkedHome.value =
+            (routineFragments[0] as OneFragment).viewModel.checkedHome.value
+        viewModel.checkedB.value =
+            (routineFragments[0] as OneFragment).viewModel.checkedB.value
+        viewModel.checkedApp.value =
+            (routineFragments[0] as OneFragment).viewModel.checkedApp.value
+        viewModel.checkedTer.value =
+            (routineFragments[0] as OneFragment).viewModel.checkedTer.value
+        viewModel.checkedGarage.value =
+            (routineFragments[0] as OneFragment).viewModel.checkedGarage.value
+        viewModel.checkedComm.value =
+            (routineFragments[0] as OneFragment).viewModel.checkedComm.value
+
+        viewModel.checked1.value =
+            (routineFragments[0] as OneFragment).viewModel.checked1.value
+        viewModel.checked2.value =
+            (routineFragments[0] as OneFragment).viewModel.checked2.value
+        viewModel.checked3.value =
+            (routineFragments[0] as OneFragment).viewModel.checked3.value
+        viewModel.checked4.value =
+            (routineFragments[0] as OneFragment).viewModel.checked4.value
+        viewModel.checked5.value =
+            (routineFragments[0] as OneFragment).viewModel.checked5.value
+        viewModel.checkedNA.value =
+            (routineFragments[0] as OneFragment).viewModel.checkedNA.value
+
+        viewModel.surface.value =
+            (routineFragments[0] as OneFragment).viewModel.surface.value
+        viewModel.price.value =
+            (routineFragments[0] as OneFragment).viewModel.price.value
+        viewModel.stage.value =
+            (routineFragments[0] as OneFragment).viewModel.stage.value
+        viewModel.on.value = (routineFragments[0] as OneFragment).viewModel.on.value
+        viewModel.info.value = (routineFragments[0] as OneFragment).viewModel.info.value
+    }
+
+    private fun bindData1() {
+        viewModel.roomNbrApi1.value =
+            (routineFragments[1] as TwoFragment).viewModel.roomNbrApi1.value
+        viewModel.roomNbrApi2.value =
+            (routineFragments[1] as TwoFragment).viewModel.roomNbrApi2.value
+        viewModel.roomNbrApi3.value =
+            (routineFragments[1] as TwoFragment).viewModel.roomNbrApi3.value
+        viewModel.roomNbrApi4.value =
+            (routineFragments[1] as TwoFragment).viewModel.roomNbrApi4.value
+        viewModel.roomNbrApi5.value =
+            (routineFragments[1] as TwoFragment).viewModel.roomNbrApi5.value
+        viewModel.roomNbrApi6.value =
+            (routineFragments[1] as TwoFragment).viewModel.roomNbrApi6.value
+        viewModel.roomNbrApi7.value =
+            (routineFragments[1] as TwoFragment).viewModel.roomNbrApi7.value
+        viewModel.roomNbrApi8.value =
+            (routineFragments[1] as TwoFragment).viewModel.roomNbrApi8.value
+        viewModel.roomNbrApi9.value =
+            (routineFragments[1] as TwoFragment).viewModel.roomNbrApi9.value
+        viewModel.roomNbrApi10.value =
+            (routineFragments[1] as TwoFragment).viewModel.roomNbrApi10.value
+
+        viewModel.roomNbrApi12.value =
+            (routineFragments[1] as TwoFragment).viewModel.roomNbrApi12.value
+        viewModel.roomNbrApi13.value =
+            (routineFragments[1] as TwoFragment).viewModel.roomNbrApi13.value
+        viewModel.roomNbrApi14.value =
+            (routineFragments[1] as TwoFragment).viewModel.roomNbrApi14.value
+        viewModel.roomNbrApi15.value =
+            (routineFragments[1] as TwoFragment).viewModel.roomNbrApi15.value
+        viewModel.roomNbrApi16.value =
+            (routineFragments[1] as TwoFragment).viewModel.roomNbrApi16.value
+        viewModel.roomNbrApi17.value =
+            (routineFragments[1] as TwoFragment).viewModel.roomNbrApi17.value
+        viewModel.roomNbrApi18.value =
+            (routineFragments[1] as TwoFragment).viewModel.roomNbrApi18.value
+        viewModel.roomNbrApi19.value =
+            (routineFragments[1] as TwoFragment).viewModel.roomNbrApi19.value
+        viewModel.roomNbrApi20.value =
+            (routineFragments[1] as TwoFragment).viewModel.roomNbrApi20.value
+    }
+
+    private fun bindData2() {
+        viewModel.city.value = (routineFragments[2] as ThreeFragment).viewModel.city.value
+        viewModel.postalCode.value =
+            (routineFragments[2] as ThreeFragment).viewModel.postalCode.value
+        viewModel.address.value =
+            (routineFragments[2] as ThreeFragment).viewModel.address.value
+        viewModel.inter.value = (routineFragments[2] as ThreeFragment).viewModel.inter.value
+        viewModel.interCode.value =
+            (routineFragments[2] as ThreeFragment).viewModel.interCode.value
+        viewModel.otherInfo.value =
+            (routineFragments[2] as ThreeFragment).viewModel.otherInfo.value
+    }
+
+    private fun bindData3() {
+        viewModel.mainPhotoUri.value =
+            (routineFragments[3] as FourFragment).viewModel.mainPhotoUri.value
     }
 
 
@@ -237,19 +250,19 @@ class AddAdsActivity : BaseActivity() {
         startFragment()
         when (currentIndex) {
             1 -> {
-                stepOne()
-            }
-            2 -> {
                 stepTwo()
             }
-            3 -> {
+            2 -> {
                 stepThree()
             }
-            4 -> {
+            3 -> {
                 stepFour()
             }
-            5 -> {
+            4 -> {
                 stepFive()
+            }
+            5 -> {
+                // TODO
             }
         }
     }
@@ -281,20 +294,24 @@ class AddAdsActivity : BaseActivity() {
     }
 
     fun stepOne() {
+        DebugLog.i(TAG,"stepOne")
         binding.tvStep2.visibility = View.INVISIBLE
     }
 
     fun stepTwo() {
+        DebugLog.i(TAG,"stepTwo")
         binding.tvStep2.visibility = View.VISIBLE
         binding.tvStep3.visibility = View.INVISIBLE
     }
 
     fun stepThree() {
+        DebugLog.i(TAG,"stepThree")
         binding.tvStep3.visibility = View.VISIBLE
         binding.tvStep4.visibility = View.INVISIBLE
     }
 
     fun stepFour() {
+        DebugLog.i(TAG,"stepFour")
         binding.tvStep4.visibility = View.VISIBLE
         binding.tvStep5.visibility = View.INVISIBLE
     }
