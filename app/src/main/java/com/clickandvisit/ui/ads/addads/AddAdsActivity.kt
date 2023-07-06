@@ -159,6 +159,11 @@ class AddAdsActivity : BaseActivity() {
             (routineFragments[0] as OneFragment).viewModel.stage.value
         viewModel.on.value = (routineFragments[0] as OneFragment).viewModel.on.value
         viewModel.info.value = (routineFragments[0] as OneFragment).viewModel.info.value
+
+        viewModel.ges.value = (routineFragments[0] as OneFragment).viewModel.ges.value
+        viewModel.dpe.value = (routineFragments[0] as OneFragment).viewModel.dpe.value
+
+
     }
 
     private fun bindData1() {

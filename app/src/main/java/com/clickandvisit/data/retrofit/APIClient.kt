@@ -1,7 +1,6 @@
 package com.clickandvisit.data.retrofit
 
 import com.clickandvisit.data.model.GlobalResponse
-import com.clickandvisit.data.model.chat.ContactOwnerResponse
 import com.clickandvisit.data.model.chat.DiscussionsResponse
 import com.clickandvisit.data.model.chat.MessagesResponse
 import com.clickandvisit.data.model.property.FavoritesResponse
@@ -13,7 +12,8 @@ import com.clickandvisit.data.model.reservation.AvailabilityResponse
 import com.clickandvisit.data.model.reservation.ReservationResponse
 import com.clickandvisit.data.model.reservation.ReservedPropertyResponse
 import com.clickandvisit.data.model.reservation.ResultModel
-import com.clickandvisit.data.model.user.*
+import com.clickandvisit.data.model.user.TokenResponse
+import com.clickandvisit.data.model.user.UserResponse
 import com.clickandvisit.data.model.user.signup.SignupResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -164,50 +164,57 @@ interface APIClient {
         @Query("user_id") userId: Int
     ): FavoritesResponse
 
-    @FormUrlEncoded
+    @Multipart
     @POST("create_update_property")
     suspend fun createUpdateProperty(
-        @Field("user_id") userId: Int,
-        @Field("_logement_id") propId: Int?, // only for edit
-        @Field("prop_type") propType: Int?,
-        @Field("prop_category") propCategory: Int?,
-        @Field("prop_surface") propSurface: Int?,
-        @Field("prop_prix") propPrix: Int?,
-        @Field("prop_etage") propEtage: Int?,
-        @Field("prop_etage_sur") propEtageSur: Int?,
-        @Field("prop_enery") propEnergy: Int?,
-        @Field("prop_ges") propGes: Int?,
-        @Field("prop_infos_complementaires") infoComp: String?,
-        @Field("prop_meta_chambres") prop_meta_chambres: String?,
-        @Field("prop_meta_suites") prop_meta_suites: String?,
-        @Field("prop_meta_salles_de_bains") prop_meta_salles_de_bains: String?,
-        @Field("prop_meta_salles_d_eau") prop_meta_salles_d_eau: String?,
-        @Field("prop_meta_bureaux") prop_meta_bureaux: String?,
-        @Field("prop_meta_dressing") prop_meta_dressing: String?,
-        @Field("prop_meta_garages") prop_meta_garages: String?,
-        @Field("prop_meta_caves") prop_meta_caves: String?,
-        @Field("prop_meta_balcons") prop_meta_balcons: String?,
-        @Field("prop_meta_terrasse") prop_meta_terrasse: String?,
-        // @Field("prop_meta_surface_terrain") prop_meta_surface_terrain: String,
-        @Field("prop_meta_annee") prop_meta_annee: String?,
-        @Field("prop_meta_piscine") prop_meta_piscine: String?,
-        @Field("prop_meta_piscinable") prop_meta_piscinable: String?,
-        @Field("prop_meta_pool_house") prop_meta_pool_house: String?,
-        @Field("prop_meta_sans_vis_a_vis") prop_meta_sans_vis_a_vis: String?,
-        @Field("prop_meta_ascenseur") prop_meta_ascenseur: String?,
-        @Field("prop_meta_duplex") prop_meta_duplex: String?,
-        @Field("prop_meta_triplex") prop_meta_triplex: String?,
-        @Field("prop_meta_rez_de_jardin") prop_meta_rez_de_jardin: String?,
-        @Field("prop_localisation_ville") prop_localisation_ville: String?,
-        @Field("prop_localisation_codepostal") prop_localisation_codepostal: String?,
-        @Field("prop_localisation_complement_adresse") prop_localisation_complement_adresse: String?,
-        @Field("prop_nom_interphone") proInterphoneName: String?,
-        @Field("prop_codeportail") propCodeportail: String?,
-        @Field("prop_autres_informations") propInfos: String?,
-        @Field("prop_main_photo") propMainPhoto: String?,
-        @Field("prop_album_photo[]") propAlbumPhoto1: String?,
-        @Field("prop_album_photo[]") propAlbumPhoto2: String?,
-        @Field("prop_album_photo[]") propAlbumPhoto3: String?
+        @Part("user_id") userId: RequestBody,
+        @Part("_logement_id") propId: RequestBody?, // only for edit
+        @Part("prop_type") propType: RequestBody?,
+        @Part("prop_category") propCategory: RequestBody?,
+        @Part("prop_surface") propSurface: RequestBody?,
+        @Part("prop_prix") propPrix: RequestBody?,
+        @Part("prop_etage") propEtage: RequestBody?,
+        @Part("prop_etage_sur") propEtageSur: RequestBody?,
+        @Part("prop_enery") propEnergy: RequestBody?,
+        @Part("prop_ges") propGes: RequestBody?,
+        @Part("prop_infos_complementaires") infoComp: RequestBody?,
+        @Part("prop_meta_chambres") prop_meta_chambres: RequestBody?,
+        @Part("prop_meta_suites") prop_meta_suites: RequestBody?,
+        @Part("prop_meta_salles_de_bains") prop_meta_salles_de_bains: RequestBody?,
+        @Part("prop_meta_salles_d_eau") prop_meta_salles_d_eau: RequestBody?,
+        @Part("prop_meta_bureaux") prop_meta_bureaux: RequestBody?,
+        @Part("prop_meta_dressing") prop_meta_dressing: RequestBody?,
+        @Part("prop_meta_garages") prop_meta_garages: RequestBody?,
+        @Part("prop_meta_caves") prop_meta_caves: RequestBody?,
+        @Part("prop_meta_balcons") prop_meta_balcons: RequestBody?,
+        @Part("prop_meta_terrasse") prop_meta_terrasse: RequestBody?,
+        // @Part("prop_meta_surface_terrain") prop_meta_surface_terrain: RequestBody,
+        @Part("prop_meta_annee") prop_meta_annee: RequestBody?,
+        @Part("prop_meta_piscine") prop_meta_piscine: RequestBody?,
+        @Part("prop_meta_piscinable") prop_meta_piscinable: RequestBody?,
+        @Part("prop_meta_pool_house") prop_meta_pool_house: RequestBody?,
+        @Part("prop_meta_sans_vis_a_vis") prop_meta_sans_vis_a_vis: RequestBody?,
+        @Part("prop_meta_ascenseur") prop_meta_ascenseur: RequestBody?,
+        @Part("prop_meta_duplex") prop_meta_duplex: RequestBody?,
+        @Part("prop_meta_triplex") prop_meta_triplex: RequestBody?,
+        @Part("prop_meta_rez_de_jardin") prop_meta_rez_de_jardin: RequestBody?,
+        @Part("prop_localisation_ville") prop_localisation_ville: RequestBody?,
+        @Part("prop_localisation_codepostal") prop_localisation_codepostal: RequestBody?,
+        @Part("prop_localisation_complement_adresse") prop_localisation_complement_adresse: RequestBody?,
+        @Part("prop_nom_interphone") proInterphoneName: RequestBody?,
+        @Part("prop_codeportail") propCodeportail: RequestBody?,
+        @Part("prop_autres_informations") propInfos: RequestBody?,
+        @Part mainFile: MultipartBody.Part?
+
+/*
+        @Part file1: MultipartBody.Part?,
+        @Part file2: MultipartBody.Part?,
+        @Part file3: MultipartBody.Part?,
+        @Part file4: MultipartBody.Part?,
+        @Part file5: MultipartBody.Part?,
+        @Part file6: MultipartBody.Part?
+*/
+
     ): PropertyAddResponse
 
 

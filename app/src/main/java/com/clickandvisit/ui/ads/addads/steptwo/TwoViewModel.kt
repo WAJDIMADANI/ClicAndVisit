@@ -7,7 +7,6 @@ import androidx.lifecycle.SavedStateHandle
 import com.clickandvisit.R
 import com.clickandvisit.base.BaseAndroidViewModel
 import com.clickandvisit.data.model.property.Property
-import com.clickandvisit.data.model.property.add.PropertyAdd
 import com.clickandvisit.global.helper.Navigation
 import com.clickandvisit.global.listener.SchedulerProvider
 import dagger.hilt.android.lifecycle.HiltViewModel

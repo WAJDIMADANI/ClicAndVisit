@@ -21,7 +21,6 @@ import kotlinx.coroutines.withContext
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
-import okhttp3.RequestBody.Companion.toRequestBody
 import java.io.File
 import javax.inject.Inject
 
@@ -61,6 +60,8 @@ class AddAdsViewModel
 
     val info: MutableLiveData<String?> = MutableLiveData()
 
+    val ges: MutableLiveData<String> = MutableLiveData()
+    val dpe: MutableLiveData<String> = MutableLiveData()
 
     /** room details **/
     val roomNbrApi1: MutableLiveData<String> = MutableLiveData("")
@@ -121,46 +122,22 @@ class AddAdsViewModel
             propertyAdd.value!!.propId = propertyEdit.value!!.id
         }
 
-        propertyAdd.value?.propType = if (checkedSale.value == true) {
-            30
-        } else {
-            29
-        }
+        propertyAdd.value?.propType = getPropType()
 
-        if (checkedHome.value == true) {
-            propertyAdd.value?.propCategory = 96
-        } else if (checkedB.value == true) {
-            propertyAdd.value?.propCategory = 99
-        } else if (checkedApp.value == true) {
-            propertyAdd.value?.propCategory = 97
-        } else if (checkedTer.value == true) {
-            propertyAdd.value?.propCategory = 100
-        } else if (checkedGarage.value == true) {
-            propertyAdd.value?.propCategory = 98
-        } else if (checkedComm.value == true) {
-            propertyAdd.value?.propCategory = 101
-        }
+        propertyAdd.value?.propCategory = getPropCategory()
 
-        // S+...
-        propertyAdd.value?.prop_meta_chambres = if (checked1.value == true) {
-            "1"
-        } else if (checked2.value == true) {
-            "2"
-        } else if (checked3.value == true) {
-            "3"
-        } else if (checked4.value == true) {
-            "4"
-        } else if (checked5.value == true) {
-            "5 et +"
-        } else if (checkedNA.value == true) {
-            "NA"
-        } else null
+        propertyAdd.value?.prop_meta_chambres = getRoomsNbr()
 
-
-        //TODO: type de bien
         propertyAdd.value?.propSurface = surface.value?.toInt()
         propertyAdd.value?.propPrix = price.value?.toInt()
+
+
         //TODO: DPE / GES
+
+        propertyAdd.value?.propGes = ges.value
+        propertyAdd.value?.propEnery = dpe.value
+
+
         try {
             propertyAdd.value?.propEtage = stage.value?.toInt()
         } catch (e: NumberFormatException) {
@@ -176,7 +153,6 @@ class AddAdsViewModel
         propertyAdd.value?.propInfos = info.value
 
 
-        //FIXME: query Saif; propertyAdd.value?.prop_meta_chambres = roomNbrApi1.value
         propertyAdd.value?.prop_meta_suites = roomNbrApi2.value
         propertyAdd.value?.prop_meta_salles_de_bains = roomNbrApi3.value
         propertyAdd.value?.prop_meta_salles_d_eau = roomNbrApi4.value
@@ -206,7 +182,10 @@ class AddAdsViewModel
         propertyAdd.value?.propInfos = otherInfo.value
 
 
-        //FIXME: update photo ws call property?.propMainPhoto
+        propertyAdd.value?.propMainPhoto = createImageFileFormData(
+            mainPhotoUri.value?.path ?: "",
+            "prop_main_photo"
+        )
 
         showBlockProgressBar()
         viewModelScope.launch {
@@ -216,45 +195,63 @@ class AddAdsViewModel
                         propertyAdd.value!!
                     )
                 }
-                hideBlockProgressBar()
-                navigate(Navigation.CalendarFragmentNavigation)
-            }, { error ->
-                onCreateOrUpdatePropertyError(error)
-            })
-        }
-    }
-
-
-    private fun onCreateOrUpdatePropertySuccess(propertyAddResponse: PropertyAddResponse) {
-
-        val propIdRequestBody =
-            propertyAddResponse.propId.toString().toRequestBody("text/plain".toMediaTypeOrNull())
-
-        val mainPhotoFile = File(mainPhotoUri.value?.path ?: "")
-        val requestFile: RequestBody =
-            RequestBody.create("multipart/form-data".toMediaTypeOrNull(), mainPhotoFile)
-        val body: MultipartBody.Part =
-            MultipartBody.Part.createFormData(
-                "prop_main_photo",
-                System.currentTimeMillis().toString() + "_" + mainPhotoFile.name,
-                requestFile
-            )
-
-        viewModelScope.launch {
-            tryCatch({
-                val propertyAddResponse = withContext(schedulerProvider.dispatchersIO()) {
-                    userRepository.createUpdateProperty(propIdRequestBody, body)
-                }
                 createUpdatePropertySuccess(propertyAddResponse)
             }, { error ->
                 onCreateOrUpdatePropertyError(error)
             })
         }
+    }
 
+    private fun getPropType() = if (checkedSale.value == true) {
+        30
+    } else {
+        29
+    }
+
+    private fun getPropCategory() = if (checkedHome.value == true) {
+        96
+    } else if (checkedB.value == true) {
+        99
+    } else if (checkedApp.value == true) {
+        97
+    } else if (checkedTer.value == true) {
+        100
+    } else if (checkedGarage.value == true) {
+        98
+    } else if (checkedComm.value == true) {
+        101
+    } else {
+        96
+    }
+
+    private fun getRoomsNbr() = if (checked1.value == true) {
+        "1"
+    } else if (checked2.value == true) {
+        "2"
+    } else if (checked3.value == true) {
+        "3"
+    } else if (checked4.value == true) {
+        "4"
+    } else if (checked5.value == true) {
+        "5 et +"
+    } else if (checkedNA.value == true) {
+        "NA"
+    } else null
+
+    private fun createImageFileFormData(pathname: String, photoWsName: String): MultipartBody.Part {
+        val mainPhotoFile = File(pathname)
+        val requestFile: RequestBody =
+            RequestBody.create("multipart/form-data".toMediaTypeOrNull(), mainPhotoFile)
+        return MultipartBody.Part.createFormData(
+            photoWsName,
+            System.currentTimeMillis().toString() + "_" + mainPhotoFile.name,
+            requestFile
+        )
     }
 
     private fun createUpdatePropertySuccess(propertyAddResponse: PropertyAddResponse) {
         hideBlockProgressBar()
+        DebugLog.i(TAG, propertyAddResponse.propId.toString())
         navigate(Navigation.CalendarFragmentNavigation)
     }
 

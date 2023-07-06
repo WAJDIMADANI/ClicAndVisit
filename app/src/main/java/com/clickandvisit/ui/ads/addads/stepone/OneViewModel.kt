@@ -47,6 +47,10 @@ class OneViewModel
     val info: MutableLiveData<String> = MutableLiveData()
 
 
+    val ges: MutableLiveData<String> = MutableLiveData()
+    val dpe: MutableLiveData<String> = MutableLiveData()
+
+
     init {
 
     }

@@ -9,7 +9,6 @@ import androidx.fragment.app.viewModels
 import com.clickandvisit.R
 import com.clickandvisit.base.BaseFragment
 import com.clickandvisit.data.model.property.Property
-import com.clickandvisit.data.model.property.add.PropertyAdd
 import com.clickandvisit.databinding.OneFragmentBinding
 import com.clickandvisit.global.helper.Navigation
 import dagger.hilt.android.AndroidEntryPoint
@@ -49,6 +48,7 @@ class OneFragment(val property: Property?) : BaseFragment() {
 
 
         binding.tvA.setOnClickListener {
+            viewModel.dpe.value = "A"
             binding.tvA.layoutParams.width = 140
             binding.tvA.layoutParams.height = 120
             binding.tvA.text = "A"
@@ -87,6 +87,7 @@ class OneFragment(val property: Property?) : BaseFragment() {
         }
 
         binding.tvB.setOnClickListener {
+            viewModel.dpe.value = "B"
             binding.tvA.layoutParams.width = 115
             binding.tvA.layoutParams.height = 55
             binding.tvA.text = ""
@@ -125,6 +126,7 @@ class OneFragment(val property: Property?) : BaseFragment() {
         }
 
         binding.tvC.setOnClickListener {
+            viewModel.dpe.value = "C"
             binding.tvA.layoutParams.width = 115
             binding.tvA.layoutParams.height = 55
             binding.tvA.text = ""
@@ -163,6 +165,7 @@ class OneFragment(val property: Property?) : BaseFragment() {
         }
 
         binding.tvD.setOnClickListener {
+            viewModel.dpe.value = "D"
             binding.tvA.layoutParams.width = 115
             binding.tvA.layoutParams.height = 55
             binding.tvA.text = ""
@@ -201,6 +204,7 @@ class OneFragment(val property: Property?) : BaseFragment() {
         }
 
         binding.tvE.setOnClickListener {
+            viewModel.dpe.value = "E"
             binding.tvA.layoutParams.width = 115
             binding.tvA.layoutParams.height = 55
             binding.tvA.text = ""
@@ -239,6 +243,7 @@ class OneFragment(val property: Property?) : BaseFragment() {
         }
 
         binding.tvF.setOnClickListener {
+            viewModel.dpe.value = "F"
             binding.tvA.layoutParams.width = 115
             binding.tvA.layoutParams.height = 55
             binding.tvA.text = ""
@@ -277,6 +282,7 @@ class OneFragment(val property: Property?) : BaseFragment() {
         }
 
         binding.tvG.setOnClickListener {
+            viewModel.dpe.value = "G"
             binding.tvA.layoutParams.width = 115
             binding.tvA.layoutParams.height = 55
             binding.tvA.text = ""
@@ -315,11 +321,8 @@ class OneFragment(val property: Property?) : BaseFragment() {
         }
 
 
-
-
-
-
         binding.tvGESA.setOnClickListener {
+            viewModel.ges.value = "A"
             binding.tvGESA.layoutParams.width = 140
             binding.tvGESA.layoutParams.height = 120
             binding.tvGESA.text = "A"
@@ -358,6 +361,7 @@ class OneFragment(val property: Property?) : BaseFragment() {
         }
 
         binding.tvGESB.setOnClickListener {
+            viewModel.ges.value = "B"
             binding.tvGESA.layoutParams.width = 115
             binding.tvGESA.layoutParams.height = 55
             binding.tvGESA.text = ""
@@ -396,6 +400,7 @@ class OneFragment(val property: Property?) : BaseFragment() {
         }
 
         binding.tvGESC.setOnClickListener {
+            viewModel.ges.value = "C"
             binding.tvGESA.layoutParams.width = 115
             binding.tvGESA.layoutParams.height = 55
             binding.tvGESA.text = ""
@@ -434,6 +439,7 @@ class OneFragment(val property: Property?) : BaseFragment() {
         }
 
         binding.tvGESD.setOnClickListener {
+            viewModel.ges.value = "D"
             binding.tvGESA.layoutParams.width = 115
             binding.tvGESA.layoutParams.height = 55
             binding.tvGESA.text = ""
@@ -472,6 +478,7 @@ class OneFragment(val property: Property?) : BaseFragment() {
         }
 
         binding.tvGESE.setOnClickListener {
+            viewModel.ges.value = "E"
             binding.tvGESA.layoutParams.width = 115
             binding.tvGESA.layoutParams.height = 55
             binding.tvGESA.text = ""
@@ -510,6 +517,7 @@ class OneFragment(val property: Property?) : BaseFragment() {
         }
 
         binding.tvGESF.setOnClickListener {
+            viewModel.ges.value = "F"
             binding.tvGESA.layoutParams.width = 115
             binding.tvGESA.layoutParams.height = 55
             binding.tvGESA.text = ""
@@ -548,6 +556,7 @@ class OneFragment(val property: Property?) : BaseFragment() {
         }
 
         binding.tvGESG.setOnClickListener {
+            viewModel.ges.value = "G"
             binding.tvGESA.layoutParams.width = 115
             binding.tvGESA.layoutParams.height = 55
             binding.tvGESA.text = ""
