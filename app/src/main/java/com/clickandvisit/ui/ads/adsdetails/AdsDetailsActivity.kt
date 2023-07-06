@@ -55,7 +55,7 @@ class AdsDetailsActivity : BaseActivity() {
             imageList.add(SlideModel(imageUrl = value.mainPhoto))
         }
 
-        value.album.forEach {
+        value.album?.forEach {
             imageList.add(SlideModel(imageUrl = it))
         }
         binding.imageSlider.setImageList(imageList, ScaleTypes.CENTER_CROP)

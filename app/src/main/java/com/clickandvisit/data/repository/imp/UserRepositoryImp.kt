@@ -20,8 +20,10 @@ import com.clickandvisit.data.retrofit.APIClient
 import com.clickandvisit.global.enumeration.Optional
 import com.clickandvisit.global.helper.SharedPreferences
 import kotlinx.coroutines.delay
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
+import okhttp3.RequestBody.Companion.toRequestBody
 import javax.inject.Inject
 
 
@@ -150,7 +152,7 @@ class UserRepositoryImp @Inject constructor(
     /** Property **/
 
     override suspend fun search(sortBy: String?, sortHow: String?): SearchResponse {
-        return apiClient.search(sortBy,sortHow)
+        return apiClient.search(sortBy, sortHow)
     }
 
     override suspend fun getMyProperty(): SearchResponse {
@@ -249,6 +251,14 @@ class UserRepositoryImp @Inject constructor(
             property.propAlbumPhoto2,
             property.propAlbumPhoto3
         )
+    }
+
+    override suspend fun createUpdateProperty(
+        propId: RequestBody,
+        file: MultipartBody.Part
+    ): PropertyAddResponse {
+        val userId = sharedPreferences.getUser().id.toRequestBody("text/plain".toMediaTypeOrNull())
+        return apiClient.createUpdateProperty(userId, propId, file)
     }
 
     override suspend fun getSavedSearch(): SavedSearchResponse {

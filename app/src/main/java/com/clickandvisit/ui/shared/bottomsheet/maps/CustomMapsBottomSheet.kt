@@ -61,9 +61,13 @@ class CustomMapsBottomSheet(
 
 
         binding.tvPhotoCount.text = if (property.mainPhoto.isNullOrEmpty().not()) {
-            property.album.size.plus(1).toString()
+            if (property.album.isNullOrEmpty()){
+                "1"
+            }else{
+                property.album.size.plus(1).toString()
+            }
         } else {
-            property.album.size.toString()
+            property.album?.size.toString()
         }
 
         initializeListener()

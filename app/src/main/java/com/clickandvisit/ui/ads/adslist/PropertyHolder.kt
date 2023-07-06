@@ -25,9 +25,15 @@ class PropertyHolder(
     fun bind(value: Property, position: Int) {
         binding.tvAdsName.text = value.title
         binding.tvPhotoCount.text = if (value.mainPhoto.isNullOrEmpty().not()) {
-            value.album.size.plus(1).toString()
+
+            if (value.album.isNullOrEmpty()){
+                "1"
+            }else{
+                value.album.size.plus(1).toString()
+            }
+
         } else {
-            value.album.size.toString()
+            value.album?.size.toString()
         }
 
         if (value.category.isNullOrEmpty() && value.price.isNullOrEmpty()) {
@@ -60,7 +66,7 @@ class PropertyHolder(
             imageList.add(SlideModel(imageUrl = value.mainPhoto))
         }
 
-        value.album.forEach {
+        value.album?.forEach {
             imageList.add(SlideModel(imageUrl = it))
         }
         binding.imageSlider.setImageList(imageList, ScaleTypes.CENTER_CROP)

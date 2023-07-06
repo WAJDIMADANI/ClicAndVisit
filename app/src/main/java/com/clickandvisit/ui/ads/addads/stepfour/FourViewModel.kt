@@ -22,6 +22,13 @@ import javax.inject.Inject
 
 const val MAIN_PIC_NAME = "mainPic.jpeg"
 
+const val PIC1_NAME = "photo1.jpeg"
+const val PIC2_NAME = "photo2.jpeg"
+const val PIC3_NAME = "photo3.jpeg"
+const val PIC4_NAME = "photo4.jpeg"
+const val PIC5_NAME = "photo5.jpeg"
+const val PIC6_NAME = "photo6.jpeg"
+
 
 @HiltViewModel
 class FourViewModel
@@ -36,7 +43,44 @@ class FourViewModel
 
     val mainPhotoUri = MutableLiveData(Uri.EMPTY)
 
+    val photoUri1 = MutableLiveData(Uri.EMPTY)
+    val photoUri2 = MutableLiveData(Uri.EMPTY)
+    val photoUri3 = MutableLiveData(Uri.EMPTY)
+    val photoUri4 = MutableLiveData(Uri.EMPTY)
+    val photoUri5 = MutableLiveData(Uri.EMPTY)
+    val photoUri6 = MutableLiveData(Uri.EMPTY)
+
     val isEmptyUri = mainPhotoUri.map {
+        it == null || it == Uri.EMPTY
+    }
+
+
+    val isEmptyUri1 = photoUri1.map {
+        it == null || it == Uri.EMPTY
+    }
+
+
+    val isEmptyUri2 = photoUri2.map {
+        it == null || it == Uri.EMPTY
+    }
+
+
+    val isEmptyUri3 = photoUri3.map {
+        it == null || it == Uri.EMPTY
+    }
+
+
+    val isEmptyUri4 = photoUri4.map {
+        it == null || it == Uri.EMPTY
+    }
+
+
+    val isEmptyUri5 = photoUri5.map {
+        it == null || it == Uri.EMPTY
+    }
+
+
+    val isEmptyUri6 = photoUri6.map {
         it == null || it == Uri.EMPTY
     }
 
@@ -49,10 +93,15 @@ class FourViewModel
     fun onImageMainClick() {
         imagePickerDialog.value =
             ImgPickerDialog.build(
-                onTakePictureClicked(),
+                onTakePictureClicked(MAIN_PIC_NAME),
                 onPickPictureClicked(),
                 onDismissBottomSheet()
             )
+    }
+
+
+    fun onImageClick() {
+       //TODO onTakePictureClicked(PIC1_NAME)
     }
 
     fun onCancelImageMainClick() {
@@ -61,9 +110,9 @@ class FourViewModel
         //isEmptyUri.value = mainPhotoUri.value == null || mainPhotoUri.value == Uri.EMPTY
     }
 
-    private fun onTakePictureClicked(): () -> Unit {
+    private fun onTakePictureClicked(name: String): () -> Unit {
         return {
-            navigate(Navigation.CameraNavigation(MAIN_PIC_NAME))
+            navigate(Navigation.CameraNavigation(name))
         }
     }
 

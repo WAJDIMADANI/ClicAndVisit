@@ -210,6 +210,16 @@ interface APIClient {
         @Field("prop_album_photo[]") propAlbumPhoto3: String?
     ): PropertyAddResponse
 
+
+    @Multipart
+    @POST("create_update_property")
+    suspend fun createUpdateProperty(
+        @Part("user_id") userId: RequestBody,
+        @Part("_logement_id") propId: RequestBody,
+        @Part file: MultipartBody.Part
+    ): PropertyAddResponse
+
+
     @FormUrlEncoded
     @POST("delete_search")
     suspend fun deleteSearch(

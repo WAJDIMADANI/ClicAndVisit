@@ -96,9 +96,15 @@ class AdsDetailsViewModel
 
     private fun fetchImgCount() {
         imgCount.value = if (property.value!!.mainPhoto.isNullOrEmpty().not()) {
-            property.value!!.album.size.plus(1).toString()
+
+            if (property.value!!.album.isNullOrEmpty()){
+                "1"
+            }else{
+                property.value!!.album?.size?.plus(1).toString()
+            }
+
         } else {
-            property.value!!.album.size.toString()
+            property.value!!.album?.size.toString()
         }
     }
 

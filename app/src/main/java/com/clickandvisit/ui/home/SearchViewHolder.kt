@@ -33,9 +33,13 @@ class SearchViewHolder(
         }
         binding.tvAdsName.text = value.title.toUpperCase()
         if (value.mainPhoto.isNullOrEmpty().not()) {
-            binding.tvPhotoCount.text = value.album.size.plus(1).toString()
+            if (value.album.isNullOrEmpty()){
+                binding.tvPhotoCount.text = "1"
+            }else{
+                binding.tvPhotoCount.text = value.album?.size?.plus(1).toString()
+            }
         } else {
-            binding.tvPhotoCount.text = value.album.size.toString()
+            binding.tvPhotoCount.text = value.album?.size.toString()
         }
 
         if (value.category.isNullOrEmpty() && value.price.isNullOrEmpty()) {
@@ -89,7 +93,7 @@ class SearchViewHolder(
         if (value.mainPhoto.isNullOrEmpty().not()) {
             imageList.add(SlideModel(imageUrl = value.mainPhoto))
         }
-        value.album.forEach {
+        value.album?.forEach {
             imageList.add(SlideModel(imageUrl = it))
         }
         binding.imageSlider.setImageList(imageList, ScaleTypes.CENTER_CROP)

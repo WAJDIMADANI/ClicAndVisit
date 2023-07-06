@@ -18,7 +18,7 @@ data class Property(
     @Json(name = "category")
     val category: String,
     @Json(name = "album")
-    val album: List<String>,
+    val album: List<String>?,
     @Json(name = "photo_principale")
     val mainPhoto: String?,
     @Json(name = "status")

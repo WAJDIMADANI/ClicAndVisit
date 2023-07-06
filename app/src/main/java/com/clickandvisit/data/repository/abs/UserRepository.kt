@@ -87,6 +87,11 @@ interface UserRepository {
 
     suspend fun createUpdateProperty(property: PropertyAdd): PropertyAddResponse
 
+    suspend fun createUpdateProperty(
+        propId: RequestBody,
+        file: MultipartBody.Part
+    ): PropertyAddResponse
+
     suspend fun enableDisableProperty(propId: Int, enableDisable: Int): GlobalResponse
 
     suspend fun deleteSearch(searchId: Int): GlobalResponse

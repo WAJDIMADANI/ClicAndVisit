@@ -18,6 +18,11 @@ import com.clickandvisit.global.utils.tryCatch
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import okhttp3.RequestBody.Companion.toRequestBody
+import java.io.File
 import javax.inject.Inject
 
 
@@ -158,13 +163,13 @@ class AddAdsViewModel
         //TODO: DPE / GES
         try {
             propertyAdd.value?.propEtage = stage.value?.toInt()
-        }catch (e: NumberFormatException){
+        } catch (e: NumberFormatException) {
             propertyAdd.value?.propEtage = null
         }
 
         try {
             propertyAdd.value?.propEtageSur = on.value?.toInt()
-        }catch (e: NumberFormatException){
+        } catch (e: NumberFormatException) {
             propertyAdd.value?.propEtageSur = null
         }
 
@@ -211,7 +216,8 @@ class AddAdsViewModel
                         propertyAdd.value!!
                     )
                 }
-                onCreateOrUpdatePropertySuccess(propertyAddResponse)
+                hideBlockProgressBar()
+                navigate(Navigation.CalendarFragmentNavigation)
             }, { error ->
                 onCreateOrUpdatePropertyError(error)
             })
@@ -220,8 +226,35 @@ class AddAdsViewModel
 
 
     private fun onCreateOrUpdatePropertySuccess(propertyAddResponse: PropertyAddResponse) {
+
+        val propIdRequestBody =
+            propertyAddResponse.propId.toString().toRequestBody("text/plain".toMediaTypeOrNull())
+
+        val mainPhotoFile = File(mainPhotoUri.value?.path ?: "")
+        val requestFile: RequestBody =
+            RequestBody.create("multipart/form-data".toMediaTypeOrNull(), mainPhotoFile)
+        val body: MultipartBody.Part =
+            MultipartBody.Part.createFormData(
+                "prop_main_photo",
+                System.currentTimeMillis().toString() + "_" + mainPhotoFile.name,
+                requestFile
+            )
+
+        viewModelScope.launch {
+            tryCatch({
+                val propertyAddResponse = withContext(schedulerProvider.dispatchersIO()) {
+                    userRepository.createUpdateProperty(propIdRequestBody, body)
+                }
+                createUpdatePropertySuccess(propertyAddResponse)
+            }, { error ->
+                onCreateOrUpdatePropertyError(error)
+            })
+        }
+
+    }
+
+    private fun createUpdatePropertySuccess(propertyAddResponse: PropertyAddResponse) {
         hideBlockProgressBar()
-        DebugLog.i(TAG, propertyAddResponse.toString())
         navigate(Navigation.CalendarFragmentNavigation)
     }
 
