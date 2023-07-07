@@ -15,6 +15,7 @@ import com.clickandvisit.databinding.ActivityAdsListBinding
 import com.clickandvisit.global.helper.Navigation
 import com.clickandvisit.global.utils.ExtraKeys
 import com.clickandvisit.ui.ads.addads.AddAdsActivity
+import com.clickandvisit.ui.ads.adsdetails.AdsDetailsActivity
 import com.clickandvisit.ui.shared.view.CustomButton
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -93,6 +94,17 @@ class AdsListActivity : BaseActivity() {
                 }
                 dialog.show()
             }
+
+            is Navigation.AdsDetailsActivityNavigation -> {
+                Intent(this, AdsDetailsActivity::class.java).let { intent ->
+                    intent.putExtra(
+                        ExtraKeys.AddAdsActivity.PROPERTY_EXTRA_KEY_PROP,
+                        navigationTo.value
+                    )
+                    startActivity(intent)
+                }
+            }
+
         }
     }
 

@@ -64,13 +64,6 @@ class SearchViewHolder(
             binding.ivLike.background = context.getDrawable(R.drawable.ic_like)
         }
 
-
-/*        binding.ivLike.setOnClickListener {
-            //binding.ivLike.isChecked = !binding.ivLike.isChecked
-            value.isFavorite = value.isFavorite.not()
-            binding.ivLike.isChecked = value.isFavorite
-        }*/
-
         proVisibility(value)
         loadImages(value)
 

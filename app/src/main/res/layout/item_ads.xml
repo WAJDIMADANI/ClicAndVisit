@@ -15,12 +15,14 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_global_15dp"
         android:layout_marginTop="@dimen/margin_global_15dp"
         android:layout_marginEnd="@dimen/margin_global_15dp"
         android:background="@color/white_basic"
+        android:clipToPadding="false"
         android:padding="@dimen/padding_global_5dp"
         app:onClickWithDebounce="@{()->listener.onItemClicked(property)}">
 
@@ -28,7 +30,7 @@
             android:id="@+id/imageSlider"
             android:layout_width="match_parent"
             android:layout_height="187dp"
-            app:iss_text_align="CENTER"
+            app:iss_placeholder="@drawable/ic_placeholder"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -96,6 +98,7 @@
                 android:id="@+id/ivStar"
                 android:layout_width="@dimen/dimen_45dp"
                 android:layout_height="@dimen/dimen_45dp"
+                android:visibility="gone"
                 android:background="@drawable/ic_start"
                 app:onClickWithDebounce="@{()->listener.onRateClicked(property)}" />
 

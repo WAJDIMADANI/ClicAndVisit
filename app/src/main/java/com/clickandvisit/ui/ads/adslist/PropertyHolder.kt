@@ -10,6 +10,7 @@ import com.clickandvisit.data.model.property.Property
 import com.clickandvisit.databinding.ItemAdsBinding
 import com.clickandvisit.global.listener.OnMyPropertyClickedListener
 import com.denzcoskun.imageslider.constants.ScaleTypes
+import com.denzcoskun.imageslider.interfaces.ItemClickListener
 import com.denzcoskun.imageslider.models.SlideModel
 import com.squareup.picasso.Picasso
 
@@ -70,6 +71,16 @@ class PropertyHolder(
             imageList.add(SlideModel(imageUrl = it))
         }
         binding.imageSlider.setImageList(imageList, ScaleTypes.CENTER_CROP)
+
+        binding.imageSlider.setItemClickListener(object : ItemClickListener {
+            override fun doubleClick(position: Int) {
+                binding.clContainer.performClick()
+            }
+
+            override fun onItemSelected(position: Int) {
+                binding.clContainer.performClick()
+            }
+        })
     }
 
     companion object {

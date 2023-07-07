@@ -79,7 +79,7 @@ class AdsListViewModel
     }
 
     override fun onItemClicked(value: Property) {
-        DebugLog.i(TAG, "onItemClicked")
+        navigate(Navigation.AdsDetailsActivityNavigation(value))
     }
 
     override fun onShareClicked(value: Property) {
