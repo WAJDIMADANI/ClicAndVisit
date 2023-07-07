@@ -43,6 +43,9 @@ class AdsDetailsViewModel
     val surface = MutableLiveData<String>()
     val info = MutableLiveData<String>()
 
+    val ref = MutableLiveData<String>()
+
+
     val isFavourite = MutableLiveData<Boolean>()
     val checkedPro: MutableLiveData<Boolean> = MutableLiveData(false)
     val like: MutableLiveData<Drawable> = MutableLiveData()
@@ -55,6 +58,8 @@ class AdsDetailsViewModel
     init {
         property.value =
             savedStateHandle.getLiveData<Property>(ExtraKeys.AddAdsActivity.PROPERTY_EXTRA_KEY_PROP).value
+
+        ref.value = "Référence : CV" + property.value!!.id.toString()
 
         fetchImgCount()
         getPrice()
@@ -72,23 +77,23 @@ class AdsDetailsViewModel
         info.value = property.value!!.otherDetails
         isFavourite.value = property.value!!.isFavorite
 
-        if (isFavourite.value == true){
-            like.value = ContextCompat.getDrawable(applicationContext,R.drawable.ic_like_on)
-        }else{
-            like.value = ContextCompat.getDrawable(applicationContext,R.drawable.ic_like)
+        if (isFavourite.value == true) {
+            like.value = ContextCompat.getDrawable(applicationContext, R.drawable.ic_like_on)
+        } else {
+            like.value = ContextCompat.getDrawable(applicationContext, R.drawable.ic_like)
         }
 
     }
 
-    private fun fetchDPE(){
-        if (property.value!!.energy.isNotEmpty()){
+    private fun fetchDPE() {
+        if (property.value!!.energy.isNotEmpty()) {
             navigate(Navigation.DPENavigation(property.value!!.energy))
         }
     }
 
-    private fun fetchGES(){
+    private fun fetchGES() {
         Handler().postDelayed({
-            if (property.value!!.ges.isNotEmpty()){
+            if (property.value!!.ges.isNotEmpty()) {
                 navigate(Navigation.GESNavigation(property.value!!.ges))
             }
         }, 500)
@@ -97,9 +102,9 @@ class AdsDetailsViewModel
     private fun fetchImgCount() {
         imgCount.value = if (property.value!!.mainPhoto.isNullOrEmpty().not()) {
 
-            if (property.value!!.album.isNullOrEmpty()){
+            if (property.value!!.album.isNullOrEmpty()) {
                 "1"
-            }else{
+            } else {
                 property.value!!.album?.size?.plus(1).toString()
             }
 
@@ -228,10 +233,10 @@ class AdsDetailsViewModel
 
     private fun onLikeClickedSuccess(response: GlobalResponse) {
         isFavourite.value = isFavourite.value!!.not()
-        if (isFavourite.value == true){
-            like.value = ContextCompat.getDrawable(applicationContext,R.drawable.ic_like_on)
-        }else{
-            like.value = ContextCompat.getDrawable(applicationContext,R.drawable.ic_like)
+        if (isFavourite.value == true) {
+            like.value = ContextCompat.getDrawable(applicationContext, R.drawable.ic_like_on)
+        } else {
+            like.value = ContextCompat.getDrawable(applicationContext, R.drawable.ic_like)
         }
         hideBlockProgressBar()
     }
