@@ -17,9 +17,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class OneFragment(val property: Property?) : BaseFragment() {
 
     val viewModel: OneViewModel by viewModels()
-
     private lateinit var binding: OneFragmentBinding
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,17 +25,11 @@ class OneFragment(val property: Property?) : BaseFragment() {
     ): View? {
         val view = inflater.inflate(R.layout.one_fragment, container, false)
         binding = OneFragmentBinding.bind(view)
-
         binding.viewModel = viewModel
-
         if (property != null) {
             viewModel.onEditProperty(property)
         }
-
         binding.lifecycleOwner = viewLifecycleOwner
-
-        val dpeValues = listOf("A", "B", "C", "D", "E", "F", "G") // Energy performance values
-
         return view
     }
 

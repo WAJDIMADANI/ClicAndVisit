@@ -133,11 +133,18 @@ class AddAdsViewModel
         propertyAdd.value?.propPrix = price.value?.toInt()
 
 
-        //TODO: DPE / GES
 
-        propertyAdd.value?.propGes = ges.value
-        propertyAdd.value?.propEnery = dpe.value
+        propertyAdd.value?.propGes = if (ges.value.isNullOrEmpty()) {
+            "G"
+        } else {
+            ges.value
+        }
 
+        propertyAdd.value?.propEnery = if (dpe.value.isNullOrEmpty()) {
+            "G"
+        } else {
+            dpe.value
+        }
 
         try {
             propertyAdd.value?.propEtage = stage.value?.toInt()

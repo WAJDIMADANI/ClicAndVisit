@@ -28,7 +28,7 @@ const val DEFAULT_FILE_NAME = "default_img.jpg"
 
 object ImagePicker {
 
-    private const val IMAGE_MAX_SIZE = 2 * 1024 * 1024 // 2Mb
+    private const val IMAGE_MAX_SIZE = 1024 * 1024 // 2Mb
     private const val IMAGE_MAX_RESOLUTION = 1200
 
     const val PICK_IMAGE_CAMERA_ID = 998
@@ -130,12 +130,12 @@ object ImagePicker {
     }
 
     private fun getCompressRatio(bitmap: Bitmap): Int {
-        var compressQuality = 104 // quality decreasing by 5 every loop. (start from 99)
+        var compressQuality = 100 // quality decreasing by 15 every loop. (start from 99)
         try {
             var streamLength = IMAGE_MAX_SIZE
             while (streamLength >= IMAGE_MAX_SIZE) {
                 val bmpStream = ByteArrayOutputStream()
-                compressQuality -= 5
+                compressQuality -= 15
                 DebugLog.d(TAG, "Quality: $compressQuality")
                 bitmap.compress(Bitmap.CompressFormat.JPEG, compressQuality, bmpStream)
                 val bmpPicByteArray = bmpStream.toByteArray()
@@ -144,7 +144,7 @@ object ImagePicker {
             }
         } catch (e: Exception) {
             DebugLog.e(TAG, "getCompressRatio $e")
-            compressQuality = 75
+            compressQuality = 65
         }
 
         return compressQuality

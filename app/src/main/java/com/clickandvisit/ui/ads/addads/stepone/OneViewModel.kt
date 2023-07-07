@@ -52,6 +52,115 @@ class OneViewModel
 
 
     init {
+        checked1.observeForever {
+            if (it == true) {
+                checked2.value = false
+                checked3.value = false
+                checked4.value = false
+                checked5.value = false
+                checkedNA.value = false
+            }
+        }
+        checked2.observeForever {
+            if (it == true) {
+                checked1.value = false
+                checked3.value = false
+                checked4.value = false
+                checked5.value = false
+                checkedNA.value = false
+            }
+        }
+        checked3.observeForever {
+            if (it == true) {
+                checked1.value = false
+                checked2.value = false
+                checked4.value = false
+                checked5.value = false
+                checkedNA.value = false
+            }
+        }
+        checked4.observeForever {
+            if (it == true) {
+                checked1.value = false
+                checked2.value = false
+                checked3.value = false
+                checked5.value = false
+                checkedNA.value = false
+            }
+        }
+        checked5.observeForever {
+            if (it == true) {
+                checked1.value = false
+                checked2.value = false
+                checked3.value = false
+                checked4.value = false
+                checkedNA.value = false
+            }
+        }
+        checkedNA.observeForever {
+            if (it == true) {
+                checked1.value = false
+                checked2.value = false
+                checked3.value = false
+                checked4.value = false
+                checked5.value = false
+            }
+        }
+
+        checkedHome.observeForever {
+            if (it == true) {
+                checkedB.value = false
+                checkedApp.value = false
+                checkedTer.value = false
+                checkedGarage.value = false
+                checkedComm.value = false
+            }
+        }
+        checkedB.observeForever {
+            if (it == true) {
+                checkedHome.value = false
+                checkedApp.value = false
+                checkedTer.value = false
+                checkedGarage.value = false
+                checkedComm.value = false
+            }
+        }
+        checkedApp.observeForever {
+            if (it == true) {
+                checkedHome.value = false
+                checkedB.value = false
+                checkedTer.value = false
+                checkedGarage.value = false
+                checkedComm.value = false
+            }
+        }
+        checkedTer.observeForever {
+            if (it == true) {
+                checkedHome.value = false
+                checkedB.value = false
+                checkedApp.value = false
+                checkedGarage.value = false
+                checkedComm.value = false
+            }
+        }
+        checkedGarage.observeForever {
+            if (it == true) {
+                checkedHome.value = false
+                checkedB.value = false
+                checkedApp.value = false
+                checkedTer.value = false
+                checkedComm.value = false
+            }
+        }
+        checkedComm.observeForever {
+            if (it == true) {
+                checkedHome.value = false
+                checkedB.value = false
+                checkedApp.value = false
+                checkedTer.value = false
+                checkedGarage.value = false
+            }
+        }
 
     }
 
@@ -91,6 +200,8 @@ class OneViewModel
         stage.value = property.stage
         on.value = property.stageS
         info.value = property.otherInfo
+        ges.value = property.ges.ifEmpty { "G" }
+        dpe.value = property.energy.ifEmpty { "G" }
 
         if (property.type == "Vente") {
             checkedSale.value = true
@@ -139,7 +250,7 @@ class OneViewModel
             "NA" -> {
                 checkedNA.value = true
             }
-            else ->{
+            else -> {
                 checkedNA.value = true
             }
         }

@@ -56,6 +56,11 @@ class FourViewModel
     fun onEditProperty(property: Property) {
         if (property.mainPhoto.toMediaUrl() != "https://")
             mainPhotoUri.value = Uri.parse(property.mainPhoto)
+
+        property.album?.forEach {
+            list.add(Uri.parse(it))
+        }
+        photoList.value = list
     }
 
     fun cameraPermissionGranted() {

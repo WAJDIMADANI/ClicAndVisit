@@ -76,6 +76,7 @@
                 android:drawablePadding="@dimen/padding_global_10dp"
                 android:fontFamily="@font/poppins_regular"
                 android:hint="@string/ad_ads_city"
+                android:inputType="textCapCharacters"
                 android:paddingStart="@dimen/padding_global_10dp"
                 android:text="@={viewModel.city}"
                 android:textColor="@color/black"
