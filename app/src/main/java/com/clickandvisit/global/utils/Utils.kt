@@ -6,6 +6,9 @@ import android.content.Intent
 import android.net.Uri
 import com.clickandvisit.ClickVisitApplication
 import com.clickandvisit.R
+import okhttp3.ResponseBody
+import java.io.FileOutputStream
+import java.io.InputStream
 import java.sql.Timestamp
 import java.text.SimpleDateFormat
 import java.util.*
@@ -75,4 +78,28 @@ fun getWsNormalDateFormat(date: String?): String? {
         e.printStackTrace()
         date
     }
+}
+
+fun saveFile(body: ResponseBody?, pathToSaveFile: String): String {
+    if (body == null)
+        return ""
+    var input: InputStream? = null
+    try {
+        input = body.byteStream()
+        val fos = FileOutputStream(pathToSaveFile)
+        fos.use { output ->
+            val buffer = ByteArray(4 * 1024) // or other buffer size
+            var read: Int
+            while (input.read(buffer).also { read = it } != -1) {
+                output.write(buffer, 0, read)
+            }
+            output.flush()
+        }
+        return pathToSaveFile
+    } catch (e: Exception) {
+        DebugLog.e("saveFile", e.toString())
+    } finally {
+        input?.close()
+    }
+    return ""
 }

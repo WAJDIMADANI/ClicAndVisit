@@ -17,6 +17,8 @@ import com.clickandvisit.data.model.user.signup.SignupResponse
 import com.clickandvisit.global.enumeration.Optional
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
+import okhttp3.ResponseBody
+import retrofit2.Response
 
 
 interface UserRepository {
@@ -92,6 +94,8 @@ interface UserRepository {
     suspend fun deleteSearch(searchId: Int): GlobalResponse
 
     suspend fun getSavedSearch(): SavedSearchResponse
+
+    suspend fun downloadFile(fileUrl:String): Response<ResponseBody>
 
 
     /** Reservation **/

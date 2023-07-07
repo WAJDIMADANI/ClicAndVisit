@@ -12,7 +12,7 @@ data class PropertyAdd(
     var propType: Int? = null,
     var propCategory: Int? = null,
     var propSurface: Int? = null,
-    var propPrix: Int? = null,
+    var propPrix: String? = null,
     var propEtage: Int? = null,
     var propEtageSur: Int? = null,
     var propEnery: String? = null,

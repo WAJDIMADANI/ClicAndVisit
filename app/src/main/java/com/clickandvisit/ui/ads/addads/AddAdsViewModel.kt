@@ -11,10 +11,7 @@ import com.clickandvisit.data.model.property.add.PropertyAddResponse
 import com.clickandvisit.data.repository.abs.UserRepository
 import com.clickandvisit.global.helper.Navigation
 import com.clickandvisit.global.listener.SchedulerProvider
-import com.clickandvisit.global.utils.DebugLog
-import com.clickandvisit.global.utils.ExtraKeys
-import com.clickandvisit.global.utils.TAG
-import com.clickandvisit.global.utils.tryCatch
+import com.clickandvisit.global.utils.*
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -130,7 +127,7 @@ class AddAdsViewModel
         propertyAdd.value?.prop_meta_chambres = getRoomsNbr()
 
         propertyAdd.value?.propSurface = surface.value?.toInt()
-        propertyAdd.value?.propPrix = price.value?.toInt()
+        propertyAdd.value?.propPrix = price.value
 
 
 
@@ -256,8 +253,6 @@ class AddAdsViewModel
         } catch (e: Exception) {
             null
         }
-
-
 
         showBlockProgressBar()
         viewModelScope.launch {

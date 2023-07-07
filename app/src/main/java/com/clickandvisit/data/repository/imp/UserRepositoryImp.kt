@@ -24,6 +24,8 @@ import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
+import okhttp3.ResponseBody
+import retrofit2.Response
 import javax.inject.Inject
 
 
@@ -214,7 +216,7 @@ class UserRepositoryImp @Inject constructor(
             property.propType?.toString()?.toRequestBody("text/plain".toMediaTypeOrNull()),
             property.propCategory?.toString()?.toRequestBody("text/plain".toMediaTypeOrNull()),
             property.propSurface?.toString()?.toRequestBody("text/plain".toMediaTypeOrNull()),
-            property.propPrix?.toString()?.toRequestBody("text/plain".toMediaTypeOrNull()),
+            property.propPrix?.toRequestBody("text/plain".toMediaTypeOrNull()),
             property.propEtage?.toString()?.toRequestBody("text/plain".toMediaTypeOrNull()),
             property.propEtageSur?.toString()?.toRequestBody("text/plain".toMediaTypeOrNull()),
             property.propEnery?.toRequestBody("text/plain".toMediaTypeOrNull()),
@@ -254,6 +256,10 @@ class UserRepositoryImp @Inject constructor(
             property.propAlbumPhoto5,
             property.propAlbumPhoto6
         )
+    }
+
+    override suspend fun downloadFile(fileUrl:String): Response<ResponseBody> {
+        return apiClient.downloadFile(fileUrl)
     }
 
     override suspend fun getSavedSearch(): SavedSearchResponse {

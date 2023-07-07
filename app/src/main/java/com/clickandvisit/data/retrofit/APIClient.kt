@@ -17,6 +17,8 @@ import com.clickandvisit.data.model.user.UserResponse
 import com.clickandvisit.data.model.user.signup.SignupResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
+import okhttp3.ResponseBody
+import retrofit2.Response
 import retrofit2.http.*
 
 
@@ -213,6 +215,10 @@ interface APIClient {
         @Part file6: MultipartBody.Part?
     ): PropertyAddResponse
 
+
+    @Streaming
+    @GET
+    suspend fun downloadFile(@Url fileUrl:String): Response<ResponseBody>
 
 
     @FormUrlEncoded

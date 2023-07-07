@@ -8,17 +8,17 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.map
 import com.clickandvisit.base.BaseAndroidViewModel
 import com.clickandvisit.data.model.property.Property
+import com.clickandvisit.data.repository.abs.UserRepository
 import com.clickandvisit.global.helper.ImagePicker
 import com.clickandvisit.global.helper.Navigation
 import com.clickandvisit.global.listener.CancelClickedListener
 import com.clickandvisit.global.listener.SchedulerProvider
-import com.clickandvisit.global.utils.DebugLog
-import com.clickandvisit.global.utils.TAG
-import com.clickandvisit.global.utils.toMediaUrl
+import com.clickandvisit.global.utils.*
 import com.clickandvisit.ui.shared.dialog.ImgPickerDialog
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.io.File
 import javax.inject.Inject
 
 const val MAIN_PIC_NAME = "mainPic.jpeg"
@@ -33,8 +33,8 @@ class FourViewModel
 @Inject constructor(
     application: Application,
     schedulerProvider: SchedulerProvider,
-    savedStateHandle: SavedStateHandle
-
+    savedStateHandle: SavedStateHandle,
+    private val userRepository: UserRepository
 ) : BaseAndroidViewModel(application, schedulerProvider), CancelClickedListener {
 
     val imagePickerDialog: MutableLiveData<ImgPickerDialog?> = MutableLiveData()
@@ -55,13 +55,32 @@ class FourViewModel
 
     fun onEditProperty(property: Property) {
         if (property.mainPhoto.toMediaUrl() != "https://")
-            mainPhotoUri.value = Uri.parse(property.mainPhoto)
+            property.mainPhoto?.let { getFileFromUrl(it) }
 
         property.album?.forEach {
             list.add(Uri.parse(it))
         }
         photoList.value = list
     }
+
+    private fun getFileFromUrl(url: String) {
+        viewModelScope.launch {
+            tryCatch({
+                val photoFile = withContext(schedulerProvider.dispatchersIO()) {
+                    val responseBody = userRepository.downloadFile(url).body()
+                    val pathWhereYouWantToSaveFile =
+                        applicationContext.filesDir.absolutePath + System.currentTimeMillis()
+                            .toString() + "default_photo.jpg"
+                    val savedFile = saveFile(responseBody, pathWhereYouWantToSaveFile)
+                    return@withContext File(savedFile)
+                }
+                mainPhotoUri.value = Uri.fromFile(photoFile)
+            }, {
+                mainPhotoUri.value = Uri.EMPTY
+            })
+        }
+    }
+
 
     fun cameraPermissionGranted() {
         navigate(Navigation.CameraNavigation(MAIN_PIC_NAME))
