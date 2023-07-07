@@ -1,5 +1,6 @@
 package com.clickandvisit.di
 
+import com.clickandvisit.ui.ads.addads.stepfour.ImageAdapter
 import com.clickandvisit.ui.ads.adsdetails.RoomAdapter
 import com.clickandvisit.ui.ads.adslist.PropertyAdapter
 import com.clickandvisit.ui.ads.favourites.FavouritesAdapter
@@ -53,6 +54,11 @@ class ActivityAdapterModule {
     @Provides
     fun provideFavouritesAdapter(picasso: Picasso): FavouritesAdapter {
         return FavouritesAdapter(picasso)
+    }
+
+    @Provides
+    fun provideImageAdapter(picasso: Picasso): ImageAdapter {
+        return ImageAdapter(picasso)
     }
 
     @Provides

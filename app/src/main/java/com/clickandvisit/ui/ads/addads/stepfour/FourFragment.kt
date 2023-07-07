@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.GridLayoutManager
 import com.clickandvisit.R
 import com.clickandvisit.base.BaseFragment
 import com.clickandvisit.data.model.property.Property
@@ -22,6 +23,7 @@ import com.clickandvisit.ui.shared.dialog.SimpleImgPickerDialog
 import com.clickandvisit.ui.user.profile.CAMERA_PERMISSION
 import com.clickandvisit.ui.user.profile.REQUEST_CODE_PERMISSIONS
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class FourFragment(val property: Property?) : BaseFragment() {
@@ -31,6 +33,11 @@ class FourFragment(val property: Property?) : BaseFragment() {
 
     private lateinit var binding: FragmentFourBinding
 
+
+    @Inject
+    lateinit var adapter: ImageAdapter
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -39,44 +46,24 @@ class FourFragment(val property: Property?) : BaseFragment() {
         binding = FragmentFourBinding.bind(view)
         binding.picasso = getPicasso()
         binding.viewModel = viewModel
-        if (property != null){
+        if (property != null) {
             viewModel.onEditProperty(property)
         }
-
+        registerRecycler(binding)
         binding.lifecycleOwner = viewLifecycleOwner
         return view
+    }
+
+    private fun registerRecycler(binding: FragmentFourBinding) {
+        adapter.viewModel = viewModel
+        binding.rvImages.layoutManager = GridLayoutManager(requireContext(), 3)
+        binding.rvImages.adapter = adapter
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         registerObservers()
         registerBaseObserver(viewModel)
-    }
-
-
-    private fun showGallery() {
-        val chooseImageIntent: Intent = ImagePicker.getGalleryIntent()
-        startActivityForResult(chooseImageIntent, ImagePicker.PICK_IMAGE_GALLERY_ID)
-    }
-
-
-    private fun showCamera(imageName: String) {
-        if (ContextCompat.checkSelfPermission(
-                requireActivity().baseContext,
-                CAMERA_PERMISSION
-            ) == PackageManager.PERMISSION_GRANTED
-        ) {
-            startActivityForResult(
-                ImagePicker.getCameraIntent(requireActivity(), imageName),
-                ImagePicker.PICK_IMAGE_CAMERA_ID
-            )
-        } else {
-            ActivityCompat.requestPermissions(
-                requireActivity(),
-                arrayOf(CAMERA_PERMISSION),
-                REQUEST_CODE_PERMISSIONS
-            )
-        }
     }
 
     override fun onRequestPermissionsResult(
@@ -87,18 +74,6 @@ class FourFragment(val property: Property?) : BaseFragment() {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == REQUEST_CODE_PERMISSIONS && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
             viewModel.cameraPermissionGranted()
-        }
-    }
-
-    //@Deprecated("Deprecated in Java")
-    override fun onActivityResult(
-        requestCode: Int,
-        resultCode: Int,
-        data: Intent?
-    ) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (resultCode != Activity.RESULT_CANCELED) {
-            viewModel.onActivityResult(requestCode, resultCode, data)
         }
     }
 
@@ -120,12 +95,13 @@ class FourFragment(val property: Property?) : BaseFragment() {
     private fun registerObservers() {
         viewModel.imagePickerDialog.observeOnlyNotNull(this) { dialog ->
             showSimpleImagePickerDialog(
-                dialog.takePicActionBlock,
-                dialog.pickPicActionBlock,
-                dialog.dismissActionBlock
+                dialog?.takePicActionBlock,
+                dialog?.pickPicActionBlock,
+                dialog?.dismissActionBlock
             )
         }
     }
+
 
     /**
      * handling navigation event
@@ -137,6 +113,61 @@ class FourFragment(val property: Property?) : BaseFragment() {
 
             is Navigation.GalleryNavigation -> showGallery()
 
+            is Navigation.GalleriesNavigation -> showGalleries(navigationTo.name)
+
+        }
+    }
+
+
+    /** 3 **/
+    private fun showGallery() {
+        val chooseImageIntent: Intent = ImagePicker.getGalleryIntent()
+        startActivityForResult(chooseImageIntent, ImagePicker.PICK_IMAGE_GALLERY_ID)
+    }
+
+    private fun showGalleries(name: Int) {
+        val chooseImageIntent: Intent = ImagePicker.getGalleryIntent()
+        startActivityForResult(chooseImageIntent, name)
+    }
+
+    /** 3 **/
+    private fun showCamera(imageName: String) {
+        if (imageName == MAIN_PIC_NAME) {
+            if (ContextCompat.checkSelfPermission(
+                    requireActivity().baseContext,
+                    CAMERA_PERMISSION
+                ) == PackageManager.PERMISSION_GRANTED
+            ) {
+                startActivityForResult(
+                    ImagePicker.getCameraIntent(requireActivity(), imageName),
+                    ImagePicker.PICK_IMAGE_CAMERA_ID
+                )
+            } else {
+                ActivityCompat.requestPermissions(
+                    requireActivity(),
+                    arrayOf(CAMERA_PERMISSION),
+                    REQUEST_CODE_PERMISSIONS
+                )
+            }
+        } else {
+            startActivityForResult(
+                ImagePicker.getCameraIntent(requireActivity(), imageName),
+                REQUEST_CODE_CAMERA_PIC
+            )
+        }
+
+    }
+
+    /** 4 **/
+    //@Deprecated("Deprecated in Java")
+    override fun onActivityResult(
+        requestCode: Int,
+        resultCode: Int,
+        data: Intent?
+    ) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode != Activity.RESULT_CANCELED) {
+            viewModel.onActivityResult(requestCode, resultCode, data)
         }
     }
 

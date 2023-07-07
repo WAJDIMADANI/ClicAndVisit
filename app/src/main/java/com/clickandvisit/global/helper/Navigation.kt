@@ -36,6 +36,8 @@ sealed class Navigation {
 
     object GalleryNavigation : Navigation()
 
+    data class GalleriesNavigation(val name: Int) : Navigation()
+
     data class CameraNavigation(val imageName: String) : Navigation()
 
     data class PopupNavigation(
