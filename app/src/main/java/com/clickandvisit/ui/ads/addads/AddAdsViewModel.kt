@@ -96,6 +96,7 @@ class AddAdsViewModel
 
     /** photos **/
     val mainPhotoUri = MutableLiveData(Uri.EMPTY)
+    val photoList: MutableLiveData<ArrayList<Uri>> = MutableLiveData(arrayListOf())
 
 
     val propertyAdd: MutableLiveData<PropertyAdd> = MutableLiveData(PropertyAdd())
@@ -182,10 +183,74 @@ class AddAdsViewModel
         propertyAdd.value?.propInfos = otherInfo.value
 
 
-        propertyAdd.value?.propMainPhoto = createImageFileFormData(
-            mainPhotoUri.value?.path ?: "",
-            "prop_main_photo"
-        )
+        propertyAdd.value?.propMainPhoto = try {
+            createImageFileFormData(
+                mainPhotoUri.value?.path ?: "",
+                "prop_main_photo"
+            )
+        } catch (e: Exception) {
+            null
+        }
+
+        propertyAdd.value?.propAlbumPhoto1 = try {
+            createImageFileFormData(
+                photoList.value?.get(0)?.path ?: "",
+                "prop_album_photo[0]"
+            )
+        } catch (e: Exception) {
+            null
+        }
+
+        propertyAdd.value?.propAlbumPhoto2 = try {
+            createImageFileFormData(
+                photoList.value?.get(1)?.path ?: "",
+                "prop_album_photo[1]"
+            )
+        } catch (e: Exception) {
+            null
+        }
+
+
+        propertyAdd.value?.propAlbumPhoto3 = try {
+            createImageFileFormData(
+                photoList.value?.get(2)?.path ?: "",
+                "prop_album_photo[2]"
+            )
+        } catch (e: Exception) {
+            null
+        }
+
+
+        propertyAdd.value?.propAlbumPhoto4 = try {
+            createImageFileFormData(
+                photoList.value?.get(3)?.path ?: "",
+                "prop_album_photo[3]"
+            )
+        } catch (e: Exception) {
+            null
+        }
+
+
+        propertyAdd.value?.propAlbumPhoto5 = try {
+            createImageFileFormData(
+                photoList.value?.get(4)?.path ?: "",
+                "prop_album_photo[4]"
+            )
+        } catch (e: Exception) {
+            null
+        }
+
+
+        propertyAdd.value?.propAlbumPhoto6 = try {
+            createImageFileFormData(
+                photoList.value?.get(5)?.path ?: "",
+                "prop_album_photo[5]"
+            )
+        } catch (e: Exception) {
+            null
+        }
+
+
 
         showBlockProgressBar()
         viewModelScope.launch {

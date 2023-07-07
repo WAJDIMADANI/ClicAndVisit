@@ -246,16 +246,14 @@ class UserRepositoryImp @Inject constructor(
             property.proInterphoneName?.toRequestBody("text/plain".toMediaTypeOrNull()),
             property.propCodeportail?.toRequestBody("text/plain".toMediaTypeOrNull()),
             property.propInfos?.toRequestBody("text/plain".toMediaTypeOrNull()),
-            property.propMainPhoto
+            property.propMainPhoto,
+            property.propAlbumPhoto1,
+            property.propAlbumPhoto2,
+            property.propAlbumPhoto3,
+            property.propAlbumPhoto4,
+            property.propAlbumPhoto5,
+            property.propAlbumPhoto6
         )
-    }
-
-    override suspend fun createUpdateProperty(
-        propId: RequestBody,
-        file: MultipartBody.Part
-    ): PropertyAddResponse {
-        val userId = sharedPreferences.getUser().id.toRequestBody("text/plain".toMediaTypeOrNull())
-        return apiClient.createUpdateProperty(userId, propId, file)
     }
 
     override suspend fun getSavedSearch(): SavedSearchResponse {

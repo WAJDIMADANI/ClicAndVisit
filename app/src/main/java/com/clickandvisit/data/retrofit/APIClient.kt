@@ -204,27 +204,15 @@ interface APIClient {
         @Part("prop_nom_interphone") proInterphoneName: RequestBody?,
         @Part("prop_codeportail") propCodeportail: RequestBody?,
         @Part("prop_autres_informations") propInfos: RequestBody?,
-        @Part mainFile: MultipartBody.Part?
-
-/*
+        @Part mainFile: MultipartBody.Part?,
         @Part file1: MultipartBody.Part?,
         @Part file2: MultipartBody.Part?,
         @Part file3: MultipartBody.Part?,
         @Part file4: MultipartBody.Part?,
         @Part file5: MultipartBody.Part?,
         @Part file6: MultipartBody.Part?
-*/
-
     ): PropertyAddResponse
 
-
-    @Multipart
-    @POST("create_update_property")
-    suspend fun createUpdateProperty(
-        @Part("user_id") userId: RequestBody,
-        @Part("_logement_id") propId: RequestBody,
-        @Part file: MultipartBody.Part
-    ): PropertyAddResponse
 
 
     @FormUrlEncoded

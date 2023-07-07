@@ -224,6 +224,8 @@ class AddAdsActivity : BaseActivity() {
     private fun bindData3() {
         viewModel.mainPhotoUri.value =
             (routineFragments[3] as FourFragment).viewModel.mainPhotoUri.value
+        viewModel.photoList.value =
+            (routineFragments[3] as FourFragment).viewModel.photoList.value
     }
 
 
