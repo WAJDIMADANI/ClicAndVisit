@@ -6,6 +6,7 @@ import com.clickandvisit.data.model.property.PropertyOwner
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 import kotlinx.android.parcel.Parcelize
+import java.lang.NumberFormatException
 
 
 @Parcelize
@@ -36,7 +37,7 @@ data class Reservation(
     @Json(name = "surface")
     val surface: String,
     @Json(name = "price")
-    val price: String,
+    var price: String,
     @Json(name = "etage")
     val stage: String,
     @Json(name = "etage_sur")
@@ -69,8 +70,27 @@ data class Reservation(
     val reservationDetails: ReservationDetails?,
     @Json(name = "reservation_user")
     val reservationUser: ReservationUser?
-): Parcelable {
+) : Parcelable {
     override fun toString(): String {
         return "Reservation(id=$id, title='$title', type='$type', category='$category', album=$album, mainPhoto=$mainPhoto, status='$status', statusCode=$statusCode, visitNow=$visitNow, owner=$owner, isFavorite=$isFavorite, surface='$surface', price='$price', stage='$stage', stageS='$stageS', energy='$energy', ges='$ges', otherDetails='$otherDetails', city='$city', postalCode='$postalCode', road='$road', lat='$lat', long='$long', interphone='$interphone', portail='$portail', otherInfo='$otherInfo', details=$details, reservationDetails=$reservationDetails, reservationUser=$reservationUser)"
+    }
+
+    fun getPriceNBR(): String {
+        return if (price.isEmpty()) {
+            ""
+        } else {
+            try {
+                if (price.length >= 3) {
+                    price = price.replaceRange(
+                        price.length - 3,
+                        price.length,
+                        " " + price.subSequence(price.length - 3, price.length)
+                    )
+                }
+                "$price €"
+            } catch (e: NumberFormatException) {
+                ""
+            }
+        }
     }
 }

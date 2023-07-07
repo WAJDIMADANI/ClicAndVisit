@@ -162,7 +162,6 @@ class HomeViewModel
     }
 
     fun disconnect() {
-        //TODO is user not connected -> invisible
         shownChoseDialog(
             null,
             R.string.profile_sign_out_msg,

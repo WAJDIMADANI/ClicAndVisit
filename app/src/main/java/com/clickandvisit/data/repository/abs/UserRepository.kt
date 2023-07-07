@@ -70,6 +70,9 @@ interface UserRepository {
     @WorkerThread
     suspend fun logout()
 
+    @WorkerThread
+    suspend fun removeAccount(): GlobalResponse
+
     fun isConnected(): Boolean
 
 
@@ -95,7 +98,7 @@ interface UserRepository {
 
     suspend fun getSavedSearch(): SavedSearchResponse
 
-    suspend fun downloadFile(fileUrl:String): Response<ResponseBody>
+    suspend fun downloadFile(fileUrl: String): Response<ResponseBody>
 
 
     /** Reservation **/

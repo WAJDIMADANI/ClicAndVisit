@@ -147,6 +147,10 @@ class UserRepositoryImp @Inject constructor(
         sharedPreferences.clearCache()
     }
 
+    override suspend fun removeAccount(): GlobalResponse {
+        return apiClient.removeAccount(sharedPreferences.getUser().id.toInt())
+    }
+
     override fun isConnected(): Boolean {
         return sharedPreferences.isConnected()
     }
@@ -258,7 +262,7 @@ class UserRepositoryImp @Inject constructor(
         )
     }
 
-    override suspend fun downloadFile(fileUrl:String): Response<ResponseBody> {
+    override suspend fun downloadFile(fileUrl: String): Response<ResponseBody> {
         return apiClient.downloadFile(fileUrl)
     }
 

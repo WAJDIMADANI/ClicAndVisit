@@ -11,8 +11,6 @@ import com.clickandvisit.base.BaseActivity
 import com.clickandvisit.data.model.property.Property
 import com.clickandvisit.databinding.ActivityAddAdsBinding
 import com.clickandvisit.global.helper.Navigation
-import com.clickandvisit.global.utils.DebugLog
-import com.clickandvisit.global.utils.TAG
 import com.clickandvisit.ui.ads.addads.five.CalendarFragment
 import com.clickandvisit.ui.ads.addads.stepfour.FourFragment
 import com.clickandvisit.ui.ads.addads.stepone.OneFragment
@@ -300,30 +298,27 @@ class AddAdsActivity : BaseActivity() {
     }
 
     fun stepOne() {
-        DebugLog.i(TAG,"stepOne")
         binding.tvStep2.visibility = View.INVISIBLE
     }
 
     fun stepTwo() {
-        DebugLog.i(TAG,"stepTwo")
         binding.tvStep2.visibility = View.VISIBLE
         binding.tvStep3.visibility = View.INVISIBLE
     }
 
     fun stepThree() {
-        DebugLog.i(TAG,"stepThree")
         binding.tvStep3.visibility = View.VISIBLE
         binding.tvStep4.visibility = View.INVISIBLE
     }
 
     fun stepFour() {
-        DebugLog.i(TAG,"stepFour")
         binding.tvStep4.visibility = View.VISIBLE
         binding.tvStep5.visibility = View.INVISIBLE
     }
 
     fun stepFive() {
         binding.tvStep5.visibility = View.VISIBLE
+        binding.cbNext.text = getString(R.string.control_list_confirm)
     }
 
 }

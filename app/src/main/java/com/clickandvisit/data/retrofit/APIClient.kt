@@ -264,6 +264,15 @@ interface APIClient {
         @Query("property_id") propId: Int
     ): AvailabilityResponse
 
+    @FormUrlEncoded
+    @POST("set_avaibility")
+    suspend fun setAvailability(
+        @Field("user_id") userId: Int,
+        @Field("property_id") propertyId: Int,
+        @Field("date_time") dateTime: String, // 2023-03-23 07:00
+        @Field("remove_add") removeAdd: String  // add/remove
+    ): ResultModel
+
 
     @GET("get_all_reserved")
     suspend fun getAllReserved(
@@ -277,16 +286,6 @@ interface APIClient {
         @Field("property_id") propertyId: Int,
         @Field("date_time") dateTime: String
     ): ReservationResponse
-
-    @FormUrlEncoded
-    @POST("set_avaibility")
-    suspend fun setAvailability(
-        @Field("user_id") userId: Int,
-        @Field("property_id") propertyId: Int,
-        @Field("date_time") dateTime: String, // 2023-03-23 07:00
-        @Field("remove_add") removeAdd: String  // add/remove
-    ): ResultModel
-
 
     /** Chat **/
 

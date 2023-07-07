@@ -203,7 +203,7 @@
 
     <!--meet-->
     <string name="meet_asked">DEMANDE DE RENDEZ-VOUS</string>
-    <string name="meet_with">Rendez-vous avec :</string>
+    <string name="meet_with">Rendez-vous avec:</string>
     <string name="confirmed_meet_with">Rendez-vous confirmé avec:</string>
     <string name="meet_confirm">C o n f i r m e z \n le rendez-vous</string>
     <string name="meet_cancel">A N N U L E R \n le rendez-vous</string>
@@ -242,6 +242,7 @@
     <string name="profile_f">Madame</string>
     <string name="profile_change_password">Changer votre mot de passe ?</string>
     <string name="profile_save">Enregistrer</string>
+    <string name="profile_delete_account_msg">Voulez-vous vraiment supprimer votre compte?</string>
 
 
     <string name="filter_city_title">LOCALISATION</string>

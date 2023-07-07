@@ -53,9 +53,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_global_15dp"
             android:layout_marginTop="@dimen/margin_global_15dp"
+            android:layout_marginEnd="@dimen/margin_global_5dp"
             android:ellipsize="end"
             android:fontFamily="@font/poppins_regular"
-            android:text="3 rue du paradis \n69160 TASSIN LA DEMI-LUNE"
+            android:text="3 rue du paradis"
             android:textColor="@color/black"
             android:textSize="@dimen/font_12sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -101,11 +102,10 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/appCompatImageView2"
-            android:layout_width="150dp"
-            android:layout_height="130dp"
-            android:layout_marginTop="@dimen/margin_global_10dp"
-            android:layout_marginEnd="@dimen/margin_global_15dp"
-            app:layout_constraintBottom_toBottomOf="@+id/tvAdsHour"
+            android:layout_width="175dp"
+            android:layout_height="140dp"
+            android:layout_marginTop="@dimen/margin_global_5dp"
+            android:layout_marginEnd="@dimen/margin_global_7dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/llAdsRoomNbr" />
 

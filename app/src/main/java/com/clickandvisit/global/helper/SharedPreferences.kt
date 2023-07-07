@@ -41,7 +41,7 @@ class SharedPreferences(context: Context, val moshi: Moshi) {
 
 
     fun saveUser(user: User) {
-        setToken(user.id)// FIXME replace by token
+        setToken(user.id)
         val jsonAdapter = moshi.adapter(User::class.java)
         val editor = sharedPreferences.edit()
         editor.putString(USER_FLAG, jsonAdapter.toJson(user))
@@ -78,7 +78,7 @@ class SharedPreferences(context: Context, val moshi: Moshi) {
             KeyStoreHelper.createKeys(context, alias)
             pass = KeyStoreHelper.getSigningKey(alias)
         } catch (e: Throwable) {
-            //Crashlytics.logException(e) TODO
+            //Crashlytics.logException(e)
         }
 
         if (TextUtils.isEmpty(pass)) {
@@ -86,7 +86,7 @@ class SharedPreferences(context: Context, val moshi: Moshi) {
                 pass = context.getAndroidId()
                 pass = pass.bitShiftEntireString()
             } catch (e: Throwable) {
-                //Crashlytics.logException(e) TODO
+                //Crashlytics.logException(e)
             }
         }
 

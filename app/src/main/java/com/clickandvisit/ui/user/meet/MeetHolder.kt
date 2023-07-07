@@ -12,6 +12,7 @@ import com.clickandvisit.global.listener.OnMeetClickedListener
 import com.clickandvisit.global.utils.getWsDate
 import com.clickandvisit.global.utils.getWsTime
 import com.clickandvisit.global.utils.toMediaUrl
+import com.squareup.picasso.MemoryPolicy
 import com.squareup.picasso.Picasso
 
 
@@ -28,7 +29,7 @@ class MeetHolder(
 
         binding.tvAdsName.text = "${value.category} - ${value.city}"
         binding.tvAdsAddress.text = "${value.road},\n ${value.postalCode} ${value.city}"
-        binding.tvAdsPrice.text = "${value.price} €"
+        binding.tvAdsPrice.text =  value.getPriceNBR()
         binding.tvAdsDate.text = getWsDate(value.reservationDetails?.dateTime)
         binding.tvAdsHour.text = "à " + getWsTime(value.reservationDetails?.dateTime)
 
@@ -40,7 +41,8 @@ class MeetHolder(
             }
 
             if (value.owner.photo.toMediaUrl() != "https://")
-                picasso.load(value.owner.photo.toMediaUrl())
+                picasso.load(value.owner.photo.toMediaUrl()).fit().centerCrop()
+                    .memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE)
                     .into(binding.customCircleUserPhoto)
         } else {
             if (value.reservationUser?.userName.isNullOrEmpty().not()) {
@@ -50,14 +52,17 @@ class MeetHolder(
             }
 
             if (value.reservationUser?.profilePhoto.toMediaUrl() != "https://")
-                picasso.load(value.reservationUser?.profilePhoto.toMediaUrl())
+                picasso.load(value.reservationUser?.profilePhoto.toMediaUrl()).fit().centerCrop()
+                    .memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE)
                     .into(binding.customCircleUserPhoto)
         }
 
 
 
         if (value.mainPhoto.toMediaUrl() != "https://")
-            picasso.load(value.mainPhoto.toMediaUrl()).into(binding.appCompatImageView2)
+            picasso.load(value.mainPhoto.toMediaUrl()).fit().centerCrop()
+                .memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE)
+                .into(binding.appCompatImageView2)
 
         if (value.reservationDetails?.statusCode == 1) {
             binding.tvAdsMeetTitle.text = context.getString(R.string.confirmed_meet_with)

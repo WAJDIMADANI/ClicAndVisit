@@ -63,6 +63,11 @@ class HomeActivity : BaseActivity(), DrawerLayout.DrawerListener {
         registerHomeObservers()
         bindListeners()
         registerRecycler(binding)
+
+        if (viewModel.isConnected().not()){
+            binding.navigationViewHome.menu.findItem(R.id.nav_menu_9).isVisible = false
+        }
+
     }
 
     private fun registerRecycler(binding: ActivityHomeBinding) {

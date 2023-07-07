@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Intent
 import android.net.Uri
 import androidx.lifecycle.MutableLiveData
+import com.clickandvisit.R
 import com.clickandvisit.base.BaseAndroidViewModel
 import com.clickandvisit.data.model.user.User
 import com.clickandvisit.data.repository.abs.UserRepository
@@ -19,7 +20,6 @@ import com.clickandvisit.ui.shared.dialog.ImgPickerDialog
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import okhttp3.MediaType.Companion.parse
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -56,7 +56,7 @@ class ProfileViewModel
 
     val imagePickerDialog: MutableLiveData<ImgPickerDialog> = MutableLiveData()
 
-    val photoUri = MutableLiveData(Uri.EMPTY)//FIXME: update photo ws call
+    val photoUri = MutableLiveData(Uri.EMPTY)
 
     lateinit var user: User
     var isChanged: Boolean = false
@@ -179,11 +179,27 @@ class ProfileViewModel
     }
 
     fun onChangePasswordClicked() {
-        // TODO: Query
     }
 
     fun onDeleteClick() {
-        // TODO: Query
+        shownChoseDialog(
+            null,
+            R.string.profile_delete_account_msg,
+            R.string.global_yes,
+            R.string.global_no,
+            okActionBlock = {
+                viewModelScope.launch {
+                    tryCatch({
+                        withContext(schedulerProvider.dispatchersIO()) {
+                            userRepository.logout()
+                        }
+                        navigate(Navigation.SignInActivityNavigation)
+                    }, { error ->
+                        navigate(Navigation.SignInActivityNavigation)
+                    })
+                }
+            }, dismissActionBlock = null
+        )
     }
 
     fun onSaveClicked() {

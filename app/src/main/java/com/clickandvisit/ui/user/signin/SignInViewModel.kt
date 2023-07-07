@@ -68,7 +68,7 @@ class SignInViewModel
     private fun onSignInSuccess(signupResponse: SignupResponse) {
         if (signupResponse.result) {
             navigate(Navigation.HomeActivityNavigation)
-        } else if (signupResponse.resultCode == 4) {//FIXME: resultCode valeurs possible?
+        } else if (signupResponse.resultCode == 4) {
             navigate(Navigation.OtpActivityNavigation(signupResponse.user.id.toInt()))
 /*            shownSimpleDialog(
                 messageId = R.string.signin_inactivated_account,
