@@ -523,7 +523,7 @@ public class WeekView extends View {
      *
      * @param events The events to be cached and sorted.
      */
-    private void cacheAndSortEvents(List<? extends WeekViewEvent> events) {
+    public void cacheAndSortEvents(List<? extends WeekViewEvent> events) {
         for (WeekViewEvent event : events) {
             cacheEvent(event);
         }
@@ -547,7 +547,7 @@ public class WeekView extends View {
         mEvents.add(event);
     }
 
-    private void calculateHeaderHeight() {
+    public void calculateHeaderHeight() {
         //Make sure the header is the right size (depends on AllDay events)
         boolean containsAllDayEvent = false;
         if (mEventRects != null && mEventRects.size() > 0) {
@@ -1170,7 +1170,7 @@ public class WeekView extends View {
      *
      * @param day The day where the user is currently is.
      */
-    private void getMoreEvents(DayOfWeek day) {
+    public void getMoreEvents(DayOfWeek day) {
 
         // Get more events if the month is changed.
         if (mEventRects == null) {

@@ -1,8 +1,11 @@
 package com.clickandvisit.data.model.reservation
 
+import android.os.Parcelable
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 @JsonClass(generateAdapter = true)
 data class AvailabilityResponse(
     @Json(name = "result")
@@ -12,5 +15,11 @@ data class AvailabilityResponse(
     @Json(name = "result_message")
     val resultMsg: String,
     @Json(name = "available_hours")
-    val availableHours: List<String>// list todo
-)
+    val availableHours: List<String>
+) : Parcelable {
+
+    override fun toString(): String {
+        return "AvailabilityResponse(result=$result, resultCode=$resultCode, resultMsg='$resultMsg', availableHours=$availableHours)"
+    }
+
+}

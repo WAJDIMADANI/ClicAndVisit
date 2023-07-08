@@ -24,7 +24,8 @@ import java.util.*
 
 
 @AndroidEntryPoint
-class CalendarFragment(val property: Property?) : BaseFragment(), WeekViewLoader {
+class CalendarFragment(val property: Property?) : BaseFragment(), WeekViewLoader,
+    WeekView.EmptyViewClickListener {
 
     val viewModel: CalendarViewModel by viewModels()
 
@@ -121,6 +122,10 @@ class CalendarFragment(val property: Property?) : BaseFragment(), WeekViewLoader
             events.add(event);
         }*/
         return events
+    }
+
+    override fun onEmptyViewClicked(day: DayTime?) {
+
     }
 
 }

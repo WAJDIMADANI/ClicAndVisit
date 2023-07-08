@@ -1,6 +1,7 @@
 package com.clickandvisit.ui.ads.adsdetails
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
@@ -14,11 +15,21 @@ import com.clickandvisit.global.utils.observeOnlyNotNull
 import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
 import dagger.hilt.android.AndroidEntryPoint
+import me.jlurena.revolvingweekview.DayTime
+import me.jlurena.revolvingweekview.WeekView
+import me.jlurena.revolvingweekview.WeekViewEvent
+import org.threeten.bp.DayOfWeek
+import org.threeten.bp.LocalDateTime
+import org.threeten.bp.LocalTime
+import org.threeten.bp.format.TextStyle
+import java.util.*
 import javax.inject.Inject
+import kotlin.collections.ArrayList
 
 
 @AndroidEntryPoint
-class AdsDetailsActivity : BaseActivity() {
+class AdsDetailsActivity : BaseActivity(), WeekView.WeekViewLoader,
+    WeekView.EmptyViewClickListener {
 
     private val viewModel: AdsDetailsViewModel by viewModels()
 
@@ -37,12 +48,96 @@ class AdsDetailsActivity : BaseActivity() {
             )
         registerBindingAndBaseObservers(binding)
 
-
         viewModel.property.observeOnlyNotNull(this) {
             loadImages(it)
         }
         registerRecycler(binding)
+
+
+
+        binding.weekview.setLimitTime(7, 22)
+        binding.weekview.minTime = 7
+        binding.weekview.maxTime = 22
+        // Set up a date time interpreter to interpret how the date and time will be formatted in
+        // the week view. This is optional.
+        setupDateTimeInterpreter()
+        binding.weekview.weekViewLoader = this
+        binding.weekview.emptyViewClickListener = this
+
+
+
+ /*       viewModel.availableHours.observeOnlyNotNull(this) { list ->
+            list.forEach {
+
+                val now = LocalDateTime.now().with(LocalTime.of(it.subSequence(0, 2).toString().toInt(), 0))
+                val startTime = DayTime(now)
+
+                val endTime = DayTime(startTime)
+                endTime.addMinutes(60)
+
+                val event = WeekViewEvent("ID", "", startTime, endTime)
+                event.color = Color.argb(255, 78, 177, 97)
+
+                events.add(event)
+            }
+
+        }
+*/
+
     }
+
+    /**
+     * Set up a date time interpreter which will show short date values when in week view and long date values otherwise.
+     */
+    fun setupDateTimeInterpreter() {
+        binding.weekview.dayTimeInterpreter = object : WeekView.DayTimeInterpreter {
+            override fun interpretDay(date: Int): String {
+                return DayOfWeek.of(date).getDisplayName(TextStyle.SHORT, Locale.FRANCE)
+                    .toUpperCase(
+                        Locale.ROOT
+                    )
+            }
+
+            override fun interpretTime(hour: Int, minutes: Int): String {
+                val res = String.format(Locale.getDefault(), "%02d", hour)
+                return res + "h"
+            }
+        }
+    }
+
+    override fun onEmptyViewClicked(day: DayTime?) {
+        val endTime = DayTime(day)
+        endTime.addMinutes(60)
+        val events: MutableList<WeekViewEvent> = java.util.ArrayList()
+        val event = WeekViewEvent("ID", "", day, endTime)
+        event.color = Color.argb(255, 78, 177, 97)
+        events.add(event)
+        //binding.weekview.cacheAndSortEvents(events)
+        //binding.weekview.calculateHeaderHeight()
+    }
+
+    override fun onWeekViewLoad(): MutableList<out WeekViewEvent> {
+        val events: MutableList<WeekViewEvent> = java.util.ArrayList()
+
+        viewModel.availableHours.value?.forEach {
+
+            val now = LocalDateTime.now().with(LocalTime.of(it.subSequence(0, 2).toString().toInt(), 0))
+            val startTime = DayTime(now)
+
+            val endTime = DayTime(startTime)
+            endTime.addMinutes(60)
+
+            val event = WeekViewEvent("ID", "", startTime, endTime)
+            event.isAllDay = false
+            event.name = "\n   "+it.subSequence(0, 2).toString()+ "h"
+            event.color = Color.argb(255, 78, 177, 97)
+
+            events.add(event)
+        }
+
+        return events
+    }
+
 
     private fun registerRecycler(binding: ActivityAdsDetailsBinding) {
         binding.rvSearch.layoutManager = GridLayoutManager(this, 3)

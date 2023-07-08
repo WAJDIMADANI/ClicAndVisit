@@ -13,6 +13,7 @@ import com.clickandvisit.data.model.property.ADD
 import com.clickandvisit.data.model.property.FavoriteRequest
 import com.clickandvisit.data.model.property.Property
 import com.clickandvisit.data.model.property.REMOVE
+import com.clickandvisit.data.model.reservation.AvailabilityResponse
 import com.clickandvisit.data.repository.abs.UserRepository
 import com.clickandvisit.global.helper.Navigation
 import com.clickandvisit.global.listener.SchedulerProvider
@@ -53,12 +54,16 @@ class AdsDetailsViewModel
 
     val list: MutableLiveData<List<String>> = MutableLiveData(arrayListOf())
 
+    val availableHours: MutableLiveData<List<String>?> = MutableLiveData()
+
+
     var roomsList = arrayListOf<String>()
 
     init {
         property.value =
             savedStateHandle.getLiveData<Property>(ExtraKeys.AddAdsActivity.PROPERTY_EXTRA_KEY_PROP).value
 
+        availableHours.value = property.value!!.availableHours
         ref.value = "Référence : CV" + property.value!!.id.toString()
 
         fetchImgCount()
@@ -83,7 +88,10 @@ class AdsDetailsViewModel
             like.value = ContextCompat.getDrawable(applicationContext, R.drawable.ic_like)
         }
 
+
+
     }
+
 
     private fun fetchDPE() {
         if (property.value!!.energy.isNotEmpty()) {

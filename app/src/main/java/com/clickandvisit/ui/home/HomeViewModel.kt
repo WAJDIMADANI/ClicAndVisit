@@ -9,6 +9,7 @@ import com.clickandvisit.R
 import com.clickandvisit.base.BaseAndroidViewModel
 import com.clickandvisit.data.model.GlobalResponse
 import com.clickandvisit.data.model.property.*
+import com.clickandvisit.data.model.reservation.AvailabilityResponse
 import com.clickandvisit.data.model.user.TokenResponse
 import com.clickandvisit.data.repository.abs.UserRepository
 import com.clickandvisit.global.helper.Navigation
@@ -184,7 +185,20 @@ class HomeViewModel
 
     override fun onItemClicked(value: Property) {
         if (userRepository.isConnected()) {
-            navigate(Navigation.AdsDetailsActivityNavigation(value))
+            showBlockProgressBar()
+            viewModelScope.launch {
+                tryCatch({
+                    val response = withContext(schedulerProvider.dispatchersIO()) {
+                        userRepository.getAvailability("2023-07-08", value.id)
+                    }
+                    hideBlockProgressBar()
+                    value.availableHours = response.availableHours
+                    navigate(Navigation.AdsDetailsActivityNavigation(value))
+                }, { error ->
+                    hideBlockProgressBar()
+                    navigate(Navigation.AdsDetailsActivityNavigation(value))
+                })
+            }
         } else {
             navigate(Navigation.SignInActivityNavigation)
         }

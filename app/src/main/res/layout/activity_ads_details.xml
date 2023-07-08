@@ -211,14 +211,14 @@
                     android:id="@+id/tvAdsRef"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_global_5dp"
                     android:fontFamily="@font/poppins_regular"
                     android:text="@{viewModel.ref}"
                     android:textColor="@color/details_color"
-                    android:layout_marginTop="@dimen/margin_global_5dp"
                     android:textSize="@dimen/font_11sp"
                     app:layout_constraintEnd_toEndOf="@+id/tvSurface"
-                    app:layout_constraintTop_toBottomOf="@+id/tvSurface"
-                    app:layout_constraintStart_toStartOf="@+id/tvRooms" />
+                    app:layout_constraintStart_toStartOf="@+id/tvRooms"
+                    app:layout_constraintTop_toBottomOf="@+id/tvSurface" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -227,9 +227,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_global_30dp"
+                android:layout_marginTop="@dimen/margin_global_10dp"
                 android:layout_marginEnd="@dimen/margin_global_30dp"
                 android:background="@color/red_pro_status"
-                android:layout_marginTop="@dimen/margin_global_10dp"
                 android:fontFamily="@font/poppins_medium"
                 android:gravity="center"
                 android:padding="@dimen/padding_global_5dp"
@@ -503,18 +503,48 @@
                 app:layout_constraintTop_toBottomOf="@+id/dllGES" />
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvInfoValue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_global_30dp"
                 android:layout_marginTop="@dimen/margin_global_10dp"
-                android:layout_marginBottom="@dimen/margin_global_15dp"
                 android:fontFamily="@font/poppins_medium"
                 android:text="@{viewModel.info}"
                 android:textColor="@color/black"
                 android:textSize="@dimen/font_13sp"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvInfo" />
+
+            <me.jlurena.revolvingweekview.WeekView
+                android:id="@+id/weekview"
+                android:layout_width="match_parent"
+                android:layout_height="800dp"
+                android:layout_marginTop="@dimen/margin_global_15dp"
+                app:autoLimitTime="false"
+                app:columnGap="2dp"
+                app:dayBackgroundColor="#05330000"
+                app:dropListenerEnabled="true"
+                app:eventTextColor="#000"
+                app:eventTextSize="12sp"
+                app:eventPadding="@dimen/margin_global_5dp"
+                app:firstDayOfWeek="sunday"
+                app:headerColumnBackground="#0C537A"
+                app:headerColumnPadding="3dp"
+                app:headerColumnTextColor="#fff"
+                app:headerRowBackgroundColor="#0C537A"
+                app:headerRowPadding="13dp"
+                app:hourHeight="50dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvInfoValue"
+                app:newEventColor="#4EB161"
+                app:noOfVisibleDays="7"
+                app:showFirstDayOfWeekFirst="true"
+                app:showNowLine="false"
+                app:textSize="13sp"
+                app:timeColumnResolution="60"
+                app:todayBackgroundColor="#1848adff"
+                app:todayHeaderTextColor="#fff" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
