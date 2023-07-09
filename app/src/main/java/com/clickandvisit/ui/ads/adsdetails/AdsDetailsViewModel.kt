@@ -2,7 +2,9 @@ package com.clickandvisit.ui.ads.adsdetails;
 
 import android.app.Application
 import android.graphics.drawable.Drawable
+import android.os.Build
 import android.os.Handler
+import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
@@ -22,8 +24,12 @@ import com.clickandvisit.global.utils.tryCatch
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.time.DayOfWeek
+import java.time.LocalDate
+import java.time.temporal.TemporalAdjusters
 import javax.inject.Inject
 
+@RequiresApi(Build.VERSION_CODES.O)
 @HiltViewModel
 class AdsDetailsViewModel
 @Inject constructor(
@@ -33,37 +39,38 @@ class AdsDetailsViewModel
     private val userRepository: UserRepository
 ) : BaseAndroidViewModel(application, schedulerProvider) {
 
-
     val property = MutableLiveData<Property>()
-
     val imgCount = MutableLiveData<String>()
-
     val adsName = MutableLiveData<String>()
     val propPrice = MutableLiveData<String>()
     val rooms = MutableLiveData<String>()
     val surface = MutableLiveData<String>()
     val info = MutableLiveData<String>()
-
     val ref = MutableLiveData<String>()
-
-
     val isFavourite = MutableLiveData<Boolean>()
     val checkedPro: MutableLiveData<Boolean> = MutableLiveData(false)
     val like: MutableLiveData<Drawable> = MutableLiveData()
-
-
     val list: MutableLiveData<List<String>> = MutableLiveData(arrayListOf())
-
-    val availableHours: MutableLiveData<List<String>?> = MutableLiveData()
-
-
     var roomsList = arrayListOf<String>()
+
+
+    val availableHours1: MutableLiveData<List<String>?> = MutableLiveData()
+    val availableHours2: MutableLiveData<List<String>?> = MutableLiveData()
+    val availableHours3: MutableLiveData<List<String>?> = MutableLiveData()
+    val availableHours4: MutableLiveData<List<String>?> = MutableLiveData()
+    val availableHours5: MutableLiveData<List<String>?> = MutableLiveData()
+    val availableHours6: MutableLiveData<List<String>?> = MutableLiveData()
+    val availableHours7: MutableLiveData<List<String>?> = MutableLiveData()
+
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    val firstDay = LocalDate.now().with(TemporalAdjusters.previousOrSame(DayOfWeek.SATURDAY))
+
 
     init {
         property.value =
             savedStateHandle.getLiveData<Property>(ExtraKeys.AddAdsActivity.PROPERTY_EXTRA_KEY_PROP).value
 
-        availableHours.value = property.value!!.availableHours
         ref.value = "Référence : CV" + property.value!!.id.toString()
 
         fetchImgCount()
@@ -88,10 +95,32 @@ class AdsDetailsViewModel
             like.value = ContextCompat.getDrawable(applicationContext, R.drawable.ic_like)
         }
 
+        for (i in 1..7) {
+            fetchAvailability(CalendarUtils.getWsFormattedDate(firstDay.plusDays(1)))
+        }
 
-
+        //fetchAvailability("2023-07-08")
     }
 
+
+    fun fetchAvailability(date: String) {
+        showBlockProgressBar()
+        viewModelScope.launch {
+            tryCatch({
+                val response = withContext(schedulerProvider.dispatchersIO()) {
+                    userRepository.getAvailability(date, property.value!!.id)
+                }
+                onAvailabilitySuccess(response)
+            }, { error ->
+                onLikeClickedError(error)
+            })
+        }
+    }
+
+    private fun onAvailabilitySuccess(response: AvailabilityResponse) {
+        hideBlockProgressBar()
+        //availableHours1.value = response.availableHours
+    }
 
     private fun fetchDPE() {
         if (property.value!!.energy.isNotEmpty()) {

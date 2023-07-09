@@ -185,20 +185,7 @@ class HomeViewModel
 
     override fun onItemClicked(value: Property) {
         if (userRepository.isConnected()) {
-            showBlockProgressBar()
-            viewModelScope.launch {
-                tryCatch({
-                    val response = withContext(schedulerProvider.dispatchersIO()) {
-                        userRepository.getAvailability("2023-07-08", value.id)
-                    }
-                    hideBlockProgressBar()
-                    value.availableHours = response.availableHours
-                    navigate(Navigation.AdsDetailsActivityNavigation(value))
-                }, { error ->
-                    hideBlockProgressBar()
-                    navigate(Navigation.AdsDetailsActivityNavigation(value))
-                })
-            }
+            navigate(Navigation.AdsDetailsActivityNavigation(value))
         } else {
             navigate(Navigation.SignInActivityNavigation)
         }

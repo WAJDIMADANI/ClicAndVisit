@@ -1,13 +1,14 @@
 package com.clickandvisit.ui.ads.adsdetails
 
 import android.content.Intent
-import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
+import androidx.appcompat.widget.AppCompatTextView
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.clickandvisit.R
@@ -15,27 +16,20 @@ import com.clickandvisit.base.BaseActivity
 import com.clickandvisit.data.model.property.Property
 import com.clickandvisit.databinding.ActivityAdsDetailsBinding
 import com.clickandvisit.global.helper.Navigation
-import com.clickandvisit.global.utils.DebugLog
-import com.clickandvisit.global.utils.TAG
 import com.clickandvisit.global.utils.observeOnlyNotNull
 import com.clickandvisit.ui.ads.adsdetails.CalendarUtils.daysInWeekArray
 import com.clickandvisit.ui.ads.adsdetails.CalendarUtils.monthYearFromDate
 import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
 import dagger.hilt.android.AndroidEntryPoint
-import me.jlurena.revolvingweekview.DayTime
-import me.jlurena.revolvingweekview.WeekView
-import me.jlurena.revolvingweekview.WeekViewEvent
-import org.threeten.bp.LocalDateTime
-import org.threeten.bp.LocalTime
 import java.time.LocalDate
 import java.util.*
 import javax.inject.Inject
+import kotlin.collections.ArrayList
 
 
 @AndroidEntryPoint
-class AdsDetailsActivity : BaseActivity(), WeekView.WeekViewLoader,
-    WeekView.EmptyViewClickListener, CalendarAdapter.OnItemListener {
+class AdsDetailsActivity : BaseActivity(), CalendarAdapter.OnItemListener {
 
     private val viewModel: AdsDetailsViewModel by viewModels()
 
@@ -43,6 +37,14 @@ class AdsDetailsActivity : BaseActivity(), WeekView.WeekViewLoader,
 
     @Inject
     lateinit var adapter: RoomAdapter
+
+    val listTV1: MutableLiveData<ArrayList<AppCompatTextView>> = MutableLiveData(arrayListOf())
+    val listTV2: MutableLiveData<ArrayList<AppCompatTextView>> = MutableLiveData(arrayListOf())
+    val listTV3: MutableLiveData<ArrayList<AppCompatTextView>> = MutableLiveData(arrayListOf())
+    val listTV4: MutableLiveData<ArrayList<AppCompatTextView>> = MutableLiveData(arrayListOf())
+    val listTV5: MutableLiveData<ArrayList<AppCompatTextView>> = MutableLiveData(arrayListOf())
+    val listTV6: MutableLiveData<ArrayList<AppCompatTextView>> = MutableLiveData(arrayListOf())
+    val listTV7: MutableLiveData<ArrayList<AppCompatTextView>> = MutableLiveData(arrayListOf())
 
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -60,8 +62,11 @@ class AdsDetailsActivity : BaseActivity(), WeekView.WeekViewLoader,
         }
         registerRecycler(binding)
 
+        addTVToLists()
+
         CalendarUtils.selectedDate = LocalDate.now()
         setWeekView()
+
 
 /*
         binding.weekview.setLimitTime(7, 22)
@@ -76,23 +81,23 @@ class AdsDetailsActivity : BaseActivity(), WeekView.WeekViewLoader,
 */
 
 
- /*       viewModel.availableHours.observeOnlyNotNull(this) { list ->
-            list.forEach {
+        /*       viewModel.availableHours.observeOnlyNotNull(this) { list ->
+                   list.forEach {
 
-                val now = LocalDateTime.now().with(LocalTime.of(it.subSequence(0, 2).toString().toInt(), 0))
-                val startTime = DayTime(now)
+                       val now = LocalDateTime.now().with(LocalTime.of(it.subSequence(0, 2).toString().toInt(), 0))
+                       val startTime = DayTime(now)
 
-                val endTime = DayTime(startTime)
-                endTime.addMinutes(60)
+                       val endTime = DayTime(startTime)
+                       endTime.addMinutes(60)
 
-                val event = WeekViewEvent("ID", "", startTime, endTime)
-                event.color = Color.argb(255, 78, 177, 97)
+                       val event = WeekViewEvent("ID", "", startTime, endTime)
+                       event.color = Color.argb(255, 78, 177, 97)
 
-                events.add(event)
-            }
+                       events.add(event)
+                   }
 
-        }
-*/
+               }
+       */
 
     }
 
@@ -109,14 +114,14 @@ class AdsDetailsActivity : BaseActivity(), WeekView.WeekViewLoader,
 
     @RequiresApi(Build.VERSION_CODES.O)
     fun previousWeekAction(view: View?) {
-        DebugLog.i(TAG, "previousWeekAction")
-        CalendarUtils.selectedDate = CalendarUtils.selectedDate.minusWeeks(1)
-        setWeekView()
+        if (LocalDate.now() < CalendarUtils.selectedDate) {
+            CalendarUtils.selectedDate = CalendarUtils.selectedDate.minusWeeks(1)
+            setWeekView()
+        }
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
     fun nextWeekAction(view: View?) {
-        DebugLog.i(TAG, "nextWeekAction")
         CalendarUtils.selectedDate = CalendarUtils.selectedDate.plusWeeks(1)
         setWeekView()
     }
@@ -131,34 +136,37 @@ class AdsDetailsActivity : BaseActivity(), WeekView.WeekViewLoader,
      * Set up a date time interpreter which will show short date values when in week view and long date values otherwise.
      */
     fun setupDateTimeInterpreter() {
- /*       binding.weekview.dayTimeInterpreter = object : WeekView.DayTimeInterpreter {
-            override fun interpretDay(date: Int): String {
-                return DayOfWeek.of(date).getDisplayName(TextStyle.SHORT, Locale.FRANCE)
-                    .toUpperCase(
-                        Locale.ROOT
-                    )
-            }
+        /*       binding.weekview.dayTimeInterpreter = object : WeekView.DayTimeInterpreter {
+                   override fun interpretDay(date: Int): String {
+                       return DayOfWeek.of(date).getDisplayName(TextStyle.SHORT, Locale.FRANCE)
+                           .toUpperCase(
+                               Locale.ROOT
+                           )
+                   }
 
-            override fun interpretTime(hour: Int, minutes: Int): String {
-                val res = String.format(Locale.getDefault(), "%02d", hour)
-                return res + "h"
-            }
-        }*/
+                   override fun interpretTime(hour: Int, minutes: Int): String {
+                       val res = String.format(Locale.getDefault(), "%02d", hour)
+                       return res + "h"
+                   }
+               }*/
     }
 
+/*
     override fun onEmptyViewClicked(day: DayTime?) {
         val endTime = DayTime(day)
         endTime.addMinutes(60)
-        val events: MutableList<WeekViewEvent> = java.util.ArrayList()
+        val events: MutableList<WeekViewEvent> = ArrayList()
         val event = WeekViewEvent("ID", "", day, endTime)
         event.color = Color.argb(255, 78, 177, 97)
         events.add(event)
         //binding.weekview.cacheAndSortEvents(events)
         //binding.weekview.calculateHeaderHeight()
     }
+*/
 
+/*
     override fun onWeekViewLoad(): MutableList<out WeekViewEvent> {
-        val events: MutableList<WeekViewEvent> = java.util.ArrayList()
+        val events: MutableList<WeekViewEvent> = ArrayList()
 
         viewModel.availableHours.value?.forEach {
 
@@ -178,6 +186,7 @@ class AdsDetailsActivity : BaseActivity(), WeekView.WeekViewLoader,
 
         return events
     }
+*/
 
 
     private fun registerRecycler(binding: ActivityAdsDetailsBinding) {
@@ -326,6 +335,128 @@ class AdsDetailsActivity : BaseActivity(), WeekView.WeekViewLoader,
 
         }
     }
+
+
+    private fun addTVToLists() {
+        listTV1.value?.add(binding.tvh17)
+        listTV1.value?.add(binding.tvh18)
+        listTV1.value?.add(binding.tvh19)
+        listTV1.value?.add(binding.tvh110)
+        listTV1.value?.add(binding.tvh111)
+        listTV1.value?.add(binding.tvh112)
+        listTV1.value?.add(binding.tvh113)
+        listTV1.value?.add(binding.tvh114)
+        listTV1.value?.add(binding.tvh115)
+        listTV1.value?.add(binding.tvh116)
+        listTV1.value?.add(binding.tvh117)
+        listTV1.value?.add(binding.tvh118)
+        listTV1.value?.add(binding.tvh119)
+        listTV1.value?.add(binding.tvh120)
+        listTV1.value?.add(binding.tvh121)
+
+
+        listTV2.value?.add(binding.tvh27)
+        listTV2.value?.add(binding.tvh28)
+        listTV2.value?.add(binding.tvh29)
+        listTV2.value?.add(binding.tvh210)
+        listTV2.value?.add(binding.tvh211)
+        listTV2.value?.add(binding.tvh212)
+        listTV2.value?.add(binding.tvh213)
+        listTV2.value?.add(binding.tvh214)
+        listTV2.value?.add(binding.tvh215)
+        listTV2.value?.add(binding.tvh216)
+        listTV2.value?.add(binding.tvh217)
+        listTV2.value?.add(binding.tvh218)
+        listTV2.value?.add(binding.tvh219)
+        listTV2.value?.add(binding.tvh220)
+        listTV2.value?.add(binding.tvh221)
+
+
+        listTV3.value?.add(binding.tvh37)
+        listTV3.value?.add(binding.tvh38)
+        listTV3.value?.add(binding.tvh39)
+        listTV3.value?.add(binding.tvh310)
+        listTV3.value?.add(binding.tvh311)
+        listTV3.value?.add(binding.tvh312)
+        listTV3.value?.add(binding.tvh313)
+        listTV3.value?.add(binding.tvh314)
+        listTV3.value?.add(binding.tvh315)
+        listTV3.value?.add(binding.tvh316)
+        listTV3.value?.add(binding.tvh317)
+        listTV3.value?.add(binding.tvh318)
+        listTV3.value?.add(binding.tvh319)
+        listTV3.value?.add(binding.tvh320)
+        listTV3.value?.add(binding.tvh321)
+
+
+        listTV4.value?.add(binding.tvh47)
+        listTV4.value?.add(binding.tvh48)
+        listTV4.value?.add(binding.tvh49)
+        listTV4.value?.add(binding.tvh410)
+        listTV4.value?.add(binding.tvh411)
+        listTV4.value?.add(binding.tvh412)
+        listTV4.value?.add(binding.tvh413)
+        listTV4.value?.add(binding.tvh414)
+        listTV4.value?.add(binding.tvh415)
+        listTV4.value?.add(binding.tvh416)
+        listTV4.value?.add(binding.tvh417)
+        listTV4.value?.add(binding.tvh418)
+        listTV4.value?.add(binding.tvh419)
+        listTV4.value?.add(binding.tvh420)
+        listTV4.value?.add(binding.tvh421)
+
+
+        listTV5.value?.add(binding.tvh57)
+        listTV5.value?.add(binding.tvh58)
+        listTV5.value?.add(binding.tvh59)
+        listTV5.value?.add(binding.tvh510)
+        listTV5.value?.add(binding.tvh511)
+        listTV5.value?.add(binding.tvh512)
+        listTV5.value?.add(binding.tvh513)
+        listTV5.value?.add(binding.tvh514)
+        listTV5.value?.add(binding.tvh515)
+        listTV5.value?.add(binding.tvh516)
+        listTV5.value?.add(binding.tvh517)
+        listTV5.value?.add(binding.tvh518)
+        listTV5.value?.add(binding.tvh519)
+        listTV5.value?.add(binding.tvh520)
+        listTV5.value?.add(binding.tvh521)
+
+
+        listTV6.value?.add(binding.tvh67)
+        listTV6.value?.add(binding.tvh68)
+        listTV6.value?.add(binding.tvh69)
+        listTV6.value?.add(binding.tvh610)
+        listTV6.value?.add(binding.tvh611)
+        listTV6.value?.add(binding.tvh612)
+        listTV6.value?.add(binding.tvh613)
+        listTV6.value?.add(binding.tvh614)
+        listTV6.value?.add(binding.tvh615)
+        listTV6.value?.add(binding.tvh616)
+        listTV6.value?.add(binding.tvh617)
+        listTV6.value?.add(binding.tvh618)
+        listTV6.value?.add(binding.tvh619)
+        listTV6.value?.add(binding.tvh620)
+        listTV6.value?.add(binding.tvh621)
+
+
+        listTV7.value?.add(binding.tvh77)
+        listTV7.value?.add(binding.tvh78)
+        listTV7.value?.add(binding.tvh79)
+        listTV7.value?.add(binding.tvh710)
+        listTV7.value?.add(binding.tvh711)
+        listTV7.value?.add(binding.tvh712)
+        listTV7.value?.add(binding.tvh713)
+        listTV7.value?.add(binding.tvh714)
+        listTV7.value?.add(binding.tvh715)
+        listTV7.value?.add(binding.tvh716)
+        listTV7.value?.add(binding.tvh717)
+        listTV7.value?.add(binding.tvh718)
+        listTV7.value?.add(binding.tvh719)
+        listTV7.value?.add(binding.tvh720)
+        listTV7.value?.add(binding.tvh721)
+    }
+
 
     /**
      * Register the UI for XMLBinding
