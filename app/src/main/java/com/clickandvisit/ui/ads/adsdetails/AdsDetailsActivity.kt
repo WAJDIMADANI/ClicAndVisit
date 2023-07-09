@@ -2,34 +2,40 @@ package com.clickandvisit.ui.ads.adsdetails
 
 import android.content.Intent
 import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
+import android.view.View
 import androidx.activity.viewModels
+import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.clickandvisit.R
 import com.clickandvisit.base.BaseActivity
 import com.clickandvisit.data.model.property.Property
 import com.clickandvisit.databinding.ActivityAdsDetailsBinding
 import com.clickandvisit.global.helper.Navigation
+import com.clickandvisit.global.utils.DebugLog
+import com.clickandvisit.global.utils.TAG
 import com.clickandvisit.global.utils.observeOnlyNotNull
+import com.clickandvisit.ui.ads.adsdetails.CalendarUtils.daysInWeekArray
+import com.clickandvisit.ui.ads.adsdetails.CalendarUtils.monthYearFromDate
 import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
 import dagger.hilt.android.AndroidEntryPoint
 import me.jlurena.revolvingweekview.DayTime
 import me.jlurena.revolvingweekview.WeekView
 import me.jlurena.revolvingweekview.WeekViewEvent
-import org.threeten.bp.DayOfWeek
 import org.threeten.bp.LocalDateTime
 import org.threeten.bp.LocalTime
-import org.threeten.bp.format.TextStyle
+import java.time.LocalDate
 import java.util.*
 import javax.inject.Inject
-import kotlin.collections.ArrayList
 
 
 @AndroidEntryPoint
 class AdsDetailsActivity : BaseActivity(), WeekView.WeekViewLoader,
-    WeekView.EmptyViewClickListener {
+    WeekView.EmptyViewClickListener, CalendarAdapter.OnItemListener {
 
     private val viewModel: AdsDetailsViewModel by viewModels()
 
@@ -39,6 +45,7 @@ class AdsDetailsActivity : BaseActivity(), WeekView.WeekViewLoader,
     lateinit var adapter: RoomAdapter
 
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding =
@@ -53,8 +60,10 @@ class AdsDetailsActivity : BaseActivity(), WeekView.WeekViewLoader,
         }
         registerRecycler(binding)
 
+        CalendarUtils.selectedDate = LocalDate.now()
+        setWeekView()
 
-
+/*
         binding.weekview.setLimitTime(7, 22)
         binding.weekview.minTime = 7
         binding.weekview.maxTime = 22
@@ -64,6 +73,7 @@ class AdsDetailsActivity : BaseActivity(), WeekView.WeekViewLoader,
         binding.weekview.weekViewLoader = this
         binding.weekview.emptyViewClickListener = this
 
+*/
 
 
  /*       viewModel.availableHours.observeOnlyNotNull(this) { list ->
@@ -86,11 +96,42 @@ class AdsDetailsActivity : BaseActivity(), WeekView.WeekViewLoader,
 
     }
 
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun setWeekView() {
+        binding.monthYearText.text = monthYearFromDate(CalendarUtils.selectedDate)
+        val days: ArrayList<LocalDate> = daysInWeekArray(CalendarUtils.selectedDate)
+        val calendarAdapter = CalendarAdapter(days, this)
+        val layoutManager: RecyclerView.LayoutManager = GridLayoutManager(applicationContext, 7)
+        binding.calendarRecyclerView.layoutManager = layoutManager
+        binding.calendarRecyclerView.adapter = calendarAdapter
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun previousWeekAction(view: View?) {
+        DebugLog.i(TAG, "previousWeekAction")
+        CalendarUtils.selectedDate = CalendarUtils.selectedDate.minusWeeks(1)
+        setWeekView()
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun nextWeekAction(view: View?) {
+        DebugLog.i(TAG, "nextWeekAction")
+        CalendarUtils.selectedDate = CalendarUtils.selectedDate.plusWeeks(1)
+        setWeekView()
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    override fun onItemClick(position: Int, date: LocalDate?) {
+        CalendarUtils.selectedDate = date
+        setWeekView()
+    }
+
     /**
      * Set up a date time interpreter which will show short date values when in week view and long date values otherwise.
      */
     fun setupDateTimeInterpreter() {
-        binding.weekview.dayTimeInterpreter = object : WeekView.DayTimeInterpreter {
+ /*       binding.weekview.dayTimeInterpreter = object : WeekView.DayTimeInterpreter {
             override fun interpretDay(date: Int): String {
                 return DayOfWeek.of(date).getDisplayName(TextStyle.SHORT, Locale.FRANCE)
                     .toUpperCase(
@@ -102,7 +143,7 @@ class AdsDetailsActivity : BaseActivity(), WeekView.WeekViewLoader,
                 val res = String.format(Locale.getDefault(), "%02d", hour)
                 return res + "h"
             }
-        }
+        }*/
     }
 
     override fun onEmptyViewClicked(day: DayTime?) {
