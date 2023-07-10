@@ -66,41 +66,105 @@ class AdsDetailsActivity : BaseActivity(), CalendarAdapter.OnItemListener {
 
         CalendarUtils.selectedDate = LocalDate.now()
         setWeekView()
-
-
-/*
-        binding.weekview.setLimitTime(7, 22)
-        binding.weekview.minTime = 7
-        binding.weekview.maxTime = 22
-        // Set up a date time interpreter to interpret how the date and time will be formatted in
-        // the week view. This is optional.
-        setupDateTimeInterpreter()
-        binding.weekview.weekViewLoader = this
-        binding.weekview.emptyViewClickListener = this
-
-*/
-
-
-        /*       viewModel.availableHours.observeOnlyNotNull(this) { list ->
-                   list.forEach {
-
-                       val now = LocalDateTime.now().with(LocalTime.of(it.subSequence(0, 2).toString().toInt(), 0))
-                       val startTime = DayTime(now)
-
-                       val endTime = DayTime(startTime)
-                       endTime.addMinutes(60)
-
-                       val event = WeekViewEvent("ID", "", startTime, endTime)
-                       event.color = Color.argb(255, 78, 177, 97)
-
-                       events.add(event)
-                   }
-
-               }
-       */
-
+        fetchHoursResult1()
+        fetchHoursResult2()
+        fetchHoursResult3()
+        fetchHoursResult4()
+        fetchHoursResult5()
+        fetchHoursResult6()
+        fetchHoursResult7()
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun fetchHoursResult1() {
+        viewModel.availableHours1.observeOnlyNotNull(this) { hours ->
+            hours?.forEach { h ->
+                listTV1.value!!.forEach { tv ->
+                    if (h == tv.tag) {
+                        tv.setBackgroundColor(getColor(R.color.color_accent))
+                    }
+                }
+            }
+        }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun fetchHoursResult2() {
+        viewModel.availableHours2.observeOnlyNotNull(this) { hours ->
+            hours?.forEach { h ->
+                listTV2.value!!.forEach { tv ->
+                    if (h == tv.tag) {
+                        tv.setBackgroundColor(getColor(R.color.color_accent))
+                    }
+                }
+            }
+        }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun fetchHoursResult3() {
+        viewModel.availableHours3.observeOnlyNotNull(this) { hours ->
+            hours?.forEach { h ->
+                listTV3.value!!.forEach { tv ->
+                    if (h == tv.tag) {
+                        tv.setBackgroundColor(getColor(R.color.color_accent))
+                    }
+                }
+            }
+        }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun fetchHoursResult4() {
+        viewModel.availableHours4.observeOnlyNotNull(this) { hours ->
+            hours?.forEach { h ->
+                listTV4.value!!.forEach { tv ->
+                    if (h == tv.tag) {
+                        tv.setBackgroundColor(getColor(R.color.color_accent))
+                    }
+                }
+            }
+        }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun fetchHoursResult5() {
+        viewModel.availableHours5.observeOnlyNotNull(this) { hours ->
+            hours?.forEach { h ->
+                listTV5.value!!.forEach { tv ->
+                    if (h == tv.tag) {
+                        tv.setBackgroundColor(getColor(R.color.color_accent))
+                    }
+                }
+            }
+        }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun fetchHoursResult6() {
+        viewModel.availableHours6.observeOnlyNotNull(this) { hours ->
+            hours?.forEach { h ->
+                listTV6.value!!.forEach { tv ->
+                    if (h == tv.tag) {
+                        tv.setBackgroundColor(getColor(R.color.color_accent))
+                    }
+                }
+            }
+        }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun fetchHoursResult7() {
+        viewModel.availableHours7.observeOnlyNotNull(this) { hours ->
+            hours?.forEach { h ->
+                listTV7.value!!.forEach { tv ->
+                    if (h == tv.tag) {
+                        tv.setBackgroundColor(getColor(R.color.color_accent))
+                    }
+                }
+            }
+        }
+    }
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun setWeekView() {
@@ -131,62 +195,6 @@ class AdsDetailsActivity : BaseActivity(), CalendarAdapter.OnItemListener {
         CalendarUtils.selectedDate = date
         setWeekView()
     }
-
-    /**
-     * Set up a date time interpreter which will show short date values when in week view and long date values otherwise.
-     */
-    fun setupDateTimeInterpreter() {
-        /*       binding.weekview.dayTimeInterpreter = object : WeekView.DayTimeInterpreter {
-                   override fun interpretDay(date: Int): String {
-                       return DayOfWeek.of(date).getDisplayName(TextStyle.SHORT, Locale.FRANCE)
-                           .toUpperCase(
-                               Locale.ROOT
-                           )
-                   }
-
-                   override fun interpretTime(hour: Int, minutes: Int): String {
-                       val res = String.format(Locale.getDefault(), "%02d", hour)
-                       return res + "h"
-                   }
-               }*/
-    }
-
-/*
-    override fun onEmptyViewClicked(day: DayTime?) {
-        val endTime = DayTime(day)
-        endTime.addMinutes(60)
-        val events: MutableList<WeekViewEvent> = ArrayList()
-        val event = WeekViewEvent("ID", "", day, endTime)
-        event.color = Color.argb(255, 78, 177, 97)
-        events.add(event)
-        //binding.weekview.cacheAndSortEvents(events)
-        //binding.weekview.calculateHeaderHeight()
-    }
-*/
-
-/*
-    override fun onWeekViewLoad(): MutableList<out WeekViewEvent> {
-        val events: MutableList<WeekViewEvent> = ArrayList()
-
-        viewModel.availableHours.value?.forEach {
-
-            val now = LocalDateTime.now().with(LocalTime.of(it.subSequence(0, 2).toString().toInt(), 0))
-            val startTime = DayTime(now)
-
-            val endTime = DayTime(startTime)
-            endTime.addMinutes(60)
-
-            val event = WeekViewEvent("ID", "", startTime, endTime)
-            event.isAllDay = false
-            event.name = "\n   "+it.subSequence(0, 2).toString()+ "h"
-            event.color = Color.argb(255, 78, 177, 97)
-
-            events.add(event)
-        }
-
-        return events
-    }
-*/
 
 
     private fun registerRecycler(binding: ActivityAdsDetailsBinding) {
