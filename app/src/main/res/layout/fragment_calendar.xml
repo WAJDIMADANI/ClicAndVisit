@@ -19,8 +19,1764 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingTop="@dimen/margin_global_30dp"
-            android:paddingBottom="@dimen/margin_global_30dp">
+            android:paddingTop="@dimen/margin_global_10dp"
+            android:paddingBottom="@dimen/margin_global_10dp">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/margin_global_10dp"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_45dp"
+                    android:background="@color/black"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:paddingStart="@dimen/margin_global_20dp"
+                    android:paddingEnd="@dimen/margin_global_20dp">
+
+                    <ImageView
+                        android:id="@+id/ivPreviousWeek"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/ic_back"
+                        android:padding="@dimen/padding_global_5dp" />
+
+                    <TextView
+                        android:id="@+id/monthYearText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="Juillet 2023"
+                        android:textAlignment="center"
+                        android:textColor="@color/white_basic"
+                        android:textSize="@dimen/font_18sp" />
+
+                    <ImageView
+                        android:id="@+id/ivNextWeek"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/ic_back"
+                        android:rotation="180" />
+
+                </LinearLayout>
+
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#455A65"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_30dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:text="DIM."
+                        android:textColor="@color/white_basic"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_30dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:text="LUN."
+                        android:textColor="@color/white_basic"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_30dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:text="MAR."
+                        android:textColor="@color/white_basic"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_30dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:text="MER."
+                        android:textColor="@color/white_basic"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_30dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:text="JEU."
+                        android:textColor="@color/white_basic"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_30dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:text="VEN."
+                        android:textColor="@color/white_basic"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_30dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:text="SAM."
+                        android:textColor="@color/white_basic"
+                        android:textSize="@dimen/font_16sp" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/calendarRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_50dp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvMatin"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_50dp"
+                    android:layout_centerHorizontal="true"
+                    android:background="#455A65"
+                    android:fontFamily="@font/poppins_regular"
+                    android:gravity="center"
+                    android:text="MATIN"
+                    android:textColor="@color/white_basic"
+                    android:textSize="@dimen/font_16sp" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh17"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/white_basic"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="07:00"
+                        android:text="7h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh27"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/day_gray"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="07:00"
+                        android:text="7h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh37"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/white_basic"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="07:00"
+                        android:text="7h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh47"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/day_gray"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="07:00"
+                        android:text="7h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh57"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/white_basic"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="07:00"
+                        android:text="7h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh67"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/day_gray"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="07:00"
+                        android:text="7h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh77"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/white_basic"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="07:00"
+                        android:text="7h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh18"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/white_basic"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="08:00"
+                        android:text="8h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh28"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/day_gray"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="08:00"
+                        android:text="8h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh38"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/white_basic"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="08:00"
+                        android:text="8h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh48"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/day_gray"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="08:00"
+                        android:text="8h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh58"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/white_basic"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="08:00"
+                        android:text="8h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh68"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/day_gray"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="08:00"
+                        android:text="8h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh78"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/white_basic"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="08:00"
+                        android:text="8h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh19"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/white_basic"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="09:00"
+                        android:text="9h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh29"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/day_gray"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="09:00"
+                        android:text="9h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh39"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/white_basic"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="09:00"
+                        android:text="9h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh49"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/day_gray"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="09:00"
+                        android:text="9h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh59"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/white_basic"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="09:00"
+                        android:text="9h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh69"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/day_gray"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="09:00"
+                        android:text="9h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh79"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/white_basic"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="09:00"
+                        android:text="9h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh110"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/white_basic"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="10:00"
+                        android:text="10h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh210"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/day_gray"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="10:00"
+                        android:text="10h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh310"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/white_basic"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="10:00"
+                        android:text="10h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh410"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/day_gray"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="10:00"
+                        android:text="10h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh510"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/white_basic"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="10:00"
+                        android:text="10h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh610"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/day_gray"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="10:00"
+                        android:text="10h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh710"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/white_basic"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="10:00"
+                        android:text="10h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh111"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/white_basic"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="11:00"
+                        android:text="11h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh211"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/day_gray"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="11:00"
+                        android:text="11h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh311"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/white_basic"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="11:00"
+                        android:text="11h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh411"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/day_gray"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="11:00"
+                        android:text="11h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh511"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/white_basic"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="11:00"
+                        android:text="11h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh611"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/day_gray"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="11:00"
+                        android:text="11h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh711"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/white_basic"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="11:00"
+                        android:text="11h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvMidi"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_50dp"
+                    android:layout_centerHorizontal="true"
+                    android:background="#455A65"
+                    android:fontFamily="@font/poppins_regular"
+                    android:gravity="center"
+                    android:text="APRES-MIDI"
+                    android:textColor="@color/white_basic"
+                    android:textSize="@dimen/font_16sp" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh112"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/white_basic"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="12:00"
+                        android:text="12h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh212"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/day_gray"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="12:00"
+                        android:text="12h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh312"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/white_basic"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="12:00"
+                        android:text="12h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh412"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/day_gray"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="12:00"
+                        android:text="12h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh512"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/white_basic"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="12:00"
+                        android:text="12h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh612"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/day_gray"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="12:00"
+                        android:text="12h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh712"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/white_basic"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="12:00"
+                        android:text="12h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh113"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/white_basic"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="13:00"
+                        android:text="13h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh213"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/day_gray"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="13:00"
+                        android:text="13h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh313"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/white_basic"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="13:00"
+                        android:text="13h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh413"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/day_gray"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="13:00"
+                        android:text="13h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh513"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/white_basic"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="13:00"
+                        android:text="13h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh613"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/day_gray"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="13:00"
+                        android:text="13h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh713"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/white_basic"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="13:00"
+                        android:text="13h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh114"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/white_basic"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="14:00"
+                        android:text="14h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh214"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/day_gray"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="14:00"
+                        android:text="14h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh314"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/white_basic"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="14:00"
+                        android:text="14h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh414"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/day_gray"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="14:00"
+                        android:text="14h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh514"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/white_basic"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="14:00"
+                        android:text="14h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh614"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/day_gray"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="14:00"
+                        android:text="14h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh714"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/white_basic"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="14:00"
+                        android:text="14h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh115"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/white_basic"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="15:00"
+                        android:text="15h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh215"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/day_gray"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="15:00"
+                        android:text="15h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh315"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/white_basic"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="15:00"
+                        android:text="15h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh415"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/day_gray"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="15:00"
+                        android:text="15h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh515"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/white_basic"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="15:00"
+                        android:text="15h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh615"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/day_gray"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="15:00"
+                        android:text="15h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh715"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/white_basic"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="15:00"
+                        android:text="15h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh116"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/white_basic"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="16:00"
+                        android:text="16h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh216"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/day_gray"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="16:00"
+                        android:text="16h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh316"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/white_basic"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="16:00"
+                        android:text="16h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh416"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/day_gray"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="16:00"
+                        android:text="16h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh516"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/white_basic"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="16:00"
+                        android:text="16h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh616"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/day_gray"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="16:00"
+                        android:text="16h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh716"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/white_basic"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="16:00"
+                        android:text="16h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvSoir"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_50dp"
+                    android:layout_centerHorizontal="true"
+                    android:background="#455A65"
+                    android:fontFamily="@font/poppins_regular"
+                    android:gravity="center"
+                    android:text="SOIR"
+                    android:textColor="@color/white_basic"
+                    android:textSize="@dimen/font_16sp" />
+
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh117"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/white_basic"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="17:00"
+                        android:text="17h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh217"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/day_gray"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="17:00"
+                        android:text="17h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh317"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/white_basic"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="17:00"
+                        android:text="17h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh417"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/day_gray"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="17:00"
+                        android:text="17h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh517"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/white_basic"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="17:00"
+                        android:text="17h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh617"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/day_gray"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="17:00"
+                        android:text="17h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh717"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/white_basic"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="17:00"
+                        android:text="17h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh118"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/white_basic"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="18:00"
+                        android:text="18h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh218"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/day_gray"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="18:00"
+                        android:text="18h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh318"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/white_basic"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="18:00"
+                        android:text="18h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh418"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/day_gray"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="18:00"
+                        android:text="18h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh518"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/white_basic"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="18:00"
+                        android:text="18h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh618"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/day_gray"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="18:00"
+                        android:text="18h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh718"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/white_basic"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="18:00"
+                        android:text="18h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh119"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/white_basic"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="19:00"
+                        android:text="19h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh219"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/day_gray"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="19:00"
+                        android:text="19h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh319"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/white_basic"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="19:00"
+                        android:text="19h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh419"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/day_gray"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="19:00"
+                        android:text="19h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh519"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/white_basic"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="19:00"
+                        android:text="19h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh619"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/day_gray"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="19:00"
+                        android:text="19h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh719"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/white_basic"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="19:00"
+                        android:text="19h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh120"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/white_basic"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="20:00"
+                        android:text="20h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh220"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/day_gray"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="20:00"
+                        android:text="20h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh320"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/white_basic"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="20:00"
+                        android:text="20h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh420"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/day_gray"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="20:00"
+                        android:text="20h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh520"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/white_basic"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="20:00"
+                        android:text="20h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh620"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/day_gray"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="20:00"
+                        android:text="20h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh720"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/white_basic"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="20:00"
+                        android:text="20h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh121"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/white_basic"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="21:00"
+                        android:text="21h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh221"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/day_gray"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="21:00"
+                        android:text="21h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh321"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/white_basic"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="21:00"
+                        android:text="21h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh421"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/day_gray"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="21:00"
+                        android:text="21h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh521"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/white_basic"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="21:00"
+                        android:text="21h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh621"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/day_gray"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="21:00"
+                        android:text="21h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvh721"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_50dp"
+                        android:layout_margin="@dimen/dimen_05dp"
+                        android:layout_weight="1"
+                        android:background="@color/white_basic"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:tag="21:00"
+                        android:text="21h"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16sp" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

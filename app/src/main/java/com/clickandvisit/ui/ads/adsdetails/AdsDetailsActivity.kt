@@ -5,6 +5,7 @@ import android.os.Build
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
+import androidx.annotation.ColorRes
 import androidx.annotation.RequiresApi
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.databinding.DataBindingUtil
@@ -22,8 +23,9 @@ import com.clickandvisit.ui.ads.adsdetails.CalendarUtils.monthYearFromDate
 import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
 import dagger.hilt.android.AndroidEntryPoint
+import java.time.DayOfWeek
 import java.time.LocalDate
-import java.util.*
+import java.time.temporal.TemporalAdjusters
 import javax.inject.Inject
 import kotlin.collections.ArrayList
 
@@ -66,105 +68,20 @@ class AdsDetailsActivity : BaseActivity(), CalendarAdapter.OnItemListener {
 
         CalendarUtils.selectedDate = LocalDate.now()
         setWeekView()
-        fetchHoursResult1()
-        fetchHoursResult2()
-        fetchHoursResult3()
-        fetchHoursResult4()
-        fetchHoursResult5()
-        fetchHoursResult6()
-        fetchHoursResult7()
+        fetchHoursResult(R.color.color_accent)
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    fun fetchHoursResult1() {
-        viewModel.availableHours1.observeOnlyNotNull(this) { hours ->
-            hours?.forEach { h ->
-                listTV1.value!!.forEach { tv ->
-                    if (h == tv.tag) {
-                        tv.setBackgroundColor(getColor(R.color.color_accent))
-                    }
-                }
-            }
-        }
+    private fun fetchHoursResult(colorId: Int) {
+        fetchHoursResult1(colorId)
+        fetchHoursResult2(colorId)
+        fetchHoursResult3(colorId)
+        fetchHoursResult4(colorId)
+        fetchHoursResult5(colorId)
+        fetchHoursResult6(colorId)
+        fetchHoursResult7(colorId)
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
-    fun fetchHoursResult2() {
-        viewModel.availableHours2.observeOnlyNotNull(this) { hours ->
-            hours?.forEach { h ->
-                listTV2.value!!.forEach { tv ->
-                    if (h == tv.tag) {
-                        tv.setBackgroundColor(getColor(R.color.color_accent))
-                    }
-                }
-            }
-        }
-    }
-
-    @RequiresApi(Build.VERSION_CODES.O)
-    fun fetchHoursResult3() {
-        viewModel.availableHours3.observeOnlyNotNull(this) { hours ->
-            hours?.forEach { h ->
-                listTV3.value!!.forEach { tv ->
-                    if (h == tv.tag) {
-                        tv.setBackgroundColor(getColor(R.color.color_accent))
-                    }
-                }
-            }
-        }
-    }
-
-    @RequiresApi(Build.VERSION_CODES.O)
-    fun fetchHoursResult4() {
-        viewModel.availableHours4.observeOnlyNotNull(this) { hours ->
-            hours?.forEach { h ->
-                listTV4.value!!.forEach { tv ->
-                    if (h == tv.tag) {
-                        tv.setBackgroundColor(getColor(R.color.color_accent))
-                    }
-                }
-            }
-        }
-    }
-
-    @RequiresApi(Build.VERSION_CODES.O)
-    fun fetchHoursResult5() {
-        viewModel.availableHours5.observeOnlyNotNull(this) { hours ->
-            hours?.forEach { h ->
-                listTV5.value!!.forEach { tv ->
-                    if (h == tv.tag) {
-                        tv.setBackgroundColor(getColor(R.color.color_accent))
-                    }
-                }
-            }
-        }
-    }
-
-    @RequiresApi(Build.VERSION_CODES.O)
-    fun fetchHoursResult6() {
-        viewModel.availableHours6.observeOnlyNotNull(this) { hours ->
-            hours?.forEach { h ->
-                listTV6.value!!.forEach { tv ->
-                    if (h == tv.tag) {
-                        tv.setBackgroundColor(getColor(R.color.color_accent))
-                    }
-                }
-            }
-        }
-    }
-
-    @RequiresApi(Build.VERSION_CODES.O)
-    fun fetchHoursResult7() {
-        viewModel.availableHours7.observeOnlyNotNull(this) { hours ->
-            hours?.forEach { h ->
-                listTV7.value!!.forEach { tv ->
-                    if (h == tv.tag) {
-                        tv.setBackgroundColor(getColor(R.color.color_accent))
-                    }
-                }
-            }
-        }
-    }
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun setWeekView() {
@@ -181,6 +98,10 @@ class AdsDetailsActivity : BaseActivity(), CalendarAdapter.OnItemListener {
         if (LocalDate.now() < CalendarUtils.selectedDate) {
             CalendarUtils.selectedDate = CalendarUtils.selectedDate.minusWeeks(1)
             setWeekView()
+            viewModel.firstDay = CalendarUtils.selectedDate.with(TemporalAdjusters.previousOrSame(DayOfWeek.SUNDAY))
+            viewModel.fetchAvailability1(CalendarUtils.getWsFormattedDate(viewModel.firstDay))
+            fetchDefaultColor()
+            fetchHoursResult(R.color.color_accent)
         }
     }
 
@@ -188,12 +109,16 @@ class AdsDetailsActivity : BaseActivity(), CalendarAdapter.OnItemListener {
     fun nextWeekAction(view: View?) {
         CalendarUtils.selectedDate = CalendarUtils.selectedDate.plusWeeks(1)
         setWeekView()
+        viewModel.firstDay = CalendarUtils.selectedDate.with(TemporalAdjusters.previousOrSame(DayOfWeek.SUNDAY))
+        viewModel.fetchAvailability1(CalendarUtils.getWsFormattedDate(viewModel.firstDay))
+        fetchDefaultColor()
+        fetchHoursResult(R.color.color_accent)
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onItemClick(position: Int, date: LocalDate?) {
-        CalendarUtils.selectedDate = date
-        setWeekView()
+        //CalendarUtils.selectedDate = date
+        //setWeekView()
     }
 
 
@@ -342,6 +267,132 @@ class AdsDetailsActivity : BaseActivity(), CalendarAdapter.OnItemListener {
             }
 
         }
+    }
+
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun fetchHoursResult1(colorId: Int) {
+        viewModel.availableHours1.observeOnlyNotNull(this) { hours ->
+            hours?.forEach { h ->
+                listTV1.value!!.forEach { tv ->
+                    if (h == tv.tag) {
+                        tv.setBackgroundColor(getColor(colorId))
+                    }
+                }
+            }
+        }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun fetchHoursResult2(colorId: Int) {
+        viewModel.availableHours2.observeOnlyNotNull(this) { hours ->
+            hours?.forEach { h ->
+                listTV2.value!!.forEach { tv ->
+                    if (h == tv.tag) {
+                        tv.setBackgroundColor(getColor(colorId))
+                    }
+                }
+            }
+        }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun fetchHoursResult3(colorId: Int) {
+        viewModel.availableHours3.observeOnlyNotNull(this) { hours ->
+            hours?.forEach { h ->
+                listTV3.value!!.forEach { tv ->
+                    if (h == tv.tag) {
+                        tv.setBackgroundColor(getColor(colorId))
+                    }
+                }
+            }
+        }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun fetchHoursResult4(colorId: Int) {
+        viewModel.availableHours4.observeOnlyNotNull(this) { hours ->
+            hours?.forEach { h ->
+                listTV4.value!!.forEach { tv ->
+                    if (h == tv.tag) {
+                        tv.setBackgroundColor(getColor(colorId))
+                    }
+                }
+            }
+        }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun fetchHoursResult5(colorId: Int) {
+        viewModel.availableHours5.observeOnlyNotNull(this) { hours ->
+            hours?.forEach { h ->
+                listTV5.value!!.forEach { tv ->
+                    if (h == tv.tag) {
+                        tv.setBackgroundColor(getColor(colorId))
+                    }
+                }
+            }
+        }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun fetchHoursResult6(colorId: Int) {
+        viewModel.availableHours6.observeOnlyNotNull(this) { hours ->
+            hours?.forEach { h ->
+                listTV6.value!!.forEach { tv ->
+                    if (h == tv.tag) {
+                        tv.setBackgroundColor(getColor(colorId))
+                    }
+                }
+            }
+        }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun fetchHoursResult7(colorId: Int) {
+        viewModel.availableHours7.observeOnlyNotNull(this) { hours ->
+            hours?.forEach { h ->
+                listTV7.value!!.forEach { tv ->
+                    if (h == tv.tag) {
+                        tv.setBackgroundColor(getColor(colorId))
+                    }
+                }
+            }
+        }
+    }
+
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun fetchDefaultColor() {
+
+        listTV1.value!!.forEach { tv ->
+            tv.setBackgroundColor(getColor(R.color.white_basic))
+        }
+
+        listTV2.value!!.forEach { tv ->
+            tv.setBackgroundColor(getColor(R.color.day_gray))
+        }
+
+        listTV3.value!!.forEach { tv ->
+            tv.setBackgroundColor(getColor(R.color.white_basic))
+        }
+
+        listTV4.value!!.forEach { tv ->
+            tv.setBackgroundColor(getColor(R.color.day_gray))
+        }
+
+        listTV5.value!!.forEach { tv ->
+            tv.setBackgroundColor(getColor(R.color.white_basic))
+        }
+
+        listTV6.value!!.forEach { tv ->
+            tv.setBackgroundColor(getColor(R.color.day_gray))
+        }
+
+        listTV7.value!!.forEach { tv ->
+            tv.setBackgroundColor(getColor(R.color.white_basic))
+        }
+
     }
 
 

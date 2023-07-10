@@ -19,6 +19,7 @@ import com.clickandvisit.data.model.reservation.AvailabilityResponse
 import com.clickandvisit.data.repository.abs.UserRepository
 import com.clickandvisit.global.helper.Navigation
 import com.clickandvisit.global.listener.SchedulerProvider
+import com.clickandvisit.global.utils.DebugLog
 import com.clickandvisit.global.utils.ExtraKeys
 import com.clickandvisit.global.utils.tryCatch
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -101,6 +102,14 @@ class AdsDetailsViewModel
 
 
     fun fetchAvailability1(date: String) {
+        DebugLog.i("Availability", date)
+        availableHours1.value = arrayListOf()
+        availableHours2.value = arrayListOf()
+        availableHours3.value = arrayListOf()
+        availableHours4.value = arrayListOf()
+        availableHours5.value = arrayListOf()
+        availableHours6.value = arrayListOf()
+        availableHours7.value = arrayListOf()
         showBlockProgressBar()
         viewModelScope.launch {
             tryCatch({
@@ -119,6 +128,7 @@ class AdsDetailsViewModel
 
 
     fun fetchAvailability2(date: String) {
+        DebugLog.i("Availability", date)
         viewModelScope.launch {
             tryCatch({
                 val response = withContext(schedulerProvider.dispatchersIO()) {
@@ -137,6 +147,7 @@ class AdsDetailsViewModel
 
 
     fun fetchAvailability3(date: String) {
+        DebugLog.i("Availability", date)
         viewModelScope.launch {
             tryCatch({
                 val response = withContext(schedulerProvider.dispatchersIO()) {
@@ -153,6 +164,7 @@ class AdsDetailsViewModel
     }
 
     fun fetchAvailability4(date: String) {
+        DebugLog.i("Availability", date)
         viewModelScope.launch {
             tryCatch({
                 val response = withContext(schedulerProvider.dispatchersIO()) {
@@ -170,6 +182,7 @@ class AdsDetailsViewModel
 
 
     fun fetchAvailability5(date: String) {
+        DebugLog.i("Availability", date)
         viewModelScope.launch {
             tryCatch({
                 val response = withContext(schedulerProvider.dispatchersIO()) {
@@ -187,6 +200,7 @@ class AdsDetailsViewModel
 
 
     fun fetchAvailability6(date: String) {
+        DebugLog.i("Availability", date)
         viewModelScope.launch {
             tryCatch({
                 val response = withContext(schedulerProvider.dispatchersIO()) {
@@ -203,6 +217,7 @@ class AdsDetailsViewModel
     }
 
     fun fetchAvailability7(date: String) {
+        DebugLog.i("Availability", date)
         viewModelScope.launch {
             tryCatch({
                 val response = withContext(schedulerProvider.dispatchersIO()) {
