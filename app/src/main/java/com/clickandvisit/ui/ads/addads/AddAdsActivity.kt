@@ -38,6 +38,9 @@ class AddAdsActivity : BaseActivity() {
         startFragment()
     }
 
+    fun getPropId():Int{
+        return viewModel.propId
+    }
 
     /**
      * register UI Home activity Observers

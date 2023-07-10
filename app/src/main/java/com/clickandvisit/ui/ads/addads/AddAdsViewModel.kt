@@ -102,6 +102,9 @@ class AddAdsViewModel
 
     val isEdit: MutableLiveData<Boolean> = MutableLiveData()
 
+
+    var propId: Int = 0
+
     init {
         isEdit.value =
             savedStateHandle.getLiveData<Boolean>(ExtraKeys.AddAdsActivity.PROPERTY_EXTRA_KEY_EDIT).value
@@ -319,6 +322,7 @@ class AddAdsViewModel
     private fun createUpdatePropertySuccess(propertyAddResponse: PropertyAddResponse) {
         hideBlockProgressBar()
         DebugLog.i(TAG, propertyAddResponse.propId.toString())
+        propId = propertyAddResponse.propId
         navigate(Navigation.CalendarFragmentNavigation)
     }
 

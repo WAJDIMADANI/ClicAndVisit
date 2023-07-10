@@ -102,7 +102,6 @@ class AdsDetailsViewModel
 
 
     fun fetchAvailability1(date: String) {
-        DebugLog.i("Availability", date)
         availableHours1.value = arrayListOf()
         availableHours2.value = arrayListOf()
         availableHours3.value = arrayListOf()
@@ -128,7 +127,6 @@ class AdsDetailsViewModel
 
 
     fun fetchAvailability2(date: String) {
-        DebugLog.i("Availability", date)
         viewModelScope.launch {
             tryCatch({
                 val response = withContext(schedulerProvider.dispatchersIO()) {
@@ -147,7 +145,6 @@ class AdsDetailsViewModel
 
 
     fun fetchAvailability3(date: String) {
-        DebugLog.i("Availability", date)
         viewModelScope.launch {
             tryCatch({
                 val response = withContext(schedulerProvider.dispatchersIO()) {
@@ -164,7 +161,6 @@ class AdsDetailsViewModel
     }
 
     fun fetchAvailability4(date: String) {
-        DebugLog.i("Availability", date)
         viewModelScope.launch {
             tryCatch({
                 val response = withContext(schedulerProvider.dispatchersIO()) {
@@ -182,7 +178,6 @@ class AdsDetailsViewModel
 
 
     fun fetchAvailability5(date: String) {
-        DebugLog.i("Availability", date)
         viewModelScope.launch {
             tryCatch({
                 val response = withContext(schedulerProvider.dispatchersIO()) {
@@ -200,7 +195,6 @@ class AdsDetailsViewModel
 
 
     fun fetchAvailability6(date: String) {
-        DebugLog.i("Availability", date)
         viewModelScope.launch {
             tryCatch({
                 val response = withContext(schedulerProvider.dispatchersIO()) {
@@ -217,7 +211,6 @@ class AdsDetailsViewModel
     }
 
     fun fetchAvailability7(date: String) {
-        DebugLog.i("Availability", date)
         viewModelScope.launch {
             tryCatch({
                 val response = withContext(schedulerProvider.dispatchersIO()) {
@@ -230,6 +223,7 @@ class AdsDetailsViewModel
             })
         }
     }
+
 
 
     private fun fetchDPE() {

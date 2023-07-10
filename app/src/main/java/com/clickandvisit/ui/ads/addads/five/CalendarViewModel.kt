@@ -1,29 +1,186 @@
 package com.clickandvisit.ui.ads.addads.five
 
 import android.app.Application
+import android.app.PendingIntent.getActivity
+import android.os.Build
+import androidx.annotation.RequiresApi
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import com.clickandvisit.base.BaseAndroidViewModel
 import com.clickandvisit.data.model.property.Property
+import com.clickandvisit.data.repository.abs.UserRepository
 import com.clickandvisit.global.listener.SchedulerProvider
+import com.clickandvisit.global.utils.tryCatch
+import com.clickandvisit.ui.ads.addads.AddAdsActivity
+import com.clickandvisit.ui.ads.adsdetails.CalendarUtils
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import java.time.DayOfWeek
+import java.time.LocalDate
+import java.time.temporal.TemporalAdjusters
 import javax.inject.Inject
 
 
+@RequiresApi(Build.VERSION_CODES.O)
 @HiltViewModel
 class CalendarViewModel
 @Inject constructor(
     application: Application,
     schedulerProvider: SchedulerProvider,
-    savedStateHandle: SavedStateHandle
+    savedStateHandle: SavedStateHandle,
+    private val userRepository: UserRepository
 ) : BaseAndroidViewModel(application, schedulerProvider) {
 
-    init {
+    val availableHours1: MutableLiveData<List<String>?> = MutableLiveData()
+    val availableHours2: MutableLiveData<List<String>?> = MutableLiveData()
+    val availableHours3: MutableLiveData<List<String>?> = MutableLiveData()
+    val availableHours4: MutableLiveData<List<String>?> = MutableLiveData()
+    val availableHours5: MutableLiveData<List<String>?> = MutableLiveData()
+    val availableHours6: MutableLiveData<List<String>?> = MutableLiveData()
+    val availableHours7: MutableLiveData<List<String>?> = MutableLiveData()
 
+    var propertyId: Int = 0
+
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    var firstDay = LocalDate.now().with(TemporalAdjusters.previousOrSame(DayOfWeek.SUNDAY))
+
+    init {
+        fetchAvailability1(CalendarUtils.getWsFormattedDate(firstDay))
     }
 
     fun onEditProperty(property: Property) {
-        // surface.value = property.propSurface ...
+        //propertyId = property.id
     }
 
 
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun fetchAvailability1(date: String) {
+        availableHours1.value = arrayListOf()
+        availableHours2.value = arrayListOf()
+        availableHours3.value = arrayListOf()
+        availableHours4.value = arrayListOf()
+        availableHours5.value = arrayListOf()
+        availableHours6.value = arrayListOf()
+        availableHours7.value = arrayListOf()
+        showBlockProgressBar()
+        viewModelScope.launch {
+            tryCatch({
+                val response = withContext(schedulerProvider.dispatchersIO()) {
+                    userRepository.getAvailability(date, propertyId)
+                }
+                availableHours1.value = response.availableHours
+                firstDay = firstDay.plusDays(1)
+                val day = firstDay
+                fetchAvailability2(CalendarUtils.getWsFormattedDate(day))
+            }, { error ->
+                onLikeClickedError(error)
+            })
+        }
+    }
+
+
+    fun fetchAvailability2(date: String) {
+        viewModelScope.launch {
+            tryCatch({
+                val response = withContext(schedulerProvider.dispatchersIO()) {
+                    userRepository.getAvailability(date, propertyId)
+                }
+                availableHours2.value = response.availableHours
+                firstDay = firstDay.plusDays(1)
+                val day = firstDay
+                fetchAvailability3(CalendarUtils.getWsFormattedDate(day))
+            }, { error ->
+                onLikeClickedError(error)
+            })
+        }
+    }
+
+
+    fun fetchAvailability3(date: String) {
+        viewModelScope.launch {
+            tryCatch({
+                val response = withContext(schedulerProvider.dispatchersIO()) {
+                    userRepository.getAvailability(date, propertyId)
+                }
+                availableHours3.value = response.availableHours
+                firstDay = firstDay.plusDays(1)
+                val day = firstDay
+                fetchAvailability4(CalendarUtils.getWsFormattedDate(day))
+            }, { error ->
+                onLikeClickedError(error)
+            })
+        }
+    }
+
+    fun fetchAvailability4(date: String) {
+        viewModelScope.launch {
+            tryCatch({
+                val response = withContext(schedulerProvider.dispatchersIO()) {
+                    userRepository.getAvailability(date, propertyId)
+                }
+                availableHours4.value = response.availableHours
+                firstDay = firstDay.plusDays(1)
+                val day = firstDay
+                fetchAvailability5(CalendarUtils.getWsFormattedDate(day))
+            }, { error ->
+                onLikeClickedError(error)
+            })
+        }
+    }
+
+
+    fun fetchAvailability5(date: String) {
+        viewModelScope.launch {
+            tryCatch({
+                val response = withContext(schedulerProvider.dispatchersIO()) {
+                    userRepository.getAvailability(date, propertyId)
+                }
+                availableHours5.value = response.availableHours
+                firstDay = firstDay.plusDays(1)
+                val day = firstDay
+                fetchAvailability6(CalendarUtils.getWsFormattedDate(day))
+            }, { error ->
+                onLikeClickedError(error)
+            })
+        }
+    }
+
+
+    fun fetchAvailability6(date: String) {
+        viewModelScope.launch {
+            tryCatch({
+                val response = withContext(schedulerProvider.dispatchersIO()) {
+                    userRepository.getAvailability(date, propertyId)
+                }
+                availableHours6.value = response.availableHours
+                firstDay = firstDay.plusDays(1)
+                val day = firstDay
+                fetchAvailability7(CalendarUtils.getWsFormattedDate(day))
+            }, { error ->
+                onLikeClickedError(error)
+            })
+        }
+    }
+
+    fun fetchAvailability7(date: String) {
+        viewModelScope.launch {
+            tryCatch({
+                val response = withContext(schedulerProvider.dispatchersIO()) {
+                    userRepository.getAvailability(date, propertyId)
+                }
+                hideBlockProgressBar()
+                availableHours7.value = response.availableHours
+            }, { error ->
+                onLikeClickedError(error)
+            })
+        }
+    }
+
+
+    private fun onLikeClickedError(throwable: Throwable) {
+        hideBlockProgressBar()
+        handleThrowable(throwable)
+    }
 }

@@ -65,7 +65,6 @@ class AdsDetailsActivity : BaseActivity(), CalendarAdapter.OnItemListener {
         registerRecycler(binding)
 
         addTVToLists()
-
         CalendarUtils.selectedDate = LocalDate.now()
         setWeekView()
         fetchHoursResult(R.color.color_accent)
