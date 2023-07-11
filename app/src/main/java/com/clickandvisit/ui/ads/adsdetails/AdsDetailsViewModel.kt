@@ -15,11 +15,9 @@ import com.clickandvisit.data.model.property.ADD
 import com.clickandvisit.data.model.property.FavoriteRequest
 import com.clickandvisit.data.model.property.Property
 import com.clickandvisit.data.model.property.REMOVE
-import com.clickandvisit.data.model.reservation.AvailabilityResponse
 import com.clickandvisit.data.repository.abs.UserRepository
 import com.clickandvisit.global.helper.Navigation
 import com.clickandvisit.global.listener.SchedulerProvider
-import com.clickandvisit.global.utils.DebugLog
 import com.clickandvisit.global.utils.ExtraKeys
 import com.clickandvisit.global.utils.tryCatch
 import dagger.hilt.android.lifecycle.HiltViewModel

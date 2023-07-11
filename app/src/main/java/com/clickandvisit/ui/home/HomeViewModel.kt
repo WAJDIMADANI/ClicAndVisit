@@ -9,7 +9,6 @@ import com.clickandvisit.R
 import com.clickandvisit.base.BaseAndroidViewModel
 import com.clickandvisit.data.model.GlobalResponse
 import com.clickandvisit.data.model.property.*
-import com.clickandvisit.data.model.reservation.AvailabilityResponse
 import com.clickandvisit.data.model.user.TokenResponse
 import com.clickandvisit.data.repository.abs.UserRepository
 import com.clickandvisit.global.helper.Navigation

@@ -92,7 +92,104 @@ class CalendarFragment(val property: Property?) : BaseFragment(), CalendarAdapte
             fetchHoursResult(R.color.color_accent)
         }
 
+        itemsClickListener()
+
         return view
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun itemsClickListener() {
+        itemsClickByList(
+            listTV1,
+            viewModel.availableHours1,
+            CalendarUtils.getWsFormattedDate(viewModel.firstDay),
+            true
+        )
+
+        itemsClickByList(
+            listTV2,
+            viewModel.availableHours2,
+            CalendarUtils.getWsFormattedDate(viewModel.firstDay.plusDays(1)),
+            false
+        )
+
+        itemsClickByList(
+            listTV3,
+            viewModel.availableHours3,
+            CalendarUtils.getWsFormattedDate(viewModel.firstDay.plusDays(2)),
+            true
+        )
+
+        itemsClickByList(
+            listTV4,
+            viewModel.availableHours4,
+            CalendarUtils.getWsFormattedDate(viewModel.firstDay.plusDays(3)),
+            false
+        )
+
+        itemsClickByList(
+            listTV5,
+            viewModel.availableHours5,
+            CalendarUtils.getWsFormattedDate(viewModel.firstDay.plusDays(4)),
+            true
+        )
+
+        itemsClickByList(
+            listTV6,
+            viewModel.availableHours6,
+            CalendarUtils.getWsFormattedDate(viewModel.firstDay.plusDays(5)),
+            false
+        )
+
+        itemsClickByList(
+            listTV7,
+            viewModel.availableHours7,
+            CalendarUtils.getWsFormattedDate(viewModel.firstDay.plusDays(6)),
+            true
+        )
+
+
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun itemsClickByList(
+        tvList:  MutableLiveData<ArrayList<AppCompatTextView>>,
+        hoursList: MutableLiveData<ArrayList<String>?>,
+        day: String,
+        isWhite: Boolean
+    ) {
+        tvList.value!!.forEach { tv ->
+            tv.setOnClickListener {
+                if (hoursList.value?.isNotEmpty() == true && hoursList.value?.contains(tv.tag) == true) {
+                    if (isWhite) {
+                        tv.setBackgroundColor(
+                            ContextCompat.getColor(
+                                requireContext(),
+                                R.color.white_basic
+                            )
+                        )
+                    } else {
+                        tv.setBackgroundColor(
+                            ContextCompat.getColor(
+                                requireContext(),
+                                R.color.day_gray
+                            )
+                        )
+                    }
+                    hoursList.value!!.remove(tv.tag)
+                    viewModel.setAvailability("$day ${tv.tag}", "remove")
+                } else {
+                    tv.setBackgroundColor(
+                        ContextCompat.getColor(
+                            requireContext(),
+                            R.color.color_accent
+                        )
+                    )
+                    hoursList.value?.add(tv.tag as String)
+                    viewModel.setAvailability("$day ${tv.tag}", "add")
+                }
+            }
+        }
     }
 
 

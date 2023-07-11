@@ -86,8 +86,7 @@ class AddAdsActivity : BaseActivity() {
         when (currentIndex) {
 
             4 -> {
-                // CalendarFragment interface
-                // add or edit reservation
+                finish()
             }
 
             3 -> {
@@ -317,6 +316,7 @@ class AddAdsActivity : BaseActivity() {
     fun stepFour() {
         binding.tvStep4.visibility = View.VISIBLE
         binding.tvStep5.visibility = View.INVISIBLE
+        binding.cbNext.text = getString(R.string.global_next)
     }
 
     fun stepFive() {

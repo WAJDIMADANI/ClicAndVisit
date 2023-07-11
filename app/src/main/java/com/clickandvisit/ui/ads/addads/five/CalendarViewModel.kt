@@ -1,17 +1,16 @@
 package com.clickandvisit.ui.ads.addads.five
 
 import android.app.Application
-import android.app.PendingIntent.getActivity
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import com.clickandvisit.base.BaseAndroidViewModel
 import com.clickandvisit.data.model.property.Property
+import com.clickandvisit.data.model.reservation.ResultModel
 import com.clickandvisit.data.repository.abs.UserRepository
 import com.clickandvisit.global.listener.SchedulerProvider
 import com.clickandvisit.global.utils.tryCatch
-import com.clickandvisit.ui.ads.addads.AddAdsActivity
 import com.clickandvisit.ui.ads.adsdetails.CalendarUtils
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -32,13 +31,13 @@ class CalendarViewModel
     private val userRepository: UserRepository
 ) : BaseAndroidViewModel(application, schedulerProvider) {
 
-    val availableHours1: MutableLiveData<List<String>?> = MutableLiveData()
-    val availableHours2: MutableLiveData<List<String>?> = MutableLiveData()
-    val availableHours3: MutableLiveData<List<String>?> = MutableLiveData()
-    val availableHours4: MutableLiveData<List<String>?> = MutableLiveData()
-    val availableHours5: MutableLiveData<List<String>?> = MutableLiveData()
-    val availableHours6: MutableLiveData<List<String>?> = MutableLiveData()
-    val availableHours7: MutableLiveData<List<String>?> = MutableLiveData()
+    val availableHours1: MutableLiveData<ArrayList<String>?> = MutableLiveData()
+    val availableHours2: MutableLiveData<ArrayList<String>?> = MutableLiveData()
+    val availableHours3: MutableLiveData<ArrayList<String>?> = MutableLiveData()
+    val availableHours4: MutableLiveData<ArrayList<String>?> = MutableLiveData()
+    val availableHours5: MutableLiveData<ArrayList<String>?> = MutableLiveData()
+    val availableHours6: MutableLiveData<ArrayList<String>?> = MutableLiveData()
+    val availableHours7: MutableLiveData<ArrayList<String>?> = MutableLiveData()
 
     var propertyId: Int = 0
 
@@ -70,7 +69,8 @@ class CalendarViewModel
                 val response = withContext(schedulerProvider.dispatchersIO()) {
                     userRepository.getAvailability(date, propertyId)
                 }
-                availableHours1.value = response.availableHours
+
+                availableHours1.value = response.availableHours as ArrayList<String>
                 firstDay = firstDay.plusDays(1)
                 val day = firstDay
                 fetchAvailability2(CalendarUtils.getWsFormattedDate(day))
@@ -87,7 +87,7 @@ class CalendarViewModel
                 val response = withContext(schedulerProvider.dispatchersIO()) {
                     userRepository.getAvailability(date, propertyId)
                 }
-                availableHours2.value = response.availableHours
+                availableHours2.value = response.availableHours as ArrayList<String>
                 firstDay = firstDay.plusDays(1)
                 val day = firstDay
                 fetchAvailability3(CalendarUtils.getWsFormattedDate(day))
@@ -104,7 +104,7 @@ class CalendarViewModel
                 val response = withContext(schedulerProvider.dispatchersIO()) {
                     userRepository.getAvailability(date, propertyId)
                 }
-                availableHours3.value = response.availableHours
+                availableHours3.value = response.availableHours as ArrayList<String>
                 firstDay = firstDay.plusDays(1)
                 val day = firstDay
                 fetchAvailability4(CalendarUtils.getWsFormattedDate(day))
@@ -120,7 +120,7 @@ class CalendarViewModel
                 val response = withContext(schedulerProvider.dispatchersIO()) {
                     userRepository.getAvailability(date, propertyId)
                 }
-                availableHours4.value = response.availableHours
+                availableHours4.value = response.availableHours as ArrayList<String>
                 firstDay = firstDay.plusDays(1)
                 val day = firstDay
                 fetchAvailability5(CalendarUtils.getWsFormattedDate(day))
@@ -137,7 +137,7 @@ class CalendarViewModel
                 val response = withContext(schedulerProvider.dispatchersIO()) {
                     userRepository.getAvailability(date, propertyId)
                 }
-                availableHours5.value = response.availableHours
+                availableHours5.value = response.availableHours as ArrayList<String>
                 firstDay = firstDay.plusDays(1)
                 val day = firstDay
                 fetchAvailability6(CalendarUtils.getWsFormattedDate(day))
@@ -154,7 +154,7 @@ class CalendarViewModel
                 val response = withContext(schedulerProvider.dispatchersIO()) {
                     userRepository.getAvailability(date, propertyId)
                 }
-                availableHours6.value = response.availableHours
+                availableHours6.value = response.availableHours as ArrayList<String>
                 firstDay = firstDay.plusDays(1)
                 val day = firstDay
                 fetchAvailability7(CalendarUtils.getWsFormattedDate(day))
@@ -171,7 +171,7 @@ class CalendarViewModel
                     userRepository.getAvailability(date, propertyId)
                 }
                 hideBlockProgressBar()
-                availableHours7.value = response.availableHours
+                availableHours7.value = response.availableHours as ArrayList<String>
             }, { error ->
                 onLikeClickedError(error)
             })
@@ -183,4 +183,28 @@ class CalendarViewModel
         hideBlockProgressBar()
         handleThrowable(throwable)
     }
+
+
+    fun setAvailability(date: String, accept: String) {
+        viewModelScope.launch {
+            tryCatch({
+                val response = withContext(schedulerProvider.dispatchersIO()) {
+                    userRepository.setAvailability(
+                        propertyId,
+                        date,
+                        accept
+                    )
+                }
+                onSetAvailabilitySuccess(response)
+            }, { error ->
+                onLikeClickedError(error)
+            })
+        }
+    }
+
+    private fun onSetAvailabilitySuccess(response: ResultModel) {
+
+    }
+
+
 }
