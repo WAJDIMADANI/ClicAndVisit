@@ -39,6 +39,9 @@ class CalendarViewModel
     val availableHours6: MutableLiveData<ArrayList<String>?> = MutableLiveData()
     val availableHours7: MutableLiveData<ArrayList<String>?> = MutableLiveData()
 
+
+    val allReservedHours: MutableLiveData<ArrayList<String>?> = MutableLiveData()
+
     var propertyId: Int = 0
 
 
@@ -50,7 +53,16 @@ class CalendarViewModel
     }
 
     fun onEditProperty(property: Property) {
-        //propertyId = property.id
+        viewModelScope.launch {
+            tryCatch({
+                val response = withContext(schedulerProvider.dispatchersIO()) {
+                    userRepository.getAllReserved(property.id)
+                }
+                allReservedHours.value = response.availableHours as ArrayList
+            }, { error ->
+                onLikeClickedError(error)
+            })
+        }
     }
 
 
