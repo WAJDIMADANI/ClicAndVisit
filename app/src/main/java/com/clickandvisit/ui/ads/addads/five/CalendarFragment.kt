@@ -60,6 +60,8 @@ class CalendarFragment(val property: Property?) : BaseFragment(), CalendarAdapte
 
 
         addTVToLists()
+        itemsClickListener()
+
         CalendarUtils.selectedDate = LocalDate.now()
         setWeekView()
         fetchHoursResult(R.color.color_accent)
@@ -92,7 +94,6 @@ class CalendarFragment(val property: Property?) : BaseFragment(), CalendarAdapte
             fetchHoursResult(R.color.color_accent)
         }
 
-        itemsClickListener()
 
         return view
     }
@@ -153,7 +154,7 @@ class CalendarFragment(val property: Property?) : BaseFragment(), CalendarAdapte
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun itemsClickByList(
-        tvList:  MutableLiveData<ArrayList<AppCompatTextView>>,
+        tvList: MutableLiveData<ArrayList<AppCompatTextView>>,
         hoursList: MutableLiveData<ArrayList<String>?>,
         day: String,
         isWhite: Boolean
@@ -261,6 +262,21 @@ class CalendarFragment(val property: Property?) : BaseFragment(), CalendarAdapte
 
     @RequiresApi(Build.VERSION_CODES.O)
     fun fetchHoursResult1(colorId: Int) {
+        viewModel.allReservedHours.observeOnlyNotNull(this) { dates ->
+            dates?.forEach {
+                listTV1.value!!.forEach { tv ->
+                    if (it == "${CalendarUtils.getWsFormattedDate(viewModel.firstDay)} ${tv.tag}") {
+                        tv.setBackgroundColor(
+                            ContextCompat.getColor(
+                                requireContext(),
+                                R.color.alizarin
+                            )
+                        )
+                        tv.setOnClickListener(null)
+                    }
+                }
+            }
+        }
         viewModel.availableHours1.observeOnlyNotNull(this) { hours ->
             hours?.forEach { h ->
                 listTV1.value!!.forEach { tv ->
@@ -274,6 +290,21 @@ class CalendarFragment(val property: Property?) : BaseFragment(), CalendarAdapte
 
     @RequiresApi(Build.VERSION_CODES.O)
     fun fetchHoursResult2(colorId: Int) {
+        viewModel.allReservedHours.observeOnlyNotNull(this) { dates ->
+            dates?.forEach {
+                listTV2.value!!.forEach { tv ->
+                    if (it == "${CalendarUtils.getWsFormattedDate(viewModel.firstDay.plusDays(1))} ${tv.tag}") {
+                        tv.setBackgroundColor(
+                            ContextCompat.getColor(
+                                requireContext(),
+                                R.color.alizarin
+                            )
+                        )
+                        tv.setOnClickListener(null)
+                    }
+                }
+            }
+        }
         viewModel.availableHours2.observeOnlyNotNull(this) { hours ->
             hours?.forEach { h ->
                 listTV2.value!!.forEach { tv ->
@@ -287,6 +318,21 @@ class CalendarFragment(val property: Property?) : BaseFragment(), CalendarAdapte
 
     @RequiresApi(Build.VERSION_CODES.O)
     fun fetchHoursResult3(colorId: Int) {
+        viewModel.allReservedHours.observeOnlyNotNull(this) { dates ->
+            dates?.forEach {
+                listTV3.value!!.forEach { tv ->
+                    if (it == "${CalendarUtils.getWsFormattedDate(viewModel.firstDay.plusDays(2))} ${tv.tag}") {
+                        tv.setBackgroundColor(
+                            ContextCompat.getColor(
+                                requireContext(),
+                                R.color.alizarin
+                            )
+                        )
+                        tv.setOnClickListener(null)
+                    }
+                }
+            }
+        }
         viewModel.availableHours3.observeOnlyNotNull(this) { hours ->
             hours?.forEach { h ->
                 listTV3.value!!.forEach { tv ->
@@ -300,6 +346,21 @@ class CalendarFragment(val property: Property?) : BaseFragment(), CalendarAdapte
 
     @RequiresApi(Build.VERSION_CODES.O)
     fun fetchHoursResult4(colorId: Int) {
+        viewModel.allReservedHours.observeOnlyNotNull(this) { dates ->
+            dates?.forEach {
+                listTV4.value!!.forEach { tv ->
+                    if (it == "${CalendarUtils.getWsFormattedDate(viewModel.firstDay.plusDays(3))} ${tv.tag}") {
+                        tv.setBackgroundColor(
+                            ContextCompat.getColor(
+                                requireContext(),
+                                R.color.alizarin
+                            )
+                        )
+                        tv.setOnClickListener(null)
+                    }
+                }
+            }
+        }
         viewModel.availableHours4.observeOnlyNotNull(this) { hours ->
             hours?.forEach { h ->
                 listTV4.value!!.forEach { tv ->
@@ -313,6 +374,21 @@ class CalendarFragment(val property: Property?) : BaseFragment(), CalendarAdapte
 
     @RequiresApi(Build.VERSION_CODES.O)
     fun fetchHoursResult5(colorId: Int) {
+        viewModel.allReservedHours.observeOnlyNotNull(this) { dates ->
+            dates?.forEach {
+                listTV5.value!!.forEach { tv ->
+                    if (it == "${CalendarUtils.getWsFormattedDate(viewModel.firstDay.plusDays(4))} ${tv.tag}") {
+                        tv.setBackgroundColor(
+                            ContextCompat.getColor(
+                                requireContext(),
+                                R.color.alizarin
+                            )
+                        )
+                        tv.setOnClickListener(null)
+                    }
+                }
+            }
+        }
         viewModel.availableHours5.observeOnlyNotNull(this) { hours ->
             hours?.forEach { h ->
                 listTV5.value!!.forEach { tv ->
@@ -326,6 +402,21 @@ class CalendarFragment(val property: Property?) : BaseFragment(), CalendarAdapte
 
     @RequiresApi(Build.VERSION_CODES.O)
     fun fetchHoursResult6(colorId: Int) {
+        viewModel.allReservedHours.observeOnlyNotNull(this) { dates ->
+            dates?.forEach {
+                listTV6.value!!.forEach { tv ->
+                    if (it == "${CalendarUtils.getWsFormattedDate(viewModel.firstDay.plusDays(5))} ${tv.tag}") {
+                        tv.setBackgroundColor(
+                            ContextCompat.getColor(
+                                requireContext(),
+                                R.color.alizarin
+                            )
+                        )
+                        tv.setOnClickListener(null)
+                    }
+                }
+            }
+        }
         viewModel.availableHours6.observeOnlyNotNull(this) { hours ->
             hours?.forEach { h ->
                 listTV6.value!!.forEach { tv ->
@@ -339,6 +430,21 @@ class CalendarFragment(val property: Property?) : BaseFragment(), CalendarAdapte
 
     @RequiresApi(Build.VERSION_CODES.O)
     fun fetchHoursResult7(colorId: Int) {
+        viewModel.allReservedHours.observeOnlyNotNull(this) { dates ->
+            dates?.forEach {
+                listTV7.value!!.forEach { tv ->
+                    if (it == "${CalendarUtils.getWsFormattedDate(viewModel.firstDay.plusDays(6))} ${tv.tag}") {
+                        tv.setBackgroundColor(
+                            ContextCompat.getColor(
+                                requireContext(),
+                                R.color.alizarin
+                            )
+                        )
+                        tv.setOnClickListener(null)
+                    }
+                }
+            }
+        }
         viewModel.availableHours7.observeOnlyNotNull(this) { hours ->
             hours?.forEach { h ->
                 listTV7.value!!.forEach { tv ->
