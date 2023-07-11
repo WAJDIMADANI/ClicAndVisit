@@ -15,6 +15,9 @@ import com.clickandvisit.data.model.property.ADD
 import com.clickandvisit.data.model.property.FavoriteRequest
 import com.clickandvisit.data.model.property.Property
 import com.clickandvisit.data.model.property.REMOVE
+import com.clickandvisit.data.model.reservation.ReservationResponse
+import com.clickandvisit.data.model.reservation.ReserveResponse
+import com.clickandvisit.data.model.reservation.ResultModel
 import com.clickandvisit.data.repository.abs.UserRepository
 import com.clickandvisit.global.helper.Navigation
 import com.clickandvisit.global.listener.SchedulerProvider
@@ -99,6 +102,10 @@ class AdsDetailsViewModel
     }
 
 
+    fun isCurrentUser(): Boolean {
+        return property.value!!.owner.id == userRepository.getSharedUser().id
+    }
+
     fun fetchAvailability1(date: String) {
         availableHours1.value = arrayListOf()
         availableHours2.value = arrayListOf()
@@ -139,7 +146,6 @@ class AdsDetailsViewModel
             })
         }
     }
-
 
 
     fun fetchAvailability3(date: String) {
@@ -221,7 +227,6 @@ class AdsDetailsViewModel
             })
         }
     }
-
 
 
     private fun fetchDPE() {
@@ -397,6 +402,36 @@ class AdsDetailsViewModel
 
     fun onBackClick() {
         navigate(Navigation.Back)
+    }
+
+    fun reserve(date: String, hour: String) {
+        shownChoseDialog(
+            title = null,
+            message = "Voulez-vous confirmer votre RDV pour le $date à $hour ?",
+            "Oui",
+            "Non",
+            okActionBlock = {
+                viewModelScope.launch {
+                    tryCatch({
+                        val response = withContext(schedulerProvider.dispatchersIO()) {
+                            userRepository.reserve(
+                                property.value!!.id,
+                                "$date $hour"
+                            )
+                        }
+                        onReserveSuccess(response)
+                    }, { error ->
+                        onLikeClickedError(error)
+                    })
+                }
+            }, dismissActionBlock = null
+        )
+    }
+
+    private fun onReserveSuccess(response: ReserveResponse) {
+        shownSimpleDialog(messageId = R.string.rdv_response, okActionBlock = {
+            navigate(Navigation.Back)
+        })
     }
 
 }

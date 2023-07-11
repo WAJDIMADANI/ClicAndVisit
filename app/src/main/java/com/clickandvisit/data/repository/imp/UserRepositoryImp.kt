@@ -9,10 +9,7 @@ import com.clickandvisit.data.model.chat.MessagesResponse
 import com.clickandvisit.data.model.property.*
 import com.clickandvisit.data.model.property.add.PropertyAdd
 import com.clickandvisit.data.model.property.add.PropertyAddResponse
-import com.clickandvisit.data.model.reservation.AvailabilityResponse
-import com.clickandvisit.data.model.reservation.ReservationResponse
-import com.clickandvisit.data.model.reservation.ReservedPropertyResponse
-import com.clickandvisit.data.model.reservation.ResultModel
+import com.clickandvisit.data.model.reservation.*
 import com.clickandvisit.data.model.user.*
 import com.clickandvisit.data.model.user.signup.SignupResponse
 import com.clickandvisit.data.repository.abs.UserRepository
@@ -99,6 +96,10 @@ class UserRepositoryImp @Inject constructor(
         val updatedUser = apiClient.getUser(sharedPreferences.getUser().id.toInt())
         sharedPreferences.saveUser(updatedUser.user)
         return updatedUser.user
+    }
+
+    override fun getSharedUser(): User {
+        return sharedPreferences.getUser()
     }
 
     override suspend fun userUpdate(user: User): User {
@@ -292,7 +293,7 @@ class UserRepositoryImp @Inject constructor(
     override suspend fun reserve(
         propertyId: Int,
         dateTime: String
-    ): ReservationResponse {
+    ): ReserveResponse {
         return apiClient.reserve(sharedPreferences.getUser().id.toInt(), propertyId, dateTime)
     }
 

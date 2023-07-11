@@ -27,15 +27,18 @@ class SearchViewHolder(
         if (value.visitNow) {
             binding.tvMeet.setBackgroundColor(context.getColor(R.color.green_pro_status_details))
             binding.tvMeet.text = context.getString(R.string.home_visit)
+            binding.tvMeet.setOnClickListener {
+                onPropertyClickedListener.onVisitNowClicked(value)
+            }
         } else {
             binding.tvMeet.setBackgroundColor(context.getColor(R.color.red_pro_status))
             binding.tvMeet.text = context.getString(R.string.home_meet)
         }
         binding.tvAdsName.text = value.title.toUpperCase()
         if (value.mainPhoto.isNullOrEmpty().not()) {
-            if (value.album.isNullOrEmpty()){
+            if (value.album.isNullOrEmpty()) {
                 binding.tvPhotoCount.text = "1"
-            }else{
+            } else {
                 binding.tvPhotoCount.text = value.album?.size?.plus(1).toString()
             }
         } else {
@@ -58,9 +61,9 @@ class SearchViewHolder(
             )
 
 
-        if(value.isFavorite){
+        if (value.isFavorite) {
             binding.ivLike.background = context.getDrawable(R.drawable.ic_like_on)
-        }else{
+        } else {
             binding.ivLike.background = context.getDrawable(R.drawable.ic_like)
         }
 

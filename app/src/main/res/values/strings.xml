@@ -519,4 +519,7 @@
         <item>NA</item>
     </string-array>
 
+
+    <string name="rdv_response">Votre demande de RDV a été envoyé avec succès !</string>
+
 </resources>

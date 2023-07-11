@@ -8,10 +8,7 @@ import com.clickandvisit.data.model.chat.MessagesResponse
 import com.clickandvisit.data.model.property.*
 import com.clickandvisit.data.model.property.add.PropertyAdd
 import com.clickandvisit.data.model.property.add.PropertyAddResponse
-import com.clickandvisit.data.model.reservation.AvailabilityResponse
-import com.clickandvisit.data.model.reservation.ReservationResponse
-import com.clickandvisit.data.model.reservation.ReservedPropertyResponse
-import com.clickandvisit.data.model.reservation.ResultModel
+import com.clickandvisit.data.model.reservation.*
 import com.clickandvisit.data.model.user.*
 import com.clickandvisit.data.model.user.signup.SignupResponse
 import com.clickandvisit.global.enumeration.Optional
@@ -54,6 +51,8 @@ interface UserRepository {
 
     @WorkerThread
     suspend fun getUser(): User
+
+    fun getSharedUser(): User
 
     @WorkerThread
     suspend fun userUpdate(user: User): User
@@ -107,7 +106,7 @@ interface UserRepository {
 
     suspend fun getAllReserved(propId: Int): ReservedPropertyResponse
 
-    suspend fun reserve(propertyId: Int, dateTime: String): ReservationResponse
+    suspend fun reserve(propertyId: Int, dateTime: String): ReserveResponse
 
     suspend fun setAvailability(
         propertyId: Int,

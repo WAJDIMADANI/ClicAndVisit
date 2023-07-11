@@ -3,12 +3,15 @@ package com.clickandvisit.ui.home
 import android.app.Activity
 import android.app.Application
 import android.content.Intent
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import com.clickandvisit.R
 import com.clickandvisit.base.BaseAndroidViewModel
 import com.clickandvisit.data.model.GlobalResponse
 import com.clickandvisit.data.model.property.*
+import com.clickandvisit.data.model.reservation.ReserveResponse
 import com.clickandvisit.data.model.user.TokenResponse
 import com.clickandvisit.data.repository.abs.UserRepository
 import com.clickandvisit.global.helper.Navigation
@@ -20,11 +23,15 @@ import com.clickandvisit.global.utils.DebugLog
 import com.clickandvisit.global.utils.ExtraKeys
 import com.clickandvisit.global.utils.TAG
 import com.clickandvisit.global.utils.tryCatch
+import com.clickandvisit.ui.ads.adsdetails.CalendarUtils
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.iid.FirebaseInstanceId
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.util.*
 import javax.inject.Inject
 
 
@@ -180,6 +187,48 @@ class HomeViewModel
                 }
             }, dismissActionBlock = null
         )
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    override fun onVisitNowClicked(property: Property) {
+        val now = Calendar.getInstance()
+        now.set(Calendar.MINUTE, 0)
+        val sdf = SimpleDateFormat("HH:mm")
+
+        shownChoseDialog(
+            title = null,
+            message = "Voulez-vous confirmer votre RDV pour le ${
+                CalendarUtils.getWsFormattedDate(
+                    LocalDate.now()
+                )
+            } à ${sdf.format(now.time)} ?",
+            "Oui",
+            "Non",
+            okActionBlock = {
+                viewModelScope.launch {
+                    tryCatch({
+                        val response = withContext(schedulerProvider.dispatchersIO()) {
+                            userRepository.reserve(
+                                property.id,
+                                "${
+                                    CalendarUtils.getWsFormattedDate(
+                                        LocalDate.now()
+                                    )
+                                } ${sdf.format(now.time)}"
+                            )
+                        }
+                        onReserveSuccess(response)
+                    }, { error ->
+                        onLikeClickedError(error)
+                    })
+                }
+            }, dismissActionBlock = null
+        )
+    }
+
+
+    private fun onReserveSuccess(response: ReserveResponse) {
+
     }
 
     override fun onItemClicked(value: Property) {

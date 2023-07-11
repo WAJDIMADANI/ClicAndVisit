@@ -8,10 +8,7 @@ import com.clickandvisit.data.model.property.PropertyDetailsResponse
 import com.clickandvisit.data.model.property.SavedSearchResponse
 import com.clickandvisit.data.model.property.SearchResponse
 import com.clickandvisit.data.model.property.add.PropertyAddResponse
-import com.clickandvisit.data.model.reservation.AvailabilityResponse
-import com.clickandvisit.data.model.reservation.ReservationResponse
-import com.clickandvisit.data.model.reservation.ReservedPropertyResponse
-import com.clickandvisit.data.model.reservation.ResultModel
+import com.clickandvisit.data.model.reservation.*
 import com.clickandvisit.data.model.user.TokenResponse
 import com.clickandvisit.data.model.user.UserResponse
 import com.clickandvisit.data.model.user.signup.SignupResponse
@@ -285,7 +282,7 @@ interface APIClient {
         @Field("user_id") userId: Int,
         @Field("property_id") propertyId: Int,
         @Field("date_time") dateTime: String
-    ): ReservationResponse
+    ): ReserveResponse
 
     /** Chat **/
 

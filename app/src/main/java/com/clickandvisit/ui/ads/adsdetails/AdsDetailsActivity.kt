@@ -97,7 +97,8 @@ class AdsDetailsActivity : BaseActivity(), CalendarAdapter.OnItemListener {
         if (LocalDate.now() < CalendarUtils.selectedDate) {
             CalendarUtils.selectedDate = CalendarUtils.selectedDate.minusWeeks(1)
             setWeekView()
-            viewModel.firstDay = CalendarUtils.selectedDate.with(TemporalAdjusters.previousOrSame(DayOfWeek.SUNDAY))
+            viewModel.firstDay =
+                CalendarUtils.selectedDate.with(TemporalAdjusters.previousOrSame(DayOfWeek.SUNDAY))
             viewModel.fetchAvailability1(CalendarUtils.getWsFormattedDate(viewModel.firstDay))
             fetchDefaultColor()
             fetchHoursResult(R.color.color_accent)
@@ -108,7 +109,8 @@ class AdsDetailsActivity : BaseActivity(), CalendarAdapter.OnItemListener {
     fun nextWeekAction(view: View?) {
         CalendarUtils.selectedDate = CalendarUtils.selectedDate.plusWeeks(1)
         setWeekView()
-        viewModel.firstDay = CalendarUtils.selectedDate.with(TemporalAdjusters.previousOrSame(DayOfWeek.SUNDAY))
+        viewModel.firstDay =
+            CalendarUtils.selectedDate.with(TemporalAdjusters.previousOrSame(DayOfWeek.SUNDAY))
         viewModel.fetchAvailability1(CalendarUtils.getWsFormattedDate(viewModel.firstDay))
         fetchDefaultColor()
         fetchHoursResult(R.color.color_accent)
@@ -276,6 +278,18 @@ class AdsDetailsActivity : BaseActivity(), CalendarAdapter.OnItemListener {
                 listTV1.value!!.forEach { tv ->
                     if (h == tv.tag) {
                         tv.setBackgroundColor(getColor(colorId))
+                        tv.setOnClickListener {
+                            if (viewModel.isCurrentUser().not()) {
+                                viewModel.reserve(
+                                    CalendarUtils.getWsFormattedDate(
+                                        CalendarUtils.selectedDate.with(
+                                            TemporalAdjusters.previousOrSame(DayOfWeek.SUNDAY)
+                                        )
+                                    ),
+                                    "${tv.tag}"
+                                )
+                            }
+                        }
                     }
                 }
             }
@@ -289,6 +303,18 @@ class AdsDetailsActivity : BaseActivity(), CalendarAdapter.OnItemListener {
                 listTV2.value!!.forEach { tv ->
                     if (h == tv.tag) {
                         tv.setBackgroundColor(getColor(colorId))
+                        tv.setOnClickListener {
+                            if (viewModel.isCurrentUser().not()) {
+                                viewModel.reserve(
+                                    CalendarUtils.getWsFormattedDate(
+                                        CalendarUtils.selectedDate.with(
+                                            TemporalAdjusters.previousOrSame(DayOfWeek.SUNDAY)
+                                        ).plusDays(1)
+                                    ),
+                                    "${tv.tag}"
+                                )
+                            }
+                        }
                     }
                 }
             }
@@ -302,6 +328,18 @@ class AdsDetailsActivity : BaseActivity(), CalendarAdapter.OnItemListener {
                 listTV3.value!!.forEach { tv ->
                     if (h == tv.tag) {
                         tv.setBackgroundColor(getColor(colorId))
+                        tv.setOnClickListener {
+                            if (viewModel.isCurrentUser().not()) {
+                                viewModel.reserve(
+                                    CalendarUtils.getWsFormattedDate(
+                                        CalendarUtils.selectedDate.with(
+                                            TemporalAdjusters.previousOrSame(DayOfWeek.SUNDAY)
+                                        ).plusDays(2)
+                                    ),
+                                    "${tv.tag}"
+                                )
+                            }
+                        }
                     }
                 }
             }
@@ -315,6 +353,18 @@ class AdsDetailsActivity : BaseActivity(), CalendarAdapter.OnItemListener {
                 listTV4.value!!.forEach { tv ->
                     if (h == tv.tag) {
                         tv.setBackgroundColor(getColor(colorId))
+                        tv.setOnClickListener {
+                            if (viewModel.isCurrentUser().not()) {
+                                viewModel.reserve(
+                                    CalendarUtils.getWsFormattedDate(
+                                        CalendarUtils.selectedDate.with(
+                                            TemporalAdjusters.previousOrSame(DayOfWeek.SUNDAY)
+                                        ).plusDays(3)
+                                    ),
+                                    "${tv.tag}"
+                                )
+                            }
+                        }
                     }
                 }
             }
@@ -328,6 +378,18 @@ class AdsDetailsActivity : BaseActivity(), CalendarAdapter.OnItemListener {
                 listTV5.value!!.forEach { tv ->
                     if (h == tv.tag) {
                         tv.setBackgroundColor(getColor(colorId))
+                        tv.setOnClickListener {
+                            if (viewModel.isCurrentUser().not()) {
+                                viewModel.reserve(
+                                    CalendarUtils.getWsFormattedDate(
+                                        CalendarUtils.selectedDate.with(
+                                            TemporalAdjusters.previousOrSame(DayOfWeek.SUNDAY)
+                                        ).plusDays(4)
+                                    ),
+                                    "${tv.tag}"
+                                )
+                            }
+                        }
                     }
                 }
             }
@@ -341,6 +403,18 @@ class AdsDetailsActivity : BaseActivity(), CalendarAdapter.OnItemListener {
                 listTV6.value!!.forEach { tv ->
                     if (h == tv.tag) {
                         tv.setBackgroundColor(getColor(colorId))
+                        tv.setOnClickListener {
+                            if (viewModel.isCurrentUser().not()) {
+                                viewModel.reserve(
+                                    CalendarUtils.getWsFormattedDate(
+                                        CalendarUtils.selectedDate.with(
+                                            TemporalAdjusters.previousOrSame(DayOfWeek.SUNDAY)
+                                        ).plusDays(5)
+                                    ),
+                                    "${tv.tag}"
+                                )
+                            }
+                        }
                     }
                 }
             }
@@ -354,6 +428,18 @@ class AdsDetailsActivity : BaseActivity(), CalendarAdapter.OnItemListener {
                 listTV7.value!!.forEach { tv ->
                     if (h == tv.tag) {
                         tv.setBackgroundColor(getColor(colorId))
+                        tv.setOnClickListener {
+                            if (viewModel.isCurrentUser().not()) {
+                                viewModel.reserve(
+                                    CalendarUtils.getWsFormattedDate(
+                                        CalendarUtils.selectedDate.with(
+                                            TemporalAdjusters.previousOrSame(DayOfWeek.SUNDAY)
+                                        ).plusDays(6)
+                                    ),
+                                    "${tv.tag}"
+                                )
+                            }
+                        }
                     }
                 }
             }
