@@ -45,6 +45,11 @@ class AdsListActivity : BaseActivity() {
         binding.rvAds.adapter = adapter
     }
 
+    override fun onResume() {
+        super.onResume()
+        viewModel.onResume()
+    }
+
     /**
      * handling navigation event
      */

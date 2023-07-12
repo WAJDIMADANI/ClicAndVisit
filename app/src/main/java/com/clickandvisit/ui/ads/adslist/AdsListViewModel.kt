@@ -35,6 +35,11 @@ class AdsListViewModel
 
     lateinit var searchResponse: SearchResponse
     init {
+
+    }
+
+
+    fun onResume() {
         getMyProperty(1)
     }
 

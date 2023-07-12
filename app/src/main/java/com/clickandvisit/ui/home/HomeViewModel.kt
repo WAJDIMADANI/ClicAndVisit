@@ -58,11 +58,16 @@ class HomeViewModel
     lateinit var searchResponse: SearchResponse
 
     init {
-        getSearch(null, null)
         if (userRepository.isConnected()) {
             setPushToken()
         }
     }
+
+
+    fun onResume() {
+        getSearch(null, null)
+    }
+
 
     private fun getSearch(sortBy: String?, sortHow: String?) {
         showBlockProgressBar()

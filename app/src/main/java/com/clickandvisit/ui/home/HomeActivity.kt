@@ -18,9 +18,7 @@ import com.clickandvisit.base.BaseActivity
 import com.clickandvisit.data.model.property.SearchRequest
 import com.clickandvisit.databinding.ActivityHomeBinding
 import com.clickandvisit.global.helper.Navigation
-import com.clickandvisit.global.utils.DebugLog
 import com.clickandvisit.global.utils.ExtraKeys
-import com.clickandvisit.global.utils.TAG
 import com.clickandvisit.ui.ads.addads.AddAdsActivity
 import com.clickandvisit.ui.ads.adsdetails.AdsDetailsActivity
 import com.clickandvisit.ui.ads.adslist.AdsListActivity
@@ -64,25 +62,21 @@ class HomeActivity : BaseActivity(), DrawerLayout.DrawerListener {
         bindListeners()
         registerRecycler(binding)
 
-        if (viewModel.isConnected().not()){
+        if (viewModel.isConnected().not()) {
             binding.navigationViewHome.menu.findItem(R.id.nav_menu_9).isVisible = false
         }
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.onResume()
     }
 
     private fun registerRecycler(binding: ActivityHomeBinding) {
         adapter.viewModel = viewModel
         binding.rvSearch.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         binding.rvSearch.adapter = adapter
-    }
-
-
-    private fun registerAutoNavigation() {
-
-    }
-
-    override fun onStart() {
-        super.onStart()
     }
 
     /**
@@ -99,8 +93,6 @@ class HomeActivity : BaseActivity(), DrawerLayout.DrawerListener {
         val navController = findNavController(R.id.fragmentHomeNavHost)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
-
-    private fun isItemChecked(index: Int) = binding.navigationViewHome.menu.getItem(index).isChecked
 
     private fun bindListeners() {
         binding.navigationViewHome.setNavigationItemSelectedListener {
@@ -171,13 +163,11 @@ class HomeActivity : BaseActivity(), DrawerLayout.DrawerListener {
     private fun registerHomeObservers() {
         binding.navigationViewHome.menu.getItem(0).isChecked = true
         binding.drawerLayoutHome.addDrawerListener(this)
-        registerAutoNavigation()
-
     }
 
 
     override fun onDrawerStateChanged(newState: Int) {
-        DebugLog.i(TAG, "onDrawerStateChanged")
+
     }
 
     override fun onDrawerSlide(drawerView: View, slideOffset: Float) {
@@ -186,12 +176,11 @@ class HomeActivity : BaseActivity(), DrawerLayout.DrawerListener {
     }
 
     override fun onDrawerClosed(drawerView: View) {
-        // toolbarHome.startActionBtn.visibility = View.VISIBLE
+
     }
 
     override fun onDrawerOpened(drawerView: View) {
-        // toolbarHome.startActionBtn.visibility = View.GONE
-        //viewModel.getProfile()
+
     }
 
 
