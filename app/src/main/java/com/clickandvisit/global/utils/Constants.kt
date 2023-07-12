@@ -9,3 +9,13 @@ const val WHITE_SPACE = "^\\s*$"
 const val SERIAL_LENGTH = 6
 
 const val DEFAULT_PHOTO = "profile_image"
+
+
+object Push {
+    const val NOTIFICATION = "notification"
+    const val NOTIFICATION_TITLE = "title"
+    const val NOTIFICATION_BODY = "body"
+    const val NOTIFICATION_DATA = "data"
+    const val CHANNEL = "com.clickandvisit.debug"
+    const val PAUSE_NOTIFICATION_ID = 1945
+}

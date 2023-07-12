@@ -1,11 +1,18 @@
 package com.clickandvisit.global.utils
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.app.PendingIntent
 import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.os.Build
+import androidx.annotation.RequiresApi
+import androidx.core.app.NotificationCompat
 import com.clickandvisit.ClickVisitApplication
 import com.clickandvisit.R
+import com.clickandvisit.ui.user.splash.SplashActivity
 import okhttp3.ResponseBody
 import java.io.FileOutputStream
 import java.io.InputStream
@@ -102,4 +109,57 @@ fun saveFile(body: ResponseBody?, pathToSaveFile: String): String {
         input?.close()
     }
     return ""
+}
+
+
+/**Notification**/
+
+
+fun shouldCreateNowNotificationChannel(notificationManager: NotificationManager) =
+    Build.VERSION.SDK_INT >= Build.VERSION_CODES.O && !nowNotificationChannelExists(
+        notificationManager
+    )
+
+@RequiresApi(Build.VERSION_CODES.O)
+private fun nowNotificationChannelExists(notificationManager: NotificationManager) =
+    notificationManager.getNotificationChannel(Push.CHANNEL) != null
+
+
+fun showNotification(context: Context, title: String?, body: String, isDataExist: Boolean) {
+
+    val notificationManager: NotificationManager by lazy {
+        context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+    }
+
+    if (shouldCreateNowNotificationChannel(notificationManager)) {
+        createNotificationChannel(context)
+    }
+
+    val notificationIntent = Intent(context, SplashActivity::class.java)
+    //TODO:nav:  notificationIntent.putExtra(ExtraKeys.HomeNotificationKeys.HOME_NOTIFICATION_EXTRA_KEY, isDataExist)
+
+    val pendingIntent = PendingIntent.getActivity(context, 0, notificationIntent, 0)
+
+    val notification = NotificationCompat.Builder(context, Push.CHANNEL)
+        .setContentIntent(pendingIntent)
+        .setSmallIcon(R.mipmap.ic_launcher)
+        .setAutoCancel(true)
+        .setContentTitle(title)
+        .setContentText(body)
+        .setChannelId(Push.CHANNEL)
+        .build()
+
+    notificationManager.notify(Push.PAUSE_NOTIFICATION_ID, notification)
+}
+
+private fun createNotificationChannel(context: Context) {
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        val serviceChannel = NotificationChannel(
+            Push.CHANNEL,
+            context.getString(R.string.app_name),
+            NotificationManager.IMPORTANCE_HIGH
+        )
+        val manager = context.getSystemService(NotificationManager::class.java)
+        manager!!.createNotificationChannel(serviceChannel)
+    }
 }
