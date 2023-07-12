@@ -58,9 +58,25 @@ class FourViewModel
             property.mainPhoto?.let { getFileFromUrl(it) }
 
         property.album?.forEach {
-            list.add(Uri.parse(it))
+            getFilesAlbumFromUrl(it)
         }
         photoList.value = list
+    }
+
+
+    private fun getFilesAlbumFromUrl(url: String) {
+        viewModelScope.launch {
+            list.add(Uri.fromFile(withContext(schedulerProvider.dispatchersIO()) {
+                val responseBody = userRepository.downloadFile(url).body()
+                val pathWhereYouWantToSaveFile =
+                    applicationContext.filesDir.absolutePath + System.currentTimeMillis()
+                        .toString() + "default_photo.jpg"
+                val savedFile = saveFile(responseBody, pathWhereYouWantToSaveFile)
+                return@withContext File(savedFile)
+            }
+            ))
+            photoList.value = list
+        }
     }
 
     private fun getFileFromUrl(url: String) {
@@ -80,7 +96,6 @@ class FourViewModel
             })
         }
     }
-
 
     fun cameraPermissionGranted() {
         navigate(Navigation.CameraNavigation(MAIN_PIC_NAME))
