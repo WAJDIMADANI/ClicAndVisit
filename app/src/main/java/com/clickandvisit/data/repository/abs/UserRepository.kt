@@ -91,7 +91,7 @@ interface UserRepository {
 
     suspend fun createUpdateProperty(property: PropertyAdd): PropertyAddResponse
 
-    suspend fun enableDisableProperty(propId: Int, enableDisable: Int): GlobalResponse
+    suspend fun enableDisableProperty(propId: Int): GlobalResponse
 
     suspend fun deleteSearch(searchId: Int): GlobalResponse
 

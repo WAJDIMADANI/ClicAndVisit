@@ -6,7 +6,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.ViewGroup
 import androidx.activity.viewModels
+import androidx.annotation.NonNull
 import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.clickandvisit.R
@@ -43,6 +45,17 @@ class AdsListActivity : BaseActivity() {
         adapter.viewModel = viewModel
         binding.rvAds.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         binding.rvAds.adapter = adapter
+        enableSwipeToDeleteAndUndo()
+    }
+
+    private fun enableSwipeToDeleteAndUndo() {
+        val swipeToDeleteCallback: SwipeToDeleteCallback = object : SwipeToDeleteCallback(this) {
+            override fun onSwiped(@NonNull viewHolder: RecyclerView.ViewHolder, i: Int) {
+                viewModel.deleteProp(adapter.list[viewHolder.adapterPosition].id,viewHolder.adapterPosition )
+            }
+        }
+        val itemTouchhelper = ItemTouchHelper(swipeToDeleteCallback)
+        itemTouchhelper.attachToRecyclerView(binding.rvAds)
     }
 
     override fun onResume() {

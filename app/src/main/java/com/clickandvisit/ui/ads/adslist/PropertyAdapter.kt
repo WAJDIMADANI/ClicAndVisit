@@ -11,7 +11,7 @@ class PropertyAdapter(private val picasso: Picasso) :
     RecyclerView.Adapter<PropertyHolder>(),
     DataAdapterListener<ArrayList<Property>> {
 
-    private var list = arrayListOf<Property>()
+    var list = arrayListOf<Property>()
 
     lateinit var viewModel: AdsListViewModel
 

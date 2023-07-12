@@ -272,13 +272,12 @@ class UserRepositoryImp @Inject constructor(
     }
 
     override suspend fun enableDisableProperty(
-        propId: Int,
-        enableDisable: Int
-    ): GlobalResponse {//TODO
-        return apiClient.enableDisableProperty(propId, enableDisable)
+        propId: Int
+    ): GlobalResponse {
+        return apiClient.enableDisableProperty(propId, 0)
     }
 
-    override suspend fun deleteSearch(searchId: Int): GlobalResponse {//TODO
+    override suspend fun deleteSearch(searchId: Int): GlobalResponse {
         return apiClient.deleteSearch(searchId)
     }
 

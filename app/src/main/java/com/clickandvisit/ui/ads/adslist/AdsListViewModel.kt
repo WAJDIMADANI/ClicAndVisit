@@ -29,11 +29,14 @@ class AdsListViewModel
 ) : BaseAndroidViewModel(application, schedulerProvider), ToolBarListener,
     OnMyPropertyClickedListener {
 
-    val list: MutableLiveData<List<Property>> = MutableLiveData(arrayListOf())
-    val name1: MutableLiveData<String> = MutableLiveData(application.getString(R.string.my_ads_current))
-    val name0: MutableLiveData<String> = MutableLiveData(application.getString(R.string.my_ads_validation))
+    val list: MutableLiveData<ArrayList<Property>> = MutableLiveData(arrayListOf())
+    val name1: MutableLiveData<String> =
+        MutableLiveData(application.getString(R.string.my_ads_current))
+    val name0: MutableLiveData<String> =
+        MutableLiveData(application.getString(R.string.my_ads_validation))
 
     lateinit var searchResponse: SearchResponse
+
     init {
 
     }
@@ -62,7 +65,7 @@ class AdsListViewModel
         searchResponse = response
         list.value = response.properties.filter {
             it.statusCode == statusCode
-        }
+        } as ArrayList
     }
 
     private fun onGetDiscussionError(throwable: Throwable) {
@@ -101,6 +104,30 @@ class AdsListViewModel
 
     override fun onMeetClicked(value: Property) {
         DebugLog.i(TAG, "onMeetClicked")
+    }
+
+    fun deleteProp(propertyId: Int, position: Int) {
+        shownChoseDialog(
+            null,
+            R.string.delete_prop_msg,
+            R.string.global_yes,
+            R.string.global_no,
+            okActionBlock = {
+                viewModelScope.launch {
+                    tryCatch({
+                        withContext(schedulerProvider.dispatchersIO()) {
+                            userRepository.enableDisableProperty(propertyId)
+                        }
+                        list.value?.removeAt(position)
+                        onResume()
+                    }, { error ->
+                        onResume()
+                    })
+                }
+            }, dismissActionBlock = {
+                onResume()
+            }
+        )
     }
 
 }
