@@ -102,6 +102,27 @@ class HomeViewModel
     }
 
 
+    fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (requestCode == ExtraKeys.FilterActivity.SEARCH_REQ_CODE && resultCode == Activity.RESULT_OK) {
+            if (data?.hasExtra(ExtraKeys.FilterActivity.SEARCH_REQ_EXTRA_KEY) == true) {
+                searchRequest =
+                    data.getParcelableExtra(ExtraKeys.FilterActivity.SEARCH_REQ_EXTRA_KEY)!!
+
+                viewModelScope.launch {
+                    tryCatch({
+                        val response = withContext(schedulerProvider.dispatchersIO()) {
+                            userRepository.search(searchRequest)
+                        }
+                        onGetSearchSuccess(response)
+                    }, { error ->
+                        onGetSearchError(error)
+                    })
+                }
+            }
+        }
+    }
+
+
     private fun setPushToken() {
         FirebaseInstanceId.getInstance().instanceId
             .addOnCompleteListener(OnCompleteListener { task ->
@@ -281,27 +302,6 @@ class HomeViewModel
         navigate(Navigation.ShareNavigation(value))
     }
 
-
-    fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if (requestCode == ExtraKeys.FilterActivity.SEARCH_REQ_CODE && resultCode == Activity.RESULT_OK) {
-            if (data?.hasExtra(ExtraKeys.FilterActivity.SEARCH_REQ_EXTRA_KEY) == true) {
-                searchRequest =
-                    data.getParcelableExtra(ExtraKeys.FilterActivity.SEARCH_REQ_EXTRA_KEY)!!
-
-                showBlockProgressBar()
-                viewModelScope.launch {
-                    tryCatch({
-                        val response = withContext(schedulerProvider.dispatchersIO()) {
-                            userRepository.search(searchRequest)
-                        }
-                        onGetSearchSuccess(response)
-                    }, { error ->
-                        onGetSearchError(error)
-                    })
-                }
-            }
-        }
-    }
 
     override fun onDateClicked() {
         getSearch("date", "desc")

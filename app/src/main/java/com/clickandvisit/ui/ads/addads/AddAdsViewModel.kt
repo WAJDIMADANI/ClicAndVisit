@@ -257,6 +257,9 @@ class AddAdsViewModel
             null
         }
 
+        propertyAdd.value!!.propPrix = propertyAdd.value!!.propPrix?.replace(" ", "")
+        propertyAdd.value!!.propSurface =
+            propertyAdd.value!!.propSurface?.toString()?.replace(" ", "")?.toInt()
         showBlockProgressBar()
         viewModelScope.launch {
             tryCatch({

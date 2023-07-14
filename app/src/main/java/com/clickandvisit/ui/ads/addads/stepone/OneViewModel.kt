@@ -1,11 +1,13 @@
 package com.clickandvisit.ui.ads.addads.stepone
 
 import android.app.Application
+import android.os.Handler
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import com.clickandvisit.base.BaseAndroidViewModel
 import com.clickandvisit.data.model.property.Property
 import com.clickandvisit.data.repository.abs.UserRepository
+import com.clickandvisit.global.helper.Navigation
 import com.clickandvisit.global.listener.SchedulerProvider
 import com.clickandvisit.global.utils.isWhiteSpaces
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -164,6 +166,8 @@ class OneViewModel
 
     }
 
+
+
     fun validateFields(): Boolean {
         return validSurface() and
                 validPriceTo() and
@@ -194,6 +198,21 @@ class OneViewModel
 
     }
 
+    private fun fetchDPE(property: Property) {
+        if (property.energy.isNotEmpty()) {
+            navigate(Navigation.DPENavigation(property.energy))
+        }
+    }
+
+    private fun fetchGES(property: Property) {
+        Handler().postDelayed({
+            if (property.ges.isNotEmpty()) {
+                navigate(Navigation.GESNavigation(property.ges))
+            }
+        }, 500)
+    }
+
+
     fun onEditProperty(property: Property) {
         surface.value = property.surface
         price.value = property.price
@@ -202,6 +221,10 @@ class OneViewModel
         info.value = property.otherInfo
         ges.value = property.ges.ifEmpty { "G" }
         dpe.value = property.energy.ifEmpty { "G" }
+
+
+        fetchDPE(property)
+        fetchGES(property)
 
         if (property.type == "Vente") {
             checkedSale.value = true

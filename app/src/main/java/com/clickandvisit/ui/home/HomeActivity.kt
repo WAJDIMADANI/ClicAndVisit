@@ -2,6 +2,8 @@ package com.clickandvisit.ui.home
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.View
 import androidx.activity.viewModels
 import androidx.core.view.GravityCompat
@@ -66,11 +68,6 @@ class HomeActivity : BaseActivity(), DrawerLayout.DrawerListener {
             binding.navigationViewHome.menu.findItem(R.id.nav_menu_9).isVisible = false
         }
 
-    }
-
-    override fun onResume() {
-        super.onResume()
-        viewModel.onResume()
     }
 
     private fun registerRecycler(binding: ActivityHomeBinding) {
@@ -189,34 +186,8 @@ class HomeActivity : BaseActivity(), DrawerLayout.DrawerListener {
 
             is Navigation.Back -> finish()
 
-
-            is Navigation.AdsDetailsActivityNavigation -> {
-                Intent(this, AdsDetailsActivity::class.java).let { intent ->
-                    intent.putExtra(
-                        ExtraKeys.AddAdsActivity.PROPERTY_EXTRA_KEY_PROP,
-                        navigationTo.value
-                    )
-                    startActivity(intent)
-                }
-            }
-
-
             is Navigation.OpenDrawerNavigation -> {
                 binding.drawerLayoutHome.openDrawer(binding.navigationViewHome)
-            }
-
-            is Navigation.ProfileActivityNavigation -> {
-                navigateToActivity(ProfileActivity::class)
-            }
-
-            is Navigation.MapsActivityNavigation -> {
-                Intent(this, MapsActivity::class.java).let {
-                    it.putExtra(
-                        ExtraKeys.MapsActivity.SEARCH_EXTRA_KEY,
-                        navigationTo.searchResponse
-                    )
-                    startActivity(it)
-                }
             }
 
             is Navigation.ShareNavigation -> {
@@ -233,31 +204,67 @@ class HomeActivity : BaseActivity(), DrawerLayout.DrawerListener {
                 }
             }
 
-            is Navigation.FilterActivityNavigation -> {
-                startFilterForResult(navigationTo.searchRequest)
+            is Navigation.SignInActivityNavigation -> navigateToActivity(
+                SignInActivity::class,
+                true
+            )
+
+
+            is Navigation.AdsDetailsActivityNavigation -> {
+                Intent(this, AdsDetailsActivity::class.java).let { intent ->
+                    intent.putExtra(
+                        ExtraKeys.AddAdsActivity.PROPERTY_EXTRA_KEY_PROP,
+                        navigationTo.value
+                    )
+                    startActivity(intent)
+                }
             }
 
             is Navigation.ChatActivityNavigation -> {
                 navigateToActivity(ChatActivity::class)
             }
 
-            is Navigation.SignInActivityNavigation -> navigateToActivity(
-                SignInActivity::class,
-                true
-            )
+            is Navigation.ProfileActivityNavigation -> {
+                navigateToActivity(ProfileActivity::class)
+            }
+
+            is Navigation.MapsActivityNavigation -> {
+                Intent(this, MapsActivity::class.java).let {
+                    it.putExtra(
+                        ExtraKeys.MapsActivity.SEARCH_EXTRA_KEY,
+                        navigationTo.searchResponse
+                    )
+                    startActivity(it)
+                }
+            }
+
+            is Navigation.FilterActivityNavigation -> {
+                startFilterForResult(navigationTo.searchRequest)
+            }
+
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.onResume()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        viewModel.onActivityResult(requestCode, resultCode, data)
+        Handler(Looper.getMainLooper()).postDelayed(
+            {
+                viewModel.onActivityResult(requestCode, resultCode, data)
+            },
+            1100
+        )
     }
+
 
     override fun onBackPressed() {
         if (binding.drawerLayoutHome.isDrawerOpen(GravityCompat.START)) {
             binding.drawerLayoutHome.closeDrawers()
         } else {
-            //viewModel.onBackPressed()
             finish()
         }
     }
