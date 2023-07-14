@@ -36,8 +36,21 @@ interface UserRepository {
         lastName: String,
         email: String,
         password: String,
-        phoneNumber: String,
-        file: MultipartBody.Part
+        phoneNumber: String
+    ): SignupResponse
+
+    @WorkerThread
+    suspend fun signUpWithPhoto(
+        proPar: RequestBody?,
+        siret: RequestBody?,
+        rSocial: RequestBody?,
+        civility: RequestBody?,
+        firstName: RequestBody?,
+        lastName: RequestBody?,
+        email: RequestBody?,
+        password: RequestBody?,
+        phoneNumber: RequestBody?,
+        file: MultipartBody.Part?
     ): SignupResponse
 
     @WorkerThread

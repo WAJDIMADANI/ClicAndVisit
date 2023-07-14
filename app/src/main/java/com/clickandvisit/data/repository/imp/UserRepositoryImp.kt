@@ -52,8 +52,7 @@ class UserRepositoryImp @Inject constructor(
         lastName: String,
         email: String,
         password: String,
-        phoneNumber: String,
-        file: MultipartBody.Part
+        phoneNumber: String
     ): SignupResponse {
         return apiClient.signUp(
             proPar,
@@ -65,7 +64,32 @@ class UserRepositoryImp @Inject constructor(
             email,
             password,
             phoneNumber
-            // ,file
+        )
+    }
+
+    override suspend fun signUpWithPhoto(
+        proPar: RequestBody?,
+        siret: RequestBody?,
+        rSocial: RequestBody?,
+        civility: RequestBody?,
+        firstName: RequestBody?,
+        lastName: RequestBody?,
+        email: RequestBody?,
+        password: RequestBody?,
+        phoneNumber: RequestBody?,
+        file: MultipartBody.Part?
+    ): SignupResponse {
+        return apiClient.signUpWithPhoto(
+            proPar,
+            siret,
+            rSocial,
+            civility,
+            firstName,
+            lastName,
+            email,
+            password,
+            phoneNumber,
+            file
         )
     }
 

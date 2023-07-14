@@ -34,8 +34,22 @@ interface APIClient {
         @Field("last_name") lastName: String,
         @Field("email") email: String,
         @Field("password") password: String,
-        @Field("phone_number") phoneNumber: String,
-        //@Part photo: MultipartBody.Part
+        @Field("phone_number") phoneNumber: String
+    ): SignupResponse
+
+    @Multipart
+    @POST("user_register")
+    suspend fun signUpWithPhoto(
+        @Part("professionel_particulier") proPar: RequestBody?,
+        @Part("siret") siret: RequestBody?,
+        @Part("raison_social") rSocial: RequestBody?,
+        @Part("civilite") civility: RequestBody?,
+        @Part("first_name") firstName: RequestBody?,
+        @Part("last_name") lastName: RequestBody?,
+        @Part("email") email: RequestBody?,
+        @Part("password") password: RequestBody?,
+        @Part("phone_number") phoneNumber: RequestBody?,
+        @Part userPhoto: MultipartBody.Part?
     ): SignupResponse
 
     @FormUrlEncoded

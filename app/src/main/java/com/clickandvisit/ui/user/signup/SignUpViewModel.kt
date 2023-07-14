@@ -21,6 +21,7 @@ import kotlinx.coroutines.withContext
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
+import okhttp3.RequestBody.Companion.toRequestBody
 import retrofit2.HttpException
 import java.io.File
 import javax.inject.Inject
@@ -180,34 +181,68 @@ class SignUpViewModel
     @UiThread
     fun onSignUpClicked() {
         if (validateFields()) {
-            viewModelScope.launch {
-                showBlockProgressBar()
+            if (photoUri.value == Uri.EMPTY) {
+                viewModelScope.launch {
+                    showBlockProgressBar()
+                    tryCatch({
+                        val signupResponse = withContext(schedulerProvider.dispatchersIO()) {
+                            userRepository.signUp(
+                                proPar = isPro(),
+                                siret = siret.value ?: "",
+                                rSocial = social.value ?: "",
+                                civility = isMF(),
+                                firstName = firstname.value ?: "",
+                                lastName = userName.value ?: "",
+                                email = email.value!!,
+                                password = password.value!!,
+                                phoneNumber = phone.value!!
+                            )
+                        }
+                        onSignUpSuccess(signupResponse)
+                    }, { error ->
+                        onSignInError(error)
+                    })
+                }
+            } else {
+                viewModelScope.launch {
+                    showBlockProgressBar()
 
-                val photoFile = File(photoUri.value?.path ?: "")
-                val requestBody = photoFile.asRequestBody(photoFile.extension.toMediaTypeOrNull())
+                    val photoFile = File(photoUri.value?.path ?: "")
+                    val requestBody =
+                        photoFile.asRequestBody(photoFile.extension.toMediaTypeOrNull())
 
-                val requestImage =
-                    MultipartBody.Part.createFormData(DEFAULT_PHOTO, photoFile.name, requestBody)
+                    val requestImage: MultipartBody.Part = MultipartBody.Part.createFormData("profile_photo", photoFile.name, requestBody)
 
-                tryCatch({
-                    val signupResponse = withContext(schedulerProvider.dispatchersIO()) {
-                        userRepository.signUp(
-                            proPar = isPro(),
-                            siret = siret.value ?: "",
-                            rSocial = social.value ?: "",
-                            civility = isMF(),
-                            firstName = firstname.value ?: "",
-                            lastName = userName.value ?: "",
-                            email = email.value!!,
-                            password = password.value!!,
-                            phoneNumber = phone.value!!,
-                            requestImage
-                        )
-                    }
-                    onSignUpSuccess(signupResponse)
-                }, { error ->
-                    onSignInError(error)
-                })
+                    val isPro = isPro().toString().toRequestBody("text/plain".toMediaTypeOrNull())
+                    val siret = siret.value?.toRequestBody("text/plain".toMediaTypeOrNull())
+                    val rSocial = social.value?.toRequestBody("text/plain".toMediaTypeOrNull())
+                    val civility = isMF().toString().toRequestBody("text/plain".toMediaTypeOrNull())
+                    val firstName = firstname.value?.toRequestBody("text/plain".toMediaTypeOrNull())
+                    val lastName = userName.value?.toRequestBody("text/plain".toMediaTypeOrNull())
+                    val email = email.value?.toRequestBody("text/plain".toMediaTypeOrNull())
+                    val password = password.value?.toRequestBody("text/plain".toMediaTypeOrNull())
+                    val phoneNumber = phone.value?.toRequestBody("text/plain".toMediaTypeOrNull())
+
+                    tryCatch({
+                        val signupResponse = withContext(schedulerProvider.dispatchersIO()) {
+                            userRepository.signUpWithPhoto(
+                                proPar = isPro,
+                                siret = siret,
+                                rSocial = rSocial,
+                                civility = civility,
+                                firstName = firstName,
+                                lastName = lastName,
+                                email = email,
+                                password = password,
+                                phoneNumber = phoneNumber,
+                                file = requestImage
+                            )
+                        }
+                        onSignUpSuccess(signupResponse)
+                    }, { error ->
+                        onSignInError(error)
+                    })
+                }
             }
         }
     }

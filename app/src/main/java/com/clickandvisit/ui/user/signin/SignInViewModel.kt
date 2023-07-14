@@ -52,6 +52,7 @@ class SignInViewModel
     @UiThread
     fun onSignInClicked() {
         if (validateFields()) {
+            showBlockProgressBar()
             viewModelScope.launch {
                 tryCatch({
                     val responseUser = withContext(schedulerProvider.dispatchersIO()) {
@@ -66,6 +67,7 @@ class SignInViewModel
     }
 
     private fun onSignInSuccess(signupResponse: SignupResponse) {
+        hideBlockProgressBar()
         if (signupResponse.result) {
             navigate(Navigation.HomeActivityNavigation)
         } else if (signupResponse.resultCode == 4) {
@@ -79,6 +81,7 @@ class SignInViewModel
     }
 
     private fun onSignInError(throwable: Throwable) {
+        hideBlockProgressBar()
         if (throwable is HttpException) {
             when (throwable.code()) {
                 HttpResponseCode.HTTP_UNAUTHORIZED -> shownSimpleDialog(messageId = R.string.signin_invalid_data)

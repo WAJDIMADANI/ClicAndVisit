@@ -51,8 +51,10 @@ class ChatViewModel
 
     private fun onGetDiscussionSuccess(response: DiscussionsResponse) {
         hideBlockProgressBar()
-        val res = response.discussions.reversed()
-        list.value = res
+        if (response.discussions.isNullOrEmpty().not()){
+            val res = response.discussions.reversed()
+            list.value = res
+        }
     }
 
     private fun onGetDiscussionError(throwable: Throwable) {
