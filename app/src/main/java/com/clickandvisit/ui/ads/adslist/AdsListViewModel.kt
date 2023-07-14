@@ -35,6 +35,8 @@ class AdsListViewModel
     val name0: MutableLiveData<String> =
         MutableLiveData(application.getString(R.string.my_ads_validation))
 
+    val inHold = MutableLiveData(false)
+
     lateinit var searchResponse: SearchResponse
 
     init {
@@ -79,10 +81,12 @@ class AdsListViewModel
 
 
     fun onInlineClick() {
+        inHold.value = false
         getMyProperty(1)
     }
 
     fun onInholdClick() {
+        inHold.value = true
         getMyProperty(0)
     }
 
