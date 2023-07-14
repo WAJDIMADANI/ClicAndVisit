@@ -86,5 +86,6 @@
     <color name="toolbar_text">#8f000000</color>
     <color name="accent">#2789e4</color>
     <color name="day_gray">#ECECEC</color>
+    <color name="selected_gray">#4B5863</color>
 
 </resources>
