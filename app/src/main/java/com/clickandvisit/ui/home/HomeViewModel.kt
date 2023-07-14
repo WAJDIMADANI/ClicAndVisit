@@ -75,7 +75,7 @@ class HomeViewModel
             tryCatch({
                 val response = withContext(schedulerProvider.dispatchersIO()) {
                     if (userRepository.isConnected()) {
-                        userRepository.getMyProperty()
+                        userRepository.getHomeProperty()
                     } else {
                         userRepository.search(sortBy, sortHow)
                     }

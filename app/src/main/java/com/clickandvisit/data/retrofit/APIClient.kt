@@ -135,6 +135,13 @@ interface APIClient {
     @FormUrlEncoded
     @POST("search")
     suspend fun search(
+        @Field("user_id") userId: Int,
+        @Field("favorite_user_id") favoriteUserId: Int
+    ): SearchResponse
+
+    @FormUrlEncoded
+    @POST("search")
+    suspend fun homeSearch(
         @Field("favorite_user_id") favoriteUserId: Int
     ): SearchResponse
 

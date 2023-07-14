@@ -92,6 +92,8 @@ interface UserRepository {
 
     suspend fun search(sortBy: String?, sortHow: String?): SearchResponse
 
+    suspend fun getHomeProperty(): SearchResponse
+
     suspend fun getMyProperty(): SearchResponse
 
     suspend fun search(searchRequest: SearchRequest): SearchResponse

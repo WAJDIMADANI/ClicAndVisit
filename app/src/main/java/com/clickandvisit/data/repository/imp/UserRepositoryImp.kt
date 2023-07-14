@@ -186,8 +186,12 @@ class UserRepositoryImp @Inject constructor(
         return apiClient.search(sortBy, sortHow)
     }
 
+    override suspend fun getHomeProperty(): SearchResponse {
+        return apiClient.homeSearch(sharedPreferences.getUser().id.toInt())
+    }
+
     override suspend fun getMyProperty(): SearchResponse {
-        return apiClient.search(sharedPreferences.getUser().id.toInt())
+        return apiClient.search(sharedPreferences.getUser().id.toInt(),sharedPreferences.getUser().id.toInt())
     }
 
     override suspend fun search(searchRequest: SearchRequest): SearchResponse {
