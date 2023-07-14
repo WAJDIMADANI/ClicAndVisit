@@ -64,4 +64,6 @@ sealed class Navigation {
 
     data class VisitsNavigation(val propertyId: String) : Navigation()
 
+    data class ChangeBackgroundNavigation(val index: Int, val change: Boolean) : Navigation()
+
 }

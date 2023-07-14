@@ -1,5 +1,6 @@
 package com.clickandvisit.ui.ads.addads.steptwo
 
+import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -33,7 +34,7 @@ class TwoFragment(val property: Property?) : BaseFragment() {
         val view = inflater.inflate(R.layout.two_fragment, container, false)
         binding = TwoFragmentBinding.bind(view)
         binding.viewModel = viewModel
-        if (property != null){
+        if (property != null) {
             viewModel.onEditProperty(property)
         }
 
@@ -52,7 +53,7 @@ class TwoFragment(val property: Property?) : BaseFragment() {
         hint: String,
         inputType: Int,
         oldValue: String?
-    ){
+    ) {
 
         val alert: AlertDialog.Builder = AlertDialog.Builder(activity)
 
@@ -82,7 +83,6 @@ class TwoFragment(val property: Property?) : BaseFragment() {
         alert.setView(container)
 
         alert.setPositiveButton(getString(R.string.ad_ads_popup_positive_button_text)) { dialog, _ ->
-            DebugLog.i(TAG, input.text.toString())
             viewModel.getNewValueByIndex(Pair(index, input.text.toString()))
             dialog.dismiss()
         }
@@ -99,6 +99,7 @@ class TwoFragment(val property: Property?) : BaseFragment() {
     /**
      * handling navigation event
      */
+    @SuppressLint("ResourceAsColor")
     override fun navigate(navigationTo: Navigation) {
         when (navigationTo) {
             is Navigation.PopupNavigation -> {
@@ -110,6 +111,67 @@ class TwoFragment(val property: Property?) : BaseFragment() {
                     navigationTo.oldValue
                 )
             }
+            is Navigation.ChangeBackgroundNavigation -> {
+                when (navigationTo.index) {
+                    13 -> {
+                        if (navigationTo.change) {
+                            binding.rgAdsRoomNbr13.setBackgroundColor(R.color.details_color)
+                        } else {
+                            binding.rgAdsRoomNbr13.setBackgroundColor(R.color.gray_home_type_background)
+                        }
+                    }
+                    14 -> {
+                        if (navigationTo.change) {
+                            binding.rgAdsRoomNbr14.setBackgroundColor(R.color.details_color)
+                        } else {
+                            binding.rgAdsRoomNbr14.setBackgroundColor(R.color.gray_home_type_background)
+                        }
+                    }
+                    15 -> {
+                        if (navigationTo.change) {
+                            binding.rgAdsRoomNbr15.setBackgroundColor(R.color.details_color)
+                        } else {
+                            binding.rgAdsRoomNbr15.setBackgroundColor(R.color.gray_home_type_background)
+                        }
+                    }
+                    16 -> {
+                        if (navigationTo.change) {
+                            binding.rgAdsRoomNbr16.setBackgroundColor(R.color.details_color)
+                        } else {
+                            binding.rgAdsRoomNbr16.setBackgroundColor(R.color.gray_home_type_background)
+                        }
+                    }
+                    17 -> {
+                        if (navigationTo.change) {
+                            binding.rgAdsRoomNbr17.setBackgroundColor(R.color.details_color)
+                        } else {
+                            binding.rgAdsRoomNbr17.setBackgroundColor(R.color.gray_home_type_background)
+                        }
+                    }
+                    18 -> {
+                        if (navigationTo.change) {
+                            binding.rgAdsRoomNbr18.setBackgroundColor(R.color.details_color)
+                        } else {
+                            binding.rgAdsRoomNbr18.setBackgroundColor(R.color.gray_home_type_background)
+                        }
+                    }
+                    19 -> {
+                        if (navigationTo.change) {
+                            binding.rgAdsRoomNbr19.setBackgroundColor(R.color.details_color)
+                        } else {
+                            binding.rgAdsRoomNbr19.setBackgroundColor(R.color.gray_home_type_background)
+                        }
+                    }
+                    20 -> {
+                        if (navigationTo.change) {
+                            binding.rgAdsRoomNbr20.setBackgroundColor(R.color.details_color)
+                        } else {
+                            binding.rgAdsRoomNbr20.setBackgroundColor(R.color.gray_home_type_background)
+                        }
+                    }
+                }
+            }
+
         }
     }
 }

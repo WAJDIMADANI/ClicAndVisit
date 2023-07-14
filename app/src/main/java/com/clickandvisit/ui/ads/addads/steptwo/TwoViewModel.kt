@@ -234,103 +234,121 @@ class TwoViewModel
                     )
                 )
             }
+
+            // oui non
+
             13 -> {
-                navigate(
-                    Navigation.PopupNavigation(
-                        item,
-                        "${applicationContext.getString(R.string.ad_ads_popup_title_1)} " +
-                                "${applicationContext.getString(R.string.ad_ads_13)}",
-                        "${applicationContext.getString(R.string.ad_ads_popup_input_hint_1)} " +
-                                "${applicationContext.getString(R.string.ad_ads_9)}",
-                        InputType.TYPE_CLASS_NUMBER,
-                        roomNbrApi13.value
-                    )
-                )
+                if (roomNbrApi13.value.isNullOrEmpty() || roomNbrApi13.value.equals(
+                        applicationContext.getString(R.string.global_yes)
+                    ).not()
+                ) {
+                    roomNbrApi13.value = applicationContext.getString(R.string.global_yes)
+                    //navigate(Navigation.ChangeBackgroundNavigation(13, true))
+                } else {
+                    roomNbrApi13.value = ""
+                    //navigate(Navigation.ChangeBackgroundNavigation(13, false))
+
+                }
+                roomNbr13.value =
+                    applicationContext.getString(R.string.ad_ads_13) + roomNbrApi13.value
             }
             14 -> {
-                navigate(
-                    Navigation.PopupNavigation(
-                        item,
-                        "${applicationContext.getString(R.string.ad_ads_popup_title_4)} " +
-                                "${applicationContext.getString(R.string.ad_ads_14)}",
-                        "",
-                        InputType.TYPE_CLASS_TEXT,
-                        roomNbrApi14.value
-                    )
-                )
+                if (roomNbrApi14.value.isNullOrEmpty() || roomNbrApi14.value.equals(
+                        applicationContext.getString(R.string.global_yes)
+                    ).not()
+                ) {
+                    roomNbrApi14.value = applicationContext.getString(R.string.global_yes)
+                    //navigate(Navigation.ChangeBackgroundNavigation(14, true))
+                } else {
+                    //navigate(Navigation.ChangeBackgroundNavigation(14, false))
+                    roomNbrApi14.value = ""
+                }
+                roomNbr14.value =
+                    applicationContext.getString(R.string.ad_ads_14) + roomNbrApi14.value
             }
             15 -> {
-                navigate(
-                    Navigation.PopupNavigation(
-                        item,
-                        "${applicationContext.getString(R.string.ad_ads_popup_title_4)} " +
-                                "${applicationContext.getString(R.string.ad_ads_15)}",
-                        "",
-                        InputType.TYPE_CLASS_TEXT,
-                        roomNbrApi15.value
-                    )
-                )
+                if (roomNbrApi15.value.isNullOrEmpty() || roomNbrApi15.value.equals(
+                        applicationContext.getString(R.string.global_yes)
+                    ).not()
+                ) {
+                    roomNbrApi15.value = applicationContext.getString(R.string.global_yes)
+                    //navigate(Navigation.ChangeBackgroundNavigation(15, true))
+                } else {
+                    //navigate(Navigation.ChangeBackgroundNavigation(15, false))
+                    roomNbrApi15.value = ""
+                }
+                roomNbr15.value =
+                    applicationContext.getString(R.string.ad_ads_15) + roomNbrApi15.value
             }
             16 -> {
-                navigate(
-                    Navigation.PopupNavigation(
-                        item,
-                        "${applicationContext.getString(R.string.ad_ads_popup_title_4)} " +
-                                "${applicationContext.getString(R.string.ad_ads_18)}",
-                        "",
-                        InputType.TYPE_CLASS_TEXT,
-                        roomNbrApi18.value
-                    )
-                )
+                if (roomNbrApi16.value.isNullOrEmpty() || roomNbrApi16.value.equals(
+                        applicationContext.getString(R.string.global_yes)
+                    ).not()
+                ) {
+                    roomNbrApi16.value = applicationContext.getString(R.string.global_yes)
+                    //navigate(Navigation.ChangeBackgroundNavigation(16, true))
+                } else {
+                    //navigate(Navigation.ChangeBackgroundNavigation(16, false))
+                    roomNbrApi16.value = ""
+                }
+                roomNbr16.value =
+                    applicationContext.getString(R.string.ad_ads_16) + roomNbrApi16.value
             }
             17 -> {
-                navigate(
-                    Navigation.PopupNavigation(
-                        item,
-                        "${applicationContext.getString(R.string.ad_ads_popup_title_1)} " +
-                                "${applicationContext.getString(R.string.ad_ads_17)}",
-                        "${applicationContext.getString(R.string.ad_ads_popup_input_hint_1)} " +
-                                "${applicationContext.getString(R.string.ad_ads_17)}",
-                        InputType.TYPE_CLASS_NUMBER,
-                        roomNbrApi17.value
-                    )
-                )
+                if (roomNbrApi17.value.isNullOrEmpty() || roomNbrApi17.value.equals(
+                        applicationContext.getString(R.string.global_yes)
+                    ).not()
+                ) {
+                    roomNbrApi17.value = applicationContext.getString(R.string.global_yes)
+                    //navigate(Navigation.ChangeBackgroundNavigation(17, true))
+                } else {
+                    //navigate(Navigation.ChangeBackgroundNavigation(17, false))
+                    roomNbrApi17.value = ""
+                }
+                roomNbr17.value =
+                    applicationContext.getString(R.string.ad_ads_17) + roomNbrApi17.value
             }
             18 -> {
-                navigate(
-                    Navigation.PopupNavigation(
-                        item,
-                        "${applicationContext.getString(R.string.ad_ads_popup_title_4)} " +
-                                "${applicationContext.getString(R.string.ad_ads_18)}",
-                        "",
-                        InputType.TYPE_CLASS_TEXT,
-                        roomNbrApi18.value
-                    )
-                )
+                if (roomNbrApi18.value.isNullOrEmpty() || roomNbrApi18.value.equals(
+                        applicationContext.getString(R.string.global_yes)
+                    ).not()
+                ) {
+                    roomNbrApi18.value = applicationContext.getString(R.string.global_yes)
+                    //navigate(Navigation.ChangeBackgroundNavigation(18, true))
+                } else {
+                    //navigate(Navigation.ChangeBackgroundNavigation(18, false))
+                    roomNbrApi18.value = ""
+                }
+                roomNbr18.value =
+                    applicationContext.getString(R.string.ad_ads_18) + roomNbrApi18.value
             }
             19 -> {
-                navigate(
-                    Navigation.PopupNavigation(
-                        item,
-                        "${applicationContext.getString(R.string.ad_ads_popup_title_4)} " +
-                                "${applicationContext.getString(R.string.ad_ads_19)}",
-                        "",
-                        InputType.TYPE_CLASS_TEXT,
-                        roomNbrApi19.value
-                    )
-                )
+                if (roomNbrApi19.value.isNullOrEmpty() || roomNbrApi19.value.equals(
+                        applicationContext.getString(R.string.global_yes)
+                    ).not()
+                ) {
+                    roomNbrApi19.value = applicationContext.getString(R.string.global_yes)
+                    //navigate(Navigation.ChangeBackgroundNavigation(19, true))
+                } else {
+                    //navigate(Navigation.ChangeBackgroundNavigation(19, false))
+                    roomNbrApi19.value = ""
+                }
+                roomNbr19.value =
+                    applicationContext.getString(R.string.ad_ads_19) + roomNbrApi19.value
             }
             20 -> {
-                navigate(
-                    Navigation.PopupNavigation(
-                        item,
-                        "${applicationContext.getString(R.string.ad_ads_popup_title_4)} " +
-                                "${applicationContext.getString(R.string.ad_ads_20)}",
-                        "",
-                        InputType.TYPE_CLASS_TEXT,
-                        roomNbrApi20.value
-                    )
-                )
+                if (roomNbrApi20.value.isNullOrEmpty() || roomNbrApi20.value.equals(
+                        applicationContext.getString(R.string.global_yes)
+                    ).not()
+                ) {
+                    roomNbrApi20.value = applicationContext.getString(R.string.global_yes)
+                    //navigate(Navigation.ChangeBackgroundNavigation(20, true))
+                } else {
+                    //navigate(Navigation.ChangeBackgroundNavigation(20, false))
+                    roomNbrApi20.value = ""
+                }
+                roomNbr20.value =
+                    applicationContext.getString(R.string.ad_ads_20) + roomNbrApi20.value
             }
 
         }
@@ -384,6 +402,8 @@ class TwoViewModel
                 roomNbr12.value =
                     applicationContext.getString(R.string.ad_ads_12) + roomNbrApi12.value
             }
+
+/*
             13 -> {
                 roomNbrApi13.value = showInputDialog.second
                 roomNbr13.value =
@@ -424,6 +444,7 @@ class TwoViewModel
                 roomNbr20.value =
                     applicationContext.getString(R.string.ad_ads_20) + roomNbrApi20.value
             }
+*/
 
         }
     }
@@ -448,6 +469,28 @@ class TwoViewModel
         roomNbrApi18.value = property.details.duplex
         roomNbrApi19.value = property.details.triplex
         roomNbrApi20.value = property.details.rezDeJardin
+
+        roomNbr1.value = applicationContext.getString(R.string.ad_ads_1) + roomNbrApi1.value
+        roomNbr2.value = applicationContext.getString(R.string.ad_ads_2) + roomNbrApi2.value
+        roomNbr3.value = applicationContext.getString(R.string.ad_ads_3) + roomNbrApi3.value
+        roomNbr4.value = applicationContext.getString(R.string.ad_ads_4) + roomNbrApi4.value
+        roomNbr5.value = applicationContext.getString(R.string.ad_ads_5) + roomNbrApi5.value
+        roomNbr6.value = applicationContext.getString(R.string.ad_ads_6) + roomNbrApi6.value
+        roomNbr7.value = applicationContext.getString(R.string.ad_ads_7) + roomNbrApi7.value
+        roomNbr8.value = applicationContext.getString(R.string.ad_ads_8) + roomNbrApi8.value
+        roomNbr9.value = applicationContext.getString(R.string.ad_ads_9) + roomNbrApi9.value
+        roomNbr10.value = applicationContext.getString(R.string.ad_ads_10) + roomNbrApi10.value
+
+        roomNbr12.value = applicationContext.getString(R.string.ad_ads_12) + roomNbrApi12.value
+        roomNbr13.value = applicationContext.getString(R.string.ad_ads_13) + roomNbrApi13.value
+        roomNbr14.value = applicationContext.getString(R.string.ad_ads_14) + roomNbrApi14.value
+        roomNbr15.value = applicationContext.getString(R.string.ad_ads_15) + roomNbrApi15.value
+        roomNbr16.value = applicationContext.getString(R.string.ad_ads_16) + roomNbrApi16.value
+        roomNbr17.value = applicationContext.getString(R.string.ad_ads_17) + roomNbrApi17.value
+        roomNbr18.value = applicationContext.getString(R.string.ad_ads_18) + roomNbrApi18.value
+        roomNbr19.value = applicationContext.getString(R.string.ad_ads_19) + roomNbrApi19.value
+        roomNbr20.value = applicationContext.getString(R.string.ad_ads_20) + roomNbrApi20.value
+
     }
 
 }
