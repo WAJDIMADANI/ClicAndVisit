@@ -81,10 +81,12 @@
     <string name="home_menu_2">DÉPOSER UNE ANNONCE</string>
     <string name="home_menu_3">MES ANNONCES</string>
     <string name="home_menu_4">MON COMPTE</string>
-    <string name="home_menu_5">MES RENDEZ-VOUS</string>
+
+    <string name="home_menu_5">MES RENDEZ-VOUS</string> <!--<font size="35" color='#E21F39'>.</font>-->
+    <string name="home_menu_8">MES VISITES</string> <!--<font size="35" color='#E21F39'>.</font>-->
+
     <string name="home_menu_6">MES FAVORIS</string>
     <string name="home_menu_7">MES RECHERCHES</string>
-    <string name="home_menu_8">MES VISITES</string>
     <string name="home_menu_9">Se déconnecter</string>
 
     <string name="profile_sign_out_msg">Voulez-vous vraiment se déconnecter de votre compte?</string>
@@ -114,7 +116,7 @@
     <string name="ad_ads_ground">Terrain</string>
     <string name="ad_ads_garage">Garage</string>
     <string name="ad_ads_comm">Commerce</string>
-    <string name="ad_ads_nbr">NOMBRE DE PIÈCE <font color='#EF4339'>*</font></string>
+    <string name="ad_ads_nbr">NOMBRE DE PIÈCES <font color='#EF4339'>*</font></string>
     <string name="ad_ads_vp">5 +</string>
     <string name="ad_ads_na">NA</string>
     <string name="ad_ads_surface">SURFACE <font color='#EF4339'>*</font></string>
