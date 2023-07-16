@@ -123,8 +123,8 @@
     <string name="ad_ads_m2">Nombre de m2</string>
     <string name="ad_ads_price_hint">Loyer (charges comprises)</string>
     <string name="ad_ads_price">PRIX <font color='#EF4339'>*</font></string>
-    <string name="ad_ads_rent_price">PRIX AVEC CHARGES COMPRISES <font color='#EF4339'>*</font></string>
-    <string name="ad_ads_rent_price_hint">Loyer (charges comprises)</string>
+    <string name="ad_ads_rent_price">PRIX (CHARGES COMPRISES) <font color='#EF4339'>*</font></string>
+    <string name="ad_ads_rent_price_hint">LOYER (CHARGES COMPRISES) <font color='#EF4339'>*</font></string>
     <string name="ad_ads_stage">ÉTAGE</string>
     <string name="ad_ads_on">sur</string>
 
