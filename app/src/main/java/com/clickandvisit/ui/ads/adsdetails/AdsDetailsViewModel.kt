@@ -307,35 +307,35 @@ class AdsDetailsViewModel
         }
 
         if (property.value!!.details.piscine.isNotEmpty()) {
-            roomsList.add(applicationContext.getString(R.string.ad_ads_13) + property.value!!.details.piscine)
+            roomsList.add(applicationContext.getString(R.string.ad_ads_131))
         }
 
         if (property.value!!.details.piscinable.isNotEmpty()) {
-            roomsList.add(applicationContext.getString(R.string.ad_ads_14) + property.value!!.details.piscinable)
+            roomsList.add(applicationContext.getString(R.string.ad_ads_141))
         }
 
         if (property.value!!.details.poolHouse.isNotEmpty()) {
-            roomsList.add(applicationContext.getString(R.string.ad_ads_15) + property.value!!.details.poolHouse)
+            roomsList.add(applicationContext.getString(R.string.ad_ads_151))
         }
 
         if (property.value!!.details.sansVisAVis.isNotEmpty()) {
-            roomsList.add(applicationContext.getString(R.string.ad_ads_16) + property.value!!.details.sansVisAVis)
+            roomsList.add(applicationContext.getString(R.string.ad_ads_161))
         }
 
         if (property.value!!.details.ascenseur.isNotEmpty()) {
-            roomsList.add(applicationContext.getString(R.string.ad_ads_17) + property.value!!.details.ascenseur)
+            roomsList.add(applicationContext.getString(R.string.ad_ads_171))
         }
 
         if (property.value!!.details.duplex.isNotEmpty()) {
-            roomsList.add(applicationContext.getString(R.string.ad_ads_18) + property.value!!.details.duplex)
+            roomsList.add(applicationContext.getString(R.string.ad_ads_181))
         }
 
         if (property.value!!.details.triplex.isNotEmpty()) {
-            roomsList.add(applicationContext.getString(R.string.ad_ads_19) + property.value!!.details.triplex)
+            roomsList.add(applicationContext.getString(R.string.ad_ads_191))
         }
 
         if (property.value!!.details.rezDeJardin.isNotEmpty()) {
-            roomsList.add(applicationContext.getString(R.string.ad_ads_20) + property.value!!.details.rezDeJardin)
+            roomsList.add(applicationContext.getString(R.string.ad_ads_201))
         }
 
         list.value = roomsList

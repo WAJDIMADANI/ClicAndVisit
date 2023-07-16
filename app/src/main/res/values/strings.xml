@@ -157,6 +157,15 @@
     <string name="ad_ads_19">TRIPLEX\n</string>
     <string name="ad_ads_20">REZ-DE-\nJARDIN\n</string>
 
+    <string name="ad_ads_131">PISCINE</string>
+    <string name="ad_ads_141">PISCINABLE</string>
+    <string name="ad_ads_151">POOL HOUSE</string>
+    <string name="ad_ads_161">SANS \nVIS-À-VIS</string>
+    <string name="ad_ads_171">ASCENSEUR</string>
+    <string name="ad_ads_181">DUPLEX</string>
+    <string name="ad_ads_191">TRIPLEX</string>
+    <string name="ad_ads_201">REZ-DE-\nJARDIN</string>
+
     <string name="ad_ads_popup_title_1">Veuillez saisir le nombre de</string>
     <string name="ad_ads_popup_title_2">Veuillez saisir la surface de</string>
     <string name="ad_ads_popup_title_3">Veuillez saisir l\'année</string>
