@@ -215,7 +215,7 @@ class CalendarFragment(val property: Property?) : BaseFragment(), CalendarAdapte
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun setWeekView() {
-        binding.monthYearText.text = CalendarUtils.monthYearFromDate(CalendarUtils.selectedDate)
+        binding.monthYearText.text = CalendarUtils.monthYearFromDate(CalendarUtils.selectedDate).capitalize()
         val days: ArrayList<LocalDate> = CalendarUtils.daysInWeekArray(CalendarUtils.selectedDate)
         val calendarAdapter = CalendarAdapter(days, this)
         val layoutManager: RecyclerView.LayoutManager = GridLayoutManager(requireContext(), 7)

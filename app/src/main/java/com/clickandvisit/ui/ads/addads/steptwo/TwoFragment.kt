@@ -3,6 +3,7 @@ package com.clickandvisit.ui.ads.addads.steptwo
 import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -64,6 +65,7 @@ class TwoFragment(val property: Property?) : BaseFragment() {
         val input = EditText(activity)
         input.background = requireActivity().getDrawable(R.drawable.ic_item_border)
         input.inputType = inputType
+        input.ellipsize = TextUtils.TruncateAt.END
         input.hint = hint
         if (oldValue.isNullOrEmpty().not()) {
             input.setText(oldValue!!)
@@ -82,7 +84,7 @@ class TwoFragment(val property: Property?) : BaseFragment() {
 
         alert.setView(container)
 
-        alert.setPositiveButton(getString(R.string.ad_ads_popup_positive_button_text)) { dialog, _ ->
+        alert.setPositiveButton(getString(R.string.signin_submit)) { dialog, _ ->
             viewModel.getNewValueByIndex(Pair(index, input.text.toString()))
             dialog.dismiss()
         }

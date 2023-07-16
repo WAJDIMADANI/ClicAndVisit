@@ -134,6 +134,7 @@
     <string name="ad_ads_comp_info">INFORMATIONS COMPLÉMENTAIRES</string>
     <string name="ad_ads_comp_info_txt">300 caractères maximum pour préciser des informations importantes :</string>
     <string name="ad_ads_comp_info_hint">Exemple: Proche de la gare</string>
+    <string name="ad_ads_req_fields">Vous devez remplir tous les champs obligatoires.</string>
 
     <string name="ad_ads_1">CHAMBRE(S)\n</string>
     <string name="ad_ads_2">SUITE(S) \nPARENTALE(S)\n</string>

@@ -324,8 +324,8 @@ class AddAdsViewModel
 
     private fun createUpdatePropertySuccess(propertyAddResponse: PropertyAddResponse) {
         hideBlockProgressBar()
-        DebugLog.i(TAG, propertyAddResponse.propId.toString())
         propId = propertyAddResponse.propId
+        //FIXME: show success popup,   ok -> navigate(Navigation.CalendarFragmentNavigation)
         navigate(Navigation.CalendarFragmentNavigation)
     }
 

@@ -38,7 +38,7 @@ class AddAdsActivity : BaseActivity() {
         startFragment()
     }
 
-    fun getPropId():Int{
+    fun getPropId(): Int {
         return viewModel.propId
     }
 
@@ -114,6 +114,8 @@ class AddAdsActivity : BaseActivity() {
                     bindData0()
                     currentIndex++
                     navigateToFragment()
+                } else {
+                    showSimpleDialog(messageId = R.string.ad_ads_req_fields)
                 }
             }
 
