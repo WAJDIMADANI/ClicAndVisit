@@ -16,6 +16,14 @@ data class Discussion(
     val fromName: String,
     @Json(name = "from_picture")
     val fromPicture: String,
+
+    @Json(name = "to")
+    val to: String,
+    @Json(name = "to_name")
+    val toName: String,
+    @Json(name = "to_picture")
+    val toPicture: String,
+
     @Json(name = "property_id")
     val propertyId: String,
     @Json(name = "property")
@@ -33,8 +41,15 @@ data class Discussion(
         parcel.readString()!!,
         parcel.readString()!!,
         parcel.readString()!!,
+        parcel.readString()!!,
+        parcel.readString()!!,
+        parcel.readString()!!,
         parcel.readString()!!
     ) {
+    }
+
+    override fun toString(): String {
+        return "Discussion(discId='$discId', from='$from', fromName='$fromName', fromPicture='$fromPicture', to='$to', toName='$toName', toPicture='$toPicture', propertyId='$propertyId', property='$property', lastMessage='$lastMessage', date='$date')"
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
@@ -42,6 +57,9 @@ data class Discussion(
         parcel.writeString(from)
         parcel.writeString(fromName)
         parcel.writeString(fromPicture)
+        parcel.writeString(to)
+        parcel.writeString(toName)
+        parcel.writeString(toPicture)
         parcel.writeString(propertyId)
         parcel.writeString(property)
         parcel.writeString(lastMessage)
@@ -50,10 +68,6 @@ data class Discussion(
 
     override fun describeContents(): Int {
         return 0
-    }
-
-    override fun toString(): String {
-        return "Discussion(discId='$discId', from='$from', fromName='$fromName', fromPicture='$fromPicture', propertyId='$propertyId', property='$property', lastMessage='$lastMessage', date='$date')"
     }
 
     companion object CREATOR : Parcelable.Creator<Discussion> {

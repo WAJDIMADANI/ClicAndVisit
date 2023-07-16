@@ -266,7 +266,7 @@ interface APIClient {
         @Field("property_id") propertyId: Int,
         @Field("reservation_id") reservationId: Int,
         @Field("accept") accept: Boolean
-    ): ReservationResponse
+    ): ReservationAcceptResponse
 
 
     @GET("get_reservations")

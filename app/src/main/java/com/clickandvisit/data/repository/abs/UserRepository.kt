@@ -134,7 +134,7 @@ interface UserRepository {
         propertyId: Int,
         reservationId: Int,
         accept: Boolean
-    ): ReservationResponse
+    ): ReservationAcceptResponse
 
 
     suspend fun getReservations(accept: Boolean): ReservationResponse

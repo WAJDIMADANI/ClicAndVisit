@@ -8,6 +8,7 @@ import com.clickandvisit.data.model.chat.ContactOwnerResponse
 import com.clickandvisit.data.model.property.PropertyDetailsResponse
 import com.clickandvisit.data.model.property.SearchResponse
 import com.clickandvisit.data.model.reservation.Reservation
+import com.clickandvisit.data.model.reservation.ReservationAcceptResponse
 import com.clickandvisit.data.model.reservation.ReservationResponse
 import com.clickandvisit.data.model.user.ReportUserResponse
 import com.clickandvisit.data.repository.abs.UserRepository
@@ -123,8 +124,9 @@ class MeetViewModel
         }
     }
 
-    private fun onAcceptRefuseReservationSuccess(response: ReservationResponse) {
+    private fun onAcceptRefuseReservationSuccess(response: ReservationAcceptResponse) {
         hideBlockProgressBar()
+        navigate(Navigation.Back)
     }
 
 

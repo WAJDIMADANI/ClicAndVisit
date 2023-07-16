@@ -341,7 +341,7 @@ class UserRepositoryImp @Inject constructor(
         propertyId: Int,
         reservationId: Int,
         accept: Boolean
-    ): ReservationResponse {
+    ): ReservationAcceptResponse {
         return apiClient.acceptRefuseReservation(propertyId, reservationId, accept)
     }
 
