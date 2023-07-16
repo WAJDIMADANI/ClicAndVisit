@@ -186,6 +186,9 @@ class HomeActivity : BaseActivity(), DrawerLayout.DrawerListener {
 
             is Navigation.Back -> finish()
 
+            is Navigation.VisitsActivityNav ->  navigateToActivity(VisitsActivity::class)
+            is Navigation.MeetActivityNav ->  navigateToActivity(MeetActivity::class)
+
             is Navigation.OpenDrawerNavigation -> {
                 binding.drawerLayoutHome.openDrawer(binding.navigationViewHome)
             }

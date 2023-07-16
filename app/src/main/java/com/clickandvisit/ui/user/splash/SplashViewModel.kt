@@ -2,11 +2,13 @@ package com.clickandvisit.ui.user.splash
 
 import android.app.Application
 import androidx.annotation.UiThread
+import androidx.lifecycle.SavedStateHandle
 import com.clickandvisit.base.BaseAndroidViewModel
 import com.clickandvisit.data.repository.abs.UserRepository
 import com.clickandvisit.global.enumeration.Optional
 import com.clickandvisit.global.helper.Navigation
 import com.clickandvisit.global.listener.SchedulerProvider
+import com.clickandvisit.global.utils.ExtraKeys
 import com.clickandvisit.global.utils.SPLASH_TIME
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -18,10 +20,19 @@ class SplashViewModel
 @Inject constructor(
     application: Application,
     schedulerProvider: SchedulerProvider,
+    savedStateHandle: SavedStateHandle,
     private val userRepository: UserRepository
 ) : BaseAndroidViewModel(application, schedulerProvider) {
 
+    var notifKey: String?
+    var notifValue: String?
+
     init {
+        notifKey =
+            savedStateHandle.get<String>(ExtraKeys.HomeNotificationKeys.HOME_NOTIFICATION_EXTRA_KEY)
+        notifValue =
+            savedStateHandle.get<String>(ExtraKeys.HomeNotificationKeys.HOME_NOTIFICATION_EXTRA_VALUE)
+
         checkLoginStatus()
     }
 
@@ -33,7 +44,11 @@ class SplashViewModel
             }
             when (optional) {
                 is Optional.Some -> {
-                    navigate(Navigation.HomeActivityNavigation)
+                    if (notifKey.isNullOrEmpty().not()) {
+                        navigate(Navigation.HomeActivityNav(notifKey!!, notifValue!!))
+                    } else {
+                        navigate(Navigation.HomeActivityNavigation)
+                    }
                 }
                 is Optional.None -> {
                     navigate(Navigation.SignInActivityNavigation)

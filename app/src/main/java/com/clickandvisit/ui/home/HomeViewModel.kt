@@ -19,10 +19,7 @@ import com.clickandvisit.global.listener.OnFilterClickedListener
 import com.clickandvisit.global.listener.OnPropertyClickedListener
 import com.clickandvisit.global.listener.SchedulerProvider
 import com.clickandvisit.global.listener.ToolBarListener
-import com.clickandvisit.global.utils.DebugLog
-import com.clickandvisit.global.utils.ExtraKeys
-import com.clickandvisit.global.utils.TAG
-import com.clickandvisit.global.utils.tryCatch
+import com.clickandvisit.global.utils.*
 import com.clickandvisit.ui.ads.adsdetails.CalendarUtils
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.iid.FirebaseInstanceId
@@ -57,7 +54,26 @@ class HomeViewModel
 
     lateinit var searchResponse: SearchResponse
 
+    var notifKey: String?
+    var notifValue: String?
+
     init {
+        notifKey =
+            savedStateHandle.get<String>(ExtraKeys.HomeNotificationKeys.HOME_NOTIFICATION_EXTRA_KEY)
+        notifValue =
+            savedStateHandle.get<String>(ExtraKeys.HomeNotificationKeys.HOME_NOTIFICATION_EXTRA_VALUE)
+
+        notifKey?.let { DebugLog.i("notif", it) }
+        notifValue?.let { DebugLog.i("notif", it) }
+        if (notifKey.equals(Push.NOTIFICATION_KEY_VISIT)) {
+            navigate(Navigation.VisitsActivityNav)
+        } else if (notifKey.equals(Push.NOTIFICATION_KEY_MEET)) {
+            navigate(Navigation.MeetActivityNav)
+        } else if (notifKey.equals(Push.NOTIFICATION_KEY_CHAT)){
+            navigate(Navigation.ChatActivityNavigation)
+        }
+
+
         if (userRepository.isConnected()) {
             setPushToken()
         }

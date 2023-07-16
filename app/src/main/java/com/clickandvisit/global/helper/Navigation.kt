@@ -32,6 +32,8 @@ sealed class Navigation {
 
     object HomeActivityNavigation : Navigation()
 
+    data class HomeActivityNav(val key: String, val value: String) : Navigation()
+
     data class AddAdsActivity(val value: Property) : Navigation()
 
     object GalleryNavigation : Navigation()
@@ -63,5 +65,8 @@ sealed class Navigation {
     data class GESNavigation(val ges: String) : Navigation()
 
     data class VisitsNavigation(val propertyId: String) : Navigation()
+
+    object VisitsActivityNav : Navigation()
+    object MeetActivityNav : Navigation()
 
 }

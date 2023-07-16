@@ -125,7 +125,12 @@ private fun nowNotificationChannelExists(notificationManager: NotificationManage
     notificationManager.getNotificationChannel(Push.CHANNEL) != null
 
 
-fun showNotification(context: Context, title: String?, body: String, isDataExist: Boolean) {
+fun showNotification(
+    context: Context,
+    title: String?,
+    body: String,
+    data: MutableMap<String, String>
+) {
 
     val notificationManager: NotificationManager by lazy {
         context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
@@ -135,8 +140,24 @@ fun showNotification(context: Context, title: String?, body: String, isDataExist
         createNotificationChannel(context)
     }
 
+    val navTypeKey = if (data.containsKey(Push.NOTIFICATION_KEY_VISIT)) {
+        Push.NOTIFICATION_KEY_VISIT
+    } else if (data.containsKey(Push.NOTIFICATION_KEY_MEET)) {
+        Push.NOTIFICATION_KEY_MEET
+    } else {
+        Push.NOTIFICATION_KEY_CHAT
+    }
+    val navTypeValue = data[navTypeKey]
+
     val notificationIntent = Intent(context, SplashActivity::class.java)
-    //TODO:nav:  notificationIntent.putExtra(ExtraKeys.HomeNotificationKeys.HOME_NOTIFICATION_EXTRA_KEY, isDataExist)
+    notificationIntent.putExtra(
+        ExtraKeys.HomeNotificationKeys.HOME_NOTIFICATION_EXTRA_KEY,
+        navTypeKey
+    )
+    notificationIntent.putExtra(
+        ExtraKeys.HomeNotificationKeys.HOME_NOTIFICATION_EXTRA_VALUE,
+        navTypeValue
+    )
 
     val pendingIntent = PendingIntent.getActivity(context, 0, notificationIntent, 0)
 

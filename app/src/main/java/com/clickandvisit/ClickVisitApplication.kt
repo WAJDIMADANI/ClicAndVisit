@@ -1,12 +1,16 @@
 package com.clickandvisit
 
+import android.app.Activity
+import android.app.Application
+import android.os.Bundle
 import android.os.StrictMode
 import androidx.multidex.MultiDexApplication
+import com.clickandvisit.global.helper.BackgroundManager
 import com.squareup.leakcanary.LeakCanary
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
-class ClickVisitApplication : MultiDexApplication() {
+class ClickVisitApplication : MultiDexApplication(), Application.ActivityLifecycleCallbacks {
 
     override fun onCreate() {
         super.onCreate()
@@ -36,6 +40,34 @@ class ClickVisitApplication : MultiDexApplication() {
     companion object {
         private lateinit var instance: ClickVisitApplication
         fun getInstance(): ClickVisitApplication = instance
+    }
+
+    override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
+
+    }
+
+    override fun onActivityStarted(activity: Activity) {
+        BackgroundManager.getInstance().onStart()
+    }
+
+    override fun onActivityResumed(activity: Activity) {
+
+    }
+
+    override fun onActivityPaused(activity: Activity) {
+
+    }
+
+    override fun onActivityStopped(activity: Activity) {
+        BackgroundManager.getInstance().onStop()
+    }
+
+    override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle) {
+
+    }
+
+    override fun onActivityDestroyed(activity: Activity) {
+
     }
 
 }
