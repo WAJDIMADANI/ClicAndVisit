@@ -32,6 +32,7 @@ class ChatViewModel
     val list: MutableLiveData<ArrayList<Discussion>> = MutableLiveData(arrayListOf())
 
     init {
+        userRepository.setChat(false)
         getDiscussions()
     }
 

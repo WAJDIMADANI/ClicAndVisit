@@ -203,4 +203,12 @@ class MeetViewModel
         shownSimpleDialog(messageId = R.string.report_response)
     }
 
+    fun setVisits(isNotification: Boolean) {
+        userRepository.setVisits(isNotification)
+    }
+
+    fun setMeet(isNotification: Boolean) {
+        userRepository.setMeet(isNotification)
+    }
+
 }

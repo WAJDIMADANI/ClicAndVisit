@@ -69,7 +69,7 @@ class HomeViewModel
             navigate(Navigation.VisitsActivityNav)
         } else if (notifKey.equals(Push.NOTIFICATION_KEY_MEET)) {
             navigate(Navigation.MeetActivityNav)
-        } else if (notifKey.equals(Push.NOTIFICATION_KEY_CHAT)){
+        } else if (notifKey.equals(Push.NOTIFICATION_KEY_CHAT)) {
             navigate(Navigation.ChatActivityNavigation)
         }
 
@@ -342,5 +342,11 @@ class HomeViewModel
     override fun onCancelClicked() {
         DebugLog.i(TAG, "onCancelClicked")
     }
+
+    fun getChat() = userRepository.getChat()
+
+    fun getVisits() = userRepository.getVisits()
+
+    fun getMeet() = userRepository.getMeet()
 
 }

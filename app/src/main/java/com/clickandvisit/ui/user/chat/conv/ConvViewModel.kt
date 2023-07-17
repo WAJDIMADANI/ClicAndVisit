@@ -54,8 +54,7 @@ class ConvViewModel
 
     private fun onGetDiscussionSuccess(response: MessagesResponse) {
         hideBlockProgressBar()
-        val res = response.discussions
-        list.value = res as ArrayList
+        list.value = response.discussions as ArrayList
     }
 
     private fun onGetDiscussionError(throwable: Throwable) {

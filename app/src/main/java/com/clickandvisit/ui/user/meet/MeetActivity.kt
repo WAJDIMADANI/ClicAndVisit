@@ -39,6 +39,7 @@ class MeetActivity : BaseActivity() {
         binding.rvMeet.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         binding.rvMeet.adapter = adapter
         viewModel.getReservations(false)
+        viewModel.setMeet(false)
     }
 
     /**

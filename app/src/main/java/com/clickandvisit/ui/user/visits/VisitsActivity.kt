@@ -43,6 +43,7 @@ class VisitsActivity : BaseActivity() {
         binding.rvMeet.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         binding.rvMeet.adapter = adapter
         viewModel.getReservations(true)
+        viewModel.setVisits(false)
     }
 
 

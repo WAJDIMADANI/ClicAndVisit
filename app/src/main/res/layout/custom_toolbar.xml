@@ -38,21 +38,43 @@
             android:layout_height="@dimen/dimen_30dp"
             android:layout_marginEnd="@dimen/margin_global_15dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/ivChat"
+            app:layout_constraintEnd_toStartOf="@+id/clChat"
             app:layout_constraintStart_toEndOf="@+id/ivLogo"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_search_white" />
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/ivChat"
-            android:layout_width="@dimen/dimen_30dp"
-            android:layout_height="@dimen/dimen_30dp"
-            android:layout_marginEnd="@dimen/margin_global_15dp"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clChat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/ivProfile"
             app:layout_constraintStart_toEndOf="@+id/ivSearch"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_chat" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivChat"
+                android:layout_width="@dimen/dimen_30dp"
+                android:layout_height="@dimen/dimen_30dp"
+                android:layout_marginEnd="@dimen/margin_global_15dp"
+                android:layout_marginTop="@dimen/margin_global_3dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_chat" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivNotification"
+                android:layout_width="@dimen/dimen_10dp"
+                android:visibility="gone"
+                android:layout_height="@dimen/dimen_10dp"
+                android:layout_marginEnd="@dimen/margin_global_8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_new_notif" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/ivProfile"
@@ -60,7 +82,7 @@
             android:layout_height="@dimen/dimen_30dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/ivChat"
+            app:layout_constraintStart_toEndOf="@+id/clChat"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_home_profile" />
 

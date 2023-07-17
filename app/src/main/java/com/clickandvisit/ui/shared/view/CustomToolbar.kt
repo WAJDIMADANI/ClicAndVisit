@@ -62,4 +62,12 @@ class CustomToolbar : FrameLayout, View.OnClickListener {
     fun setToolBarListener(toolBarListener: ToolBarListener) {
         this.toolBarListener = toolBarListener
     }
+
+    fun setNotification(isNotification: Boolean) {
+        if (isNotification) {
+            binding.ivNotification.visibility = View.VISIBLE
+        } else {
+            binding.ivNotification.visibility = View.GONE
+        }
+    }
 }

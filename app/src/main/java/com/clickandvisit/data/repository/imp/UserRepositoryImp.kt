@@ -374,4 +374,28 @@ class UserRepositoryImp @Inject constructor(
     override fun getCurrentUserId(): Int {
         return sharedPreferences.getUser().id.toInt()
     }
+
+    override fun setChat(isNotification: Boolean) {
+        sharedPreferences.setChat(isNotification)
+    }
+
+    override fun getChat(): Boolean {
+        return sharedPreferences.getChat()
+    }
+
+    override fun setVisits(isNotification: Boolean) {
+        sharedPreferences.setVisits(isNotification)
+    }
+
+    override fun getVisits(): Boolean {
+        return sharedPreferences.getVisits()
+    }
+
+    override fun setMeet(isNotification: Boolean) {
+        sharedPreferences.setMeet(isNotification)
+    }
+
+    override fun getMeet(): Boolean {
+        return sharedPreferences.getMeet()
+    }
 }

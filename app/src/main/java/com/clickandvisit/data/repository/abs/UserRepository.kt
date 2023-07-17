@@ -152,4 +152,14 @@ interface UserRepository {
 
     fun getCurrentUserId(): Int
 
+    /** notification **/
+
+    fun setChat(isNotification: Boolean)
+    fun getChat(): Boolean
+
+    fun setVisits(isNotification: Boolean)
+    fun getVisits(): Boolean
+
+    fun setMeet(isNotification: Boolean)
+    fun getMeet(): Boolean
 }

@@ -1,17 +1,21 @@
 package com.clickandvisit.global.service
 
 
-import android.content.Intent
-import androidx.localbroadcastmanager.content.LocalBroadcastManager
-import com.clickandvisit.global.helper.BackgroundManager
+import com.clickandvisit.data.repository.abs.UserRepository
 import com.clickandvisit.global.utils.DebugLog
 import com.clickandvisit.global.utils.Push
 import com.clickandvisit.global.utils.TAG
 import com.clickandvisit.global.utils.showNotification
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
+import javax.inject.Inject
 
 class MyFirebaseService : FirebaseMessagingService() {
+
+
+    @Inject
+    lateinit var userRepository: UserRepository
+
 
     override fun onCreate() {
     }
@@ -32,18 +36,18 @@ class MyFirebaseService : FirebaseMessagingService() {
 
     private fun sendContent(title: String?, body: String, data: MutableMap<String, String>) {
 
-        if (!BackgroundManager.getInstance().isInBackground) {
+        data[Push.NOTIFICATION_KEY_CHAT]
 
-            val intent = Intent(Push.NOTIFICATION)
-            intent.putExtra(Push.NOTIFICATION_TITLE, title)
-            intent.putExtra(Push.NOTIFICATION_BODY, body)
-            //intent.putExtra(Push.NOTIFICATION_DATA, data)
-            LocalBroadcastManager.getInstance(applicationContext).sendBroadcast(intent)
-
+        if (data.containsKey(Push.NOTIFICATION_KEY_VISIT)) {
+            userRepository.setVisits(true)
+        } else if (data.containsKey(Push.NOTIFICATION_KEY_MEET)) {
+            userRepository.setMeet(true)
         } else {
-            showNotification(applicationContext, title, body, data)
+            userRepository.setChat(true)
         }
 
+
+        showNotification(applicationContext, title, body, data)
     }
 
 }

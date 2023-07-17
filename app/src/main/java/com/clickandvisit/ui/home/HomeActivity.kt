@@ -76,6 +76,26 @@ class HomeActivity : BaseActivity(), DrawerLayout.DrawerListener {
         binding.rvSearch.adapter = adapter
     }
 
+    private fun fetchNotificationsBull() {
+
+        binding.toolbarHome.setNotification(viewModel.getChat().not())
+
+/*
+        if (viewModel.getVisits().not()) {
+            binding.navigationViewHome.menu.getItem(4).setTitle(R.string.home_menu_8_notification)
+        } else {
+            binding.navigationViewHome.menu.getItem(4).setTitle(R.string.home_menu_8)
+        }
+
+        if (viewModel.getMeet().not()) {
+            binding.navigationViewHome.menu.getItem(3).setTitle(R.string.home_menu_5_notification)
+        } else {
+            binding.navigationViewHome.menu.getItem(3).setTitle(R.string.home_menu_5)
+        }
+*/
+
+    }
+
     /**
      * Register the UI for XMLBinding
      * Register the activity for base observers
@@ -186,8 +206,8 @@ class HomeActivity : BaseActivity(), DrawerLayout.DrawerListener {
 
             is Navigation.Back -> finish()
 
-            is Navigation.VisitsActivityNav ->  navigateToActivity(VisitsActivity::class)
-            is Navigation.MeetActivityNav ->  navigateToActivity(MeetActivity::class)
+            is Navigation.VisitsActivityNav -> navigateToActivity(VisitsActivity::class)
+            is Navigation.MeetActivityNav -> navigateToActivity(MeetActivity::class)
 
             is Navigation.OpenDrawerNavigation -> {
                 binding.drawerLayoutHome.openDrawer(binding.navigationViewHome)
@@ -250,6 +270,7 @@ class HomeActivity : BaseActivity(), DrawerLayout.DrawerListener {
 
     override fun onResume() {
         super.onResume()
+        fetchNotificationsBull()
         viewModel.onResume()
     }
 

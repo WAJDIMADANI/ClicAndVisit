@@ -14,6 +14,10 @@ private const val FILE_NAME_FLAG = "clickandvisit_file_flag"
 private const val TOKEN_FLAG = "1"
 private const val USER_FLAG = "2"
 
+private const val CHAT_FLAG = "chat"
+private const val VISITS_FLAG = "visit"
+private const val MEET_FLAG = "meet"
+
 
 class SharedPreferences(context: Context, val moshi: Moshi) {
 
@@ -28,6 +32,54 @@ class SharedPreferences(context: Context, val moshi: Moshi) {
         return !TextUtils.isEmpty(getToken())
     }
 
+
+    fun setChat(isNotification: Boolean) {
+        val editor = sharedPreferences.edit()
+        editor.putBoolean(CHAT_FLAG, isNotification)
+        editor.apply()
+    }
+
+    fun getChat(): Boolean {
+        return sharedPreferences.getBoolean(CHAT_FLAG, false)
+    }
+
+    private fun deleteChat() {
+        val editor = sharedPreferences.edit()
+        editor.remove(CHAT_FLAG)
+        editor.apply()
+    }
+
+    fun setVisits(isNotification: Boolean) {
+        val editor = sharedPreferences.edit()
+        editor.putBoolean(VISITS_FLAG, isNotification)
+        editor.apply()
+    }
+
+    fun getVisits(): Boolean {
+        return sharedPreferences.getBoolean(VISITS_FLAG, false)
+    }
+
+    private fun deleteVisits() {
+        val editor = sharedPreferences.edit()
+        editor.remove(VISITS_FLAG)
+        editor.apply()
+    }
+
+    fun setMeet(isNotification: Boolean) {
+        val editor = sharedPreferences.edit()
+        editor.putBoolean(MEET_FLAG, isNotification)
+        editor.apply()
+    }
+
+    fun getMeet(): Boolean {
+        return sharedPreferences.getBoolean(MEET_FLAG, false)
+    }
+
+    private fun deleteMeet() {
+        val editor = sharedPreferences.edit()
+        editor.remove(MEET_FLAG)
+        editor.apply()
+    }
 
     private fun setToken(token: String?) {
         val editor = sharedPreferences.edit()
@@ -68,6 +120,9 @@ class SharedPreferences(context: Context, val moshi: Moshi) {
     fun clearCache() {
         deleteToken()
         deleteUser()
+        deleteChat()
+        deleteVisits()
+        deleteMeet()
     }
 
     private fun getPassKeyStore(context: Context): String {

@@ -85,6 +85,9 @@
     <string name="home_menu_5">MES RENDEZ-VOUS</string> <!--<font size="35" color='#E21F39'>.</font>-->
     <string name="home_menu_8">MES VISITES</string> <!--<font size="35" color='#E21F39'>.</font>-->
 
+    <string name="home_menu_5_notification">MES RENDEZ-VOUS <font color='#E21F39' size="35">.</font></string>
+    <string name="home_menu_8_notification">MES VISITES <font color='#E21F39' size="35">.</font></string>
+
     <string name="home_menu_6">MES FAVORIS</string>
     <string name="home_menu_7">MES RECHERCHES</string>
     <string name="home_menu_9">Se déconnecter</string>
