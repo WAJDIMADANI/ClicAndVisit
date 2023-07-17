@@ -101,31 +101,6 @@
     </style>
 
 
-    <style name="Button.SignInAccount" parent="Button.AppRoundedCornersButton">
-        <item name="android:background">@drawable/solid_background_light_blue</item>
-        <item name="android:minHeight">@dimen/min_height_global_button</item>
-        <item name="android:minWidth">@dimen/min_width_global_button</item>
-        <item name="android:fontFamily">@font/poppins_extra_bold</item>
-        <item name="android:textColor">@color/white_basic</item>
-    </style>
-
-    <style name="Button.GlobalGreen" parent="Button.AppRoundedCornersButton">
-        <item name="android:background">@drawable/solid_background_green</item>
-        <item name="android:minHeight">@dimen/min_height_global_button</item>
-        <item name="android:minWidth">@dimen/min_width_global_button</item>
-        <item name="android:textColor">@color/white_basic</item>
-        <item name="android:fontFamily">@font/poppins_extra_bold</item>
-    </style>
-
-
-    <style name="Button.GlobalGray" parent="Button.AppRoundedCornersButton">
-        <item name="android:background">@drawable/solid_background_light_grey</item>
-        <item name="android:minHeight">@dimen/min_height_global_button</item>
-        <item name="android:minWidth">@dimen/min_width_global_button</item>
-        <item name="android:textColor">@color/white_basic</item>
-        <item name="android:fontFamily">@font/poppins_extra_bold</item>
-    </style>
-
     <!--TextView-->
     <style name="TextView" />
 

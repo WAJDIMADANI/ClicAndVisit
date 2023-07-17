@@ -60,9 +60,9 @@ class MapsActivity : BaseActivity(), OnMapReadyCallback {
             its.properties.forEach { prop ->
 
                 val vectorResId = if (prop.visitNow) {
-                    R.drawable.ic_baseline_location_green
+                    R.drawable.ic_marker
                 } else {
-                    R.drawable.ic_baseline_location_on
+                    R.drawable.ic_marker_red
                 }
                 var marker = map.addMarker(
                     MarkerOptions()
