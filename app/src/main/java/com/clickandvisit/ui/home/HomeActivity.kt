@@ -78,16 +78,16 @@ class HomeActivity : BaseActivity(), DrawerLayout.DrawerListener {
 
     private fun fetchNotificationsBull() {
 
-        binding.toolbarHome.setNotification(viewModel.getChat().not())
+        binding.toolbarHome.setNotification(viewModel.getChat())
 
 /*
-        if (viewModel.getVisits().not()) {
+        if (viewModel.getVisits()) {
             binding.navigationViewHome.menu.getItem(4).setTitle(R.string.home_menu_8_notification)
         } else {
             binding.navigationViewHome.menu.getItem(4).setTitle(R.string.home_menu_8)
         }
 
-        if (viewModel.getMeet().not()) {
+        if (viewModel.getMeet()) {
             binding.navigationViewHome.menu.getItem(3).setTitle(R.string.home_menu_5_notification)
         } else {
             binding.navigationViewHome.menu.getItem(3).setTitle(R.string.home_menu_5)
