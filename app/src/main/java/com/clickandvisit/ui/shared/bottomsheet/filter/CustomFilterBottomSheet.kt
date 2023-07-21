@@ -38,7 +38,7 @@ class CustomFilterBottomSheet(
 
         initializeListener()
 
-        setCancelable(false)
+        setCancelable(true)
         binding.executePendingBindings()
         setContentView(binding.root)
         window?.setGravity(Gravity.BOTTOM)

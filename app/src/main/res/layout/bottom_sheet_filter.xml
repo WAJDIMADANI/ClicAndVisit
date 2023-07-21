@@ -149,6 +149,17 @@
             android:textColor="#2196F3"
             android:textSize="@dimen/font_16sp" />
 
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_40dp"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/margin_global_10dp"
+            android:fontFamily="@font/poppins_semi_bold"
+            android:gravity="center"
+            android:textColor="#2196F3"
+            android:textSize="@dimen/font_16sp" />
+
     </androidx.appcompat.widget.LinearLayoutCompat>
 
 </layout>
