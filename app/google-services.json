@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "676790292492",
+    "project_id": "clickandvisit-7137b",
+    "storage_bucket": "clickandvisit-7137b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:676790292492:android:fec6384a6b2f7d047b9e29",
+        "android_client_info": {
+          "package_name": "com.clickandvisit.debug"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "676790292492-t7khl8f7u95p5877ipaoitomua3e3j2o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAP2ITuSp8lEto57fLNKDvVcFTyOKYOelM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "676790292492-t7khl8f7u95p5877ipaoitomua3e3j2o.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "676790292492-tekmqigkjesirg8cgqgj31jvpckkfln4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "fr.mi.click-visit"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

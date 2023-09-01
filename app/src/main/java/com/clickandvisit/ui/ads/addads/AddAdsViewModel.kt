@@ -95,6 +95,9 @@ class AddAdsViewModel
     val mainPhotoUri = MutableLiveData(Uri.EMPTY)
     val photoList: MutableLiveData<ArrayList<Uri>> = MutableLiveData(arrayListOf())
 
+    /** calendar **/
+    var datesTimes : String = ""
+
 
     val propertyAdd: MutableLiveData<PropertyAdd> = MutableLiveData(PropertyAdd())
 
@@ -265,7 +268,8 @@ class AddAdsViewModel
             tryCatch({
                 val propertyAddResponse = withContext(schedulerProvider.dispatchersIO()) {
                     userRepository.createUpdateProperty(
-                        propertyAdd.value!!
+                        propertyAdd.value!!,
+                        datesTimes
                     )
                 }
                 createUpdatePropertySuccess(propertyAddResponse)

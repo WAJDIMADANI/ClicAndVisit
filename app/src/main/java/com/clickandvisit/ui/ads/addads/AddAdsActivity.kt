@@ -1,9 +1,11 @@
 package com.clickandvisit.ui.ads.addads
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
+import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.clickandvisit.R
@@ -30,6 +32,7 @@ class AddAdsActivity : BaseActivity() {
 
     var currentIndex: Int = 0
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_add_ads)
@@ -45,6 +48,7 @@ class AddAdsActivity : BaseActivity() {
     /**
      * register UI Home activity Observers
      */
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun registerHomeObservers() {
         initData(viewModel.propertyEdit.value)
         initListener()
@@ -60,6 +64,7 @@ class AddAdsActivity : BaseActivity() {
         )
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun initListener() {
         binding.cbNext.setOnClickListener {
             onNextAction()
@@ -82,17 +87,27 @@ class AddAdsActivity : BaseActivity() {
             }
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun onNextAction() {
         when (currentIndex) {
 
             4 -> {
-                finish()
+                if (viewModel.isEdit.value == true){
+                    finish()
+                }else{
+                    bindData4()
+                    viewModel.createOrUpdateProperty()
+                }
             }
 
             3 -> {
                 bindData3()
                 currentIndex++
-                viewModel.createOrUpdateProperty()
+                if (viewModel.isEdit.value == true){
+                    viewModel.createOrUpdateProperty()
+                }else{
+                    navigateToFragment()
+                }
             }
 
             2 -> {
@@ -229,6 +244,12 @@ class AddAdsActivity : BaseActivity() {
             (routineFragments[3] as FourFragment).viewModel.photoList.value
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun bindData4() {
+        viewModel.datesTimes =
+            (routineFragments[4] as CalendarFragment).viewModel.datesTimes
+    }
+
 
     private fun onPreviousAction() {
         if (0 == currentIndex) {
@@ -285,7 +306,11 @@ class AddAdsActivity : BaseActivity() {
             is Navigation.Back -> finish()
 
             is Navigation.CalendarFragmentNavigation -> {
-                navigateToFragment()
+                if (viewModel.isEdit.value == true){
+                    navigateToFragment()
+                }else{
+                    finish()
+                }
             }
 
         }

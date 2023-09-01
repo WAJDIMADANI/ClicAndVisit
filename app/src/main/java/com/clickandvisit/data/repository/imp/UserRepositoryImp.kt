@@ -242,9 +242,10 @@ class UserRepositoryImp @Inject constructor(
         return apiClient.favoriteList(sharedPreferences.getUser().id.toInt())
     }
 
-    override suspend fun createUpdateProperty(property: PropertyAdd): PropertyAddResponse {
+    override suspend fun createUpdateProperty(property: PropertyAdd, datesTimes: String): PropertyAddResponse {
         return apiClient.createUpdateProperty(
             sharedPreferences.getUser().id.toRequestBody("text/plain".toMediaTypeOrNull()),
+            datesTimes.toRequestBody("text/plain".toMediaTypeOrNull()),
             property.propId?.toString()?.toRequestBody("text/plain".toMediaTypeOrNull()),
             property.propType?.toString()?.toRequestBody("text/plain".toMediaTypeOrNull()),
             property.propCategory?.toString()?.toRequestBody("text/plain".toMediaTypeOrNull()),

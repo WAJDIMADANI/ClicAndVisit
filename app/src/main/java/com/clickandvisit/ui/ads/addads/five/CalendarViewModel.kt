@@ -45,14 +45,21 @@ class CalendarViewModel
     var propertyId: Int = 0
 
 
+    var datesTimes : String = ""
+
+    private var isEdit = false
+
+
     @RequiresApi(Build.VERSION_CODES.O)
     var firstDay = LocalDate.now().with(TemporalAdjusters.previousOrSame(DayOfWeek.SUNDAY))
 
     init {
-        fetchAvailability1(CalendarUtils.getWsFormattedDate(firstDay))
+       // fetchAvailability1(CalendarUtils.getWsFormattedDate(firstDay))
     }
 
     fun onEditProperty(property: Property) {
+        fetchAvailability1(CalendarUtils.getWsFormattedDate(firstDay))
+        isEdit = true
         viewModelScope.launch {
             tryCatch({
                 val response = withContext(schedulerProvider.dispatchersIO()) {
@@ -198,19 +205,23 @@ class CalendarViewModel
 
 
     fun setAvailability(date: String, accept: String) {
-        viewModelScope.launch {
-            tryCatch({
-                val response = withContext(schedulerProvider.dispatchersIO()) {
-                    userRepository.setAvailability(
-                        propertyId,
-                        date,
-                        accept
-                    )
-                }
-                onSetAvailabilitySuccess(response)
-            }, { error ->
-                onLikeClickedError(error)
-            })
+        if (isEdit) {
+            viewModelScope.launch {
+                tryCatch({
+                    val response = withContext(schedulerProvider.dispatchersIO()) {
+                        userRepository.setAvailability(
+                            propertyId,
+                            date,
+                            accept
+                        )
+                    }
+                    onSetAvailabilitySuccess(response)
+                }, { error ->
+                    onLikeClickedError(error)
+                })
+            }
+        } else if (datesTimes.contains(date).not()) {
+            datesTimes = "$date,$datesTimes"
         }
     }
 

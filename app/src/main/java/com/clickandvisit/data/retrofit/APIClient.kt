@@ -188,6 +188,7 @@ interface APIClient {
     @POST("create_update_property")
     suspend fun createUpdateProperty(
         @Part("user_id") userId: RequestBody,
+        @Part("dates_times") datesTimes: RequestBody,
         @Part("_logement_id") propId: RequestBody?, // only for edit
         @Part("prop_type") propType: RequestBody?,
         @Part("prop_category") propCategory: RequestBody?,

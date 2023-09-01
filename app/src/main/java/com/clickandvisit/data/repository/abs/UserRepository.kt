@@ -104,7 +104,7 @@ interface UserRepository {
 
     suspend fun favoriteList(): FavoritesResponse
 
-    suspend fun createUpdateProperty(property: PropertyAdd): PropertyAddResponse
+    suspend fun createUpdateProperty(property: PropertyAdd, datesTimes: String): PropertyAddResponse
 
     suspend fun enableDisableProperty(propId: Int): GlobalResponse
 
