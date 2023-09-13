@@ -178,6 +178,7 @@ class CalendarFragment(val property: Property?) : BaseFragment(), CalendarAdapte
                         )
                     }
                     hoursList.value!!.remove(tv.tag)
+                    viewModel.datesTimes = viewModel.datesTimes.replace("$day ${tv.tag},","")
                     viewModel.setAvailability("$day ${tv.tag}", "remove")
                 } else {
                     tv.setBackgroundColor(
@@ -187,6 +188,9 @@ class CalendarFragment(val property: Property?) : BaseFragment(), CalendarAdapte
                         )
                     )
                     hoursList.value?.add(tv.tag as String)
+                    if (viewModel.datesTimes.contains("$day ${tv.tag}").not()) {
+                        viewModel.datesTimes = "$day ${tv.tag},${viewModel.datesTimes}"
+                    }
                     viewModel.setAvailability("$day ${tv.tag}", "add")
                 }
             }

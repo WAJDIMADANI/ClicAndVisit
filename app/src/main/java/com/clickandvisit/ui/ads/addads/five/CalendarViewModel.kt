@@ -220,9 +220,9 @@ class CalendarViewModel
                     onLikeClickedError(error)
                 })
             }
-        } else if (datesTimes.contains(date).not()) {
+        } /*else if (datesTimes.contains(date).not()) {
             datesTimes = "$date,$datesTimes"
-        }
+        }*/
     }
 
     private fun onSetAvailabilitySuccess(response: ResultModel) {

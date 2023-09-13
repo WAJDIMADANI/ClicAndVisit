@@ -231,7 +231,6 @@ dependencies {
 
     // Assertions
     androidTestImplementation "androidx.test.ext:junit:$assertions_junit"
-    androidTestImplementation "androidx.test.ext:truth:$assertions_junit"
 
     // Espresso dependencies
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso"
