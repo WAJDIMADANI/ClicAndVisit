@@ -104,6 +104,7 @@ class AddAdsViewModel
     val propertyEdit = MutableLiveData<Property>()
 
     val isEdit: MutableLiveData<Boolean> = MutableLiveData()
+    val isMeet: MutableLiveData<Boolean> = MutableLiveData()
 
 
     var propId: Int = 0
@@ -115,7 +116,12 @@ class AddAdsViewModel
         if (isEdit.value == true) {
             propertyEdit.value =
                 savedStateHandle.getLiveData<Property>(ExtraKeys.AddAdsActivity.PROPERTY_EXTRA_KEY_PROP).value
+        }
+        isMeet.value =
+            savedStateHandle.getLiveData<Boolean>(ExtraKeys.AddAdsActivity.PROPERTY_EXTRA_KEY_MEET).value
 
+        if (isMeet.value == true){
+            propId = propertyEdit.value?.id!!
         }
     }
 

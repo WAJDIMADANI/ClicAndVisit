@@ -125,6 +125,10 @@ class HomeActivity : BaseActivity(), DrawerLayout.DrawerListener {
                                 ExtraKeys.AddAdsActivity.PROPERTY_EXTRA_KEY_EDIT,
                                 false
                             )
+                            intent.putExtra(
+                                ExtraKeys.AddAdsActivity.PROPERTY_EXTRA_KEY_MEET,
+                                false
+                            )
                             startActivity(intent)
                         }
                     }

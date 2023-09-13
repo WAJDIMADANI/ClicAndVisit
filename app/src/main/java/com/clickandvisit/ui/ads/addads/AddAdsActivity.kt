@@ -13,6 +13,7 @@ import com.clickandvisit.base.BaseActivity
 import com.clickandvisit.data.model.property.Property
 import com.clickandvisit.databinding.ActivityAddAdsBinding
 import com.clickandvisit.global.helper.Navigation
+import com.clickandvisit.global.utils.observeOnlyNotNull
 import com.clickandvisit.ui.ads.addads.five.CalendarFragment
 import com.clickandvisit.ui.ads.addads.stepfour.FourFragment
 import com.clickandvisit.ui.ads.addads.stepone.OneFragment
@@ -39,6 +40,14 @@ class AddAdsActivity : BaseActivity() {
         registerBindingAndBaseObservers(binding)
         registerHomeObservers()
         startFragment()
+
+        viewModel.propertyEdit.observeOnlyNotNull(this) { prop ->
+            viewModel.isMeet.observeOnlyNotNull(this) { its ->
+                if (its == true) {
+                    goToCalendar()
+                }
+            }
+        }
     }
 
     fun getPropId(): Int {
@@ -92,9 +101,9 @@ class AddAdsActivity : BaseActivity() {
         when (currentIndex) {
 
             4 -> {
-                if (viewModel.isEdit.value == true){
+                if (viewModel.isEdit.value == true) {
                     finish()
-                }else{
+                } else {
                     bindData4()
                     viewModel.createOrUpdateProperty()
                 }
@@ -103,9 +112,9 @@ class AddAdsActivity : BaseActivity() {
             3 -> {
                 bindData3()
                 currentIndex++
-                if (viewModel.isEdit.value == true){
+                if (viewModel.isEdit.value == true) {
                     viewModel.createOrUpdateProperty()
-                }else{
+                } else {
                     navigateToFragment()
                 }
             }
@@ -260,12 +269,15 @@ class AddAdsActivity : BaseActivity() {
                 0 -> {
                     stepOne()
                 }
+
                 1 -> {
                     stepTwo()
                 }
+
                 2 -> {
                     stepThree()
                 }
+
                 3 -> {
                     stepFour()
                 }
@@ -281,15 +293,19 @@ class AddAdsActivity : BaseActivity() {
             1 -> {
                 stepTwo()
             }
+
             2 -> {
                 stepThree()
             }
+
             3 -> {
                 stepFour()
             }
+
             4 -> {
                 stepFive()
             }
+
             5 -> {
                 // TODO
             }
@@ -306,9 +322,9 @@ class AddAdsActivity : BaseActivity() {
             is Navigation.Back -> finish()
 
             is Navigation.CalendarFragmentNavigation -> {
-                if (viewModel.isEdit.value == true){
+                if (viewModel.isEdit.value == true) {
                     navigateToFragment()
-                }else{
+                } else {
                     finish()
                 }
             }
@@ -349,6 +365,20 @@ class AddAdsActivity : BaseActivity() {
     fun stepFive() {
         binding.tvStep5.visibility = View.VISIBLE
         binding.cbNext.text = getString(R.string.control_list_confirm)
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun goToCalendar() {
+        binding.tvStep1.visibility = View.VISIBLE
+        binding.tvStep2.visibility = View.VISIBLE
+        binding.tvStep3.visibility = View.VISIBLE
+        binding.tvStep4.visibility = View.VISIBLE
+        stepFive()
+        binding.cbBack.setOnClickListener {
+            finish()
+        }
+        currentIndex = 4
+        startFragment()
     }
 
 }

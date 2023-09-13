@@ -37,6 +37,7 @@ object ExtraKeys {
     class AddAdsActivity{
         companion object {
             const val PROPERTY_EXTRA_KEY_EDIT: String = "prop_extra_edit_extra_key"
+            const val PROPERTY_EXTRA_KEY_MEET: String = "prop_extra_meet_extra_key"
             const val PROPERTY_EXTRA_KEY_PROP: String = "prop_extra_edit"
         }
     }

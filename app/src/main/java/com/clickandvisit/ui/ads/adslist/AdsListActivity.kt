@@ -78,6 +78,10 @@ class AdsListActivity : BaseActivity() {
                         true
                     )
                     intent.putExtra(
+                        ExtraKeys.AddAdsActivity.PROPERTY_EXTRA_KEY_MEET,
+                        navigationTo.isMeet
+                    )
+                    intent.putExtra(
                         ExtraKeys.AddAdsActivity.PROPERTY_EXTRA_KEY_PROP,
                         navigationTo.value
                     )

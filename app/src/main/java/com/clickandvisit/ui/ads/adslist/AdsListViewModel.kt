@@ -99,7 +99,7 @@ class AdsListViewModel
     }
 
     override fun onEditClicked(value: Property) {
-        navigate(Navigation.AddAdsActivity(value))
+        navigate(Navigation.AddAdsActivity(value, false))
     }
 
     override fun onRateClicked(value: Property) {
@@ -107,7 +107,7 @@ class AdsListViewModel
     }
 
     override fun onMeetClicked(value: Property) {
-        DebugLog.i(TAG, "onMeetClicked")
+        navigate(Navigation.AddAdsActivity(value, true))
     }
 
     fun deleteProp(propertyId: Int, position: Int) {
