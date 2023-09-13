@@ -234,6 +234,7 @@
                     android:id="@+id/tvMeet"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:visibility="@{viewModel.isMyProp ? View.GONE : View.VISIBLE}"
                     android:layout_marginStart="@dimen/margin_global_30dp"
                     android:layout_marginTop="@dimen/margin_global_10dp"
                     android:layout_marginEnd="@dimen/margin_global_30dp"

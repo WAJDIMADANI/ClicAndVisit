@@ -54,6 +54,7 @@ class AdsDetailsViewModel
     val like: MutableLiveData<Drawable> = MutableLiveData()
     val list: MutableLiveData<List<String>> = MutableLiveData(arrayListOf())
     var roomsList = arrayListOf<String>()
+    val isMyProp = MutableLiveData(false)
 
 
     val availableHours1: MutableLiveData<List<String>?> = MutableLiveData()
@@ -99,6 +100,7 @@ class AdsDetailsViewModel
 
         fetchAvailability1(CalendarUtils.getWsFormattedDate(firstDay))
 
+        isMyProp.value = isCurrentUser()
     }
 
 
@@ -342,15 +344,20 @@ class AdsDetailsViewModel
     }
 
     private fun getPrice() {
+        val cc = if ("Vente" == property.value?.type){
+            ""
+        }else{
+            "(cc)"
+        }
         if (property.value!!.category.isEmpty() && property.value!!.price.isEmpty()) {
             propPrice.value = ""
         } else if (property.value!!.category.isEmpty().not() && property.value!!.price.isEmpty()) {
             propPrice.value = property.value!!.category
         } else if (property.value!!.category.isEmpty() && property.value!!.price.isEmpty().not()) {
-            propPrice.value = "${property.value!!.getPriceNBR()} /mois (cc)"
+            propPrice.value = "${property.value!!.getPriceNBR()} /mois $cc"
         } else {
             propPrice.value =
-                "${property.value!!.getCategories()} ${property.value!!.getPriceNBR()} /mois (cc)"
+                "${property.value!!.getCategories()} ${property.value!!.getPriceNBR()} /mois $cc"
         }
     }
 
