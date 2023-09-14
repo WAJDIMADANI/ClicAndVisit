@@ -60,7 +60,7 @@ class MapsActivity : BaseActivity(), OnMapReadyCallback {
             its.properties.forEach { prop ->
 
                 val vectorResId = if (prop.visitNow) {
-                    R.drawable.ic_marker
+                    R.drawable.ic_marker_green
                 } else {
                     R.drawable.ic_marker_red
                 }
