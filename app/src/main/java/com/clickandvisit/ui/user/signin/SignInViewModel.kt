@@ -71,7 +71,8 @@ class SignInViewModel
         if (signupResponse.result) {
             navigate(Navigation.HomeActivityNavigation)
         } else if (signupResponse.resultCode == 4) {
-            navigate(Navigation.OtpActivityNavigation(signupResponse.user.id.toInt()))
+            signupResponse.user?.id?.let { Navigation.OtpActivityNavigation(it.toInt()) }
+                ?.let { navigate(it) }
 /*            shownSimpleDialog(
                 messageId = R.string.signin_inactivated_account,
                 dismissActionBlock = {

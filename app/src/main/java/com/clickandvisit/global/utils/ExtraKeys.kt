@@ -45,7 +45,7 @@ object ExtraKeys {
     class HomeNotificationKeys {
         companion object {
             const val HOME_NOTIFICATION_EXTRA_KEY = "home_notification_extra_key"
-            const val HOME_NOTIFICATION_EXTRA_VALUE = "home_notification_extra_value"
+            //const val HOME_NOTIFICATION_EXTRA_VALUE = "home_notification_extra_value"
         }
     }
 }

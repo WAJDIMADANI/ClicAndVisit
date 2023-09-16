@@ -38,10 +38,6 @@ class SplashActivity : BaseActivity() {
                         ExtraKeys.HomeNotificationKeys.HOME_NOTIFICATION_EXTRA_KEY,
                         navigationTo.key
                     )
-                    intent.putExtra(
-                        ExtraKeys.HomeNotificationKeys.HOME_NOTIFICATION_EXTRA_VALUE,
-                        navigationTo.value
-                    )
                     startActivity(intent)
                 }
             }

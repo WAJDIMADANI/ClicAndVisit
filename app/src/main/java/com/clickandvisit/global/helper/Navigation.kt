@@ -32,7 +32,7 @@ sealed class Navigation {
 
     object HomeActivityNavigation : Navigation()
 
-    data class HomeActivityNav(val key: String, val value: String) : Navigation()
+    data class HomeActivityNav(val key: String) : Navigation()
 
     data class AddAdsActivity(val value: Property, val isMeet : Boolean) : Navigation()
 

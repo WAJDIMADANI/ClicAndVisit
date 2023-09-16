@@ -25,29 +25,35 @@ class MyFirebaseService : FirebaseMessagingService() {
     }
 
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
-        if (remoteMessage.notification != null) {
-            sendContent(
-                remoteMessage.notification!!.title,
-                remoteMessage.notification!!.body!!,
-                remoteMessage.data
-            )
-        }
-    }
 
-    private fun sendContent(title: String?, body: String, data: MutableMap<String, String>) {
-
-        data[Push.NOTIFICATION_KEY_CHAT]
-
-        if (data.containsKey(Push.NOTIFICATION_KEY_VISIT)) {
+        if (remoteMessage.data.containsKey(Push.NOTIFICATION_KEY_VISIT)) {
             userRepository.setVisits(true)
-        } else if (data.containsKey(Push.NOTIFICATION_KEY_MEET)) {
+        } else if (remoteMessage.data.containsKey(Push.NOTIFICATION_KEY_MEET)) {
             userRepository.setMeet(true)
         } else {
             userRepository.setChat(true)
         }
 
 
-        showNotification(applicationContext, title, body, data)
+        val key = if (remoteMessage.data.containsKey(Push.NOTIFICATION_KEY_VISIT)) {
+            Push.NOTIFICATION_KEY_VISIT
+        } else if (remoteMessage.data.containsKey(Push.NOTIFICATION_KEY_MEET)) {
+            Push.NOTIFICATION_KEY_MEET
+        } else {
+            Push.NOTIFICATION_KEY_CHAT
+        }
+
+        if (remoteMessage.notification != null) {
+            sendContent(
+                remoteMessage.notification!!.title,
+                remoteMessage.notification!!.body!!,
+                key
+            )
+        }
+    }
+
+    private fun sendContent(title: String?, body: String, key: String) {
+        showNotification(applicationContext, title, body, key)
     }
 
 }

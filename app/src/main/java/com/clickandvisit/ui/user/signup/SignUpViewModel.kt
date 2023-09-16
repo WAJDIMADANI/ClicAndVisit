@@ -289,7 +289,16 @@ class SignUpViewModel
 
     private fun onSignUpSuccess(signupResponse: SignupResponse) {
         hideBlockProgressBar()
-        navigate(Navigation.OtpActivityNavigation(signupResponse.user.id.toInt()))
+        if (signupResponse.user != null){
+            navigate(Navigation.OtpActivityNavigation(signupResponse.user.id.toInt()))
+        }else{
+            if (signupResponse.resultCode == 8){
+                shownSimpleDialog(messageId = R.string.global_error_email_exist)
+            }else{
+                shownServerErrorSimpleDialog()
+            }
+        }
+
     }
 
 

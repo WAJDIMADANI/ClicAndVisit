@@ -12,7 +12,10 @@ import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import com.clickandvisit.ClickVisitApplication
 import com.clickandvisit.R
+import com.clickandvisit.ui.user.chat.ChatActivity
+import com.clickandvisit.ui.user.meet.MeetActivity
 import com.clickandvisit.ui.user.splash.SplashActivity
+import com.clickandvisit.ui.user.visits.VisitsActivity
 import okhttp3.ResponseBody
 import java.io.FileOutputStream
 import java.io.InputStream
@@ -129,7 +132,7 @@ fun showNotification(
     context: Context,
     title: String?,
     body: String,
-    data: MutableMap<String, String>
+    key: String
 ) {
 
     val notificationManager: NotificationManager by lazy {
@@ -140,24 +143,13 @@ fun showNotification(
         createNotificationChannel(context)
     }
 
-    val navTypeKey = if (data.containsKey(Push.NOTIFICATION_KEY_VISIT)) {
-        Push.NOTIFICATION_KEY_VISIT
-    } else if (data.containsKey(Push.NOTIFICATION_KEY_MEET)) {
-        Push.NOTIFICATION_KEY_MEET
-    } else {
-        Push.NOTIFICATION_KEY_CHAT
-    }
-    val navTypeValue = data[navTypeKey]
-
     val notificationIntent = Intent(context, SplashActivity::class.java)
+
     notificationIntent.putExtra(
         ExtraKeys.HomeNotificationKeys.HOME_NOTIFICATION_EXTRA_KEY,
-        navTypeKey
+        key
     )
-    notificationIntent.putExtra(
-        ExtraKeys.HomeNotificationKeys.HOME_NOTIFICATION_EXTRA_VALUE,
-        navTypeValue
-    )
+
 
     val pendingIntent = PendingIntent.getActivity(context, 0, notificationIntent, 0)
 

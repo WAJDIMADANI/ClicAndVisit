@@ -15,7 +15,7 @@ data class SignupResponse(
     @Json(name = "result_message")
     val resultMsg: String,
     @Json(name = "user")
-    val user: User
+    val user: User?
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readByte() != 0.toByte(),

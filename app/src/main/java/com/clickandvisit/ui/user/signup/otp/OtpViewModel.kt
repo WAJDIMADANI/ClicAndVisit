@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.annotation.UiThread
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
+import com.clickandvisit.R
 import com.clickandvisit.base.BaseAndroidViewModel
 import com.clickandvisit.data.model.user.signup.SignupResponse
 import com.clickandvisit.data.repository.abs.UserRepository
@@ -91,7 +92,8 @@ class OtpViewModel
         three.value = ""
         four.value = ""
         code.value = ""
-        handleThrowable(throwable)
+        //handleThrowable(throwable)
+        shownSimpleDialog(messageId = R.string.global_error_otp)
     }
 
 }

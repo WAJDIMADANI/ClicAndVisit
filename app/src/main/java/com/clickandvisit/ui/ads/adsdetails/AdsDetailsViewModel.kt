@@ -384,6 +384,7 @@ class AdsDetailsViewModel
     }
 
     private fun onLikeClickedSuccess(response: GlobalResponse) {
+        property.value?.isFavorite = property.value?.isFavorite!!.not()
         isFavourite.value = isFavourite.value!!.not()
         if (isFavourite.value == true) {
             like.value = ContextCompat.getDrawable(applicationContext, R.drawable.ic_like_on)

@@ -55,21 +55,17 @@ class HomeViewModel
     lateinit var searchResponse: SearchResponse
 
     var notifKey: String?
-    var notifValue: String?
+
 
     init {
         notifKey =
             savedStateHandle.get<String>(ExtraKeys.HomeNotificationKeys.HOME_NOTIFICATION_EXTRA_KEY)
-        notifValue =
-            savedStateHandle.get<String>(ExtraKeys.HomeNotificationKeys.HOME_NOTIFICATION_EXTRA_VALUE)
 
-        notifKey?.let { DebugLog.i("notif", it) }
-        notifValue?.let { DebugLog.i("notif", it) }
-        if (notifKey.equals(Push.NOTIFICATION_KEY_VISIT)) {
+        if (notifKey?.contains(Push.NOTIFICATION_KEY_VISIT) == true) {
             navigate(Navigation.VisitsActivityNav)
-        } else if (notifKey.equals(Push.NOTIFICATION_KEY_MEET)) {
+        } else if (notifKey?.contains(Push.NOTIFICATION_KEY_MEET) == true) {
             navigate(Navigation.MeetActivityNav)
-        } else if (notifKey.equals(Push.NOTIFICATION_KEY_CHAT)) {
+        } else if (notifKey?.contains(Push.NOTIFICATION_KEY_CHAT) == true) {
             navigate(Navigation.ChatActivityNavigation)
         }
 

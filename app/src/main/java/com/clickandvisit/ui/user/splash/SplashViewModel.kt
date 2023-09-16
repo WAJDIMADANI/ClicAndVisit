@@ -24,14 +24,11 @@ class SplashViewModel
     private val userRepository: UserRepository
 ) : BaseAndroidViewModel(application, schedulerProvider) {
 
-    var notifKey: String?
-    var notifValue: String?
+    private var notifKey: String?
 
     init {
         notifKey =
             savedStateHandle.get<String>(ExtraKeys.HomeNotificationKeys.HOME_NOTIFICATION_EXTRA_KEY)
-        notifValue =
-            savedStateHandle.get<String>(ExtraKeys.HomeNotificationKeys.HOME_NOTIFICATION_EXTRA_VALUE)
 
         checkLoginStatus()
     }
@@ -44,8 +41,9 @@ class SplashViewModel
             }
             when (optional) {
                 is Optional.Some -> {
+
                     if (notifKey.isNullOrEmpty().not()) {
-                        navigate(Navigation.HomeActivityNav(notifKey!!, notifValue!!))
+                        navigate(Navigation.HomeActivityNav(notifKey!!))
                     } else {
                         navigate(Navigation.HomeActivityNavigation)
                     }

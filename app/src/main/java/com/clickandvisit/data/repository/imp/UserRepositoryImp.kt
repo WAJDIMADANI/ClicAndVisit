@@ -97,7 +97,7 @@ class UserRepositoryImp @Inject constructor(
     override suspend fun signInAndCache(email: String, password: String): SignupResponse {
         val response = apiClient.signIn(email, password)
         if (response.result) {
-            sharedPreferences.saveUser(response.user)
+            response.user?.let { sharedPreferences.saveUser(it) }
         }
         return response
     }
@@ -107,7 +107,7 @@ class UserRepositoryImp @Inject constructor(
             userId,
             code
         )
-        sharedPreferences.saveUser(response.user)
+        response.user?.let { sharedPreferences.saveUser(it) }
         return response
     }
 

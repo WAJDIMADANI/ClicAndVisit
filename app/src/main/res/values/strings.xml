@@ -12,6 +12,8 @@
     <!--global error-->
     <string name="global_error_server">Une erreur est survenue. Merci de réessayer plus tard.</string>
     <string name="global_error_unavailable_network">Merci de vérifier votre connexion.</string>
+    <string name="global_error_otp">Code d\'activation erroné</string>
+    <string name="global_error_email_exist">Cette adresse email est déjà utilisée</string>
     <string name="global_error_invalid_email_format">Veuillez saisir une adresse e-mail valide.</string>
     <string name="global_error_connection">Merci de vérifier votre connexion.</string>
     <string name="global_error_legal_notice">Merci d\'accepter les règlements du jeu et les mentions légales pour vous inscrire.</string>
