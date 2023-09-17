@@ -78,6 +78,7 @@ abstract class BaseAndroidViewModel(
      */
     fun showMapsBottomSheet(
         property: Property,
+        userId : Int,
         onMapsClickedListener: OnMapsClickedListener,
         okActionBlock: (() -> Unit)? = null,
         dismissActionBlock: (() -> Unit)? = null
@@ -86,6 +87,7 @@ abstract class BaseAndroidViewModel(
             MapsBottomSheet.build(
                 context = applicationContext,
                 property = property,
+                userId = userId,
                 onMapsClickedListener = onMapsClickedListener,
                 okActionBlock = okActionBlock,
                 dismissActionBlock = dismissMapsBottomSheet(dismissActionBlock)

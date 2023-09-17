@@ -9,6 +9,7 @@ sealed class Navigation {
     object Back : Navigation()
 
     object SignInActivityNavigation : Navigation()
+    data class MapZoomNavigation(val lat: String,val long: String) : Navigation()
 
     data class MapsActivityNavigation(val searchResponse: SearchResponse) : Navigation()
 

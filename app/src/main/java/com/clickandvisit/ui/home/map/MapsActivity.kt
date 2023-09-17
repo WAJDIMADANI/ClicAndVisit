@@ -126,6 +126,17 @@ class MapsActivity : BaseActivity(), OnMapReadyCallback {
 
             is Navigation.Back -> finish()
 
+            is Navigation.MapZoomNavigation -> {
+                map.animateCamera(
+                    CameraUpdateFactory.newLatLngZoom(
+                        LatLng(
+                            navigationTo.lat.toDouble(),
+                            navigationTo.long.toDouble()
+                        ), 12F
+                    ), 800, null
+                )
+            }
+
             is Navigation.AdsDetailsActivityNavigation -> {
                 Intent(this, AdsDetailsActivity::class.java).let { intent ->
                     intent.putExtra(

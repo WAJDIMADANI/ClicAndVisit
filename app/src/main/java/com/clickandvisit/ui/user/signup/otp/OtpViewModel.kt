@@ -82,7 +82,13 @@ class OtpViewModel
 
     private fun onOtpValidateSuccess(otpResponse: SignupResponse) {
         hideBlockProgressBar()
-        navigate(Navigation.HomeActivityNavigation)
+        if (otpResponse.resultCode == 4) {
+            shownSimpleDialog(messageId = R.string.global_error_otp)
+        } else if (otpResponse.user != null) {
+            navigate(Navigation.HomeActivityNavigation)
+        } else {
+            shownServerErrorSimpleDialog()
+        }
     }
 
     private fun onOtpValidateError(throwable: Throwable) {

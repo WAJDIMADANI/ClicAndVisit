@@ -49,13 +49,13 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvAdsAddress"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/dimen_160dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_global_15dp"
             android:layout_marginTop="@dimen/margin_global_15dp"
-            android:layout_marginEnd="@dimen/margin_global_5dp"
             android:ellipsize="end"
             android:fontFamily="@font/poppins_regular"
+            android:lines="2"
             android:text="3 rue du paradis"
             android:textColor="@color/black"
             android:textSize="@dimen/font_12sp"

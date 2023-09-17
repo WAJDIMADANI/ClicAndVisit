@@ -75,6 +75,9 @@ class HomeViewModel
         }
     }
 
+    fun getUserId(): Int {
+        return userRepository.getCurrentUserId()
+    }
 
     fun onResume() {
         getSearch(null, null)

@@ -19,6 +19,7 @@ import com.squareup.picasso.Picasso
 class CustomMapsBottomSheet(
     private val myContext: Context,
     private val property: Property,
+    private val userId: Int,
     private val onMapsClickedListener: OnMapsClickedListener,
     private val actionBlock: (() -> Unit)? = null,
     private val dismissActionBlock: (() -> Unit)? = null
@@ -89,9 +90,15 @@ class CustomMapsBottomSheet(
             dismiss()
         }
 
-        binding.tvMeet.setOnClickListener {
-            onMapsClickedListener.onMeetClicked(property)
+        if (property.owner.id.toInt() == userId){
+            binding.tvMeet.visibility = View.INVISIBLE
+        }else{
+            binding.tvMeet.visibility = View.VISIBLE
+            binding.tvMeet.setOnClickListener {
+                onMapsClickedListener.onMeetClicked(property)
+            }
         }
+
 
         binding.clContainer.setOnClickListener {
             onMapsClickedListener.onItemClicked(property)

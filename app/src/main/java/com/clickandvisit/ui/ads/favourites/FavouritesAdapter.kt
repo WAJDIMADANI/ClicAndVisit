@@ -16,13 +16,14 @@ class FavouritesAdapter(private val picasso: Picasso) :
 
     lateinit var viewModel: FavouritesViewModel
 
+    var userId: Int = 0
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchViewHolder {
         return SearchViewHolder.create(parent, parent.context, picasso, viewModel)
     }
 
     override fun onBindViewHolder(holder: SearchViewHolder, position: Int) {
-        holder.bind(list[position], position)
+        holder.bind(list[position], position, userId)
     }
 
     override fun getItemCount() = list.size

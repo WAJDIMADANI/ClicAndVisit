@@ -22,18 +22,24 @@ class SearchViewHolder(
     private val onPropertyClickedListener: OnPropertyClickedListener
 ) : RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(value: Property, position: Int) {
+    fun bind(value: Property, position: Int, userId: Int) {
 
-        if (value.visitNow) {
-            binding.tvMeet.setBackgroundColor(context.getColor(R.color.green_pro_status_details))
-            binding.tvMeet.text = context.getString(R.string.home_visit)
-            binding.tvMeet.setOnClickListener {
-                onPropertyClickedListener.onVisitNowClicked(value)
-            }
+        if (value.owner.id.toInt() == userId) {
+            binding.tvMeet.visibility = View.INVISIBLE
         } else {
-            binding.tvMeet.setBackgroundColor(context.getColor(R.color.red_pro_status))
-            binding.tvMeet.text = context.getString(R.string.home_meet)
+            binding.tvMeet.visibility = View.VISIBLE
+            if (value.visitNow) {
+                binding.tvMeet.setBackgroundColor(context.getColor(R.color.green_pro_status_details))
+                binding.tvMeet.text = context.getString(R.string.home_visit)
+                binding.tvMeet.setOnClickListener {
+                    onPropertyClickedListener.onVisitNowClicked(value)
+                }
+            } else {
+                binding.tvMeet.setBackgroundColor(context.getColor(R.color.red_pro_status))
+                binding.tvMeet.text = context.getString(R.string.home_meet)
+            }
         }
+
         binding.tvAdsName.text = value.title.toUpperCase()
         if (value.mainPhoto.isNullOrEmpty().not()) {
             if (value.album.isNullOrEmpty()) {

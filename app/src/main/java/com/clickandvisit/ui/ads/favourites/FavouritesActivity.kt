@@ -35,6 +35,7 @@ class FavouritesActivity : BaseActivity() {
 
     private fun registerRecycler(binding: ActivityFavouritesBinding) {
         adapter.viewModel = viewModel
+        adapter.userId = viewModel.getUserId()
         binding.rvSearch.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         binding.rvSearch.adapter = adapter
     }

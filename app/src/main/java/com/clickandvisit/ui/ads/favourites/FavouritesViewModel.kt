@@ -42,6 +42,10 @@ class FavouritesViewModel
         getSearch()
     }
 
+    fun getUserId(): Int {
+        return userRepository.getCurrentUserId()
+    }
+
     private fun getSearch() {
         showBlockProgressBar()
         viewModelScope.launch {

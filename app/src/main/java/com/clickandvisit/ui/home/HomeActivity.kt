@@ -72,6 +72,7 @@ class HomeActivity : BaseActivity(), DrawerLayout.DrawerListener {
 
     private fun registerRecycler(binding: ActivityHomeBinding) {
         adapter.viewModel = viewModel
+        adapter.userId = viewModel.getUserId()
         binding.rvSearch.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         binding.rvSearch.adapter = adapter
     }

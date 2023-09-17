@@ -38,7 +38,8 @@ class MapsViewModel
     }
 
     fun onMarkerClick(property: Property) {
-        showMapsBottomSheet(property, this)
+        navigate(Navigation.MapZoomNavigation(property.lat,property.long))
+        showMapsBottomSheet(property, userRepository.getCurrentUserId(), this)
     }
 
     override fun onItemClicked(property: Property) {

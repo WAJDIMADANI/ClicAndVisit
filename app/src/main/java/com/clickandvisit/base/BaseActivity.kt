@@ -57,6 +57,7 @@ abstract class BaseActivity : AppCompatActivity() {
         ) { mapsBottomSheet ->
             showMapsBottomSheetDialog(
                 mapsBottomSheet.property,
+                mapsBottomSheet.userId,
                 mapsBottomSheet.onMapsClickedListener,
                 mapsBottomSheet.okActionBlock,
                 mapsBottomSheet.dismissActionBlock
@@ -92,6 +93,7 @@ abstract class BaseActivity : AppCompatActivity() {
      */
     fun showMapsBottomSheetDialog(
         property: Property,
+        userId: Int,
         onMapsClickedListener: OnMapsClickedListener,
         okActionBlock: (() -> Unit)? = null,
         dismissActionBlock: (() -> Unit)? = null
@@ -100,6 +102,7 @@ abstract class BaseActivity : AppCompatActivity() {
             CustomMapsBottomSheet(
                 this,
                 property,
+                userId,
                 onMapsClickedListener,
                 okActionBlock,
                 dismissActionBlock
