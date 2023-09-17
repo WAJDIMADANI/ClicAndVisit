@@ -17,6 +17,7 @@ import com.clickandvisit.base.BaseFragment
 import com.clickandvisit.data.model.property.Property
 import com.clickandvisit.databinding.FragmentCalendarBinding
 import com.clickandvisit.global.helper.Navigation
+import com.clickandvisit.global.utils.DebugLog
 import com.clickandvisit.global.utils.observeOnlyNotNull
 import com.clickandvisit.ui.ads.addads.AddAdsActivity
 import com.clickandvisit.ui.ads.adsdetails.CalendarAdapter
@@ -24,6 +25,7 @@ import com.clickandvisit.ui.ads.adsdetails.CalendarUtils
 import dagger.hilt.android.AndroidEntryPoint
 import java.time.DayOfWeek
 import java.time.LocalDate
+import java.time.LocalDateTime
 import java.time.temporal.TemporalAdjusters
 
 
@@ -60,7 +62,7 @@ class CalendarFragment(val property: Property?) : BaseFragment(), CalendarAdapte
 
 
         addTVToLists()
-        itemsClickListener()
+        itemsClickListener(viewModel.firstDay)
 
         CalendarUtils.selectedDate = LocalDate.now()
         setWeekView()
@@ -78,6 +80,7 @@ class CalendarFragment(val property: Property?) : BaseFragment(), CalendarAdapte
                 viewModel.fetchAvailability1(CalendarUtils.getWsFormattedDate(viewModel.firstDay))
                 fetchDefaultColor()
                 fetchHoursResult(R.color.color_accent)
+                itemsClickListener(viewModel.firstDay)
             }
         }
 
@@ -92,6 +95,7 @@ class CalendarFragment(val property: Property?) : BaseFragment(), CalendarAdapte
             viewModel.fetchAvailability1(CalendarUtils.getWsFormattedDate(viewModel.firstDay))
             fetchDefaultColor()
             fetchHoursResult(R.color.color_accent)
+            itemsClickListener(viewModel.firstDay)
         }
 
 
@@ -99,8 +103,9 @@ class CalendarFragment(val property: Property?) : BaseFragment(), CalendarAdapte
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    private fun itemsClickListener() {
+    private fun itemsClickListener(firstDay: LocalDate) {
         itemsClickByList(
+            firstDay,
             listTV1,
             viewModel.availableHours1,
             CalendarUtils.getWsFormattedDate(viewModel.firstDay),
@@ -108,6 +113,7 @@ class CalendarFragment(val property: Property?) : BaseFragment(), CalendarAdapte
         )
 
         itemsClickByList(
+            firstDay.plusDays(1),
             listTV2,
             viewModel.availableHours2,
             CalendarUtils.getWsFormattedDate(viewModel.firstDay.plusDays(1)),
@@ -115,6 +121,7 @@ class CalendarFragment(val property: Property?) : BaseFragment(), CalendarAdapte
         )
 
         itemsClickByList(
+            firstDay.plusDays(2),
             listTV3,
             viewModel.availableHours3,
             CalendarUtils.getWsFormattedDate(viewModel.firstDay.plusDays(2)),
@@ -122,6 +129,7 @@ class CalendarFragment(val property: Property?) : BaseFragment(), CalendarAdapte
         )
 
         itemsClickByList(
+            firstDay.plusDays(3),
             listTV4,
             viewModel.availableHours4,
             CalendarUtils.getWsFormattedDate(viewModel.firstDay.plusDays(3)),
@@ -129,6 +137,7 @@ class CalendarFragment(val property: Property?) : BaseFragment(), CalendarAdapte
         )
 
         itemsClickByList(
+            firstDay.plusDays(4),
             listTV5,
             viewModel.availableHours5,
             CalendarUtils.getWsFormattedDate(viewModel.firstDay.plusDays(4)),
@@ -136,6 +145,7 @@ class CalendarFragment(val property: Property?) : BaseFragment(), CalendarAdapte
         )
 
         itemsClickByList(
+            firstDay.plusDays(5),
             listTV6,
             viewModel.availableHours6,
             CalendarUtils.getWsFormattedDate(viewModel.firstDay.plusDays(5)),
@@ -143,6 +153,7 @@ class CalendarFragment(val property: Property?) : BaseFragment(), CalendarAdapte
         )
 
         itemsClickByList(
+           firstDay.plusDays(6),
             listTV7,
             viewModel.availableHours7,
             CalendarUtils.getWsFormattedDate(viewModel.firstDay.plusDays(6)),
@@ -154,46 +165,64 @@ class CalendarFragment(val property: Property?) : BaseFragment(), CalendarAdapte
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun itemsClickByList(
+        dayDate: LocalDate,
         tvList: MutableLiveData<ArrayList<AppCompatTextView>>,
         hoursList: MutableLiveData<ArrayList<String>?>,
         day: String,
         isWhite: Boolean
     ) {
+
         tvList.value!!.forEach { tv ->
-            tv.setOnClickListener {
-                if (hoursList.value?.isNotEmpty() == true && hoursList.value?.contains(tv.tag) == true) {
-                    if (isWhite) {
-                        tv.setBackgroundColor(
-                            ContextCompat.getColor(
-                                requireContext(),
-                                R.color.white_basic
+
+            val dayDateTime = LocalDateTime.of(
+                dayDate.year,
+                dayDate.monthValue,
+                dayDate.dayOfMonth,
+                tv.tag.toString().subSequence(0, 2).toString().toInt(),
+                0
+            )
+            DebugLog.i("dayDateTime",dayDateTime.toString())
+
+            if (dayDateTime.isAfter(LocalDateTime.now())) {
+
+                tv.setOnClickListener {
+                    if (hoursList.value?.isNotEmpty() == true && hoursList.value?.contains(tv.tag) == true) {
+                        if (isWhite) {
+                            tv.setBackgroundColor(
+                                ContextCompat.getColor(
+                                    requireContext(),
+                                    R.color.white_basic
+                                )
                             )
-                        )
+                        } else {
+                            tv.setBackgroundColor(
+                                ContextCompat.getColor(
+                                    requireContext(),
+                                    R.color.day_gray
+                                )
+                            )
+                        }
+                        hoursList.value!!.remove(tv.tag)
+                        viewModel.datesTimes = viewModel.datesTimes.replace("$day ${tv.tag},", "")
+                        viewModel.setAvailability("$day ${tv.tag}", "remove")
                     } else {
                         tv.setBackgroundColor(
                             ContextCompat.getColor(
                                 requireContext(),
-                                R.color.day_gray
+                                R.color.color_accent
                             )
                         )
+                        hoursList.value?.add(tv.tag as String)
+                        if (viewModel.datesTimes.contains("$day ${tv.tag}").not()) {
+                            viewModel.datesTimes = "$day ${tv.tag},${viewModel.datesTimes}"
+                        }
+                        viewModel.setAvailability("$day ${tv.tag}", "add")
                     }
-                    hoursList.value!!.remove(tv.tag)
-                    viewModel.datesTimes = viewModel.datesTimes.replace("$day ${tv.tag},","")
-                    viewModel.setAvailability("$day ${tv.tag}", "remove")
-                } else {
-                    tv.setBackgroundColor(
-                        ContextCompat.getColor(
-                            requireContext(),
-                            R.color.color_accent
-                        )
-                    )
-                    hoursList.value?.add(tv.tag as String)
-                    if (viewModel.datesTimes.contains("$day ${tv.tag}").not()) {
-                        viewModel.datesTimes = "$day ${tv.tag},${viewModel.datesTimes}"
-                    }
-                    viewModel.setAvailability("$day ${tv.tag}", "add")
                 }
+            }else{
+                tv.setOnClickListener(null)
             }
+
         }
     }
 
@@ -219,7 +248,8 @@ class CalendarFragment(val property: Property?) : BaseFragment(), CalendarAdapte
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun setWeekView() {
-        binding.monthYearText.text = CalendarUtils.monthYearFromDate(CalendarUtils.selectedDate).capitalize()
+        binding.monthYearText.text =
+            CalendarUtils.monthYearFromDate(CalendarUtils.selectedDate).capitalize()
         val days: ArrayList<LocalDate> = CalendarUtils.daysInWeekArray(CalendarUtils.selectedDate)
         val calendarAdapter = CalendarAdapter(days, this)
         val layoutManager: RecyclerView.LayoutManager = GridLayoutManager(requireContext(), 7)
