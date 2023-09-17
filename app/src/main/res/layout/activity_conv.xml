@@ -39,7 +39,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="@dimen/margin_global_36dp"
                 android:fontFamily="@font/poppins_semi_bold"
-                android:text="@string/conv_header"
+                android:text="@{viewModel.title}"
                 android:textColor="@color/white_basic"
                 android:textSize="@dimen/font_16sp" />
 

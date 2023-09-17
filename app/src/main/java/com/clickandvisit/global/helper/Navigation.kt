@@ -29,7 +29,7 @@ sealed class Navigation {
 
     object ChatActivityNavigation : Navigation()
 
-    data class ConvActivityNavigation(val discId: Int) : Navigation()
+    data class ConvActivityNavigation(val discId: Int, val fromName: String) : Navigation()
 
     object HomeActivityNavigation : Navigation()
 

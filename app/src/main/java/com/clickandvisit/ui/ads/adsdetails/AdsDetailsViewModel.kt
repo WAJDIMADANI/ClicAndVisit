@@ -354,10 +354,10 @@ class AdsDetailsViewModel
         } else if (property.value!!.category.isEmpty().not() && property.value!!.price.isEmpty()) {
             propPrice.value = property.value!!.category
         } else if (property.value!!.category.isEmpty() && property.value!!.price.isEmpty().not()) {
-            propPrice.value = "${property.value!!.getPriceNBR()} /mois $cc"
+            propPrice.value = "${property.value!!.getPriceNBR()}/mois $cc"
         } else {
             propPrice.value =
-                "${property.value!!.getCategories()} ${property.value!!.getPriceNBR()} /mois $cc"
+                "${property.value!!.getCategories()} ${property.value!!.getPriceNBR()}/mois $cc"
         }
     }
 

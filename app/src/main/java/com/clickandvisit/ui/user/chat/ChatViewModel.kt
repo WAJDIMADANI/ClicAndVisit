@@ -68,7 +68,7 @@ class ChatViewModel
     }
 
     override fun onItemClicked(response: Discussion) {
-        navigate(Navigation.ConvActivityNavigation(response.discId.toInt()))
+        navigate(Navigation.ConvActivityNavigation(response.discId.toInt(), response.fromName))
     }
 
     fun onRestart() {

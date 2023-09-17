@@ -132,7 +132,7 @@ class MapsActivity : BaseActivity(), OnMapReadyCallback {
                         LatLng(
                             navigationTo.lat.toDouble(),
                             navigationTo.long.toDouble()
-                        ), 12F
+                        ), 18F
                     ), 800, null
                 )
             }

@@ -29,12 +29,16 @@ class ConvViewModel
 
     val list: MutableLiveData<List<Message>> = MutableLiveData(arrayListOf())
 
+    val title = MutableLiveData<String>()
+
     val msg = MutableLiveData<String>()
     val discId = MutableLiveData<Int>()
 
     init {
         discId.value =
             savedStateHandle.getLiveData<Int>(ExtraKeys.ConvActivity.DISC_ID_EXTRA_KEY).value
+        title.value =
+            savedStateHandle.getLiveData<String>(ExtraKeys.ConvActivity.FROM_NAME_EXTRA_KEY).value
         getMessages()
     }
 
@@ -54,7 +58,7 @@ class ConvViewModel
 
     private fun onGetDiscussionSuccess(response: MessagesResponse) {
         hideBlockProgressBar()
-        list.value = response.discussions as ArrayList
+        list.value = response.discussions.reversed() as ArrayList
     }
 
     private fun onGetDiscussionError(throwable: Throwable) {
