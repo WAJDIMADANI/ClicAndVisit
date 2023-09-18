@@ -132,7 +132,7 @@ interface UserRepository {
 
     suspend fun acceptRefuseReservation(
         propertyId: Int,
-        reservationId: Int,
+        reservationId: String,
         accept: Boolean
     ): ReservationAcceptResponse
 

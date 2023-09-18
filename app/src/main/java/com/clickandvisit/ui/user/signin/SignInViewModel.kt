@@ -10,6 +10,7 @@ import com.clickandvisit.data.repository.abs.UserRepository
 import com.clickandvisit.global.helper.Navigation
 import com.clickandvisit.global.listener.SchedulerProvider
 import com.clickandvisit.global.utils.HttpResponseCode
+import com.clickandvisit.global.utils.hideKeyboard
 import com.clickandvisit.global.utils.isValidEmail
 import com.clickandvisit.global.utils.isWhiteSpaces
 import com.clickandvisit.global.utils.tryCatch
@@ -78,6 +79,12 @@ class SignInViewModel
                 dismissActionBlock = {
                     navigate(Navigation.OtpActivityNavigation)
                 })*/
+        } else if (signupResponse.resultCode == 3) {
+            shownSimpleDialog(
+                messageId = R.string.signin_password_error,
+                dismissActionBlock = {
+
+                })
         }
     }
 

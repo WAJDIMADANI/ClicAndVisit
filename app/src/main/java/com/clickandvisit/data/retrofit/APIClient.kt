@@ -265,7 +265,7 @@ interface APIClient {
     @POST("accept_refuse_reservation")
     suspend fun acceptRefuseReservation(
         @Field("property_id") propertyId: Int,
-        @Field("reservation_id") reservationId: Int,
+        @Field("reservation_id") reservationId: String,
         @Field("accept") accept: Boolean
     ): ReservationAcceptResponse
 

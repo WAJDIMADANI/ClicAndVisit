@@ -112,8 +112,8 @@ class MeetViewModel
             tryCatch({
                 val response = withContext(schedulerProvider.dispatchersIO()) {
                     userRepository.acceptRefuseReservation(
-                        value.reservationDetails!!.propertyId.toInt(),
                         value.id,
+                        value.reservationDetails!!.id,
                         accept
                     )
                 }

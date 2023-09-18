@@ -132,7 +132,7 @@ fun showNotification(
     context: Context,
     title: String?,
     body: String,
-    key: String
+    value: String
 ) {
 
     val notificationManager: NotificationManager by lazy {
@@ -145,9 +145,11 @@ fun showNotification(
 
     val notificationIntent = Intent(context, SplashActivity::class.java)
 
+
+    DebugLog.i("NOTIFICATION_KEY/putExtra", value)
     notificationIntent.putExtra(
         ExtraKeys.HomeNotificationKeys.HOME_NOTIFICATION_EXTRA_KEY,
-        key
+        value
     )
 
 

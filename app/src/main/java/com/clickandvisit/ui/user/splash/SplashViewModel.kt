@@ -8,7 +8,9 @@ import com.clickandvisit.data.repository.abs.UserRepository
 import com.clickandvisit.global.enumeration.Optional
 import com.clickandvisit.global.helper.Navigation
 import com.clickandvisit.global.listener.SchedulerProvider
+import com.clickandvisit.global.utils.DebugLog
 import com.clickandvisit.global.utils.ExtraKeys
+import com.clickandvisit.global.utils.Push
 import com.clickandvisit.global.utils.SPLASH_TIME
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -30,6 +32,25 @@ class SplashViewModel
         notifKey =
             savedStateHandle.get<String>(ExtraKeys.HomeNotificationKeys.HOME_NOTIFICATION_EXTRA_KEY)
 
+        DebugLog.i("NOTIFICATION_KEY/splash", notifKey.toString())
+
+        /*when (notifKey) {
+            Push.NOTIFICATION_VAL_VISIT -> {
+                DebugLog.i("NOTIFICATION_KEY/when", "setVisits(true)")
+                userRepository.setVisits(true)
+            }
+
+            Push.NOTIFICATION_VAL_MEET -> {
+                DebugLog.i("NOTIFICATION_KEY/when", "setMeet(true)")
+                userRepository.setMeet(true)
+            }
+
+            Push.NOTIFICATION_VAL_CHAT -> {
+                DebugLog.i("NOTIFICATION_KEY/when", "setChat(true)")
+                userRepository.setChat(true)
+            }
+        }*/
+
         checkLoginStatus()
     }
 
@@ -43,8 +64,10 @@ class SplashViewModel
                 is Optional.Some -> {
 
                     if (notifKey.isNullOrEmpty().not()) {
+                        DebugLog.i("NOTIFICATION_KEY/check", notifKey!!)
                         navigate(Navigation.HomeActivityNav(notifKey!!))
                     } else {
+                        DebugLog.i("NOTIFICATION_KEY/check", "else")
                         navigate(Navigation.HomeActivityNavigation)
                     }
                 }

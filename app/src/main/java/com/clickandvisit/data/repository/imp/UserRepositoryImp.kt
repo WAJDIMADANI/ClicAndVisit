@@ -340,7 +340,7 @@ class UserRepositoryImp @Inject constructor(
 
     override suspend fun acceptRefuseReservation(
         propertyId: Int,
-        reservationId: Int,
+        reservationId: String,
         accept: Boolean
     ): ReservationAcceptResponse {
         return apiClient.acceptRefuseReservation(propertyId, reservationId, accept)

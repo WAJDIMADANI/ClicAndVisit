@@ -81,19 +81,19 @@ class HomeActivity : BaseActivity(), DrawerLayout.DrawerListener {
 
         binding.toolbarHome.setNotification(viewModel.getChat())
 
-/*
+
         if (viewModel.getVisits()) {
-            binding.navigationViewHome.menu.getItem(4).setTitle(R.string.home_menu_8_notification)
+            binding.navigationViewHome.menu.getItem(3).setTitle(R.string.home_menu_8_notification)
         } else {
-            binding.navigationViewHome.menu.getItem(4).setTitle(R.string.home_menu_8)
+            binding.navigationViewHome.menu.getItem(3).setTitle(R.string.home_menu_8)
         }
 
         if (viewModel.getMeet()) {
-            binding.navigationViewHome.menu.getItem(3).setTitle(R.string.home_menu_5_notification)
+            binding.navigationViewHome.menu.getItem(2).setTitle(R.string.home_menu_5_notification)
         } else {
-            binding.navigationViewHome.menu.getItem(3).setTitle(R.string.home_menu_5)
+            binding.navigationViewHome.menu.getItem(2).setTitle(R.string.home_menu_5)
         }
-*/
+
 
     }
 

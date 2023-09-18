@@ -1,5 +1,6 @@
 package com.clickandvisit.global.utils
 
+import android.app.Activity
 import android.content.Context
 import android.graphics.drawable.Drawable
 import android.net.ConnectivityManager
@@ -8,6 +9,7 @@ import android.os.SystemClock
 import android.provider.Settings
 import android.text.TextUtils
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.ImageView
@@ -389,4 +391,9 @@ fun String?.toMediaUrl(): String {
     } else {
         this
     }
+}
+
+fun Context.hideKeyboard(view: View) {
+    val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+    inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
 }

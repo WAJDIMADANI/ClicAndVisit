@@ -16,9 +16,10 @@ object Push {
     const val NOTIFICATION_TITLE = "title"
     const val NOTIFICATION_BODY = "body"
 
-    const val NOTIFICATION_KEY_VISIT = "visite"
-    const val NOTIFICATION_KEY_MEET = "rendez-vous"
-    const val NOTIFICATION_KEY_CHAT = "new_message"
+    const val NOTIFICATION_KEY = "subject"
+    const val NOTIFICATION_VAL_VISIT = "visite"
+    const val NOTIFICATION_VAL_MEET = "rendez-vous"
+    const val NOTIFICATION_VAL_CHAT = "new_message"
 
     const val NOTIFICATION_DATA = "data"
     const val CHANNEL = "com.clickandvisit.debug"

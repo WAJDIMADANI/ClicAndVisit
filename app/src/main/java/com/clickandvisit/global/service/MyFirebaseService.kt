@@ -8,8 +8,10 @@ import com.clickandvisit.global.utils.TAG
 import com.clickandvisit.global.utils.showNotification
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
+import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
+@AndroidEntryPoint
 class MyFirebaseService : FirebaseMessagingService() {
 
 
@@ -18,6 +20,7 @@ class MyFirebaseService : FirebaseMessagingService() {
 
 
     override fun onCreate() {
+        super.onCreate()
     }
 
     override fun onNewToken(token: String) {
@@ -26,34 +29,40 @@ class MyFirebaseService : FirebaseMessagingService() {
 
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
 
-        if (remoteMessage.data.containsKey(Push.NOTIFICATION_KEY_VISIT)) {
-            userRepository.setVisits(true)
-        } else if (remoteMessage.data.containsKey(Push.NOTIFICATION_KEY_MEET)) {
-            userRepository.setMeet(true)
-        } else {
-            userRepository.setChat(true)
+        DebugLog.i("NOTIFICATION_KEY/msg", "NOTIFICATION_KEY")
+        DebugLog.i("NOTIFICATION_KEY/val", remoteMessage.data[Push.NOTIFICATION_KEY].toString())
+
+            val value = remoteMessage.data[Push.NOTIFICATION_KEY]
+            DebugLog.i("NOTIFICATION_KEY/value", value.toString())
+            if (remoteMessage.notification != null) {
+                sendContent(
+                    remoteMessage.notification!!.title,
+                    remoteMessage.notification!!.body!!,
+                    value!!
+                )
+            }
+
+        when (value) {
+            Push.NOTIFICATION_VAL_VISIT -> {
+                DebugLog.i("NOTIFICATION_KEY/when", "setVisits(true)")
+                userRepository.setVisits(true)
+            }
+
+            Push.NOTIFICATION_VAL_MEET -> {
+                DebugLog.i("NOTIFICATION_KEY/when", "setMeet(true)")
+                userRepository.setMeet(true)
+            }
+
+            Push.NOTIFICATION_VAL_CHAT -> {
+                DebugLog.i("NOTIFICATION_KEY/when", "setChat(true)")
+                userRepository.setChat(true)
+            }
         }
 
-
-        val key = if (remoteMessage.data.containsKey(Push.NOTIFICATION_KEY_VISIT)) {
-            Push.NOTIFICATION_KEY_VISIT
-        } else if (remoteMessage.data.containsKey(Push.NOTIFICATION_KEY_MEET)) {
-            Push.NOTIFICATION_KEY_MEET
-        } else {
-            Push.NOTIFICATION_KEY_CHAT
-        }
-
-        if (remoteMessage.notification != null) {
-            sendContent(
-                remoteMessage.notification!!.title,
-                remoteMessage.notification!!.body!!,
-                key
-            )
-        }
     }
 
-    private fun sendContent(title: String?, body: String, key: String) {
-        showNotification(applicationContext, title, body, key)
+    private fun sendContent(title: String?, body: String, value: String) {
+        showNotification(applicationContext, title, body, value)
     }
 
 }

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Click &amp; Visit</string>
+    <string name="app_name">Clic &amp; Visit</string>
 
     <!--global message-->
     <string name="global_ok">Ok</string>
@@ -39,6 +39,7 @@
     <string name="signin_visitor">Visiteur</string>
 
     <string name="signin_inactivated_account">Compte non activé, vérifiez votre boite mail.</string>
+    <string name="signin_password_error">Mot de passe incorrecte</string>
 
 
     <!--otp-->
@@ -87,8 +88,8 @@
     <string name="home_menu_5">MES RENDEZ-VOUS</string> <!--<font size="35" color='#E21F39'>.</font>-->
     <string name="home_menu_8">MES VISITES</string> <!--<font size="35" color='#E21F39'>.</font>-->
 
-    <string name="home_menu_5_notification">MES RENDEZ-VOUS <font color='#E21F39' size="35">.</font></string>
-    <string name="home_menu_8_notification">MES VISITES <font color='#E21F39' size="35">.</font></string>
+    <string name="home_menu_5_notification">MES RENDEZ-VOUS <font color='#E21F39' size="25">*</font></string>
+    <string name="home_menu_8_notification">MES VISITES <font color='#E21F39' size="25">*</font></string>
 
     <string name="home_menu_6">MES FAVORIS</string>
     <string name="home_menu_7">MES RECHERCHES</string>
