@@ -9,7 +9,6 @@ import com.clickandvisit.base.BaseActivity
 import com.clickandvisit.databinding.ActivitySplashBinding
 import com.clickandvisit.global.helper.Navigation
 import com.clickandvisit.global.utils.ExtraKeys
-import com.clickandvisit.ui.ads.adsdetails.AdsDetailsActivity
 import com.clickandvisit.ui.home.HomeActivity
 import com.clickandvisit.ui.user.signin.SignInActivity
 import dagger.hilt.android.AndroidEntryPoint

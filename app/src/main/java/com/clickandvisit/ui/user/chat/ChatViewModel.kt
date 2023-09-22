@@ -29,7 +29,7 @@ class ChatViewModel
     OnChatItemClickedListener {
 
 
-    val list: MutableLiveData<ArrayList<Discussion>> = MutableLiveData(arrayListOf())
+    val list: MutableLiveData<List<Discussion>> = MutableLiveData(arrayListOf())
 
     init {
         userRepository.setChat(false)
@@ -53,8 +53,11 @@ class ChatViewModel
     private fun onGetDiscussionSuccess(response: DiscussionsResponse) {
         hideBlockProgressBar()
         if (response.discussions.isNullOrEmpty().not()){
-            val res = response.discussions
-            list.value = res as ArrayList
+            val res = arrayListOf<Discussion>()
+            for (i in response.discussions.size - 1 downTo 0 step 1) {
+                res.add(response.discussions[i])
+            }
+            list.value = res
         }
     }
 
