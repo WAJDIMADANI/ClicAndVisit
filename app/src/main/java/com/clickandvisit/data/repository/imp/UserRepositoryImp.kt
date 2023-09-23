@@ -376,6 +376,14 @@ class UserRepositoryImp @Inject constructor(
         return sharedPreferences.getUser().id.toInt()
     }
 
+    override fun setPushValue(value: String?)  {
+        sharedPreferences.setPushValue(value)
+    }
+
+    override fun getPushValue(): String? {
+        return sharedPreferences.getPushValue()
+    }
+
     override fun setChat(isNotification: Boolean) {
         sharedPreferences.setChat(isNotification)
     }

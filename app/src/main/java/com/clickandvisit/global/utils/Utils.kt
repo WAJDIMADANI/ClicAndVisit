@@ -131,8 +131,7 @@ private fun nowNotificationChannelExists(notificationManager: NotificationManage
 fun showNotification(
     context: Context,
     title: String?,
-    body: String,
-    value: String
+    body: String
 ) {
 
     val notificationManager: NotificationManager by lazy {
@@ -144,13 +143,6 @@ fun showNotification(
     }
 
     val notificationIntent = Intent(context, SplashActivity::class.java)
-
-
-    DebugLog.i("NOTIFICATION_KEY/putExtra", value)
-    notificationIntent.putExtra(
-        ExtraKeys.HomeNotificationKeys.HOME_NOTIFICATION_EXTRA_KEY,
-        value
-    )
 
 
     val pendingIntent = PendingIntent.getActivity(context, 0, notificationIntent, 0)

@@ -31,15 +31,6 @@ class SplashActivity : BaseActivity() {
             is Navigation.HomeActivityNavigation -> {
                 navigateToActivity(HomeActivity::class, true)
             }
-            is Navigation.HomeActivityNav -> {
-                Intent(this, HomeActivity::class.java).let { intent ->
-                    intent.putExtra(
-                        ExtraKeys.HomeNotificationKeys.HOME_NOTIFICATION_EXTRA_KEY,
-                        navigationTo.key
-                    )
-                    startActivity(intent)
-                }
-            }
             is Navigation.SignInActivityNavigation -> {
                 navigateToActivity(SignInActivity::class, true)
             }

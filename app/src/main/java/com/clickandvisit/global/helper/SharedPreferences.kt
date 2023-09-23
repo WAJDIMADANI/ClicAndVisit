@@ -14,6 +14,7 @@ private const val FILE_NAME_FLAG = "clickandvisit_file_flag"
 private const val TOKEN_FLAG = "1"
 private const val USER_FLAG = "2"
 
+private const val PUSH_KEY_FLAG = "subject"
 private const val CHAT_FLAG = "chat"
 private const val VISITS_FLAG = "visit"
 private const val MEET_FLAG = "meet"
@@ -32,6 +33,15 @@ class SharedPreferences(context: Context, val moshi: Moshi) {
         return !TextUtils.isEmpty(getToken())
     }
 
+    fun setPushValue(value: String?) {
+        val editor = sharedPreferences.edit()
+        editor.putString(PUSH_KEY_FLAG, value)
+        editor.apply()
+    }
+
+    fun getPushValue(): String? {
+        return sharedPreferences.getString(PUSH_KEY_FLAG, null)
+    }
 
     fun setChat(isNotification: Boolean) {
         val editor = sharedPreferences.edit()
@@ -117,6 +127,7 @@ class SharedPreferences(context: Context, val moshi: Moshi) {
         editor.remove(TOKEN_FLAG)
         editor.apply()
     }
+
     fun clearCache() {
         deleteToken()
         deleteUser()

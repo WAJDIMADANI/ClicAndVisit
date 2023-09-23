@@ -54,30 +54,34 @@ class HomeViewModel
 
     lateinit var searchResponse: SearchResponse
 
-    var key: String?
+
 
 
     init {
-        key =
-            savedStateHandle.get<String>(ExtraKeys.HomeNotificationKeys.HOME_NOTIFICATION_EXTRA_KEY)
-
-        DebugLog.i("NOTIFICATION_KEY/home", key.toString())
-
-        when (key) {
-            Push.NOTIFICATION_VAL_VISIT -> {
-                navigate(Navigation.VisitsActivityNav)
-            }
-            Push.NOTIFICATION_VAL_MEET -> {
-                navigate(Navigation.MeetActivityNav)
-            }
-            Push.NOTIFICATION_VAL_CHAT -> {
-                navigate(Navigation.ChatActivityNavigation)
-            }
-        }
-
-
         if (userRepository.isConnected()) {
+            getPushValue()
             setPushToken()
+        }
+    }
+
+    private fun getPushValue() {
+        if (userRepository.getPushValue().isNullOrEmpty().not()) {
+            val key: String? = userRepository.getPushValue()
+            DebugLog.i("NOTIFICATION_KEY/home", key.toString())
+            when (key) {
+                Push.NOTIFICATION_VAL_VISIT -> {
+                    navigate(Navigation.VisitsActivityNav)
+                }
+
+                Push.NOTIFICATION_VAL_MEET -> {
+                    navigate(Navigation.MeetActivityNav)
+                }
+
+                Push.NOTIFICATION_VAL_CHAT -> {
+                    navigate(Navigation.ChatActivityNavigation)
+                }
+            }
+            userRepository.setPushValue(null)
         }
     }
 

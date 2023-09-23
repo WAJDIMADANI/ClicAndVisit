@@ -30,15 +30,16 @@ class MyFirebaseService : FirebaseMessagingService() {
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
 
         DebugLog.i("NOTIFICATION_KEY/msg", "NOTIFICATION_KEY")
-        DebugLog.i("NOTIFICATION_KEY/val", remoteMessage.data[Push.NOTIFICATION_KEY].toString())
+        DebugLog.i("NOTIFICATION_KEY/data", remoteMessage.data.toString())
 
             val value = remoteMessage.data[Push.NOTIFICATION_KEY]
             DebugLog.i("NOTIFICATION_KEY/value", value.toString())
             if (remoteMessage.notification != null) {
+
+                remoteMessage.data[Push.NOTIFICATION_KEY]?.let { userRepository.setPushValue(it) }
                 sendContent(
                     remoteMessage.notification!!.title,
-                    remoteMessage.notification!!.body!!,
-                    value!!
+                    remoteMessage.notification!!.body!!
                 )
             }
 
@@ -61,8 +62,8 @@ class MyFirebaseService : FirebaseMessagingService() {
 
     }
 
-    private fun sendContent(title: String?, body: String, value: String) {
-        showNotification(applicationContext, title, body, value)
+    private fun sendContent(title: String?, body: String) {
+        showNotification(applicationContext, title, body)
     }
 
 }

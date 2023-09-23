@@ -26,13 +26,7 @@ class SplashViewModel
     private val userRepository: UserRepository
 ) : BaseAndroidViewModel(application, schedulerProvider) {
 
-    private var notifKey: String?
-
     init {
-        notifKey =
-            savedStateHandle.get<String>(ExtraKeys.HomeNotificationKeys.HOME_NOTIFICATION_EXTRA_KEY)
-
-        DebugLog.i("NOTIFICATION_KEY/splash", notifKey.toString())
 
         /*when (notifKey) {
             Push.NOTIFICATION_VAL_VISIT -> {
@@ -62,14 +56,7 @@ class SplashViewModel
             }
             when (optional) {
                 is Optional.Some -> {
-
-                    if (notifKey.isNullOrEmpty().not()) {
-                        DebugLog.i("NOTIFICATION_KEY/check", notifKey!!)
-                        navigate(Navigation.HomeActivityNav(notifKey!!))
-                    } else {
-                        DebugLog.i("NOTIFICATION_KEY/check", "else")
-                        navigate(Navigation.HomeActivityNavigation)
-                    }
+                    navigate(Navigation.HomeActivityNavigation)
                 }
                 is Optional.None -> {
                     navigate(Navigation.SignInActivityNavigation)

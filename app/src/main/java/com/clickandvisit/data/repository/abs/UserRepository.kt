@@ -154,6 +154,9 @@ interface UserRepository {
 
     /** notification **/
 
+    fun setPushValue(value: String?)
+    fun getPushValue(): String?
+
     fun setChat(isNotification: Boolean)
     fun getChat(): Boolean
 
