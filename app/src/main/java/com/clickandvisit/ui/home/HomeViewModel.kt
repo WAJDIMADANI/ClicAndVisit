@@ -86,7 +86,11 @@ class HomeViewModel
     }
 
     fun getUserId(): Int {
-        return userRepository.getCurrentUserId()
+        return if (userRepository.isConnected()){
+            userRepository.getCurrentUserId()
+        }else{
+            0
+        }
     }
 
     fun onResume() {
