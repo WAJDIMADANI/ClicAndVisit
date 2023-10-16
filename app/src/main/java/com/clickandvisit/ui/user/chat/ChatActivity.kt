@@ -2,6 +2,8 @@ package com.clickandvisit.ui.user.chat
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -11,6 +13,7 @@ import com.clickandvisit.base.BaseActivity
 import com.clickandvisit.databinding.ActivityChatBinding
 import com.clickandvisit.global.helper.Navigation
 import com.clickandvisit.global.utils.ExtraKeys
+import com.clickandvisit.global.utils.observeOnlyNotNull
 import com.clickandvisit.ui.user.chat.conv.ConvActivity
 import com.clickandvisit.ui.user.signup.otp.OtpActivity
 import dagger.hilt.android.AndroidEntryPoint
@@ -27,11 +30,21 @@ class ChatActivity : BaseActivity() {
     @Inject
     lateinit var adapter: ChatAdapter
 
+    private var handler: Handler = Handler(Looper.getMainLooper())
+    private var runnable: Runnable? = null
+    private var delay = 10000
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_chat)
         registerBindingAndBaseObservers(binding)
         registerRecycler(binding)
+
+        handler.postDelayed(Runnable {
+            handler.postDelayed(runnable!!, delay.toLong())
+            viewModel.getDiscussions()
+        }.also { runnable = it }, delay.toLong())
+
     }
 
     override fun onRestart() {

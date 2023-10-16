@@ -36,8 +36,7 @@ class ChatViewModel
         getDiscussions()
     }
 
-    private fun getDiscussions() {
-        showBlockProgressBar()
+    fun getDiscussions() {
         viewModelScope.launch {
             tryCatch({
                 val response = withContext(schedulerProvider.dispatchersIO()) {
@@ -51,7 +50,6 @@ class ChatViewModel
     }
 
     private fun onGetDiscussionSuccess(response: DiscussionsResponse) {
-        hideBlockProgressBar()
         if (response.discussions.isNullOrEmpty().not()){
             val res = arrayListOf<Discussion>()
             for (i in response.discussions.size - 1 downTo 0 step 1) {
@@ -62,7 +60,6 @@ class ChatViewModel
     }
 
     private fun onGetDiscussionError(throwable: Throwable) {
-        hideBlockProgressBar()
         handleThrowable(throwable)
     }
 

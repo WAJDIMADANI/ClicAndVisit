@@ -1,6 +1,8 @@
 package com.clickandvisit.ui.user.chat.conv
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -9,6 +11,7 @@ import com.clickandvisit.R
 import com.clickandvisit.base.BaseActivity
 import com.clickandvisit.databinding.ActivityConvBinding
 import com.clickandvisit.global.helper.Navigation
+import com.clickandvisit.global.utils.observeOnlyNotNull
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -23,12 +26,25 @@ class ConvActivity : BaseActivity() {
     @Inject
     lateinit var adapter: ConvAdapter
 
+    private var handler: Handler = Handler(Looper.getMainLooper())
+    private var runnable: Runnable? = null
+    private var delay = 10000
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_conv)
         registerBindingAndBaseObservers(binding)
         registerRecycler(binding)
+
+
+        viewModel.discId.observeOnlyNotNull(this) {
+            handler.postDelayed(Runnable {
+                handler.postDelayed(runnable!!, delay.toLong())
+                viewModel.getMessages()
+            }.also { runnable = it }, delay.toLong())
+        }
+
     }
 
 

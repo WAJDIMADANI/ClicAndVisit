@@ -31,10 +31,6 @@ class ConvViewHolder(
             binding.tvChatMsgOther.text = value.message
 
             picasso.load(value.authorPhoto.toMediaUrl())
-                .memoryPolicy(
-                    MemoryPolicy.NO_CACHE,
-                    MemoryPolicy.NO_STORE
-                )
                 .fit()
                 .centerInside()
                 .into(binding.ivChatUserPhoto)

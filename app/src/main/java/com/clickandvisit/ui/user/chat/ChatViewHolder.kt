@@ -26,10 +26,6 @@ class ChatViewHolder(
         binding.tvCityDate.text = value.property + " - " + value.date
 
         picasso.load(value.fromPicture.toMediaUrl())
-            .memoryPolicy(
-                MemoryPolicy.NO_CACHE,
-                MemoryPolicy.NO_STORE
-            )
             .fit()
             .centerInside()
             .into(binding.ivChatUserPhoto)

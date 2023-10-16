@@ -1,6 +1,8 @@
 package com.clickandvisit.ui.user.chat.conv
 
 import android.app.Application
+import android.os.Handler
+import android.os.Looper
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import com.clickandvisit.base.BaseAndroidViewModel
@@ -41,19 +43,9 @@ class ConvViewModel
         title.value =
             savedStateHandle.getLiveData<String>(ExtraKeys.ConvActivity.FROM_NAME_EXTRA_KEY).value
         getMessages()
-        doMessages()
     }
 
-    private fun doMessages() {
-        viewModelScope.launch {
-            while (true){
-                delay(5000)
-                getMessages()
-            }
-        }
-    }
-
-    private fun getMessages() {
+    fun getMessages() {
         viewModelScope.launch {
             tryCatch({
                 val response = withContext(schedulerProvider.dispatchersIO()) {
