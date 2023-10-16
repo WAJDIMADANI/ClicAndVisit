@@ -13,6 +13,7 @@ import com.clickandvisit.global.listener.SchedulerProvider
 import com.clickandvisit.global.utils.ExtraKeys
 import com.clickandvisit.global.utils.tryCatch
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
@@ -40,10 +41,19 @@ class ConvViewModel
         title.value =
             savedStateHandle.getLiveData<String>(ExtraKeys.ConvActivity.FROM_NAME_EXTRA_KEY).value
         getMessages()
+        doMessages()
+    }
+
+    private fun doMessages() {
+        viewModelScope.launch {
+            while (true){
+                delay(5000)
+                getMessages()
+            }
+        }
     }
 
     private fun getMessages() {
-        showBlockProgressBar()
         viewModelScope.launch {
             tryCatch({
                 val response = withContext(schedulerProvider.dispatchersIO()) {
@@ -57,18 +67,15 @@ class ConvViewModel
     }
 
     private fun onGetDiscussionSuccess(response: MessagesResponse) {
-        hideBlockProgressBar()
         list.value = response.discussions.reversed() as ArrayList
     }
 
     private fun onGetDiscussionError(throwable: Throwable) {
-        hideBlockProgressBar()
         handleThrowable(throwable)
     }
 
     fun onSendClicked() {
         if (validateFields()) {
-            showBlockProgressBar()
             viewModelScope.launch {
                 tryCatch({
                     val response = withContext(schedulerProvider.dispatchersIO()) {
@@ -88,7 +95,6 @@ class ConvViewModel
     }
 
     private fun onSendMessageError(throwable: Throwable) {
-        showBlockProgressBar()
         handleThrowable(throwable)
     }
 

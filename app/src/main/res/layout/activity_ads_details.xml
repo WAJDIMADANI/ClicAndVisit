@@ -22,7 +22,7 @@
         <RelativeLayout
             android:id="@+id/rlHeader"
             android:layout_width="match_parent"
-            android:layout_height="90dp"
+            android:layout_height="65dp"
             android:background="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -33,7 +33,7 @@
                 android:layout_width="@dimen/dimen_25dp"
                 android:layout_height="@dimen/dimen_25dp"
                 android:layout_marginStart="@dimen/margin_global_20dp"
-                android:layout_marginTop="@dimen/margin_global_36dp"
+                android:layout_marginTop="@dimen/margin_global_23dp"
                 android:background="@drawable/ic_back"
                 app:onClickWithDebounce="@{() ->viewModel.onBackClick()}" />
 
@@ -41,7 +41,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/margin_global_36dp"
+                android:layout_marginTop="@dimen/margin_global_23dp"
                 android:fontFamily="@font/poppins_semi_bold"
                 android:text="@string/prop_details_title"
                 android:textColor="@color/white_basic"
@@ -91,7 +91,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/constraintLayoutImages"
                     android:layout_width="match_parent"
-                    android:layout_height="270dp"
+                    android:layout_height="290dp"
                     android:background="@color/white_basic"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -100,7 +100,7 @@
                     <com.denzcoskun.imageslider.ImageSlider
                         android:id="@+id/imageSlider"
                         android:layout_width="match_parent"
-                        android:layout_height="187dp"
+                        android:layout_height="210dp"
                         app:iss_text_align="CENTER"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
