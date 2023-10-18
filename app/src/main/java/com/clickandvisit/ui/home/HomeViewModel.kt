@@ -52,7 +52,7 @@ class HomeViewModel
 
     var searchRequest = SearchRequest(sortBy = "date", sortHow = "desc")
 
-    lateinit var searchResponse: SearchResponse
+    private var searchResponse: SearchResponse? = null
 
 
 
@@ -188,7 +188,9 @@ class HomeViewModel
     }
 
     fun onMapsClicked() {
-        navigate(Navigation.MapsActivityNavigation(searchResponse))
+        if (searchResponse != null) {
+            navigate(Navigation.MapsActivityNavigation(searchResponse!!))
+        }
     }
 
     fun isConnected(): Boolean {
