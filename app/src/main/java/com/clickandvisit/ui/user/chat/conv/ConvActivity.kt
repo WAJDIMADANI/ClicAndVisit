@@ -28,7 +28,7 @@ class ConvActivity : BaseActivity() {
 
     private var handler: Handler = Handler(Looper.getMainLooper())
     private var runnable: Runnable? = null
-    private var delay = 10000
+    private var delay = 5000
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

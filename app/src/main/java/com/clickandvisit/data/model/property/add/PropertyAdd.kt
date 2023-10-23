@@ -19,6 +19,8 @@ data class PropertyAdd(
     var propGes: String? = null,
     var infoComp: String? = null,
 
+    var propPieces: String? = null,
+
     var prop_meta_chambres: String? = null,
 
 

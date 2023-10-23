@@ -256,6 +256,7 @@ class UserRepositoryImp @Inject constructor(
             property.propEnery?.toRequestBody("text/plain".toMediaTypeOrNull()),
             property.propGes?.toRequestBody("text/plain".toMediaTypeOrNull()),
             property.infoComp?.toRequestBody("text/plain".toMediaTypeOrNull()),
+            property.propPieces?.toRequestBody("text/plain".toMediaTypeOrNull()),
             property.prop_meta_chambres?.toRequestBody("text/plain".toMediaTypeOrNull()),
             property.prop_meta_suites?.toRequestBody("text/plain".toMediaTypeOrNull()),
             property.prop_meta_salles_de_bains?.toRequestBody("text/plain".toMediaTypeOrNull()),

@@ -199,6 +199,7 @@ interface APIClient {
         @Part("prop_enery") propEnergy: RequestBody?,
         @Part("prop_ges") propGes: RequestBody?,
         @Part("prop_infos_complementaires") infoComp: RequestBody?,
+        @Part("prop_meta_pieces") propPieces: RequestBody?,
         @Part("prop_meta_chambres") prop_meta_chambres: RequestBody?,
         @Part("prop_meta_suites") prop_meta_suites: RequestBody?,
         @Part("prop_meta_salles_de_bains") prop_meta_salles_de_bains: RequestBody?,

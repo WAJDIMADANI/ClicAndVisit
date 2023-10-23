@@ -16,6 +16,8 @@ data class Property(
     val type: String,
     @Json(name = "category")
     val category: String,
+    @Json(name = "pieces")
+    val pieces: String?,
     @Json(name = "album")
     val album: List<String>?,
     @Json(name = "photo_principale")
@@ -67,6 +69,7 @@ data class Property(
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readInt(),
+        parcel.readString()!!,
         parcel.readString()!!,
         parcel.readString()!!,
         parcel.readString()!!,

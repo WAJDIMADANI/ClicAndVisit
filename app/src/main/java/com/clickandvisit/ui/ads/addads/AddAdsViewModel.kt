@@ -136,7 +136,7 @@ class AddAdsViewModel
 
         propertyAdd.value?.propCategory = getPropCategory()
 
-    //    propertyAdd.value?.prop_meta_chambres = getRoomsNbr()
+        propertyAdd.value?.propPieces = getPiecesNbr()
         propertyAdd.value?.prop_meta_chambres = roomNbrApi1.value
 
         propertyAdd.value?.propSurface = surface.value?.toInt()
@@ -308,7 +308,7 @@ class AddAdsViewModel
         96
     }
 
-    private fun getRoomsNbr() = if (checked1.value == true) {
+    private fun getPiecesNbr() = if (checked1.value == true) {
         "1"
     } else if (checked2.value == true) {
         "2"
