@@ -55,7 +55,7 @@ class AddAdsViewModel
     val stage: MutableLiveData<String> = MutableLiveData()
     val on: MutableLiveData<String> = MutableLiveData()
 
-    val info: MutableLiveData<String?> = MutableLiveData()
+    val info: MutableLiveData<String> = MutableLiveData()
 
     val ges: MutableLiveData<String> = MutableLiveData()
     val dpe: MutableLiveData<String> = MutableLiveData()
@@ -168,8 +168,7 @@ class AddAdsViewModel
             propertyAdd.value?.propEtageSur = null
         }
 
-        propertyAdd.value?.propInfos = info.value
-
+        propertyAdd.value?.infoComp = info.value
 
         propertyAdd.value?.prop_meta_suites = roomNbrApi2.value
         propertyAdd.value?.prop_meta_salles_de_bains = roomNbrApi3.value
@@ -287,9 +286,9 @@ class AddAdsViewModel
     }
 
     private fun getPropType() = if (checkedSale.value == true) {
-        30
-    } else {
         29
+    } else {
+        30
     }
 
     private fun getPropCategory() = if (checkedHome.value == true) {

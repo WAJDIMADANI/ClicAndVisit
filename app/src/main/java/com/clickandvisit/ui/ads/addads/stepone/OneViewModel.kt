@@ -254,7 +254,7 @@ class OneViewModel
             }
         }
 
-        when (property.pieces) {
+        when (property.details.pieces) {
             "1" -> {
                 checked1.value = true
             }

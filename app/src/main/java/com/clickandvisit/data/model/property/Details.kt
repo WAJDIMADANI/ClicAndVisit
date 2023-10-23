@@ -4,9 +4,12 @@ import android.os.Parcel
 import android.os.Parcelable
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
+import java.lang.NumberFormatException
 
 @JsonClass(generateAdapter = true)
 data class Details(
+    @Json(name = "pieces")
+    val pieces: String?,
     @Json(name = "chambres")
     val chambres: String,
     @Json(name = "suites")
@@ -49,9 +52,10 @@ data class Details(
     @Json(name = "triplex")
     val triplex: String,
     @Json(name = "rez_de_jardin")
-    val rezDeJardin: String,
+    val rezDeJardin: String?,
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
+        parcel.readString(),
         parcel.readString()!!,
         parcel.readString()!!,
         parcel.readString()!!,
@@ -71,24 +75,8 @@ data class Details(
         parcel.readString()!!,
         parcel.readString()!!,
         parcel.readString()!!,
-        parcel.readString()!!
+        parcel.readString()
     ) {
-    }
-
-    fun getRoomsNBR(): String {
-        return try {
-            "T" + (chambres.toInt() + 1).toString() + " - "
-        } catch (e: NumberFormatException) {
-            "T1 - "
-        }
-    }
-
-    fun getRoomsNBRDetails(): String {
-        return try {
-            "T" + (chambres.toInt() + 1).toString()
-        } catch (e: NumberFormatException) {
-            "T1"
-        }
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
@@ -127,6 +115,31 @@ data class Details(
             return arrayOfNulls(size)
         }
     }
+
+
+    fun getTPieces(): String {
+        return if (pieces.isNullOrEmpty()){
+            "T0"
+        }else{
+            try {
+                "T$pieces"
+            } catch (e: NumberFormatException) {
+                "T0"
+            }
+        }
+    }
+    fun getT_Pieces(): String {
+        return if (pieces.isNullOrEmpty()){
+            "T0 - "
+        }else{
+            try {
+                "T$pieces - "
+            } catch (e: NumberFormatException) {
+                "T0 - "
+            }
+        }
+    }
+
 
     override fun toString(): String {
         return "Details(chambres='$chambres', suites='$suites', sallesDeBain='$sallesDeBain', sallesDeau='$sallesDeau', bureaux='$bureaux', dressing='$dressing', garages='$garages', caves='$caves', balcons='$balcons', terrasse='$terrasse', surfaceTerrain='$surfaceTerrain', annee='$annee', piscine='$piscine', piscinable='$piscinable', poolHouse='$poolHouse', sansVisAVis='$sansVisAVis', ascenseur='$ascenseur', duplex='$duplex', triplex='$triplex', rezDeJardin='$rezDeJardin')"

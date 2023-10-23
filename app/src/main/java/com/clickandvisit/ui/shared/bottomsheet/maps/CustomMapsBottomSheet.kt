@@ -56,7 +56,7 @@ class CustomMapsBottomSheet(
         }
 
         binding.tvAdsSpace.text =
-            property.details.getRoomsNBR() + property.surface + " " + context.getString(
+            property.details.getT_Pieces() + property.surface + " " + context.getString(
                 R.string.home_details_m_square
             )
 

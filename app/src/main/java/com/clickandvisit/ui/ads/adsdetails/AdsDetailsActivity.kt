@@ -146,6 +146,9 @@ class AdsDetailsActivity : BaseActivity(), CalendarAdapter.OnItemListener {
     override fun navigate(navigationTo: Navigation) {
         when (navigationTo) {
             is Navigation.Back -> finish()
+            is Navigation.Scroll -> {
+                binding.svHeader.smoothScrollTo(0, binding.svHeader.bottom - 420)
+            }
 
             is Navigation.ShareNavigation -> {
                 Intent().let {

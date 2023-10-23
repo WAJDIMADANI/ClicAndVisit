@@ -7,6 +7,7 @@ import com.clickandvisit.data.model.property.SearchResponse
 sealed class Navigation {
 
     object Back : Navigation()
+    object Scroll : Navigation()
 
     object SignInActivityNavigation : Navigation()
     data class MapZoomNavigation(val lat: String,val long: String) : Navigation()

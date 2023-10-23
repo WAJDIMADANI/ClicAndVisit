@@ -85,7 +85,7 @@ class AdsDetailsViewModel
 
         checkedPro.value = proVisibility()
         adsName.value = property.value!!.title.toUpperCase()
-        rooms.value = property.value!!.details.getRoomsNBRDetails()
+        rooms.value = property.value!!.details.getTPieces()
         surface.value = property.value!!.surface + "\n" + applicationContext.getString(
             R.string.home_details_m_square
         )
@@ -336,7 +336,7 @@ class AdsDetailsViewModel
             roomsList.add(applicationContext.getString(R.string.ad_ads_191))
         }
 
-        if (property.value!!.details.rezDeJardin.isNotEmpty()) {
+        if (property.value!!.details.rezDeJardin?.isNotEmpty() == true) {
             roomsList.add(applicationContext.getString(R.string.ad_ads_201))
         }
 
@@ -406,7 +406,7 @@ class AdsDetailsViewModel
 
 
     fun onMeetClicked() {
-        //TODO: scroll to calendar
+        navigate(Navigation.Scroll)
     }
 
     fun onBackClick() {

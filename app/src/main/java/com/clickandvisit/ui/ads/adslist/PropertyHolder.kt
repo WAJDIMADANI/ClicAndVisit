@@ -48,7 +48,7 @@ class PropertyHolder(
         }
 
         binding.tvAdsSpace.text =
-            value.details.getRoomsNBR() + value.surface  + " " + context.getString(
+            value.details.getT_Pieces() + value.surface  + " " + context.getString(
                 R.string.home_details_m_square
             )
 
