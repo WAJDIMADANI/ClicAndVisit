@@ -15,9 +15,7 @@ import com.clickandvisit.data.model.property.ADD
 import com.clickandvisit.data.model.property.FavoriteRequest
 import com.clickandvisit.data.model.property.Property
 import com.clickandvisit.data.model.property.REMOVE
-import com.clickandvisit.data.model.reservation.ReservationResponse
 import com.clickandvisit.data.model.reservation.ReserveResponse
-import com.clickandvisit.data.model.reservation.ResultModel
 import com.clickandvisit.data.repository.abs.UserRepository
 import com.clickandvisit.global.helper.Navigation
 import com.clickandvisit.global.listener.SchedulerProvider
@@ -45,7 +43,7 @@ class AdsDetailsViewModel
     val imgCount = MutableLiveData<String>()
     val adsName = MutableLiveData<String>()
     val propPrice = MutableLiveData<String>()
-    val rooms = MutableLiveData<String>()
+    val pieces = MutableLiveData<String>()
     val surface = MutableLiveData<String>()
     val info = MutableLiveData<String>()
     val ref = MutableLiveData<String>()
@@ -85,7 +83,7 @@ class AdsDetailsViewModel
 
         checkedPro.value = proVisibility()
         adsName.value = property.value!!.title.toUpperCase()
-        rooms.value = property.value!!.details.getTPieces()
+        pieces.value = property.value!!.details.getTPieces()
         surface.value = property.value!!.surface + "\n" + applicationContext.getString(
             R.string.home_details_m_square
         )

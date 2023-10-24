@@ -207,7 +207,7 @@
                         android:background="@color/gray_home_type_background"
                         android:fontFamily="@font/poppins_regular"
                         android:gravity="center"
-                        android:text="@{viewModel.rooms}"
+                        android:text="@{viewModel.pieces}"
                         android:textAllCaps="true"
                         android:textColor="@color/white_basic"
                         android:textSize="@dimen/dimen_14sp"

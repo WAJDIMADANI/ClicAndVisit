@@ -4,14 +4,13 @@ import android.os.Parcel
 import android.os.Parcelable
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
-import java.lang.NumberFormatException
 
 @JsonClass(generateAdapter = true)
 data class Details(
-    @Json(name = "pieces")
-    val pieces: String?,
     @Json(name = "chambres")
     val chambres: String,
+    @Json(name = "pieces")
+    val pieces: String?,
     @Json(name = "suites")
     val suites: String,
     @Json(name = "salles_de_bains")
@@ -55,8 +54,8 @@ data class Details(
     val rezDeJardin: String?,
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
-        parcel.readString(),
         parcel.readString()!!,
+        parcel.readString(),
         parcel.readString()!!,
         parcel.readString()!!,
         parcel.readString()!!,
@@ -81,6 +80,7 @@ data class Details(
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(chambres)
+        parcel.writeString(pieces)
         parcel.writeString(suites)
         parcel.writeString(sallesDeBain)
         parcel.writeString(sallesDeau)
@@ -140,9 +140,8 @@ data class Details(
         }
     }
 
-
     override fun toString(): String {
-        return "Details(chambres='$chambres', suites='$suites', sallesDeBain='$sallesDeBain', sallesDeau='$sallesDeau', bureaux='$bureaux', dressing='$dressing', garages='$garages', caves='$caves', balcons='$balcons', terrasse='$terrasse', surfaceTerrain='$surfaceTerrain', annee='$annee', piscine='$piscine', piscinable='$piscinable', poolHouse='$poolHouse', sansVisAVis='$sansVisAVis', ascenseur='$ascenseur', duplex='$duplex', triplex='$triplex', rezDeJardin='$rezDeJardin')"
+        return "Details(chambres='$chambres', pieces=$pieces, suites='$suites', sallesDeBain='$sallesDeBain', sallesDeau='$sallesDeau', bureaux='$bureaux', dressing='$dressing', garages='$garages', caves='$caves', balcons='$balcons', terrasse='$terrasse', surfaceTerrain='$surfaceTerrain', annee='$annee', piscine='$piscine', piscinable='$piscinable', poolHouse='$poolHouse', sansVisAVis='$sansVisAVis', ascenseur='$ascenseur', duplex='$duplex', triplex='$triplex', rezDeJardin=$rezDeJardin)"
     }
 
 }
