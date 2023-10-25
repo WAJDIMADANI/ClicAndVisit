@@ -41,10 +41,21 @@ class CustomToolbar : FrameLayout, View.OnClickListener {
     }
 
 
+    fun onFilterExist(isExist: Boolean) {
+        if (isExist) {
+            binding.ivNavBM.visibility = View.INVISIBLE
+            binding.ivNavBack.visibility = View.VISIBLE
+        } else {
+            binding.ivNavBM.visibility = View.VISIBLE
+            binding.ivNavBack.visibility = View.INVISIBLE
+        }
+    }
+
     private fun initialize(context: Context, attrs: AttributeSet?) {
         LayoutInflater.from(getContext()).inflate(R.layout.custom_toolbar, this, true)
         binding = CustomToolbarBinding.inflate(LayoutInflater.from(getContext()), this, true)
         binding.ivNavBM.setOnClickListener(this)
+        binding.ivNavBack.setOnClickListener(this)
         binding.ivSearch.setOnClickListener(this)
         binding.ivChat.setOnClickListener(this)
         binding.ivProfile.setOnClickListener(this)
@@ -53,6 +64,7 @@ class CustomToolbar : FrameLayout, View.OnClickListener {
     override fun onClick(view: View) {
         when (view.id) {
             R.id.ivNavBM -> toolBarListener!!.onBMenuClicked()
+            R.id.ivNavBack -> toolBarListener!!.onMenuBackClicked()
             R.id.ivSearch -> toolBarListener!!.onSearchClicked()
             R.id.ivChat -> toolBarListener!!.onChatClicked()
             R.id.ivProfile -> toolBarListener!!.onProfileClicked()

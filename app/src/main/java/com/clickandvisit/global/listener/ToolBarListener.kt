@@ -18,6 +18,10 @@ interface ToolBarListener {
         DebugLog.d(TAG, "onBMenuClicked but not handled")
     }
 
+    fun onMenuBackClicked() {
+        DebugLog.d(TAG, "onBMenuClicked but not handled")
+    }
+
     fun onSearchClicked() {
         DebugLog.d(TAG, "onSearchClicked but not handled")
     }

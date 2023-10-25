@@ -8,6 +8,8 @@ sealed class Navigation {
 
     object Back : Navigation()
     object Scroll : Navigation()
+    object ShowBack : Navigation()
+    object HideBack : Navigation()
 
     object SignInActivityNavigation : Navigation()
     data class MapZoomNavigation(val lat: String,val long: String) : Navigation()

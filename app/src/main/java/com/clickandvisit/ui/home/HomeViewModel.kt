@@ -137,6 +137,7 @@ class HomeViewModel
                 searchRequest =
                     data.getParcelableExtra(ExtraKeys.FilterActivity.SEARCH_REQ_EXTRA_KEY)!!
 
+                navigate(Navigation.ShowBack)
                 viewModelScope.launch {
                     tryCatch({
                         val response = withContext(schedulerProvider.dispatchersIO()) {
@@ -333,6 +334,11 @@ class HomeViewModel
         navigate(Navigation.ShareNavigation(value))
     }
 
+    override fun onMenuBackClicked() {
+        super.onMenuBackClicked()
+        navigate(Navigation.HideBack)
+        getSearch(null, null)
+    }
 
     override fun onDateClicked() {
         getSearch("date", "desc")

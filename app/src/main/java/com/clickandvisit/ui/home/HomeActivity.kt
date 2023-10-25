@@ -210,6 +210,8 @@ class HomeActivity : BaseActivity(), DrawerLayout.DrawerListener {
         when (navigationTo) {
 
             is Navigation.Back -> finish()
+            is Navigation.ShowBack -> binding.toolbarHome.onFilterExist(true)
+            is Navigation.HideBack -> binding.toolbarHome.onFilterExist(false)
 
             is Navigation.VisitsActivityNav -> navigateToActivity(VisitsActivity::class)
             is Navigation.MeetActivityNav -> navigateToActivity(MeetActivity::class)
