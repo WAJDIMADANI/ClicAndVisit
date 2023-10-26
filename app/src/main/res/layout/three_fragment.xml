@@ -31,8 +31,8 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/etAddress"
+            <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                android:id="@+id/autoCompleteEditText"
                 android:layout_width="match_parent"
                 android:layout_height="46dp"
                 android:layout_marginTop="@dimen/margin_global_29dp"
@@ -41,13 +41,33 @@
                 android:fontFamily="@font/poppins_regular"
                 android:hint="@string/ad_ads_address"
                 android:paddingStart="@dimen/padding_global_10dp"
+                android:singleLine="true"
                 android:text="@={viewModel.address}"
                 android:textColor="@color/black"
+                android:textColorHint="@color/gray"
                 android:textCursorDrawable="@drawable/edit_cursor_color"
                 android:textSize="@dimen/font_13sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvAdsType" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etAddress"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:layout_marginTop="@dimen/margin_global_29dp"
+                android:background="@drawable/ic_edit_background"
+                android:drawablePadding="@dimen/padding_global_10dp"
+                android:visibility="gone"
+                android:fontFamily="@font/poppins_regular"
+                android:hint="@string/ad_ads_address"
+                android:paddingStart="@dimen/padding_global_10dp"
+                android:textColor="@color/black"
+                android:textCursorDrawable="@drawable/edit_cursor_color"
+                android:textSize="@dimen/font_13sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/autoCompleteEditText" />
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/etPostalCode"
