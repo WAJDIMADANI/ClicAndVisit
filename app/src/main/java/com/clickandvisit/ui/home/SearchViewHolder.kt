@@ -62,9 +62,7 @@ class SearchViewHolder(
         }
 
         binding.tvAdsSpace.text =
-            value.details.getT_Pieces() + value.surface + " " + context.getString(
-                R.string.home_details_m_square
-            )
+            value.details.getT_Pieces() + value.getPropertySurface() + " " + context.getString(R.string.home_details_m_square)
 
 
         if (value.isFavorite) {

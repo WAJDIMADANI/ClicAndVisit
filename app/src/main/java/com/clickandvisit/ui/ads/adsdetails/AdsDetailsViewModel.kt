@@ -84,7 +84,7 @@ class AdsDetailsViewModel
         checkedPro.value = proVisibility()
         adsName.value = property.value!!.title.toUpperCase()
         pieces.value = property.value!!.details.getTPieces()
-        surface.value = property.value!!.surface + "\n" + applicationContext.getString(
+        surface.value = property.value!!.getPropertySurface() + "\n" + applicationContext.getString(
             R.string.home_details_m_square
         )
         info.value = property.value!!.otherDetails

@@ -2,6 +2,7 @@ package com.clickandvisit.data.model.property
 
 import android.os.Parcel
 import android.os.Parcelable
+import androidx.core.text.isDigitsOnly
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
@@ -118,22 +119,31 @@ data class Details(
 
 
     fun getTPieces(): String {
-        return if (pieces.isNullOrEmpty()){
+        return if (pieces.isNullOrEmpty()) {
             "T0"
-        }else{
+        } else {
             try {
-                "T$pieces"
+                if (pieces.isDigitsOnly()) {
+                    "T$pieces"
+                }else{
+                    "T5"
+                }
             } catch (e: NumberFormatException) {
                 "T0"
             }
         }
     }
+
     fun getT_Pieces(): String {
-        return if (pieces.isNullOrEmpty()){
+        return if (pieces.isNullOrEmpty()) {
             "T0 - "
-        }else{
+        } else {
             try {
-                "T$pieces - "
+                if (pieces.isDigitsOnly()) {
+                    "T$pieces - "
+                } else {
+                    "T5 - "
+                }
             } catch (e: NumberFormatException) {
                 "T0 - "
             }
