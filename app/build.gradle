@@ -111,11 +111,11 @@ android {
     productFlavors {
         dev {
             dimension "version"
-            buildConfigField("String", "BASE_URL", '"https://clickandvisit.mad-impact.com/wp-json/click_api/v1/"')
+            buildConfigField("String", "BASE_URL", '"https://clic-and-visit.com/wp-json/click_api/v1/"')
         }
         prod {
             dimension "version"
-            buildConfigField("String", "BASE_URL", '"https://clickandvisit.mad-impact.com/wp-json/click_api/v1/"')
+            buildConfigField("String", "BASE_URL", '"https://clic-and-visit.com/wp-json/click_api/v1/"')
         }
     }
     compileOptions {
