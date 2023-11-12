@@ -10,6 +10,7 @@ interface OnMeetClickedListener {
     fun onCancelClicked(value: Reservation)
 
     fun onChatClicked(value: Reservation)
+    fun onAddressClicked(value: Reservation)
     fun onSignalClicked(value: Reservation)
     fun onPhoneClick(value: Reservation)
 }

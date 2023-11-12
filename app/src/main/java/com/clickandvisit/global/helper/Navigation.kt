@@ -3,6 +3,7 @@ package com.clickandvisit.global.helper
 import com.clickandvisit.data.model.property.Property
 import com.clickandvisit.data.model.property.SearchRequest
 import com.clickandvisit.data.model.property.SearchResponse
+import com.clickandvisit.data.model.reservation.Reservation
 
 sealed class Navigation {
 
@@ -12,6 +13,7 @@ sealed class Navigation {
     object HideBack : Navigation()
 
     object SignInActivityNavigation : Navigation()
+    data class GoToMapsNavigation(val reservation: Reservation) : Navigation()
     data class MapZoomNavigation(val lat: String,val long: String) : Navigation()
 
     data class MapsActivityNavigation(val searchResponse: SearchResponse) : Navigation()

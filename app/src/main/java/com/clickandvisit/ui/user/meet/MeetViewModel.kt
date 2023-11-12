@@ -1,29 +1,28 @@
 package com.clickandvisit.ui.user.meet
 
 import android.app.Application
+import android.content.Intent
+import android.net.Uri
+import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.MutableLiveData
 import com.clickandvisit.R
 import com.clickandvisit.base.BaseAndroidViewModel
-import com.clickandvisit.data.model.chat.ContactOwnerResponse
 import com.clickandvisit.data.model.property.PropertyDetailsResponse
-import com.clickandvisit.data.model.property.SearchResponse
 import com.clickandvisit.data.model.reservation.Reservation
 import com.clickandvisit.data.model.reservation.ReservationAcceptResponse
 import com.clickandvisit.data.model.reservation.ReservationResponse
-import com.clickandvisit.data.model.user.ReportUserResponse
 import com.clickandvisit.data.repository.abs.UserRepository
 import com.clickandvisit.global.helper.Navigation
 import com.clickandvisit.global.listener.OnMeetClickedListener
 import com.clickandvisit.global.listener.OnSendClickedListener
 import com.clickandvisit.global.listener.SchedulerProvider
 import com.clickandvisit.global.listener.ToolBarListener
-import com.clickandvisit.global.utils.DebugLog
-import com.clickandvisit.global.utils.TAG
 import com.clickandvisit.global.utils.tryCatch
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
+
 
 @HiltViewModel
 class MeetViewModel
@@ -91,6 +90,10 @@ class MeetViewModel
             reservation = reservation,
             onSendClickedListener = this
         )
+    }
+
+    override fun onAddressClicked(reservation: Reservation) {
+      navigate(Navigation.GoToMapsNavigation(reservation))
     }
 
     override fun onSignalClicked(reservation: Reservation) {

@@ -4,6 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -52,7 +53,16 @@ class VisitsActivity : BaseActivity() {
      */
     override fun navigate(navigationTo: Navigation) {
         when (navigationTo) {
+
             is Navigation.Back -> finish()
+
+            is Navigation.GoToMapsNavigation -> {
+                val intent = Intent(
+                    Intent.ACTION_VIEW,
+                    Uri.parse("google.navigation:${navigationTo.reservation.road} ${navigationTo.reservation.city}")
+                )
+                startActivity(intent)
+            }
 
             is Navigation.Phone -> {
                 val uri = "tel:" + navigationTo.phoneNumber.trim()
