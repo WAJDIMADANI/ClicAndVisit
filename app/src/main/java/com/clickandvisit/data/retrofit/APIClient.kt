@@ -100,9 +100,9 @@ interface APIClient {
     ): SignupResponse
 
     @FormUrlEncoded
-    @POST("remove_account")
+    @POST("remove_account") // https://clic-and-visit.com/wp-json/click_api/v1/remove_account
     suspend fun removeAccount(
-        @Field("user_id") userId: Int,
+        @Field("user_id") userId: Int
     ): GlobalResponse
 
     @FormUrlEncoded
