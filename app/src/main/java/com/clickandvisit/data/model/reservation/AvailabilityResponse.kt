@@ -15,7 +15,9 @@ data class AvailabilityResponse(
     @Json(name = "result_message")
     val resultMsg: String,
     @Json(name = "available_hours")
-    val availableHours: List<String>
+    val availableHours: List<List<String?>?>,
+    @Json(name = "execution_duration")
+    val executionDuration: String
 ) : Parcelable {
 
     override fun toString(): String {

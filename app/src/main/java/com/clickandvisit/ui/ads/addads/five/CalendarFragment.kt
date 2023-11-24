@@ -167,7 +167,7 @@ class CalendarFragment(val property: Property?) : BaseFragment(), CalendarAdapte
     private fun itemsClickByList(
         dayDate: LocalDate,
         tvList: MutableLiveData<ArrayList<AppCompatTextView>>,
-        hoursList: MutableLiveData<ArrayList<String>?>,
+        hoursList: MutableLiveData<ArrayList<String?>?>,
         day: String,
         isWhite: Boolean
     ) {

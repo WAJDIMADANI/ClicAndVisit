@@ -518,8 +518,8 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_maps">MapsActivity</string>
-    <string name="GOOGLE_MAPS_KEY">AIzaSyDAF1ftTXOAMiu3dIpQ1Qm-IQKV25AaldI</string>
-    <string name="global_recommend_app">Veuillez trouver cette annonce sur l\'application Click&amp;Visit...</string>
+    <string name="GOOGLE_MAPS_KEY">AIzaSyBCETczlyLQWM6YQkMeYW1UHClPhGVanwE</string>
+    <string name="global_recommend_app">Veuillez trouver cette annonce sur l\'application Clic &amp; Visit...</string>
 
     <string name="date_input_format">yyyy-MM-dd HH:mm</string>
     <string name="date_output_normal_format">dd/MM/yyyy</string>
