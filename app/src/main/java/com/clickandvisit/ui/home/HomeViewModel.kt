@@ -55,8 +55,6 @@ class HomeViewModel
     private var searchResponse: SearchResponse? = null
 
 
-
-
     init {
         if (userRepository.isConnected()) {
             getPushValue()
@@ -86,15 +84,19 @@ class HomeViewModel
     }
 
     fun getUserId(): Int {
-        return if (userRepository.isConnected()){
+        return if (userRepository.isConnected()) {
             userRepository.getCurrentUserId()
-        }else{
+        } else {
             0
         }
     }
 
     fun onResume() {
-        getSearch(null, null)
+        if (isFromButtomSheet.not()) {
+            getSearch(null, null)
+        } else {
+            isFromButtomSheet = false
+        }
     }
 
 
@@ -104,7 +106,11 @@ class HomeViewModel
             tryCatch({
                 val response = withContext(schedulerProvider.dispatchersIO()) {
                     if (userRepository.isConnected()) {
-                        userRepository.getHomeProperty()
+                        if (sortBy.isNullOrEmpty() || sortHow.isNullOrEmpty()) {
+                            userRepository.getHomeProperty()
+                        } else {
+                            userRepository.search(sortBy, sortHow)
+                        }
                     } else {
                         userRepository.search(sortBy, sortHow)
                     }
@@ -207,6 +213,7 @@ class HomeViewModel
     }
 
     fun onFilterClicked() {
+        isFromButtomSheet = true
         showFilterBottomSheet(this)
     }
 
@@ -340,6 +347,7 @@ class HomeViewModel
         getSearch(null, null)
     }
 
+    var isFromButtomSheet = false
     override fun onDateClicked() {
         getSearch("date", "desc")
     }

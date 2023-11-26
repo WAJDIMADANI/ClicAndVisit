@@ -100,7 +100,7 @@ interface APIClient {
     ): SignupResponse
 
     @FormUrlEncoded
-    @POST("remove_account") // https://clic-and-visit.com/wp-json/click_api/v1/remove_account
+    @POST("remove_account")
     suspend fun removeAccount(
         @Field("user_id") userId: Int
     ): GlobalResponse
@@ -128,7 +128,8 @@ interface APIClient {
     @POST("search")
     suspend fun search(
         @Field("sortby") sortBy: String?,  // date/price/surface
-        @Field("sorthow") sortHow: String? // asc/desc
+        @Field("sorthow") sortHow: String?, // asc/desc
+        @Field("items_per_page") itemsPerPage: Int = 50
     ): SearchResponse
 
 
@@ -136,13 +137,15 @@ interface APIClient {
     @POST("search")
     suspend fun search(
         @Field("user_id") userId: Int,
-        @Field("favorite_user_id") favoriteUserId: Int
+        @Field("favorite_user_id") favoriteUserId: Int,
+        @Field("items_per_page") itemsPerPage: Int = 50
     ): SearchResponse
 
     @FormUrlEncoded
     @POST("search")
     suspend fun homeSearch(
-        @Field("favorite_user_id") favoriteUserId: Int
+        @Field("favorite_user_id") favoriteUserId: Int,
+        @Field("items_per_page") itemsPerPage: Int = 50
     ): SearchResponse
 
     @FormUrlEncoded
@@ -160,7 +163,8 @@ interface APIClient {
         @Field("save_search") saveSearch: Int?, //0 : No / 1 : Yes
         @Field("adresse") address: String?,
         @Field("sortby") sortBy: String?,  // date/price/surface
-        @Field("sorthow") sortHow: String? // asc/desc
+        @Field("sorthow") sortHow: String?, // asc/desc
+        @Field("items_per_page") itemsPerPage: Int = 50
     ): SearchResponse
 
 

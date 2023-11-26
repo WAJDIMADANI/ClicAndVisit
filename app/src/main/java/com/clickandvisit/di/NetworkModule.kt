@@ -35,7 +35,7 @@ object NetworkModule {
     fun loggingInterceptor(): HttpLoggingInterceptor {
         val interceptor = HttpLoggingInterceptor( object : HttpLoggingInterceptor.Logger {
             override fun log(message: String) {
-                DebugLog.d(TAG,message)
+                DebugLog.d("NetworkModule",message)
             }
         })
         interceptor.level = HttpLoggingInterceptor.Level.BODY
