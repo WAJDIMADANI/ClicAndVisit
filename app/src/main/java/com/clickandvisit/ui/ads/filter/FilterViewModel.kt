@@ -75,37 +75,41 @@ class FilterViewModel
             surfaceMax.value = searchRequest.value?.maxArea!!.toString()
         }
 
-        if (searchRequest.value?.adsType == 30) {
-            checkedSale.value = true
-        } else if (searchRequest.value?.adsType == 29) {
-            checkedRent.value = true
+        if (searchRequest.value?.adsType != null) {
+            if (searchRequest.value?.adsType == 30) {
+                checkedSale.value = true
+            } else if (searchRequest.value?.adsType == 29) {
+                checkedRent.value = true
+            }
         }
 
 
-        (searchRequest.value?.category as ArrayList<Int>).forEach {
-            when (it) {
-                96 -> {
-                    checkedHome.value = true
-                }
+        if (searchRequest.value?.category != null) {
+            (searchRequest.value?.category as ArrayList<Int>).forEach {
+                when (it) {
+                    96 -> {
+                        checkedHome.value = true
+                    }
 
-                99 -> {
-                    checkedB.value = true
-                }
+                    99 -> {
+                        checkedB.value = true
+                    }
 
-                97 -> {
-                    checkedApp.value = true
-                }
+                    97 -> {
+                        checkedApp.value = true
+                    }
 
-                100 -> {
-                    checkedTer.value = true
-                }
+                    100 -> {
+                        checkedTer.value = true
+                    }
 
-                98 -> {
-                    checkedGarage.value = true
-                }
+                    98 -> {
+                        checkedGarage.value = true
+                    }
 
-                101 -> {
-                    checkedComm.value = true
+                    101 -> {
+                        checkedComm.value = true
+                    }
                 }
             }
         }
