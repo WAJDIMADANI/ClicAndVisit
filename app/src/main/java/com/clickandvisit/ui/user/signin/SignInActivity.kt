@@ -13,7 +13,7 @@ import com.clickandvisit.global.helper.Navigation
 import com.clickandvisit.global.utils.DebugLog
 import com.clickandvisit.global.utils.ExtraKeys
 import com.clickandvisit.ui.home.HomeActivity
-import com.clickandvisit.ui.user.password.ResetPasswordActivity
+import com.clickandvisit.ui.user.password.WebViewActivity
 import com.clickandvisit.ui.user.signup.SignUpActivity
 import com.clickandvisit.ui.user.signup.otp.OtpActivity
 import dagger.hilt.android.AndroidEntryPoint
@@ -90,7 +90,7 @@ class SignInActivity : BaseActivity() {
                 finish()
             }
             is Navigation.ResetPasswordActivityNavigation -> navigateToActivity(
-                ResetPasswordActivity::class
+                WebViewActivity::class
             )
             is Navigation.SignUpActivityNavigation -> navigateToActivity(
                 SignUpActivity::class

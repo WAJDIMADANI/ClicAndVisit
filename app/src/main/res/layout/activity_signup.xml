@@ -85,15 +85,15 @@
                         android:id="@+id/customCircleImageView"
                         android:layout_width="@dimen/dimen_100dp"
                         android:layout_height="@dimen/dimen_100dp"
+                        android:background="@drawable/ic_user_pl"
                         android:scaleType="centerCrop"
                         app:imageUri="@{viewModel.photoUri}"
-                        app:onClickWithDebounce="@{() ->viewModel.onImageClick()}"
-                        app:picasso="@{picasso}"
-                        android:background="@drawable/ic_user_pl"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:onClickWithDebounce="@{() ->viewModel.onImageClick()}"
+                        app:picasso="@{picasso}" />
 
                     <com.clickandvisit.ui.shared.view.CustomCircleImageView
                         android:layout_width="36dp"
@@ -140,7 +140,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:checked="@{viewModel.checkedPro}"
+                        android:ellipsize="end"
                         android:fontFamily="@font/poppins_regular"
+                        android:lines="1"
                         android:onClick="onProClick"
                         android:padding="4dp"
                         android:text="@string/signup_pro"
@@ -188,7 +190,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:checked="@{viewModel.checkedF}"
+                        android:ellipsize="end"
                         android:fontFamily="@font/poppins_regular"
+                        android:lines="1"
                         android:onClick="onFClick"
                         android:padding="4dp"
                         android:text="@string/signup_f"
@@ -229,8 +233,8 @@
                         style="@style/InputEditText.AppStyle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="textPersonName"
                         android:hint="@string/signup_firstname"
+                        android:inputType="textPersonName"
                         android:text="@={viewModel.firstname}" />
 
                 </com.clickandvisit.ui.shared.view.CustomTextInputLayout>

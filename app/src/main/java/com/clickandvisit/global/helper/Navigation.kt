@@ -10,7 +10,8 @@ sealed class Navigation {
     object Back : Navigation()
     object Scroll : Navigation()
     object ShowBack : Navigation()
-    object HideBack : Navigation()
+    object OnlyHideBack : Navigation()
+    data class HideBack(val searchRequest: SearchRequest?) : Navigation()
 
     object SignInActivityNavigation : Navigation()
     data class GoToMapsNavigation(val reservation: Reservation) : Navigation()
@@ -37,6 +38,7 @@ sealed class Navigation {
     data class ConvActivityNavigation(val discId: Int, val fromName: String) : Navigation()
 
     object HomeActivityNavigation : Navigation()
+    data class HomeActivityNavigationData(val searchRequest: SearchRequest) : Navigation()
 
     data class AddAdsActivity(val value: Property, val isMeet : Boolean) : Navigation()
 

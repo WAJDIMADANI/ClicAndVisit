@@ -92,7 +92,7 @@ class HomeViewModel
     }
 
     fun onResume() {
-        if (isFromButtomSheet.not()) {
+        if (isFromButtomSheet.not() && isFiltred.not()) {
             getSearch(null, null)
         } else {
             isFromButtomSheet = false
@@ -137,6 +137,7 @@ class HomeViewModel
     }
 
 
+    var isFiltred = false
     fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == ExtraKeys.FilterActivity.SEARCH_REQ_CODE && resultCode == Activity.RESULT_OK) {
             if (data?.hasExtra(ExtraKeys.FilterActivity.SEARCH_REQ_EXTRA_KEY) == true) {
@@ -144,6 +145,8 @@ class HomeViewModel
                     data.getParcelableExtra(ExtraKeys.FilterActivity.SEARCH_REQ_EXTRA_KEY)!!
 
                 navigate(Navigation.ShowBack)
+                isFiltred = true
+                showBlockProgressBar()
                 viewModelScope.launch {
                     tryCatch({
                         val response = withContext(schedulerProvider.dispatchersIO()) {
@@ -155,6 +158,9 @@ class HomeViewModel
                     })
                 }
             }
+        } else if (resultCode == Activity.RESULT_CANCELED) {
+            getSearch(null, null)
+            navigate(Navigation.OnlyHideBack)
         }
     }
 
@@ -343,8 +349,8 @@ class HomeViewModel
 
     override fun onMenuBackClicked() {
         super.onMenuBackClicked()
-        navigate(Navigation.HideBack)
-        getSearch(null, null)
+        navigate(Navigation.HideBack(searchRequest))
+        isFiltred = false
     }
 
     var isFromButtomSheet = false

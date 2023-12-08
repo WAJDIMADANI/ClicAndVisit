@@ -157,6 +157,8 @@
                                 android:fontFamily="@font/poppins_regular"
                                 android:onClick="onFClick"
                                 android:padding="4dp"
+                                android:ellipsize="end"
+                                android:lines="1"
                                 android:text="@string/signup_f"
                                 android:textAlignment="center"
                                 android:textSize="@dimen/font_16sp" />

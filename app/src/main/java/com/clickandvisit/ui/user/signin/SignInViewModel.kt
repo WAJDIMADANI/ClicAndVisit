@@ -45,6 +45,10 @@ class SignInViewModel
         navigate(Navigation.SignUpActivityNavigation)
     }
 
+    fun onForgetPasswordClicked() {
+        navigate(Navigation.ResetPasswordActivityNavigation)
+    }
+
     fun onVisitorClicked() {
         navigate(Navigation.HomeActivityNavigation)
     }

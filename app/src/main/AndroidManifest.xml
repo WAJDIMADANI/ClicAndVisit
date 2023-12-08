@@ -70,7 +70,7 @@
             android:launchMode="singleTop"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
-            android:name="com.clickandvisit.ui.user.password.ResetPasswordActivity"
+            android:name="com.clickandvisit.ui.user.password.WebViewActivity"
             android:exported="true"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"

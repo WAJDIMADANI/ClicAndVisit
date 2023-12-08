@@ -120,6 +120,7 @@ class HomeActivity : BaseActivity(), DrawerLayout.DrawerListener {
                     R.id.nav_menu_1 -> {
                         startFilterForResult(viewModel.searchRequest)
                     }
+
                     R.id.nav_menu_2 -> {
                         Intent(this, AddAdsActivity::class.java).let { intent ->
                             intent.putExtra(
@@ -133,18 +134,23 @@ class HomeActivity : BaseActivity(), DrawerLayout.DrawerListener {
                             startActivity(intent)
                         }
                     }
+
                     R.id.nav_menu_3 -> {
                         navigateToActivity(AdsListActivity::class)
                     }
+
                     R.id.nav_menu_4 -> {
                         navigateToActivity(ProfileActivity::class)
                     }
+
                     R.id.nav_menu_5 -> {
                         navigateToActivity(MeetActivity::class)
                     }
+
                     R.id.nav_menu_6 -> {
                         navigateToActivity(FavouritesActivity::class)
                     }
+
                     R.id.nav_menu_7 -> {
                         Intent(this, SearchActivity::class.java).let { intent ->
                             intent.putExtra(
@@ -155,9 +161,11 @@ class HomeActivity : BaseActivity(), DrawerLayout.DrawerListener {
                         }
 
                     }
+
                     R.id.nav_menu_8 -> {
                         navigateToActivity(VisitsActivity::class)
                     }
+
                     R.id.nav_menu_9 -> {
                         viewModel.disconnect()
                     }
@@ -211,7 +219,13 @@ class HomeActivity : BaseActivity(), DrawerLayout.DrawerListener {
 
             is Navigation.Back -> finish()
             is Navigation.ShowBack -> binding.toolbarHome.onFilterExist(true)
-            is Navigation.HideBack -> binding.toolbarHome.onFilterExist(false)
+            is Navigation.HideBack -> {
+                binding.toolbarHome.onFilterExist(false)
+                startFilterForResult(navigationTo.searchRequest)
+            }
+            is Navigation.OnlyHideBack -> {
+                binding.toolbarHome.onFilterExist(false)
+            }
 
             is Navigation.VisitsActivityNav -> navigateToActivity(VisitsActivity::class)
             is Navigation.MeetActivityNav -> navigateToActivity(MeetActivity::class)

@@ -52,15 +52,70 @@ class FilterViewModel
     init {
         searchRequest.value =
             savedStateHandle.getLiveData<SearchRequest>(ExtraKeys.FilterActivity.SEARCH_REQ_EXTRA_KEY).value
-/*        city.value = searchRequest.value?.address
-        priceMin.value = if (searchRequest.value?.minPrice!! >= 0) {
-            searchRequest.value?.minPrice.toString()
+
+        if (searchRequest.value?.address != null) {
+            city.value = searchRequest.value?.address!!
         } else {
-            ""
+            city.value = ""
         }
-        priceMax.value = searchRequest.value?.maxPrice.toString()
-        surfaceMin.value = searchRequest.value?.minArea.toString()
-        surfaceMax.value = searchRequest.value?.maxArea.toString()*/
+
+        if (searchRequest.value?.minPrice != null) {
+            priceMin.value = searchRequest.value?.minPrice!!.toString()
+        }
+
+        if (searchRequest.value?.maxPrice != null) {
+            priceMax.value = searchRequest.value?.maxPrice!!.toString()
+        }
+
+        if (searchRequest.value?.minArea != null) {
+            surfaceMin.value = searchRequest.value?.minArea!!.toString()
+        }
+
+        if (searchRequest.value?.maxArea != null) {
+            surfaceMax.value = searchRequest.value?.maxArea!!.toString()
+        }
+
+        if (searchRequest.value?.adsType == 30) {
+            checkedSale.value = true
+        } else if (searchRequest.value?.adsType == 29) {
+            checkedRent.value = true
+        }
+
+
+        (searchRequest.value?.category as ArrayList<Int>).forEach {
+            when (it) {
+                96 -> {
+                    checkedHome.value = true
+                }
+
+                99 -> {
+                    checkedB.value = true
+                }
+
+                97 -> {
+                    checkedApp.value = true
+                }
+
+                100 -> {
+                    checkedTer.value = true
+                }
+
+                98 -> {
+                    checkedGarage.value = true
+                }
+
+                101 -> {
+                    checkedComm.value = true
+                }
+            }
+        }
+
+        if (searchRequest.value?.minRooms.isNullOrEmpty().not()) {
+            minSelectedItem.value = searchRequest.value?.minRooms!!
+        }
+        if (searchRequest.value?.maxRooms.isNullOrEmpty().not()) {
+            maxSelectedItem.value = searchRequest.value?.maxRooms!!
+        }
 
         piecesList.value = applicationContext.resources.getStringArray(R.array.pieces).asList()
     }
@@ -105,7 +160,7 @@ class FilterViewModel
 
         searchRequest.value?.category = categoryList
 
-        navigate(Navigation.HomeActivityNavigation)
+        navigate(Navigation.HomeActivityNavigationData(searchRequest.value!!))
     }
 
     fun onBackClick() {

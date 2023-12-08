@@ -31,8 +31,20 @@ class FilterActivity : BaseActivity() {
      */
     override fun navigate(navigationTo: Navigation) {
         when (navigationTo) {
-            is Navigation.Back -> finish()
-            is Navigation.HomeActivityNavigation -> onBackNavigation()
+            is Navigation.Back -> {
+                val intent = Intent()
+                setResult(Activity.RESULT_CANCELED, intent)
+                finish()
+            }
+            is Navigation.HomeActivityNavigationData -> {
+                val intent = Intent()
+                 intent.putExtra(
+                     ExtraKeys.FilterActivity.SEARCH_REQ_EXTRA_KEY,
+                     navigationTo.searchRequest
+                 )
+                setResult(Activity.RESULT_OK, intent)
+                finish()
+            }
 
         }
     }
