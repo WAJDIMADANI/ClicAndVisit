@@ -67,37 +67,37 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <com.clickandvisit.ui.shared.view.CustomTextInputLayout
-                    android:id="@+id/customTextInputLayoutCity"
-                    style="@style/InputLayout.AppStyle"
+                <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                    android:id="@+id/autoCompleteEditText"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@+id/tvAdsName"
-                    tools:layout_editor_absoluteX="30dp">
-
-                    <com.clickandvisit.ui.shared.view.CustomTextInputEditText
-                        android:id="@+id/customTextInputEditTextCity"
-                        style="@style/InputEditText.AppStyle"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="textCapCharacters"
-                        android:hint="@string/filter_city"
-                        android:text="@={viewModel.city}"
-                        android:textSize="@dimen/font_13sp" />
-
-                </com.clickandvisit.ui.shared.view.CustomTextInputLayout>
+                    android:layout_height="46dp"
+                    android:layout_marginTop="@dimen/margin_global_10dp"
+                    android:background="@drawable/ic_edit_background"
+                    android:drawablePadding="@dimen/padding_global_10dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:hint="@string/filter_city"
+                    android:paddingStart="@dimen/padding_global_10dp"
+                    android:singleLine="true"
+                    android:text="@={viewModel.city}"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/gray"
+                    android:textCursorDrawable="@drawable/edit_cursor_color"
+                    android:textSize="@dimen/font_13sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvAdsName" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvAdsType"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_global_5dp"
+                    android:layout_marginTop="@dimen/margin_global_10dp"
                     android:fontFamily="@font/poppins_bold"
                     android:text="@string/filter_ads_type"
                     android:textColor="@color/black"
                     android:textSize="@dimen/font_16sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/customTextInputLayoutCity" />
+                    app:layout_constraintTop_toBottomOf="@+id/autoCompleteEditText" />
 
                 <RadioGroup
                     android:id="@+id/rgAdsType"
