@@ -113,7 +113,7 @@ class PlaceArrayAdapter(context: Context, private val resource: Int, val mPlaces
     ): List<AutocompletePrediction> {
         var list = listOf<AutocompletePrediction>()
         val token = AutocompleteSessionToken.newInstance()
-        val request = FindAutocompletePredictionsRequest.builder().setTypeFilter(TypeFilter.CITIES)
+        val request = FindAutocompletePredictionsRequest.builder().setTypeFilter(TypeFilter.ADDRESS)
             .setSessionToken(token).setQuery(constraint.toString()).build()
         val prediction = mPlacesClient.findAutocompletePredictions(request)
         try {
