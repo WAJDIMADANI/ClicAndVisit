@@ -263,17 +263,17 @@ class AdsDetailsViewModel
         val cc = if ("Vente" == property.value?.type) {
             ""
         } else {
-            "(cc)"
+            "/mois (cc)"
         }
         if (property.value!!.category.isEmpty() && property.value!!.price.isEmpty()) {
             propPrice.value = ""
         } else if (property.value!!.category.isEmpty().not() && property.value!!.price.isEmpty()) {
             propPrice.value = property.value!!.category
         } else if (property.value!!.category.isEmpty() && property.value!!.price.isEmpty().not()) {
-            propPrice.value = "${property.value!!.getPriceNBR()}/mois $cc"
+            propPrice.value = "${property.value!!.getPriceNBR()} $cc"
         } else {
             propPrice.value =
-                "${property.value!!.getCategories()} ${property.value!!.getPriceNBR()}/mois $cc"
+                "${property.value!!.getCategories()} ${property.value!!.getPriceNBR()} $cc"
         }
     }
 
