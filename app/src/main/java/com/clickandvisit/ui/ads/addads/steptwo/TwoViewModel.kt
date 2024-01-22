@@ -227,7 +227,7 @@ class TwoViewModel
                     Navigation.PopupNavigation(
                         item,
                         "${applicationContext.getString(R.string.ad_ads_popup_title_3)}",
-                        "${applicationContext.getString(R.string.ad_ads_popup_input_hint_1)} " +
+                        //"${applicationContext.getString(R.string.ad_ads_popup_input_hint_1)} " +
                                 "${applicationContext.getString(R.string.ad_ads_12)}",
                         InputType.TYPE_CLASS_NUMBER,
                         roomNbrApi12.value
