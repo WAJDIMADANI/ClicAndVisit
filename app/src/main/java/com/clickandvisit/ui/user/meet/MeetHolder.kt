@@ -75,7 +75,7 @@ class MeetHolder(
             if (value.reservationUser?.userPhone.isNullOrEmpty().not()) {
                 binding.tvAdsMeetUserPhone.text = "${value.reservationUser?.userPhone}"
             } else {
-                binding.tvAdsMeetUserPhone.visibility = View.INVISIBLE
+                binding.tvAdsMeetUserPhone.visibility = View.GONE
             }
             binding.tvAdsMeetUserPhone.visibility = View.VISIBLE
 

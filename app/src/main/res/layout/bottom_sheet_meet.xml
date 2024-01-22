@@ -19,7 +19,10 @@
         android:layout_height="wrap_content"
         android:background="@color/white_basic"
         android:clipToPadding="false"
-        android:padding="@dimen/margin_global_15dp">
+        android:paddingBottom="@dimen/dimen_50dp"
+        android:paddingStart="@dimen/dimen_15dp"
+        android:paddingEnd="@dimen/dimen_15dp"
+        android:paddingTop="@dimen/dimen_15dp">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/ivHide"

@@ -55,7 +55,7 @@
             android:layout_marginTop="@dimen/margin_global_15dp"
             android:ellipsize="end"
             android:fontFamily="@font/poppins_regular"
-            android:lines="3"
+            android:lines="4"
             android:text="3 rue du paradis"
             android:textColor="@color/black"
             android:textSize="@dimen/font_12sp"
@@ -103,7 +103,7 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/appCompatImageView2"
-            android:layout_width="175dp"
+            android:layout_width="160dp"
             android:layout_height="140dp"
             android:layout_marginTop="@dimen/margin_global_5dp"
             android:layout_marginEnd="@dimen/margin_global_7dp"
@@ -123,31 +123,38 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvAdsHour" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvAdsMeetUserName"
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_global_15dp"
-            android:fontFamily="@font/poppins_regular"
-            android:text="DURAND Nicolas"
-            android:textColor="@color/black"
-            android:textSize="@dimen/font_12sp"
+            android:orientation="vertical"
+            android:background="@color/gray"
+            android:gravity="center_vertical"
+            android:layout_marginStart="@dimen/margin_global_10dp"
+            app:layout_constraintBottom_toBottomOf="@+id/customCircleUserPhoto"
             app:layout_constraintStart_toEndOf="@+id/customCircleUserPhoto"
-            app:layout_constraintTop_toTopOf="@+id/customCircleUserPhoto" />
+            app:layout_constraintTop_toTopOf="@+id/customCircleUserPhoto">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvAdsMeetUserPhone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_global_15dp"
-            android:layout_marginTop="@dimen/margin_global_5dp"
-            android:fontFamily="@font/poppins_regular"
-            android:textColor="@color/navy_blue"
-            android:textSize="@dimen/font_12sp"
-            android:visibility="invisible"
-            app:layout_constraintStart_toEndOf="@+id/customCircleUserPhoto"
-            app:layout_constraintTop_toBottomOf="@+id/tvAdsMeetUserName"
-            app:onClickWithDebounce="@{()->listener.onPhoneClick(reservation)}" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvAdsMeetUserName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_regular"
+                android:text="DURAND Nicolas"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_12sp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvAdsMeetUserPhone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_global_5dp"
+                android:fontFamily="@font/poppins_regular"
+                android:textColor="@color/navy_blue"
+                android:textSize="@dimen/font_12sp"
+                android:visibility="gone"
+                app:onClickWithDebounce="@{()->listener.onPhoneClick(reservation)}" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
         <com.clickandvisit.ui.shared.view.CustomCircleImageView
             android:id="@+id/customCircleUserPhoto"
