@@ -87,12 +87,21 @@ class CalendarViewModel
         viewModelScope.launch {
             tryCatch({
 
-                var allWeekDate = (",").plus(date.plus(firstDay.plusDays(1)).plus(","))
-                allWeekDate = allWeekDate.plus(firstDay.plusDays(1)).plus(",")
-                allWeekDate = allWeekDate.plus(firstDay.plusDays(1)).plus(",")
-                allWeekDate = allWeekDate.plus(firstDay.plusDays(1)).plus(",")
-                allWeekDate = allWeekDate.plus(firstDay.plusDays(1)).plus(",")
-                allWeekDate = allWeekDate.plus(firstDay.plusDays(1)).plus(",")
+                var nextDay = firstDay
+
+                var allWeekDate = date.plus(",")
+                nextDay = nextDay.plusDays(1)
+                allWeekDate = allWeekDate.plus(nextDay).plus(",")
+                nextDay = nextDay.plusDays(1)
+                allWeekDate = allWeekDate.plus(nextDay).plus(",")
+                nextDay = nextDay.plusDays(1)
+                allWeekDate = allWeekDate.plus(nextDay).plus(",")
+                nextDay = nextDay.plusDays(1)
+                allWeekDate = allWeekDate.plus(nextDay).plus(",")
+                nextDay = nextDay.plusDays(1)
+                allWeekDate = allWeekDate.plus(nextDay).plus(",")
+                nextDay = nextDay.plusDays(1)
+                allWeekDate = allWeekDate.plus(nextDay)
 
 
                 val response = withContext(schedulerProvider.dispatchersIO()) {

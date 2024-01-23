@@ -163,6 +163,7 @@ class FilterViewModel
         }
 
         searchRequest.value?.category = categoryList
+        //searchRequest.value?.saveSearch = 1
 
         navigate(Navigation.HomeActivityNavigationData(searchRequest.value!!))
     }

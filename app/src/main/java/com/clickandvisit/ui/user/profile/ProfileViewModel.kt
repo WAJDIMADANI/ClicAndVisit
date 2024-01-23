@@ -191,7 +191,7 @@ class ProfileViewModel
                 viewModelScope.launch {
                     tryCatch({
                         withContext(schedulerProvider.dispatchersIO()) {
-                            userRepository.logout()
+                            userRepository.removeAccount()
                         }
                         navigate(Navigation.SignInActivityNavigation)
                     }, { error ->
