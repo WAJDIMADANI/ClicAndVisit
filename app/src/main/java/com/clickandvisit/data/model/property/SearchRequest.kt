@@ -37,6 +37,9 @@ data class SearchRequest(
     @Json(name = "save_search")
     var saveSearch: Int? = null, //0 : No / 1 : Yes
 
+    @Json(name = "saved_search_user")
+    var savedSearchUser: Int? = null, //user id
+
     @Json(name = "user_id")
     var userId: Int? = null,
 
@@ -51,6 +54,6 @@ data class SearchRequest(
 
 ) : Parcelable {
     override fun toString(): String {
-        return "SearchRequest(adsType=$adsType, category=$category, minRooms=$minRooms, maxRooms=$maxRooms, minArea=$minArea, maxArea=$maxArea, minPrice=$minPrice, maxPrice=$maxPrice, favoriteUserId=$favoriteUserId, saveSearch=$saveSearch, userId=$userId, address=$address, sortBy='$sortBy', sortHow='$sortHow')"
+        return "SearchRequest(adsType=$adsType, category=$category, minRooms=$minRooms, maxRooms=$maxRooms, minArea=$minArea, maxArea=$maxArea, minPrice=$minPrice, maxPrice=$maxPrice, favoriteUserId=$favoriteUserId, saveSearch=$saveSearch, savedSearchUser=$savedSearchUser, userId=$userId, address=$address, sortBy='$sortBy', sortHow='$sortHow')"
     }
 }

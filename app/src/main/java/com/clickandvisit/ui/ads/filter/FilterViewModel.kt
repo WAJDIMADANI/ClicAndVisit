@@ -49,6 +49,9 @@ class FilterViewModel
     val checkedComm: MutableLiveData<Boolean> = MutableLiveData(false)
 
 
+    val saveSearch: MutableLiveData<Boolean> = MutableLiveData(false)
+
+
     init {
         searchRequest.value =
             savedStateHandle.getLiveData<SearchRequest>(ExtraKeys.FilterActivity.SEARCH_REQ_EXTRA_KEY).value
@@ -163,7 +166,13 @@ class FilterViewModel
         }
 
         searchRequest.value?.category = categoryList
-        //searchRequest.value?.saveSearch = 1
+
+        if (saveSearch.value == true) {
+            searchRequest.value?.saveSearch = 1
+            searchRequest.value?.savedSearchUser = userRepository.getCurrentUserId()
+        } else {
+            searchRequest.value?.saveSearch = 0
+        }
 
         navigate(Navigation.HomeActivityNavigationData(searchRequest.value!!))
     }

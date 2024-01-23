@@ -220,6 +220,7 @@ class UserRepositoryImp @Inject constructor(
             searchRequest.maxPrice,
             searchRequest.favoriteUserId,
             searchRequest.saveSearch,
+            searchRequest.savedSearchUser,
             searchRequest.address,
             searchRequest.sortBy,
             searchRequest.sortHow

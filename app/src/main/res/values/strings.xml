@@ -541,4 +541,8 @@
     <string name="rdv_response">Votre demande de RDV a été envoyée avec succès !</string>
     <string name="delete_prop_msg">Voulez-vous vraiment supprimer votre annonce ?</string>
 
+
+    <string name="ads_save_search">Sauvegarder ma recherche</string>
+
+
 </resources>

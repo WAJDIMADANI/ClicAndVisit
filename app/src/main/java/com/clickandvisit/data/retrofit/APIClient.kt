@@ -161,6 +161,7 @@ interface APIClient {
         @Field("max-price") maxPrice: Int?,
         @Field("favorite_user_id") favoriteUserId: Int?,
         @Field("save_search") saveSearch: Int?, //0 : No / 1 : Yes
+        @Field("saved_search_user") savedSearchUser: Int?, //user id
         @Field("adresse") address: String?,
         @Field("sortby") sortBy: String?,  // date/price/surface
         @Field("sorthow") sortHow: String?, // asc/desc
