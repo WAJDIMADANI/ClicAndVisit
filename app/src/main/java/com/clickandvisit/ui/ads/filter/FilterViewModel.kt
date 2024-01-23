@@ -87,6 +87,10 @@ class FilterViewModel
         }
 
 
+        if (searchRequest.value?.saveSearch == 1){
+            saveSearch.value = true
+        }
+
         if (searchRequest.value?.category != null) {
             (searchRequest.value?.category as ArrayList<Int>).forEach {
                 when (it) {
