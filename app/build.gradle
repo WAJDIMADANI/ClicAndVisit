@@ -41,7 +41,7 @@ ext {
     transition="1.2.0"
 
     play_service_version = '17.0.0'
-    play_service_places_version = '2.3.0'
+    play_service_places_version = '2.7.0'
 
     //test
     junit = '4.13.2'

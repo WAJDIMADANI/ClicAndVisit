@@ -15,7 +15,6 @@ import com.clickandvisit.R
 import com.google.android.gms.tasks.Tasks
 import com.google.android.libraries.places.api.model.AutocompletePrediction
 import com.google.android.libraries.places.api.model.AutocompleteSessionToken
-import com.google.android.libraries.places.api.model.TypeFilter
 import com.google.android.libraries.places.api.net.FindAutocompletePredictionsRequest
 import com.google.android.libraries.places.api.net.PlacesClient
 import java.util.concurrent.ExecutionException
@@ -113,7 +112,7 @@ class PlaceArrayAdapter(context: Context, private val resource: Int, val mPlaces
     ): List<AutocompletePrediction> {
         var list = listOf<AutocompletePrediction>()
         val token = AutocompleteSessionToken.newInstance()
-        val request = FindAutocompletePredictionsRequest.builder().setTypeFilter(TypeFilter.ADDRESS)
+        val request = FindAutocompletePredictionsRequest.builder().setCountry("FR")//.setTypeFilter(TypeFilter.ADDRESS)
             .setSessionToken(token).setQuery(constraint.toString()).build()
         val prediction = mPlacesClient.findAutocompletePredictions(request)
         try {
