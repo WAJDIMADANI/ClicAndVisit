@@ -319,7 +319,7 @@ class OneFragment(val property: Property?) : BaseFragment() {
         binding.tvGESA.setOnClickListener {
             viewModel.ges.value = "A"
             binding.tvGESA.layoutParams.width = 140
-            binding.tvGESA.layoutParams.height = 120
+            binding.tvGESA.layoutParams.height = 71
             binding.tvGESA.text = "A"
             binding.tvGESA.requestLayout()
             viewModel.onDPEAClicked(1)
@@ -364,7 +364,7 @@ class OneFragment(val property: Property?) : BaseFragment() {
             viewModel.onDPEAClicked(2)
 
             binding.tvGESB.layoutParams.width = 140
-            binding.tvGESB.layoutParams.height = 120
+            binding.tvGESB.layoutParams.height = 71
             binding.tvGESB.text = "B"
             binding.tvGESB.requestLayout()
 
@@ -408,7 +408,7 @@ class OneFragment(val property: Property?) : BaseFragment() {
             binding.tvGESB.requestLayout()
 
             binding.tvGESC.layoutParams.width = 140
-            binding.tvGESC.layoutParams.height = 120
+            binding.tvGESC.layoutParams.height = 71
             binding.tvGESC.text = "C"
             binding.tvGESC.requestLayout()
 
@@ -452,7 +452,7 @@ class OneFragment(val property: Property?) : BaseFragment() {
             binding.tvGESC.requestLayout()
 
             binding.tvGESD.layoutParams.width = 140
-            binding.tvGESD.layoutParams.height = 120
+            binding.tvGESD.layoutParams.height = 71
             binding.tvGESD.text = "D"
             binding.tvGESD.requestLayout()
 
@@ -496,7 +496,7 @@ class OneFragment(val property: Property?) : BaseFragment() {
             binding.tvGESD.requestLayout()
 
             binding.tvGESE.layoutParams.width = 140
-            binding.tvGESE.layoutParams.height = 120
+            binding.tvGESE.layoutParams.height = 71
             binding.tvGESE.text = "E"
             binding.tvGESE.requestLayout()
 
@@ -540,7 +540,7 @@ class OneFragment(val property: Property?) : BaseFragment() {
             binding.tvGESE.requestLayout()
 
             binding.tvGESF.layoutParams.width = 140
-            binding.tvGESF.layoutParams.height = 120
+            binding.tvGESF.layoutParams.height = 71
             binding.tvGESF.text = "F"
             binding.tvGESF.requestLayout()
 
@@ -584,7 +584,7 @@ class OneFragment(val property: Property?) : BaseFragment() {
             binding.tvGESF.requestLayout()
 
             binding.tvGESG.layoutParams.width = 140
-            binding.tvGESG.layoutParams.height = 120
+            binding.tvGESG.layoutParams.height = 71
             binding.tvGESG.text = "G"
             binding.tvGESG.requestLayout()
         }

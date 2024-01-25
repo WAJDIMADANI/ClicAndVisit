@@ -149,7 +149,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvMeet"
-            android:layout_width="wrap_content"
+            android:layout_width="135dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_global_10dp"
             android:layout_marginEnd="@dimen/margin_global_10dp"
@@ -161,7 +161,7 @@
             android:text="@string/home_meet"
             android:textAllCaps="true"
             android:textColor="@color/white_basic"
-            android:textSize="@dimen/dimen_16sp"
+            android:textSize="@dimen/dimen_15sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvAdsName" />
