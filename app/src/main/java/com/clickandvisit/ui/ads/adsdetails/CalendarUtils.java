@@ -16,7 +16,7 @@ public class CalendarUtils {
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public static String formattedDate(LocalDate date) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMMM yyyy");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         return date.format(formatter);
     }
 

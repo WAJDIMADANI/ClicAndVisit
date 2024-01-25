@@ -81,7 +81,7 @@ class FavouritesViewModel
         shownChoseDialog(
             title = null,
             message = "Voulez-vous confirmer votre RDV pour le ${
-                CalendarUtils.getWsFormattedDate(
+                CalendarUtils.formattedDate(
                     LocalDate.now()
                 )
             } à ${sdf.format(now.time)} ?",
