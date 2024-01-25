@@ -96,13 +96,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
-                    android:layout_marginEnd="@dimen/margin_global_30dp"
                     android:checked="@={viewModel.checkedHome}"
                     android:fontFamily="@font/poppins_regular"
-                    android:padding="4dp"
                     android:text="@string/ad_ads_home"
-                    android:textSize="@dimen/font_16sp"
-                    app:layout_columnWeight="1" />
+                    android:textSize="@dimen/font_15sp" />
 
                 <androidx.appcompat.widget.AppCompatRadioButton
                     android:id="@+id/rbAdsTypeDesk"
@@ -111,23 +108,18 @@
                     android:layout_gravity="start"
                     android:checked="@={viewModel.checkedB}"
                     android:fontFamily="@font/poppins_regular"
-                    android:padding="4dp"
                     android:text="@string/ad_ads_desk"
-                    android:textSize="@dimen/font_16sp"
-                    app:layout_columnWeight="1" />
+                    android:textSize="@dimen/font_15sp"/>
 
                 <androidx.appcompat.widget.AppCompatRadioButton
                     android:id="@+id/rbAdsTypeApp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
-                    android:layout_marginEnd="@dimen/margin_global_30dp"
                     android:checked="@={viewModel.checkedApp}"
                     android:fontFamily="@font/poppins_regular"
-                    android:padding="4dp"
                     android:text="@string/ad_ads_app"
-                    android:textSize="@dimen/font_16sp"
-                    app:layout_columnWeight="1" />
+                    android:textSize="@dimen/font_15sp" />
 
                 <androidx.appcompat.widget.AppCompatRadioButton
                     android:id="@+id/rbAdsTypeGround"
@@ -136,23 +128,18 @@
                     android:layout_gravity="start"
                     android:checked="@={viewModel.checkedTer}"
                     android:fontFamily="@font/poppins_regular"
-                    android:padding="4dp"
                     android:text="@string/ad_ads_ground"
-                    android:textSize="@dimen/font_16sp"
-                    app:layout_columnWeight="1" />
+                    android:textSize="@dimen/font_15sp" />
 
                 <androidx.appcompat.widget.AppCompatRadioButton
                     android:id="@+id/rbAdsTypeGarage"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
-                    android:layout_marginEnd="@dimen/margin_global_30dp"
                     android:checked="@={viewModel.checkedGarage}"
                     android:fontFamily="@font/poppins_regular"
-                    android:padding="4dp"
                     android:text="@string/ad_ads_garage"
-                    android:textSize="@dimen/font_16sp"
-                    app:layout_columnWeight="1" />
+                    android:textSize="@dimen/font_15sp" />
 
                 <androidx.appcompat.widget.AppCompatRadioButton
                     android:id="@+id/rbAdsTypeComm"
@@ -161,10 +148,8 @@
                     android:layout_gravity="start"
                     android:checked="@={viewModel.checkedComm}"
                     android:fontFamily="@font/poppins_regular"
-                    android:padding="4dp"
                     android:text="@string/ad_ads_comm"
-                    android:textSize="@dimen/font_16sp"
-                    app:layout_columnWeight="1" />
+                    android:textSize="@dimen/font_15sp" />
 
             </com.clickandvisit.ui.shared.view.RadioGridGroup>
 
@@ -196,10 +181,8 @@
                     android:layout_marginEnd="@dimen/margin_global_30dp"
                     android:checked="@={viewModel.checked1}"
                     android:fontFamily="@font/poppins_regular"
-                    android:padding="4dp"
                     android:text="1"
-                    android:textSize="@dimen/font_16sp"
-                    app:layout_columnWeight="1" />
+                    android:textSize="@dimen/font_16sp" />
 
                 <androidx.appcompat.widget.AppCompatRadioButton
                     android:id="@+id/rgAdsRoomNbr2"
@@ -208,11 +191,8 @@
                     android:layout_gravity="start"
                     android:checked="@={viewModel.checked2}"
                     android:fontFamily="@font/poppins_regular"
-                    android:padding="4dp"
                     android:text="2"
-                    android:layout_marginEnd="@dimen/margin_global_10dp"
-                    android:textSize="@dimen/font_16sp"
-                    app:layout_columnWeight="1" />
+                    android:textSize="@dimen/font_16sp" />
 
                 <androidx.appcompat.widget.AppCompatRadioButton
                     android:id="@+id/rgAdsRoomNbr3"
@@ -222,10 +202,8 @@
                     android:layout_marginEnd="@dimen/margin_global_30dp"
                     android:checked="@={viewModel.checked3}"
                     android:fontFamily="@font/poppins_regular"
-                    android:padding="4dp"
                     android:text="3"
-                    android:textSize="@dimen/font_16sp"
-                    app:layout_columnWeight="1" />
+                    android:textSize="@dimen/font_16sp"/>
 
                 <androidx.appcompat.widget.AppCompatRadioButton
                     android:id="@+id/rgAdsRoomNbr4"
@@ -234,10 +212,8 @@
                     android:layout_gravity="start"
                     android:checked="@={viewModel.checked4}"
                     android:fontFamily="@font/poppins_regular"
-                    android:padding="4dp"
                     android:text="4"
-                    android:textSize="@dimen/font_16sp"
-                    app:layout_columnWeight="1" />
+                    android:textSize="@dimen/font_16sp" />
 
                 <androidx.appcompat.widget.AppCompatRadioButton
                     android:id="@+id/rgAdsRoomNbr5"
@@ -247,10 +223,8 @@
                     android:layout_marginEnd="@dimen/margin_global_30dp"
                     android:checked="@={viewModel.checked5}"
                     android:fontFamily="@font/poppins_regular"
-                    android:padding="4dp"
                     android:text="5 et +"
-                    android:textSize="@dimen/font_16sp"
-                    app:layout_columnWeight="1" />
+                    android:textSize="@dimen/font_16sp" />
 
                 <androidx.appcompat.widget.AppCompatRadioButton
                     android:id="@+id/rgAdsRoomNbrNA"
@@ -259,10 +233,8 @@
                     android:layout_gravity="start"
                     android:checked="@={viewModel.checkedNA}"
                     android:fontFamily="@font/poppins_regular"
-                    android:padding="4dp"
                     android:text="NA"
-                    android:textSize="@dimen/font_16sp"
-                    app:layout_columnWeight="1" />
+                    android:textSize="@dimen/font_16sp" />
 
             </com.clickandvisit.ui.shared.view.RadioGridGroup>
 
@@ -305,9 +277,9 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_bold"
                 android:text="@string/ad_ads_price"
-                android:visibility="@{viewModel.checkedRent ? View.INVISIBLE : View.VISIBLE, default=visible}"
                 android:textColor="@color/black"
                 android:textSize="@dimen/font_16sp"
+                android:visibility="@{viewModel.checkedRent ? View.INVISIBLE : View.VISIBLE, default=visible}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/customTextInputLayoutSpace" />
 
@@ -316,10 +288,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_bold"
-                android:visibility="@{viewModel.checkedRent ? View.VISIBLE : View.INVISIBLE, default=invisible}"
                 android:text="@string/ad_ads_rent_price_hint"
                 android:textColor="@color/black"
                 android:textSize="@dimen/font_16sp"
+                android:visibility="@{viewModel.checkedRent ? View.VISIBLE : View.INVISIBLE, default=invisible}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/customTextInputLayoutSpace" />
 

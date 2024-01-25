@@ -118,7 +118,7 @@
                         android:padding="4dp"
                         android:text="@string/ad_ads_sale"
                         android:textAlignment="center"
-                        android:textSize="@dimen/font_16sp" />
+                        android:textSize="@dimen/font_15sp" />
 
                     <RadioButton
                         android:id="@+id/rbTypeLoc"
@@ -130,7 +130,7 @@
                         android:padding="4dp"
                         android:text="@string/ad_ads_location"
                         android:textAlignment="center"
-                        android:textSize="@dimen/font_16sp" />
+                        android:textSize="@dimen/font_15sp" />
 
                 </RadioGroup>
 
@@ -146,84 +146,85 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/rgAdsType" />
 
-                <androidx.gridlayout.widget.GridLayout
+                <androidx.appcompat.widget.LinearLayoutCompat
                     android:id="@+id/rgAdsTypeB"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:columnCount="2"
+                    android:orientation="horizontal"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tvAdsTypeB">
 
-                    <CheckBox
-                        android:id="@+id/rbAdsTypeHome"
-                        android:layout_width="wrap_content"
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="@dimen/dimen_0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="@dimen/margin_global_30dp"
-                        android:checked="@={viewModel.checkedHome}"
-                        android:fontFamily="@font/poppins_regular"
-                        android:padding="4dp"
-                        android:text="@string/ad_ads_home"
-                        android:textSize="@dimen/font_16sp"
-                        app:layout_columnWeight="1" />
+                        android:layout_weight="1"
+                        android:orientation="vertical">
 
-                    <CheckBox
-                        android:id="@+id/rbAdsTypeDesk"
-                        android:layout_width="wrap_content"
+                        <CheckBox
+                            android:id="@+id/rbAdsTypeHome"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="@={viewModel.checkedHome}"
+                            android:fontFamily="@font/poppins_regular"
+                            android:text="@string/ad_ads_home"
+                            android:textSize="@dimen/font_15sp" />
+
+                        <CheckBox
+                            android:id="@+id/rbAdsTypeApp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="@={viewModel.checkedApp}"
+                            android:fontFamily="@font/poppins_regular"
+                            android:text="@string/ad_ads_app"
+                            android:textSize="@dimen/font_13sp" />
+
+                        <CheckBox
+                            android:id="@+id/rbAdsTypeGarage"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="@={viewModel.checkedGarage}"
+                            android:fontFamily="@font/poppins_regular"
+                            android:text="@string/ad_ads_garage"
+                            android:textSize="@dimen/font_15sp" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="@dimen/dimen_0dp"
                         android:layout_height="wrap_content"
-                        android:checked="@={viewModel.checkedB}"
-                        android:fontFamily="@font/poppins_regular"
-                        android:padding="4dp"
-                        android:text="@string/ad_ads_desk"
-                        android:textSize="@dimen/font_16sp"
-                        app:layout_columnWeight="1" />
+                        android:layout_weight="1"
+                        android:orientation="vertical">
 
-                    <CheckBox
-                        android:id="@+id/rbAdsTypeApp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="@dimen/margin_global_30dp"
-                        android:checked="@={viewModel.checkedApp}"
-                        android:fontFamily="@font/poppins_regular"
-                        android:padding="4dp"
-                        android:text="@string/ad_ads_app"
-                        android:textSize="@dimen/font_16sp"
-                        app:layout_columnWeight="1" />
+                        <CheckBox
+                            android:id="@+id/rbAdsTypeDesk"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="@={viewModel.checkedB}"
+                            android:fontFamily="@font/poppins_regular"
+                            android:text="@string/ad_ads_desk"
+                            android:textSize="@dimen/font_15sp" />
 
-                    <CheckBox
-                        android:id="@+id/rbAdsTypeGround"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:checked="@={viewModel.checkedTer}"
-                        android:fontFamily="@font/poppins_regular"
-                        android:padding="4dp"
-                        android:text="@string/ad_ads_ground"
-                        android:textSize="@dimen/font_16sp"
-                        app:layout_columnWeight="1" />
+                        <CheckBox
+                            android:id="@+id/rbAdsTypeGround"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="@={viewModel.checkedTer}"
+                            android:fontFamily="@font/poppins_regular"
+                            android:text="@string/ad_ads_ground"
+                            android:textSize="@dimen/font_15sp" />
 
-                    <CheckBox
-                        android:id="@+id/rbAdsTypeGarage"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="@dimen/margin_global_30dp"
-                        android:checked="@={viewModel.checkedGarage}"
-                        android:fontFamily="@font/poppins_regular"
-                        android:padding="4dp"
-                        android:text="@string/ad_ads_garage"
-                        android:textSize="@dimen/font_16sp"
-                        app:layout_columnWeight="1" />
+                        <CheckBox
+                            android:id="@+id/rbAdsTypeComm"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="@={viewModel.checkedComm}"
+                            android:fontFamily="@font/poppins_regular"
+                            android:text="@string/ad_ads_comm"
+                            android:textSize="@dimen/font_15sp" />
 
-                    <CheckBox
-                        android:id="@+id/rbAdsTypeComm"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:checked="@={viewModel.checkedComm}"
-                        android:fontFamily="@font/poppins_regular"
-                        android:padding="4dp"
-                        android:text="@string/ad_ads_comm"
-                        android:textSize="@dimen/font_16sp"
-                        app:layout_columnWeight="1" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
 
-                </androidx.gridlayout.widget.GridLayout>
+                </androidx.appcompat.widget.LinearLayoutCompat>
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvAdsRoomNbr"
@@ -261,7 +262,7 @@
                         spinnerEntries="@{viewModel.piecesList}"
                         android:layout_width="0dp"
                         android:layout_height="46dp"
-                        android:layout_weight="1"/>
+                        android:layout_weight="1" />
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -389,9 +390,9 @@
                     android:fontFamily="@font/poppins_regular"
                     android:padding="4dp"
                     android:text="@string/ads_save_search"
-                    android:textSize="@dimen/font_16sp"
+                    android:textSize="@dimen/font_15sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/llSurface"/>
+                    app:layout_constraintTop_toBottomOf="@+id/llSurface" />
 
 
                 <com.clickandvisit.ui.shared.view.CustomButton
