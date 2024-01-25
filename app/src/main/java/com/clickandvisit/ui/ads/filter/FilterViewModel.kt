@@ -133,8 +133,8 @@ class FilterViewModel
 
     fun onConfirmClicked() {
         searchRequest.value?.address = city.value
-        searchRequest.value?.minPrice = priceMin.value?.toInt()
-        searchRequest.value?.maxPrice = priceMax.value?.toInt()
+        searchRequest.value?.minPrice = priceMin.value?.replace(" ", "")?.toInt()
+        searchRequest.value?.maxPrice = priceMax.value?.replace(" ", "")?.toInt()
         searchRequest.value?.minArea = surfaceMin.value?.toInt()
         searchRequest.value?.maxArea = surfaceMax.value?.toInt()
         searchRequest.value?.minRooms = minSelectedItem.value

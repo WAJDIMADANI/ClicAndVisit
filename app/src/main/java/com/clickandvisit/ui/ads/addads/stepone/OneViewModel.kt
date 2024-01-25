@@ -215,7 +215,7 @@ class OneViewModel
 
     fun onEditProperty(property: Property) {
         surface.value = property.surface
-        price.value = property.price
+        price.value = property.price.replace(" ", "")
         stage.value = property.stage
         on.value = property.stageS
         info.value = property.otherInfo

@@ -3,7 +3,10 @@ package com.clickandvisit.ui.ads.filter
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.widget.AdapterView
+import android.widget.EditText
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import com.clickandvisit.R
@@ -11,6 +14,7 @@ import com.clickandvisit.base.BaseActivity
 import com.clickandvisit.databinding.ActivityFilterBinding
 import com.clickandvisit.global.helper.Navigation
 import com.clickandvisit.global.utils.ExtraKeys
+import com.clickandvisit.ui.ads.addads.stepone.SpaceTextWatcher
 import com.clickandvisit.ui.ads.addads.stepthree.PlaceArrayAdapter
 import com.clickandvisit.ui.ads.addads.stepthree.PlaceDataModel
 import com.google.android.libraries.places.api.Places
@@ -48,6 +52,9 @@ class FilterActivity : BaseActivity() {
                     setSelection(binding.autoCompleteEditText.length())
                 }
             }
+
+        binding.etPriceMin.addTextChangedListener(SpaceTextWatcher(binding.etPriceMin))
+        binding.etPriceMax.addTextChangedListener(SpaceTextWatcher(binding.etPriceMax))
     }
 
     /**
@@ -90,4 +97,38 @@ class FilterActivity : BaseActivity() {
         registerBaseObservers(viewModel)
     }
 
+}
+class SpaceTextWatcher(private val editText: EditText) : TextWatcher {
+    private var previousText = ""
+
+    override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+        // Not needed for this implementation
+    }
+
+    override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+        // Not needed for this implementation
+    }
+
+    override fun afterTextChanged(s: Editable?) {
+        val newText = s.toString().replace("\\s".toRegex(), "")
+
+        if (newText != previousText) {
+            editText.removeTextChangedListener(this)
+
+            val sb = StringBuilder()
+            newText.forEachIndexed { index, char ->
+                if (index > 0 && index % 3 == 0) {
+                    sb.append(' ')
+                }
+                sb.append(char)
+            }
+
+            editText.setText(sb.toString())
+            editText.setSelection(sb.length)
+
+            editText.addTextChangedListener(this)
+
+            previousText = sb.toString()
+        }
+    }
 }

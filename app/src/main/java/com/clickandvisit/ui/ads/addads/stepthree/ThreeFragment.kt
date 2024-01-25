@@ -113,7 +113,7 @@ class ThreeFragment(val property: Property?) : BaseFragment() {
         return inputString.filter { it.isDigit() }
     }
 
-    fun getStringBeforeFirstComma(inputString: String): String {
+    private fun getStringBeforeFirstComma(inputString: String): String {
         return inputString.substringBefore(',')
     }
 

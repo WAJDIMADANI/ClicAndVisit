@@ -180,7 +180,7 @@ class AddAdsActivity : BaseActivity() {
         viewModel.surface.value =
             (routineFragments[0] as OneFragment).viewModel.surface.value
         viewModel.price.value =
-            (routineFragments[0] as OneFragment).viewModel.price.value
+            (routineFragments[0] as OneFragment).viewModel.price.value?.replace(" ", "")
         viewModel.stage.value =
             (routineFragments[0] as OneFragment).viewModel.stage.value
         viewModel.on.value = (routineFragments[0] as OneFragment).viewModel.on.value
