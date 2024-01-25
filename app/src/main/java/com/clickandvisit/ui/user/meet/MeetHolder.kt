@@ -65,7 +65,7 @@ class MeetHolder(
                 .into(binding.appCompatImageView2)
 
         if (value.reservationDetails?.statusCode == 1) {
-            binding.tvAdsMeetTitle.text = context.getString(R.string.confirmed_meet_with)
+            //binding.tvAdsMeetTitle.text = context.getString(R.string.meet_with)
 
             binding.tvConfirmMeet.visibility = View.INVISIBLE
             binding.tvRejectMeet.visibility = View.INVISIBLE
@@ -80,7 +80,7 @@ class MeetHolder(
             binding.tvAdsMeetUserPhone.visibility = View.VISIBLE
 
         } else {
-            binding.tvAdsMeetTitle.text = context.getString(R.string.meet_with)
+            //binding.tvAdsMeetTitle.text = context.getString(R.string.meet_with)
             binding.tvAdsMeetUserPhone.visibility = View.INVISIBLE
             binding.tvConfirmMeet.visibility = View.VISIBLE
             binding.tvRejectMeet.visibility = View.VISIBLE

@@ -18,9 +18,9 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_global_15dp"
+        android:layout_marginStart="@dimen/margin_global_10dp"
         android:layout_marginTop="@dimen/margin_global_10dp"
-        android:layout_marginEnd="@dimen/margin_global_25dp"
+        android:layout_marginEnd="@dimen/margin_global_10dp"
         android:layout_marginBottom="@dimen/padding_global_10dp"
         android:background="@color/white_basic"
         android:paddingBottom="@dimen/margin_global_10dp"
@@ -68,7 +68,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_global_15dp"
-            android:layout_marginTop="@dimen/margin_global_10dp"
+            android:layout_marginTop="@dimen/margin_global_5dp"
             android:fontFamily="@font/poppins_regular"
             android:text="2000€"
             android:textColor="@color/black"
@@ -105,8 +105,8 @@
             android:id="@+id/appCompatImageView2"
             android:layout_width="160dp"
             android:layout_height="140dp"
-            android:layout_marginTop="@dimen/margin_global_5dp"
-            android:layout_marginEnd="@dimen/margin_global_7dp"
+            android:layout_marginTop="@dimen/margin_global_10dp"
+            android:layout_marginEnd="@dimen/margin_global_12dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/llAdsRoomNbr" />
 
@@ -115,7 +115,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_global_15dp"
-            android:layout_marginTop="@dimen/margin_global_15dp"
+            android:layout_marginTop="@dimen/margin_global_5dp"
             android:fontFamily="@font/poppins_medium"
             android:text="@string/meet_with"
             android:textColor="@color/black"
@@ -161,9 +161,7 @@
             android:layout_height="@dimen/dimen_50dp"
             android:layout_marginStart="@dimen/margin_global_15dp"
             android:textSize="@dimen/dimen_12sp"
-            android:layout_marginTop="@dimen/margin_global_10dp"
             android:visibility="visible"
-            app:layout_constraintBottom_toTopOf="@+id/ivAttach"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvAdsMeetTitle" />
 
@@ -171,8 +169,7 @@
             android:id="@+id/tvConfirmMeet"
             android:layout_width="127dp"
             android:layout_height="51dp"
-            android:layout_marginTop="@dimen/margin_global_10dp"
-            android:layout_marginBottom="@dimen/padding_global_10dp"
+            android:layout_marginBottom="@dimen/margin_global_10dp"
             android:background="@color/green_pro_status_details"
             android:fontFamily="@font/poppins_medium"
             android:gravity="center"
@@ -183,8 +180,8 @@
             android:textAllCaps="true"
             android:textColor="@color/white_basic"
             android:textSize="@dimen/dimen_12sp"
+            app:layout_constraintBottom_toTopOf="@+id/tvRejectMeet"
             app:layout_constraintEnd_toEndOf="@+id/appCompatImageView2"
-            app:layout_constraintTop_toBottomOf="@+id/appCompatImageView2"
             app:onClickWithDebounce="@{()->listener.onConfirmClicked(reservation)}" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -204,7 +201,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/tvConfirmMeet"
             app:layout_constraintStart_toStartOf="@+id/tvConfirmMeet"
-            app:layout_constraintTop_toBottomOf="@+id/tvConfirmMeet"
             app:onClickWithDebounce="@{()->listener.onRejectClicked(reservation)}" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -224,7 +220,6 @@
             android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/tvConfirmMeet"
-            app:layout_constraintTop_toBottomOf="@+id/tvConfirmMeet"
             app:onClickWithDebounce="@{()->listener.onCancelClicked(reservation)}" />
 
         <androidx.appcompat.widget.AppCompatImageView
