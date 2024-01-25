@@ -260,7 +260,7 @@
     <string name="profile_f">Madame</string>
     <string name="profile_change_password">Changer votre mot de passe ?</string>
     <string name="profile_save">Enregistrer</string>
-    <string name="profile_delete_account_msg">Voulez-vous vraiment supprimer votre compte?</string>
+    <string name="profile_delete_account_msg">Voulez-vous vraiment supprimer votre compte ?</string>
 
 
     <string name="filter_city_title">LOCALISATION</string>

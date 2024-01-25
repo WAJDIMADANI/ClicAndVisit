@@ -123,10 +123,10 @@ data class Details(
             "T0"
         } else {
             try {
-                if (pieces.isDigitsOnly()) {
+                if (pieces.isDigitsOnly() && pieces != "5") {
                     "T$pieces"
-                }else{
-                    "T5"
+                } else {
+                    "T5+"
                 }
             } catch (e: NumberFormatException) {
                 "T0"
