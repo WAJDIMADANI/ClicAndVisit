@@ -2,9 +2,12 @@ package com.clickandvisit.ui.ads.addads.stepone
 
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import androidx.fragment.app.viewModels
 import com.clickandvisit.R
 import com.clickandvisit.base.BaseFragment
@@ -36,6 +39,8 @@ class OneFragment(val property: Property?) : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         registerBaseObserver(viewModel)
+
+        binding.etPrice.addTextChangedListener(SpaceTextWatcher(binding.etPrice))
 
         binding.tvA.setOnClickListener {
             viewModel.dpe.value = "A"
@@ -701,4 +706,39 @@ class OneFragment(val property: Property?) : BaseFragment() {
         }
     }
 
+}
+
+class SpaceTextWatcher(private val editText: EditText) : TextWatcher {
+    private var previousText = ""
+
+    override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+        // Not needed for this implementation
+    }
+
+    override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+        // Not needed for this implementation
+    }
+
+    override fun afterTextChanged(s: Editable?) {
+        val newText = s.toString().replace("\\s".toRegex(), "")
+
+        if (newText != previousText) {
+            editText.removeTextChangedListener(this)
+
+            val sb = StringBuilder()
+            newText.forEachIndexed { index, char ->
+                if (index > 0 && index % 3 == 0) {
+                    sb.append(' ')
+                }
+                sb.append(char)
+            }
+
+            editText.setText(sb.toString())
+            editText.setSelection(sb.length)
+
+            editText.addTextChangedListener(this)
+
+            previousText = sb.toString()
+        }
+    }
 }
