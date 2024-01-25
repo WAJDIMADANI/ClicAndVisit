@@ -13,12 +13,12 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvHome1"
-            android:layout_width="@dimen/dimen_110dp"
+            android:layout_width="105dp"
             android:layout_height="@dimen/dimen_100dp"
             android:background="@color/gray_home_type_background"
             android:fontFamily="@font/poppins_regular"
             android:gravity="center"
-            android:text="@string/ads_details_1"
+            android:text="@string/ad_ads_2"
             android:textAllCaps="true"
             android:textColor="@color/white_basic"
             android:textSize="@dimen/dimen_12sp"

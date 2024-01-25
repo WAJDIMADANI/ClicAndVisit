@@ -1,6 +1,7 @@
 package com.clickandvisit.ui.ads.adsdetails
 
 import android.content.Context
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -15,6 +16,7 @@ class RoomHolder(
     fun bind(value: String, position: Int) {
 
         binding.tvHome1.text = value
+        binding.tvHome1.gravity = Gravity.CENTER
         binding.executePendingBindings()
     }
 
