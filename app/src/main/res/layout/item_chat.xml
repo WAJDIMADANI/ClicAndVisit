@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -21,9 +22,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white_basic"
-        android:paddingStart="@dimen/padding_global_36dp"
+        android:paddingStart="@dimen/padding_global_15dp"
         android:paddingTop="@dimen/padding_global_30dp"
-        android:paddingEnd="@dimen/padding_global_36dp"
         app:onClickWithDebounce="@{()->listener.onItemClicked(discussion)}">
 
         <com.clickandvisit.ui.shared.view.CustomCircleImageView
@@ -34,52 +34,59 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvChatUserName"
-            android:layout_width="wrap_content"
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/llContainer"
+            android:layout_width="@dimen/dimen_0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_global_12dp"
-            android:fontFamily="@font/poppins_bold"
-            android:text="Cyril XX"
-            android:textColor="@color/black_basic"
-            android:textSize="@dimen/font_16sp"
+            android:layout_marginStart="@dimen/margin_global_10dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/ivChatUserPhoto"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvCityDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_global_12dp"
-            android:fontFamily="@font/poppins_medium"
-            android:text="Lyon - Juin 2022"
-            android:textColor="@color/chat_subtitle_color"
-            android:textSize="@dimen/font_12sp"
-            app:layout_constraintStart_toEndOf="@+id/ivChatUserPhoto"
-            app:layout_constraintTop_toBottomOf="@+id/tvChatUserName" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvChatUserName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_bold"
+                android:text="Cyril XX"
+                android:textColor="@color/black_basic"
+                android:textSize="@dimen/font_16sp" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvChatLastMsg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_global_20dp"
-            android:gravity="start"
-            android:fontFamily="@font/poppins_regular"
-            android:text="test"
-            android:textColor="@color/black_basic"
-            android:layout_marginStart="@dimen/margin_global_50dp"
-            android:textSize="@dimen/font_12sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ivChatUserPhoto" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvCityDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:text="Lyon - Juin 2024"
+                android:textColor="@color/chat_subtitle_color"
+                android:textSize="@dimen/font_12sp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvChatLastMsg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_regular"
+                android:gravity="start"
+                android:text="test"
+                android:textColor="@color/black_basic"
+                android:textSize="@dimen/font_12sp" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
 
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/dimen_1dp"
-            android:background="@color/light_grey"
             android:layout_marginTop="@dimen/margin_global_10dp"
+            android:layout_marginEnd="@dimen/margin_global_15dp"
+
+            android:background="@color/light_grey"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvChatLastMsg"/>
+            app:layout_constraintTop_toBottomOf="@+id/llContainer" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

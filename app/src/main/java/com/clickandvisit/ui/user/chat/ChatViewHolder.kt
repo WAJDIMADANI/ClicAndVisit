@@ -8,7 +8,6 @@ import com.clickandvisit.data.model.chat.Discussion
 import com.clickandvisit.databinding.ItemChatBinding
 import com.clickandvisit.global.listener.OnChatItemClickedListener
 import com.clickandvisit.global.utils.toMediaUrl
-import com.squareup.picasso.MemoryPolicy
 import com.squareup.picasso.Picasso
 
 
@@ -23,7 +22,11 @@ class ChatViewHolder(
 
         binding.tvChatUserName.text = value.fromName
         binding.tvChatLastMsg.text = value.lastMessage
-        binding.tvCityDate.text = value.property + " - " + value.date
+        binding.tvCityDate.text = if (value.property.isEmpty()) {
+            value.date
+        } else {
+            value.property + " - " + value.date
+        }
 
         picasso.load(value.fromPicture.toMediaUrl())
             .fit()
