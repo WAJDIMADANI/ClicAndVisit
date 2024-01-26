@@ -180,4 +180,6 @@ data class Property(
     override fun toString(): String {
         return "Property(id=$id, title='$title', type='$type', category='$category', album=$album, mainPhoto=$mainPhoto, status='$status', statusCode=$statusCode, visitNow=$visitNow, owner=$owner, isFavorite=$isFavorite, surface='$surface', price='$price', stage='$stage', stageS='$stageS', energy='$energy', ges='$ges', otherDetails='$otherDetails', city='$city', postalCode='$postalCode', road='$road', lat='$lat', long='$long', interphone='$interphone', portail='$portail', otherInfo='$otherInfo', details=$details)"
     }
+
+    fun toShare() = "\n $title \n $type - $category -  \n Prix: ${getPriceNBR()} - ${details.getTPieces()} \n Surface: $surface m²"
 }

@@ -154,7 +154,7 @@ class AdsDetailsActivity : BaseActivity(), CalendarAdapter.OnItemListener {
                 Intent().let {
                     it.action = Intent.ACTION_SEND
                     it.type = "text/plain"
-                    it.putExtra(Intent.EXTRA_TEXT, navigationTo.property.toString())
+                    it.putExtra(Intent.EXTRA_TEXT, getString(R.string.global_recommend_app) +  navigationTo.property.toShare())
                     startActivity(
                         Intent.createChooser(
                             it,
