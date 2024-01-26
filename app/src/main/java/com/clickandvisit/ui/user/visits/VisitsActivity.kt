@@ -55,13 +55,13 @@ class VisitsActivity : BaseActivity() {
 
             is Navigation.Back -> finish()
 
-            is Navigation.GoToMapsNavigation -> {
+/*            is Navigation.GoToMapsNavigation -> {
                 val intent = Intent(
                     Intent.ACTION_VIEW,
                     Uri.parse("google.navigation:${navigationTo.reservation.road} ${navigationTo.reservation.city}")
                 )
                 startActivity(intent)
-            }
+            }*/
 
             is Navigation.Phone -> {
                 val uri = "tel:" + navigationTo.phoneNumber.trim()

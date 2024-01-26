@@ -145,13 +145,13 @@ class AddAdsViewModel
 
 
         propertyAdd.value?.propGes = if (ges.value.isNullOrEmpty()) {
-            "G"
+            ""
         } else {
             ges.value
         }
 
         propertyAdd.value?.propEnery = if (dpe.value.isNullOrEmpty()) {
-            "G"
+            ""
         } else {
             dpe.value
         }
@@ -316,7 +316,7 @@ class AddAdsViewModel
     } else if (checked4.value == true) {
         "4"
     } else if (checked5.value == true) {
-        "5 et +"
+        "5"
     } else if (checkedNA.value == true) {
         "NA"
     } else null

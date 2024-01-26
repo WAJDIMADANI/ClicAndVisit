@@ -265,6 +265,10 @@ class AdsDetailsViewModel
             roomsList.add(applicationContext.getString(R.string.ad_ads_201))
         }
 
+        if (property.value!!.stage.isNullOrEmpty().not() && property.value!!.stageS.isNullOrEmpty().not()) {
+            roomsList.add(applicationContext.getString(R.string.ad_ads_stage) + "\n" + "${property.value!!.stage} / ${property.value!!.stageS}")
+        }
+
         list.value = roomsList
     }
 

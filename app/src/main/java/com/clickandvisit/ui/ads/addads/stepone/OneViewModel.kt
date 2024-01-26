@@ -219,8 +219,8 @@ class OneViewModel
         stage.value = property.stage
         on.value = property.stageS
         info.value = property.otherInfo
-        ges.value = property.ges.ifEmpty { "G" }
-        dpe.value = property.energy.ifEmpty { "G" }
+        ges.value = property.ges.ifEmpty { "" }
+        dpe.value = property.energy.ifEmpty { "" }
 
 
         fetchDPE(property)
@@ -267,7 +267,7 @@ class OneViewModel
             "4" -> {
                 checked4.value = true
             }
-            "5 et +" -> {
+            "5" -> {
                 checked5.value = true
             }
             "NA" -> {

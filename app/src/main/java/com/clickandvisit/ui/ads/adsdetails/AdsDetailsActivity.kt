@@ -208,12 +208,12 @@ class AdsDetailsActivity : BaseActivity(), CalendarAdapter.OnItemListener {
                         binding.tvG.text = "G"
                         binding.tvG.requestLayout()
                     }
-                    else -> {
+                    /*else -> {
                         binding.tvG.layoutParams.width = 140
                         binding.tvG.layoutParams.height = 120
                         binding.tvG.text = "G"
                         binding.tvG.requestLayout()
-                    }
+                    }*/
                 }
             }
 
@@ -261,12 +261,12 @@ class AdsDetailsActivity : BaseActivity(), CalendarAdapter.OnItemListener {
                         binding.tvGESG.text = "G"
                         binding.tvGESG.requestLayout()
                     }
-                    else -> {
+                    /*else -> {
                         binding.tvGESG.layoutParams.width = 140
                         binding.tvGESG.layoutParams.height = 71
                         binding.tvGESG.text = "G"
                         binding.tvGESG.requestLayout()
-                    }
+                    }*/
                 }
             }
 

@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.clickandvisit.R
 import com.clickandvisit.data.model.reservation.Reservation
 import com.clickandvisit.databinding.ItemMeetBinding
 import com.clickandvisit.global.listener.OnMeetClickedListener
@@ -28,7 +27,12 @@ class MeetHolder(
     fun bind(value: Reservation, position: Int) {
 
         binding.tvAdsName.text = "${value.category} - ${value.city}"
-        binding.tvAdsAddress.text = "${value.road},\n ${value.postalCode} ${value.city}"
+        if (isFromMeet){
+            binding.tvAdsAddress.text = "${value.road},\n ${value.postalCode} ${value.city}"
+        }else{
+            binding.tvAdsAddress.visibility = View.GONE
+        }
+
         binding.tvAdsPrice.text =  value.getPriceNBR()
         binding.tvAdsDate.text = getWsDate(value.reservationDetails?.dateTime)
         binding.tvAdsHour.text = "à " + getWsTime(value.reservationDetails?.dateTime)
