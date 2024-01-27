@@ -17,7 +17,7 @@ class ChatAdapter(private val picasso: Picasso) :
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatViewHolder {
-        return ChatViewHolder.create(parent, parent.context, picasso, viewModel)
+        return ChatViewHolder.create(parent, parent.context, picasso,viewModel.getCurrentUser(), viewModel)
     }
 
     override fun onBindViewHolder(holder: ChatViewHolder, position: Int) {

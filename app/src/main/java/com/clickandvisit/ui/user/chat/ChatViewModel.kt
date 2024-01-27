@@ -50,12 +50,8 @@ class ChatViewModel
     }
 
     private fun onGetDiscussionSuccess(response: DiscussionsResponse) {
-        if (response.discussions.isNullOrEmpty().not()){
-            /*val res = arrayListOf<Discussion>()
-            for (i in response.discussions.size - 1 downTo 0 step 1) {
-                res.add(response.discussions[i])
-            }*/
-            list.value = response.discussions
+        if (response.discussions.isNullOrEmpty().not()) {
+            list.value = response.discussions.sortedByDescending { it.discId }.toList()
         }
     }
 
@@ -74,5 +70,7 @@ class ChatViewModel
     fun onRestart() {
         getDiscussions()
     }
+
+    fun getCurrentUser() = userRepository.getCurrentUserId()
 
 }
