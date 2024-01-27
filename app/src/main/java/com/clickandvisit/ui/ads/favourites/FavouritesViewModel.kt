@@ -109,6 +109,12 @@ class FavouritesViewModel
         )
     }
 
+    override fun onGoScrollClicked(value: Property) {
+        if (userRepository.isConnected()) {
+            navigate(Navigation.ScrollDetailsActivityNavigation(value))
+        }
+    }
+
     private fun onReserveSuccess(response: ReserveResponse) {
 
     }

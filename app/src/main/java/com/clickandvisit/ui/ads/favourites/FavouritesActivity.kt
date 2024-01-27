@@ -57,6 +57,20 @@ class FavouritesActivity : BaseActivity() {
                 }
             }
 
+            is Navigation.ScrollDetailsActivityNavigation -> {
+                Intent(this, AdsDetailsActivity::class.java).let { intent ->
+                    intent.putExtra(
+                        ExtraKeys.AddAdsActivity.PROPERTY_EXTRA_KEY_PROP,
+                        navigationTo.value
+                    )
+                    intent.putExtra(
+                        ExtraKeys.AddAdsActivity.SCROLL_DETAILS_EXTRA_KEY,
+                        true
+                    )
+                    startActivity(intent)
+                }
+            }
+
             is Navigation.ShareNavigation -> {
                 Intent().let {
                     it.action = Intent.ACTION_SEND

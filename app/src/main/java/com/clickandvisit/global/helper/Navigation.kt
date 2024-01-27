@@ -65,6 +65,7 @@ sealed class Navigation {
     data class Phone(val phoneNumber: String) : Navigation()
 
     data class AdsDetailsActivityNavigation(val value: Property) : Navigation()
+    data class ScrollDetailsActivityNavigation(val value: Property) : Navigation()
 
     data class DPENavigation(val energy: String) : Navigation()
 

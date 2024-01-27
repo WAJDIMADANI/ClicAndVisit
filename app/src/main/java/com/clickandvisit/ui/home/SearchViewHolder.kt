@@ -37,6 +37,9 @@ class SearchViewHolder(
             } else {
                 binding.tvMeet.setBackgroundColor(context.getColor(R.color.red_pro_status))
                 binding.tvMeet.text = context.getString(R.string.home_meet)
+                binding.tvMeet.setOnClickListener {
+                    onPropertyClickedListener.onGoScrollClicked(value)
+                }
             }
         }
 

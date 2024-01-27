@@ -5,7 +5,6 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
@@ -14,14 +13,11 @@ import com.clickandvisit.base.BaseActivity
 import com.clickandvisit.data.model.property.Property
 import com.clickandvisit.databinding.ActivityMapsBinding
 import com.clickandvisit.global.helper.Navigation
-import com.clickandvisit.global.utils.DebugLog
 import com.clickandvisit.global.utils.ExtraKeys
-import com.clickandvisit.global.utils.TAG
 import com.clickandvisit.global.utils.observeOnlyNotNull
 import com.clickandvisit.ui.ads.adsdetails.AdsDetailsActivity
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.BitmapDescriptor

@@ -73,6 +73,7 @@ class AdsDetailsViewModel
         property.value =
             savedStateHandle.getLiveData<Property>(ExtraKeys.AddAdsActivity.PROPERTY_EXTRA_KEY_PROP).value
 
+
         ref.value = "Référence : CV" + property.value!!.id.toString()
 
         fetchImgCount()
@@ -100,6 +101,14 @@ class AdsDetailsViewModel
         fetchAvailability1(CalendarUtils.getWsFormattedDate(firstDay))
 
         isMyProp.value = isCurrentUser()
+
+        if (savedStateHandle.get<Boolean>(ExtraKeys.AddAdsActivity.SCROLL_DETAILS_EXTRA_KEY) != null) {
+            if (savedStateHandle.get<Boolean>(ExtraKeys.AddAdsActivity.SCROLL_DETAILS_EXTRA_KEY) == true) {
+                Handler().postDelayed({
+                    navigate(Navigation.Scroll)
+                }, 500)
+            }
+        }
     }
 
 

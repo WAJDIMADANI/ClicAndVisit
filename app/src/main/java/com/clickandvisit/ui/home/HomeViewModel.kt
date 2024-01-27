@@ -260,6 +260,12 @@ class HomeViewModel
         )
     }
 
+    override fun onGoScrollClicked(value: Property) {
+        if (userRepository.isConnected()) {
+            navigate(Navigation.ScrollDetailsActivityNavigation(value))
+        }
+    }
+
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onVisitNowClicked(property: Property) {
         val now = Calendar.getInstance()

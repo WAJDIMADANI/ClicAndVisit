@@ -20,8 +20,6 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.observe
-import androidx.paging.PagedList
-import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.clickandvisit.R
 import com.clickandvisit.global.listener.DataAdapterListener

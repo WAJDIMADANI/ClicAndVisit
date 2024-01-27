@@ -40,6 +40,7 @@ object ExtraKeys {
             const val PROPERTY_EXTRA_KEY_EDIT: String = "prop_extra_edit_extra_key"
             const val PROPERTY_EXTRA_KEY_MEET: String = "prop_extra_meet_extra_key"
             const val PROPERTY_EXTRA_KEY_PROP: String = "prop_extra_edit"
+            const val SCROLL_DETAILS_EXTRA_KEY: String = "scroll_extra_key"
         }
     }
 
