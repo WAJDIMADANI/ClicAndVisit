@@ -109,7 +109,7 @@
                     android:checked="@={viewModel.checkedB}"
                     android:fontFamily="@font/poppins_regular"
                     android:text="@string/ad_ads_desk"
-                    android:textSize="@dimen/font_15sp"/>
+                    android:textSize="@dimen/font_15sp" />
 
                 <androidx.appcompat.widget.AppCompatRadioButton
                     android:id="@+id/rbAdsTypeApp"
@@ -203,7 +203,7 @@
                     android:checked="@={viewModel.checked3}"
                     android:fontFamily="@font/poppins_regular"
                     android:text="3"
-                    android:textSize="@dimen/font_16sp"/>
+                    android:textSize="@dimen/font_16sp" />
 
                 <androidx.appcompat.widget.AppCompatRadioButton
                     android:id="@+id/rgAdsRoomNbr4"
@@ -334,6 +334,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_global_5dp"
+                android:nextFocusRight="@id/etPriceMax"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvStage">
 
@@ -347,6 +348,7 @@
                     android:fontFamily="@font/poppins_regular"
                     android:hint="1"
                     android:inputType="number"
+                    android:nextFocusDown="@id/etPriceMax"
                     android:paddingStart="@dimen/padding_global_10dp"
                     android:text="@={viewModel.stage}"
                     android:textColor="@color/black"

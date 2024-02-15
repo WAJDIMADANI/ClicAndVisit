@@ -144,8 +144,8 @@
 
     <string name="ad_ads_1">CHAMBRE(S)\n</string>
     <string name="ad_ads_2">SUITE(S) \nPARENTALE(S)\n</string>
-    <string name="ad_ads_3">SALLE(S) \nDE BAIN\n</string>
-    <string name="ad_ads_4">SALLE(S) \nD’EAU\n</string>
+    <string name="ad_ads_3">SALLE(S)\nDE BAIN\n</string>
+    <string name="ad_ads_4">SALLE(S)\nD’EAU\n</string>
     <string name="ad_ads_5">BUREAU(X)\n</string>
     <string name="ad_ads_6">DRESSING\n</string>
     <string name="ad_ads_7">GARAGE(S)\n</string>

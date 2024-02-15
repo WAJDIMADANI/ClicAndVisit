@@ -22,6 +22,23 @@ class OneFragment(val property: Property?) : BaseFragment() {
     val viewModel: OneViewModel by viewModels()
     private lateinit var binding: OneFragmentBinding
 
+
+    private var isClickedDPEA = false
+    private var isClickedDPEB = false
+    private var isClickedDPEC = false
+    private var isClickedDPED = false
+    private var isClickedDPEE = false
+    private var isClickedDPEF = false
+    private var isClickedDPEG = false
+
+    private var isClickedGESA = false
+    private var isClickedGESB = false
+    private var isClickedGESC = false
+    private var isClickedGESD = false
+    private var isClickedGESE = false
+    private var isClickedGESF = false
+    private var isClickedGESG = false
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -43,195 +60,281 @@ class OneFragment(val property: Property?) : BaseFragment() {
         binding.etPrice.addTextChangedListener(SpaceTextWatcher(binding.etPrice))
 
         binding.tvA.setOnClickListener {
-            viewModel.dpe.value = "A"
-            binding.tvA.layoutParams.width = 140
-            binding.tvA.layoutParams.height = 120
-            binding.tvA.text = "A"
-            binding.tvA.requestLayout()
-            viewModel.onDPEAClicked(1)
+            if (isClickedDPEA) {
+                isClickedDPEA = false
+                viewModel.dpe.value = ""
+                binding.tvA.layoutParams.width = 125
+                binding.tvA.layoutParams.height = 55
+                binding.tvA.text = ""
+                binding.tvA.requestLayout()
+            } else {
+                isClickedDPEA = true
+                isClickedDPEB = false
+                isClickedDPEC = false
+                isClickedDPED = false
+                isClickedDPEE = false
+                isClickedDPEF = false
+                isClickedDPEG = false
+                viewModel.dpe.value = "A"
+                binding.tvA.layoutParams.width = 140
+                binding.tvA.layoutParams.height = 125
+                binding.tvA.text = "A"
+                binding.tvA.requestLayout()
+                viewModel.onDPEAClicked(1)
+            }
 
-            binding.tvB.layoutParams.width = 115
+
+            binding.tvB.layoutParams.width = 125
             binding.tvB.layoutParams.height = 55
             binding.tvB.text = ""
             binding.tvB.requestLayout()
 
-            binding.tvC.layoutParams.width = 115
+            binding.tvC.layoutParams.width = 125
             binding.tvC.layoutParams.height = 55
             binding.tvC.text = ""
             binding.tvC.requestLayout()
 
-            binding.tvD.layoutParams.width = 115
+            binding.tvD.layoutParams.width = 125
             binding.tvD.layoutParams.height = 55
             binding.tvD.text = ""
             binding.tvD.requestLayout()
 
-            binding.tvE.layoutParams.width = 115
+            binding.tvE.layoutParams.width = 125
             binding.tvE.layoutParams.height = 55
             binding.tvE.text = ""
             binding.tvE.requestLayout()
 
-            binding.tvF.layoutParams.width = 115
+            binding.tvF.layoutParams.width = 125
             binding.tvF.layoutParams.height = 55
             binding.tvF.text = ""
             binding.tvF.requestLayout()
 
-            binding.tvG.layoutParams.width = 115
+            binding.tvG.layoutParams.width = 125
             binding.tvG.layoutParams.height = 55
             binding.tvG.text = ""
             binding.tvG.requestLayout()
         }
 
         binding.tvB.setOnClickListener {
-            viewModel.dpe.value = "B"
-            binding.tvA.layoutParams.width = 115
+
+
+            binding.tvA.layoutParams.width = 125
             binding.tvA.layoutParams.height = 55
             binding.tvA.text = ""
             binding.tvA.requestLayout()
             viewModel.onDPEAClicked(2)
 
-            binding.tvB.layoutParams.width = 140
-            binding.tvB.layoutParams.height = 120
-            binding.tvB.text = "B"
-            binding.tvB.requestLayout()
+            if (isClickedDPEB) {
+                isClickedDPEB = false
+                viewModel.dpe.value = ""
+                binding.tvB.layoutParams.width = 125
+                binding.tvB.layoutParams.height = 55
+                binding.tvB.text = ""
+                binding.tvB.requestLayout()
+            } else {
+                isClickedDPEA = false
+                isClickedDPEB = true
+                isClickedDPEC = false
+                isClickedDPED = false
+                isClickedDPEE = false
+                isClickedDPEF = false
+                isClickedDPEG = false
+                viewModel.dpe.value = "B"
+                binding.tvB.layoutParams.width = 140
+                binding.tvB.layoutParams.height = 125
+                binding.tvB.text = "B"
+                binding.tvB.requestLayout()
+            }
 
-            binding.tvC.layoutParams.width = 115
+
+            binding.tvC.layoutParams.width = 125
             binding.tvC.layoutParams.height = 55
             binding.tvC.text = ""
             binding.tvC.requestLayout()
 
-            binding.tvD.layoutParams.width = 115
+            binding.tvD.layoutParams.width = 125
             binding.tvD.layoutParams.height = 55
             binding.tvD.text = ""
             binding.tvD.requestLayout()
 
-            binding.tvE.layoutParams.width = 115
+            binding.tvE.layoutParams.width = 125
             binding.tvE.layoutParams.height = 55
             binding.tvE.text = ""
             binding.tvE.requestLayout()
 
-            binding.tvF.layoutParams.width = 115
+            binding.tvF.layoutParams.width = 125
             binding.tvF.layoutParams.height = 55
             binding.tvF.text = ""
             binding.tvF.requestLayout()
 
-            binding.tvG.layoutParams.width = 115
+            binding.tvG.layoutParams.width = 125
             binding.tvG.layoutParams.height = 55
             binding.tvG.text = ""
             binding.tvG.requestLayout()
         }
 
         binding.tvC.setOnClickListener {
-            viewModel.dpe.value = "C"
-            binding.tvA.layoutParams.width = 115
+
+            binding.tvA.layoutParams.width = 125
             binding.tvA.layoutParams.height = 55
             binding.tvA.text = ""
             binding.tvA.requestLayout()
             viewModel.onDPEAClicked(3)
 
-            binding.tvB.layoutParams.width = 115
+            binding.tvB.layoutParams.width = 125
             binding.tvB.layoutParams.height = 55
             binding.tvB.text = ""
             binding.tvB.requestLayout()
 
-            binding.tvC.layoutParams.width = 140
-            binding.tvC.layoutParams.height = 120
-            binding.tvC.text = "C"
-            binding.tvC.requestLayout()
+            if (isClickedDPEC) {
+                isClickedDPEC = false
+                viewModel.dpe.value = ""
+                binding.tvC.layoutParams.width = 125
+                binding.tvC.layoutParams.height = 55
+                binding.tvC.text = ""
+                binding.tvC.requestLayout()
+            } else {
+                isClickedDPEA = false
+                isClickedDPEB = false
+                isClickedDPEC = true
+                isClickedDPED = false
+                isClickedDPEE = false
+                isClickedDPEF = false
+                isClickedDPEG = false
+                viewModel.dpe.value = "C"
+                binding.tvC.layoutParams.width = 140
+                binding.tvC.layoutParams.height = 125
+                binding.tvC.text = "C"
+                binding.tvC.requestLayout()
+            }
 
-            binding.tvD.layoutParams.width = 115
+            binding.tvD.layoutParams.width = 125
             binding.tvD.layoutParams.height = 55
             binding.tvD.text = ""
             binding.tvD.requestLayout()
 
-            binding.tvE.layoutParams.width = 115
+            binding.tvE.layoutParams.width = 125
             binding.tvE.layoutParams.height = 55
             binding.tvE.text = ""
             binding.tvE.requestLayout()
 
-            binding.tvF.layoutParams.width = 115
+            binding.tvF.layoutParams.width = 125
             binding.tvF.layoutParams.height = 55
             binding.tvF.text = ""
             binding.tvF.requestLayout()
 
-            binding.tvG.layoutParams.width = 115
+            binding.tvG.layoutParams.width = 125
             binding.tvG.layoutParams.height = 55
             binding.tvG.text = ""
             binding.tvG.requestLayout()
         }
 
         binding.tvD.setOnClickListener {
-            viewModel.dpe.value = "D"
-            binding.tvA.layoutParams.width = 115
+
+            binding.tvA.layoutParams.width = 125
             binding.tvA.layoutParams.height = 55
             binding.tvA.text = ""
             binding.tvA.requestLayout()
             viewModel.onDPEAClicked(4)
 
-            binding.tvB.layoutParams.width = 115
+            binding.tvB.layoutParams.width = 125
             binding.tvB.layoutParams.height = 55
             binding.tvB.text = ""
             binding.tvB.requestLayout()
 
-            binding.tvC.layoutParams.width = 115
+            binding.tvC.layoutParams.width = 125
             binding.tvC.layoutParams.height = 55
             binding.tvC.text = ""
             binding.tvC.requestLayout()
 
-            binding.tvD.layoutParams.width = 140
-            binding.tvD.layoutParams.height = 120
-            binding.tvD.text = "D"
-            binding.tvD.requestLayout()
+            if (isClickedDPED) {
+                isClickedDPED = false
+                viewModel.dpe.value = ""
+                binding.tvD.layoutParams.width = 125
+                binding.tvD.layoutParams.height = 55
+                binding.tvD.text = ""
+                binding.tvD.requestLayout()
+            } else {
+                isClickedDPEA = false
+                isClickedDPEB = false
+                isClickedDPEC = false
+                isClickedDPED = true
+                isClickedDPEE = false
+                isClickedDPEF = false
+                isClickedDPEG = false
+                viewModel.dpe.value = "D"
+                binding.tvD.layoutParams.width = 140
+                binding.tvD.layoutParams.height = 125
+                binding.tvD.text = "D"
+                binding.tvD.requestLayout()
+            }
 
-            binding.tvE.layoutParams.width = 115
+            binding.tvE.layoutParams.width = 125
             binding.tvE.layoutParams.height = 55
             binding.tvE.text = ""
             binding.tvE.requestLayout()
 
-            binding.tvF.layoutParams.width = 115
+            binding.tvF.layoutParams.width = 125
             binding.tvF.layoutParams.height = 55
             binding.tvF.text = ""
             binding.tvF.requestLayout()
 
-            binding.tvG.layoutParams.width = 115
+            binding.tvG.layoutParams.width = 125
             binding.tvG.layoutParams.height = 55
             binding.tvG.text = ""
             binding.tvG.requestLayout()
         }
 
         binding.tvE.setOnClickListener {
-            viewModel.dpe.value = "E"
-            binding.tvA.layoutParams.width = 115
+            binding.tvA.layoutParams.width = 125
             binding.tvA.layoutParams.height = 55
             binding.tvA.text = ""
             binding.tvA.requestLayout()
             viewModel.onDPEAClicked(5)
 
-            binding.tvB.layoutParams.width = 115
+            binding.tvB.layoutParams.width = 125
             binding.tvB.layoutParams.height = 55
             binding.tvB.text = ""
             binding.tvB.requestLayout()
 
-            binding.tvC.layoutParams.width = 115
+            binding.tvC.layoutParams.width = 125
             binding.tvC.layoutParams.height = 55
             binding.tvC.text = ""
             binding.tvC.requestLayout()
 
-            binding.tvD.layoutParams.width = 115
+            binding.tvD.layoutParams.width = 125
             binding.tvD.layoutParams.height = 55
             binding.tvD.text = ""
             binding.tvD.requestLayout()
 
-            binding.tvE.layoutParams.width = 140
-            binding.tvE.layoutParams.height = 120
-            binding.tvE.text = "E"
-            binding.tvE.requestLayout()
+            if (isClickedDPEE) {
+                isClickedDPEE = false
+                viewModel.dpe.value = ""
+                binding.tvE.layoutParams.width = 125
+                binding.tvE.layoutParams.height = 55
+                binding.tvE.text = ""
+                binding.tvE.requestLayout()
+            } else {
+                isClickedDPEA = false
+                isClickedDPEB = false
+                isClickedDPEC = false
+                isClickedDPED = false
+                isClickedDPEE = true
+                isClickedDPEF = false
+                isClickedDPEG = false
+                viewModel.dpe.value = "E"
+                binding.tvE.layoutParams.width = 140
+                binding.tvE.layoutParams.height = 125
+                binding.tvE.text = "E"
+                binding.tvE.requestLayout()
+            }
 
-            binding.tvF.layoutParams.width = 115
+            binding.tvF.layoutParams.width = 125
             binding.tvF.layoutParams.height = 55
             binding.tvF.text = ""
             binding.tvF.requestLayout()
 
-            binding.tvG.layoutParams.width = 115
+            binding.tvG.layoutParams.width = 125
             binding.tvG.layoutParams.height = 55
             binding.tvG.text = ""
             binding.tvG.requestLayout()
@@ -239,38 +342,55 @@ class OneFragment(val property: Property?) : BaseFragment() {
 
         binding.tvF.setOnClickListener {
             viewModel.dpe.value = "F"
-            binding.tvA.layoutParams.width = 115
+            binding.tvA.layoutParams.width = 125
             binding.tvA.layoutParams.height = 55
             binding.tvA.text = ""
             binding.tvA.requestLayout()
             viewModel.onDPEAClicked(6)
 
-            binding.tvB.layoutParams.width = 115
+            binding.tvB.layoutParams.width = 125
             binding.tvB.layoutParams.height = 55
             binding.tvB.text = ""
             binding.tvB.requestLayout()
 
-            binding.tvC.layoutParams.width = 115
+            binding.tvC.layoutParams.width = 125
             binding.tvC.layoutParams.height = 55
             binding.tvC.text = ""
             binding.tvC.requestLayout()
 
-            binding.tvD.layoutParams.width = 115
+            binding.tvD.layoutParams.width = 125
             binding.tvD.layoutParams.height = 55
             binding.tvD.text = ""
             binding.tvD.requestLayout()
 
-            binding.tvE.layoutParams.width = 115
+            binding.tvE.layoutParams.width = 125
             binding.tvE.layoutParams.height = 55
             binding.tvE.text = ""
             binding.tvE.requestLayout()
 
-            binding.tvF.layoutParams.width = 140
-            binding.tvF.layoutParams.height = 120
-            binding.tvF.text = "F"
-            binding.tvF.requestLayout()
+            if (isClickedDPEF) {
+                isClickedDPEF = false
+                viewModel.dpe.value = ""
+                binding.tvF.layoutParams.width = 125
+                binding.tvF.layoutParams.height = 55
+                binding.tvF.text = ""
+                binding.tvF.requestLayout()
+            } else {
+                isClickedDPEA = false
+                isClickedDPEB = false
+                isClickedDPEC = false
+                isClickedDPED = false
+                isClickedDPEE = false
+                isClickedDPEF = true
+                isClickedDPEG = false
+                viewModel.dpe.value = "F"
+                binding.tvF.layoutParams.width = 140
+                binding.tvF.layoutParams.height = 125
+                binding.tvF.text = "F"
+                binding.tvF.requestLayout()
+            }
 
-            binding.tvG.layoutParams.width = 115
+            binding.tvG.layoutParams.width = 125
             binding.tvG.layoutParams.height = 55
             binding.tvG.text = ""
             binding.tvG.requestLayout()
@@ -278,117 +398,168 @@ class OneFragment(val property: Property?) : BaseFragment() {
 
         binding.tvG.setOnClickListener {
             viewModel.dpe.value = "G"
-            binding.tvA.layoutParams.width = 115
+            binding.tvA.layoutParams.width = 125
             binding.tvA.layoutParams.height = 55
             binding.tvA.text = ""
             binding.tvA.requestLayout()
             viewModel.onDPEAClicked(7)
 
-            binding.tvB.layoutParams.width = 115
+            binding.tvB.layoutParams.width = 125
             binding.tvB.layoutParams.height = 55
             binding.tvB.text = ""
             binding.tvB.requestLayout()
 
-            binding.tvC.layoutParams.width = 115
+            binding.tvC.layoutParams.width = 125
             binding.tvC.layoutParams.height = 55
             binding.tvC.text = ""
             binding.tvC.requestLayout()
 
-            binding.tvD.layoutParams.width = 115
+            binding.tvD.layoutParams.width = 125
             binding.tvD.layoutParams.height = 55
             binding.tvD.text = ""
             binding.tvD.requestLayout()
 
-            binding.tvE.layoutParams.width = 115
+            binding.tvE.layoutParams.width = 125
             binding.tvE.layoutParams.height = 55
             binding.tvE.text = ""
             binding.tvE.requestLayout()
 
-            binding.tvF.layoutParams.width = 115
+            binding.tvF.layoutParams.width = 125
             binding.tvF.layoutParams.height = 55
             binding.tvF.text = ""
             binding.tvF.requestLayout()
 
-            binding.tvG.layoutParams.width = 140
-            binding.tvG.layoutParams.height = 120
-            binding.tvG.text = "G"
-            binding.tvG.requestLayout()
+            if (isClickedDPEG) {
+                isClickedDPEG = false
+                viewModel.dpe.value = ""
+                binding.tvG.layoutParams.width = 125
+                binding.tvG.layoutParams.height = 55
+                binding.tvG.text = ""
+                binding.tvG.requestLayout()
+            } else {
+                isClickedDPEA = false
+                isClickedDPEB = false
+                isClickedDPEC = false
+                isClickedDPED = false
+                isClickedDPEE = false
+                isClickedDPEF = false
+                isClickedDPEG = true
+                viewModel.dpe.value = "G"
+                binding.tvG.layoutParams.width = 140
+                binding.tvG.layoutParams.height = 125
+                binding.tvG.text = "G"
+                binding.tvG.requestLayout()
+            }
+
         }
 
 
         binding.tvGESA.setOnClickListener {
-            viewModel.ges.value = "A"
-            binding.tvGESA.layoutParams.width = 140
-            binding.tvGESA.layoutParams.height = 71
-            binding.tvGESA.text = "A"
-            binding.tvGESA.requestLayout()
-            viewModel.onDPEAClicked(1)
 
-            binding.tvGESB.layoutParams.width = 115
+            if (isClickedGESA) {
+                isClickedGESA = false
+                viewModel.ges.value = ""
+                binding.tvGESA.layoutParams.width = 125
+                binding.tvGESA.layoutParams.height = 55
+                binding.tvGESA.text = ""
+                binding.tvGESA.requestLayout()
+            } else {
+                isClickedGESA = true
+                isClickedGESB = false
+                isClickedGESC = false
+                isClickedGESD = false
+                isClickedGESE = false
+                isClickedGESF = false
+                isClickedGESG = false
+                viewModel.ges.value = "A"
+                binding.tvGESA.layoutParams.width = 140
+                binding.tvGESA.layoutParams.height = 71
+                binding.tvGESA.text = "A"
+                binding.tvGESA.requestLayout()
+                viewModel.onDPEAClicked(1)
+            }
+
+            binding.tvGESB.layoutParams.width = 125
             binding.tvGESB.layoutParams.height = 55
             binding.tvGESB.text = ""
             binding.tvGESB.requestLayout()
 
-            binding.tvGESC.layoutParams.width = 115
+            binding.tvGESC.layoutParams.width = 125
             binding.tvGESC.layoutParams.height = 55
             binding.tvGESC.text = ""
             binding.tvGESC.requestLayout()
 
-            binding.tvGESD.layoutParams.width = 115
+            binding.tvGESD.layoutParams.width = 125
             binding.tvGESD.layoutParams.height = 55
             binding.tvGESD.text = ""
             binding.tvGESD.requestLayout()
 
-            binding.tvGESE.layoutParams.width = 115
+            binding.tvGESE.layoutParams.width = 125
             binding.tvGESE.layoutParams.height = 55
             binding.tvGESE.text = ""
             binding.tvGESE.requestLayout()
 
-            binding.tvGESF.layoutParams.width = 115
+            binding.tvGESF.layoutParams.width = 125
             binding.tvGESF.layoutParams.height = 55
             binding.tvGESF.text = ""
             binding.tvGESF.requestLayout()
 
-            binding.tvGESG.layoutParams.width = 115
+            binding.tvGESG.layoutParams.width = 125
             binding.tvGESG.layoutParams.height = 55
             binding.tvGESG.text = ""
             binding.tvGESG.requestLayout()
         }
 
         binding.tvGESB.setOnClickListener {
-            viewModel.ges.value = "B"
-            binding.tvGESA.layoutParams.width = 115
+            binding.tvGESA.layoutParams.width = 125
             binding.tvGESA.layoutParams.height = 55
             binding.tvGESA.text = ""
             binding.tvGESA.requestLayout()
-            viewModel.onDPEAClicked(2)
 
-            binding.tvGESB.layoutParams.width = 140
-            binding.tvGESB.layoutParams.height = 71
-            binding.tvGESB.text = "B"
-            binding.tvGESB.requestLayout()
+            if (isClickedGESB) {
+                isClickedGESB = false
+                viewModel.ges.value = ""
+                binding.tvGESB.layoutParams.width = 125
+                binding.tvGESB.layoutParams.height = 55
+                binding.tvGESB.text = ""
+                binding.tvGESB.requestLayout()
+            } else {
+                isClickedGESA = false
+                isClickedGESB = true
+                isClickedGESC = false
+                isClickedGESD = false
+                isClickedGESE = false
+                isClickedGESF = false
+                isClickedGESG = false
+                viewModel.ges.value = "B"
+                binding.tvGESB.layoutParams.width = 140
+                binding.tvGESB.layoutParams.height = 71
+                binding.tvGESB.text = "B"
+                binding.tvGESB.requestLayout()
+                viewModel.onDPEAClicked(2)
+            }
 
-            binding.tvGESC.layoutParams.width = 115
+            binding.tvGESC.layoutParams.width = 125
             binding.tvGESC.layoutParams.height = 55
             binding.tvGESC.text = ""
             binding.tvGESC.requestLayout()
 
-            binding.tvGESD.layoutParams.width = 115
+            binding.tvGESD.layoutParams.width = 125
             binding.tvGESD.layoutParams.height = 55
             binding.tvGESD.text = ""
             binding.tvGESD.requestLayout()
 
-            binding.tvGESE.layoutParams.width = 115
+            binding.tvGESE.layoutParams.width = 125
             binding.tvGESE.layoutParams.height = 55
             binding.tvGESE.text = ""
             binding.tvGESE.requestLayout()
 
-            binding.tvGESF.layoutParams.width = 115
+            binding.tvGESF.layoutParams.width = 125
             binding.tvGESF.layoutParams.height = 55
             binding.tvGESF.text = ""
             binding.tvGESF.requestLayout()
 
-            binding.tvGESG.layoutParams.width = 115
+            binding.tvGESG.layoutParams.width = 125
             binding.tvGESG.layoutParams.height = 55
             binding.tvGESG.text = ""
             binding.tvGESG.requestLayout()
@@ -396,13 +567,12 @@ class OneFragment(val property: Property?) : BaseFragment() {
 
         binding.tvGESC.setOnClickListener {
             viewModel.ges.value = "C"
-            binding.tvGESA.layoutParams.width = 115
+            binding.tvGESA.layoutParams.width = 125
             binding.tvGESA.layoutParams.height = 55
             binding.tvGESA.text = ""
             binding.tvGESA.requestLayout()
-            viewModel.onDPEAClicked(3)
 
-            binding.tvGESB.layoutParams.width = 115
+            binding.tvGESB.layoutParams.width = 125
             binding.tvGESB.layoutParams.height = 55
             binding.tvGESB.text = ""
             binding.tvGESB.requestLayout()
@@ -412,22 +582,45 @@ class OneFragment(val property: Property?) : BaseFragment() {
             binding.tvGESC.text = "C"
             binding.tvGESC.requestLayout()
 
-            binding.tvGESD.layoutParams.width = 115
+            if (isClickedGESC) {
+                isClickedGESC = false
+                viewModel.ges.value = ""
+                binding.tvGESC.layoutParams.width = 125
+                binding.tvGESC.layoutParams.height = 55
+                binding.tvGESC.text = ""
+                binding.tvGESC.requestLayout()
+            } else {
+                isClickedGESA = false
+                isClickedGESB = false
+                isClickedGESC = true
+                isClickedGESD = false
+                isClickedGESE = false
+                isClickedGESF = false
+                isClickedGESG = false
+                viewModel.ges.value = "C"
+                binding.tvGESC.layoutParams.width = 140
+                binding.tvGESC.layoutParams.height = 71
+                binding.tvGESC.text = "C"
+                binding.tvGESC.requestLayout()
+                viewModel.onDPEAClicked(3)
+            }
+
+            binding.tvGESD.layoutParams.width = 125
             binding.tvGESD.layoutParams.height = 55
             binding.tvGESD.text = ""
             binding.tvGESD.requestLayout()
 
-            binding.tvGESE.layoutParams.width = 115
+            binding.tvGESE.layoutParams.width = 125
             binding.tvGESE.layoutParams.height = 55
             binding.tvGESE.text = ""
             binding.tvGESE.requestLayout()
 
-            binding.tvGESF.layoutParams.width = 115
+            binding.tvGESF.layoutParams.width = 125
             binding.tvGESF.layoutParams.height = 55
             binding.tvGESF.text = ""
             binding.tvGESF.requestLayout()
 
-            binding.tvGESG.layoutParams.width = 115
+            binding.tvGESG.layoutParams.width = 125
             binding.tvGESG.layoutParams.height = 55
             binding.tvGESG.text = ""
             binding.tvGESG.requestLayout()
@@ -435,38 +628,57 @@ class OneFragment(val property: Property?) : BaseFragment() {
 
         binding.tvGESD.setOnClickListener {
             viewModel.ges.value = "D"
-            binding.tvGESA.layoutParams.width = 115
+            binding.tvGESA.layoutParams.width = 125
             binding.tvGESA.layoutParams.height = 55
             binding.tvGESA.text = ""
             binding.tvGESA.requestLayout()
-            viewModel.onDPEAClicked(4)
 
-            binding.tvGESB.layoutParams.width = 115
+            binding.tvGESB.layoutParams.width = 125
             binding.tvGESB.layoutParams.height = 55
             binding.tvGESB.text = ""
             binding.tvGESB.requestLayout()
 
-            binding.tvGESC.layoutParams.width = 115
+            binding.tvGESC.layoutParams.width = 125
             binding.tvGESC.layoutParams.height = 55
             binding.tvGESC.text = ""
             binding.tvGESC.requestLayout()
 
-            binding.tvGESD.layoutParams.width = 140
-            binding.tvGESD.layoutParams.height = 71
-            binding.tvGESD.text = "D"
-            binding.tvGESD.requestLayout()
 
-            binding.tvGESE.layoutParams.width = 115
+            if (isClickedGESD) {
+                isClickedGESD = false
+                viewModel.ges.value = ""
+                binding.tvGESD.layoutParams.width = 125
+                binding.tvGESD.layoutParams.height = 55
+                binding.tvGESD.text = ""
+                binding.tvGESD.requestLayout()
+            } else {
+                isClickedGESA = false
+                isClickedGESB = false
+                isClickedGESC = false
+                isClickedGESD = true
+                isClickedGESE = false
+                isClickedGESF = false
+                isClickedGESG = false
+                viewModel.ges.value = "D"
+                binding.tvGESD.layoutParams.width = 140
+                binding.tvGESD.layoutParams.height = 71
+                binding.tvGESD.text = "D"
+                binding.tvGESD.requestLayout()
+                viewModel.onDPEAClicked(4)
+            }
+
+
+            binding.tvGESE.layoutParams.width = 125
             binding.tvGESE.layoutParams.height = 55
             binding.tvGESE.text = ""
             binding.tvGESE.requestLayout()
 
-            binding.tvGESF.layoutParams.width = 115
+            binding.tvGESF.layoutParams.width = 125
             binding.tvGESF.layoutParams.height = 55
             binding.tvGESF.text = ""
             binding.tvGESF.requestLayout()
 
-            binding.tvGESG.layoutParams.width = 115
+            binding.tvGESG.layoutParams.width = 125
             binding.tvGESG.layoutParams.height = 55
             binding.tvGESG.text = ""
             binding.tvGESG.requestLayout()
@@ -474,38 +686,57 @@ class OneFragment(val property: Property?) : BaseFragment() {
 
         binding.tvGESE.setOnClickListener {
             viewModel.ges.value = "E"
-            binding.tvGESA.layoutParams.width = 115
+            binding.tvGESA.layoutParams.width = 125
             binding.tvGESA.layoutParams.height = 55
             binding.tvGESA.text = ""
             binding.tvGESA.requestLayout()
-            viewModel.onDPEAClicked(5)
 
-            binding.tvGESB.layoutParams.width = 115
+            binding.tvGESB.layoutParams.width = 125
             binding.tvGESB.layoutParams.height = 55
             binding.tvGESB.text = ""
             binding.tvGESB.requestLayout()
 
-            binding.tvGESC.layoutParams.width = 115
+            binding.tvGESC.layoutParams.width = 125
             binding.tvGESC.layoutParams.height = 55
             binding.tvGESC.text = ""
             binding.tvGESC.requestLayout()
 
-            binding.tvGESD.layoutParams.width = 115
+            binding.tvGESD.layoutParams.width = 125
             binding.tvGESD.layoutParams.height = 55
             binding.tvGESD.text = ""
             binding.tvGESD.requestLayout()
 
-            binding.tvGESE.layoutParams.width = 140
-            binding.tvGESE.layoutParams.height = 71
-            binding.tvGESE.text = "E"
-            binding.tvGESE.requestLayout()
 
-            binding.tvGESF.layoutParams.width = 115
+            if (isClickedGESE) {
+                isClickedGESE = false
+                viewModel.ges.value = ""
+                binding.tvGESE.layoutParams.width = 125
+                binding.tvGESE.layoutParams.height = 55
+                binding.tvGESE.text = ""
+                binding.tvGESE.requestLayout()
+            } else {
+                isClickedGESA = false
+                isClickedGESB = false
+                isClickedGESC = false
+                isClickedGESD = false
+                isClickedGESE = true
+                isClickedGESF = false
+                isClickedGESG = false
+                viewModel.ges.value = "E"
+                binding.tvGESE.layoutParams.width = 140
+                binding.tvGESE.layoutParams.height = 71
+                binding.tvGESE.text = "E"
+                binding.tvGESE.requestLayout()
+                viewModel.onDPEAClicked(5)
+            }
+
+
+            binding.tvGESF.layoutParams.width = 125
             binding.tvGESF.layoutParams.height = 55
             binding.tvGESF.text = ""
             binding.tvGESF.requestLayout()
 
-            binding.tvGESG.layoutParams.width = 115
+            binding.tvGESG.layoutParams.width = 125
             binding.tvGESG.layoutParams.height = 55
             binding.tvGESG.text = ""
             binding.tvGESG.requestLayout()
@@ -513,28 +744,27 @@ class OneFragment(val property: Property?) : BaseFragment() {
 
         binding.tvGESF.setOnClickListener {
             viewModel.ges.value = "F"
-            binding.tvGESA.layoutParams.width = 115
+            binding.tvGESA.layoutParams.width = 125
             binding.tvGESA.layoutParams.height = 55
             binding.tvGESA.text = ""
             binding.tvGESA.requestLayout()
-            viewModel.onDPEAClicked(6)
 
-            binding.tvGESB.layoutParams.width = 115
+            binding.tvGESB.layoutParams.width = 125
             binding.tvGESB.layoutParams.height = 55
             binding.tvGESB.text = ""
             binding.tvGESB.requestLayout()
 
-            binding.tvGESC.layoutParams.width = 115
+            binding.tvGESC.layoutParams.width = 125
             binding.tvGESC.layoutParams.height = 55
             binding.tvGESC.text = ""
             binding.tvGESC.requestLayout()
 
-            binding.tvGESD.layoutParams.width = 115
+            binding.tvGESD.layoutParams.width = 125
             binding.tvGESD.layoutParams.height = 55
             binding.tvGESD.text = ""
             binding.tvGESD.requestLayout()
 
-            binding.tvGESE.layoutParams.width = 115
+            binding.tvGESE.layoutParams.width = 125
             binding.tvGESE.layoutParams.height = 55
             binding.tvGESE.text = ""
             binding.tvGESE.requestLayout()
@@ -544,7 +774,32 @@ class OneFragment(val property: Property?) : BaseFragment() {
             binding.tvGESF.text = "F"
             binding.tvGESF.requestLayout()
 
-            binding.tvGESG.layoutParams.width = 115
+
+            if (isClickedGESF) {
+                isClickedGESF = false
+                viewModel.ges.value = ""
+                binding.tvGESF.layoutParams.width = 125
+                binding.tvGESF.layoutParams.height = 55
+                binding.tvGESF.text = ""
+                binding.tvGESF.requestLayout()
+            } else {
+                isClickedGESA = false
+                isClickedGESB = false
+                isClickedGESC = false
+                isClickedGESD = false
+                isClickedGESE = false
+                isClickedGESF = true
+                isClickedGESG = false
+                viewModel.ges.value = "F"
+                binding.tvGESF.layoutParams.width = 140
+                binding.tvGESF.layoutParams.height = 71
+                binding.tvGESF.text = "F"
+                binding.tvGESF.requestLayout()
+                viewModel.onDPEAClicked(6)
+            }
+
+
+            binding.tvGESG.layoutParams.width = 125
             binding.tvGESG.layoutParams.height = 55
             binding.tvGESG.text = ""
             binding.tvGESG.requestLayout()
@@ -552,41 +807,59 @@ class OneFragment(val property: Property?) : BaseFragment() {
 
         binding.tvGESG.setOnClickListener {
             viewModel.ges.value = "G"
-            binding.tvGESA.layoutParams.width = 115
+            binding.tvGESA.layoutParams.width = 125
             binding.tvGESA.layoutParams.height = 55
             binding.tvGESA.text = ""
             binding.tvGESA.requestLayout()
-            viewModel.onDPEAClicked(7)
 
-            binding.tvGESB.layoutParams.width = 115
+            binding.tvGESB.layoutParams.width = 125
             binding.tvGESB.layoutParams.height = 55
             binding.tvGESB.text = ""
             binding.tvGESB.requestLayout()
 
-            binding.tvGESC.layoutParams.width = 115
+            binding.tvGESC.layoutParams.width = 125
             binding.tvGESC.layoutParams.height = 55
             binding.tvGESC.text = ""
             binding.tvGESC.requestLayout()
 
-            binding.tvGESD.layoutParams.width = 115
+            binding.tvGESD.layoutParams.width = 125
             binding.tvGESD.layoutParams.height = 55
             binding.tvGESD.text = ""
             binding.tvGESD.requestLayout()
 
-            binding.tvGESE.layoutParams.width = 115
+            binding.tvGESE.layoutParams.width = 125
             binding.tvGESE.layoutParams.height = 55
             binding.tvGESE.text = ""
             binding.tvGESE.requestLayout()
 
-            binding.tvGESF.layoutParams.width = 115
+            binding.tvGESF.layoutParams.width = 125
             binding.tvGESF.layoutParams.height = 55
             binding.tvGESF.text = ""
             binding.tvGESF.requestLayout()
 
-            binding.tvGESG.layoutParams.width = 140
-            binding.tvGESG.layoutParams.height = 71
-            binding.tvGESG.text = "G"
-            binding.tvGESG.requestLayout()
+            if (isClickedGESG) {
+                isClickedGESG = false
+                viewModel.ges.value = ""
+                binding.tvGESG.layoutParams.width = 125
+                binding.tvGESG.layoutParams.height = 55
+                binding.tvGESG.text = ""
+                binding.tvGESG.requestLayout()
+            } else {
+                isClickedGESA = false
+                isClickedGESB = false
+                isClickedGESC = false
+                isClickedGESD = false
+                isClickedGESE = false
+                isClickedGESF = false
+                isClickedGESG = true
+                viewModel.ges.value = "G"
+                binding.tvGESG.layoutParams.width = 140
+                binding.tvGESG.layoutParams.height = 71
+                binding.tvGESG.text = "G"
+                binding.tvGESG.requestLayout()
+                viewModel.onDPEAClicked(7)
+            }
+
         }
 
     }
@@ -601,49 +874,56 @@ class OneFragment(val property: Property?) : BaseFragment() {
                 when (navigationTo.energy) {
                     "A" -> {
                         binding.tvA.layoutParams.width = 140
-                        binding.tvA.layoutParams.height = 120
+                        binding.tvA.layoutParams.height = 125
                         binding.tvA.text = "A"
                         binding.tvA.requestLayout()
                     }
+
                     "B" -> {
                         binding.tvB.layoutParams.width = 140
-                        binding.tvB.layoutParams.height = 120
+                        binding.tvB.layoutParams.height = 125
                         binding.tvB.text = "B"
                         binding.tvB.requestLayout()
                     }
+
                     "C" -> {
                         binding.tvC.layoutParams.width = 140
-                        binding.tvC.layoutParams.height = 120
+                        binding.tvC.layoutParams.height = 125
                         binding.tvC.text = "C"
                         binding.tvC.requestLayout()
                     }
+
                     "D" -> {
                         binding.tvD.layoutParams.width = 140
-                        binding.tvD.layoutParams.height = 120
+                        binding.tvD.layoutParams.height = 125
                         binding.tvD.text = "D"
                         binding.tvD.requestLayout()
                     }
+
                     "E" -> {
                         binding.tvE.layoutParams.width = 140
-                        binding.tvE.layoutParams.height = 120
+                        binding.tvE.layoutParams.height = 125
                         binding.tvE.text = "E"
                         binding.tvE.requestLayout()
                     }
+
                     "F" -> {
                         binding.tvF.layoutParams.width = 140
-                        binding.tvF.layoutParams.height = 120
+                        binding.tvF.layoutParams.height = 125
                         binding.tvF.text = "F"
                         binding.tvF.requestLayout()
                     }
+
                     "G" -> {
                         binding.tvG.layoutParams.width = 140
-                        binding.tvG.layoutParams.height = 120
+                        binding.tvG.layoutParams.height = 125
                         binding.tvG.text = "G"
                         binding.tvG.requestLayout()
                     }
+
                     else -> {
                         binding.tvG.layoutParams.width = 140
-                        binding.tvG.layoutParams.height = 120
+                        binding.tvG.layoutParams.height = 125
                         binding.tvG.text = "G"
                         binding.tvG.requestLayout()
                     }
@@ -654,49 +934,56 @@ class OneFragment(val property: Property?) : BaseFragment() {
                 when (navigationTo.ges) {
                     "A" -> {
                         binding.tvGESA.layoutParams.width = 140
-                        binding.tvGESA.layoutParams.height = 120
+                        binding.tvGESA.layoutParams.height = 125
                         binding.tvGESA.text = "A"
                         binding.tvGESA.requestLayout()
                     }
+
                     "B" -> {
                         binding.tvGESB.layoutParams.width = 140
-                        binding.tvGESB.layoutParams.height = 120
+                        binding.tvGESB.layoutParams.height = 125
                         binding.tvGESB.text = "B"
                         binding.tvGESB.requestLayout()
                     }
+
                     "C" -> {
                         binding.tvGESC.layoutParams.width = 140
-                        binding.tvGESC.layoutParams.height = 120
+                        binding.tvGESC.layoutParams.height = 125
                         binding.tvGESC.text = "C"
                         binding.tvGESC.requestLayout()
                     }
+
                     "D" -> {
                         binding.tvGESD.layoutParams.width = 140
-                        binding.tvGESD.layoutParams.height = 120
+                        binding.tvGESD.layoutParams.height = 125
                         binding.tvGESD.text = "D"
                         binding.tvGESD.requestLayout()
                     }
+
                     "E" -> {
                         binding.tvGESE.layoutParams.width = 140
-                        binding.tvGESE.layoutParams.height = 120
+                        binding.tvGESE.layoutParams.height = 125
                         binding.tvGESE.text = "E"
                         binding.tvGESE.requestLayout()
                     }
+
                     "F" -> {
                         binding.tvGESF.layoutParams.width = 140
-                        binding.tvGESF.layoutParams.height = 120
+                        binding.tvGESF.layoutParams.height = 125
                         binding.tvGESF.text = "F"
                         binding.tvGESF.requestLayout()
                     }
+
                     "G" -> {
                         binding.tvGESG.layoutParams.width = 140
-                        binding.tvGESG.layoutParams.height = 120
+                        binding.tvGESG.layoutParams.height = 125
                         binding.tvGESG.text = "G"
                         binding.tvGESG.requestLayout()
                     }
+
                     else -> {
                         binding.tvGESG.layoutParams.width = 140
-                        binding.tvGESG.layoutParams.height = 120
+                        binding.tvGESG.layoutParams.height = 125
                         binding.tvGESG.text = "G"
                         binding.tvGESG.requestLayout()
                     }
@@ -709,36 +996,31 @@ class OneFragment(val property: Property?) : BaseFragment() {
 }
 
 class SpaceTextWatcher(private val editText: EditText) : TextWatcher {
-    private var previousText = ""
-
-    override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-        // Not needed for this implementation
-    }
-
-    override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-        // Not needed for this implementation
-    }
-
+    private var isEditing = false
+    override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+    override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
     override fun afterTextChanged(s: Editable?) {
-        val newText = s.toString().replace("\\s".toRegex(), "")
-
-        if (newText != previousText) {
-            editText.removeTextChangedListener(this)
-
-            val sb = StringBuilder()
-            newText.forEachIndexed { index, char ->
-                if (index > 0 && index % 3 == 0) {
-                    sb.append(' ')
-                }
-                sb.append(char)
-            }
-
-            editText.setText(sb.toString())
-            editText.setSelection(sb.length)
-
-            editText.addTextChangedListener(this)
-
-            previousText = sb.toString()
+        if (!isEditing) {
+            isEditing = true
+            val originalText = s.toString()
+            val cleanString = originalText.replace("[^\\d]".toRegex(), "")
+            val formattedText = formatPrice(cleanString)
+            editText.setText(formattedText)
+            editText.setSelection(formattedText.length)
+            isEditing = false
         }
+    }
+    private fun formatPrice(price: String): String {
+        val builder = StringBuilder()
+        var count = 0
+        for (i in price.length - 1 downTo 0) {
+            builder.insert(0, price[i])
+            count++
+            if (count == 3 && i != 0) {
+                builder.insert(0, " ")
+                count = 0
+            }
+        }
+        return builder.toString()
     }
 }
