@@ -63,11 +63,11 @@ class FilterViewModel
         }
 
         if (searchRequest.value?.minPrice != null) {
-            priceMin.value = searchRequest.value?.minPrice!!.toString()
+            priceMin.value = searchRequest.value?.minPrice!!
         }
 
         if (searchRequest.value?.maxPrice != null) {
-            priceMax.value = searchRequest.value?.maxPrice!!.toString()
+            priceMax.value = searchRequest.value?.maxPrice!!
         }
 
         if (searchRequest.value?.minArea != null) {
@@ -133,8 +133,8 @@ class FilterViewModel
 
     fun onConfirmClicked() {
         searchRequest.value?.address = city.value
-        searchRequest.value?.minPrice = priceMin.value?.replace(" ", "")?.toInt()
-        searchRequest.value?.maxPrice = priceMax.value?.replace(" ", "")?.toInt()
+        searchRequest.value?.minPrice = priceMin.value
+        searchRequest.value?.maxPrice = priceMax.value
         searchRequest.value?.minArea = surfaceMin.value?.toInt()
         searchRequest.value?.maxArea = surfaceMax.value?.toInt()
         searchRequest.value?.minRooms = minSelectedItem.value

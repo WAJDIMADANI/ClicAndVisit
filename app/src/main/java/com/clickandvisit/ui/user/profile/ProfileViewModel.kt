@@ -96,8 +96,8 @@ class ProfileViewModel
             firstName.value = user.rSocial
             lastName.value = user.siret
         } else {
-            firstName.value = user.firstName
-            lastName.value = user.lastName
+            firstName.value = user.firstName.capitalize()
+            lastName.value = user.lastName.toUpperCase()
             checkCivility(user)
         }
     }

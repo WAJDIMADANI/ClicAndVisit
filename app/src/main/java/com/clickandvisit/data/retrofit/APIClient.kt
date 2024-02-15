@@ -157,8 +157,8 @@ interface APIClient {
         @Field("max_rooms") maxRooms: String?,
         @Field("min-area") minArea: Int?,
         @Field("max-area") maxArea: Int?,
-        @Field("min-price") minPrice: Int?,
-        @Field("max-price") maxPrice: Int?,
+        @Field("min-price") minPrice: String?,
+        @Field("max-price") maxPrice: String?,
         @Field("favorite_user_id") favoriteUserId: Int?,
         @Field("save_search") saveSearch: Int?, //0 : No / 1 : Yes
         @Field("saved_search_user") savedSearchUser: Int?, //user id

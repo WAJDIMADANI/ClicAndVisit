@@ -86,6 +86,7 @@
                             android:layout_width="@dimen/dimen_150dp"
                             android:layout_height="@dimen/dimen_150dp"
                             android:layout_centerInParent="true"
+                            android:background="@drawable/ic_user_pl"
                             android:layout_gravity="center_horizontal"
                             app:imageUri="@{viewModel.photoUri}"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -179,7 +180,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:hint="@{viewModel.checkedPro ? @string/signup_pro_siret : @string/signup_lastname}"
-                                android:inputType="textPersonName"
+                                android:inputType="textCapCharacters"
                                 android:text="@={viewModel.lastName}" />
 
                         </com.clickandvisit.ui.shared.view.CustomTextInputLayout>
@@ -197,6 +198,7 @@
                                 style="@style/InputEditText.AppStyle"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:capitalize="words"
                                 android:hint="@{viewModel.checkedPro ? @string/signup_pro_social : @string/signup_firstname}"
                                 android:text="@={viewModel.firstName}" />
 

@@ -215,7 +215,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/signup_lastname"
-                        android:inputType="textPersonName"
+                        android:inputType="textCapCharacters"
                         android:text="@={viewModel.userName}" />
 
                 </com.clickandvisit.ui.shared.view.CustomTextInputLayout>
@@ -234,6 +234,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/signup_firstname"
+                        android:capitalize="words"
                         android:inputType="textPersonName"
                         android:text="@={viewModel.firstname}" />
 

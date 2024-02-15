@@ -67,6 +67,10 @@ class TwoFragment(val property: Property?) : BaseFragment() {
         input.inputType = inputType
         input.ellipsize = TextUtils.TruncateAt.END
         input.hint = hint
+        if (index == 12){
+            input.maxLines = 1 // Ensures only a single line
+            input.filters = arrayOf(android.text.InputFilter.LengthFilter(4)) // Limit to 4 characters
+        }
         if (oldValue.isNullOrEmpty().not()) {
             input.setText(oldValue!!)
         }

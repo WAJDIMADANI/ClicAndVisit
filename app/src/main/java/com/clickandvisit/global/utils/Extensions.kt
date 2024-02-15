@@ -28,6 +28,7 @@ import com.squareup.picasso.MemoryPolicy
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.CancellationException
 import java.io.File
+import java.lang.NumberFormatException
 
 
 /**
@@ -175,10 +176,12 @@ fun setImageUrl(imageView: ImageView, imageUrl: String, placeHolder: Drawable, p
                 .placeholder(
                     placeHolder
                 ).into(imageView)
+
             ImageView.ScaleType.CENTER_INSIDE -> picasso.load(imageUrl).fit().centerInside()
                 .placeholder(
                     placeHolder
                 ).into(imageView)
+
             else -> picasso.load(imageUrl).placeholder(R.mipmap.ic_launcher_foreground)
                 .into(imageView)
         }
@@ -394,4 +397,27 @@ fun String?.toMediaUrl(): String {
 fun Context.hideKeyboard(view: View) {
     val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
     inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
+}
+
+fun String.getPriceNBR(): String {
+    if (this.isEmpty()) {
+        return ""
+    } else {
+        return try {
+            if (this.length >= 3) {
+                "${
+                    this.replaceRange(
+                        this.length - 3,
+                        this.length,
+                        " " + this.subSequence(this.length - 3, this.length)
+                    )
+                } €"
+            } else {
+                "$this €"
+            }
+
+        } catch (e: NumberFormatException) {
+            ""
+        }
+    }
 }

@@ -27,9 +27,9 @@ data class SearchRequest(
     var maxArea: Int? = null,
 
     @Json(name = "min-price")
-    var minPrice: Int? = null,
+    var minPrice: String? = null,
     @Json(name = "max-price")
-    var maxPrice: Int? = null,
+    var maxPrice: String? = null,
 
     @Json(name = "favorite_user_id")
     var favoriteUserId: Int? = null,

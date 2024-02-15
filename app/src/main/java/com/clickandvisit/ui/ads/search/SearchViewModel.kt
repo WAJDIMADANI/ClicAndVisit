@@ -88,8 +88,8 @@ class SearchViewModel
         searchRequest.value?.minArea = data.data.minArea?.toInt()
         searchRequest.value?.maxArea = data.data.maxArea?.toInt()
 
-        searchRequest.value?.minPrice = data.data.minPrice?.toInt()
-        searchRequest.value?.maxPrice = data.data.maxPrice?.toInt()
+        searchRequest.value?.minPrice = data.data.minPrice
+        searchRequest.value?.maxPrice = data.data.maxPrice
 
         searchRequest.value?.minRooms = data.data.minRooms
         searchRequest.value?.maxRooms = data.data.maxRooms

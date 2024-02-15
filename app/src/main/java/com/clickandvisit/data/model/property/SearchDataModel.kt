@@ -1,9 +1,11 @@
 package com.clickandvisit.data.model.property
 
 import android.os.Parcelable
+import com.clickandvisit.global.utils.getPriceNBR
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 import kotlinx.android.parcel.Parcelize
+import java.net.URLDecoder
 
 @Parcelize
 @JsonClass(generateAdapter = true)
@@ -40,11 +42,11 @@ data class SearchDataModel(
         return if (minPrice.isNullOrEmpty() && maxPrice.isNullOrEmpty()) {
             "PRIX NON\nPRÉCISÉ"
         } else if (minPrice.isNullOrEmpty() && maxPrice.isNullOrEmpty().not()) {
-            "MAXIMUM\n$maxPrice €"
+            "MAXIMUM\n${maxPrice!!.getPriceNBR()}"
         } else if (minPrice.isNullOrEmpty().not() && maxPrice.isNullOrEmpty()) {
-            "MINIMUM\n$minPrice €"
+            "MINIMUM\n${minPrice!!.getPriceNBR()}"
         } else {
-            "ENTRE\n$minPrice €\nET\n$maxPrice €"
+            "ENTRE\n${minPrice!!.getPriceNBR()} \nET\n${maxPrice!!.getPriceNBR()}"
         }
     }
 
@@ -53,17 +55,17 @@ data class SearchDataModel(
             "NOMBRE DE\nPIÈCES NON\nPRÉCISÉ"
         } else if (minRooms.isNullOrEmpty() && maxRooms.isNullOrEmpty().not()) {
             return try {
-                "MAXIMUM\nT${maxRooms!!.toInt().plus(1)}"
+                "MAXIMUM\nT${maxRooms!!}"
             } catch (e: NumberFormatException) {
-                "MAXIMUM T6 et +"
+                "MAXIMUM T5 et +"
             }
         } else if (minRooms.isNullOrEmpty().not() && maxRooms.isNullOrEmpty()) {
-            "MINIMUM\nT${minRooms!!.toInt().plus(1)}"
+            "MINIMUM\nT${minRooms!!}"
         } else {
             return try {
-                "ENTRE \nT${minRooms!!.toInt().plus(1)}\nET\nT${maxRooms!!.toInt().plus(1)}"
+                "ENTRE \nT${minRooms!!}\nET\nT${URLDecoder.decode(maxRooms!!, "UTF-8")}"
             } catch (e: NumberFormatException) {
-                "ENTRE \nT${minRooms!!.toInt().plus(1)}\nET\nT6 et +"
+                "ENTRE \nT${minRooms!!}\nET\nT5 et +"
             }
 
         }
@@ -71,7 +73,7 @@ data class SearchDataModel(
 
     fun getArea(): String {
         return if (minArea.isNullOrEmpty() && maxArea.isNullOrEmpty()) {
-            "SURFACE\nNON PRÉCISÉ"
+            "SURFACE\nNON PRÉCISÉE"
         } else if (minArea.isNullOrEmpty() && maxArea.isNullOrEmpty().not()) {
             "MAXIMUM\n$maxArea m²"
         } else if (minArea.isNullOrEmpty().not() && maxArea.isNullOrEmpty()) {
@@ -92,18 +94,23 @@ data class SearchDataModel(
                     96 -> {
                         typesList = typesList.plus(" Maison,")
                     }
+
                     97 -> {
                         typesList = typesList.plus(" Appartement,")
                     }
+
                     98 -> {
                         typesList = typesList.plus(" Garage,")
                     }
+
                     99 -> {
                         typesList = typesList.plus(" Bureau,")
                     }
+
                     100 -> {
                         typesList = typesList.plus(" Terrain,")
                     }
+
                     101 -> {
                         typesList = typesList.plus(" Commerce,")
                     }
