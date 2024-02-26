@@ -8,7 +8,7 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class Message(
     @Json(name = "message_author")
-    val authorId: Int,
+    val authorId: String,
     @Json(name = "message_author_name")
     val authorName: String,
     @Json(name = "message_author_picture")
@@ -21,7 +21,7 @@ data class Message(
     val date: String
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
-        parcel.readInt(),
+        parcel.readString()!!,
         parcel.readString()!!,
         parcel.readString()!!,
         parcel.readString()!!,
@@ -31,7 +31,7 @@ data class Message(
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeInt(authorId)
+        parcel.writeString(authorId)
         parcel.writeString(authorName)
         parcel.writeString(authorPhoto)
         parcel.writeString(message)

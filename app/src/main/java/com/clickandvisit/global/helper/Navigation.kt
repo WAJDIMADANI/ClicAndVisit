@@ -35,7 +35,7 @@ sealed class Navigation {
 
     object ChatActivityNavigation : Navigation()
 
-    data class ConvActivityNavigation(val discId: Int, val fromName: String) : Navigation()
+    data class ConvActivityNavigation(val discId: Int, val fromName: String?) : Navigation()
 
     object HomeActivityNavigation : Navigation()
     data class HomeActivityNavigationData(val searchRequest: SearchRequest) : Navigation()

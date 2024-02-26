@@ -23,7 +23,7 @@ class ChatViewHolder(
 
 
         binding.tvChatLastMsg.text = value.lastMessage
-        binding.tvCityDate.text = if (value.property.isEmpty()) {
+        binding.tvCityDate.text = if (value.property.isNullOrEmpty()) {
             value.date
         } else {
             value.property + " - " + value.date

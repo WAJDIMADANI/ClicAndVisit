@@ -13,21 +13,21 @@ data class Discussion(
     @Json(name = "from")
     val from: String,
     @Json(name = "from_name")
-    val fromName: String,
+    val fromName: String?,
     @Json(name = "from_picture")
     val fromPicture: String,
 
     @Json(name = "to")
     val to: String,
     @Json(name = "to_name")
-    val toName: String,
+    val toName: String?,
     @Json(name = "to_picture")
     val toPicture: String,
 
     @Json(name = "property_id")
     val propertyId: String,
     @Json(name = "property")
-    val property: String,
+    val property: String?,
     @Json(name = "last_message")
     val lastMessage: String,
     @Json(name = "date")

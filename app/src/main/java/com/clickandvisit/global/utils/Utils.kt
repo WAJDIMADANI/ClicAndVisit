@@ -12,10 +12,7 @@ import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import com.clickandvisit.ClickVisitApplication
 import com.clickandvisit.R
-import com.clickandvisit.ui.user.chat.ChatActivity
-import com.clickandvisit.ui.user.meet.MeetActivity
 import com.clickandvisit.ui.user.splash.SplashActivity
-import com.clickandvisit.ui.user.visits.VisitsActivity
 import okhttp3.ResponseBody
 import java.io.FileOutputStream
 import java.io.InputStream

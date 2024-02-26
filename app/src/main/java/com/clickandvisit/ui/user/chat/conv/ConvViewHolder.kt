@@ -21,7 +21,7 @@ class ConvViewHolder(
 
     fun bind(value: Message, position: Int) {
 
-        if (value.authorId == currentUserId) {
+        if (value.authorId.toInt() == currentUserId) {
             binding.tvChatMsgOther.visibility = View.GONE
             binding.ivChatUserPhoto.visibility = View.GONE
             binding.tvChatMsgMe.text = value.message

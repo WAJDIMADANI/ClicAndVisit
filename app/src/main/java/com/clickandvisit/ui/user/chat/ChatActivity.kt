@@ -68,7 +68,12 @@ class ChatActivity : BaseActivity() {
             is Navigation.ConvActivityNavigation -> {
                 Intent(this, ConvActivity::class.java).let {
                     it.putExtra(ExtraKeys.ConvActivity.DISC_ID_EXTRA_KEY, navigationTo.discId)
-                    it.putExtra(ExtraKeys.ConvActivity.FROM_NAME_EXTRA_KEY, navigationTo.fromName)
+                    if (navigationTo.fromName.isNullOrEmpty().not()) {
+                        it.putExtra(
+                            ExtraKeys.ConvActivity.FROM_NAME_EXTRA_KEY,
+                            navigationTo.fromName
+                        )
+                    }
                     startActivity(it)
                 }
             }
